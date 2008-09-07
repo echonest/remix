@@ -16,5 +16,15 @@ setup(name='echonest',
       download_url='http://code.google.com/',
       package_dir={'echonest':'src/echonest'},
       packages=['echonest', 'echonest.web'],
-      requires=['os', 'urllib', 'httplib', 'mimetypes']
+      requires=['os',
+                'urllib',
+                'httplib',
+                'mimetypes',
+                'tempfile',
+                'commands',
+                'struct',
+                'wave',
+                'numpy',
+                'Numeric'
+                ]
      )

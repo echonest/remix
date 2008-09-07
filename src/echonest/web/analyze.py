@@ -1,6 +1,7 @@
 """
 A Python interface to the The Echo Nest's Analyze web API.  See
-http://apidev.echotron.com/ for details.
+http://apidev.echotron.com/ for details.  Audio analysis is returned
+as XML objects.
 """
 
 __version__ = "$Revision: 0 $"
