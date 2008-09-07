@@ -1,4 +1,21 @@
-import Audio, lame, mad, os, numpy, random, time
+# By Rob Ochshorn and Adam Baratz.
+# Slightly refactored by Joshua Lifton.
+
+import echonest.audio as audio
+import lame, mad, numpy, eyeD3
+import os, random, time
+
+usage = """
+Usage: 
+    python cowbell.py <inputFilename> <outputFilename> <cowbellIntensity> <walkenIntensity>
+
+Example:
+    python cowbell.py YouCanCallMeAl.mp3 YouCanCallMeCow.mp3 0.2 0.5
+
+Reference:
+    http://www.youtube.com/watch?v=ZhSkRHXTKlw
+"""
+
 
 # constants
 COWBELL_THRESHOLD = 0.85
@@ -7,9 +24,9 @@ COWBELL_OFFSET = -0.005
 # samples
 soundsPath = "sounds/"
 
-cowbellSounds = map(lambda x: Audio.load(os.path.join(soundsPath, "cowbell%s.wav" % x), samples=44100, channels=2), range(5))
-walkenSounds = map(lambda x: Audio.load(os.path.join(soundsPath, "walken%s.wav" % x), samples=44100, channels=2), range(16))
-trill = Audio.load(os.path.join(soundsPath, "trill.wav"), samples=44100, channels=2)
+cowbellSounds = map(lambda x: audio.load(os.path.join(soundsPath, "cowbell%s.wav" % x), samples=44100, channels=2), range(5))
+walkenSounds = map(lambda x: audio.load(os.path.join(soundsPath, "walken%s.wav" % x), samples=44100, channels=2), range(16))
+trill = audio.load(os.path.join(soundsPath, "trill.wav"), samples=44100, channels=2)
 
 class Cowbell:
     def __init__(self, audio, beats, sections):
@@ -140,3 +157,72 @@ class Cowbell:
         mp3_file.close()
         mp3.delete()
         
+
+
+def write_tags(path, metadata):
+    tag = eyeD3.Tag()
+    tag.link(path)
+    tag.header.setVersion(eyeD3.ID3_V2_3)
+    if metadata.has_key('artist'):
+        tag.setArtist(metadata['artist'])
+    if metadata.has_key('release'):
+        tag.setAlbum(metadata['release'])
+    if metadata.has_key('title'):
+        tag.setTitle(metadata['title'])
+    else:
+        tag.setTitle('Unknown song')
+    tag.update()
+
+
+
+def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
+
+    # Upload track for analysis.
+    print 'uploading audio file...'
+    # XXX : testing only  
+    #track = audio.AudioTrack(inputFilename)
+    track = audio.AudioAnalysis('TRXPWI411C1EE2C767')
+
+    # Get beats.
+    print 'getting beats...'
+    num_beats = len(track.beats.firstChild.childNodes[3].childNodes)
+    beats = []
+    for i in range(num_beats):
+        start = float(track.beats.firstChild.childNodes[3].childNodes[i].firstChild.data)
+        beats.append({'start': start})
+        beats[i - 1]['duration'] = start - beats[i - 1]['start']
+    beats[num_beats - 1]['duration'] = beats[num_beats - 2]['duration']
+
+    # Get sections.
+    print 'getting sections...'
+    sections = []
+    for node in track.sections.firstChild.childNodes[3].childNodes:
+        sections.append(float(node.getAttribute('start')))
+            
+    # Get metadata.
+    print 'getting metadata...'
+    metadata = {}
+    for node in track.metadata.firstChild.childNodes[3].childNodes:
+        metadata[node.nodeName] = node.firstChild.data
+
+    # Add the cowbells.
+    print 'cowbelling...'
+    Cowbell(inputFilename, beats, sections).run(cowbellIntensity, walkenIntensity, outputFilename)            
+
+    # Finalize output file.
+    print 'finalizing output file...'
+    write_tags(outputFilename, metadata)
+
+
+
+if __name__ == '__main__':
+    import sys
+    try :
+        inputFilename = sys.argv[-4]
+        outputFilename = sys.argv[-3]
+        cowbellIntensity = float(sys.argv[-2])
+        walkenIntensity = float(sys.argv[-1])
+    except :
+        print usage
+        sys.exit(-1)
+    main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity )
