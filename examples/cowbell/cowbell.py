@@ -1,4 +1,4 @@
-import Audio, lame, mad, os, numpy, random, tempfile, time
+import Audio, lame, mad, os, numpy, random, time
 
 # constants
 COWBELL_THRESHOLD = 0.85
@@ -32,7 +32,7 @@ class Cowbell:
         self.beats = beats
         self.sections = sections
     
-    def run(self, cowbell_intensity, walken_intensity, out=None):
+    def run(self, cowbell_intensity, walken_intensity, out):
         if cowbell_intensity != -1:
             self.cowbell_intensity = cowbell_intensity
             self.walken_intensity = walken_intensity
@@ -44,10 +44,9 @@ class Cowbell:
         
         # save
         t1 = time.time()
-        path = self.encode(out)
+        self.encode(out)
         print "ENCODED IN %g SECONDS" % (time.time() - t1)
-        
-        return path
+
 
     def sequence(self, chops):
         # define mappings
@@ -110,12 +109,7 @@ class Cowbell:
         if self.audiodata.shape[0] - startsample > seg.data.shape[0]:
             self.audiodata[startsample:startsample+len(seg.data)] += seg.data[0:] # mix
     
-    def encode(self, out):
-        if out is None:
-            handle, mp3_path = tempfile.mkstemp(".mp3")
-        else:
-            mp3_path = out
-        
+    def encode(self, mp3_path):
         sampwidth = 2
         nframes = len(self.audiodata) / self.audiochannels
         raw_size = self.audiochannels * sampwidth * nframes
@@ -146,4 +140,3 @@ class Cowbell:
         mp3_file.close()
         mp3.delete()
         
-        return mp3_path
