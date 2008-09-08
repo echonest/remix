@@ -6,7 +6,7 @@ __version__ = "$Revision: 0 $"
 # $Source$
 
 
-API_HOST = 'apidev.echotron.com'
+API_HOST = 'developer.echonest.com'
 API_SELECTOR = '/api/'
 
 
