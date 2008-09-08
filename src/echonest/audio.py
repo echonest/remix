@@ -2,8 +2,9 @@
 A module for manipulating audio files and their associated Echo Nest
 Analyze API analyses.
 
-AudioAnalysis class by Joshua Lifton 2008-09-07.  Everything else by
-Robert Ochshorn on 2008-06-06.
+AudioData, audiosettingsfromffmpeg, and getpieces by Robert Ochshorn
+on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
+2008-09-07.  Much refactoring remains.
 """
 
 __version__ = "$Revision: 0 $"
