@@ -17,6 +17,11 @@ the usual means:
 
   import echonest
 
+The echonest.audio module requires that 'ffmpeg' also be installed.
+On Ubuntu and other Debian-based systems, ffmpeg can be installed
+using:
+
+  sudo aptitude install ffmpeg
 
 
 
