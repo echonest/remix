@@ -43,6 +43,7 @@ def parseXMLString( xmlString ) :
     @return An object representation of the XML string, in this case a
     xml.dom.minidom representation.
     """
+    print "parseXMLString:", xmlString
     doc = xml.dom.minidom.parseString(xmlString)
     status_code = int(doc.getElementsByTagName('code')[0].firstChild.data)
     if status_code not in SUCCESS_STATUS_CODES :

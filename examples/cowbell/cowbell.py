@@ -24,9 +24,9 @@ COWBELL_OFFSET = -0.005
 # samples
 soundsPath = "sounds/"
 
-cowbellSounds = map(lambda x: audio.load(os.path.join(soundsPath, "cowbell%s.wav" % x), samples=44100, channels=2), range(5))
-walkenSounds = map(lambda x: audio.load(os.path.join(soundsPath, "walken%s.wav" % x), samples=44100, channels=2), range(16))
-trill = audio.load(os.path.join(soundsPath, "trill.wav"), samples=44100, channels=2)
+cowbellSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "cowbell%s.wav" % x), sampleRate=44100, numChannels=2), range(5))
+walkenSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "walken%s.wav" % x), sampleRate=44100, numChannels=2), range(16))
+trill = audio.AudioData(os.path.join(soundsPath, "trill.wav"), sampleRate=44100, numChannels=2)
 
 class Cowbell:
     def __init__(self, audio, beats, sections):
@@ -179,9 +179,7 @@ def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
 
     # Upload track for analysis.
     print 'uploading audio file...'
-    # XXX : testing only  
-    #track = audio.AudioTrack(inputFilename)
-    track = audio.AudioAnalysis('TRXPWI411C1EE2C767')
+    track = audio.AudioAnalysis(inputFilename)
 
     # Get beats.
     print 'getting beats...'
