@@ -1,6 +1,6 @@
 """
 A Python interface to the The Echo Nest's Analyze web API.  See
-http://apidev.echotron.com/ for details.  Audio analysis is returned
+http://developer.echonest.com/ for details.  Audio analysis is returned
 as XML objects.
 """
 
