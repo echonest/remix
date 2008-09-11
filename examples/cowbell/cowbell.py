@@ -28,23 +28,30 @@ cowbellSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "cowbell%
 walkenSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "walken%s.wav" % x), sampleRate=44100, numChannels=2), range(16))
 trill = audio.AudioData(os.path.join(soundsPath, "trill.wav"), sampleRate=44100, numChannels=2)
 
+def linear(input, in1, in2, out1, out2):
+    return ((input-in1) / (in2-in1)) * (out2-out1) + out1
+
+def exp(input, in1, in2, out1, out2, coeff):
+    if (input <= in1):
+        return out1
+    if (input >= in2):
+        return out2
+    return pow( ((input-in1) / (in2-in1)) , coeff ) * (out2-out1) + out1
+
 class Cowbell:
-    def __init__(self, audio, beats, sections):
+    def __init__(self, audio, loudness, beats, sections):
+        # load audio, normalize it with samples
+        t1 = time.time()
+        
         mf = mad.MadFile(audio)
         self.audiodata = numpy.array(mf.readall(), dtype=numpy.int16)
-        
-        # normalize audio (to avoid clipping) while array is at its simplest
-        t1 = time.time()
-        self.audiodata *= 0.5
-        print "NORMALIZED AUDIO IN %g SECONDS" % (time.time() - t1)
-        
-        # data needs to be in stereo, so fake it for mono MP3s
-        if mf.mode() == 0:
-            self.audiodata = numpy.repeat(self.audiodata, 2)
+        self.audiodata *= linear(loudness, -2, -12, 0.5, 1.2) * 0.75
         self.audiodata = self.audiodata.reshape(len(self.audiodata) / 2, 2)
         
+        print "LOADED/NORMALIZED AUDIO IN %g SECONDS" % (time.time() - t1)
+        
         self.audiorate = mf.samplerate()    
-        self.audiochannels = 2
+        self.audiochannels = 2 # force it
         
         self.beats = beats
         self.sections = sections
@@ -66,17 +73,6 @@ class Cowbell:
 
 
     def sequence(self, chops):
-        # define mappings
-        def linear(input, in1, in2, out1, out2):
-            return ((input-in1) / (in2-in1)) * (out2-out1) + out1
-
-        def exp(input, in1, in2, out1, out2, coeff):
-            if (input <= in1):
-                return out1
-            if (input >= in2):
-                return out2
-            return pow( ((input-in1) / (in2-in1)) , coeff ) * (out2-out1) + out1
-
         # add cowbells on the beats
         for beat in self.beats:
             volume = linear(self.cowbell_intensity, 0, 1, 0.1, 0.3)
@@ -181,6 +177,10 @@ def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
     print 'uploading audio file...'
     track = audio.AudioAnalysis(inputFilename)
 
+    # Get loudness.
+    print 'getting loudness'
+    loudness = track.loudness
+
     # Get beats.
     print 'getting beats...'
     num_beats = len(track.beats.firstChild.childNodes[3].childNodes)
@@ -205,7 +205,7 @@ def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
 
     # Add the cowbells.
     print 'cowbelling...'
-    Cowbell(inputFilename, beats, sections).run(cowbellIntensity, walkenIntensity, outputFilename)            
+    Cowbell(inputFilename, loudness, beats, sections).run(cowbellIntensity, walkenIntensity, outputFilename)            
 
     # Finalize output file.
     print 'finalizing output file...'
