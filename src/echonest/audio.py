@@ -325,7 +325,7 @@ class AudioFile(AudioData) :
         parsers = { 'bars' : barsParser,
                     'beats' : beatsParser,
                     'sections' : sectionsParser,
-                    'segments' : segmentsParser,
+                    'segments' : fullSegmentsParser,
                     'tatums' : tatumsParser,
                     'metadata' : metadataParser,
                     }
@@ -352,8 +352,16 @@ class AudioSegment(AudioQuantum):
         self.loudness_max = loudness_max
         self.time_loudness_max = time_loudness_max
 
+class AudioQuantumList(list):
+    "container that enables content-based selection"
+    def that(self, filt):
+        out = AudioQuantumList()
+        out.extend(filter(identity,
+                    map(filt, self)))
+        return out
+
 def dataParser(tag, doc) :
-    out = []
+    out = AudioQuantumList()
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
         out.append( AudioQuantum(float(n.firstChild.data)) )
@@ -365,7 +373,7 @@ def dataParser(tag, doc) :
 
 
 def attributeParser(tag, doc) :
-    out = []
+    out = AudioQuantumList()
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
         out.append( AudioQuantum(float(n.getAttribute('start')),
@@ -406,7 +414,7 @@ def metadataParser(doc) :
     return out
 
 def fullSegmentsParser(doc):
-    out = []
+    out = AudioQuantumList()
     nodes = doc.getElementsByTagName('segment')
     for n in nodes:
         start = float(n.getAttribute('start'))
@@ -435,3 +443,6 @@ def fullSegmentsParser(doc):
                         loudness_max=loudness_max, time_loudness_max=time_loudness_max))
     return out
 
+# Utility function to aid the "that" method
+def identity(x):
+    return x
