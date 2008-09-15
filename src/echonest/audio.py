@@ -321,7 +321,7 @@ class AudioFile(AudioData) :
     
 
     def __init__(self, filename) :
-        AudioData.__init__(self, filename=filename)
+        self.audiodata = AudioData.__init__(self, filename=filename)
         parsers = { 'bars' : barsParser,
                     'beats' : beatsParser,
                     'sections' : sectionsParser,
