@@ -338,7 +338,19 @@ class AudioQuantum(object) :
         self.start = start
         self.duration = duration
 
-
+class AudioSegment(AudioQuantum):
+    'For those who want feature-rich segments'
+    # Not sure I like the stupid number of arguments in the init 
+    #  function, but it's a one-off for now.
+    def __init__(self, start=0., duration=0., pitches=[], timbre=[], 
+                 loudness_begin=0., loudness_max=0., time_loudness_max=0.):
+        self.start = start
+        self.duration = duration
+        self.pitches = pitches
+        self.timbre = timbre
+        self.loudness_begin = loudness_begin
+        self.loudness_max = loudness_max
+        self.time_loudness_max = time_loudness_max
 
 def dataParser(tag, doc) :
     out = []
@@ -392,3 +404,34 @@ def metadataParser(doc) :
     for node in doc.firstChild.childNodes[3].childNodes:
         out[node.nodeName] = node.firstChild.data
     return out
+
+def fullSegmentsParser(doc):
+    out = []
+    nodes = doc.getElementsByTagName('segment')
+    for n in nodes:
+        start = float(n.getAttribute('start'))
+        duration = float(n.getAttribute('duration'))
+        
+        loudnessnodes = n.getElementsByTagName('dB')
+        for l in loudnessnodes:
+            if l.hasAttribute('type'):
+                time_loudness_max = float(l.getAttribute('time'))
+                loudness_max = float(l.firstChild.data)
+            else:
+                loudness_begin = float(l.firstChild.data)
+        
+        pitchnodes = n.getElementsByTagName('pitch')
+        pitches=[]
+        for p in pitchnodes:
+            pitches.append(float(p.firstChild.data))
+        
+        timbrenodes = n.getElementsByTagName('coeff')
+        timbre=[]
+        for t in timbrenodes:
+            timbre.append(float(t.firstChild.data))
+        
+        out.append(AudioSegment(start=start, duration=duration, pitches=pitches, 
+                        timbre=timbre, loudness_begin=loudness_begin, 
+                        loudness_max=loudness_max, time_loudness_max=time_loudness_max))
+    return out
+
