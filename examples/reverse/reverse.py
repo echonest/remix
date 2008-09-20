@@ -14,10 +14,10 @@ import echonest.audio as audio
 
 usage = """
 Usage: 
-    python reverse.py <beats|segments> <inputFilename> <outputFilename>
+    python reverse.py <beats|segments> <inputFilename> <outputFilename.wav>
 
 Example:
-    python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.mp3
+    python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.wav
 """
 
 
