@@ -63,10 +63,29 @@ def contain_point(point):
 def have_pitch_max(pitchmax):
     def fun(x):
         pitches = x.pitches
-        if reduce(all, [pitches[pitchmax] >= p for p in pitches]):
+        if reduce(all_of, [pitches[pitchmax] >= p for p in pitches]):
             return x
     return fun
 
+# selection filters that take lists of AudioQuanta, originally from
+#  examples/selection/tonic.py
+
+def overlap_ends_of(aqs): 
+    def fun(x): 
+        for aq in aqs: 
+            if x.start <= aq.start + aq.duration and x.start + x.duration >= aq.start + aq.duration: 
+                return x 
+        return None 
+    return fun 
+
+def overlap_starts_of(aqs):
+    def fun(x):
+        for aq in aqs: 
+            if x.start <= aq.start and x.start + x.duration >= aq.start:
+                return x
+        return None
+    return fun
+
 # 
-def all(x, y):
+def all_of(x, y):
     return x and y
