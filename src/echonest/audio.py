@@ -356,8 +356,7 @@ class AudioQuantumList(list):
     "container that enables content-based selection"
     def that(self, filt):
         out = AudioQuantumList()
-        out.extend(filter(identity,
-                    map(filt, self)))
+        out.extend(filter(None, map(filt, self)))
         return out
 
 def dataParser(tag, doc) :
@@ -442,7 +441,3 @@ def fullSegmentsParser(doc):
                         timbre=timbre, loudness_begin=loudness_begin, 
                         loudness_max=loudness_max, time_loudness_max=time_loudness_max))
     return out
-
-# Utility function to aid the "that" method
-def identity(x):
-    return x
