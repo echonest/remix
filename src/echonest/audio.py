@@ -331,6 +331,17 @@ class AudioFile(AudioData) :
                     }
         self.analysis = AudioAnalysis(filename, parsers)
 
+class ExistingTrack():
+    def __init__(self, trackID):
+        parsers = { 'bars' : barsParser,
+                    'beats' : beatsParser,
+                    'sections' : sectionsParser,
+                    'segments' : fullSegmentsParser,
+                    'tatums' : tatumsParser,
+                    'metadata' : metadataParser,
+                    }
+        self.analysis = AudioAnalysis(trackID, parsers)
+        
 
 
 class AudioQuantum(object) :
