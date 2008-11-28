@@ -10,7 +10,7 @@ on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
 __version__ = "$Revision: 0 $"
 # $Source$
 
-import commands, os, struct, tempfile, wave
+import commands, os, struct, tempfile, wave,md5
 import numpy
 import echonest.web.analyze as analyze;
 
@@ -80,13 +80,13 @@ class AudioAnalysis(object) :
 
         if type(audio) is not str :
             # Argument is invalid.
-            raise TypeError("Argument 'audio' must be a string representing either a filename or track ID.")
+            raise TypeError("Argument 'audio' must be a string representing either a filename, track ID, or MD5.")
         elif os.path.isfile(audio) or '.' in audio :
             # Argument is either a filename or URL.
             doc = analyze.upload(audio)
             self.id = doc.getElementsByTagName('thingID')[0].firstChild.data
-        else :
-            # Argument is a track ID.
+        else:
+            # Argument is a md5 or track ID.
             self.id = audio
             
 
@@ -332,7 +332,7 @@ class AudioFile(AudioData) :
         self.analysis = AudioAnalysis(filename, parsers)
 
 class ExistingTrack():
-    def __init__(self, trackID):
+    def __init__(self, trackID_or_Filename):
         parsers = { 'bars' : barsParser,
                     'beats' : beatsParser,
                     'sections' : sectionsParser,
@@ -340,6 +340,11 @@ class ExistingTrack():
                     'tatums' : tatumsParser,
                     'metadata' : metadataParser,
                     }
+        if(os.path.isfile(trackID_or_Filename)):
+            trackID = md5.new(file(trackID_or_Filename).read()).hexdigest()
+            print "Computed MD5 of file is " + trackID
+        else:
+            trackID = trackID_or_Filename
         self.analysis = AudioAnalysis(trackID, parsers)
         
 
