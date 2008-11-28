@@ -20,12 +20,16 @@ import echonest.web.config as config
 SUCCESS_STATUS_CODES = ( 0, )
 
 
-def apiFunctionPrototype( method, id ) : 
+def apiFunctionPrototype( method, id) : 
     """
     This function is the basis for most of the 'get_xxx' functions in
     this package.
     """
-    params = urllib.urlencode({'id': id, 'api_key': config.API_KEY})
+    # Check if ID is an MD5 string, if so, use that instead of ID.
+    if(len(id)<32):
+        params = urllib.urlencode({'id': id, 'api_key': config.API_KEY})
+    else:
+        params = urllib.urlencode({'md5': id, 'api_key': config.API_KEY})
     url = 'http://%s%s%s?%s' % (config.API_HOST, config.API_SELECTOR, method, params)
     f = urllib.urlopen( url )
     return parseXMLString(f.read())
@@ -43,7 +47,6 @@ def parseXMLString( xmlString ) :
     @return An object representation of the XML string, in this case a
     xml.dom.minidom representation.
     """
-    print "parseXMLString:", xmlString
     doc = xml.dom.minidom.parseString(xmlString)
     status_code = int(doc.getElementsByTagName('code')[0].firstChild.data)
     if status_code not in SUCCESS_STATUS_CODES :
