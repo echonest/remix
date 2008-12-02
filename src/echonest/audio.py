@@ -14,6 +14,7 @@ import commands, os, struct, tempfile, wave,md5
 import numpy
 import echonest.web.analyze as analyze;
 
+
 class AudioAnalysis(object) :
     """
     This class wraps echonest.web to allow transparent caching of the
@@ -103,7 +104,7 @@ class AudioAnalysis(object) :
         for cachedVar in AudioAnalysis.CACHED_VARIABLES : 
             self.__setattr__(cachedVar, None)
             self.__getattribute__(cachedVar)
-        
+
 
 
     def __getattribute__( self, name ) :
@@ -318,27 +319,43 @@ def getpieces(audioData, segs):
 
 
 class AudioFile(AudioData) :
-    
-
     def __init__(self, filename) :
-        AudioData.__init__(self, filename=filename)
-        parsers = { 'bars' : barsParser,
+        parsers = { 'bars' : barsParser, 
                     'beats' : beatsParser,
                     'sections' : sectionsParser,
                     'segments' : fullSegmentsParser,
                     'tatums' : tatumsParser,
                     'metadata' : metadataParser,
+                    'tempo' : globalParserFloat,
+                    'duration' : globalParserFloat,
+                    'loudness' : globalParserFloat,
+                    'end_of_fade_in' : globalParserFloat,
+                    'start_of_fade_out' : globalParserFloat,
+                    'key' : globalParserInt,
+                    'mode' : globalParserInt,
+                    'time_signature' : globalParserInt,
                     }
+        AudioData.__init__(self, filename=filename)
         self.analysis = AudioAnalysis(filename, parsers)
+
+
 
 class ExistingTrack():
     def __init__(self, trackID_or_Filename):
-        parsers = { 'bars' : barsParser,
+        parsers = { 'bars' : barsParser, 
                     'beats' : beatsParser,
                     'sections' : sectionsParser,
                     'segments' : fullSegmentsParser,
                     'tatums' : tatumsParser,
                     'metadata' : metadataParser,
+                    'tempo' : globalParserFloat,
+                    'duration' : globalParserFloat,
+                    'loudness' : globalParserFloat,
+                    'end_of_fade_in' : globalParserFloat,
+                    'start_of_fade_out' : globalParserFloat,
+                    'key' : globalParserInt,
+                    'mode' : globalParserInt,
+                    'time_signature' : globalParserInt,
                     }
         if(os.path.isfile(trackID_or_Filename)):
             trackID = md5.new(file(trackID_or_Filename).read()).hexdigest()
@@ -346,13 +363,14 @@ class ExistingTrack():
         else:
             trackID = trackID_or_Filename
         self.analysis = AudioAnalysis(trackID, parsers)
-        
+
 
 
 class AudioQuantum(object) :
     def __init__(self, start=0, duration=0) :
         self.start = start
         self.duration = duration
+
 
 class AudioSegment(AudioQuantum):
     'For those who want feature-rich segments'
@@ -374,6 +392,8 @@ class AudioQuantumList(list):
         out = AudioQuantumList()
         out.extend(filter(None, map(filt, self)))
         return out
+
+
 
 def dataParser(tag, doc) :
     out = AudioQuantumList()
@@ -397,6 +417,24 @@ def attributeParser(tag, doc) :
 
 
 
+def globalParserFloat(doc) :
+    d = doc.firstChild.childNodes[4].childNodes[0]
+    if d.getAttributeNode('confidence'):
+        return float(d.childNodes[0].data), float(d.getAttributeNode('confidence').value)
+    else:
+        return float(d.childNodes[0].data)
+
+
+
+def globalParserInt(doc) :
+    d = doc.firstChild.childNodes[4].childNodes[0]
+    if d.getAttributeNode('confidence'):
+        return int(d.childNodes[0].data), float(d.getAttributeNode('confidence').value)
+    else:
+        return int(d.childNodes[0].data)
+
+
+
 def barsParser(doc) :
     return dataParser('bar', doc)
 
@@ -404,7 +442,7 @@ def barsParser(doc) :
 
 def beatsParser(doc) :
     return dataParser('beat', doc)
-    
+   
 
 
 def tatumsParser(doc) :
@@ -424,9 +462,11 @@ def segmentsParser(doc) :
 
 def metadataParser(doc) :
     out = {}
-    for node in doc.firstChild.childNodes[3].childNodes:
+    for node in doc.firstChild.childNodes[4].childNodes:
         out[node.nodeName] = node.firstChild.data
     return out
+
+
 
 def fullSegmentsParser(doc):
     out = AudioQuantumList()

@@ -63,6 +63,7 @@ class Cowbell:
         
         # sequence and mix
         t1 = time.time()
+        
         sequence = self.sequence(cowbellSounds)
         print "SEQUENCED AND MIXED IN %g SECONDS" % (time.time() - t1)
         
@@ -79,12 +80,12 @@ class Cowbell:
 
             # mix in cowbell on beat
             if self.cowbell_intensity == 1:
-                self.mix(beat['start']+COWBELL_OFFSET, seg=cowbellSounds[random.randint(0,1)], volume=volume)
+                self.mix(beat.start+COWBELL_OFFSET, seg=cowbellSounds[random.randint(0,1)], volume=volume)
             else:
-                self.mix(beat['start']+COWBELL_OFFSET, seg=cowbellSounds[random.randint(2,4)], volume=volume)
+                self.mix(beat.start+COWBELL_OFFSET, seg=cowbellSounds[random.randint(2,4)], volume=volume)
 
             # divide beat into quarters
-            quarters = (numpy.arange(1,4) * beat['duration']) / 4. + beat['start']
+            quarters = (numpy.arange(1,4) * beat.duration) / 4. + beat.start
             
             # mix in cowbell on quarters
             for quarter in quarters:
@@ -110,7 +111,7 @@ class Cowbell:
                 sample = walkenSounds[random.randint(0, len(walkenSounds)-1)]
                 volume = 1.5
 
-            self.mix(start=section+COWBELL_OFFSET, seg=sample, volume=volume)
+            self.mix(start=section.start+COWBELL_OFFSET, seg=sample, volume=volume)
     
     def mix(self, start=None, seg=None, volume=0.3, pan=0.):
         # this assumes that the audios have the same frequency/numchannels
@@ -175,33 +176,20 @@ def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
 
     # Upload track for analysis.
     print 'uploading audio file...'
-    track = audio.AudioAnalysis(inputFilename)
-
+    track = audio.ExistingTrack(inputFilename).analysis
+    
     # Get loudness.
-    print 'getting loudness'
+    print 'getting loudness...'
     loudness = track.loudness
-
     # Get beats.
     print 'getting beats...'
-    num_beats = len(track.beats.firstChild.childNodes[3].childNodes)
-    beats = []
-    for i in range(num_beats):
-        start = float(track.beats.firstChild.childNodes[3].childNodes[i].firstChild.data)
-        beats.append({'start': start})
-        beats[i - 1]['duration'] = start - beats[i - 1]['start']
-    beats[num_beats - 1]['duration'] = beats[num_beats - 2]['duration']
-
+    beats = track.beats
     # Get sections.
     print 'getting sections...'
-    sections = []
-    for node in track.sections.firstChild.childNodes[3].childNodes:
-        sections.append(float(node.getAttribute('start')))
-            
+    sections = track.sections
     # Get metadata.
     print 'getting metadata...'
-    metadata = {}
-    for node in track.metadata.firstChild.childNodes[3].childNodes:
-        metadata[node.nodeName] = node.firstChild.data
+    metadata = track.metadata
 
     # Add the cowbells.
     print 'cowbelling...'
