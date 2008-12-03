@@ -18,6 +18,9 @@ Usage:
 
 Example:
     python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.wav
+    
+Note: 
+    You must have installed FFmpeg (http://ffmpeg.mplayerhq.hu/download.html)
 """
 
 

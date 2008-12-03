@@ -130,13 +130,13 @@ class AudioData(object):
 
     # XXX : This init function needs to be heavily refactored.
     def __init__(self, filename=None, ndarray=None, shape=None, sampleRate=None, numChannels=None):
-        
+                
         # Fold in old load() function.
         if (filename is not None) and (ndarray is None) :
             if sampleRate is None or numChannels is None:
                 #force sampleRate and num numChannels to 44100 hz, 2
                 sampleRate, numChannels = 44100, 2
-                foo, fileToRead = tempfile.mkstemp(".wav")
+                foo, fileToRead = tempfile.mkstemp(".wav")                
                 cmd = "ffmpeg -y -i \""+filename+"\" -ar "+str(sampleRate)+" -ac "+str(numChannels)+" "+fileToRead
                 print cmd
                 parsestring = commands.getstatusoutput(cmd)
@@ -277,7 +277,7 @@ def audiosettingsfromffmpeg(parsestring):
             segs = line.split(", ")
             for s in segs:
                 if "Hz" in s:
-                    print "FOUND: "+str(s.split(" ")[0])
+                    print "FOUND: "+str(s.split(" ")[0])+"Hz"
                     freq = int(s.split(" ")[0])
                 elif "stereo" in s:
                     print "STEREO"

@@ -55,7 +55,8 @@ class Cowbell:
         
         self.beats = beats
         self.sections = sections
-    
+
+
     def run(self, cowbell_intensity, walken_intensity, out):
         if cowbell_intensity != -1:
             self.cowbell_intensity = cowbell_intensity
@@ -113,6 +114,7 @@ class Cowbell:
 
             self.mix(start=section.start+COWBELL_OFFSET, seg=sample, volume=volume)
     
+    
     def mix(self, start=None, seg=None, volume=0.3, pan=0.):
         # this assumes that the audios have the same frequency/numchannels
 
@@ -122,6 +124,7 @@ class Cowbell:
 
         if self.audiodata.shape[0] - startsample > seg.data.shape[0]:
             self.audiodata[startsample:startsample+len(seg.data)] += seg.data[0:] # mix
+    
     
     def encode(self, mp3_path):
         sampwidth = 2
@@ -153,7 +156,7 @@ class Cowbell:
         mp3.write_tags(mp3_file)
         mp3_file.close()
         mp3.delete()
-        
+
 
 
 def write_tags(path, metadata):
@@ -176,7 +179,8 @@ def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
 
     # Upload track for analysis.
     print 'uploading audio file...'
-    track = audio.ExistingTrack(inputFilename).analysis
+    #track = audio.ExistingTrack(inputFilename).analysis
+    track = audio.AudioFile(inputFilename).analysis
     
     # Get loudness.
     print 'getting loudness...'
