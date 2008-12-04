@@ -22,14 +22,17 @@ Reference:
 """
 
 # constants
-SLEIGH_OFFSET = -0.2
-SIGNAL_OFFSET = -1.0
+SLEIGH_OFFSET = -0.2 # seconds
+SIGNAL_OFFSET = -1.0 # seconds
+SANTA_OFFSET = -6.25 # seconds
+MIN_BEAT_DURATION = 0.3 # seconds
 
 # samples
 soundsPath = "sounds/"
 
 sleighBellSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "sleighBell%s.wav" % x), sampleRate=44100, numChannels=2), range(1))
-signalBellSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "signalBell%s.wav" % x), sampleRate=44100, numChannels=2), range(1))
+signalBellSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "signalBell%s.wav" % x), sampleRate=44100, numChannels=2), range(3))
+snowSantaSounds = map(lambda x: audio.AudioData(os.path.join(soundsPath, "snowSanta%s.wav" % x), sampleRate=44100, numChannels=2), range(1))
 
 # some math useful for normalization
 def linear(input, in1, in2, out1, out2):
@@ -41,40 +44,68 @@ def exp(input, in1, in2, out1, out2, coeff):
     return pow( ((input-in1) / (in2-in1)) , coeff ) * (out2-out1) + out1
 
 class Jingler:
-    def __init__(self, audio, loudness, beats, sections):
+    def __init__(self, audio, loudness, endOfFadeIn, beats, sections):
         # load audio, normalize it with samples
         t1 = time.time()
         mf = mad.MadFile(audio)
-        self.audiodata = numpy.array(mf.readall(), dtype=numpy.int16)
-        self.audiodata *= linear(loudness, -2, -12, 0.5, 1.2) * 0.75
+        # we choose int32 to cope with possible overflows after mixing
+        self.audiodata = numpy.array(mf.readall(), dtype=numpy.int32)
+        self.audiodata *= linear(loudness, -2, -12, 0.5, 1.5) * 0.75
         self.audiodata = self.audiodata.reshape(len(self.audiodata) / 2, 2)
-        print "Loaded/Normalized audio in %g secs" % (time.time() - t1)
+        print "Loaded/Normalized audio in %.3f secs" % (time.time() - t1)
         self.audiorate = mf.samplerate()    
         self.audiochannels = 2 # force it
         self.beats = beats
         self.sections = sections
+        self.duration = len(self.audiodata) / self.audiorate
+        self.endOfFadeIn = endOfFadeIn
 
 
     def run(self, out):
         # sequence and mix
         t1 = time.time()
-        sequence = self.sequence(sleighBellSounds)
-        print "Sequenced and mixed in %g secs" % (time.time() - t1)
+        self.sequence(sleighBellSounds)
+        self.normalize()
+        # at this point self.audiodata is down to a int16 array
+        print "Sequenced and mixed in %.3f secs" % (time.time() - t1)
         # save
         t1 = time.time()
+        print "Encoding mp3..."
         self.encode(out)
-        print "Encoded in %g secs" % (time.time() - t1)
+        print "Encoded in %.3f secs" % (time.time() - t1)
+
+
+    def normalize(self):
+        factor = 32767.0 / numpy.max(numpy.absolute(self.audiodata.flatten()))
+        if factor < 1:
+            # we return to 16 bit arrays
+            self.audiodata = numpy.array(self.audiodata * factor, dtype=numpy.int16)
 
 
     def sequence(self, chops):
+        # divide the duration by two if it sounds too fast
+        if self.beats[4].duration < MIN_BEAT_DURATION: stride = 2
+        else: stride = 1
         # add sleigh bells on the beats
-        for beat in self.beats:
+        for i in range(0,len(self.beats),stride):
+            beat = self.beats[i]
+            # let's put a little bit of jitter in the volume
+            vol = 0.6 + random.randint(-100,100) / 1000.0
             sample = sleighBellSounds[0]
-            self.mix(beat.start+SLEIGH_OFFSET, seg=sample, volume=0.6)
+            # let's stop jingling 5 seconds before the end anyhow
+            if beat.start+SLEIGH_OFFSET + 5 < self.duration:
+                self.mix(beat.start+SLEIGH_OFFSET, seg=sample, volume=vol)
         # add signal bells on section changes
         for section in self.sections[1:]:
-            sample = signalBellSounds[0]
-            self.mix(start=section.start+SIGNAL_OFFSET, seg=sample, volume=0.6)
+            sample = signalBellSounds[random.randint(0,1)]
+            self.mix(start=section.start+SIGNAL_OFFSET, seg=sample, volume=0.5)
+        # add other signals in case there's some silence at the beginning
+        if self.endOfFadeIn > 0.5:
+            sample = signalBellSounds[2]
+            self.mix(start=max(0,self.endOfFadeIn-1.0), seg=sample, volume=1.0)
+        # add santa walking at the end of the track
+        sample = snowSantaSounds[0]
+        self.mix(start=self.duration+SANTA_OFFSET, seg=sample, volume=1.0)
 
 
     def mix(self, start=None, seg=None, volume=0.3, pan=0.):
@@ -82,8 +113,9 @@ class Jingler:
         startsample = int(start * self.audiorate)
         seg = seg[0:]
         seg.data *= (volume-(pan*volume), volume+(pan*volume)) # pan and volume
-        if self.audiodata.shape[0] - startsample > seg.data.shape[0]:
+        if start > 0 and self.audiodata.shape[0] - startsample > seg.data.shape[0]:
             self.audiodata[startsample:startsample+len(seg.data)] += seg.data[0:] # mix
+            #numpy.clip(self.audiodata[startsample:startsample+len(seg.data)], -32767, 32767)
 
 
     def encode(self, mp3_path):
@@ -131,15 +163,21 @@ def main( inputFilename, outputFilename ) :
 
     # Upload track for analysis.
     print 'uploading audio file...'
-    #track = audio.ExistingTrack(inputFilename).analysis
-    track = audio.AudioFile(inputFilename).analysis
+    track = audio.ExistingTrack(inputFilename).analysis
+    #track = audio.AudioFile(inputFilename).analysis
     
     # Get loudness.
     print 'getting loudness...'
     loudness = track.loudness
+    print 'getting start of fade in...'
+    endOfFadeIn = track.end_of_fade_in
     # Get beats.
     print 'getting beats...'
     beats = track.beats
+    # Check that there are beats in the song
+    if len(beats) < 5: 
+        print 'not enough beats in this songs...'
+        sys.exit(-2)
     # Get sections.
     print 'getting sections...'
     sections = track.sections
@@ -149,7 +187,7 @@ def main( inputFilename, outputFilename ) :
 
     # Add the sleigh bells.
     print 'jingling...'
-    Jingler(inputFilename, loudness, beats, sections).run(outputFilename)            
+    Jingler(inputFilename, loudness, endOfFadeIn, beats, sections).run(outputFilename)            
 
     # Finalize output file.
     print 'finalizing output file...'

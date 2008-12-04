@@ -138,7 +138,7 @@ class AudioData(object):
                 sampleRate, numChannels = 44100, 2
                 foo, fileToRead = tempfile.mkstemp(".wav")                
                 cmd = "ffmpeg -y -i \""+filename+"\" -ar "+str(sampleRate)+" -ac "+str(numChannels)+" "+fileToRead
-                print cmd
+                #print cmd
                 parsestring = commands.getstatusoutput(cmd)
                 parsestring = commands.getstatusoutput("ffmpeg -i "+fileToRead)
                 sampleRate, numChannels = audiosettingsfromffmpeg(parsestring[1])
@@ -277,13 +277,13 @@ def audiosettingsfromffmpeg(parsestring):
             segs = line.split(", ")
             for s in segs:
                 if "Hz" in s:
-                    print "FOUND: "+str(s.split(" ")[0])+"Hz"
+                    #print "Found: "+str(s.split(" ")[0])+"Hz"
                     freq = int(s.split(" ")[0])
                 elif "stereo" in s:
-                    print "STEREO"
+                    #print "stereo"
                     chans = 2
                 elif "mono" in s:
-                    print "MONO"
+                    #print "mono"
                     chans = 1
 
     return freq, chans
