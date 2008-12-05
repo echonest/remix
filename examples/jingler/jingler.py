@@ -194,8 +194,8 @@ def main( inputFilename, outputFilename ) :
 
     # Upload track for analysis.
     print 'uploading audio file...'
-    track = audio.ExistingTrack(inputFilename).analysis # This is useful once you've uploaded a track once and it's been registered
-    #track = audio.AudioFile(inputFilename).analysis
+    #track = audio.ExistingTrack(inputFilename).analysis # This is useful once you've uploaded a track once and it's been registered
+    track = audio.AudioFile(inputFilename).analysis
 
     # Get loudness.
     print 'getting loudness...'
