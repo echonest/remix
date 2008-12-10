@@ -193,9 +193,11 @@ def write_tags(path, metadata):
 def main( inputFilename, outputFilename ) :
 
     # Upload track for analysis.
+    t1 = time.time()
     print 'uploading audio file...'
     #track = audio.ExistingTrack(inputFilename).analysis # This is useful once you've uploaded a track once and it's been registered
     track = audio.AudioFile(inputFilename).analysis
+    print "Uploaded in %.3f secs" % (time.time() - t1)
 
     # Get loudness.
     print 'getting loudness...'
