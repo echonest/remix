@@ -35,6 +35,7 @@ def upload( filename ) :
                                                        files = (( 'file', filename, open(filename, 'r').read() ), )
                                                        )
     else :
+        print "it's a url"
         # Assume the filename is a URL.
         fields['url'] = filename
         params = urllib.urlencode(fields)
