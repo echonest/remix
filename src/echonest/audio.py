@@ -335,8 +335,8 @@ class AudioFile(AudioData) :
                     'mode' : globalParserInt,
                     'time_signature' : globalParserInt,
                     }
-        # BAW -- you don't need to init audio for this .analysis call
-        #AudioData.__init__(self, filename=filename)
+        # BAW doesn't want to init audio for this .analysis call
+        AudioData.__init__(self, filename=filename)
         self.analysis = AudioAnalysis(filename, parsers)
 
 
