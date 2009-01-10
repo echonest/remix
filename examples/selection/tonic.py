@@ -9,7 +9,6 @@ Demonstrates the content-based selection filtering in AudioQuantumLists.that()
 
 Originally by Adam Lindsay, 2008-09-15.
 """
-import md5
 import echonest.audio as audio
 from echonest.selection import have_pitch_max
 
