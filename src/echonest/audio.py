@@ -398,7 +398,6 @@ class AudioQuantumList(list):
         return out
 
 
-
 def dataParser(tag, doc) :
     out = AudioQuantumList()
     nodes = doc.getElementsByTagName(tag)
