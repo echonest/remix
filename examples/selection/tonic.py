@@ -9,6 +9,7 @@ Demonstrates the content-based selection filtering in AudioQuantumLists.that()
 
 Originally by Adam Lindsay, 2008-09-15.
 """
+
 import echonest.audio as audio
 from echonest.selection import have_pitch_max
 
@@ -20,10 +21,9 @@ Example:
     python tonic.py beats HereComesTheSun.mp3 HereComesTheTonic.wav
 """
 
-
 def main(units, inputFile, outputFile):
     audiofile = audio.AudioFile(inputFile)
-    tonic = audiofile.analysis.key[0]
+    tonic = int(audiofile.analysis.key.getElementsByTagName("key")[0].firstChild.data)
     
     if units in ["tatums", "beats", "bars"]:
         chunks = audiofile.analysis.__getattribute__(units)
