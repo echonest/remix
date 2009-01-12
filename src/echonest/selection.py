@@ -6,14 +6,14 @@
 
 def are_contained_by_range(start, end):
     def fun(x): 
-        if x.start > start and x.start + x.duration < end: 
+        if x.start >= start and x.start + x.duration <= end: 
             return x
     return fun
 
 def are_contained_by(aq):
     'expects an AudioQuantum, with start and duration'
     def fun(x):
-        if x.start > aq.start and x.start + x.duration < aq.start + aq.duration: 
+        if x.start >= aq.start and x.start + x.duration <= aq.start + aq.duration: 
             return x
     return fun
 
@@ -64,6 +64,18 @@ def have_pitch_max(pitchmax):
     def fun(x):
         pitches = x.pitches
         if reduce(all_of, [pitches[pitchmax] >= p for p in pitches]):
+            return x
+    return fun
+
+def lie_immediately_before(aq):
+    def fun(x):
+        if x.start + x.duration == aq.start:
+            return x
+    return fun
+
+def lie_immediately_after(aq):
+    def fun(x):
+        if x.start == aq.start + aq.duration:
             return x
     return fun
 
