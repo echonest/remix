@@ -14,6 +14,7 @@ import commands, os, struct, tempfile, wave,md5
 import numpy
 import echonest.web.analyze as analyze;
 
+import selection
 
 class AudioAnalysis(object) :
     """
@@ -120,6 +121,8 @@ class AudioAnalysis(object) :
                 if parseFunction :
                     value = parseFunction(value)
                 self.__setattr__(name, value)
+                if type(object.__getattribute__(self, name)) == AudioQuantumList:
+                    object.__getattribute__(self, name).attach(self)
         return object.__getattribute__(self, name)
 
 
@@ -399,18 +402,97 @@ class LocalAudioFile(AudioData):
 
 
 class AudioQuantum(object) :
-    def __init__(self, start=0, duration=0) :
+    def __init__(self, start=0, duration=0, kind=None) :
         self.start = start
         self.duration = duration
-
-
+        self.kind = kind
+    
+    def parent(self):
+        "containing AudioQuantum in the rhythm hierarchy"
+        pars = {'tatum': 'beats',
+                'beat':  'bars',
+                'bar':   'sections'}
+        try:
+            uppers = getattr(self.container.container, pars[self.kind])
+        except:
+            return self
+        return uppers.that(selection.overlap(self))[0]
+    
+    def children(self):
+        "AudioQuantumList of contained AudioQuanta"
+        chils = {'beat':    'tatums',
+                 'bar':     'beats',
+                 'section': 'bars'}
+        try:
+            downers = getattr(self.container.container, chils[self.kind])
+        except:
+            return self
+        return downers.that(selection.are_contained_by(self))
+    
+    def group(self):
+        "The parent's children: 'siblings'"
+        if self.kind in ['tatum', 'beat', 'bar']:
+            return self.parent().children()
+        else:
+            return self.container
+    
+    def prev(self, step=1):
+        "Step backwards in AudioQuantumList"
+        group = self.container
+        try:
+            loc = group.index(self)
+            new = max(loc - step, 0)
+            return group[new]
+        except:
+            return self
+    
+    def next(self, step=1):
+        "Step forward in AudioQuantumList"
+        group = self.container
+        try:
+            loc = group.index(self)
+            new = min(loc + step, len(group))
+            return group[new]
+        except:
+            return self
+    
+    def __str__(self):
+        return "%s (%.2f - %.2f)" % (self.kind, self.start, self.start + self.duration)
+    
+    def __repr__(self):
+        return "AudioQuantum(kind='%s', start=%f, duration=%f)" % (self.kind, self.start, self.duration)
+    
+    def local_context(self):
+        "tuple of (index, length) within rhythm siblings"
+        group = self.group()
+        count = len(group)
+        loc  = group.index(self)
+        return (loc, count,)
+        
+    def absolute_context(self):
+        "tuple of (index, length) within whole AudioQuantumList"
+        group = self.container
+        count = len(group)
+        loc = group.index(self)
+        return (loc, count,)
+    
+    def context_string(self):
+        "one-indexed, human-readable version of context"
+        if self.kind in ['bar', 'section']:
+            return "%s %i" % (self.kind, self.absolute_context()[0] + 1)
+        elif self.kind in ['beat', 'tatum']:
+            return "%s, %s %i of %i" % (self.parent().context_string(),
+                                  self.kind, self.local_context()[0] + 1,
+                                  self.local_context()[1])
+        else:
+            return self.__str__
 
 class AudioSegment(AudioQuantum):
     'For those who want feature-rich segments'
     # Not sure I like the stupid number of arguments in the init 
     #  function, but it's a one-off for now.
     def __init__(self, start=0., duration=0., pitches=[], timbre=[], 
-                 loudness_begin=0., loudness_max=0., time_loudness_max=0.):
+                 loudness_begin=0., loudness_max=0., time_loudness_max=0., kind='segment'):
         self.start = start
         self.duration = duration
         self.pitches = pitches
@@ -418,22 +500,32 @@ class AudioSegment(AudioQuantum):
         self.loudness_begin = loudness_begin
         self.loudness_max = loudness_max
         self.time_loudness_max = time_loudness_max
-
-
+        self.kind = kind
 
 class AudioQuantumList(list):
     "container that enables content-based selection"
+    def __init__(self, kind = None, container = None):
+        list.__init__(self)
+        self.kind = kind
+        self.container = container
+    
     def that(self, filt):
         out = AudioQuantumList()
         out.extend(filter(None, map(filt, self)))
         return out
+    
+    def attach(self, container):
+        self.container = container
+        for i in self:
+            i.container = self
+
 
 
 def dataParser(tag, doc) :
-    out = AudioQuantumList()
+    out = AudioQuantumList(tag)
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
-        out.append( AudioQuantum(float(n.firstChild.data)) )
+        out.append( AudioQuantum(start=float(n.firstChild.data), kind=tag) )
     for i in range(len(out) - 1) :
         out[i].duration = out[i+1].start - out[i].start
     out[-1].duration = out[-2].duration
@@ -442,11 +534,12 @@ def dataParser(tag, doc) :
 
 
 def attributeParser(tag, doc) :
-    out = AudioQuantumList()
+    out = AudioQuantumList(tag)
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
         out.append( AudioQuantum(float(n.getAttribute('start')),
-                                 float(n.getAttribute('duration'))) )
+                                 float(n.getAttribute('duration')),
+                                 tag) )
     return out
 
 
@@ -503,7 +596,7 @@ def metadataParser(doc) :
 
 
 def fullSegmentsParser(doc):
-    out = AudioQuantumList()
+    out = AudioQuantumList('segment')
     nodes = doc.getElementsByTagName('segment')
     for n in nodes:
         start = float(n.getAttribute('start'))
