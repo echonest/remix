@@ -365,6 +365,37 @@ class ExistingTrack():
             trackID = trackID_or_Filename
         self.analysis = AudioAnalysis(trackID, parsers)
 
+# Added 2009-01-11, but MD5 hashes seem buggy.
+class LocalAudioFile(AudioData):
+    def __init__(self, filename):
+        parsers = { 'bars' : barsParser, 
+                    'beats' : beatsParser,
+                    'sections' : sectionsParser,
+                    'segments' : fullSegmentsParser,
+                    'tatums' : tatumsParser,
+                    'metadata' : metadataParser,
+                    'tempo' : globalParserFloat,
+                    'duration' : globalParserFloat,
+                    'loudness' : globalParserFloat,
+                    'end_of_fade_in' : globalParserFloat,
+                    'start_of_fade_out' : globalParserFloat,
+                    'key' : globalParserInt,
+                    'mode' : globalParserInt,
+                    'time_signature' : globalParserInt,
+                    }
+        trackID = md5.new(file(filename).read()).hexdigest()
+        print "Computed MD5 of file is " + trackID
+        try:
+            print "Probing for existing analysis"
+            tempanalysis = AudioAnalysis(trackID, {'duration': globalParserFloat})
+            tempanalysis.duration
+            self.analysis = AudioAnalysis(trackID, parsers)
+            print "Analysis found. No upload needed."
+        except:
+            print "Analysis not found. Uploading..."
+            self.analysis = AudioAnalysis(filename, parsers)
+        AudioData.__init__(self, filename=filename)
+
 
 
 class AudioQuantum(object) :
