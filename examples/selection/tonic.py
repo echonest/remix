@@ -22,7 +22,7 @@ Example:
 
 
 def main(units, inputFile, outputFile):
-    audiofile = audio.AudioFile(inputFile)
+    audiofile = audio.LocalAudioFile(inputFile)
     tonic = audiofile.analysis.key[0]
     
     if units in ["tatums", "beats", "bars"]:
