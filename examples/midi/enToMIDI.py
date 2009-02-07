@@ -11,8 +11,8 @@ import sys
 import os
 import echonest.audio as audio
 from copy import copy
-import midi
-from midi.MidiOutFile import MidiOutFile
+from support import midi
+from support.midi.MidiOutFile import MidiOutFile
 from math import pow
 
 def main():
