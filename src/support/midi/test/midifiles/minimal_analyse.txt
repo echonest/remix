@@ -1,0 +1,54 @@
+4D 54 68 64         MThd
+00 00 00 06         len:    6
+00 01               Type:   1
+00 02               tracks: 2
+3C 00               tempo:  15360
+
+
+
+4D 54 72 6B         MTrk
+00 00 00 16         len: 22
+
+00                  time
+    FF 58 04        Time Signature
+    04 02 18 08     4/4 24 8
+    
+00                  time
+    FF 51 03        TEMPO:
+    07 A1 20        500.000 mySec
+
+82 F7 80 00         time  ## oh bugger, it's buggy.
+    FF 2F 00        End Of Track
+    
+
+
+4D 54 72 6B         MTrk
+00 00 00 2C         len: 44
+
+00                  time
+    FF 03           Sequence/Track Name
+    07              len: 7
+    53 79 6E 74
+    68 20 31        'Synth 1'
+
+00                  time
+    FF 04           Instrument
+    07              len: 7
+    53 79 6E 74
+    68 20 31        'Synth 1'
+
+00                  time
+    FF 21 01        Midi port
+    04              Port #5
+
+00                  time
+    90 24 7F        Note ON
+    83 E0 00        Note OFF
+    
+00                  time
+    80 24 00        Note OFF
+
+00 82 F3 A0        
+
+00
+    FF 2F 00        End Of Track
