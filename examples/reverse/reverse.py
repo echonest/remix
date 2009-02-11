@@ -27,7 +27,7 @@ Note:
 
 def main( toReverse, inputFilename, outputFilename ) :
 
-    audioFile = audio.AudioFile(inputFilename)
+    audioFile = audio.LocalAudioFile(inputFilename)
     if toReverse == 'beats' :
         chunks = audioFile.analysis.beats
     elif toReverse == 'segments' :

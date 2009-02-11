@@ -11,6 +11,7 @@ import sys
 import os
 import echonest.audio as audio
 from copy import copy
+thisdir = os.path.split(sys.argv[0])[0]
 from echonest.support import midi
 from echonest.support.midi.MidiOutFile import MidiOutFile
 from math import pow
@@ -20,7 +21,8 @@ def main():
     # TRLYNOP11DE633DD31 church bells
     # TRWMWTX11DE6393849 a7 unt by lithops
     # TRMTWYL11DD5A1D829 valley hi by stereolab
-    a = audio.ExistingTrack("TRMTWYL11DD5A1D829").analysis 
+    #a = audio.ExistingTrack("TRMTWYL11DD5A1D829").analysis 
+    a = audio.LocalAudioFile("WalkOfLife.mp3").analysis
     midi = MidiOutFile('output.mid')
     midi.header()
     midi.start_of_track()

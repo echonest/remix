@@ -180,7 +180,7 @@ def main( inputFilename, outputFilename, cowbellIntensity, walkenIntensity ) :
     # Upload track for analysis.
     print 'uploading audio file...'
     #track = audio.ExistingTrack(inputFilename).analysis
-    track = audio.AudioFile(inputFilename).analysis
+    track = audio.LocalAudioFile(inputFilename).analysis
     
     # Get loudness.
     print 'getting loudness...'
