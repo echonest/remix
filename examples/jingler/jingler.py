@@ -9,7 +9,7 @@ import os, random, time
 usage = """
 # For this script to work properly, you need to install the Echo Nest Remix API: 
 # http://code.google.com/p/echo-nest-remix/ (where you should have found this script)
-# You also need to install FFmpeg, lame, and the following python modules: 
+# You also need to install the lame libraries and the following python modules: 
 # py-lame, eyeD3, numpy, and pymad (as distributed by the Echo Nest in the cowbell example).
 # Update the '/echo-nest-remix/src/echonest/web/config.py' file with your own developer key.
 
