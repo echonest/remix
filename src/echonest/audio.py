@@ -2,7 +2,7 @@
 A module for manipulating audio files and their associated Echo Nest
 Analyze API analyses.
 
-AudioData, audiosettingsfromffmpeg, and getpieces by Robert Ochshorn
+AudioData, and getpieces by Robert Ochshorn
 on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
 2008-09-07.  Refactoring by Ben Lacker 2009-02-11.
 """
@@ -295,28 +295,6 @@ class AudioData(object):
         fid.close()
 
         return filename
-
-
-
-    
-def audiosettingsfromffmpeg(parsestring):
-    parse = parsestring.split('\n')
-    freq, chans = 44100, 2
-    for line in parse:
-        if "Stream #0" in line and "Audio" in line:
-            segs = line.split(", ")
-            for s in segs:
-                if "Hz" in s:
-                    #print "Found: "+str(s.split(" ")[0])+"Hz"
-                    freq = int(s.split(" ")[0])
-                elif "stereo" in s:
-                    #print "stereo"
-                    chans = 2
-                elif "mono" in s:
-                    #print "mono"
-                    chans = 1
-
-    return freq, chans
 
 
 
