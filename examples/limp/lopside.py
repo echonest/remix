@@ -37,7 +37,8 @@ def main(units, inputFile, outputFile):
                                 audiofile.analysis.bars[-1].start)
     collect.append(last)
     out = audio.getpieces(audiofile, collect)
-    out.save(outputFile)
+    #out.save(outputFile)
+    out.encode(outputFile)
 
 if __name__ == '__main__':
     import sys

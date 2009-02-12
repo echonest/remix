@@ -11,7 +11,6 @@ import sys
 import os
 import echonest.audio as audio
 from copy import copy
-thisdir = os.path.split(sys.argv[0])[0]
 from echonest.support import midi
 from echonest.support.midi.MidiOutFile import MidiOutFile
 from math import pow

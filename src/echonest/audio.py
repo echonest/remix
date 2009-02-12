@@ -4,14 +4,14 @@ Analyze API analyses.
 
 AudioData, audiosettingsfromffmpeg, and getpieces by Robert Ochshorn
 on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
-2008-09-07.  Much refactoring remains.
+2008-09-07.  Refactoring by Ben Lacker 2009-02-11.
 """
 
 __version__ = "$Revision: 0 $"
 # $Source$
 
-import commands, os, struct, tempfile, wave,md5
-import numpy
+import commands, os, struct, tempfile, wave, md5
+import numpy, mad, lame
 import echonest.web.analyze as analyze;
 
 import selection
@@ -131,33 +131,27 @@ class AudioAnalysis(object) :
 
 class AudioData(object):
 
-    # XXX : This init function needs to be heavily refactored.
-    def __init__(self, filename=None, ndarray=None, shape=None, sampleRate=None, numChannels=None):
-                
-        # Fold in old load() function.
+    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None):            
+        
         if (filename is not None) and (ndarray is None) :
             if sampleRate is None or numChannels is None:
                 #force sampleRate and num numChannels to 44100 hz, 2
                 sampleRate, numChannels = 44100, 2
-                foo, fileToRead = tempfile.mkstemp(".wav")                
-                cmd = "ffmpeg -y -i \""+filename+"\" -ar "+str(sampleRate)+" -ac "+str(numChannels)+" "+fileToRead
-                #print cmd
-                parsestring = commands.getstatusoutput(cmd)
-                parsestring = commands.getstatusoutput("ffmpeg -i "+fileToRead)
-                sampleRate, numChannels = audiosettingsfromffmpeg(parsestring[1])
-            else :
-                fileToRead = filename
 
-            w = wave.open(fileToRead, 'r')
-            numFrames = w.getnframes()
-            raw = w.readframes(numFrames)
-            sampleSize = numFrames*numChannels
-            data = numpy.array(map(int,struct.unpack("%sh" %sampleSize,raw)), numpy.int16)
-            ndarray = numpy.array(data, dtype=numpy.int16)
+            if filename.endswith('.wav'):
+                w = wave.open(filename, 'r')
+                numFrames = w.getnframes()
+                raw = w.readframes(numFrames)
+                sampleSize = numFrames*numChannels
+                audiodata = numpy.array(map(int,struct.unpack("%sh" %sampleSize,raw)), numpy.int16)
+                ndarray = numpy.array(audiodata, dtype=numpy.int16)
+            else:
+                mf = mad.MadFile(filename)
+                audiodata = numpy.array(mf.readall(),dtype=numpy.int16)
             if numChannels == 2:
-                ndarray = numpy.reshape(ndarray, (numFrames, 2))
+                ndarray = audiodata.reshape(len(audiodata)/2,2)
 
-        # Continue with the old __init__() function
+        # Continue with the old __init__() function 
         self.filename = filename
         self.sampleRate = sampleRate
         self.numChannels = numChannels
@@ -235,6 +229,38 @@ class AudioData(object):
             return 0
 
 
+    def encode(self, mp3_path):
+        sampwidth = 2
+        nframes = len(self.data) / self.numChannels
+        raw_size = self.numChannels * sampwidth * nframes
+
+        mp3_file = open(mp3_path, "wb+")
+
+        mp3 = lame.init()
+        mp3.set_num_channels(self.numChannels)
+        mp3.set_in_samplerate(self.sampleRate)
+        mp3.set_num_samples(long(nframes))
+        mp3.init_parameters()
+
+        # 1 sample = 2 bytes
+        num_samples_per_enc_run = self.sampleRate
+        num_bytes_per_enc_run = self.numChannels * num_samples_per_enc_run * sampwidth
+
+        start = 0
+        while True:
+            frames = self.data[start:start+num_samples_per_enc_run].tostring()
+            data = mp3.encode_interleaved(frames)
+            mp3_file.write(data)
+
+            start = start + num_samples_per_enc_run
+            if start >= len(self.data): break
+
+        mp3_file.write(mp3.flush_buffers())
+        mp3.write_tags(mp3_file)
+        mp3_file.close()
+        mp3.delete()
+
+
 
     def save(self, filename=None):
         "save sound to a wave file"
@@ -272,6 +298,7 @@ class AudioData(object):
 
 
 
+    
 def audiosettingsfromffmpeg(parsestring):
     parse = parsestring.split('\n')
     freq, chans = 44100, 2
