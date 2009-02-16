@@ -16,6 +16,7 @@ import echonest.web.analyze as analyze;
 
 import selection
 
+
 class AudioAnalysis(object) :
     """
     This class wraps echonest.web to allow transparent caching of the
@@ -328,83 +329,52 @@ def getpieces(audioData, segs):
 
 class AudioFile(AudioData) :
     def __init__(self, filename) :
-        parsers = { 'bars' : barsParser, 
-                    'beats' : beatsParser,
-                    'sections' : sectionsParser,
-                    'segments' : fullSegmentsParser,
-                    'tatums' : tatumsParser,
-                    'metadata' : metadataParser,
-                    'tempo' : globalParserFloat,
-                    'duration' : globalParserFloat,
-                    'loudness' : globalParserFloat,
-                    'end_of_fade_in' : globalParserFloat,
-                    'start_of_fade_out' : globalParserFloat,
-                    'key' : globalParserInt,
-                    'mode' : globalParserInt,
-                    'time_signature' : globalParserInt,
-                    }
         # BAW doesn't want to init audio for this .analysis call
         AudioData.__init__(self, filename=filename)
-        self.analysis = AudioAnalysis(filename, parsers)
+        self.analysis = AudioAnalysis(filename, PARSERS)
 
 
 
 class ExistingTrack():
     def __init__(self, trackID_or_Filename):
-        parsers = { 'bars' : barsParser, 
-                    'beats' : beatsParser,
-                    'sections' : sectionsParser,
-                    'segments' : fullSegmentsParser,
-                    'tatums' : tatumsParser,
-                    'metadata' : metadataParser,
-                    'tempo' : globalParserFloat,
-                    'duration' : globalParserFloat,
-                    'loudness' : globalParserFloat,
-                    'end_of_fade_in' : globalParserFloat,
-                    'start_of_fade_out' : globalParserFloat,
-                    'key' : globalParserInt,
-                    'mode' : globalParserInt,
-                    'time_signature' : globalParserInt,
-                    }
         if(os.path.isfile(trackID_or_Filename)):
             trackID = md5.new(file(trackID_or_Filename).read()).hexdigest()
             print "Computed MD5 of file is " + trackID
         else:
             trackID = trackID_or_Filename
-        self.analysis = AudioAnalysis(trackID, parsers)
+        self.analysis = AudioAnalysis(trackID, PARSERS)
 
-# Added 2009-01-11, but MD5 hashes seem buggy.
 class LocalAudioFile(AudioData):
     def __init__(self, filename):
-        parsers = { 'bars' : barsParser, 
-                    'beats' : beatsParser,
-                    'sections' : sectionsParser,
-                    'segments' : fullSegmentsParser,
-                    'tatums' : tatumsParser,
-                    'metadata' : metadataParser,
-                    'tempo' : globalParserFloat,
-                    'duration' : globalParserFloat,
-                    'loudness' : globalParserFloat,
-                    'end_of_fade_in' : globalParserFloat,
-                    'start_of_fade_out' : globalParserFloat,
-                    'key' : globalParserInt,
-                    'mode' : globalParserInt,
-                    'time_signature' : globalParserInt,
-                    }
         trackID = md5.new(file(filename).read()).hexdigest()
         print "Computed MD5 of file is " + trackID
         try:
             print "Probing for existing analysis"
             tempanalysis = AudioAnalysis(trackID, {'duration': globalParserFloat})
             tempanalysis.duration
-            self.analysis = AudioAnalysis(trackID, parsers)
+            self.analysis = AudioAnalysis(trackID, PARSERS)
             print "Analysis found. No upload needed."
         except:
             print "Analysis not found. Uploading..."
-            self.analysis = AudioAnalysis(filename, parsers)
+            self.analysis = AudioAnalysis(filename, PARSERS)
         AudioData.__init__(self, filename=filename)
 
-
+# Try to accomodate BAW's desire for a simpler Analysis object sans audio
+#  for jingler.py
+class LocalAnalysis(object):
+    def __init__(self, filename):
+        trackID = md5.new(file(filename).read()).hexdigest()
+        print "Computed MD5 of file is " + trackID
+        try:
+            print "Probing for existing analysis"
+            tempanalysis = AudioAnalysis(trackID, {'duration': globalParserFloat})
+            tempanalysis.duration
+            self.analysis = AudioAnalysis(trackID, PARSERS)
+            print "Analysis found. No upload needed."
+        except:
+            print "Analysis not found. Uploading..."
+            self.analysis = AudioAnalysis(filename, PARSERS)
+        # no AudioData.__init__()
 
 class AudioQuantum(object) :
     def __init__(self, start=0, duration=0, kind=None) :
@@ -629,3 +599,21 @@ def fullSegmentsParser(doc):
                         timbre=timbre, loudness_begin=loudness_begin, 
                         loudness_max=loudness_max, time_loudness_max=time_loudness_max))
     return out
+
+#
+PARSERS =  { 'bars' : barsParser, 
+             'beats' : beatsParser,
+             'sections' : sectionsParser,
+             'segments' : fullSegmentsParser,
+             'tatums' : tatumsParser,
+             'metadata' : metadataParser,
+             'tempo' : globalParserFloat,
+             'duration' : globalParserFloat,
+             'loudness' : globalParserFloat,
+             'end_of_fade_in' : globalParserFloat,
+             'start_of_fade_out' : globalParserFloat,
+             'key' : globalParserInt,
+             'mode' : globalParserInt,
+             'time_signature' : globalParserInt,
+             }
+

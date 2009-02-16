@@ -196,7 +196,7 @@ def main( inputFilename, outputFilename ) :
     t1 = time.time()
     print 'uploading audio file...'
     #track = audio.ExistingTrack(inputFilename).analysis # This is useful once you've uploaded a track once and it's been registered
-    track = audio.LocalAudioFile(inputFilename).analysis
+    track = audio.LocalAnalysis(inputFilename).analysis
     print "Uploaded in %.3f secs" % (time.time() - t1)
 
     # Get loudness.
