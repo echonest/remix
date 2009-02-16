@@ -471,7 +471,7 @@ class AudioSegment(AudioQuantum):
     # Not sure I like the stupid number of arguments in the init 
     #  function, but it's a one-off for now.
     def __init__(self, start=0., duration=0., pitches=[], timbre=[], 
-                 loudness_begin=0., loudness_max=0., time_loudness_max=0., kind='segment'):
+                 loudness_begin=0., loudness_max=0., time_loudness_max=0., loudness_end=None, kind='segment'):
         self.start = start
         self.duration = duration
         self.pitches = pitches
@@ -479,6 +479,8 @@ class AudioSegment(AudioQuantum):
         self.loudness_begin = loudness_begin
         self.loudness_max = loudness_max
         self.time_loudness_max = time_loudness_max
+        if loudness_end:
+            self.loudness_end = loudness_end
         self.kind = kind
         self.confidence = None
 
@@ -584,12 +586,17 @@ def fullSegmentsParser(doc):
         duration = float(n.getAttribute('duration'))
         
         loudnessnodes = n.getElementsByTagName('dB')
+        loudness_end = None
         for l in loudnessnodes:
             if l.hasAttribute('type'):
                 time_loudness_max = float(l.getAttribute('time'))
                 loudness_max = float(l.firstChild.data)
             else:
-                loudness_begin = float(l.firstChild.data)
+                if float(l.getAttribute('time'))!=0:
+                    loudness_end = float(l.firstChild.data)
+                else:
+                    loudness_begin = float(l.firstChild.data)
+
         
         pitchnodes = n.getElementsByTagName('pitch')
         pitches=[]
@@ -603,7 +610,7 @@ def fullSegmentsParser(doc):
         
         out.append(AudioSegment(start=start, duration=duration, pitches=pitches, 
                         timbre=timbre, loudness_begin=loudness_begin, 
-                        loudness_max=loudness_max, time_loudness_max=time_loudness_max))
+                        loudness_max=loudness_max, time_loudness_max=time_loudness_max, loudness_end=loudness_end ))
     return out
 
 #
