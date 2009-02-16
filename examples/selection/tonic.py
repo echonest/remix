@@ -17,7 +17,7 @@ Usage:
     python tonic.py <tatums|beats|bars> <inputFilename> <outputFilename>
 
 Example:
-    python tonic.py beats HereComesTheSun.mp3 HereComesTheTonic.wav
+    python tonic.py beats HereComesTheSun.mp3 HereComesTheTonic.mp3
 """
 
 
@@ -39,7 +39,7 @@ def main(units, inputFile, outputFile):
     outchunks = chunks.that(overlap_ends_of(segs))
     
     out = audio.getpieces(audiofile, outchunks)
-    out.save(outputFile)
+    out.encode(outputFile)
 
 # New selection filters that take lists of AudioQuanta
 def overlap_ends_of(aqs): 

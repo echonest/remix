@@ -16,7 +16,7 @@ Usage:
     python lopside.py <tatum|beat> <inputFilename> <outputFilename>
 
 Example:
-    python lopside.py beat aha.mp3 ahawaltz.wav
+    python lopside.py beat aha.mp3 ahawaltz.mp3
 """
 
 
