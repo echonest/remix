@@ -377,10 +377,11 @@ class LocalAnalysis(object):
         # no AudioData.__init__()
 
 class AudioQuantum(object) :
-    def __init__(self, start=0, duration=0, kind=None) :
+    def __init__(self, start=0, duration=0, kind=None, confidence=None) :
         self.start = start
         self.duration = duration
         self.kind = kind
+        self.confidence = confidence
     
     def parent(self):
         "containing AudioQuantum in the rhythm hierarchy"
@@ -435,7 +436,10 @@ class AudioQuantum(object) :
         return "%s (%.2f - %.2f)" % (self.kind, self.start, self.start + self.duration)
     
     def __repr__(self):
-        return "AudioQuantum(kind='%s', start=%f, duration=%f)" % (self.kind, self.start, self.duration)
+        if self.confidence is not None:
+            return "AudioQuantum(kind='%s', start=%f, duration=%f, confidence=%f)" % (self.kind, self.start, self.duration, self.confidence)
+        else:
+            return "AudioQuantum(kind='%s', start=%f, duration=%f)" % (self.kind, self.start, self.duration)
     
     def local_context(self):
         "tuple of (index, length) within rhythm siblings"
@@ -476,6 +480,7 @@ class AudioSegment(AudioQuantum):
         self.loudness_max = loudness_max
         self.time_loudness_max = time_loudness_max
         self.kind = kind
+        self.confidence = None
 
 class AudioQuantumList(list):
     "container that enables content-based selection"
@@ -500,7 +505,8 @@ def dataParser(tag, doc) :
     out = AudioQuantumList(tag)
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
-        out.append( AudioQuantum(start=float(n.firstChild.data), kind=tag) )
+        out.append( AudioQuantum(start=float(n.firstChild.data), kind=tag,
+                                confidence=float(n.getAttributeNode('confidence').value)) )
     for i in range(len(out) - 1) :
         out[i].duration = out[i+1].start - out[i].start
     out[-1].duration = out[-2].duration

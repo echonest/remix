@@ -67,6 +67,14 @@ def have_pitch_max(pitchmax):
             return x
     return fun
 
+def have_pitches_max(pitchesmax):
+    def fun(x):
+        pitches = x.pitches
+        for pitchmax in pitchesmax:
+            if reduce(all_of,[pitches[pitchmax] >=p for p in pitches]):
+                return x
+    return fun
+
 def lie_immediately_before(aq):
     def fun(x):
         if x.start + x.duration == aq.start:
@@ -78,6 +86,7 @@ def lie_immediately_after(aq):
         if x.start == aq.start + aq.duration:
             return x
     return fun
+
 
 # selection filters that take lists of AudioQuanta, originally from
 #  examples/selection/tonic.py
