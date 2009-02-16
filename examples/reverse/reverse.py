@@ -17,7 +17,7 @@ Usage:
     python reverse.py <beats|segments> <inputFilename> <outputFilename.wav>
 
 Example:
-    python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.wav
+    python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.mp3
 """
 
 
