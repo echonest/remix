@@ -34,7 +34,6 @@ def main( toReverse, inputFilename, outputFilename ) :
         return
     chunks.reverse()
     reversedAudio = audio.getpieces( audioFile, chunks )
-    #reversedAudio.save(outputFilename)
     reversedAudio.encode(outputFilename)
 
 
