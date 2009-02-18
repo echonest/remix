@@ -13,6 +13,8 @@ import mimetypes
 import urllib
 import xml.dom.minidom
 
+import urllib2_file, urllib2
+
 # Nonstandard packages.
 import echonest.web.config as config
 
@@ -55,6 +57,27 @@ def parseXMLString( xmlString ) :
     return doc
 
 
+def postChunked(host, selector, fields, files):
+    """
+    Attempt to replace postMultipart() with nearly-identical interface.
+    (The files tuple no longer requires the filename, and we only return
+    the response body.) 
+    Uses the urllib2_file.py originally from 
+    http://fabien.seisen.org which was also drawn heavily from 
+    http://code.activestate.com/recipes/146306/ .
+    
+    This urllib2_file.py is more desirable because of the chunked 
+    uploading from a file pointer (no need to read entire file into 
+    memory) and the ability to work from behind a proxy (due to its 
+    basis on urllib2).
+    """
+    params = urllib.urlencode(fields)
+    url = 'http://%s%s?%s' % (host, selector, params)
+    u = urllib2.urlopen(url, files)
+    result = u.read()
+    [fp.close() for (key, fp) in files]
+    return result
+
 
 def postMultipart(host, selector, fields, files):
     """
@@ -72,8 +95,6 @@ def postMultipart(host, selector, fields, files):
     h.request('POST', selector, body, headers)
     res = h.getresponse()
     return res.status, res.reason, res.read()
-
-
 
 def encodeMultipartFormdata(fields, files):
     """
