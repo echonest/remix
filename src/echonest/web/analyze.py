@@ -29,11 +29,11 @@ def upload( filename ) :
                "wait" : "Y" }
     method = 'upload'
     if os.path.isfile( filename ) : 
-        status, reason, response = util.postMultipart( host = config.API_HOST, 
-                                                       selector = config.API_SELECTOR + method,
-                                                       fields = fields.items(), 
-                                                       files = (( 'file', filename, open(filename, 'r').read() ), )
-                                                       )
+        response = util.postChunked( host = config.API_HOST, 
+                                     selector = config.API_SELECTOR + method,
+                                     fields = fields.items(), 
+                                     files = (( 'file', open(filename, 'r')), )
+                                     )
     else :
         print "it's a url"
         # Assume the filename is a URL.
