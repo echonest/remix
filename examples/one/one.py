@@ -16,7 +16,7 @@ Usage:
     python one.py <inputFilename> <outputFilename>
 
 Example:
-    python one.py HereComesTheSun.mp3 HereComesTheOne.mp3
+    python one.py EverythingIsOnTheOne.mp3 EverythingIsReallyOnTheOne.mp3
 """
 
 
