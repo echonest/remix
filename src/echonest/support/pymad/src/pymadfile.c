@@ -49,7 +49,7 @@
 
 #define PY_ARRAY_UNIQUE_SYMBOL _mad_extension
 #define NO_IMPORT_ARRAY
-#include "/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/core/include/numpy/arrayobject.h"
+#include <numpy/oldnumeric.h>
 
 #include <mad.h>
 
