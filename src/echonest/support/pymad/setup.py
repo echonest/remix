@@ -6,6 +6,7 @@ import os, re, sys, string
 
 from distutils.core import setup
 from distutils.extension import Extension
+from distutils.sysconfig import get_python_inc
 
 VERSION_MAJOR = 0
 VERSION_MINOR = 6
@@ -41,11 +42,14 @@ defines = [('VERSION_MAJOR', VERSION_MAJOR),
 if data['endian'] == "big":
     defines.append(('BIGENDIAN', 1))
 
+numpydir = 'Extras/lib/python/numpy/core/include/'
+incdir = get_python_inc(plat_specific=1).split('include')[0] + numpydir
+
 madmodule = Extension(
     name='madmodule',
     sources=['src/madmodule.c', 'src/pymadfile.c', 'src/xing.c'],
     define_macros = defines,
-    include_dirs=[data['mad_include_dir']],
+    include_dirs=[data['mad_include_dir'],incdir],
     library_dirs=[data['mad_lib_dir']],
     libraries=string.split(data['mad_libs']))
 
