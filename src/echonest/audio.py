@@ -10,8 +10,16 @@ on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
 __version__ = "$Revision: 0 $"
 # $Source$
 
-import commands, os, struct, tempfile, wave, md5
-import numpy, mad, lame
+import aifc
+import commands
+import md5
+import numpy
+import os
+import struct
+import tempfile
+import wave
+import lame
+import mad
 import echonest.web.analyze as analyze;
 
 import selection
@@ -132,25 +140,28 @@ class AudioAnalysis(object) :
 
 class AudioData(object):
 
-    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None):            
+    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None):
         
         if (filename is not None) and (ndarray is None) :
             if sampleRate is None or numChannels is None:
                 #force sampleRate and num numChannels to 44100 hz, 2
                 sampleRate, numChannels = 44100, 2
 
-            if filename.endswith('.wav'):
-                w = wave.open(filename, 'r')
-                numFrames = w.getnframes()
-                raw = w.readframes(numFrames)
+            if filename.endswith('.mp3'):
+                mf = mad.MadFile(filename)
+                audiodata = numpy.array(mf.readall(),dtype=numpy.int16)
+            else:
+                if filename.endswith('.wav'):
+                    f = wave.open(filename, 'r')
+                elif filename.endswith('.aiff'):
+                    f = aifc.open(filename, 'r')
+                numFrames = f.getnframes()
+                raw = f.readframes(numFrames)
+                numChannels = f.getnchannels()
                 sampleSize = numFrames*numChannels
                 audiodata = numpy.array(map(int,struct.unpack("%sh" %sampleSize,raw)), numpy.int16)
                 ndarray = numpy.array(audiodata, dtype=numpy.int16)
-            else:
-                mf = mad.MadFile(filename)
-                audiodata = numpy.array(mf.readall(),dtype=numpy.int16)
-            if numChannels == 2:
-                ndarray = audiodata.reshape(len(audiodata)/2,2)
+            ndarray = audiodata.reshape(len(audiodata)/numChannels,numChannels)
 
         # Continue with the old __init__() function 
         self.filename = filename
@@ -252,7 +263,6 @@ class AudioData(object):
             frames = self.data[start:start+num_samples_per_enc_run].tostring()
             data = mp3.encode_interleaved(frames)
             mp3_file.write(data)
-
             start = start + num_samples_per_enc_run
             if start >= len(self.data): break
 
@@ -325,6 +335,23 @@ def getpieces(audioData, segs):
 
     return newAD
 
+def mix(audioDataA,audioDataB,mix=0.5):
+    """Mixes two AudioData objects. Assumes audios have same sample rate
+    and number of channels.
+    Mix takes a float 0-1 and determines the relative mix of two audios.
+    i.e. mix=0.9 yields greater presence of audioDataA in the final mix.
+    """
+    audioDataA.data *= float(mix)
+    audioDataB.data *= 1-float(mix)
+    if audioDataA.endindex > audioDataB.endindex:
+        audioDataA.data[:audioDataB.endindex] += audioDataB.data[0:]
+        return audioDataA
+    elif audioDataB.endindex > audioDataA.endindex:
+        audioDataB.data[:audioDataA.endindex] += audioDataA.data[0:]
+        return audioDataB
+    elif audioDataA.endindex == audioDataA.endindex:
+        audioDataA.data[:] += audioDataB.data[:]
+        return audioDataA
 
 
 class AudioFile(AudioData) :
@@ -507,11 +534,14 @@ def dataParser(tag, doc) :
     out = AudioQuantumList(tag)
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
-        out.append( AudioQuantum(start=float(n.firstChild.data), kind=tag,
-                                confidence=float(n.getAttributeNode('confidence').value)) )
-    for i in range(len(out) - 1) :
-        out[i].duration = out[i+1].start - out[i].start
-    out[-1].duration = out[-2].duration
+        out.append(AudioQuantum(start=float(n.firstChild.data), kind=tag,
+                    confidence=float(n.getAttributeNode('confidence').value)))
+    if len(out) > 1:
+        for i in range(len(out) - 1) :
+            out[i].duration = out[i+1].start - out[i].start
+        out[-1].duration = out[-2].duration
+    #else:
+    #    out[0].duration = ???
     return out
 
 
