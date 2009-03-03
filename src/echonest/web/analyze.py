@@ -9,6 +9,7 @@ __version__ = "$Revision: 0 $"
 
 # Standard library modules.
 import os
+import sys
 import urllib
 
 # Modules in this package.
@@ -25,6 +26,9 @@ def upload( filename ) :
 
     @return (id, info)
     """
+    if config.API_KEY.startswith('Replace'):
+        print "Please edit src/echonest/web/config.py to use your Echo Nest API key.\n"
+        sys.exit(-1)
     fields = { "api_key" : config.API_KEY,
                "wait" : "Y" }
     method = 'upload'
