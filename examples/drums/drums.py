@@ -17,10 +17,12 @@ import echonest.audio as audio
 
 usage="""
 Usage:
-    python drums.py <inputfilename> <breakfilename> <outputfilename> <beatsinbreak> <barsinbreak>
+    python drums.py <inputfilename> <breakfilename> <outputfilename> <beatsinbreak> <barsinbreak> [<drumintensity>]
 
 Example:
-    python drums.py HereComesTheSun.mp3 breaks/AmenBrother.wav HereComeTheDrums.mp3 64 4
+    python drums.py HereComesTheSun.mp3 breaks/AmenBrother.wav HereComeTheDrums.mp3 64 4 0.6
+
+Drum instenity defaults to 0.5
 
 """
 
@@ -45,8 +47,27 @@ def split_break(breakfile,n):
                                     numChannels=breakfile.numChannels)
         drum_data.append(new_data)
     return drum_data
+    
+def add_fade_out(segment_data):
+    when_max_volume = segment_data.time_loudness_max
+    samps_to_end = int(segment_data.sampleRate * when_max_volume)
+    linear_max_volume = pow(10.0,segment_data.loudness_max/20.0)
+    ss = 0
+    curVol = float(linear_max_volume)
+    if(samps_to_end > 0):
+        howMuchVolumeToDecreasePerSamp = linear_max_volume/float(samps_to_end)
+        for samps in xrange(samps_to_end):
+            curVol = curVol - howMuchVolumeToDecreasePerSamp
+            #midi.continuous_controller(channel,7,int(curVol))
+            try:
+                segment_data.data[ss] *= curVol
+            except IndexError:
+                pass
+            ss = ss + 1
+    return segment_data
 
-def add_drums(input_filename,output_filename,break_filename,break_parts,measures):
+def add_drums(input_filename,output_filename,break_filename,
+                break_parts,measures,mix):
     audiofile = audio.LocalAudioFile(input_filename)
     sample_rate = audiofile.sampleRate
     breakfile = audio.LocalAudioFile(break_filename)
@@ -81,17 +102,18 @@ def add_drums(input_filename,output_filename,break_filename,break_parts,measures
                                             sampleRate=sample_rate,
                                             numChannels=num_channels)
                 if drum_samps > beat_samps/hits_per_beat:
-                # truncate drum hits to fit beat length
+                    # truncate drum hits to fit beat length
                     tat_data.data = drum_data[j].data[:len(tat_data)]
                 elif drum_samps < beat_samps/hits_per_beat:
-                # space out drum hits to fit beat length
-                    tat_data.append(drum_data[j])
+                    # space out drum hits to fit beat length
+                    temp_data = add_fade_out(drum_data[j])
+                    tat_data.append(temp_data)
                 tat_data.endindex = len(tat_data)
                 beat_data.append(tat_data)
                 del(tat_data)
             # account for rounding errors
             beat_data.endindex = len(beat_data)
-            mixed_beat = audio.mix(beat_data,audiofile[beats[i]],mix=0.5)
+            mixed_beat = audio.mix(beat_data,audiofile[beats[i]],mix=mix)
             del(beat_data)
             out.append(mixed_beat)
     finale = bars[-1].start + bars[-1].duration
@@ -109,11 +131,16 @@ def main():
         output_filename = sys.argv[3]
         break_parts = int(sys.argv[4])
         measures = int(sys.argv[5])
+        if len(sys.argv) == 7:
+            mix = float(sys.argv[6])
+        else:
+            mix = 0.5
     except:
         print usage
+        print len(sys.argv)
         sys.exit(-1)
     add_drums(input_filename,output_filename,break_filename,
-                break_parts=break_parts,measures=measures)
+                break_parts,measures,mix)
 
 if __name__=='__main__':
     tic = time.time()
