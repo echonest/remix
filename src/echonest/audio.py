@@ -15,6 +15,7 @@ import commands
 import md5
 import numpy
 import os
+import StringIO
 import struct
 import tempfile
 import wave
@@ -149,7 +150,13 @@ class AudioData(object):
 
             if filename.endswith('.mp3'):
                 mf = mad.MadFile(filename)
-                audiodata = numpy.array(mf.readall(),dtype=numpy.int16)
+                buf = StringIO.StringIO()
+                data = True
+                while data:
+                    data = mf.read()
+                    if data is not None:
+                        buf.write(data)
+                audiodata = numpy.fromstring(buf.getvalue(),dtype=numpy.int16)
             else:
                 if filename.endswith('.wav'):
                     f = wave.open(filename, 'r')
