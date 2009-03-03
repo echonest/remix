@@ -17,12 +17,11 @@ import echonest.audio as audio
 
 usage="""
 Usage:
-    python drums.py <inputfilename> <breakfilename> <outputfilename> [<drumIntensity>]
+    python drums.py <inputfilename> <breakfilename> <outputfilename> <beatsinbreak> <barsinbreak>
 
 Example:
-    python drums.py HereComesTheSun.mp3 breaks/assemblyline.wav HereComeTheDrums.mp3 0.6
-    
-Drum Intensity defaults to 0.5.
+    python drums.py HereComesTheSun.mp3 breaks/AmenBrother.wav HereComeTheDrums.mp3 64 4
+
 """
 
 BREAK_FILENAME = 'FunkyDrummer.wav'
