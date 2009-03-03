@@ -1,0 +1,53 @@
+NEWS for pymad
+==============
+
+0.6
+---
+
+2007-01-22
+
+ * Fix decoding error with files containing largish id3v2 tags (Joerg
+   Lehmann)
+ * Fix length calculation (Richard Adenling)
+
+0.5.1 (07/10/03)
+-----
+
+* Fix segfault when cleaning up.
+
+0.5 (01/10/03)
+---
+
+* Now can read from any file-like Python object.
+* Added example program for playing internet radio streams.
+
+0.4.1 (06/02/03)
+-----
+
+* Fixed FPE caused by division by zero in the track time code.
+
+0.4
+---
+
+* Now returns current/total track time.
+* Can seek to a time offset in track.
+
+0.3
+---
+
+* emphasis() function now returns correct value.
+* PCM conversion works on big-endian architectures.
+
+0.2
+---
+
+* Using distutils to configure and build pymad.
+* py_madfile_new can now be passed a file object as well as a filename.
+* frame info can be retrieved from the MadFile object
+* Numerous bugfixes (see ChangeLog for details)
+
+0.1
+---
+
+* Initial release.
+  - Can open an mp3 file and decode the stream.

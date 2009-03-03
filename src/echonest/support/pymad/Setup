@@ -1,0 +1,4 @@
+mad_include_dir = /usr/local/include
+endian = little
+mad_libs = mad
+mad_lib_dir = /usr/local/lib

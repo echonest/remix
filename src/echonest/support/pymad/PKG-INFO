@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pymad
+Version: 0.6
+Summary: A wrapper for the MAD libraries.
+Home-page: http://spacepants.org/src/pymad/
+Author: Jamie Wilkinson
+Author-email: jaq@spacepants.org
+License: GPL
+Description: UNKNOWN
+Platform: UNKNOWN
