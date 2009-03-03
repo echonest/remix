@@ -23,7 +23,6 @@ Example:
     python drums.py HereComesTheSun.mp3 breaks/AmenBrother.wav HereComeTheDrums.mp3 64 4 0.6
 
 Drum instenity defaults to 0.5
-
 """
 
 BREAK_FILENAME = 'FunkyDrummer.wav'
@@ -49,18 +48,19 @@ def split_break(breakfile,n):
     return drum_data
     
 def add_fade_out(segment_data):
-    when_max_volume = segment_data.time_loudness_max
-    samps_to_end = int(segment_data.sampleRate * when_max_volume)
-    linear_max_volume = pow(10.0,segment_data.loudness_max/20.0)
+    print "Adding fade out"
+    when_max_volume = segment_data.data.argmax()
+    samps_to_end = segment_data.endindex - when_max_volume
+    linear_max_volume = pow(10.0,segment_data.data.max()/20.0)
     ss = 0
-    curVol = float(linear_max_volume)
+    cur_vol = float(linear_max_volume)
     if(samps_to_end > 0):
         howMuchVolumeToDecreasePerSamp = linear_max_volume/float(samps_to_end)
+        print howMuchVolumeToDecreasePerSamp
         for samps in xrange(samps_to_end):
-            curVol = curVol - howMuchVolumeToDecreasePerSamp
-            #midi.continuous_controller(channel,7,int(curVol))
+            cur_vol = cur_vol - howMuchVolumeToDecreasePerSamp
             try:
-                segment_data.data[ss] *= curVol
+                segment_data.data[ss] *= cur_vol
             except IndexError:
                 pass
             ss = ss + 1
@@ -106,8 +106,8 @@ def add_drums(input_filename,output_filename,break_filename,
                     tat_data.data = drum_data[j].data[:len(tat_data)]
                 elif drum_samps < beat_samps/hits_per_beat:
                     # space out drum hits to fit beat length
-                    temp_data = add_fade_out(drum_data[j])
-                    tat_data.append(temp_data)
+                    #temp_data = add_fade_out(drum_data[j])
+                    tat_data.append(drum_data[j])
                 tat_data.endindex = len(tat_data)
                 beat_data.append(tat_data)
                 del(tat_data)
@@ -137,7 +137,6 @@ def main():
             mix = 0.5
     except:
         print usage
-        print len(sys.argv)
         sys.exit(-1)
     add_drums(input_filename,output_filename,break_filename,
                 break_parts,measures,mix)
