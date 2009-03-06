@@ -249,34 +249,41 @@ class AudioData(object):
 
 
     def encode(self, mp3_path):
-        sampwidth = 2
-        nframes = len(self.data) / self.numChannels
-        raw_size = self.numChannels * sampwidth * nframes
-
-        mp3_file = open(mp3_path, "wb+")
-
-        mp3 = lame.init()
-        mp3.set_num_channels(self.numChannels)
-        mp3.set_in_samplerate(self.sampleRate)
-        mp3.set_num_samples(long(nframes))
-        mp3.init_parameters()
-
-        # 1 sample = 2 bytes
-        num_samples_per_enc_run = self.sampleRate
-        num_bytes_per_enc_run = self.numChannels * num_samples_per_enc_run * sampwidth
-
-        start = 0
-        while True:
-            frames = self.data[start:start+num_samples_per_enc_run].tostring()
-            data = mp3.encode_interleaved(frames)
-            mp3_file.write(data)
-            start = start + num_samples_per_enc_run
-            if start >= len(self.data): break
-
-        mp3_file.write(mp3.flush_buffers())
-        mp3.write_tags(mp3_file)
-        mp3_file.close()
-        mp3.delete()
+            sampwidth = 2
+            num_channels = self.numChannels
+            if num_channels == 1:
+                #if it's a mono, force it to be stereo.
+                # Can be removed when py-lame implements "encode" function
+                num_channels = 2
+                # make a new stereo array out of the mono array 
+                data_stereo = numpy.column_stack((self.data[:,numpy.newaxis],self.data[:,numpy.newaxis]))
+            nframes = len(self.data) / num_channels
+            raw_size = num_channels * sampwidth * nframes 
+            mp3_file = open(mp3_path, "wb+")
+            mp3 = lame.init() 
+            mp3.set_num_channels(num_channels)
+            mp3.set_in_samplerate(self.sampleRate)
+            mp3.set_num_samples(long(nframes)) 
+            mp3.init_parameters()
+            # 1 sample = 2 bytes
+            num_samples_per_enc_run = self.sampleRate
+            num_bytes_per_enc_run = num_channels * num_samples_per_enc_run * sampwidth
+            start = 0
+            while True:
+                if self.numChannels == 1:
+                    #if mono use the new stereo from dual mono array
+                    frames = data_stereo[start:start+num_samples_per_enc_run].tostring()
+                else:
+                    #if not use the stereo array
+                    frames = self.data[start:start+num_samples_per_enc_run].tostring()
+                data = mp3.encode_interleaved(frames)
+                mp3_file.write(data)
+                start = start + num_samples_per_enc_run
+                if start >= len(self.data): break
+            mp3_file.write(mp3.flush_buffers())
+            mp3.write_tags(mp3_file)
+            mp3_file.close()
+            mp3.delete()
 
 
 
