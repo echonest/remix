@@ -1,1 +1,1 @@
-__all__ = [ 'audio', 'web', 'selection','support' ]
+__all__ = [ 'audio', 'web', 'selection', 'sorting', 'support' ]

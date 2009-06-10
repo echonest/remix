@@ -16,7 +16,7 @@ INSTALLATION
 
 2. Install the lame libraries. Get them here:
 
-  http://spaghetticode.org/lame/
+  http://lame.sourceforge.net/download.php
 
 3. Install the pymad package from the Echo Nest Remix distribution.
 From echo-nest-remix/src/echonest/support/pymad, execute:
@@ -27,27 +27,26 @@ This will locate the mad libraries on your system. You may need to
 pass the script a --prefix value if you've installed your mad stuff
 someplace weird. Then execute:
 
-  python setup.py build
   sudo python setup.py install
 
 4. Install the python-lame package from the Echo Nest Remix
 distribution. From echo-nest-remix/src/echonest/support/python-lame,
 execute:
 
-  python setup.py build
   sudo python setup.py install
 
-
-5. From the directory where you found this readme file, execute:
+5. From the directory where you found this README file, execute:
 
   sudo python setup.py install
 
-This will install the echonest package and make it available through
-the usual means:
+6. Register an Echo Nest developer account here:
 
-  import echonest
+	http://developer.echonest.com/account/register/
 
-6. Optionally install ffmpeg (this is not needed at the moment, but
+Edit src/echonest/web/config.py, placing your Echo Nest API key in 
+the variable API_KEY. 
+
+7. Optionally install ffmpeg (this is not needed at the moment, but
 will be soon). There are a few ways to install the ffmpeg binaries
 on your system with the first, unpacking the file form the FFmpegX
 distribution, being the easiest.
