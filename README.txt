@@ -1,100 +1,96 @@
-INTRODUCTION
-============
+I. Mac OS X installation instructions
+II. Debian Linux installation instructions
+III. Windows installation instructions
 
-Greetings, intrepid coder.  This is the readme file for the Python
-'echonest' package, an interface to the Echo Nest Remix API.  This
-will help you easily upload data to the Echo Nest Remix web service
-and easily manipulate what you get back.
+=====
 
+I. MAC OS X INSTALLATION INSTRUCTIONS:
 
-INSTALLATION
-============
+ * Download and unzip "echo-next-remix-1.1.zip" from http://code.google.com/p/echo-nest-remix/downloads/list.
 
-1. Install the MAD libraries. Get them here:
+ * Or, you can checkout the source code at http://code.google.com/p/echo-nest-remix/source/checkout. 
 
-  http://www.underbit.com/products/mad/
+ * If you don't already have FFmpeg installed (try typing "ffmpeg" into a Terminal window), download and install the FFmpeg binaries (the following instructions were adapted from this tutorial [http://www.macosxhints.com/article.php?story=20061220082125312&mode=print]):
+          o Download the FFmpeg binary from [http://static.echonest.com/ffmpeg-osx.zip]
+          o Unzip ffmpeg-osx.zip. Copy the contents (the file "ffmpeg") to the folder /usr/local/bin
+          o Open Terminal. It can be found in the Applications/Utilities folder.
+          o Execute the following in Terminal:
 
-2. Install the lame libraries. Get them here:
+            sudo chown root:wheel /usr/local/bin/ffmpeg
+            sudo chmod 755 /usr/local/bin/ffmpeg
 
-  http://lame.sourceforge.net/download.php
+          o Now you have a working version of FFmpeg. 
 
-3. Install the pymad package from the Echo Nest Remix distribution.
-From echo-nest-remix/src/echonest/support/pymad, execute:
+ * Register for an Echo Nest Developer account at The Developer Nest [http://developer.echonest.com/]. You will receive an API Key. 
 
-  python config_unix.py
+ * Navigate to the folder where you downloaded the Echo Nest Remix API distribution and unzipped it. e.g. 
 
-This will locate the mad libraries on your system. You may need to
-pass the script a --prefix value if you've installed your mad stuff
-someplace weird. Then execute:
+> cd ~/Downloads/echo-nest-remix-dist/
 
-  sudo python setup.py install
+ * Using any text editor, open the file src/echonest/web/config.py and replace the text "Replace this text with your API Key" with the API Key you received when you registered for an Echo Nest Developer account. Save this file. 
 
-4. Install the python-lame package from the Echo Nest Remix
-distribution. From echo-nest-remix/src/echonest/support/python-lame,
-execute:
+ * In Terminal, navigate to the folder where you downloaded and unzipped the Echo Nest Remix API distribution. Execute: 
 
-  sudo python setup.py install
+> python sudo setup.py install
 
-5. From the directory where you found this README file, execute:
+ * Then navigate to the folder examples/one/ and run the example: 
 
-  sudo python setup.py install
+> cd examples/one/
+> python one.py any_mp3_file_you_have.mp3 output.mp3
 
-6. Register an Echo Nest developer account here:
+=====
 
-	http://developer.echonest.com/account/register/
+II. DEBIAN LINUX INSTALLATION INSTRUCTIONS:
 
-Edit src/echonest/web/config.py, placing your Echo Nest API key in 
-the variable API_KEY. 
+ * You need ffmpeg and at least Python 2.5. Your distribution probably already has both. If not,
 
-7. Optionally install ffmpeg (this is not needed at the moment, but
-will be soon). There are a few ways to install the ffmpeg binaries
-on your system with the first, unpacking the file form the FFmpegX
-distribution, being the easiest.
+> apt-get install ffmpeg python2.5 subversion
 
-  -Download FFMpegX and extract the binary:
-  
-    http://www.macosxhints.com/article.php?story=20061220082125312&mode=print
+ * (Note that your version of ffmpeg might not have all the codecs due to patent & etc issues. If you want them, try out the Debian FFmpeg installer [http://code.google.com/p/debian-ffmpeg-installer/].)
 
-  -You can also use DarwinPorts if you have that installed:
+ * After that, simply check out the Echo Nest Remix API trunk or download the release package.
 
-    http://ffmpeg.darwinports.com/
+> cd ~
+> svn checkout http://echo-nest-remix.googlecode.com/svn/trunk/ echo-nest-remix-read-only
 
-  -Fink has a binary package for ffmpeg:
+Get an API key at the EN developer site. Edit your API key in ~/echonest-remix-read-only/src/echonest/web/config.py
 
-    http://pdb.finkproject.org/pdb/package.php/ffmpeg
+Install remix
 
-  -Most complicated but most control: install ffmpeg from source.
+> cd ~/echo-nest-remix-read-only/
+> sudo python setup.py install
 
-    http://stephenjungels.com/jungels.net/articles/ffmpeg-howto.html
+ * After the party, it's the after party:
 
-When this step is completed, opening Terminal and typing "ffmpeg"
-should show you a usage screen.
+> cd ~/echo-nest-remix-read-only/examples/drums
+> python drums.py  HereComesTheSun.mp3 breaks/AmenBrother.wav HereComesTheDrums.mp3 64 4 0.6
 
-On Ubuntu and other Debian-based systems, ffmpeg can be installed
-using:
+=====
 
-  sudo aptitude install ffmpeg
+III. WINDOWS INSTALLATION INSTRUCTIONS:
 
+You need Python, ffmpeg and NumPy installed. You may already have these installed.
 
+ * If you don't have Python 2.5 or greater installed (try typing "python" in a cmd window) download Python 2.6.2 for Windows [http://www.python.org/ftp/python/2.6.2/python-2.6.2.msi] and run the installer.
 
-EXAMPLES
-========
+ * Make sure you add C:\Python26 (or whatever drive you installed it to) to your PATH environment variable. [http://www.python.org/doc/faq/windows/#how-do-i-run-a-python-program-under-windows] After doing this step log out and log back in to make sure the PATH is set.
 
-The 'examples' directory contains some examples of how to use the
-echonest package.  The examples are not installed as packages, but can
-be run as normal Python scripts.  For example:
+ * If you don't have ffmpeg installed download a build of ffmpeg for Windows. (try typing "ffmpeg" in a cmd window) [http://static.echonest.com/ffmpeg-r17988-komeil.cab] (This is a cached copy of this build [http://komeil.spaces.live.com/blog/cns!11E09A8750032F2C!614.entry], but any build is fine.) Unpack the ffmpeg.exe and move it to C:\Python26 (or whatever drive you installed Python to.)
 
-  python reverse.py
+ * If you don't have NumPy installed (open python and type "import numpy" to see)  download and run the Windows Python 2.6 Numpy "Superpack". [http://sourceforge.net/project/downloading.php?group_id=1369&filename=numpy-1.3.0-win32-superpack-python2.6.exe&a=90023264]
 
-and
+ * Go to the start menu, then Run, then type "cmd"
 
-  python cowbell.py
+ * cd to where you downloaded the Echo Nest Remix API distribution and unzipped it. e.g.
 
-will both print out detailed usage instructions.
+cd Desktop\echo-nest-remix\
 
+ * using any text editor (except for Notepad, it will not show the line endings properly), open the file src\echonest\web\config.py and replace the text "Replace this text with your API Key" with the API Key you received when you registered for an Echo Nest Developer account at The Developer Nest [http://developer.echonest.com]. Save the file.
 
-FEEDBACK
-========
+ * From the root the downloaded Remix folder, type
 
-All feedback and participation is welcome.  Contact us through the
-Google Code project page.
+python setup.py install
+
+ * Then cd to examples\one\ and run 
+
+python one.py any_mp3_file_you_have.mp3 output.mp3
