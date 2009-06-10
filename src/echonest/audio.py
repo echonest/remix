@@ -288,13 +288,15 @@ class AudioData(object):
         else:
             return 0
 
-    def encode(self, filename=None, mp3=True):
+    def encode(self, filename=None, mp3=None):
         """
         Outputs an MP3 or WAVE file to `filename`.
         Format is determined by `mp3` parameter.
         """
-        if filename.lower().endswith('.wav'):
+        if not mp3 and filename.lower().endswith('.wav'):
             mp3 = False
+        else:
+            mp3 = True
         if mp3:
             foo, tempfilename = tempfile.mkstemp(".wav")        
         else:
