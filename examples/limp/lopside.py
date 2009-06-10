@@ -10,10 +10,12 @@ Demonstrates the beat hierarchy navigation in AudioQuantum
 Originally by Adam Lindsay, 2009-01-19.
 """
 import echonest.audio as audio
+import sys
 
 usage = """
 Usage: 
-    python lopside.py <tatum|beat> <inputFilename> <outputFilename>
+    python lopside.py [tatum|beat] <inputFilename> <outputFilename>
+Beat is selected by default.
 
 Example:
     python lopside.py beat aha.mp3 ahawaltz.mp3
@@ -23,6 +25,10 @@ Example:
 def main(units, inputFile, outputFile):
     audiofile = audio.LocalAudioFile(inputFile)
     collect = audio.AudioQuantumList()
+    if not audiofile.analysis.bars:
+        print "No bars found in this analysis!"
+        print "No output."
+        sys.exit(-1)
     for b in audiofile.analysis.bars[0:-1]:                
         # all but the last beat
         collect.extend(b.children()[0:-1])
@@ -40,7 +46,6 @@ def main(units, inputFile, outputFile):
     out.encode(outputFile)
 
 if __name__ == '__main__':
-    import sys
     try:
         units = sys.argv[-3]
         inputFilename = sys.argv[-2]

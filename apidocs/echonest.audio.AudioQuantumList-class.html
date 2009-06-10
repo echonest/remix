@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.audio.AudioQuantumList</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 163</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="echonest-module.html">Package&nbsp;echonest</a> ::
+        <a href="echonest.audio-module.html">Module&nbsp;audio</a> ::
+        Class&nbsp;AudioQuantumList
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.audio.AudioQuantumList-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AudioQuantumList</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_echonest_5" name="uml_class_diagram_for_echonest_5">
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#QUANTUM_ATTRIBUTES" title="echonest.audio.AudioQuantumList.QUANTUM_ATTRIBUTES" alt="" coords="20,368,300,387"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#SEGMENT_ATTRIBUTES" title="echonest.audio.AudioQuantumList.SEGMENT_ATTRIBUTES" alt="" coords="20,387,300,405"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#__init__" title="Initializes an AudioQuantumList." alt="" coords="20,408,300,427"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#that" title="Method for applying a function to each of the contained AudioQuantum objects." alt="" coords="20,427,300,445"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#ordered_by" title="Returns a new AudioQuantumList of the same kind with the original elements, but ordered from low to high according to the input function acting as a key." alt="" coords="20,445,300,464"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#beget" title="There are two basic forms: a map&#45;and&#45;flatten and an converse&#45;that." alt="" coords="20,464,300,483"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#attach" title="Create circular references to the containing AudioAnalysis and for the contained AudioQuantum objects." alt="" coords="20,483,300,501"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#__getstate__" title="Eliminates the circular reference for pickling." alt="" coords="20,501,300,520"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioQuantumList-class.html#__getattribute__" title="In the case of AudioQuantum and AudioSegment accessors, return the corresponding ones from each of the contained AudioQuanta." alt="" coords="20,520,300,539"/>
+<area shape="rect" id="node1" href="echonest.audio.AudioQuantumList-class.html" title="A container that enables content&#45;based selection and filtering." alt="" coords="8,345,312,546"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x+y" alt="" coords="17,37,303,56"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="y in x" alt="" coords="17,56,303,75"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="del x[y]" alt="" coords="17,75,303,93"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="del x[i:j]" alt="" coords="17,93,303,112"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x==y" alt="" coords="17,112,303,131"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x&gt;=y" alt="" coords="17,131,303,149"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x[y]" alt="" coords="17,149,303,168"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x[i:j]" alt="" coords="17,168,303,187"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x&gt;y" alt="" coords="17,187,303,205"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="hash(x)" alt="" coords="17,205,303,224"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x+=y" alt="" coords="17,224,303,243"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="x*=y" alt="" coords="17,243,303,261"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="iter(x)" alt="" coords="17,261,303,280"/>
+<area shape="rect" id="node10" href="javascript:void(0);" title="stable sort IN PLACE; cmp(x, y) &#45;&gt; &#45;1, 0, 1" alt="" coords="17,299,303,317"/>
+<area shape="rect" id="node2" href="javascript:void(0);" title="list() &#45;&gt; new list list(sequence) &#45;&gt; new list initialized from sequence&#39;s items" alt="" coords="5,6,315,325"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_5.gif" alt='' usemap="#uml_class_diagram_for_echonest_5" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>A container that enables content-based selection and filtering.
+A <code class="link">List</code> that contains <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects, with additional methods
+for manipulating them.</p>
+<p>When an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> is created for a track via a call to the
+Analyze API, <a href="echonest.audio.AudioQuantumList-class.html#attach" class="link">attach</a>() is called so that its container is set to the
+containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a>, and the container of each of the
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> list members is set to itself.</p>
+<p>Additional accessors now include AudioQuantum elements such as
+<code class="link">start</code>, <code class="link">duration</code>, and <code class="link">confidence</code>, which each return a List of the
+corresponding properties in the contained AudioQuanta. A special name
+is <code class="link">kinds</code>, which returns a List of the <code class="link">kind</code> of each <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.
+If <code class="link">AudioQuantumList.kind</code> is &quot;<code class="link">segment</code>&quot;, then <code class="link">pitches</code>, <code class="link">timbre</code>,
+<code class="link">loudness_begin</code>, <code class="link">loudness_max</code>, <code class="link">time_loudness_max</code>, and <code class="link">loudness_end</code>
+are available.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">new list</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kind</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">container</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initializes an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#that" class="summary-sig-name">that</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filt</span>)</span><br />
+      Method for applying a function to each of the contained
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.that">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#ordered_by" class="summary-sig-name">ordered_by</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">function</span>,
+        <span class="summary-sig-arg">descending</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Returns a new <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> of the same <code class="link">kind</code> with the
+original elements, but ordered from low to high according to
+the input function acting as a key.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.ordered_by">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#beget" class="summary-sig-name">beget</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">source</span>,
+        <span class="summary-sig-arg">which</span>=<span class="summary-sig-default">None</span>)</span><br />
+      There are two basic forms: a map-and-flatten and an converse-that.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.beget">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="attach"></a><span class="summary-sig-name">attach</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">container</span>)</span><br />
+      Create circular references to the containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> and for the
+contained <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.attach">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getstate__"></a><span class="summary-sig-name">__getstate__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Eliminates the circular reference for pickling.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.__getstate__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#__getattribute__" class="summary-sig-name">__getattribute__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      In the case of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a> accessors, return the
+corresponding ones from each of the contained AudioQuanta.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.__getattribute__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>list</code></b>:
+      <code>__add__</code>,
+      <code>__contains__</code>,
+      <code>__delitem__</code>,
+      <code>__delslice__</code>,
+      <code>__eq__</code>,
+      <code>__ge__</code>,
+      <code>__getitem__</code>,
+      <code>__getslice__</code>,
+      <code>__gt__</code>,
+      <code>__hash__</code>,
+      <code>__iadd__</code>,
+      <code>__imul__</code>,
+      <code>__iter__</code>,
+      <code>__le__</code>,
+      <code>__len__</code>,
+      <code>__lt__</code>,
+      <code>__mul__</code>,
+      <code>__ne__</code>,
+      <code>__new__</code>,
+      <code>__repr__</code>,
+      <code>__reversed__</code>,
+      <code>__rmul__</code>,
+      <code>__setitem__</code>,
+      <code>__setslice__</code>,
+      <code>append</code>,
+      <code>count</code>,
+      <code>extend</code>,
+      <code>index</code>,
+      <code>insert</code>,
+      <code>pop</code>,
+      <code>remove</code>,
+      <code>reverse</code>,
+      <code>sort</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="QUANTUM_ATTRIBUTES"></a><span class="summary-name">QUANTUM_ATTRIBUTES</span> = <code title="['start', 'duration', 'confidence']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">start</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">duration</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">confidence</code><code class="variable-quote">'</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.audio.AudioQuantumList-class.html#SEGMENT_ATTRIBUTES" class="summary-name">SEGMENT_ATTRIBUTES</a> = <code title="['pitches',
+ 'timbre',
+ 'loudness_begin',
+ 'loudness_max',
+ 'time_loudness_max',
+ 'loudness_end']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">pitches</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">timbre</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">loudness_begin</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">kind</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">container</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Initializes an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>kind</code></strong> - a label for the kind of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contained
+within</li>
+        <li><strong class="pname"><code>container</code></strong> - a reference to the containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a></li>
+    </ul></dd>
+    <dt>Returns: new list</dt>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="that"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">that</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filt</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.that">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Method for applying a function to each of the contained
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects. Returns a new <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>
+of the same <code class="link">kind</code> containing the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects
+for which the input function is true.</p>
+<p>See <a href="echonest.selection-module.html" class="link">echonest.selection</a> for example selection filters.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filt</code></strong> - a function that takes one <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and returns
+a <code class="link">True</code> value <code class="link">None</code></li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Change Log:</strong>
+        experimenting with a filter-only form
+      </p>
+</div></td></tr></table>
+</div>
+<a name="ordered_by"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ordered_by</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">function</span>,
+        <span class="sig-arg">descending</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.ordered_by">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a new <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> of the same <code class="link">kind</code> with the
+original elements, but ordered from low to high according to
+the input function acting as a key.</p>
+<p>See <a href="echonest.sorting-module.html" class="link">echonest.sorting</a> for example ordering functions.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>function</code></strong> - a function that takes one <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and returns
+a comparison key</li>
+        <li><strong class="pname"><code>descending</code></strong> - when <code class="link">True</code>, reverses the sort order, from
+high to low</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="beget"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">beget</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">source</span>,
+        <span class="sig-arg">which</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.beget">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>There are two basic forms: a map-and-flatten and an converse-that.</p>
+<p>The basic form, with one <code class="link">function</code> argument, returns a new
+<a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> so that the source function returns
+<code class="link">None</code>, one, or many AudioQuanta for each <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contained within
+<code class="link">self</code>, and flattens them, in order.</p>
+<pre class="rst-literal-block">
+beats.beget(the_next_ones)
+</pre>
+<p>A second form has the first argument <code class="link">source</code> as an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, and
+a second argument, <code class="link">which</code>, is used as a filter for the first argument, for
+<em>each</em> of <code class="link">self</code>. The results are collapsed and accordianned into a flat
+list.</p>
+<p>For example, calling:</p>
+<pre class="rst-literal-block">
+beats.beget(segments, which=overlap)
+</pre>
+<p>Gets evaluated as:</p>
+<pre class="rst-literal-block">
+for beat in beats:
+    return segments.that(overlap(beat))
+</pre>
+<p>And all of the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>s that return are flattened into
+a single <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>source</code></strong> - A function of one argument that is applied to each
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> of <code class="link">self</code>, or an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, in which case
+the second argument is required.</li>
+        <li><strong class="pname"><code>which</code></strong> - A function of one argument that acts as a <a href="echonest.audio.AudioQuantumList-class.html#that" class="link">that</a>() filter
+on the first argument if it is an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, or as a filter
+on the output, in the case of <code class="link">source</code> being a function.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__getattribute__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__getattribute__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.__getattribute__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  In the case of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a> accessors, return the
+corresponding ones from each of the contained AudioQuanta. If the attribute
+is <code class="link">kinds</code>, do the same for each <code class="link">kind</code> accessor. Otherwise, do normal
+attribute dispatch.
+  <dl class="fields">
+    <dt>Overrides:
+        object.__getattribute__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="SEGMENT_ATTRIBUTES"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">SEGMENT_ATTRIBUTES</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">pitches</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">timbre</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">loudness_begin</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">loudness_max</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">time_loudness_max</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">loudness_end</code><code class="variable-quote">'</code><code class="variable-group">]</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 163</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat May  9 21:15:40 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

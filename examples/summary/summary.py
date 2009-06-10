@@ -8,21 +8,23 @@ Digest only the first or only the second tatum of every beat.
 
 By Ben Lacker, 2009-02-18.
 """
+import sys
+
 import echonest.audio as audio
 from echonest.selection import have_pitch_max,have_pitches_max
 
 usage = """
 Usage: 
-    python summary.py [and] <inputFilename> <outputFilename>
+    python summary.py [and] <input_filename> <output_filename>
 
 Example:
     python summary.py RichGirl.mp3 RichSummary.mp3
 """
 
 
-def main(inputFile, outputFile, index):
-    audiofile = audio.LocalAudioFile(inputFile)
-    beats = audiofile.analysis.beats
+def main(input_filename, output_filename, index):
+    audio_file = audio.LocalAudioFile(input_filename)
+    beats = audio_file.analysis.beats
     collect = audio.AudioQuantumList()
     for beat in beats:
         tata = beat.children()
@@ -31,20 +33,19 @@ def main(inputFile, outputFile, index):
         else:
             tat = tata[0]
         collect.append(tat)
-    out = audio.getpieces(audiofile, collect)
-    out.encode(outputFile)
+    out = audio.getpieces(audio_file, collect)
+    out.encode(output_filename)
 
 
 if __name__ == '__main__':
-    import sys
     try:
-        if sys.argv[-3]=='and':
+        if sys.argv[1]=='and':
             index = 1
         else:
             index = 0
-        inputFilename = sys.argv[-2]
-        outputFilename = sys.argv[-1]
+        input_filename = sys.argv[2]
+        output_filename = sys.argv[3]
     except:
         print usage
         sys.exit(-1)
-    main(inputFilename, outputFilename, index)
+    main(input_filename, output_filename, index)

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # encoding: utf=8
-
 """
 one.py
 
@@ -13,29 +12,27 @@ from echonest.selection import have_pitch_max,have_pitches_max
 
 usage = """
 Usage: 
-    python one.py <inputFilename> <outputFilename>
+    python one.py <input_filename> <output_filename>
 
 Example:
     python one.py EverythingIsOnTheOne.mp3 EverythingIsReallyOnTheOne.mp3
 """
 
-
-def main(inputFile, outputFile):
-    audiofile = audio.LocalAudioFile(inputFile)
+def main(input_filename, output_filename):
+    audiofile = audio.LocalAudioFile(input_filename)
     bars = audiofile.analysis.bars
     collect = audio.AudioQuantumList()
     for bar in bars:
         collect.append(bar.children()[0])
     out = audio.getpieces(audiofile, collect)
-    out.encode(outputFile)
-
+    out.encode(output_filename)
 
 if __name__ == '__main__':
     import sys
     try:
-        inputFilename = sys.argv[-2]
-        outputFilename = sys.argv[-1]
+        input_filename = sys.argv[1]
+        output_filename = sys.argv[2]
     except:
         print usage
         sys.exit(-1)
-    main(inputFilename, outputFilename)
+    main(input_filename, output_filename)

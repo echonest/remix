@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # encoding: utf=8
-
 """
 drums.py
 
@@ -13,6 +12,7 @@ By Ben Lacker, 2009-02-24.
 import numpy
 import sys
 import time
+
 import echonest.audio as audio
 
 usage="""
@@ -55,10 +55,10 @@ def add_fade_out(segment_data):
     ss = 0
     cur_vol = float(linear_max_volume)
     if(samps_to_end > 0):
-        howMuchVolumeToDecreasePerSamp = linear_max_volume/float(samps_to_end)
-        print howMuchVolumeToDecreasePerSamp
+        how_much_volume_to_decrease_per_samp = linear_max_volume/float(samps_to_end)
+        print how_much_volume_to_decrease_per_samp
         for samps in xrange(samps_to_end):
-            cur_vol = cur_vol - howMuchVolumeToDecreasePerSamp
+            cur_vol = cur_vol - how_much_volume_to_decrease_per_samp
             try:
                 segment_data.data[ss] *= cur_vol
             except IndexError:
@@ -66,8 +66,8 @@ def add_fade_out(segment_data):
             ss = ss + 1
     return segment_data
 
-def add_drums(input_filename,output_filename,break_filename,
-                break_parts,measures,mix):
+def main(input_filename, output_filename, break_filename, break_parts,
+            measures, mix):
     audiofile = audio.LocalAudioFile(input_filename)
     sample_rate = audiofile.sampleRate
     breakfile = audio.LocalAudioFile(break_filename)
@@ -80,6 +80,10 @@ def add_drums(input_filename,output_filename,break_filename,
     out_shape = (len(audiofile)+100000,num_channels)
     out = audio.AudioData(shape=out_shape, sampleRate=sample_rate,
                             numChannels=num_channels)
+    if not bars:
+        print "Didn't find any bars in this analysis!"
+        print "No output."
+        sys.exit(-1)
     for bar in bars[:-1]:
         beats = bar.children()
         for i in range(len(beats)):
@@ -113,7 +117,7 @@ def add_drums(input_filename,output_filename,break_filename,
                 del(tat_data)
             # account for rounding errors
             beat_data.endindex = len(beat_data)
-            mixed_beat = audio.mix(beat_data,audiofile[beats[i]],mix=mix)
+            mixed_beat = audio.mix(beat_data, audiofile[beats[i]], mix=mix)
             del(beat_data)
             out.append(mixed_beat)
     finale = bars[-1].start + bars[-1].duration
@@ -124,7 +128,7 @@ def add_drums(input_filename,output_filename,break_filename,
     out.append(last_data)
     out.encode(output_filename)
 
-def main():
+if __name__=='__main__':
     try:
         input_filename = sys.argv[1]
         break_filename = sys.argv[2]
@@ -138,11 +142,5 @@ def main():
     except:
         print usage
         sys.exit(-1)
-    add_drums(input_filename,output_filename,break_filename,
-                break_parts,measures,mix)
-
-if __name__=='__main__':
-    tic = time.time()
-    main()
-    toc = time.time()
-    print "Elapsed time: %.3f sec" % float(toc-tic)
+    main(input_filename, output_filename, break_filename, break_parts,
+            measures, mix)

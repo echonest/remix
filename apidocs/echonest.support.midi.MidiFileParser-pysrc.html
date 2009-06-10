@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.support.midi.MidiFileParser</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 163</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="echonest-module.html">Package&nbsp;echonest</a> ::
+        <a href="echonest.support-module.html">Package&nbsp;support</a> ::
+        <a href="echonest.support.midi-module.html">Package&nbsp;midi</a> ::
+        Module&nbsp;MidiFileParser
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.support.midi.MidiFileParser-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="echonest.support.midi.MidiFileParser-module.html">Module echonest.support.midi.MidiFileParser</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># std library</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">from</tt> <tt class="py-name">struct</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unpack</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># uhh I don't really like this, but there are so many constants to </tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># import otherwise</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module echonest.support.midi.constants=echonest.support.midi.constants-module.html"><a title="echonest.support.midi.constants" class="py-name" href="#" onclick="return doclink('link-0', 'constants', 'link-0');">constants</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module echonest.support.midi.EventDispatcher=echonest.support.midi.EventDispatcher-module.html,Class echonest.support.midi.EventDispatcher.EventDispatcher=echonest.support.midi.EventDispatcher.EventDispatcher-class.html"><a title="echonest.support.midi.EventDispatcher
+echonest.support.midi.EventDispatcher.EventDispatcher" class="py-name" href="#" onclick="return doclink('link-1', 'EventDispatcher', 'link-1');">EventDispatcher</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name"><a title="echonest.support.midi.EventDispatcher
+echonest.support.midi.EventDispatcher.EventDispatcher" class="py-name" href="#" onclick="return doclink('link-2', 'EventDispatcher', 'link-1');">EventDispatcher</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="MidiFileParser"></a><div id="MidiFileParser-def"><a name="L12"></a><tt class="py-lineno"> 12</tt> <a class="py-toggle" href="#" id="MidiFileParser-toggle" onclick="return toggle('MidiFileParser');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="echonest.support.midi.MidiFileParser.MidiFileParser-class.html">MidiFileParser</a><tt class="py-op">:</tt> </tt>
+</div><div id="MidiFileParser-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MidiFileParser-expanded"><a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">    The MidiFileParser is the lowest level parser that see the data as </tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">    midi data. It generates events that gets triggered on the outstream.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="MidiFileParser.__init__"></a><div id="MidiFileParser.__init__-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="MidiFileParser.__init__-toggle" onclick="return toggle('MidiFileParser.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiFileParser.MidiFileParser-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">raw_in</tt><tt class="py-op">,</tt> <tt class="py-param">outstream</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MidiFileParser.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiFileParser.__init__-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">        raw_data is the raw content of a midi file as a string.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-comment"># internal values, don't mess with 'em directly</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">raw_in</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="echonest.support.midi.EventDispatcher
+echonest.support.midi.EventDispatcher.EventDispatcher" class="py-name" href="#" onclick="return doclink('link-3', 'EventDispatcher', 'link-1');">EventDispatcher</a></tt><tt class="py-op">(</tt><tt class="py-name">outstream</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-comment"># Used to keep track of stuff</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_running_status</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="MidiFileParser.parseMThdChunk"></a><div id="MidiFileParser.parseMThdChunk-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="MidiFileParser.parseMThdChunk-toggle" onclick="return toggle('MidiFileParser.parseMThdChunk');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiFileParser.MidiFileParser-class.html#parseMThdChunk">parseMThdChunk</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MidiFileParser.parseMThdChunk-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiFileParser.parseMThdChunk-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">         </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-docstring">"Parses the header chunk"</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">         </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">raw_in</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">raw_in</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">header_chunk_type</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#nextSlice"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice" class="py-name" href="#" onclick="return doclink('link-4', 'nextSlice', 'link-4');">nextSlice</a></tt><tt class="py-op">(</tt><tt class="py-number">4</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">header_chunk_zise</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.readBew()=echonest.support.midi.DataTypeConverters-module.html#readBew,Method echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#readBew"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-5', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-number">4</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-comment"># check if it is a proper midi file</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">header_chunk_type</tt> <tt class="py-op">!=</tt> <tt class="py-string">'MThd'</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">TypeError</tt><tt class="py-op">,</tt> <tt class="py-string">"It is not a valid midi file!"</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-comment"># Header values are at fixed locations, so no reason to be clever</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">format</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-6', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nTracks</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-7', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">division</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-8', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">         </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-comment"># Theoretically a header larger than 6 bytes can exist</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># but no one has seen one in the wild</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># But correctly ignore unknown data if it is though</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">header_chunk_zise</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">6</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method echonest.support.midi.RawInstreamFile.RawInstreamFile.moveCursor()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#moveCursor"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.moveCursor" class="py-name" href="#" onclick="return doclink('link-9', 'moveCursor', 'link-9');">moveCursor</a></tt><tt class="py-op">(</tt><tt class="py-name">header_chunk_zise</tt><tt class="py-op">-</tt><tt class="py-number">6</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-comment"># call the header event handler on the stream</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.header()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#header,Method echonest.support.midi.MidiOutFile.MidiOutFile.header()=echonest.support.midi.MidiOutFile.MidiOutFile-class.html#header,Method echonest.support.midi.MidiOutStream.MidiOutStream.header()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#header,Method echonest.support.midi.MidiToText.MidiToText.header()=echonest.support.midi.MidiToText.MidiToText-class.html#header"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.header
+echonest.support.midi.MidiOutFile.MidiOutFile.header
+echonest.support.midi.MidiOutStream.MidiOutStream.header
+echonest.support.midi.MidiToText.MidiToText.header" class="py-name" href="#" onclick="return doclink('link-10', 'header', 'link-10');">header</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nTracks</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">division</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="MidiFileParser.parseMTrkChunk"></a><div id="MidiFileParser.parseMTrkChunk-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="MidiFileParser.parseMTrkChunk-toggle" onclick="return toggle('MidiFileParser.parseMTrkChunk');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiFileParser.MidiFileParser-class.html#parseMTrkChunk">parseMTrkChunk</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MidiFileParser.parseMTrkChunk-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiFileParser.parseMTrkChunk-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">         </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-docstring">"Parses a track chunk. This is the most important part of the parser."</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">         </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-comment"># set time to 0 at start of a track</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.reset_time()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#reset_time,Method echonest.support.midi.MidiOutStream.MidiOutStream.reset_time()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_time"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.reset_time
+echonest.support.midi.MidiOutStream.MidiOutStream.reset_time" class="py-name" href="#" onclick="return doclink('link-11', 'reset_time', 'link-11');">reset_time</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">         </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">dispatch</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">raw_in</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">raw_in</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">         </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-comment"># Trigger event at the start of a track</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.start_of_track()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#start_of_track,Method echonest.support.midi.MidiOutFile.MidiOutFile.start_of_track()=echonest.support.midi.MidiOutFile.MidiOutFile-class.html#start_of_track,Method echonest.support.midi.MidiOutStream.MidiOutStream.start_of_track()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#start_of_track,Method echonest.support.midi.MidiToText.MidiToText.start_of_track()=echonest.support.midi.MidiToText.MidiToText-class.html#start_of_track"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.start_of_track
+echonest.support.midi.MidiOutFile.MidiOutFile.start_of_track
+echonest.support.midi.MidiOutStream.MidiOutStream.start_of_track
+echonest.support.midi.MidiToText.MidiToText.start_of_track" class="py-name" href="#" onclick="return doclink('link-12', 'start_of_track', 'link-12');">start_of_track</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_current_track</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-comment"># position cursor after track header</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.moveCursor" class="py-name" href="#" onclick="return doclink('link-13', 'moveCursor', 'link-9');">moveCursor</a></tt><tt class="py-op">(</tt><tt class="py-number">4</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-comment"># unsigned long is 4 bytes</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">tracklength</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-14', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-number">4</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">track_endposition</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method echonest.support.midi.RawInstreamFile.RawInstreamFile.getCursor()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#getCursor"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.getCursor" class="py-name" href="#" onclick="return doclink('link-15', 'getCursor', 'link-15');">getCursor</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-name">tracklength</tt> <tt class="py-comment"># absolute position!</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">while</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.getCursor" class="py-name" href="#" onclick="return doclink('link-16', 'getCursor', 'link-15');">getCursor</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">track_endposition</tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">         </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-comment"># find relative time of the event</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">time</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method echonest.support.midi.RawInstreamFile.RawInstreamFile.readVarLen()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#readVarLen"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.readVarLen" class="py-name" href="#" onclick="return doclink('link-17', 'readVarLen', 'link-17');">readVarLen</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.update_time()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#update_time,Method echonest.support.midi.MidiOutStream.MidiOutStream.update_time()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#update_time"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.update_time
+echonest.support.midi.MidiOutStream.MidiOutStream.update_time" class="py-name" href="#" onclick="return doclink('link-18', 'update_time', 'link-18');">update_time</a></tt><tt class="py-op">(</tt><tt class="py-name">time</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">             </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-comment"># be aware of running status!!!!</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">peak_ahead</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-19', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-name">move_cursor</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">peak_ahead</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0x80</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-comment"># the status byte has the high bit set, so it</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># was not running data but proper status byte</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">status</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_running_status</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-20', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-comment"># use that darn running status</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">status</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_running_status</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                <tt class="py-comment"># could it be illegal data ?? Do we need to test for that?</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># I need more example midi files to be shure.</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-comment"></tt>                 </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                <tt class="py-comment"># Also, while I am almost certain that no realtime </tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># messages will pop up in a midi file, I might need to </tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># change my mind later.</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-comment"># we need to look at nibbles here</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">hi_nible</tt><tt class="py-op">,</tt> <tt class="py-name">lo_nible</tt> <tt class="py-op">=</tt> <tt class="py-name">status</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0xF0</tt><tt class="py-op">,</tt> <tt class="py-name">status</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0x0F</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">             </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-comment"># match up with events</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-comment"># Is it a meta_event ??</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-comment"># these only exists in midi files, not in transmitted midi data</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-comment"># In transmitted data META_EVENT (0xFF) is a system reset</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">if</tt> <tt class="py-name">status</tt> <tt class="py-op">==</tt> <tt id="link-21" class="py-name" targets="Variable echonest.support.midi.constants.META_EVENT=echonest.support.midi.constants-module.html#META_EVENT"><a title="echonest.support.midi.constants.META_EVENT" class="py-name" href="#" onclick="return doclink('link-21', 'META_EVENT', 'link-21');">META_EVENT</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                <tt class="py-name">meta_type</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-22', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                <tt class="py-name">meta_length</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.readVarLen" class="py-name" href="#" onclick="return doclink('link-23', 'readVarLen', 'link-17');">readVarLen</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                <tt class="py-name">meta_data</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice" class="py-name" href="#" onclick="return doclink('link-24', 'nextSlice', 'link-4');">nextSlice</a></tt><tt class="py-op">(</tt><tt class="py-name">meta_length</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                <tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.meta_event()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#meta_event,Method echonest.support.midi.MidiOutFile.MidiOutFile.meta_event()=echonest.support.midi.MidiOutFile.MidiOutFile-class.html#meta_event,Method echonest.support.midi.MidiOutStream.MidiOutStream.meta_event()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#meta_event,Method echonest.support.midi.MidiToText.MidiToText.meta_event()=echonest.support.midi.MidiToText.MidiToText-class.html#meta_event"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.meta_event
+echonest.support.midi.MidiOutFile.MidiOutFile.meta_event
+echonest.support.midi.MidiOutStream.MidiOutStream.meta_event
+echonest.support.midi.MidiToText.MidiToText.meta_event" class="py-name" href="#" onclick="return doclink('link-25', 'meta_event', 'link-25');">meta_event</a></tt><tt class="py-op">(</tt><tt class="py-name">meta_type</tt><tt class="py-op">,</tt> <tt class="py-name">meta_data</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-comment"># Is it a sysex_event ??</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">elif</tt> <tt class="py-name">status</tt> <tt class="py-op">==</tt> <tt id="link-26" class="py-name" targets="Variable echonest.support.midi.constants.SYSTEM_EXCLUSIVE=echonest.support.midi.constants-module.html#SYSTEM_EXCLUSIVE"><a title="echonest.support.midi.constants.SYSTEM_EXCLUSIVE" class="py-name" href="#" onclick="return doclink('link-26', 'SYSTEM_EXCLUSIVE', 'link-26');">SYSTEM_EXCLUSIVE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                <tt class="py-comment"># ignore sysex events</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">sysex_length</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.readVarLen" class="py-name" href="#" onclick="return doclink('link-27', 'readVarLen', 'link-17');">readVarLen</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                <tt class="py-comment"># don't read sysex terminator</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">sysex_data</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice" class="py-name" href="#" onclick="return doclink('link-28', 'nextSlice', 'link-4');">nextSlice</a></tt><tt class="py-op">(</tt><tt class="py-name">sysex_length</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                <tt class="py-comment"># only read last data byte if it is a sysex terminator</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-comment"># It should allways be there, but better safe than sorry</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-keyword">if</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-29', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-name">move_cursor</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt id="link-30" class="py-name" targets="Variable echonest.support.midi.constants.END_OFF_EXCLUSIVE=echonest.support.midi.constants-module.html#END_OFF_EXCLUSIVE"><a title="echonest.support.midi.constants.END_OFF_EXCLUSIVE" class="py-name" href="#" onclick="return doclink('link-30', 'END_OFF_EXCLUSIVE', 'link-30');">END_OFF_EXCLUSIVE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                    <tt class="py-name">eo_sysex</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readBew
+echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-31', 'readBew', 'link-5');">readBew</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                <tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.sysex_event()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#sysex_event,Method echonest.support.midi.MidiToText.MidiToText.sysex_event()=echonest.support.midi.MidiToText.MidiToText-class.html#sysex_event"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.sysex_event
+echonest.support.midi.MidiToText.MidiToText.sysex_event" class="py-name" href="#" onclick="return doclink('link-32', 'sysex_event', 'link-32');">sysex_event</a></tt><tt class="py-op">(</tt><tt class="py-name">sysex_data</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                <tt class="py-comment"># the sysex code has not been properly tested, and might be fishy!</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-comment"># is it a system common event?</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">elif</tt> <tt class="py-name">hi_nible</tt> <tt class="py-op">==</tt> <tt class="py-number">0xF0</tt><tt class="py-op">:</tt> <tt class="py-comment"># Hi bits are set then</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                <tt class="py-name">data_sizes</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                    <tt id="link-33" class="py-name" targets="Variable echonest.support.midi.constants.MTC=echonest.support.midi.constants-module.html#MTC"><a title="echonest.support.midi.constants.MTC" class="py-name" href="#" onclick="return doclink('link-33', 'MTC', 'link-33');">MTC</a></tt><tt class="py-op">:</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                    <tt id="link-34" class="py-name" targets="Variable echonest.support.midi.constants.SONG_POSITION_POINTER=echonest.support.midi.constants-module.html#SONG_POSITION_POINTER"><a title="echonest.support.midi.constants.SONG_POSITION_POINTER" class="py-name" href="#" onclick="return doclink('link-34', 'SONG_POSITION_POINTER', 'link-34');">SONG_POSITION_POINTER</a></tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                    <tt id="link-35" class="py-name" targets="Variable echonest.support.midi.constants.SONG_SELECT=echonest.support.midi.constants-module.html#SONG_SELECT"><a title="echonest.support.midi.constants.SONG_SELECT" class="py-name" href="#" onclick="return doclink('link-35', 'SONG_SELECT', 'link-35');">SONG_SELECT</a></tt><tt class="py-op">:</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                <tt class="py-op">}</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                <tt class="py-name">data_size</tt> <tt class="py-op">=</tt> <tt class="py-name">data_sizes</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">hi_nible</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                <tt class="py-name">common_data</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice" class="py-name" href="#" onclick="return doclink('link-36', 'nextSlice', 'link-4');">nextSlice</a></tt><tt class="py-op">(</tt><tt class="py-name">data_size</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                <tt class="py-name">common_type</tt> <tt class="py-op">=</tt> <tt class="py-name">lo_nible</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                <tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt class="py-name">system_common</tt><tt class="py-op">(</tt><tt class="py-name">common_type</tt><tt class="py-op">,</tt> <tt class="py-name">common_data</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">             </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-comment"># Oh! Then it must be a midi event (channel voice message)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                <tt class="py-name">data_sizes</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                    <tt id="link-37" class="py-name" targets="Variable echonest.support.midi.constants.PATCH_CHANGE=echonest.support.midi.constants-module.html#PATCH_CHANGE"><a title="echonest.support.midi.constants.PATCH_CHANGE" class="py-name" href="#" onclick="return doclink('link-37', 'PATCH_CHANGE', 'link-37');">PATCH_CHANGE</a></tt><tt class="py-op">:</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">                    <tt id="link-38" class="py-name" targets="Variable echonest.support.midi.constants.CHANNEL_PRESSURE=echonest.support.midi.constants-module.html#CHANNEL_PRESSURE"><a title="echonest.support.midi.constants.CHANNEL_PRESSURE" class="py-name" href="#" onclick="return doclink('link-38', 'CHANNEL_PRESSURE', 'link-38');">CHANNEL_PRESSURE</a></tt><tt class="py-op">:</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">                    <tt id="link-39" class="py-name" targets="Variable echonest.support.midi.constants.NOTE_OFF=echonest.support.midi.constants-module.html#NOTE_OFF"><a title="echonest.support.midi.constants.NOTE_OFF" class="py-name" href="#" onclick="return doclink('link-39', 'NOTE_OFF', 'link-39');">NOTE_OFF</a></tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">                    <tt id="link-40" class="py-name" targets="Variable echonest.support.midi.constants.NOTE_ON=echonest.support.midi.constants-module.html#NOTE_ON"><a title="echonest.support.midi.constants.NOTE_ON" class="py-name" href="#" onclick="return doclink('link-40', 'NOTE_ON', 'link-40');">NOTE_ON</a></tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                    <tt id="link-41" class="py-name" targets="Variable echonest.support.midi.constants.AFTERTOUCH=echonest.support.midi.constants-module.html#AFTERTOUCH"><a title="echonest.support.midi.constants.AFTERTOUCH" class="py-name" href="#" onclick="return doclink('link-41', 'AFTERTOUCH', 'link-41');">AFTERTOUCH</a></tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">                    <tt id="link-42" class="py-name" targets="Variable echonest.support.midi.constants.CONTINUOUS_CONTROLLER=echonest.support.midi.constants-module.html#CONTINUOUS_CONTROLLER"><a title="echonest.support.midi.constants.CONTINUOUS_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-42', 'CONTINUOUS_CONTROLLER', 'link-42');">CONTINUOUS_CONTROLLER</a></tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">                    <tt id="link-43" class="py-name" targets="Variable echonest.support.midi.constants.PITCH_BEND=echonest.support.midi.constants-module.html#PITCH_BEND"><a title="echonest.support.midi.constants.PITCH_BEND" class="py-name" href="#" onclick="return doclink('link-43', 'PITCH_BEND', 'link-43');">PITCH_BEND</a></tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                <tt class="py-op">}</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                <tt class="py-name">data_size</tt> <tt class="py-op">=</tt> <tt class="py-name">data_sizes</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">hi_nible</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                <tt class="py-name">channel_data</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_in</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice" class="py-name" href="#" onclick="return doclink('link-44', 'nextSlice', 'link-4');">nextSlice</a></tt><tt class="py-op">(</tt><tt class="py-name">data_size</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                <tt class="py-name">event_type</tt><tt class="py-op">,</tt> <tt class="py-name">channel</tt> <tt class="py-op">=</tt> <tt class="py-name">hi_nible</tt><tt class="py-op">,</tt> <tt class="py-name">lo_nible</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                <tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.channel_messages()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#channel_messages"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.channel_messages" class="py-name" href="#" onclick="return doclink('link-45', 'channel_messages', 'link-45');">channel_messages</a></tt><tt class="py-op">(</tt><tt class="py-name">event_type</tt><tt class="py-op">,</tt> <tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">channel_data</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="MidiFileParser.parseMTrkChunks"></a><div id="MidiFileParser.parseMTrkChunks-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="MidiFileParser.parseMTrkChunks-toggle" onclick="return toggle('MidiFileParser.parseMTrkChunks');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiFileParser.MidiFileParser-class.html#parseMTrkChunks">parseMTrkChunks</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MidiFileParser.parseMTrkChunks-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiFileParser.parseMTrkChunks-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-docstring">"Parses all track chunks."</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nTracks</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_current_track</tt> <tt class="py-op">=</tt> <tt class="py-name">t</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method echonest.support.midi.MidiFileParser.MidiFileParser.parseMTrkChunk()=echonest.support.midi.MidiFileParser.MidiFileParser-class.html#parseMTrkChunk"><a title="echonest.support.midi.MidiFileParser.MidiFileParser.parseMTrkChunk" class="py-name" href="#" onclick="return doclink('link-46', 'parseMTrkChunk', 'link-46');">parseMTrkChunk</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-comment"># this is where it's at!</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dispatch</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method echonest.support.midi.EventDispatcher.EventDispatcher.eof()=echonest.support.midi.EventDispatcher.EventDispatcher-class.html#eof,Method echonest.support.midi.MidiOutFile.MidiOutFile.eof()=echonest.support.midi.MidiOutFile.MidiOutFile-class.html#eof,Method echonest.support.midi.MidiOutStream.MidiOutStream.eof()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#eof,Method echonest.support.midi.MidiToText.MidiToText.eof()=echonest.support.midi.MidiToText.MidiToText-class.html#eof"><a title="echonest.support.midi.EventDispatcher.EventDispatcher.eof
+echonest.support.midi.MidiOutFile.MidiOutFile.eof
+echonest.support.midi.MidiOutStream.MidiOutStream.eof
+echonest.support.midi.MidiToText.MidiToText.eof" class="py-name" href="#" onclick="return doclink('link-47', 'eof', 'link-47');">eof</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">    <tt class="py-comment"># get data</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt id="link-48" class="py-name" targets="Variable echonest.support.midi.example_print_file.test_file=echonest.support.midi.example_print_file-module.html#test_file"><a title="echonest.support.midi.example_print_file.test_file" class="py-name" href="#" onclick="return doclink('link-48', 'test_file', 'link-48');">test_file</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'test/midifiles/minimal.mid'</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="echonest.support.midi.example_print_file.test_file" class="py-name" href="#" onclick="return doclink('link-49', 'test_file', 'link-48');">test_file</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'test/midifiles/cubase-minimal.mid'</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">    <tt id="link-50" class="py-name"><a title="echonest.support.midi.example_print_file.test_file" class="py-name" href="#" onclick="return doclink('link-50', 'test_file', 'link-48');">test_file</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'test/midifiles/Lola.mid'</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-comment">#    f = open(test_file, 'rb')</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#    raw_data = f.read()</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#    f.close()</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#    </tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#    </tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#    # do parsing</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">from</tt> <tt id="link-51" class="py-name" targets="Module echonest.support.midi.MidiToText=echonest.support.midi.MidiToText-module.html,Class echonest.support.midi.MidiToText.MidiToText=echonest.support.midi.MidiToText.MidiToText-class.html"><a title="echonest.support.midi.MidiToText
+echonest.support.midi.MidiToText.MidiToText" class="py-name" href="#" onclick="return doclink('link-51', 'MidiToText', 'link-51');">MidiToText</a></tt> <tt class="py-keyword">import</tt> <tt id="link-52" class="py-name"><a title="echonest.support.midi.MidiToText
+echonest.support.midi.MidiToText.MidiToText" class="py-name" href="#" onclick="return doclink('link-52', 'MidiToText', 'link-51');">MidiToText</a></tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt id="link-53" class="py-name" targets="Module echonest.support.midi.RawInstreamFile=echonest.support.midi.RawInstreamFile-module.html,Class echonest.support.midi.RawInstreamFile.RawInstreamFile=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html"><a title="echonest.support.midi.RawInstreamFile
+echonest.support.midi.RawInstreamFile.RawInstreamFile" class="py-name" href="#" onclick="return doclink('link-53', 'RawInstreamFile', 'link-53');">RawInstreamFile</a></tt> <tt class="py-keyword">import</tt> <tt id="link-54" class="py-name"><a title="echonest.support.midi.RawInstreamFile
+echonest.support.midi.RawInstreamFile.RawInstreamFile" class="py-name" href="#" onclick="return doclink('link-54', 'RawInstreamFile', 'link-53');">RawInstreamFile</a></tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">    <tt id="link-55" class="py-name" targets="Variable echonest.support.midi.example_print_channel_0.midi_in=echonest.support.midi.example_print_channel_0-module.html#midi_in,Variable echonest.support.midi.example_transpose_octave.midi_in=echonest.support.midi.example_transpose_octave-module.html#midi_in"><a title="echonest.support.midi.example_print_channel_0.midi_in
+echonest.support.midi.example_transpose_octave.midi_in" class="py-name" href="#" onclick="return doclink('link-55', 'midi_in', 'link-55');">midi_in</a></tt> <tt class="py-op">=</tt> <tt id="link-56" class="py-name" targets="Module echonest.support.midi.MidiFileParser=echonest.support.midi.MidiFileParser-module.html,Class echonest.support.midi.MidiFileParser.MidiFileParser=echonest.support.midi.MidiFileParser.MidiFileParser-class.html"><a title="echonest.support.midi.MidiFileParser
+echonest.support.midi.MidiFileParser.MidiFileParser" class="py-name" href="#" onclick="return doclink('link-56', 'MidiFileParser', 'link-56');">MidiFileParser</a></tt><tt class="py-op">(</tt><tt id="link-57" class="py-name"><a title="echonest.support.midi.RawInstreamFile
+echonest.support.midi.RawInstreamFile.RawInstreamFile" class="py-name" href="#" onclick="return doclink('link-57', 'RawInstreamFile', 'link-53');">RawInstreamFile</a></tt><tt class="py-op">(</tt><tt id="link-58" class="py-name"><a title="echonest.support.midi.example_print_file.test_file" class="py-name" href="#" onclick="return doclink('link-58', 'test_file', 'link-48');">test_file</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-59" class="py-name"><a title="echonest.support.midi.MidiToText
+echonest.support.midi.MidiToText.MidiToText" class="py-name" href="#" onclick="return doclink('link-59', 'MidiToText', 'link-51');">MidiToText</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">    <tt id="link-60" class="py-name"><a title="echonest.support.midi.example_print_channel_0.midi_in
+echonest.support.midi.example_transpose_octave.midi_in" class="py-name" href="#" onclick="return doclink('link-60', 'midi_in', 'link-55');">midi_in</a></tt><tt class="py-op">.</tt><tt id="link-61" class="py-name" targets="Method echonest.support.midi.MidiFileParser.MidiFileParser.parseMThdChunk()=echonest.support.midi.MidiFileParser.MidiFileParser-class.html#parseMThdChunk"><a title="echonest.support.midi.MidiFileParser.MidiFileParser.parseMThdChunk" class="py-name" href="#" onclick="return doclink('link-61', 'parseMThdChunk', 'link-61');">parseMThdChunk</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">    <tt id="link-62" class="py-name"><a title="echonest.support.midi.example_print_channel_0.midi_in
+echonest.support.midi.example_transpose_octave.midi_in" class="py-name" href="#" onclick="return doclink('link-62', 'midi_in', 'link-55');">midi_in</a></tt><tt class="py-op">.</tt><tt id="link-63" class="py-name" targets="Method echonest.support.midi.MidiFileParser.MidiFileParser.parseMTrkChunks()=echonest.support.midi.MidiFileParser.MidiFileParser-class.html#parseMTrkChunks"><a title="echonest.support.midi.MidiFileParser.MidiFileParser.parseMTrkChunks" class="py-name" href="#" onclick="return doclink('link-63', 'parseMTrkChunks', 'link-63');">parseMTrkChunks</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 163</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat May  9 21:15:44 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

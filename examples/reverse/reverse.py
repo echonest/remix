@@ -20,10 +20,7 @@ Example:
     python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.mp3
 """
 
-
-
-def main( toReverse, inputFilename, outputFilename ) :
-
+def main(toReverse, inputFilename, outputFilename):
     audioFile = audio.LocalAudioFile(inputFilename)
     if toReverse == 'beats' :
         chunks = audioFile.analysis.beats
@@ -33,18 +30,19 @@ def main( toReverse, inputFilename, outputFilename ) :
         print usage
         return
     chunks.reverse()
-    reversedAudio = audio.getpieces( audioFile, chunks )
+    reversedAudio = audio.getpieces(audioFile, chunks)
     reversedAudio.encode(outputFilename)
-
-
 
 if __name__ == '__main__':
     import sys
     try :
-        toReverse = sys.argv[-3]
-        inputFilename = sys.argv[-2]
-        outputFilename = sys.argv[-1]
+        toReverse = sys.argv[1]
+        inputFilename = sys.argv[2]
+        outputFilename = sys.argv[3]
     except :
         print usage
         sys.exit(-1)
-    main( toReverse, inputFilename, outputFilename )
+    if not toReverse in ["beats", "segments"]:
+        print usage
+        sys.exit(-1)
+    main(toReverse, inputFilename, outputFilename)

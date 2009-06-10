@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.audio.AudioSegment</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 163</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="echonest-module.html">Package&nbsp;echonest</a> ::
+        <a href="echonest.audio-module.html">Module&nbsp;audio</a> ::
+        Class&nbsp;AudioSegment
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.audio.AudioSegment-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AudioSegment</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#AudioSegment">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_echonest_6" name="uml_class_diagram_for_echonest_6">
+<area shape="rect" id="node11" href="echonest.audio.AudioSegment-class.html#__init__" title="Initializes an AudioSegment." alt="" coords="17,333,1009,352"/>
+<area shape="rect" id="node1" href="echonest.audio.AudioSegment-class.html" title="Subclass of AudioQuantum for the data&#45;rich segments returned by the Analyze API." alt="" coords="5,302,1021,359"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#end" title="A computed property: the sum of start and duration." alt="" coords="444,29,583,48"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#get_end" title="echonest.audio.AudioQuantum.get_end" alt="" coords="444,51,583,69"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#parent" title="Returns the containing AudioQuantum in the rhythm hierarchy: a tatum returns a beat, a beat returns a bar, and a bar returns a section." alt="" coords="444,69,583,88"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#children" title="Returns an AudioQuantumList of the AudioQuanta that it contains, one step down the hierarchy." alt="" coords="444,88,583,107"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#group" title="Returns the children() of the AudioQuantum&#39;s parent()." alt="" coords="444,107,583,125"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#prev" title="Step backwards in the containing AudioQuantumList." alt="" coords="444,125,583,144"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#next" title="Step forward in the containing AudioQuantumList." alt="" coords="444,144,583,163"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#__str__" title="Lists the AudioQuantum.kind with start and end times, in seconds, e.g.:" alt="" coords="444,163,583,181"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#__repr__" title="A string representing a constructor, including kind, start time, duration, and (if it exists) confidence, e.g.:" alt="" coords="444,181,583,200"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#local_context" title="Returns a tuple of (index, length) within rhythm siblings, where index is the (zero&#45;indexed) position within its group(), and length is the number of siblings within its group()." alt="" coords="444,200,583,219"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#absolute_context" title="Returns a tuple of (index, length) within the containing AudioQuantumList, where index is the (zero&#45;indexed) position within its container, and length is the number of siblings within the container." alt="" coords="444,219,583,237"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#context_string" title="Returns a one&#45;indexed, human&#45;readable version of context." alt="" coords="444,237,583,256"/>
+<area shape="rect" id="node12" href="echonest.audio.AudioQuantum-class.html#__getstate__" title="Eliminates the circular reference for pickling." alt="" coords="444,256,583,275"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds." alt="" coords="432,6,595,282"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_6.gif" alt='' usemap="#uml_class_diagram_for_echonest_6" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+Subclass of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> for the data-rich segments returned by
+the Analyze API.
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioSegment-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">duration</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">pitches</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">timbre</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">loudness_begin</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">loudness_max</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">time_loudness_max</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">loudness_end</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">kind</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">segment</code><code class="variable-quote">'</code></span>)</span><br />
+      Initializes an <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioSegment.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.audio.AudioQuantum-class.html">AudioQuantum</a></code></b>:
+      <code><a href="echonest.audio.AudioQuantum-class.html#__getstate__">__getstate__</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#__repr__">__repr__</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#__str__">__str__</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#absolute_context">absolute_context</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#children">children</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#context_string">context_string</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#get_end">get_end</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#group">group</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#local_context">local_context</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#next">next</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#parent">parent</a></code>,
+      <code><a href="echonest.audio.AudioQuantum-class.html#prev">prev</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.audio.AudioQuantum-class.html">AudioQuantum</a></code></b>:
+      <code><a href="echonest.audio.AudioQuantum-class.html#end">end</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">duration</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">pitches</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">timbre</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">loudness_begin</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">loudness_max</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">time_loudness_max</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">loudness_end</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">kind</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">segment</code><code class="variable-quote">'</code></span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioSegment.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Initializes an <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>start</code></strong> - offset from start of the track, in seconds</li>
+        <li><strong class="pname"><code>duration</code></strong> - duration of the <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>, in seconds</li>
+        <li><strong class="pname"><code>pitches</code></strong> - a twelve-element list with relative loudnesses of each
+pitch class, from C (pitches[0]) to B (pitches[11])</li>
+        <li><strong class="pname"><code>timbre</code></strong> - a twelve-element list with the loudness of each of a
+principal component of time and/or frequency profile</li>
+        <li><strong class="pname"><code>kind</code></strong> - string identifying the kind of AudioQuantum: &quot;segment&quot;</li>
+        <li><strong class="pname"><code>loudness_begin</code></strong> - loudness in dB at the start of the segment</li>
+        <li><strong class="pname"><code>loudness_max</code></strong> - loudness in dB at the loudest moment of the
+segment</li>
+        <li><strong class="pname"><code>time_loudness_max</code></strong> - time (in sec from start of segment) of
+loudest moment</li>
+        <li><strong class="pname"><code>loudness_end</code></strong> - loudness at end of segment (if it is given)</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 163</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat May  9 21:15:40 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

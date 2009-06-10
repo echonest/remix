@@ -20,7 +20,8 @@ import echonest.web.config as config
 
 
 SUCCESS_STATUS_CODES = ( 0, )
-
+FAILURE_THING_ID_STATUS_CODES = (7, 6)
+FAILURE_API_KEY_STATUS_CODES = (12,)
 
 def apiFunctionPrototype( method, id) : 
     """
@@ -37,6 +38,33 @@ def apiFunctionPrototype( method, id) :
     return parseXMLString(f.read())
 
 
+class EchoNestAPIError(Exception):
+    """
+    Generic API errors. 
+    """
+    def __init__(self, code, message):
+        self.code = code
+        self._message = message
+    def __str__(self):
+        return repr(self)
+    def __repr__(self):
+        return 'Echo Nest API Error %d: %s' % (self.code, self._message)
+
+
+class EchoNestAPIKeyError(EchoNestAPIError):
+    """
+    An Error returned by the API regarding the API Key. 
+    """
+    pass
+
+
+class EchoNestAPIThingIDError(EchoNestAPIError):
+    """
+    An Error returned by the API regarding the ThingID. 
+    """
+    pass
+
+
 
 def parseXMLString( xmlString ) :
     """
@@ -44,16 +72,21 @@ def parseXMLString( xmlString ) :
     returned by the web API.  Overriding this method will change how
     the entire package parses XML strings.
 
-    @param xmlString The plaintext string of XML to parse.
+    :param xmlString: The plaintext string of XML to parse.
 
-    @return An object representation of the XML string, in this case a
-    xml.dom.minidom representation.
+    :return: An object representation of the XML string, in this case a
+        xml.dom.minidom representation.
     """
     doc = xml.dom.minidom.parseString(xmlString)
     status_code = int(doc.getElementsByTagName('code')[0].firstChild.data)
     if status_code not in SUCCESS_STATUS_CODES :
         status_message = doc.getElementsByTagName('message')[0].firstChild.data
-        raise Exception('Echo Nest API Error %d: %s' % (status_code, status_message) )
+        if status_code in FAILURE_API_KEY_STATUS_CODES:
+            raise EchoNestAPIKeyError(status_code, status_message)
+        elif status_code in FAILURE_THING_ID_STATUS_CODES:
+            raise EchoNestAPIThingIDError(status_code, status_message)
+        else:
+            raise EchoNestAPIError(status_code, status_message)
     return doc
 
 

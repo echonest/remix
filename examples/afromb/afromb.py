@@ -30,7 +30,7 @@ is mostly the resynthesized version.
 """
 
 class AfromB(object):
-    def __init__(self,input_filename_a,input_filename_b,output_filename):
+    def __init__(self, input_filename_a, input_filename_b, output_filename):
         self.input_a = audio.LocalAudioFile(input_filename_a)
         self.input_b = audio.LocalAudioFile(input_filename_b)
         self.segs_a = self.input_a.analysis.segments
@@ -78,10 +78,7 @@ class AfromB(object):
             m = numpy.divide(m, mat.shape[1])
         return m
 
-    def addDrums(self):
-        pass
-
-    def run(self,mix=0.5,envelope=False):
+    def run(self, mix=0.5, envelope=False):
         dur = len(self.input_a.data) + 100000 # another two seconds
         # determine shape of new array
         if len(self.input_a.data.shape) > 1:
@@ -95,7 +92,6 @@ class AfromB(object):
                             numChannels=new_channels)
         for a in self.segs_a:
             seg_index = a.absolute_context()[0]
-            
             # find best match from segs in B
             distance_matrix = self.calculate_distances(a)
             distances = [numpy.sqrt(x[0]+x[1]+x[2]) for x in distance_matrix]
@@ -117,52 +113,42 @@ class AfromB(object):
                 index = slice(0, int(reference_data.endindex), 1)
                 segment_data = audio.AudioData(None,segment_data.data[index],
                                         sampleRate=segment_data.sampleRate)
-
             if envelope:
-                # Get the loudnesses for the start of the segment, the loudest part,
-                # and the start of the next segment.
                 # db -> voltage ratio http://www.mogami.com/e/cad/db.html
-                linearMaxVolume = pow(10.0,a.loudness_max/20.0)
-                linearStartVolume = pow(10.0,a.loudness_begin/20.0)
+                linear_max_volume = pow(10.0,a.loudness_max/20.0)
+                linear_start_volume = pow(10.0,a.loudness_begin/20.0)
                 if(seg_index == len(self.segs_a)-1): # if this is the last segment
-                    linearNextStartVolume = 0
+                    linear_next_start_volume = 0
                 else:
-                    linearNextStartVolume = pow(10.0,self.segs_a[seg_index+1].loudness_begin/20.0)
+                    linear_next_start_volume = pow(10.0,self.segs_a[seg_index+1].loudness_begin/20.0)
                     pass
-                whenMaxVolume = a.time_loudness_max
-
-                # Count the # of ticks I wait in doing the volume ramp so I can fix up rounding errors later.
+                when_max_volume = a.time_loudness_max
+                # Count # of ticks I wait doing volume ramp so I can fix up rounding errors later.
                 ss = 0
-
                 # Set volume of this segment. Start at the start volume, ramp up to the max volume , then ramp back down to the next start volume.
-                curVol = float(linearStartVolume)
-
+                cur_vol = float(linear_start_volume)
                 # Do the ramp up to max from start
-                sampsToMaxLoudnessFromHere = int(segment_data.sampleRate * whenMaxVolume)
-                if(sampsToMaxLoudnessFromHere > 0):
-                    howMuchVolumeToIncreasePerSamp = float(linearMaxVolume - linearStartVolume)/float(sampsToMaxLoudnessFromHere)
-                    for samps in xrange(sampsToMaxLoudnessFromHere):
+                samps_to_max_loudness_from_here = int(segment_data.sampleRate * when_max_volume)
+                if(samps_to_max_loudness_from_here > 0):
+                    how_much_volume_to_increase_per_samp = float(linear_max_volume - linear_start_volume)/float(samps_to_max_loudness_from_here)
+                    for samps in xrange(samps_to_max_loudness_from_here):
                         try:
-                            segment_data.data[ss] *= curVol
+                            segment_data.data[ss] *= cur_vol
                         except IndexError:
                             pass
-                        curVol = curVol + howMuchVolumeToIncreasePerSamp
+                        cur_vol = cur_vol + how_much_volume_to_increase_per_samp
                         ss = ss + 1
-
                 # Now ramp down from max to start of next seg
-                sampsToNextSegmentFromHere = int(segment_data.sampleRate * (a.duration-whenMaxVolume))
-                if(sampsToNextSegmentFromHere > 0):
-                    howMuchVolumeToDecreasePerSamp = float(linearMaxVolume - linearNextStartVolume)/float(sampsToNextSegmentFromHere)
-                    for samps in xrange(sampsToNextSegmentFromHere):
-                        curVol = curVol - howMuchVolumeToDecreasePerSamp
-                        #midi.continuous_controller(channel,7,int(curVol))
+                samps_to_next_segment_from_here = int(segment_data.sampleRate * (a.duration-when_max_volume))
+                if(samps_to_next_segment_from_here > 0):
+                    how_much_volume_to_decrease_per_samp = float(linear_max_volume - linear_next_start_volume)/float(samps_to_next_segment_from_here)
+                    for samps in xrange(samps_to_next_segment_from_here):
+                        cur_vol = cur_vol - how_much_volume_to_decrease_per_samp
                         try:
-                            segment_data.data[ss] *= curVol
+                            segment_data.data[ss] *= cur_vol
                         except IndexError:
                             pass
                         ss = ss + 1
-            
-            
             mixed_data = audio.mix(segment_data,reference_data,mix=mix)
             out.append(mixed_data)
         out.encode(self.output_filename)
@@ -180,7 +166,8 @@ def main():
     except:
         print usage
         sys.exit(-1)
-    AfromB(input_filename_a,input_filename_b,output_filename).run(mix=mix,envelope=env)
+    AfromB(input_filename_a, input_filename_b, output_filename).run(mix=mix,
+                                                                envelope=env)
 
 if __name__=='__main__':
     tic = time.time()
