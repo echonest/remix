@@ -43,13 +43,20 @@ def main(input_filename, output_filename, tatums, beats, bars):
 	num_channels = audiofile.numChannels
 	sample_rate = audiofile.sampleRate
 	
-	out_shape = (len(audiofile)+100000,num_channels)
+	# mono files have a shape of (len,) 
+	out_shape = list(audiofile.data.shape)
+	out_shape[0] = len(audiofile)+100000
 	out = audio.AudioData(shape=out_shape, sampleRate=sample_rate,numChannels=num_channels)
-
-	blip_files = []
+	
+	# same hack to change shape: we want blip_files[0] as a short, silent blip
+	null_shape = list(audiofile.data.shape)
+	null_shape[0] = 2
+	null_audio = audio.AudioData(shape=null_shape)
+	null_audio.endindex = len(null_audio)
+	blip_files = [null_audio]
 	
 	for name in blip_filenames:
-		blip_files.append(audio.LocalAudioFile(name))
+		blip_files.append(audio.AudioData(name))
 
 	#tatum_blip_file = audio.LocalAudioFile(tatum_blip)
 	
@@ -88,14 +95,10 @@ def main(input_filename, output_filename, tatums, beats, bars):
 					break
 					
 		
-		if sound_to_use > 0:
-			
-			print "mixing blip soundfile: ", blip_filenames[sound_to_use - 1]
-			out_data = audio.mix(audiofile[tatum], blip_files[sound_to_use - 1], 0.5)
-			out.append(out_data)
-			del(out_data)
-		else:
-			out.append(audiofile[tatum])
+		print "mixing blip soundfile: ", blip_filenames[sound_to_use]
+		out_data = audio.mix(audiofile[tatum], blip_files[sound_to_use], 0.5)
+		out.append(out_data)
+		del(out_data)
 		
 		
 	print "blips added, going to encode", output_filename, "..."

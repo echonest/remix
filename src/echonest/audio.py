@@ -423,14 +423,14 @@ def mix(dataA,dataB,mix=0.5):
     i.e., mix=0.9 yields greater presence of dataA in the final mix.
     """
     if dataA.endindex > dataB.endindex:
-        dataA.data[:dataB.endindex] = (dataB.data[:] * (1-float(mix))) + (dataA.data[:dataB.endindex] * float(mix))
-        return dataA
-    elif dataB.endindex > dataA.endindex:
-        dataB.data[:dataA.endindex] = (dataA.data[:] * (float(mix))) + (dataB.data[:dataA.endindex] * (1-float(mix)))
-        return dataB
-    elif dataA.endindex == dataB.endindex:
-        dataA.data[:] = (dataA.data[:] * float(mix)) + (dataB.data[:] * (1-float(mix)))
-        return dataA
+        newdata = AudioData(ndarray=dataA.data)
+        newdata.data *= float(mix)
+        newdata.data[:dataB.endindex] += dataB.data[:] * (1-float(mix))
+    else:
+        newdata = AudioData(ndarray=dataB.data)
+        newdata.data *= 1-float(mix)
+        newdata.data[:dataA.endindex] += dataA.data[:] * float(mix)
+    return newdata
     
 
 class AudioFile(AudioData) :
