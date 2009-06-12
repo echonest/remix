@@ -29,12 +29,13 @@ extra_compile_args = []
 # Is this is posix platform, or is it windows?
 if hasattr(os, 'uname'):
     sources += sources_gcc
-    extra_compile_args=['-fcheck-new', '-O3', '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/core/include', 
-                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/numarray',
-			'-I', '/usr/lib/python2.5/site-packages/numpy/numarray/numpy'] # TODO: add linux locations
+    extra_compile_args=['-fcheck-new', '-O3', 
+                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/core/include',    # mac
+                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/numarray',        # mac
+			            '-I', '/usr/lib/python2.5/site-packages/numpy/numarray/numpy']                                            # lin
 else:
     sources += sources_win
-    extra_compile_args=['-IC:\Python26\Lib\site-packages\\numpy\\numarray','-IC:\Python26\Lib\site-packages\\numpy\core\include']
+    extra_compile_args=['-IC:\Python26\Lib\site-packages\\numpy\\numarray','-IC:\Python26\Lib\site-packages\\numpy\core\include'] # win
     
 libSoundTouch_sources = [os.path.join('libsoundtouch', i) for i in sources]
 
