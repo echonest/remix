@@ -30,7 +30,8 @@ extra_compile_args = []
 if hasattr(os, 'uname'):
     sources += sources_gcc
     extra_compile_args=['-fcheck-new', '-O3', '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/core/include', 
-                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/numarray'] # TODO: add linux locations
+                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/numarray',
+			'-I', '/usr/lib/python2.5/site-packages/numpy/numarray/numpy'] # TODO: add linux locations
 else:
     sources += sources_win
     extra_compile_args=['-IC:\Python26\Lib\site-packages\\numpy\\numarray','-IC:\Python26\Lib\site-packages\\numpy\core\include']
