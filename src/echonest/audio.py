@@ -208,10 +208,10 @@ class AudioData(object):
             numFrames = w.getnframes()
             raw = w.readframes(numFrames)
             sampleSize = numFrames * numChannels
-            data = numpy.array(map(int,struct.unpack("%sh" % sampleSize, raw)), numpy.int16)
+            data = numpy.frombuffer(raw, dtype="<h", count=sampleSize)
             ndarray = numpy.array(data, dtype=numpy.int16)
-            if numChannels == 2:
-                ndarray = numpy.reshape(ndarray, (numFrames, 2))    
+            if numChannels > 1:
+                ndarray.resize((numFrames, numChannels))    
         self.filename = filename
         self.sampleRate = sampleRate
         self.numChannels = numChannels
