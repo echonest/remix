@@ -279,8 +279,18 @@ class AudioData(object):
     
     def append(self, as2):
         "Appends the input to the end of this `AudioData`."
-        self.data[self.endindex:self.endindex+len(as2)] = as2.data[0:]
-        self.endindex += len(as2)
+        # To do: check dimensions of inputs
+        if type(as2) is AudioData:
+            data = as2.data
+        elif type(as2) is numpy.ndarray:
+            data = as2
+        else:
+            raise TypeError('Unsupported type for append(): %s' % type(as2))
+        if self.data is None:
+            self.data = data
+        else:
+            self.data[self.endindex:self.endindex + len(data)] = data[:]
+        self.endindex += len(data)
     
     def __len__(self):
         if self.data is not None:
@@ -413,6 +423,25 @@ def getpieces(audioData, segs):
         newAD.append(audioData[s])
     
     return newAD
+
+def assemble(audioDataList, numChannels=1, sampleRate=44100):
+    """
+    Collects audio samples for output.
+    Rerturns a new `AudioData` object assembled
+    by concatenating all the elements of audioDataList.
+    
+    :param audioDatas: a list of `AudioData` objects
+    """
+    if numChannels == 1:
+        new_shape = (sum([len(x.data) for x in audioDataList]),)
+    else:
+        new_shape = (sum([len(x.data) for x in audioDataList]),numChannels)        
+    new_data = AudioData(shape=new_shape, numChannels=numChannels, sampleRate=sampleRate)
+    for ad in audioDataList:
+        if not isinstance(ad, AudioData):
+            raise TypeError('Encountered something other than an AudioData')
+        new_data.append(ad)
+    return new_data
 
 def mix(dataA,dataB,mix=0.5):
     """
@@ -1065,3 +1094,4 @@ class FileTypeError(Exception):
         
     def __str__(self):
         return self.message+': '+self.filename
+
