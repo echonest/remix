@@ -31,7 +31,7 @@ I. MAC OS X INSTALLATION INSTRUCTIONS:
 
  * In Terminal, navigate to the folder where you downloaded and unzipped the Echo Nest Remix API distribution. Execute: 
 
-> python sudo setup.py install
+> sudo python setup.py install
 
  * Then navigate to the folder examples/one/ and run the example: 
 
