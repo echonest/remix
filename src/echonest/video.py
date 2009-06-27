@@ -198,11 +198,12 @@ class SynchronizedAV():
 
 def loadav(videofile, verbose=True):
     audio_file = tempfile.NamedTemporaryFile(suffix='.wav')
-    cmd = "ffmpeg -y -i " + videofile + " " + audio_file.name
+    cmd = "ffmpeg -y -i \"" + videofile + "\" " + audio_file.name
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
+    ffmpeg_error_check(res[1])
     a = audio.LocalAudioFile(audio_file.name)
     v = sequencefrommov(videofile)
     return SynchronizedAV(audio=a,video=v)
@@ -295,6 +296,7 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-", verbose=True):
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
+    ffmpeg_error_check(res[1])
     settings = settingsfromffmpeg(res[1])
     seq =  sequencefromdir(direc, format, settings)
     #parse ffmpeg output for to find framerate and image size
@@ -314,7 +316,8 @@ def sequencetomovie(outfile, seq, audio=None, verbose=True):
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    out.communicate()
+    res = out.communicate()
+    ffmpeg_error_check(res[1])
 
 
 def convertmov(infile, outfile=None, settings=None, verbose=True):
@@ -335,6 +338,7 @@ def convertmov(infile, outfile=None, settings=None, verbose=True):
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
+    ffmpeg_error_check(res[1])
     return outfile
 
 
@@ -363,3 +367,10 @@ def settingsfromffmpeg(parsestring):
                     #bitrate found. assume we want the same bitrate
                     settings.bitrate = int(seg[:seg.index(" ")])
     return settings
+
+def ffmpeg_error_check(parsestring):
+    parse = parsestring.split('\n')
+    for num, line in enumerate(parse):
+        if "Unknown format" in line or "error occur" in line:
+            raise RuntimeError("ffmpeg conversion error:\n\t" + "\n\t".join(parse[num:]))
+
