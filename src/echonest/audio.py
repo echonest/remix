@@ -201,6 +201,7 @@ class AudioData(object):
                 foo, fileToRead = tempfile.mkstemp(".wav")
                 ffmpeg(filename, fileToRead, overwrite=True, numChannels=numChannels, sampleRate=sampleRate)
                 parsestring = ffmpeg(fileToRead, overwrite=False)
+                ffmpeg_error_check(parsestring[1])
                 sampleRate, numChannels = settings_from_ffmpeg(parsestring[1])
             else:
                 fileToRead = filename
@@ -346,7 +347,8 @@ class AudioData(object):
             bitRate = config.MP3_BITRATE
         except NameError:
             bitRate = 128
-        ffmpeg(tempfilename, filename, bitRate=bitRate)
+        parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate)
+        ffmpeg_error_check(parsestring[1])
         return filename
 
 def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
@@ -391,6 +393,12 @@ def settings_from_ffmpeg(parsestring):
                     #print "mono"
                     chans = 1
     return freq, chans
+
+def ffmpeg_error_check(parsestring):
+    parse = parsestring.split('\n')
+    for num, line in enumerate(parse):
+        if "Unknown format" in line or "error occur" in line:
+            raise RuntimeError("ffmpeg conversion error:\n\t" + "\n\t".join(parse[num:]))
 
 def getpieces(audioData, segs):
     """
