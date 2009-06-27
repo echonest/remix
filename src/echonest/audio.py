@@ -347,8 +347,9 @@ class AudioData(object):
         except NameError:
             bitRate = 128
         ffmpeg(tempfilename, filename, bitRate=bitRate)
+        return filename
 
-def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None):
+def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
     """
     Executes ffmpeg through the shell to convert or read media files.
     """
@@ -364,6 +365,8 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None,
         command += " -ar " + str(sampleRate)
     if outfile is not None:
         command += " " + outfile
+    if verbose:
+        print >> sys.stderr, command
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return p.communicate()
 
