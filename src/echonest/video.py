@@ -18,6 +18,7 @@ import sys
 import tempfile
 
 from echonest import audio
+from echonest.web import config
 
 
 class ImageSequence():
@@ -170,14 +171,14 @@ class SynchronizedAV():
         if isinstance(index, slice):
             return self.getslice(index)
         else:
-            print "WARNING: frame-based sampling not supported for synchronized AV"
+            print >> sys.stderr, "WARNING: frame-based sampling not supported for synchronized AV"
             return None
 
     def getslice(self, index):
         return SynchronizedAV(audio=self.audio[index], video=self.video[index])
 
     def save(self, filename):
-        audioout = self.audio.encode(filename,mp3=False)
+        audioout = self.audio.encode(filename + '.wav', mp3=False)
         self.video.render()
         res = sequencetomovie(filename, self.video, audioout)
         return res
@@ -195,9 +196,11 @@ class SynchronizedAV():
         print sequencetomovie(videofile, self.video, audioout)
 
 
-def loadav(videofile):
+def loadav(videofile, verbose=True):
     audio_file = tempfile.NamedTemporaryFile(suffix='.wav')
     cmd = "ffmpeg -y -i " + videofile + " " + audio_file.name
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     a = audio.LocalAudioFile(audio_file.name)
@@ -219,20 +222,26 @@ def loadavfrombundle(dir):
     return SynchronizedAV(audio=myaudio, video=video)
 
 
-def loadavfromyoutube(url):
+def loadavfromyoutube(url, verbose=True):
     """returns an editable sequence from a youtube video"""
     #todo: cache youtube videos?
     yt_file = tempfile.NamedTemporaryFile()
+    # http://bitbucket.org/rg3/youtube-dl
     cmd = "youtube-dl -o " + yt_file.name + " " + url
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     return loadav(yt_file.name)
 
 
-def youtubedl(url):
+def youtubedl(url, verbose=True):
     """downloads a video from youtube and returns the file object"""
     yt_file = tempfile.NamedTemporaryFile()
+    # http://bitbucket.org/rg3/youtube-dl
     cmd = "youtube-dl -o " + yt_file.name + " " + url
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     return yt_file
@@ -246,11 +255,14 @@ def getpieces(video, segs):
     return SynchronizedAV(audio=a, video=newv)
 
 
-def sequencefromyoutube(url, settings=None, dir=None, pre="frame-"):
+def sequencefromyoutube(url, settings=None, dir=None, pre="frame-", verbose=True):
     """returns an editable sequence from a youtube video"""
     #todo: cache youtube videos?
     yt_file = tempfile.NamedTemporaryFile()
+    # http://bitbucket.org/rg3/youtube-dl
     cmd = "youtube-dl -o " + yt_file.name + " " + url
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     out.communicate()
     return sequencefrommov(yt_file.name, settings, dir, pre)
@@ -269,7 +281,7 @@ def sequencefromdir(dir, ext=None, settings=None):
     return EditableFrames(listing, settings)
 
 
-def sequencefrommov(mov, settings=None, direc=None, pre="frame-"):
+def sequencefrommov(mov, settings=None, direc=None, pre="frame-", verbose=True):
     """full-quality video import from stills. will save frames to
     tempspace if no directory is given"""
     if direc is None:
@@ -279,6 +291,8 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-"):
     if settings is not None:
         format = settings.imageformat()
     cmd = "ffmpeg -i " + mov + " -an -sameq " + os.path.join(direc, pre + "%06d." + format)
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     settings = settingsfromffmpeg(res[1])
@@ -288,19 +302,22 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-"):
     return seq
 
 
-def sequencetomovie(outfile, seq, audio=None):
+def sequencetomovie(outfile, seq, audio=None, verbose=True):
     "renders sequence to a movie file, perhaps with an audio track"
     direc = tempfile.mkdtemp()
     seq.render(direc, "image-", False)
     cmd = "ffmpeg -y " + str(seq.settings) + " -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
     if audio:
         cmd += " -i " + audio
+        cmd += " -ab %dk " % getattr(config, 'MP3_BITRATE', '64')
     cmd += " -sameq " + outfile
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     out.communicate()
 
 
-def convertmov(infile, outfile=None, settings=None):
+def convertmov(infile, outfile=None, settings=None, verbose=True):
     """
     Converts a movie file to a new movie file with different settings.
     """
@@ -314,6 +331,8 @@ def convertmov(infile, outfile=None, settings=None):
     if outfile is None:
         outfile = tempfile.NamedTemporaryFile(suffix='.flv')
     cmd = "ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile.name
+    if verbose:
+        print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     return outfile

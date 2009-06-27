@@ -22,7 +22,10 @@ Example:
 
 
 def main(input_filename, output_filename):
-    av = video.loadav(input_filename)
+    if input_filename.startswith("http://"):
+        av = video.loadavfromyoutube(input_filename)
+    else:
+        av = video.loadav(input_filename)
     collect = audio.AudioQuantumList()
     for bar in av.audio.analysis.bars:
         collect.append(bar.children()[0])

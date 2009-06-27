@@ -22,7 +22,10 @@ Example:
 
 
 def main(toReverse, inputFilename, outputFilename):
-    av = video.loadav(inputFilename)
+    if inputFilename.startswith("http://"):
+        av = video.loadavfromyoutube(inputFilename)
+    else:
+        av = video.loadav(inputFilename)
     if toReverse == 'tatums':
         chunks = av.audio.analysis.tatums
     elif toReverse == 'beats':
