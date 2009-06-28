@@ -475,6 +475,148 @@ class AudioData(AudioRenderable):
         return self
     
 
+class AudioData32(AudioData):
+    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=True, verbose=True):
+        """
+        Special form of AudioData to allow for headroom when collecting samples.
+        """
+        self.verbose = verbose
+        if (filename is not None) and (ndarray is None) :
+            if sampleRate is None or numChannels is None:
+                # force sampleRate and numChannels to 44100 hz, 2
+                sampleRate, numChannels = 44100, 2
+                parsestring = ffmpeg(filename, overwrite=False, verbose=self.verbose)
+                ffmpeg_error_check(parsestring[1])
+                sampleRate, numChannels = settings_from_ffmpeg(parsestring[1])
+        self.defer = defer
+        self.filename = filename
+        self.sampleRate = sampleRate
+        self.numChannels = numChannels
+        self.convertedfile = None
+        self.normalized = None
+        if shape is None and isinstance(ndarray, numpy.ndarray) and not self.defer:
+            self.data = numpy.zeros(ndarray.shape, dtype=numpy.int32)
+        elif shape is not None and not self.defer:
+            self.data = numpy.zeros(shape, dtype=numpy.int32)
+        elif not self.defer and self.filename:
+            self.load()
+        else:
+            self.data = None
+        self.endindex = 0
+        if ndarray is not None and self.data is not None:
+            self.endindex = len(ndarray)
+            self.data[0:self.endindex] = ndarray
+    
+    def load(self):
+        if isinstance(self.data, numpy.ndarray):
+            return
+        if self.filename.lower().endswith(".wav") and (self.sampleRate, self.numChannels) == (44100, 2):
+            file_to_read = self.filename
+        elif self.convertedfile:
+            file_to_read = self.convertedfile
+        else:
+            foo, self.convertedfile = tempfile.mkstemp(".wav")
+            result = ffmpeg(self.filename, self.convertedfile, overwrite=True, 
+                numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
+            ffmpeg_error_check(result[1])
+            file_to_read = self.convertedfile
+        
+        w = wave.open(file_to_read, 'r')
+        numFrames = w.getnframes()
+        raw = w.readframes(numFrames)
+        sampleSize = numFrames * self.numChannels
+        data = numpy.frombuffer(raw, dtype="<h", count=sampleSize)
+        ndarray = numpy.array(data, dtype=numpy.int16)
+        if self.numChannels > 1:
+            ndarray.resize((numFrames, self.numChannels))
+        self.data = numpy.zeros(ndarray.shape, dtype=numpy.int32)
+        self.endindex = 0
+        if ndarray is not None:
+            self.endindex = len(ndarray)
+            self.data[0:self.endindex] = ndarray
+    
+    def encode(self, filename=None, mp3=None):
+        """
+        Outputs an MP3 or WAVE file to `filename`.
+        Format is determined by `mp3` parameter.
+        """
+        self.normalize()
+        if not mp3 and filename.lower().endswith('.wav'):
+            mp3 = False
+        else:
+            mp3 = True
+        if mp3:
+            foo, tempfilename = tempfile.mkstemp(".wav")        
+        else:
+            tempfilename = filename
+        fid = open(tempfilename, 'wb')
+        # Based on Scipy svn
+        # http://projects.scipy.org/pipermail/scipy-svn/2007-August/001189.html
+        fid.write('RIFF')
+        fid.write(struct.pack('i',0)) # write a 0 for length now, we'll go back and add it later
+        fid.write('WAVE')
+        # fmt chunk
+        fid.write('fmt ')
+        if self.normalized.ndim == 1:
+            noc = 1
+        else:
+            noc = self.normalized.shape[1]
+        bits = self.normalized.dtype.itemsize * 8
+        sbytes = self.sampleRate*(bits / 8)*noc
+        ba = noc * (bits / 8)
+        fid.write(struct.pack('ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
+        # data chunk
+        fid.write('data')
+        fid.write(struct.pack('i', self.normalized.nbytes))
+        self.normalized.tofile(fid)
+        # Determine file size and place it in correct
+        # position at start of the file. 
+        size = fid.tell()
+        fid.seek(4)
+        fid.write(struct.pack('i', size-8))
+        fid.close()
+        self.normalized = None
+        if not mp3:
+            return tempfilename
+        # now convert it to mp3
+        if not filename.lower().endswith('.mp3'):
+            filename = filename + '.mp3'
+        try:
+            bitRate = config.MP3_BITRATE
+        except NameError:
+            bitRate = 128
+        parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
+        ffmpeg_error_check(parsestring[1])
+        if tempfilename != filename:
+            if self.verbose:
+                print >> sys.stderr, "Deleting: %s" % tempfilename
+            os.remove(tempfilename)
+        return filename
+    
+    def normalize(self):
+        # Add a little extra slop for MP3 encoding. Still not convinced it's necessary.
+        if self.numChannels == 1:
+            self.normalized = numpy.zeros((self.data.shape[0],), dtype=numpy.int16)
+        else:
+            self.normalized = numpy.zeros((self.data.shape[0], self.data.shape[1]), dtype=numpy.int16)
+        
+        factor = 32767.0 / numpy.max(numpy.absolute(self.data.flatten()))
+        # If the max was 32768, don't bother scaling:
+        if factor < 1.000031:
+            self.normalized[:len(self.data)] += self.data * factor
+        else:
+            self.normalized[:len(self.data)] += self.data
+    
+    def pad_with_zeros(self, num_samples):
+        if num_samples > 0:
+            if self.numChannels == 1:
+                extra_shape = (num_samples,)
+            else:
+                extra_shape = (num_samples, self.numChannels)
+            self.data = numpy.append(self.data, 
+                                     numpy.zeros(extra_shape, dtype=numpy.int32), axis=0)
+    
+
 def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
     """
     Executes ffmpeg through the shell to convert or read media files.
@@ -536,6 +678,8 @@ def getpieces(audioData, segs):
         as slices or indices for an `AudioData`
     """
     #calculate length of new segment
+    audioData.data = None
+    audioData.load()
     dur = 0
     for s in segs:
         dur += int(s.duration*audioData.sampleRate)
@@ -551,12 +695,12 @@ def getpieces(audioData, segs):
         newchans = 1
     
     #make accumulator segment
-    newAD = AudioData(shape=newshape,sampleRate=audioData.sampleRate, numChannels=newchans)
+    newAD = AudioData(shape=newshape,sampleRate=audioData.sampleRate, numChannels=newchans, defer=False)
     
     #concatenate segs to the new segment
     for s in segs:
         newAD.append(audioData[s])
-    
+    # audioData.unload()
     return newAD
 
 def assemble(audioDataList, numChannels=1, sampleRate=44100):
@@ -571,7 +715,7 @@ def assemble(audioDataList, numChannels=1, sampleRate=44100):
         new_shape = (sum([len(x.data) for x in audioDataList]),)
     else:
         new_shape = (sum([len(x.data) for x in audioDataList]),numChannels)        
-    new_data = AudioData(shape=new_shape, numChannels=numChannels, sampleRate=sampleRate)
+    new_data = AudioData(shape=new_shape, numChannels=numChannels, sampleRate=sampleRate, defer=False)
     for ad in audioDataList:
         if not isinstance(ad, AudioData):
             raise TypeError('Encountered something other than an AudioData')
@@ -587,11 +731,11 @@ def mix(dataA,dataB,mix=0.5):
     i.e., mix=0.9 yields greater presence of dataA in the final mix.
     """
     if dataA.endindex > dataB.endindex:
-        newdata = AudioData(ndarray=dataA.data, sampleRate=dataA.sampleRate, numChannels=dataA.numChannels)
+        newdata = AudioData(ndarray=dataA.data, sampleRate=dataA.sampleRate, numChannels=dataA.numChannels, defer=False)
         newdata.data *= float(mix)
         newdata.data[:dataB.endindex] += dataB.data[:] * (1 - float(mix))
     else:
-        newdata = AudioData(ndarray=dataB.data, sampleRate=dataB.sampleRate, numChannels=dataB.numChannels)
+        newdata = AudioData(ndarray=dataB.data, sampleRate=dataB.sampleRate, numChannels=dataB.numChannels, defer=False)
         newdata.data *= 1 - float(mix)
         newdata.data[:dataA.endindex] += dataA.data[:] * float(mix)
     return newdata

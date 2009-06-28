@@ -173,16 +173,16 @@ class SynchronizedAV():
         else:
             print >> sys.stderr, "WARNING: frame-based sampling not supported for synchronized AV"
             return None
-
+    
     def getslice(self, index):
         return SynchronizedAV(audio=self.audio[index], video=self.video[index])
-
+    
     def save(self, filename):
         audioout = self.audio.encode(filename + '.wav', mp3=False)
         self.video.render()
         res = sequencetomovie(filename, self.video, audioout)
         return res
-
+    
     def saveAsBundle(self, outdir):
         videodir = os.path.join(outdir, "video")
         videofile = os.path.join(outdir, "source.flv")
@@ -197,14 +197,14 @@ class SynchronizedAV():
 
 
 def loadav(videofile, verbose=True):
-    audio_file = tempfile.NamedTemporaryFile(suffix='.wav')
-    cmd = "ffmpeg -y -i \"" + videofile + "\" " + audio_file.name
+    foo, audio_file = tempfile.mkstemp(".wav")        
+    cmd = "ffmpeg -y -i \"" + videofile + "\" " + audio_file
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     ffmpeg_error_check(res[1])
-    a = audio.LocalAudioFile(audio_file.name)
+    a = audio.LocalAudioFile(audio_file)
     v = sequencefrommov(videofile)
     return SynchronizedAV(audio=a,video=v)
 
@@ -226,21 +226,21 @@ def loadavfrombundle(dir):
 def loadavfromyoutube(url, verbose=True):
     """returns an editable sequence from a youtube video"""
     #todo: cache youtube videos?
-    yt_file = tempfile.NamedTemporaryFile()
+    foo, yt_file = tempfile.mkstemp()        
     # http://bitbucket.org/rg3/youtube-dl
-    cmd = "youtube-dl -o " + yt_file.name + " " + url
+    cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
-    return loadav(yt_file.name)
+    return loadav(yt_file)
 
 
 def youtubedl(url, verbose=True):
     """downloads a video from youtube and returns the file object"""
-    yt_file = tempfile.NamedTemporaryFile()
+    foo, yt_file = tempfile.mkstemp()        
     # http://bitbucket.org/rg3/youtube-dl
-    cmd = "youtube-dl -o " + yt_file.name + " " + url
+    cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -259,14 +259,14 @@ def getpieces(video, segs):
 def sequencefromyoutube(url, settings=None, dir=None, pre="frame-", verbose=True):
     """returns an editable sequence from a youtube video"""
     #todo: cache youtube videos?
-    yt_file = tempfile.NamedTemporaryFile()
+    foo, yt_file = tempfile.mkstemp()
     # http://bitbucket.org/rg3/youtube-dl
-    cmd = "youtube-dl -o " + yt_file.name + " " + url
+    cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     out.communicate()
-    return sequencefrommov(yt_file.name, settings, dir, pre)
+    return sequencefrommov(yt_file, settings, dir, pre)
 
 
 def sequencefromdir(dir, ext=None, settings=None):
@@ -332,8 +332,8 @@ def convertmov(infile, outfile=None, settings=None, verbose=True):
     if not isinstance(settings, VideoSettings):
         raise TypeError("settings arg must be a VideoSettings object")
     if outfile is None:
-        outfile = tempfile.NamedTemporaryFile(suffix='.flv')
-    cmd = "ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile.name
+        foo, outfile = tempfile.mkstemp(".flv")
+    cmd = "ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
