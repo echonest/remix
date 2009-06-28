@@ -38,6 +38,7 @@ import echonest.selection as selection
 import echonest.web.analyze as analyze;
 import echonest.web.util as util
 import echonest.web.config as config
+from echonest.support import stupidxml
 
 
 class AudioAnalysis(object) :
@@ -447,10 +448,19 @@ class AudioData(AudioRenderable):
             bitRate = 128
         parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
         ffmpeg_error_check(parsestring[1])
+        if tempfilename != filename:
+            if self.verbose:
+                print >> sys.stderr, "Deleting: %s" % tempfilename
+            os.remove(tempfilename)
         return filename
     
     def unload(self):
         self.data = None
+        if self.convertedfile:
+            if self.verbose:
+                print >> sys.stderr, "Deleting: %s" % self.convertedfile
+            os.remove(self.convertedfile)
+            self.convertedfile = None
     
     def render(self):
         return self
