@@ -282,6 +282,7 @@ class AudioData(AudioRenderable):
         elif shape is not None and not self.defer:
             self.data = numpy.zeros(shape, dtype=numpy.int16)
         elif not self.defer and self.filename:
+            self.data = None
             self.load()
         else:
             self.data = None
