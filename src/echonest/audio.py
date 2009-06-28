@@ -120,7 +120,7 @@ class AudioAnalysis(object) :
         else:
             # Argument is a md5 or track ID.
             self.id = audio
-            
+        self.source = None
         # Initialize cached variables to None.
         for cachedVar in AudioAnalysis.CACHED_VARIABLES : 
             self.__setattr__(cachedVar, None)
@@ -151,6 +151,14 @@ class AudioAnalysis(object) :
                     object.__getattribute__(self, name).attach(self)
         return object.__getattribute__(self, name)
     
+    def __getstate__(self):
+        """
+        Eliminates the circular reference for pickling.
+        """
+        dictclone = self.__dict__.copy()
+        del dictclone['source']
+        return dictclone
+    
     def __setstate__(self, state):
         """
         Recreates circular references after unpickling.
@@ -159,10 +167,71 @@ class AudioAnalysis(object) :
         for cached_var in AudioAnalysis.CACHED_VARIABLES:
             if type(object.__getattribute__(self, cached_var)) == AudioQuantumList:
                 object.__getattribute__(self, cached_var).attach(self)
+
+class AudioRenderable(object):
+    """
+    An object that gives an `AudioData` in response to a call to its `render`\()'
+    method.
+    Intended to be an abstract class that helps enforce the `RenderableAudioObject` 
+    protocol. Picked up a couple of convenience methods common to many descendants.
     
+    Every `RenderableAudioObject` must provide three things:
+    
+    render()
+        A method returning the `AudioData` for the object. The rhythmic duration (point
+        at which any following audio is appended) is signified by the `endindex` accessor,
+        measured in samples.
+    source
+        An accessor pointing to the `AudioData` that contains the original sample data of
+        (a superset of) this audio object.
+    duration
+        An accessor returning the rhythmic duration (in seconds) of the audio object.
+    """
+    def resolve_source(self, alt):
+        """
+        Given an alternative, fallback `alt` source, return either `self`'s
+        source or the alternative. Throw an informative error if no source
+        is found.
+        
+        Utility code that ended up being replicated in several places, so
+        it ended up here. Not necessary for use in the RenderableAudioObject
+        protocol.
+        """
+        if hasattr(self, 'source'):
+            source = self.source
+        else:
+            if isinstance(alt, AudioData):
+                source = alt
+            else:
+                print >> sys.stderr, self.__repr__()
+                raise util.EchoNestRemixError("%s has no implicit or explicit source during rendering." %
+                                                (self.__class__.__name__, ))
+        return source
+    
+    @staticmethod
+    def init_audio_data(source, num_samples):
+        """
+        Convenience function for rendering: return a pre-allocated, zeroed 
+        `AudioData`.
+        """
+        if source.numChannels > 1:
+            newchans = source.numChannels
+            newshape = (num_samples, newchans)
+        else:
+            newchans = 1
+            newshape = (num_samples,)
+        return AudioData(shape=newshape, sampleRate=source.sampleRate, numChannels=newchans, defer=False)
+        
+    
+    def encode(self, filename):
+        """
+        Shortcut function that takes care of the need to obtain an `AudioData`
+        object first, through `render`.
+        """
+        self.render().encode(filename)
 
 
-class AudioData(object):
+class AudioData(AudioRenderable):
     """
     Handles audio data transparently. A smart audio container
     with accessors that include:
@@ -176,7 +245,7 @@ class AudioData(object):
         
     .. _numpy.array: http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
     """
-    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None):
+    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=True, verbose=True):
         """
         Given an input `ndarray`, import the sample values and shape 
         (if none is specified) of the input `numpy.array`.
@@ -194,46 +263,69 @@ class AudioData(object):
         
         .. _numpy.array: http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
         """
+        self.verbose = verbose
         if (filename is not None) and (ndarray is None) :
             if sampleRate is None or numChannels is None:
                 # force sampleRate and numChannels to 44100 hz, 2
                 sampleRate, numChannels = 44100, 2
-                foo, fileToRead = tempfile.mkstemp(".wav")
-                ffmpeg(filename, fileToRead, overwrite=True, numChannels=numChannels, sampleRate=sampleRate)
-                parsestring = ffmpeg(fileToRead, overwrite=False)
+                parsestring = ffmpeg(filename, overwrite=False, verbose=self.verbose)
                 ffmpeg_error_check(parsestring[1])
                 sampleRate, numChannels = settings_from_ffmpeg(parsestring[1])
-            else:
-                fileToRead = filename
-            w = wave.open(fileToRead, 'r')
-            numFrames = w.getnframes()
-            raw = w.readframes(numFrames)
-            sampleSize = numFrames * numChannels
-            data = numpy.frombuffer(raw, dtype="<h", count=sampleSize)
-            ndarray = numpy.array(data, dtype=numpy.int16)
-            if numChannels > 1:
-                ndarray.resize((numFrames, numChannels))    
+        self.defer = defer
         self.filename = filename
         self.sampleRate = sampleRate
         self.numChannels = numChannels
-        
-        if shape is None and isinstance(ndarray, numpy.ndarray):
+        self.convertedfile = None
+        if shape is None and isinstance(ndarray, numpy.ndarray) and not self.defer:
             self.data = numpy.zeros(ndarray.shape, dtype=numpy.int16)
-        elif shape is not None:
+        elif shape is not None and not self.defer:
             self.data = numpy.zeros(shape, dtype=numpy.int16)
+        elif not self.defer and self.filename:
+            self.load()
         else:
             self.data = None
         self.endindex = 0
-        if ndarray is not None:
+        if ndarray is not None and self.data is not None:
             self.endindex = len(ndarray)
             self.data[0:self.endindex] = ndarray
     
+    def load(self):
+        if isinstance(self.data, numpy.ndarray):
+            return
+        if self.filename.lower().endswith(".wav") and (self.sampleRate, self.numChannels) == (44100, 2):
+            file_to_read = self.filename
+        elif self.convertedfile:
+            file_to_read = self.convertedfile
+        else:
+            foo, self.convertedfile = tempfile.mkstemp(".wav")
+            result = ffmpeg(self.filename, self.convertedfile, overwrite=True, 
+                numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
+            ffmpeg_error_check(result[1])
+            file_to_read = self.convertedfile
+        
+        w = wave.open(file_to_read, 'r')
+        numFrames = w.getnframes()
+        raw = w.readframes(numFrames)
+        sampleSize = numFrames * self.numChannels
+        data = numpy.frombuffer(raw, dtype="<h", count=sampleSize)
+        ndarray = numpy.array(data, dtype=numpy.int16)
+        if self.numChannels > 1:
+            ndarray.resize((numFrames, self.numChannels))
+        self.data = numpy.zeros(ndarray.shape, dtype=numpy.int16)
+        self.endindex = 0
+        if ndarray is not None:
+            self.endindex = len(ndarray)
+            self.data = ndarray
+        
+        
     def __getitem__(self, index):
         """
         Fetches a frame or slice. Returns an individual frame (if the index 
         is a time offset float or an integer sample number) or a slice if 
         the index is an `AudioQuantum` (or quacks like one).
         """
+        if not isinstance(self.data, numpy.ndarray) and self.defer:
+            self.load()
         if isinstance(index, float):
             index = int(index*self.sampleRate)
         elif hasattr(index, "start") and hasattr(index, "duration"):
@@ -252,46 +344,52 @@ class AudioData(object):
     
     def getslice(self, index):
         "Help `__getitem__` return a new AudioData for a given slice"
+        if not isinstance(self.data, numpy.ndarray) and self.defer:
+            self.load()
         if isinstance(index.start, float):
             index = slice(int(index.start*self.sampleRate), int(index.stop*self.sampleRate), index.step)
-        return AudioData(None, self.data[index],sampleRate=self.sampleRate)
+        return AudioData(None, self.data[index], sampleRate=self.sampleRate, numChannels=self.numChannels, defer=False)
     
     def getsample(self, index):
         """
         Help `__getitem__` return a frame (all channels for a given 
         sample index)
         """
+        if not isinstance(self.data, numpy.ndarray) and self.defer:
+            self.load()
         if isinstance(index, int):
             return self.data[index]
         else:
             #let the numpy array interface be clever
-            return AudioData(None, self.data[index])
+            return AudioData(None, self.data[index], defer=False)
     
-    def __add__(self, as2):
-        """
-        Returns a new `AudioData` from the concatenation of the two arguments.
-        """
-        if self.data is None:
-            return AudioData(None, as2.data.copy())
-        elif as2.data is None:
-            return AudioData(None, self.data.copy())
-        else:
-            return AudioData(None, numpy.concatenate((self.data,as2.data)))
-    
+    def pad_with_zeros(self, num_samples):
+        if num_samples > 0:
+            if self.numChannels == 1:
+                extra_shape = (num_samples,)
+            else:
+                extra_shape = (num_samples, self.numChannels)
+            self.data = numpy.append(self.data, 
+                                     numpy.zeros(extra_shape, dtype=numpy.int16), axis=0)
+        
     def append(self, as2):
         "Appends the input to the end of this `AudioData`."
-        # To do: check dimensions of inputs
-        if type(as2) is AudioData:
-            data = as2.data
-        elif type(as2) is numpy.ndarray:
-            data = as2
-        else:
-            raise TypeError('Unsupported type for append(): %s' % type(as2))
-        if self.data is None:
-            self.data = data
-        else:
-            self.data[self.endindex:self.endindex + len(data)] = data[:]
-        self.endindex += len(data)
+        extra = len(as2.data) - (len(self.data) - self.endindex) 
+        self.pad_with_zeros(extra)
+        self.data[self.endindex:self.endindex+len(as2)] += as2.data
+        self.endindex += as2.endindex
+    
+    def sum(self, as2):
+        extra = len(as2.data) - len(self.data)
+        self.pad_with_zeros(extra)
+        compare_limit = min(len(as2.data), len(self.data)) - 1
+        self.data[:compare_limit] += as2.data[:compare_limit]
+    
+    def add_at(self, time, as2):
+        offset = int(time * self.sampleRate)
+        extra = offset + len(as2.data) - len(self.data)
+        self.pad_with_zeros(extra)
+        self.data[offset:offset+len(as2.data)] += as2.data 
     
     def __len__(self):
         if self.data is not None:
@@ -347,9 +445,24 @@ class AudioData(object):
             bitRate = config.MP3_BITRATE
         except NameError:
             bitRate = 128
-        parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate)
+        parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
         ffmpeg_error_check(parsestring[1])
         return filename
+    
+    def unload(self):
+        self.data = None
+    
+    def render(self):
+        return self
+    
+    @property
+    def duration(self):
+        return float(self.endindex) / self.sampleRate
+    
+    @property
+    def source(self):
+        return self
+    
 
 def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
     """
@@ -479,38 +592,30 @@ class AudioFile(AudioData) :
     object, but with an added `analysis` selector which is an
     `AudioAnalysis` object.
     """
-    def __init__(self, filename, verbose=True):
+    def __init__(self, filename, verbose=True, defer=True):
         """
         :param filename: path to a local MP3 file
         """
         if verbose:
             print >> sys.stderr, "Uploading file for analysis..."
-        AudioData.__init__(self, filename=filename)
+        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
         self.analysis = AudioAnalysis(filename, PARSERS)
+        self.analysis.source = self
     
-
-
-class ExistingTrack(object):
-    """
-    Analysis only (under the `analysis` selector), with a local file 
-    known to be already analyzed by The `Echo Nest`_\'s servers.
+    @property
+    def duration(self):
+        """
+        Since we consider `AudioFile` to be an evolved version of 
+        `AudioData`, we return the measured duration from the analysis.
+        """
+        return self.analysis.duration
     
-    .. _Echo Nest: http://the.echonest.com/
-    """
-    def __init__(self, trackID_or_Filename, verbose=True):
+    def __setstate__(self, state):
         """
-        :param trackID_or_Filename: a path to a local MP3 file or a
-            valid Echo Nest `track identifier`_
-        
-        .. _track identifier: http://developer.echonest.com/docs/datatypes/?version=2#track_id
+        Recreates circular reference after unpickling.
         """
-        if(os.path.isfile(trackID_or_Filename)):
-            trackID = hashlib.md5(file(trackID_or_Filename, 'rb').read()).hexdigest()
-            if verbose:
-                print >> sys.stderr, "Computed MD5 of file is " + trackID
-        else:
-            trackID = trackID_or_Filename
-        self.analysis = AudioAnalysis(trackID, PARSERS)
+        self.__dict__.update(state)
+        self.analysis.source = weakref.proxy(self)
     
 
 class LocalAudioFile(AudioFile):
@@ -519,7 +624,7 @@ class LocalAudioFile(AudioFile):
     is already known to the Analyze API, then it does not bother uploading 
     the file.
     """
-    def __init__(self, filename, verbose=True):
+    def __init__(self, filename, verbose=True, defer=True):
         """
         :param filename: path to a local MP3 file
         """
@@ -538,7 +643,17 @@ class LocalAudioFile(AudioFile):
             if verbose:
                 print >> sys.stderr, "Analysis not found. Uploading..."
             self.analysis = AudioAnalysis(filename, PARSERS)
-        AudioData.__init__(self, filename=filename)
+        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
+        self.analysis.source = self
+    
+    def toxml(self, context=None):
+        track = stupidxml.Node("trackinfo")
+        track.attributes.id = self.analysis.id
+        track.attributes.filename = self.filename
+        metadata = stupidxml.Node("metadata")
+        metadata.attributes.update(self.analysis.metadata)
+        track.append(metadata)
+        return track
     
 
 class LocalAnalysis(object):
@@ -569,7 +684,7 @@ class LocalAnalysis(object):
         # no AudioData.__init__()
     
 
-class AudioQuantum(object) :
+class AudioQuantum(AudioRenderable) :
     """
     A unit of musical time, identified at minimum with a start time and 
     a duration, both in seconds. It most often corresponds with a `section`,
@@ -585,7 +700,7 @@ class AudioQuantum(object) :
         created upon creation of the `AudioQuantumList` that covers
         the whole track
     """
-    def __init__(self, start=0, duration=0, kind=None, confidence=None) :
+    def __init__(self, start=0, duration=0, kind=None, confidence=None, source=None) :
         """
         Initializes an `AudioQuantum`.
         
@@ -598,6 +713,7 @@ class AudioQuantum(object) :
         self.duration = duration
         self.kind = kind
         self.confidence = confidence
+        self._source = source
     
     def get_end(self):
         return self.start + self.duration
@@ -605,6 +721,31 @@ class AudioQuantum(object) :
     end = property(get_end, doc="""
     A computed property: the sum of `start` and `duration`.
     """)
+    
+    def get_source(self):
+        "Returns itself or its parent."
+        if self._source:
+            return self._source
+        else:
+            source = None
+            try:
+                source = self.container.source
+            except AttributeError:
+                source = None
+            return source
+    
+    def set_source(self, value):
+        if isinstance(value, AudioData):
+            self._source = value
+        else:
+            raise TypeError("Source must be an instance of echonest.audio.AudioData")
+    
+    source = property(get_source, set_source, doc="""
+    The `AudioData` source for the AudioQuantum.
+    """)
+    
+    def sources(self):
+        return set([self.source])
     
     def parent(self):
         """
@@ -744,6 +885,25 @@ class AudioQuantum(object) :
         del dictclone['container']
         return dictclone
     
+    def toxml(self, context=None):
+        attributedict = {'duration': self.duration,
+                         'start': self.start}
+        try:
+            if not(hasattr(context, 'source') and self.source == context.source):
+                attributedict['source'] = self.source.analysis.id
+        except:
+            pass
+        return stupidxml.Node(self.kind, **attributedict)
+    
+    def render(self, start=0.0, to_audio=None, with_source=None):
+        if not to_audio:
+            source = self.resolve_source(with_source)
+            return source[self]
+        if with_source != self.source:
+            return
+        to_audio.add_at(start, with_source[self])
+        return    
+    
 
 class AudioSegment(AudioQuantum):
     """
@@ -751,7 +911,8 @@ class AudioSegment(AudioQuantum):
     the Analyze API. 
     """
     def __init__(self, start=0., duration=0., pitches=[], timbre=[], 
-                 loudness_begin=0., loudness_max=0., time_loudness_max=0., loudness_end=None, kind='segment'):
+                 loudness_begin=0., loudness_max=0., time_loudness_max=0., 
+                 loudness_end=None, kind='segment', source=None):
         """
         Initializes an `AudioSegment`.
         
@@ -780,9 +941,10 @@ class AudioSegment(AudioQuantum):
             self.loudness_end = loudness_end
         self.kind = kind
         self.confidence = None
+        self._source = source
     
 
-class AudioQuantumList(list):
+class AudioQuantumList(list, AudioRenderable):
     """
     A container that enables content-based selection and filtering.
     A `List` that contains `AudioQuantum` objects, with additional methods
@@ -801,20 +963,99 @@ class AudioQuantumList(list):
     `loudness_begin`, `loudness_max`, `time_loudness_max`, and `loudness_end`
     are available.
     """
-    QUANTUM_ATTRIBUTES = ['start', 'duration', 'confidence']
-    SEGMENT_ATTRIBUTES = ['pitches', 'timbre', 'loudness_begin', 'loudness_max', 
-                          'time_loudness_max', 'loudness_end']
-    def __init__(self, kind = None, container = None):
+    def __init__(self, initial = None, kind = None, container = None, source = None):
         """
-        Initializes an `AudioQuantumList`.
+        Initializes an `AudioQuantumList`. All parameters are optional.
         
+        :param initial: a `List` type with the initial contents
         :param kind: a label for the kind of `AudioQuantum` contained
             within
         :param container: a reference to the containing `AudioAnalysis`
+        :param source: a reference to the `AudioData` with the corresponding samples
+            and time base for the contained AudioQuanta
         """
         list.__init__(self)
-        self.kind = kind
-        self.container = container
+        self.kind = None
+        self._source = None
+        if isinstance(initial, AudioQuantumList):
+            self.kind = initial.kind
+            self.container = initial.container
+            self._source = initial.source
+        if kind:
+            self.kind = kind
+        if container:
+            self.container = container
+        if source:
+            self._source = source
+        if initial:
+            self.extend(initial)
+    
+    def get_many(attribute):
+        def fun(self):
+            """
+            Returns a list of %s for each `AudioQuantum`.
+            """ % attribute
+            return [getattr(x, attribute) for x in list.__iter__(self)]
+        return fun
+    
+    def get_many_if_segment(attribute):
+        def fun(self):
+            """
+            Returns a list of %s for each `Segment`.
+            """ % attribute
+            if self.kind == 'segment':
+                return [getattr(x, attribute) for x in list.__iter__(self)]
+            else:
+                raise AttributeError("<%s> only accessible for segments" % (attribute,))
+        return fun
+    
+    def get_duration(self):
+        return sum(self.durations)
+        #return sum([x.duration for x in self])
+    
+    def get_source(self):
+        "Returns its own or its parent's source."
+        if self._source:
+            return self._source
+        else:
+            try:
+                source = self.container.source
+            except AttributeError:
+                source = self[0].source
+            return source
+            
+    def set_source(self, value):
+        "Checks input to see if it is an `AudioData`."
+        if isinstance(value, AudioData):
+            self._source = value
+        else:
+            raise TypeError("Source must be an instance of echonest.audio.AudioData")
+    
+    durations  = property(get_many('duration'))
+    kinds      = property(get_many('kind'))
+    start      = property(get_many('start'))
+    confidence = property(get_many('confidence'))
+    
+    pitches           = property(get_many_if_segment('pitches'))
+    timbre            = property(get_many_if_segment('timbre'))
+    loudness_begin    = property(get_many_if_segment('loudness_begin'))
+    loudness_max      = property(get_many_if_segment('loudness_max'))
+    time_loudness_max = property(get_many_if_segment('time_loudness_max'))
+    loudness_end      = property(get_many_if_segment('loudness_end'))
+    
+    source = property(get_source, set_source, doc="""
+    The `AudioData` source for the `AudioQuantumList`.
+    """)
+    
+    duration = property(get_duration, doc="""
+    Total duration of the `AudioQuantumList`.
+    """)
+    
+    def sources(self):
+        ss = set()
+        for aq in list.__iter__(self):
+            ss.update(aq.sources())
+        return ss
     
     def that(self, filt):
         """
@@ -914,28 +1155,108 @@ class AudioQuantumList(list):
         del dictclone['container']
         return dictclone
     
-    def __getattribute__(self, name):
-        """
-        In the case of `AudioQuantum` and `AudioSegment` accessors, return the 
-        corresponding ones from each of the contained AudioQuanta. If the attribute
-        is `kinds`, do the same for each `kind` accessor. Otherwise, do normal
-        attribute dispatch.
-        """
-        if name in AudioQuantumList.SEGMENT_ATTRIBUTES and self.kind == 'segment':
-            return [getattr(x, name) for x in self]
-        elif name in AudioQuantumList.QUANTUM_ATTRIBUTES:
-            return [getattr(x, name) for x in self]
-        elif name == 'kinds':
-            return [x.kind for x in self]
+    def toxml(self, context=None):
+        xml = stupidxml.Node("sequence")
+        xml.attributes.duration = self.duration
+        if not context:
+            xml.attributes.source = self.source.analysis.id
+            for s in self.sources():
+                xml.append(s.toxml())
+        elif self._source:
+            try:
+                if self.source != context.source:
+                    xml.attributes.source = self.source.analysis.id
+            except:
+                pass
+        for x in list.__iter__(self):
+            xml.append(x.toxml(context=self))
+        return xml
+    
+    def render(self, start=0.0, to_audio=None, with_source=None):
+        if not to_audio:
+            dur = 0
+            tempsource = self.source or list.__getitem__(self, 0).source
+            for aq in list.__iter__(self):
+                dur += int(aq.duration * tempsource.sampleRate)
+            to_audio = self.init_audio_data(tempsource, dur)
+        if not hasattr(with_source, 'data'):
+            for tsource in self.sources():
+                this_start = start
+                for aq in list.__iter__(self):
+                    aq.render(start=this_start, to_audio=to_audio, with_source=tsource)
+                    this_start += aq.duration
+                if tsource.defer: tsource.unload()
+            return to_audio
         else:
-            return object.__getattribute__(self, name)
+            if with_source not in self.sources():
+                return 
+            for aq in list.__iter__(self):
+                aq.render(start=start, to_audio=to_audio, with_source=with_source)
+                start += aq.duration
+    
+
+class Simultaneous(AudioQuantumList):
+    """
+    Stacks all contained AudioQuanta atop one another, adding their respective
+    samples. The rhythmic length of the segment is the duration of the first
+    `AudioQuantum`, but there can be significant overlap caused by the longest 
+    segment.
+    
+    Sample usage::
+        Simultaneous(a.analysis.bars).encode("my.mp3")
+    """
+    def __init__(self, *args, **kwargs):
+         AudioQuantumList.__init__(self, *args, **kwargs)
+    
+    def get_duration(self):
+        try:
+            return self[0].duration
+        except:
+            return 0.
+    
+    duration = property(get_duration, doc="""
+        Rhythmic duration of the `Simultaneous` AudioQuanta: the 
+        same as the duration of the first in the list.
+        """)
+    
+    def toxml(self, context=None):
+        xml = stupidxml.Node("parallel")
+        xml.attributes.duration = self.duration
+        if not context:
+            xml.attributes.source = self.source.analysis.id
+        elif self.source != context.source:
+            try:
+                xml.attributes.source = self.source.analysis.id
+            except:
+                pass
+        for x in list.__iter__(self):
+            xml.append(x.toxml(context=self))
+        return xml
+    
+    def render(self, start=0.0, to_audio=None, with_source=None):
+        if not to_audio:
+            tempsource = self.source or list.__getitem__(self, 0).source
+            dur = int(max(self.durations) * tempsource.sampleRate)
+            to_audio = self.init_audio_data(tempsource, dur)
+        if not hasattr(with_source, 'data'):
+            for source in self.sources():
+                for aq in list.__iter__(self):
+                    aq.render(start=start, to_audio=to_audio, with_source=source)
+                if source.defer: source.unload()
+            return to_audio
+        else:
+            if with_source not in self.sources():
+                return
+            else:
+                for aq in list.__iter__(self):
+                    aq.render(start=start, to_audio=to_audio, with_source=with_source)
     
 
 def dataParser(tag, doc):
     """
     Generic XML parser for `bars`, `beats`, and `tatums`.
     """
-    out = AudioQuantumList(tag)
+    out = AudioQuantumList(kind=tag)
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
         out.append(AudioQuantum(start=float(n.firstChild.data), kind=tag,
@@ -944,8 +1265,6 @@ def dataParser(tag, doc):
         for i in range(len(out) - 1) :
             out[i].duration = out[i+1].start - out[i].start
         out[-1].duration = out[-2].duration
-    #else:
-    #    out[0].duration = ???
     return out
 
 
@@ -954,7 +1273,7 @@ def attributeParser(tag, doc) :
     """
     Generic XML parser for `sections` and (optionally) `segments`.
     """
-    out = AudioQuantumList(tag)
+    out = AudioQuantumList(kind=tag)
     nodes = doc.getElementsByTagName(tag)
     for n in nodes :
         out.append( AudioQuantum(float(n.getAttribute('start')),
@@ -1030,7 +1349,7 @@ def fullSegmentsParser(doc):
     Full-featured parser for the XML returned by `get_segment` in the
     Analyze API.
     """
-    out = AudioQuantumList('segment')
+    out = AudioQuantumList(kind='segment')
     nodes = doc.getElementsByTagName('segment')
     for n in nodes:
         start = float(n.getAttribute('start'))
