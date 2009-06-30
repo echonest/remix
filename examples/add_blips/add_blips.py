@@ -11,6 +11,7 @@ Add a blip to any combination of each tatum/beat/bar in a song.
 
 """
 import sys
+import os.path
 import numpy
 
 import echonest.audio as audio
@@ -36,6 +37,11 @@ blip_filenames = ('sounds/blip_low.wav', 'sounds/blip_med.wav', 'sounds/blip_low
     'sounds/blip_high.wav', 'sounds/blip_low_high.wav', 'sounds/blip_med_high.wav', 
     'sounds/blip_low_med_high.wav')
 
+#the blip.wav files are stored in the sounds/ directory relative to the 
+#script. if the script is run from another directory those sounds won't
+#be found. this fixes that problem.
+prefix = os.path.dirname(os.path.abspath(sys.argv[0]))
+blip_filenames = map(lambda x: os.path.join(prefix, x), blip_filenames)
 
 def main(input_filename, output_filename, tatums, beats, bars):
 
