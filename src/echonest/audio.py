@@ -739,7 +739,34 @@ def mix(dataA,dataB,mix=0.5):
         newdata.data *= 1 - float(mix)
         newdata.data[:dataA.endindex] += dataA.data[:] * float(mix)
     return newdata
-    
+
+def megamix(dataList):
+    """
+    Mix together any number of `AudioData` objects. Keep the shape of
+    the first one in the list. Assume they all have the same sample rate
+    and number of channels.
+    """
+    if not isinstance(dataList, list):
+        raise TypeError('input must be a list of AudioData objects')
+    newdata = AudioData(shape=dataList[0].data.shape, sampleRate=dataList[0].sampleRate, 
+                            numChannels=dataList[0].numChannels, defer=False)
+    for adata in dataList:
+        if not isinstance(adata, AudioData):
+            raise TypeError('input must be a list of AudioData objects')
+        if len(adata) > len(newdata):
+            newseg = AudioData(ndarray=adata[:newdata.endindex].data, 
+                                numChannels=newdata.numChannels, 
+                                sampleRate=newdata.sampleRate, defer=False)
+            newseg.endindex = newdata.endindex
+        else:
+            newseg = AudioData(ndarray=adata.data, 
+                                numChannels=newdata.numChannels, 
+                                sampleRate=newdata.sampleRate, defer=False)
+            newseg.endindex = adata.endindex
+        newdata.data[:newseg.endindex] += newseg.data / float(len(dataList))
+    newdata.endindex = len(newdata)
+    return newdata
+
 
 class AudioFile(AudioData) :
     """
