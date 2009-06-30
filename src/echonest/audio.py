@@ -683,8 +683,7 @@ def getpieces(audioData, segs):
     dur = 0
     for s in segs:
         dur += int(s.duration*audioData.sampleRate)
-    
-    dur += 100000 #another two seconds just for goodwill...
+    # if I wanted to add some padding to the length, I'd do it here
     
     #determine shape of new array
     if len(audioData.data.shape) > 1:
