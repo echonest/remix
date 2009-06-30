@@ -246,7 +246,7 @@ class AudioData(AudioRenderable):
         
     .. _numpy.array: http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
     """
-    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=True, verbose=True):
+    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=False, verbose=True):
         """
         Given an input `ndarray`, import the sample values and shape 
         (if none is specified) of the input `numpy.array`.
@@ -476,7 +476,7 @@ class AudioData(AudioRenderable):
     
 
 class AudioData32(AudioData):
-    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=True, verbose=True):
+    def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=False, verbose=True):
         """
         Special form of AudioData to allow for headroom when collecting samples.
         """
@@ -747,7 +747,7 @@ class AudioFile(AudioData) :
     object, but with an added `analysis` selector which is an
     `AudioAnalysis` object.
     """
-    def __init__(self, filename, verbose=True, defer=True):
+    def __init__(self, filename, verbose=True, defer=False):
         """
         :param filename: path to a local MP3 file
         """
@@ -779,7 +779,7 @@ class LocalAudioFile(AudioFile):
     is already known to the Analyze API, then it does not bother uploading 
     the file.
     """
-    def __init__(self, filename, verbose=True, defer=True):
+    def __init__(self, filename, verbose=True, defer=False):
         """
         :param filename: path to a local MP3 file
         """
