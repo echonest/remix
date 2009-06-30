@@ -277,6 +277,7 @@ class AudioData(AudioRenderable):
         self.sampleRate = sampleRate
         self.numChannels = numChannels
         self.convertedfile = None
+        self.endindex = 0
         if shape is None and isinstance(ndarray, numpy.ndarray) and not self.defer:
             self.data = numpy.zeros(ndarray.shape, dtype=numpy.int16)
         elif shape is not None and not self.defer:
@@ -286,7 +287,6 @@ class AudioData(AudioRenderable):
             self.load()
         else:
             self.data = None
-        self.endindex = 0
         if ndarray is not None and self.data is not None:
             self.endindex = len(ndarray)
             self.data[0:self.endindex] = ndarray
