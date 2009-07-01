@@ -2,7 +2,7 @@
 # encoding: utf=8
 #
 # by Douglas Repetto, 10 June 2009
-# using code from various other examples...
+# plus code from various other examples and fixes by remix devs
 
 """
 add_blips.py
@@ -30,12 +30,7 @@ python add_blips.py bootsy.mp3 bootsy_blips.mp3 beats bars
 
 """
 
-#this seems really dumb but I can't figure out how else to do it
-#one sound file for each possible combination of tatum/beat/bar
-
-blip_filenames = ('sounds/blip_low.wav', 'sounds/blip_med.wav', 'sounds/blip_low_med.wav',
-    'sounds/blip_high.wav', 'sounds/blip_low_high.wav', 'sounds/blip_med_high.wav', 
-    'sounds/blip_low_med_high.wav')
+blip_filenames = ('sounds/blip_low.wav', 'sounds/blip_med.wav', 'sounds/blip_high.wav')
 
 #the blip.wav files are stored in the sounds/ directory relative to the 
 #script. if the script is run from another directory those sounds won't
@@ -51,7 +46,7 @@ def main(input_filename, output_filename, tatums, beats, bars):
     
     # mono files have a shape of (len,) 
     out_shape = list(audiofile.data.shape)
-    out_shape[0] = len(audiofile)+100000
+    out_shape[0] = len(audiofile)
     out = audio.AudioData(shape=out_shape, sampleRate=sample_rate,numChannels=num_channels)
 
     # same hack to change shape: we want blip_files[0] as a short, silent blip
@@ -59,10 +54,10 @@ def main(input_filename, output_filename, tatums, beats, bars):
     null_shape[0] = 2
     null_audio = audio.AudioData(shape=null_shape)
     null_audio.endindex = len(null_audio)
-    blip_files = [null_audio]
     
-    for name in blip_filenames:
-        blip_files.append(audio.AudioData(name))
+    low_blip = audio.AudioData(blip_filenames[0])
+    med_blip = audio.AudioData(blip_filenames[1])
+    high_blip = audio.AudioData(blip_filenames[2])
     
     all_tatums = audiofile.analysis.tatums
     all_beats = audiofile.analysis.beats
@@ -76,71 +71,53 @@ def main(input_filename, output_filename, tatums, beats, bars):
     print "going to add blips..."
     
     for tatum in all_tatums:
-        sound_to_use = 0
-        
-        if tatums == 1:
+        mix_list = [audiofile[tatum], null_audio, null_audio, null_audio]
+        if tatums:
             print "match! tatum start time:" + str(tatum.start)
-            sound_to_use = sound_to_use + 1
+            mix_list[1] = low_blip
 
-        if beats == 1:
+        if beats:
             for beat in all_beats:
                 if beat.start == tatum.start:
                     print "match! beat start time: " + str(beat.start)
-                    sound_to_use = sound_to_use + 2
+                    mix_list[2] = med_blip
                     break
 
-        if bars == 1:
+        if bars:
             for bar in all_bars:
                 if bar.start == tatum.start:
                     print "match! bar start time: " + str(bar.start)
-                    sound_to_use = sound_to_use + 4
+                    mix_list[3] = high_blip
                     break
-                    
-        #this is wonky but needed to account for null_audio blips
-        if sound_to_use > 0:
-            print "mixing blip soundfile: ", blip_filenames[sound_to_use - 1]
-
-        out_data = audio.mix(audiofile[tatum], blip_files[sound_to_use], 0.5)
+        out_data = audio.megamix(mix_list)
         out.append(out_data)
         del(out_data)
-        
-        
     print "blips added, going to encode", output_filename, "..."
     out.encode(output_filename)
     print "Finito, Benito!"
-        
-        
+
 
 if __name__=='__main__':
-
-    tatums = 0
-    beats = 0
-    bars = 0
-
+    tatums = False
+    beats = False
+    bars = False
     try:
         input_filename = sys.argv[1]
         output_filename = sys.argv[2]
-        
         if len(sys.argv) == 3:
             bars = 1
             print "blipping bars by default."
-    
         for arg in sys.argv[3:len(sys.argv)]:
             if arg == "tatums":
-                tatums = 1
+                tatums = True
                 print "blipping tatums."
             if arg == "beats":
-                beats = 1
+                beats = True
                 print "blipping beats."
             if arg == "bars":
-                bars = 1
+                bars = True
                 print "blipping bars."
-    
     except:
         print usage
         sys.exit(-1)
-
-
-    
     main(input_filename, output_filename, tatums, beats, bars)
-    
