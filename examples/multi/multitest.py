@@ -21,27 +21,24 @@ from echonest import audio
 
 usage = """
 Usage: 
-    python kernels.py <inputDirectory> <outputFilename> <beats>
+    python multitest.py <inputDirectory> <outputFilename> <beats>
 
 Example:
-    python kernels.py /path/to/mp3s popped.mp3 320
+    python multitest.py ../music mashedbeats.mp3 40
 """
 
 SLEEPTIME = 0.5
 
 def main(num_beats, directory, outfile):
-    # register the two special effects we need. Since we only make 
-    #  AudioQuanta shorter, TimeTruncate is a good choice.
     
     aud = []
     ff = os.listdir(directory)
     for f in ff:
         # collect the files
         if f.rsplit('.', 1)[1].lower() in ['mp3', 'aif', 'aiff', 'aifc', 'wav']:
-            # the new defer kwarg doesn't load the audio until needed
             aud.append(audio.LocalAudioFile(os.path.join(directory,f)))
-        # mind the rate limit
-        time.sleep(SLEEPTIME)
+            # mind the rate limit
+            time.sleep(SLEEPTIME)
     
     num_files = len(aud)
     x = audio.AudioQuantumList()
@@ -54,7 +51,10 @@ def main(num_beats, directory, outfile):
         print >> sys.stderr, '.',
         ssong = aud[w%num_files].analysis
         s = ssong.beats[w%len(ssong.beats)]
-        x.append(s)
+        tsong = aud[(w-1)%num_files].analysis
+        t = tsong.beats[w%len(tsong.beats)]
+        
+        x.append(audio.Simultaneous([s,t]))
     
     print >> sys.stderr, "\nStarting rendering pass..."
     

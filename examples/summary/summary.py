@@ -43,8 +43,8 @@ if __name__ == '__main__':
             index = 1
         else:
             index = 0
-        input_filename = sys.argv[2]
-        output_filename = sys.argv[3]
+        input_filename = sys.argv[-2]
+        output_filename = sys.argv[-1]
     except:
         print usage
         sys.exit(-1)
