@@ -221,7 +221,7 @@ class AudioRenderable(object):
         else:
             newchans = 1
             newshape = (num_samples,)
-        return AudioData(shape=newshape, sampleRate=source.sampleRate, numChannels=newchans, defer=False)
+        return AudioData32(shape=newshape, sampleRate=source.sampleRate, numChannels=newchans, defer=False)
         
     
     def encode(self, filename):
@@ -594,7 +594,6 @@ class AudioData32(AudioData):
         return filename
     
     def normalize(self):
-        # Add a little extra slop for MP3 encoding. Still not convinced it's necessary.
         if self.numChannels == 1:
             self.normalized = numpy.zeros((self.data.shape[0],), dtype=numpy.int16)
         else:
