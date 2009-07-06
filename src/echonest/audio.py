@@ -1123,6 +1123,97 @@ class AudioSegment(AudioQuantum):
         self.confidence = None
         self._source = source
     
+class ModifiedRenderable(AudioRenderable):
+    def __init__(self, original, effects=[]):
+        if isinstance(original, ModifiedRenderable):
+            self._original = original._original
+            self._effects = original._effects + effects
+        else:
+            self._original = original
+            self._effects = effects
+    
+    @property
+    def duration(self):
+        dur = self._original.duration
+        for effect in self._effects:
+            if hasattr(effect, 'duration'):
+                dur = effect.duration(dur)
+        return dur
+    
+    @property
+    def source(self):
+        return self._original.source
+    
+    @property
+    def sources(self):
+        return self._original.sources
+    
+    def render(self, start=0.0, to_audio=None, with_source=None):
+        if not to_audio:
+            source = self.resolve_source(with_source)
+            base = self._original.render(with_source=with_source)
+            copy = AudioData32(ndarray=base.data, sampleRate=base.sampleRate, numChannels=base.numChannels, defer=False)
+            for effect in self._effects:
+                copy = effect.modify(copy)
+            return copy
+        if with_source != self.source:
+            return
+        base = self._original.render(with_source=with_source)
+        copy = AudioData32(ndarray=base.data, shape=base.data.shape, sampleRate=base.sampleRate, numChannels=base.numChannels, defer=False)
+        for effect in self._effects:
+            copy = effect.modify(copy)
+        to_audio.add_at(start, copy)
+        return    
+
+class AudioEffect(object):
+    def __call__(self, aq):
+        return ModifiedRenderable(aq, [self])
+    
+class LevelDB(AudioEffect):
+    def __init__(self, change):
+        self.change = change
+    
+    def modify(self, adata):
+        adata.data *= pow(10.,self.change/20.)
+        return adata
+
+class AmplitudeFactor(AudioEffect):
+    def __init__(self, change):
+        self.change = change
+    
+    def modify(self, adata):
+        adata.data *= self.change
+        return adata
+        
+class TimeTruncateFactor(AudioEffect):
+    def __init__(self, factor):
+        self.factor = factor
+    
+    def duration(self, old_duration):
+        return old_duration * self.factor
+    
+    def modify(self, adata):
+        endindex = int(self.factor * len(adata))
+        if self.factor > 1:
+            adata.pad_with_zeros(endindex - len(adata))
+        adata.endindex = endindex
+        return adata[:endindex]
+    
+
+class TimeTruncateLength(AudioEffect):
+    def __init__(self, duration):
+        self.new_duration = duration
+    
+    def duration(self, old_duration):
+        return self.new_duration
+    
+    def modify(self, adata):
+        endindex = int(self.new_duration * adata.sampleRate)
+        if self.new_duration > adata.duration:
+            adata.pad_with_zeros(endindex - len(adata))
+        adata.endindex = endindex
+        return adata[:endindex]
+
 
 class AudioQuantumList(list, AudioRenderable):
     """
