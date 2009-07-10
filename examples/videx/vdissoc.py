@@ -39,7 +39,7 @@ def main(infile, outfile, choices=4):
     else:
         av = video.loadav(infile)
     
-    meter = av.audio.analysis.time_signature[0]
+    meter = av.audio.analysis.time_signature['value']
     fade_in = av.audio.analysis.end_of_fade_in
     fade_out = av.audio.analysis.start_of_fade_out
     sections = av.audio.analysis.sections.that(overlap_range(fade_in, fade_out))

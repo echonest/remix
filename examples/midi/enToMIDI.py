@@ -21,7 +21,7 @@ def main():
     # TRWMWTX11DE6393849 a7 unt by lithops
     # TRMTWYL11DD5A1D829 valley hi by stereolab
     #a = audio.ExistingTrack("TRMTWYL11DD5A1D829").analysis 
-    a = audio.LocalAudioFile("WalkOfLife.mp3").analysis
+    a = audio.LocalAudioFile(sys.argv[1]).analysis
     midi = MidiOutFile('output.mid')
     midi.header()
     midi.start_of_track()

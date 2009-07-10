@@ -24,7 +24,7 @@ ACCEPTED_UNITS = ["tatums", "beats", "bars"]
 
 def main(units, inputFile, outputFile):
     audiofile = audio.LocalAudioFile(inputFile)
-    tonic = audiofile.analysis.key[0]
+    tonic = audiofile.analysis.key['value']
     
     chunks = audiofile.analysis.__getattribute__(units)
     

@@ -41,7 +41,6 @@ def main(num_beats, directory, outfile):
             filename = os.path.join(directory, f)
             aud.append(audio.LocalAudioFile(filename, defer= True))
         # mind the rate limit
-        time.sleep(SLEEPTIME)
     
     num_files = len(aud)
     
@@ -54,9 +53,6 @@ def main(num_beats, directory, outfile):
     
     print >> sys.stderr, "Assembling beats.",
     for w in range(num_beats):
-        if w < num_files:
-            # while we're still caching these results, slow down for the rate limit
-            time.sleep(SLEEPTIME)
         print >> sys.stderr, '.',
         
         # cycle through the audio files (with a different period)
@@ -108,9 +104,7 @@ def main(num_beats, directory, outfile):
     #     y.close()
 
 def keysig(audiofile):
-    # delay slightly, just to be sure:
-    time.sleep(SLEEPTIME * 0.5)
-    return audiofile.analysis.key[0]
+    return int(audiofile.analysis.key['value'])
 
 if __name__ == '__main__':
     try:

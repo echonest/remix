@@ -33,7 +33,7 @@ Example:
 """
 def main(infile, outfile, choices=4):
     audiofile = audio.LocalAudioFile(infile)
-    meter = audiofile.analysis.time_signature[0]
+    meter = audiofile.analysis.time_signature['value']
     fade_in = audiofile.analysis.end_of_fade_in
     fade_out = audiofile.analysis.start_of_fade_out
     sections = audiofile.analysis.sections.that(overlap_range(fade_in, fade_out))
