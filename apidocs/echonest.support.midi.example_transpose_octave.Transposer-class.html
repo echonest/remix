@@ -65,7 +65,43 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class Transposer</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_echonest_25" name="uml_class_diagram_for_echonest_25">
+<area shape="rect" id="node75" href="echonest.support.midi.example_transpose_octave.Transposer-class.html#note_on" title="channel: 0&#45;15..." alt="" coords="23,716,384,735"/>
+<area shape="rect" id="node75" href="echonest.support.midi.example_transpose_octave.Transposer-class.html#note_off" title="channel: 0&#45;15..." alt="" coords="23,735,384,753"/>
+<area shape="rect" id="node1" href="echonest.support.midi.example_transpose_octave.Transposer-class.html" title="Transposes all notes by 1 octave" alt="" coords="11,683,395,759"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#__init__" title="echonest.support.midi.MidiOutFile.MidiOutFile.__init__" alt="" coords="17,377,391,396"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#write" title="echonest.support.midi.MidiOutFile.MidiOutFile.write" alt="" coords="17,396,391,415"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#event_slice" title="Writes the slice of an event to the current track." alt="" coords="17,415,391,433"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#aftertouch" title="channel: 0&#45;15..." alt="" coords="17,433,391,452"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#continuous_controller" title="channel: 0&#45;15..." alt="" coords="17,452,391,471"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#patch_change" title="channel: 0&#45;15..." alt="" coords="17,471,391,489"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#channel_pressure" title="channel: 0&#45;15..." alt="" coords="17,489,391,508"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#pitch_bend" title="channel: 0&#45;15..." alt="" coords="17,508,391,527"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#system_exclusive" title="data: list of values in range(128)" alt="" coords="17,527,391,545"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_time_code" title="msg_type: 0&#45;7..." alt="" coords="17,545,391,564"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#song_position_pointer" title="value: 0&#45;16383" alt="" coords="17,564,391,583"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#song_select" title="songNumber: 0&#45;127" alt="" coords="17,583,391,601"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#tuning_request" title="No values passed" alt="" coords="17,601,391,620"/>
+<area shape="rect" id="node76" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#sequencer_specific" title="data: The data as byte values" alt="" coords="17,639,391,657"/>
+<area shape="rect" id="node2" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html" title="MidiOutFile is an eventhandler that subclasses MidiOutStream." alt="" coords="5,345,403,663"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#update_time" title="Updates the time, if relative is true, new_time is relative, &#160;else it&#39;s absolute." alt="" coords="20,39,387,57"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_time" title="reset time to 0" alt="" coords="20,57,387,76"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#rel_time" title="Returns the relative time" alt="" coords="20,76,387,95"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#abs_time" title="Returns the absolute time" alt="" coords="20,95,387,113"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_run_stat" title="Invalidates the running status" alt="" coords="20,113,387,132"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_run_stat" title="Set the new running status" alt="" coords="20,132,387,151"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#get_run_stat" title="Set the new running status" alt="" coords="20,151,387,169"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_current_track" title="Sets the current track number" alt="" coords="20,169,387,188"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#get_current_track" title="Returns the current track number" alt="" coords="20,188,387,207"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_message" title="The default event handler for channel messages" alt="" coords="20,207,387,225"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#timing_clock" title="No values passed" alt="" coords="20,225,387,244"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_start" title="No values passed" alt="" coords="20,244,387,263"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_stop" title="No values passed" alt="" coords="20,263,387,281"/>
+<area shape="rect" id="node77" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#system_reset" title="No values passed" alt="" coords="20,300,387,319"/>
+<area shape="rect" id="node3" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html" title="MidiOutstream is Basically an eventhandler." alt="" coords="8,6,397,325"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_25.gif" alt='' usemap="#uml_class_diagram_for_echonest_25" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 <pre class="literalblock">
@@ -319,7 +355,7 @@ note, velocity: 0-127
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:56:14 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:25 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

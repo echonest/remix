@@ -63,7 +63,57 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class Simultaneous</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#Simultaneous">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_echonest_17" name="uml_class_diagram_for_echonest_17">
+<area shape="rect" id="node56" href="echonest.audio.Simultaneous-class.html#duration" title="Rhythmic duration of the `Simultaneous` AudioQuanta: the &#160;same as the duration of the first in the list." alt="" coords="144,815,549,833"/>
+<area shape="rect" id="node56" href="echonest.audio.Simultaneous-class.html#__init__" title="Initializes an `AudioQuantumList`." alt="" coords="144,836,549,855"/>
+<area shape="rect" id="node56" href="echonest.audio.Simultaneous-class.html#get_duration" title="echonest.audio.Simultaneous.get_duration" alt="" coords="144,855,549,873"/>
+<area shape="rect" id="node56" href="echonest.audio.Simultaneous-class.html#toxml" title="echonest.audio.Simultaneous.toxml" alt="" coords="144,873,549,892"/>
+<area shape="rect" id="node56" href="echonest.audio.Simultaneous-class.html#render" title="echonest.audio.Simultaneous.render" alt="" coords="144,892,549,911"/>
+<area shape="rect" id="node1" href="echonest.audio.Simultaneous-class.html" title="Stacks all contained AudioQuanta atop one another, adding their respective samples." alt="" coords="132,790,561,917"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#durations" title="echonest.audio.AudioQuantumList.durations" alt="" coords="188,369,505,388"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#kinds" title="echonest.audio.AudioQuantumList.kinds" alt="" coords="188,388,505,407"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#start" title="echonest.audio.AudioQuantumList.start" alt="" coords="188,407,505,425"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#confidence" title="echonest.audio.AudioQuantumList.confidence" alt="" coords="188,425,505,444"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#pitches" title="echonest.audio.AudioQuantumList.pitches" alt="" coords="188,444,505,463"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#timbre" title="echonest.audio.AudioQuantumList.timbre" alt="" coords="188,463,505,481"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#loudness_begin" title="echonest.audio.AudioQuantumList.loudness_begin" alt="" coords="188,481,505,500"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#loudness_max" title="echonest.audio.AudioQuantumList.loudness_max" alt="" coords="188,500,505,519"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#time_loudness_max" title="echonest.audio.AudioQuantumList.time_loudness_max" alt="" coords="188,519,505,537"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#loudness_end" title="echonest.audio.AudioQuantumList.loudness_end" alt="" coords="188,537,505,556"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#source" title="The `AudioData` source for the `AudioQuantumList`." alt="" coords="188,556,505,575"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#get_many" title="echonest.audio.AudioQuantumList.get_many" alt="" coords="188,577,505,596"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#get_many_if_segment" title="echonest.audio.AudioQuantumList.get_many_if_segment" alt="" coords="188,596,505,615"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#get_source" title="Returns its own or its parent&#39;s source." alt="" coords="188,615,505,633"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#set_source" title="Checks input to see if it is an `AudioData`." alt="" coords="188,633,505,652"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#sources" title="echonest.audio.AudioQuantumList.sources" alt="" coords="188,652,505,671"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#that" title="Method for applying a function to each of the contained `AudioQuantum` objects." alt="" coords="188,671,505,689"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#ordered_by" title="Returns a new `AudioQuantumList` of the same `kind` with the &#160;original elements, but ordered from low to high according to &#160;the input function acting as a key." alt="" coords="188,689,505,708"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#beget" title="There are two basic forms: a map&#45;and&#45;flatten and an converse&#45;that." alt="" coords="188,708,505,727"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#attach" title="Create circular references to the containing `AudioAnalysis` and for the &#160;contained `AudioQuantum` objects." alt="" coords="188,727,505,745"/>
+<area shape="rect" id="node57" href="echonest.audio.AudioQuantumList-class.html#__getstate__" title="Eliminates the circular reference for pickling." alt="" coords="188,745,505,764"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioQuantumList-class.html" title="A container that enables content&#45;based selection and filtering." alt="" coords="176,345,517,770"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x+y" alt="" coords="17,39,332,57"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="y in x" alt="" coords="17,57,332,76"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="del x[y]" alt="" coords="17,76,332,95"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="del x[i:j]" alt="" coords="17,95,332,113"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x==y" alt="" coords="17,113,332,132"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x&gt;=y" alt="" coords="17,132,332,151"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x.__getattribute__(&#39;name&#39;) &lt;==&gt; x.name" alt="" coords="17,151,332,169"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x[y]" alt="" coords="17,169,332,188"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x[i:j]" alt="" coords="17,188,332,207"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x&gt;y" alt="" coords="17,207,332,225"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="hash(x)" alt="" coords="17,225,332,244"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x+=y" alt="" coords="17,244,332,263"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="x*=y" alt="" coords="17,263,332,281"/>
+<area shape="rect" id="node58" href="javascript:void(0);" title="stable sort *IN PLACE*;..." alt="" coords="17,300,332,319"/>
+<area shape="rect" id="node3" href="javascript:void(0);" title="list() &#45;&gt; new list..." alt="" coords="5,6,344,325"/>
+<area shape="rect" id="node59" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback `alt` source, return either `self`&#39;s source or the alternative." alt="" coords="385,151,653,169"/>
+<area shape="rect" id="node59" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed &#160;`AudioData`." alt="" coords="385,169,653,188"/>
+<area shape="rect" id="node59" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an `AudioData` object first, through `render`." alt="" coords="385,188,653,207"/>
+<area shape="rect" id="node4" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an `AudioData` in response to a call to its `render`\()&#39; method." alt="" coords="373,118,664,213"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_17.gif" alt='' usemap="#uml_class_diagram_for_echonest_17" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 <pre class="literalblock">
@@ -504,7 +554,7 @@ same as the duration of the first in the list.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:56:14 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:24 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
