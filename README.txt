@@ -4,9 +4,9 @@ This will install Python libraries that let you do great things with music and v
 
 You'll probably want to start with example scripts.
 
-n the Mac these are placed in /usr/share/local/echo-nest-remix-examples.
+On the Mac these are placed in /usr/share/local/echo-nest-remix-examples.
 
-On Windows these are placed in your Python root folder, e.g. C:\Python26.
+On Windows these are placed in your Python root folder: C:\Python26.
 
 You will need an API key set up to use this software. Register for a key at http://developer.echonest.com/ .
 
