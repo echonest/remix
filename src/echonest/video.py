@@ -18,7 +18,7 @@ import sys
 import tempfile
 
 from echonest import audio
-from echonest.web import config
+from pyechonest import config
 
 
 class ImageSequence():
