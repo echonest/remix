@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -64,18 +61,18 @@
 <h1 class="epydoc">Class ImageSequence</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.video-pysrc.html#ImageSequence">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_30" name="uml_class_diagram_for_echonest_30">
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__init__" title="builds sequence from a filelist, or another ImageSequence object" alt="" coords="17,39,431,57"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__len__" title="how many frames are in this sequence?" alt="" coords="17,57,431,76"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__getitem__" title="echonest.video.ImageSequence.__getitem__" alt="" coords="17,76,431,95"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#getslice" title="returns a slice of the frames as a new instance" alt="" coords="17,95,431,113"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#indexvoodo" title="converts index to frame from a variety of forms" alt="" coords="17,113,431,132"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__add__" title="returns an ImageSequence with the second seq appended to this one." alt="" coords="17,132,431,151"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#duration" title="duration of a clip in seconds" alt="" coords="17,151,431,169"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#frametoim" title="return a PIL image" alt="" coords="17,169,431,188"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#renderframe" title="renders frame to destination directory." alt="" coords="17,188,431,207"/>
-<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#render" title="renders sequence to stills." alt="" coords="17,207,431,225"/>
-<area shape="rect" id="node1" href="echonest.video.ImageSequence-class.html" title="echonest.video.ImageSequence" alt="" coords="5,6,443,231"/>
-<area shape="rect" id="node2" href="echonest.video.EditableFrames-class.html" title="Collection of frames that can be easily edited" alt="" coords="153,251,295,290"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__init__" title="builds sequence from a filelist, or another ImageSequence object" alt="" coords="17,37,383,56"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__len__" title="how many frames are in this sequence?" alt="" coords="17,56,383,75"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__getitem__" title="echonest.video.ImageSequence.__getitem__" alt="" coords="17,75,383,93"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#getslice" title="returns a slice of the frames as a new instance" alt="" coords="17,93,383,112"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#indexvoodo" title="converts index to frame from a variety of forms" alt="" coords="17,112,383,131"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#__add__" title="returns an ImageSequence with the second seq appended to this one." alt="" coords="17,131,383,149"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#duration" title="duration of a clip in seconds" alt="" coords="17,149,383,168"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#frametoim" title="return a PIL image" alt="" coords="17,168,383,187"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#renderframe" title="renders frame to destination directory." alt="" coords="17,187,383,205"/>
+<area shape="rect" id="node86" href="echonest.video.ImageSequence-class.html#render" title="renders sequence to stills." alt="" coords="17,205,383,224"/>
+<area shape="rect" id="node1" href="echonest.video.ImageSequence-class.html" title="echonest.video.ImageSequence" alt="" coords="5,6,395,231"/>
+<area shape="rect" id="node2" href="echonest.video.EditableFrames-class.html" title="Collection of frames that can be easily edited" alt="" coords="135,251,265,290"/>
 </map>
   <img src="uml_class_diagram_for_echonest_30.gif" alt='' usemap="#uml_class_diagram_for_echonest_30" ismap="ismap" class="graph-without-title" />
 </center>
@@ -350,11 +347,8 @@ one.</td>
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-returns an ImageSequence with the second seq appended to this
+  returns an ImageSequence with the second seq appended to this
 one. uses settings of the self.
-
-</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -376,10 +370,7 @@ one. uses settings of the self.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-renders frame to destination directory. can update sequence with rendered image (default)
-
-</pre>
+  renders frame to destination directory. can update sequence with rendered image (default)
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -401,10 +392,7 @@ renders frame to destination directory. can update sequence with rendered image 
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-renders sequence to stills. can update sequence with rendered images (default)
-
-</pre>
+  renders sequence to stills. can update sequence with rendered images (default)
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -414,9 +402,6 @@ renders sequence to stills. can update sequence with rendered images (default)
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -434,14 +419,14 @@ renders sequence to stills. can update sequence with rendered images (default)
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:25 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:14 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

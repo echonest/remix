@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -64,41 +61,37 @@
 <h1 class="epydoc">Class LocalAudioFile</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#LocalAudioFile">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_15" name="uml_class_diagram_for_echonest_15">
-<area shape="rect" id="node50" href="echonest.audio.LocalAudioFile-class.html#__init__" title=":param filename: path to a local MP3 file" alt="" coords="17,521,371,540"/>
-<area shape="rect" id="node50" href="echonest.audio.LocalAudioFile-class.html#toxml" title="echonest.audio.LocalAudioFile.toxml" alt="" coords="17,540,371,559"/>
-<area shape="rect" id="node1" href="echonest.audio.LocalAudioFile-class.html" title="Like `AudioFile`, but with conditional upload: recommended." alt="" coords="5,489,381,565"/>
-<area shape="rect" id="node51" href="echonest.audio.AudioFile-class.html#duration" title="Since we consider `AudioFile` to be an evolved version of &#160;`AudioData`, we return the measured duration from the analysis." alt="" coords="108,423,281,441"/>
-<area shape="rect" id="node51" href="echonest.audio.AudioFile-class.html#__setstate__" title="Recreates circular reference after unpickling." alt="" coords="108,444,281,463"/>
-<area shape="rect" id="node2" href="echonest.audio.AudioFile-class.html" title="The basic do&#45;everything class for remixing." alt="" coords="96,398,293,469"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#source" title="echonest.audio.AudioData.source" alt="" coords="53,127,335,145"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#load" title="echonest.audio.AudioData.load" alt="" coords="53,148,335,167"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#__getitem__" title="Fetches a frame or slice." alt="" coords="53,167,335,185"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#getslice" title="Help `__getitem__` return a new AudioData for a given slice" alt="" coords="53,185,335,204"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#getsample" title="Help `__getitem__` return a frame (all channels for a given ..." alt="" coords="53,204,335,223"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#pad_with_zeros" title="echonest.audio.AudioData.pad_with_zeros" alt="" coords="53,223,335,241"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#append" title="Appends the input to the end of this `AudioData`." alt="" coords="53,241,335,260"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#sum" title="echonest.audio.AudioData.sum" alt="" coords="53,260,335,279"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#add_at" title="echonest.audio.AudioData.add_at" alt="" coords="53,279,335,297"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#__len__" title="echonest.audio.AudioData.__len__" alt="" coords="53,297,335,316"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#encode" title="Outputs an MP3 or WAVE file to `filename`." alt="" coords="53,316,335,335"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#unload" title="echonest.audio.AudioData.unload" alt="" coords="53,335,335,353"/>
-<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#render" title="echonest.audio.AudioData.render" alt="" coords="53,353,335,372"/>
-<area shape="rect" id="node3" href="echonest.audio.AudioData-class.html" title="Handles audio data transparently." alt="" coords="41,102,345,378"/>
-<area shape="rect" id="node53" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback `alt` source, return either `self`&#39;s source or the alternative." alt="" coords="60,39,328,57"/>
-<area shape="rect" id="node53" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed &#160;`AudioData`." alt="" coords="60,57,328,76"/>
-<area shape="rect" id="node4" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an `AudioData` in response to a call to its `render`\()&#39; method." alt="" coords="48,6,339,82"/>
+<area shape="rect" id="node50" href="echonest.audio.LocalAudioFile-class.html#__init__" title="Given an input ndarray, import the sample values and shape (if none is specified) of the input numpy.array." alt="" coords="17,520,332,539"/>
+<area shape="rect" id="node50" href="echonest.audio.LocalAudioFile-class.html#toxml" title="echonest.audio.LocalAudioFile.toxml" alt="" coords="17,539,332,557"/>
+<area shape="rect" id="node1" href="echonest.audio.LocalAudioFile-class.html" title="Like AudioFile, but with conditional upload: recommended." alt="" coords="5,489,344,565"/>
+<area shape="rect" id="node51" href="echonest.audio.AudioFile-class.html#duration" title="Since we consider AudioFile to be an evolved version of AudioData, we return the measured duration from the analysis." alt="" coords="100,421,249,440"/>
+<area shape="rect" id="node51" href="echonest.audio.AudioFile-class.html#__setstate__" title="Recreates circular reference after unpickling." alt="" coords="100,443,249,461"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioFile-class.html" title="The basic do&#45;everything class for remixing." alt="" coords="88,398,261,469"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#source" title="echonest.audio.AudioData.source" alt="" coords="47,125,303,144"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#load" title="echonest.audio.AudioData.load" alt="" coords="47,147,303,165"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#__getitem__" title="Fetches a frame or slice." alt="" coords="47,165,303,184"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#getslice" title="Help __getitem__ return a new AudioData for a given slice" alt="" coords="47,184,303,203"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#getsample" title="Help __getitem__ return a frame (all channels for a given sample index)" alt="" coords="47,203,303,221"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#pad_with_zeros" title="echonest.audio.AudioData.pad_with_zeros" alt="" coords="47,221,303,240"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#append" title="Appends the input to the end of this AudioData." alt="" coords="47,240,303,259"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#sum" title="echonest.audio.AudioData.sum" alt="" coords="47,259,303,277"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#add_at" title="echonest.audio.AudioData.add_at" alt="" coords="47,277,303,296"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#__len__" title="echonest.audio.AudioData.__len__" alt="" coords="47,296,303,315"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#encode" title="Outputs an MP3 or WAVE file to filename." alt="" coords="47,315,303,333"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#unload" title="echonest.audio.AudioData.unload" alt="" coords="47,333,303,352"/>
+<area shape="rect" id="node52" href="echonest.audio.AudioData-class.html#render" title="echonest.audio.AudioData.render" alt="" coords="47,352,303,371"/>
+<area shape="rect" id="node3" href="echonest.audio.AudioData-class.html" title="Handles audio data transparently." alt="" coords="35,102,315,378"/>
+<area shape="rect" id="node53" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative." alt="" coords="55,37,295,56"/>
+<area shape="rect" id="node53" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="55,56,295,75"/>
+<area shape="rect" id="node4" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render()&#39; method." alt="" coords="43,6,307,82"/>
 </map>
   <img src="uml_class_diagram_for_echonest_15.gif" alt='' usemap="#uml_class_diagram_for_echonest_15" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
-<pre class="literalblock">
-
-Like `AudioFile`, but with conditional upload: recommended. If a file 
-is already known to the Analyze API, then it does not bother uploading 
+Like <a href="echonest.audio.AudioFile-class.html" class="link">AudioFile</a>, but with conditional upload: recommended. If a file
+is already known to the Analyze API, then it does not bother uploading
 the file.
-
-</pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -127,7 +120,8 @@ the file.
         <span class="summary-sig-arg">filename</span>,
         <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">defer</span>=<span class="summary-sig-default">False</span>)</span><br />
-      :param filename: path to a local MP3 file</td>
+      Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#LocalAudioFile.__init__">source&nbsp;code</a></span>
             
@@ -282,12 +276,16 @@ the file.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-:param filename: path to a local MP3 file
-
-</pre>
+  <p>Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</p>
+<p>Given a <code class="link">filename</code> (and no input ndarray), use ffmpeg to convert
+the file to wave, then load the file into the data,
+auto-detecting the sample rate, and number of channels.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong> - path to a local MP3 file</li>
+    </ul></dd>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -299,9 +297,6 @@ the file.
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -319,14 +314,14 @@ the file.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:24 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:11 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

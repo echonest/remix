@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -64,50 +61,46 @@
 <h1 class="epydoc">Class AudioQuantum</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_7" name="uml_class_diagram_for_echonest_7">
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#end" title="A computed property: the sum of `start` and `duration`." alt="" coords="17,145,560,164"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#source" title="The `AudioData` source for the AudioQuantum." alt="" coords="17,164,560,183"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__init__" title="Initializes an `AudioQuantum`." alt="" coords="17,185,560,204"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#get_end" title="echonest.audio.AudioQuantum.get_end" alt="" coords="17,204,560,223"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#get_source" title="Returns itself or its parent." alt="" coords="17,223,560,241"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#set_source" title="echonest.audio.AudioQuantum.set_source" alt="" coords="17,241,560,260"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#sources" title="echonest.audio.AudioQuantum.sources" alt="" coords="17,260,560,279"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#parent" title="Returns the containing `AudioQuantum` in the rhythm hierarchy: a `tatum` returns a `beat`, a `beat` returns a `bar`, and a `bar` returns a `section`." alt="" coords="17,279,560,297"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#children" title="Returns an `AudioQuantumList` of the AudioQuanta that it contains, one step down the hierarchy." alt="" coords="17,297,560,316"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#group" title="Returns the `children`\() of the `AudioQuantum`&#39;s `parent`\()." alt="" coords="17,316,560,335"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#prev" title="Step backwards in the containing `AudioQuantumList`." alt="" coords="17,335,560,353"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#next" title="Step forward in the containing `AudioQuantumList`." alt="" coords="17,353,560,372"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__str__" title="Lists the `AudioQuantum`.kind with start and &#160;end times, in seconds, e.g.::" alt="" coords="17,372,560,391"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__repr__" title="A string representing a constructor, including kind, start time, &#160;duration, and (if it exists) confidence, e.g.::" alt="" coords="17,391,560,409"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#local_context" title="Returns a tuple of (*index*, *length*) within rhythm siblings, where *index* is the (zero&#45;indexed) position within its `group`\(), and &#160;*length* is the number of siblings within its `group`\()." alt="" coords="17,409,560,428"/>
-<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#render" title="echonest.audio.AudioQuantum.render" alt="" coords="17,447,560,465"/>
-<area shape="rect" id="node1" href="echonest.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds." alt="" coords="5,121,571,471"/>
-<area shape="rect" id="node3" href="echonest.audio.AudioSegment-class.html" title="Subclass of `AudioQuantum` for the data&#45;rich segments returned by the Analyze API." alt="" coords="221,491,357,530"/>
-<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback `alt` source, return either `self`&#39;s source or the alternative." alt="" coords="155,39,423,57"/>
-<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed &#160;`AudioData`." alt="" coords="155,57,423,76"/>
-<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an `AudioData` object first, through `render`." alt="" coords="155,76,423,95"/>
-<area shape="rect" id="node2" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an `AudioData` in response to a call to its `render`\()&#39; method." alt="" coords="143,6,433,101"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#end" title="A computed property: the sum of start and duration." alt="" coords="17,144,495,163"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#source" title="The AudioData source for the AudioQuantum." alt="" coords="17,163,495,181"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__init__" title="Initializes an AudioQuantum." alt="" coords="17,184,495,203"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#get_end" title="echonest.audio.AudioQuantum.get_end" alt="" coords="17,203,495,221"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#get_source" title="Returns itself or its parent." alt="" coords="17,221,495,240"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#set_source" title="echonest.audio.AudioQuantum.set_source" alt="" coords="17,240,495,259"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#sources" title="echonest.audio.AudioQuantum.sources" alt="" coords="17,259,495,277"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#parent" title="Returns the containing AudioQuantum in the rhythm hierarchy: a tatum returns a beat, a beat returns a bar, and a bar returns a section." alt="" coords="17,277,495,296"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#children" title="Returns an AudioQuantumList of the AudioQuanta that it contains, one step down the hierarchy." alt="" coords="17,296,495,315"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#group" title="Returns the children() of the AudioQuantum&#39;s parent()." alt="" coords="17,315,495,333"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#prev" title="Step backwards in the containing AudioQuantumList." alt="" coords="17,333,495,352"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#next" title="Step forward in the containing AudioQuantumList." alt="" coords="17,352,495,371"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__str__" title="Lists the AudioQuantum.kind with start and end times, in seconds, e.g.:" alt="" coords="17,371,495,389"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__repr__" title="A string representing a constructor, including kind, start time, duration, and (if it exists) confidence, e.g.:" alt="" coords="17,389,495,408"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#local_context" title="Returns a tuple of (index, length) within rhythm siblings, where index is the (zero&#45;indexed) position within its group(), and length is the number of siblings within its group()." alt="" coords="17,408,495,427"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#render" title="echonest.audio.AudioQuantum.render" alt="" coords="17,445,495,464"/>
+<area shape="rect" id="node1" href="echonest.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds." alt="" coords="5,121,507,471"/>
+<area shape="rect" id="node3" href="echonest.audio.AudioSegment-class.html" title="Subclass of AudioQuantum for the data&#45;rich segments returned by the Analyze API." alt="" coords="193,491,319,530"/>
+<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative." alt="" coords="136,37,376,56"/>
+<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="136,56,376,75"/>
+<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an AudioData object first, through render." alt="" coords="136,75,376,93"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render()&#39; method." alt="" coords="124,6,388,101"/>
 </map>
   <img src="uml_class_diagram_for_echonest_7.gif" alt='' usemap="#uml_class_diagram_for_echonest_7" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
-<pre class="literalblock">
-
-A unit of musical time, identified at minimum with a start time and 
-a duration, both in seconds. It most often corresponds with a `section`,
-`bar`, `beat`, `tatum`, or (by inheritance) `segment` obtained from an Analyze
-API call.
-
-Additional properties include:
-
-end
-    computed time offset for convenience: `start` + `duration`
-container
-    a circular reference to the containing `AudioQuantumList`,
-    created upon creation of the `AudioQuantumList` that covers
-    the whole track
-
-</pre>
+<p>A unit of musical time, identified at minimum with a start time and
+a duration, both in seconds. It most often corresponds with a <code class="link">section</code>,
+<code class="link">bar</code>, <code class="link">beat</code>, <code class="link">tatum</code>, or (by inheritance) <code class="link">segment</code> obtained from an Analyze
+API call.</p>
+<p>Additional properties include:</p>
+<dl class="rst-docutils">
+<dt>end</dt>
+<dd>computed time offset for convenience: <code class="link">start</code> + <code class="link">duration</code></dd>
+<dt>container</dt>
+<dd>a circular reference to the containing <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>,
+created upon creation of the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> that covers
+the whole track</dd>
+</dl>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -138,7 +131,7 @@ container
         <span class="summary-sig-arg">kind</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">confidence</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Initializes an `AudioQuantum`.</td>
+      Initializes an <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.__init__">source&nbsp;code</a></span>
             
@@ -221,9 +214,9 @@ container
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="parent"></a><span class="summary-sig-name">parent</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Returns the containing `AudioQuantum` in the rhythm hierarchy:
-a `tatum` returns a `beat`, a `beat` returns a `bar`, and a `bar` returns a
-`section`.</td>
+      Returns the containing <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> in the rhythm hierarchy:
+a <code class="link">tatum</code> returns a <code class="link">beat</code>, a <code class="link">beat</code> returns a <code class="link">bar</code>, and a <code class="link">bar</code> returns a
+<code class="link">section</code>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.parent">source&nbsp;code</a></span>
             
@@ -240,7 +233,7 @@ a `tatum` returns a `beat`, a `beat` returns a `bar`, and a `bar` returns a
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#children" class="summary-sig-name">children</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Returns an `AudioQuantumList` of the AudioQuanta that it contains,
+      Returns an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> of the AudioQuanta that it contains,
 one step down the hierarchy.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.children">source&nbsp;code</a></span>
@@ -258,7 +251,7 @@ one step down the hierarchy.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#group" class="summary-sig-name">group</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Returns the `children`\() of the `AudioQuantum`'s `parent`\().</td>
+      Returns the <a href="echonest.audio.AudioQuantum-class.html#children" class="link">children</a>() of the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <a href="echonest.audio.AudioQuantum-class.html#parent" class="link">parent</a>().</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.group">source&nbsp;code</a></span>
             
@@ -276,7 +269,7 @@ one step down the hierarchy.</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#prev" class="summary-sig-name">prev</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">step</span>=<span class="summary-sig-default">1</span>)</span><br />
-      Step backwards in the containing `AudioQuantumList`.</td>
+      Step backwards in the containing <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.prev">source&nbsp;code</a></span>
             
@@ -294,7 +287,7 @@ one step down the hierarchy.</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#next" class="summary-sig-name">next</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">step</span>=<span class="summary-sig-default">1</span>)</span><br />
-      Step forward in the containing `AudioQuantumList`.</td>
+      Step forward in the containing <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.next">source&nbsp;code</a></span>
             
@@ -311,8 +304,8 @@ one step down the hierarchy.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Lists the `AudioQuantum`.kind with start and 
-end times, in seconds, e.g.::</td>
+      Lists the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.kind with start and
+end times, in seconds, e.g.:</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.__str__">source&nbsp;code</a></span>
             
@@ -329,8 +322,8 @@ end times, in seconds, e.g.::</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      A string representing a constructor, including kind, start time, 
-duration, and (if it exists) confidence, e.g.::</td>
+      A string representing a constructor, including kind, start time,
+duration, and (if it exists) confidence, e.g.:</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.__repr__">source&nbsp;code</a></span>
             
@@ -347,9 +340,9 @@ duration, and (if it exists) confidence, e.g.::</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="local_context"></a><span class="summary-sig-name">local_context</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Returns a tuple of (*index*, *length*) within rhythm siblings, where
-*index* is the (zero-indexed) position within its `group`\(), and 
-*length* is the number of siblings within its `group`\().</td>
+      Returns a tuple of (<em>index</em>, <em>length</em>) within rhythm siblings, where
+<em>index</em> is the (zero-indexed) position within its <a href="echonest.audio.AudioQuantum-class.html#group" class="link">group</a>(), and
+<em>length</em> is the number of siblings within its <a href="echonest.audio.AudioQuantum-class.html#group" class="link">group</a>().</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.local_context">source&nbsp;code</a></span>
             
@@ -366,9 +359,9 @@ duration, and (if it exists) confidence, e.g.::</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="absolute_context"></a><span class="summary-sig-name">absolute_context</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Returns a tuple of (*index*, *length*) within the containing 
-`AudioQuantumList`, where *index* is the (zero-indexed) position within 
-its container, and *length* is the number of siblings within the
+      Returns a tuple of (<em>index</em>, <em>length</em>) within the containing
+<a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, where <em>index</em> is the (zero-indexed) position within
+its container, and <em>length</em> is the number of siblings within the
 container.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum.absolute_context">source&nbsp;code</a></span>
@@ -514,7 +507,7 @@ container.</td>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.AudioQuantum-class.html#end" class="summary-name">end</a><br />
-      A computed property: the sum of `start` and `duration`.
+      A computed property: the sum of <code class="link">start</code> and <code class="link">duration</code>.
     </td>
   </tr>
 <tr>
@@ -522,7 +515,7 @@ container.</td>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.AudioQuantum-class.html#source" class="summary-name">source</a><br />
-      The `AudioData` source for the AudioQuantum.
+      The <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> source for the AudioQuantum.
     </td>
   </tr>
   <tr>
@@ -571,17 +564,15 @@ container.</td>
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Initializes an `AudioQuantum`.
-
-:param start: offset from the start of the track, in seconds
-:param duration: length of the `AudioQuantum`
-:param kind: string containing what kind of rhythm unit it came from
-:param confidence: float between zero and one
-
-</pre>
+  Initializes an <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>start</code></strong> - offset from the start of the track, in seconds</li>
+        <li><strong class="pname"><code>duration</code></strong> - length of the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a></li>
+        <li><strong class="pname"><code>kind</code></strong> - string containing what kind of rhythm unit it came from</li>
+        <li><strong class="pname"><code>confidence</code></strong> - float between zero and one</li>
+    </ul></dd>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -602,13 +593,9 @@ Initializes an `AudioQuantum`.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Returns an `AudioQuantumList` of the AudioQuanta that it contains,
-one step down the hierarchy. A `beat` returns `tatums`, a `bar` returns
-`beats`, and a `section` returns `bars`.
-
-</pre>
+  Returns an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> of the AudioQuanta that it contains,
+one step down the hierarchy. A <code class="link">beat</code> returns <code class="link">tatums</code>, a <code class="link">bar</code> returns
+<code class="link">beats</code>, and a <code class="link">section</code> returns <code class="link">bars</code>.
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -627,13 +614,9 @@ one step down the hierarchy. A `beat` returns `tatums`, a `bar` returns
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Returns the `children`\() of the `AudioQuantum`'s `parent`\(). 
+  Returns the <a href="echonest.audio.AudioQuantum-class.html#children" class="link">children</a>() of the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <a href="echonest.audio.AudioQuantum-class.html#parent" class="link">parent</a>().
 In other words: 'siblings'. If no parent is found, then return the
-`AudioQuantumList` for the whole track.
-
-</pre>
+<a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> for the whole track.
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -653,12 +636,8 @@ In other words: 'siblings'. If no parent is found, then return the
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Step backwards in the containing `AudioQuantumList`.
-Returns `self` if a boundary is reached.
-
-</pre>
+  Step backwards in the containing <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
+Returns <code class="link">self</code> if a boundary is reached.
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -678,12 +657,8 @@ Returns `self` if a boundary is reached.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Step forward in the containing `AudioQuantumList`.
-Returns `self` if a boundary is reached.
-
-</pre>
+  Step forward in the containing <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
+Returns <code class="link">self</code> if a boundary is reached.
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -703,13 +678,10 @@ Returns `self` if a boundary is reached.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Lists the `AudioQuantum`.kind with start and 
-end times, in seconds, e.g.::
-
-    &quot;segment (20.31 - 20.42)&quot;
-
+  <p>Lists the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.kind with start and
+end times, in seconds, e.g.:</p>
+<pre class="rst-literal-block">
+&quot;segment (20.31 - 20.42)&quot;
 </pre>
   <dl class="fields">
     <dt>Overrides:
@@ -733,13 +705,10 @@ end times, in seconds, e.g.::
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-A string representing a constructor, including kind, start time, 
-duration, and (if it exists) confidence, e.g.::
-
-    &quot;AudioQuantum(kind='tatum', start=42.198267, duration=0.1523394)&quot;
-
+  <p>A string representing a constructor, including kind, start time,
+duration, and (if it exists) confidence, e.g.:</p>
+<pre class="rst-literal-block">
+&quot;AudioQuantum(kind='tatum', start=42.198267, duration=0.1523394)&quot;
 </pre>
   <dl class="fields">
     <dt>Overrides:
@@ -762,13 +731,10 @@ duration, and (if it exists) confidence, e.g.::
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Returns a one-indexed, human-readable version of context.
-For example::
-    
-    &quot;bar 4 of 142, beat 3 of 4, tatum 2 of 3&quot;
-
+  <p>Returns a one-indexed, human-readable version of context.
+For example:</p>
+<pre class="rst-literal-block">
+&quot;bar 4 of 142, beat 3 of 4, tatum 2 of 3&quot;
 </pre>
   <dl class="fields">
   </dl>
@@ -799,11 +765,7 @@ For example::
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">end</h3>
-  <pre class="literalblock">
-
-A computed property: the sum of `start` and `duration`.
-
-</pre>
+  A computed property: the sum of <code class="link">start</code> and <code class="link">duration</code>.
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#get_end" class="summary-sig-name">get_end</a>(<span class="summary-sig-arg">self</span>)</span>
@@ -817,11 +779,7 @@ A computed property: the sum of `start` and `duration`.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">source</h3>
-  <pre class="literalblock">
-
-The `AudioData` source for the AudioQuantum.
-
-</pre>
+  The <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> source for the AudioQuantum.
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="echonest.audio.AudioQuantum-class.html#get_source" class="summary-sig-name">get_source</a>(<span class="summary-sig-arg">self</span>)</span>
@@ -839,9 +797,6 @@ The `AudioData` source for the AudioQuantum.
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -859,14 +814,14 @@ The `AudioData` source for the AudioQuantum.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:23 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:09 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

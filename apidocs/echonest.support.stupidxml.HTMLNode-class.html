@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -65,39 +62,35 @@
 <h1 class="epydoc">Class HTMLNode</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.support.stupidxml-pysrc.html#HTMLNode">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_27" name="uml_class_diagram_for_echonest_27">
-<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#EMPTY_TAGS" title="echonest.support.stupidxml.HTMLNode.EMPTY_TAGS" alt="" coords="145,159,351,177"/>
-<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#__str__" title="str(x)" alt="" coords="145,180,351,199"/>
-<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#__repr__" title="repr(x)" alt="" coords="145,199,351,217"/>
-<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#append" title="echonest.support.stupidxml.HTMLNode.append" alt="" coords="145,217,351,236"/>
-<area shape="rect" id="node1" href="echonest.support.stupidxml.HTMLNode-class.html" title="HTML 4 compliant Node" alt="" coords="133,134,363,242"/>
-<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#dom" title="echonest.support.stupidxml.Node.dom" alt="" coords="17,31,477,49"/>
-<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#__init__" title="x.__init__(...) initializes x; see x.__class__.__doc__ for signature" alt="" coords="17,52,477,71"/>
-<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#is_iterable" title="echonest.support.stupidxml.Node.is_iterable" alt="" coords="17,71,477,89"/>
-<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#attributes_to_str" title="echonest.support.stupidxml.Node.attributes_to_str" alt="" coords="17,89,477,108"/>
-<area shape="rect" id="node2" href="echonest.support.stupidxml.Node-class.html" title="Object representation of an XML node" alt="" coords="5,6,488,114"/>
+<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#EMPTY_TAGS" title="echonest.support.stupidxml.HTMLNode.EMPTY_TAGS" alt="" coords="128,157,309,176"/>
+<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#__str__" title="str(x)" alt="" coords="128,179,309,197"/>
+<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#__repr__" title="repr(x)" alt="" coords="128,197,309,216"/>
+<area shape="rect" id="node80" href="echonest.support.stupidxml.HTMLNode-class.html#append" title="echonest.support.stupidxml.HTMLNode.append" alt="" coords="128,216,309,235"/>
+<area shape="rect" id="node1" href="echonest.support.stupidxml.HTMLNode-class.html" title="HTML 4 compliant Node" alt="" coords="116,134,321,242"/>
+<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#dom" title="echonest.support.stupidxml.Node.dom" alt="" coords="17,29,420,48"/>
+<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#__init__" title="x.__init__(...) initializes x; see x.__class__.__doc__ for signature" alt="" coords="17,51,420,69"/>
+<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#is_iterable" title="echonest.support.stupidxml.Node.is_iterable" alt="" coords="17,69,420,88"/>
+<area shape="rect" id="node81" href="echonest.support.stupidxml.Node-class.html#attributes_to_str" title="echonest.support.stupidxml.Node.attributes_to_str" alt="" coords="17,88,420,107"/>
+<area shape="rect" id="node2" href="echonest.support.stupidxml.Node-class.html" title="Object representation of an XML node" alt="" coords="5,6,432,114"/>
 </map>
   <img src="uml_class_diagram_for_echonest_27.gif" alt='' usemap="#uml_class_diagram_for_echonest_27" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
-<pre class="literalblock">
-HTML 4 compliant Node
-
-Node renders as standard HTML 4 markup.
-
-&gt;&gt;&gt; br = HTMLNode(&quot;br&quot;)
-&gt;&gt;&gt; str(br)
-'&lt;br&gt;'
-&gt;&gt;&gt; img = HTMLNode(&quot;img&quot;, src=&quot;http://domain.com/image.jpg&quot;)
-&gt;&gt;&gt; str(img)
-'&lt;img src=&quot;http://domain.com/image.jpg&quot;&gt;'
-&gt;&gt;&gt; p = HTMLNode(&quot;p&quot;)
-&gt;&gt;&gt; p.append(img)
-&lt;StupidXML.HTMLNode: &quot;img&quot;&gt;
-&gt;&gt;&gt; str(p)
-'&lt;p&gt;&lt;img src=&quot;http://domain.com/image.jpg&quot;&gt;&lt;/p&gt;'
-
-</pre>
+<p>HTML 4 compliant Node</p>
+<p>Node renders as standard HTML 4 markup.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>br = HTMLNode(<span class="py-string">&quot;br&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>str(br)
+<span class="py-output">'&lt;br&gt;'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>img = HTMLNode(<span class="py-string">&quot;img&quot;</span>, src=<span class="py-string">&quot;http://domain.com/image.jpg&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>str(img)
+<span class="py-output">'&lt;img src=&quot;http://domain.com/image.jpg&quot;&gt;'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>p = HTMLNode(<span class="py-string">&quot;p&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>p.append(img)
+<span class="py-output">&lt;StupidXML.HTMLNode: &quot;img&quot;&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>str(p)
+<span class="py-output">'&lt;p&gt;&lt;img src=&quot;http://domain.com/image.jpg&quot;&gt;&lt;/p&gt;'</span></pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -280,10 +273,7 @@ Node renders as standard HTML 4 markup.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-str(x)
-
-</pre>
+  str(x)
   <dl class="fields">
     <dt>Overrides:
         object.__str__
@@ -307,10 +297,7 @@ str(x)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-repr(x)
-
-</pre>
+  repr(x)
   <dl class="fields">
     <dt>Overrides:
         object.__repr__
@@ -392,9 +379,6 @@ repr(x)
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -412,14 +396,14 @@ repr(x)
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:25 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:13 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

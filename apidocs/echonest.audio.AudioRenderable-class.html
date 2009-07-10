@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -64,44 +61,40 @@
 <h1 class="epydoc">Class AudioRenderable</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#AudioRenderable">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_9" name="uml_class_diagram_for_echonest_9">
-<area shape="rect" id="node1" href="echonest.audio.AudioData32-class.html" title="echonest.audio.AudioData32" alt="" coords="5,179,128,218"/>
-<area shape="rect" id="node2" href="echonest.audio.AudioData-class.html" title="Handles audio data transparently." alt="" coords="144,121,251,159"/>
-<area shape="rect" id="node8" href="echonest.audio.AudioFile-class.html" title="The basic do&#45;everything class for remixing." alt="" coords="157,179,259,218"/>
-<area shape="rect" id="node3" href="echonest.audio.AudioQuantumList-class.html" title="A container that enables content&#45;based selection and filtering." alt="" coords="280,121,443,159"/>
-<area shape="rect" id="node7" href="echonest.audio.Simultaneous-class.html" title="Stacks all contained AudioQuanta atop one another, adding their respective samples." alt="" coords="297,179,425,218"/>
-<area shape="rect" id="node4" href="echonest.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds." alt="" coords="472,121,608,159"/>
-<area shape="rect" id="node6" href="echonest.audio.AudioSegment-class.html" title="Subclass of `AudioQuantum` for the data&#45;rich segments returned by the Analyze API." alt="" coords="472,179,608,218"/>
-<area shape="rect" id="node28" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback `alt` source, return either `self`&#39;s source or the alternative." alt="" coords="316,39,584,57"/>
-<area shape="rect" id="node28" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed &#160;`AudioData`." alt="" coords="316,57,584,76"/>
-<area shape="rect" id="node28" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an `AudioData` object first, through `render`." alt="" coords="316,76,584,95"/>
-<area shape="rect" id="node5" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an `AudioData` in response to a call to its `render`\()&#39; method." alt="" coords="304,6,595,101"/>
-<area shape="rect" id="node10" href="echonest.audio.ModifiedRenderable-class.html" title="echonest.audio.ModifiedRenderable" alt="" coords="637,121,811,159"/>
-<area shape="rect" id="node9" href="echonest.audio.LocalAudioFile-class.html" title="Like `AudioFile`, but with conditional upload: recommended." alt="" coords="139,238,277,277"/>
+<area shape="rect" id="node1" href="echonest.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds." alt="" coords="36,121,161,159"/>
+<area shape="rect" id="node9" href="echonest.audio.AudioSegment-class.html" title="Subclass of AudioQuantum for the data&#45;rich segments returned by the Analyze API." alt="" coords="5,179,131,218"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioData-class.html" title="Handles audio data transparently." alt="" coords="253,121,352,159"/>
+<area shape="rect" id="node5" href="echonest.audio.AudioFile-class.html" title="The basic do&#45;everything class for remixing." alt="" coords="160,179,253,218"/>
+<area shape="rect" id="node6" href="echonest.audio.AudioData32-class.html" title="A 32&#45;bit variant of AudioData, intended for data collection on audio rendering with headroom." alt="" coords="283,179,397,218"/>
+<area shape="rect" id="node3" href="echonest.audio.LocalAudioFile-class.html" title="Like AudioFile, but with conditional upload: recommended." alt="" coords="144,238,269,277"/>
+<area shape="rect" id="node4" href="echonest.audio.AudioQuantumList-class.html" title="A container that enables content&#45;based selection and filtering." alt="" coords="381,121,525,159"/>
+<area shape="rect" id="node10" href="echonest.audio.Simultaneous-class.html" title="Stacks all contained AudioQuanta atop one another, adding their respective samples." alt="" coords="427,179,544,218"/>
+<area shape="rect" id="node28" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative." alt="" coords="257,37,497,56"/>
+<area shape="rect" id="node28" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="257,56,497,75"/>
+<area shape="rect" id="node28" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an AudioData object first, through render." alt="" coords="257,75,497,93"/>
+<area shape="rect" id="node7" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render()&#39; method." alt="" coords="245,6,509,101"/>
+<area shape="rect" id="node8" href="echonest.audio.ModifiedRenderable-class.html" title="Class that contains any AudioRenderable, but overrides the render() method with nested effects, called sequentially on the result of the preceeding effect." alt="" coords="555,121,712,159"/>
 </map>
   <img src="uml_class_diagram_for_echonest_9.gif" alt='' usemap="#uml_class_diagram_for_echonest_9" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
-<pre class="literalblock">
-
-An object that gives an `AudioData` in response to a call to its `render`\()'
+<p>An object that gives an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> in response to a call to its <code class="link">render</code>()'
 method.
-Intended to be an abstract class that helps enforce the `RenderableAudioObject` 
-protocol. Picked up a couple of convenience methods common to many descendants.
-
-Every `RenderableAudioObject` must provide three things:
-
-render()
-    A method returning the `AudioData` for the object. The rhythmic duration (point
-    at which any following audio is appended) is signified by the `endindex` accessor,
-    measured in samples.
-source
-    An accessor pointing to the `AudioData` that contains the original sample data of
-    (a superset of) this audio object.
-duration
-    An accessor returning the rhythmic duration (in seconds) of the audio object.
-
-</pre>
+Intended to be an abstract class that helps enforce the <code class="link">RenderableAudioObject</code>
+protocol. Picked up a couple of convenience methods common to many descendants.</p>
+<p>Every <code class="link">RenderableAudioObject</code> must provide three things:</p>
+<dl class="rst-docutils">
+<dt>render()</dt>
+<dd>A method returning the <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> for the object. The rhythmic duration (point
+at which any following audio is appended) is signified by the <code class="link">endindex</code> accessor,
+measured in samples.</dd>
+<dt>source</dt>
+<dd>An accessor pointing to the <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> that contains the original sample data of
+(a superset of) this audio object.</dd>
+<dt>duration</dt>
+<dd>An accessor returning the rhythmic duration (in seconds) of the audio object.</dd>
+</dl>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -128,7 +121,7 @@ duration
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioRenderable-class.html#resolve_source" class="summary-sig-name">resolve_source</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">alt</span>)</span><br />
-      Given an alternative, fallback `alt` source, return either `self`'s
+      Given an alternative, fallback <code class="link">alt</code> source, return either <code class="link">self</code>'s
 source or the alternative.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioRenderable.resolve_source">source&nbsp;code</a></span>
@@ -147,8 +140,8 @@ source or the alternative.</td>
         <tr>
           <td><span class="summary-sig"><a name="encode"></a><span class="summary-sig-name">encode</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">filename</span>)</span><br />
-      Shortcut function that takes care of the need to obtain an `AudioData`
-object first, through `render`.</td>
+      Shortcut function that takes care of the need to obtain an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>
+object first, through <code class="link">render</code>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioRenderable.encode">source&nbsp;code</a></span>
             
@@ -200,8 +193,8 @@ object first, through `render`.</td>
         <tr>
           <td><span class="summary-sig"><a name="init_audio_data"></a><span class="summary-sig-name">init_audio_data</span>(<span class="summary-sig-arg">source</span>,
         <span class="summary-sig-arg">num_samples</span>)</span><br />
-      Convenience function for rendering: return a pre-allocated, zeroed 
-`AudioData`.</td>
+      Convenience function for rendering: return a pre-allocated, zeroed
+<a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioRenderable.init_audio_data">source&nbsp;code</a></span>
             
@@ -270,17 +263,12 @@ object first, through `render`.</td>
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Given an alternative, fallback `alt` source, return either `self`'s
+  <p>Given an alternative, fallback <code class="link">alt</code> source, return either <code class="link">self</code>'s
 source or the alternative. Throw an informative error if no source
-is found.
-
-Utility code that ended up being replicated in several places, so
+is found.</p>
+<p>Utility code that ended up being replicated in several places, so
 it ended up here. Not necessary for use in the RenderableAudioObject
-protocol.
-
-</pre>
+protocol.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -290,9 +278,6 @@ protocol.
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -310,14 +295,14 @@ protocol.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:24 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:10 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
