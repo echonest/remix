@@ -63,7 +63,32 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class AudioQuantum</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantum">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_echonest_7" name="uml_class_diagram_for_echonest_7">
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#end" title="A computed property: the sum of `start` and `duration`." alt="" coords="17,145,560,164"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#source" title="The `AudioData` source for the AudioQuantum." alt="" coords="17,164,560,183"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__init__" title="Initializes an `AudioQuantum`." alt="" coords="17,185,560,204"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#get_end" title="echonest.audio.AudioQuantum.get_end" alt="" coords="17,204,560,223"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#get_source" title="Returns itself or its parent." alt="" coords="17,223,560,241"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#set_source" title="echonest.audio.AudioQuantum.set_source" alt="" coords="17,241,560,260"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#sources" title="echonest.audio.AudioQuantum.sources" alt="" coords="17,260,560,279"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#parent" title="Returns the containing `AudioQuantum` in the rhythm hierarchy: a `tatum` returns a `beat`, a `beat` returns a `bar`, and a `bar` returns a `section`." alt="" coords="17,279,560,297"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#children" title="Returns an `AudioQuantumList` of the AudioQuanta that it contains, one step down the hierarchy." alt="" coords="17,297,560,316"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#group" title="Returns the `children`\() of the `AudioQuantum`&#39;s `parent`\()." alt="" coords="17,316,560,335"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#prev" title="Step backwards in the containing `AudioQuantumList`." alt="" coords="17,335,560,353"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#next" title="Step forward in the containing `AudioQuantumList`." alt="" coords="17,353,560,372"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__str__" title="Lists the `AudioQuantum`.kind with start and &#160;end times, in seconds, e.g.::" alt="" coords="17,372,560,391"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#__repr__" title="A string representing a constructor, including kind, start time, &#160;duration, and (if it exists) confidence, e.g.::" alt="" coords="17,391,560,409"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#local_context" title="Returns a tuple of (*index*, *length*) within rhythm siblings, where *index* is the (zero&#45;indexed) position within its `group`\(), and &#160;*length* is the number of siblings within its `group`\()." alt="" coords="17,409,560,428"/>
+<area shape="rect" id="node21" href="echonest.audio.AudioQuantum-class.html#render" title="echonest.audio.AudioQuantum.render" alt="" coords="17,447,560,465"/>
+<area shape="rect" id="node1" href="echonest.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds." alt="" coords="5,121,571,471"/>
+<area shape="rect" id="node3" href="echonest.audio.AudioSegment-class.html" title="Subclass of `AudioQuantum` for the data&#45;rich segments returned by the Analyze API." alt="" coords="221,491,357,530"/>
+<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback `alt` source, return either `self`&#39;s source or the alternative." alt="" coords="155,39,423,57"/>
+<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed &#160;`AudioData`." alt="" coords="155,57,423,76"/>
+<area shape="rect" id="node22" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an `AudioData` object first, through `render`." alt="" coords="155,76,423,95"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an `AudioData` in response to a call to its `render`\()&#39; method." alt="" coords="143,6,433,101"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_7.gif" alt='' usemap="#uml_class_diagram_for_echonest_7" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 <pre class="literalblock">
@@ -841,7 +866,7 @@ The `AudioData` source for the AudioQuantum.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:56:14 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:23 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
