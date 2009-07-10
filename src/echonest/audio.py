@@ -150,12 +150,12 @@ class AudioAnalysis(track.Track) :
 
 class AudioRenderable(object):
     """
-    An object that gives an `AudioData` in response to a call to its `render`\()'
+    An object that gives an `AudioData` in response to a call to its `render`\()
     method.
-    Intended to be an abstract class that helps enforce the `RenderableAudioObject` 
+    Intended to be an abstract class that helps enforce the `AudioRenderable` 
     protocol. Picked up a couple of convenience methods common to many descendants.
     
-    Every `RenderableAudioObject` must provide three things:
+    Every `AudioRenderable` must provide three things:
     
     render()
         A method returning the `AudioData` for the object. The rhythmic duration (point
