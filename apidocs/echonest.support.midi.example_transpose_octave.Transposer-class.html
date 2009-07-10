@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.support.midi.example_transpose_octave.Transposer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;echonest ::
+        <a href="echonest.support-module.html">Package&nbsp;support</a> ::
+        <a href="echonest.support.midi-module.html">Package&nbsp;midi</a> ::
+        <a href="echonest.support.midi.example_transpose_octave-module.html">Module&nbsp;example_transpose_octave</a> ::
+        Class&nbsp;Transposer
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.support.midi.example_transpose_octave.Transposer-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Transposer</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html">MidiOutStream.MidiOutStream</a> --+    
+                              |    
+        <a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html">MidiOutFile.MidiOutFile</a> --+
+                                  |
+                                 <strong class="uidshort">Transposer</strong>
+</pre>
+
+<hr />
+<p>Transposes all notes by 1 octave</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_transp"></a><span class="summary-sig-name">_transp</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ch</span>,
+        <span class="summary-sig-arg">note</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer._transp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.support.midi.example_transpose_octave.Transposer-class.html#note_on" class="summary-sig-name">note_on</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">0x40</span>,
+        <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">0x40</span>)</span><br />
+      channel: 0-15 note, velocity: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer.note_on">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.support.midi.example_transpose_octave.Transposer-class.html#note_off" class="summary-sig-name">note_off</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">0x40</span>,
+        <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">0x40</span>)</span><br />
+      channel: 0-15 note, velocity: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer.note_off">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html">MidiOutFile.MidiOutFile</a></code></b>:
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#__init__">__init__</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#aftertouch">aftertouch</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#channel_pressure">channel_pressure</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#continuous_controller">continuous_controller</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#copyright">copyright</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#cuepoint">cuepoint</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#end_of_track">end_of_track</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#eof">eof</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#event_slice">event_slice</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#header">header</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#instrument_name">instrument_name</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#key_signature">key_signature</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#lyric">lyric</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#marker">marker</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#meta_event">meta_event</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#meta_slice">meta_slice</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_ch_prefix">midi_ch_prefix</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_port">midi_port</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_time_code">midi_time_code</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#patch_change">patch_change</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#pitch_bend">pitch_bend</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#sequence_name">sequence_name</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#sequence_number">sequence_number</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#sequencer_specific">sequencer_specific</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#smtp_offset">smtp_offset</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#song_position_pointer">song_position_pointer</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#song_select">song_select</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#start_of_track">start_of_track</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#system_exclusive">system_exclusive</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#tempo">tempo</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#text">text</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#time_signature">time_signature</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#tuning_request">tuning_request</a></code>,
+      <code><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#write">write</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html">MidiOutStream.MidiOutStream</a></code></b>:
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#abs_time">abs_time</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#active_sensing">active_sensing</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_message">channel_message</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#get_current_track">get_current_track</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#get_run_stat">get_run_stat</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#rel_time">rel_time</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_run_stat">reset_run_stat</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_time">reset_time</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_current_track">set_current_track</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_run_stat">set_run_stat</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_continue">song_continue</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_start">song_start</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_stop">song_stop</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#system_reset">system_reset</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#timing_clock">timing_clock</a></code>,
+      <code><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#update_time">update_time</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="note_on"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">note_on</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">channel</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">note</span>=<span class="sig-default">0x40</span>,
+        <span class="sig-arg">velocity</span>=<span class="sig-default">0x40</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer.note_on">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>channel: 0-15 note, velocity: 0-127</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#note_on">MidiOutStream.MidiOutStream.note_on</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="note_off"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">note_off</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">channel</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">note</span>=<span class="sig-default">0x40</span>,
+        <span class="sig-arg">velocity</span>=<span class="sig-default">0x40</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.support.midi.example_transpose_octave-pysrc.html#Transposer.note_off">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>channel: 0-15 note, velocity: 0-127</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#note_off">MidiOutStream.MidiOutStream.note_off</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:51:01 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

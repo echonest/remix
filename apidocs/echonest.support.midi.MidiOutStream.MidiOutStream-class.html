@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.support.midi.MidiOutStream.MidiOutStream</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;echonest ::
+        <a href="echonest.support-module.html">Package&nbsp;support</a> ::
+        <a href="echonest.support.midi-module.html">Package&nbsp;midi</a> ::
+        <a href="echonest.support.midi.MidiOutStream-module.html">Module&nbsp;MidiOutStream</a> ::
+        Class&nbsp;MidiOutStream
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class MidiOutStream</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="echonest.support.midi.MidiToText.MidiToText-class.html">MidiToText.MidiToText</a></li><li>, <a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html">MidiOutFile.MidiOutFile</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>MidiOutstream is Basically an eventhandler. It is the most central 
+  class in the Midi library. You use it both for writing events to an 
+  output stream, and as an event handler for an input stream.</p>
+  <p>This makes it extremely easy to take input from one stream and send it
+  to another. Ie. if you want to read a Midi file, do some processing, and 
+  send it to a midiport.</p>
+  <p>All time values are in absolute values from the opening of a stream. 
+  To calculate time values, please use the MidiTime and MidiDeltaTime 
+  classes.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="update_time"></a><span class="summary-sig-name">update_time</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">new_time</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">relative</span>=<span class="summary-sig-default">1</span>)</span><br />
+      Updates the time, if relative is true, new_time is relative, else 
+      it's absolute.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.update_time">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reset_time"></a><span class="summary-sig-name">reset_time</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      reset time to 0</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.reset_time">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="rel_time"></a><span class="summary-sig-name">rel_time</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the relative time</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.rel_time">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="abs_time"></a><span class="summary-sig-name">abs_time</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the absolute time</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.abs_time">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reset_run_stat"></a><span class="summary-sig-name">reset_run_stat</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Invalidates the running status</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.reset_run_stat">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_run_stat"></a><span class="summary-sig-name">set_run_stat</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">new_status</span>)</span><br />
+      Set the new running status</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.set_run_stat">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_run_stat"></a><span class="summary-sig-name">get_run_stat</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Set the new running status</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.get_run_stat">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_current_track"></a><span class="summary-sig-name">set_current_track</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">new_track</span>)</span><br />
+      Sets the current track number</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.set_current_track">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_current_track"></a><span class="summary-sig-name">get_current_track</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the current track number</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.get_current_track">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="channel_message"></a><span class="summary-sig-name">channel_message</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message_type</span>,
+        <span class="summary-sig-arg">channel</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      The default event handler for channel messages</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.channel_message">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="note_on"></a><span class="summary-sig-name">note_on</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
+        <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
+      channel: 0-15 note, velocity: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.note_on">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="note_off"></a><span class="summary-sig-name">note_off</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
+        <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
+      channel: 0-15 note, velocity: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.note_off">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="aftertouch"></a><span class="summary-sig-name">aftertouch</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
+        <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
+      channel: 0-15 note, velocity: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.aftertouch">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="continuous_controller"></a><span class="summary-sig-name">continuous_controller</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>,
+        <span class="summary-sig-arg">controller</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      channel: 0-15 controller, value: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.continuous_controller">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="patch_change"></a><span class="summary-sig-name">patch_change</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>,
+        <span class="summary-sig-arg">patch</span>)</span><br />
+      channel: 0-15 patch: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.patch_change">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="channel_pressure"></a><span class="summary-sig-name">channel_pressure</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>,
+        <span class="summary-sig-arg">pressure</span>)</span><br />
+      channel: 0-15 pressure: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.channel_pressure">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="pitch_bend"></a><span class="summary-sig-name">pitch_bend</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      channel: 0-15 value: 0-16383</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.pitch_bend">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="system_exclusive"></a><span class="summary-sig-name">system_exclusive</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      data: list of values in range(128)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.system_exclusive">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="song_position_pointer"></a><span class="summary-sig-name">song_position_pointer</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      value: 0-16383</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.song_position_pointer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="song_select"></a><span class="summary-sig-name">song_select</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">songNumber</span>)</span><br />
+      songNumber: 0-127</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.song_select">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="tuning_request"></a><span class="summary-sig-name">tuning_request</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.tuning_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="midi_time_code"></a><span class="summary-sig-name">midi_time_code</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">msg_type</span>,
+        <span class="summary-sig-arg">values</span>)</span><br />
+      msg_type: 0-7 values: 0-15</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.midi_time_code">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="header"></a><span class="summary-sig-name">header</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">format</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">nTracks</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">division</span>=<span class="summary-sig-default">96</span>)</span><br />
+      format: type of midi file in [1,2] nTracks: number of tracks 
+      division: timing division</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.header">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#eof" class="summary-sig-name">eof</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      End of file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.eof">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="meta_event"></a><span class="summary-sig-name">meta_event</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">meta_type</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Handles any undefined meta events</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.meta_event">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="start_of_track"></a><span class="summary-sig-name">start_of_track</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">n_track</span>=<span class="summary-sig-default">0</span>)</span><br />
+      n_track: number of track</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.start_of_track">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="end_of_track"></a><span class="summary-sig-name">end_of_track</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      n_track: number of track</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.end_of_track">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sequence_number"></a><span class="summary-sig-name">sequence_number</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      value: 0-16383</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.sequence_number">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="text"></a><span class="summary-sig-name">text</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      Text event text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.text">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="copyright"></a><span class="summary-sig-name">copyright</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      Copyright notice text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.copyright">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sequence_name"></a><span class="summary-sig-name">sequence_name</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      Sequence/track name text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.sequence_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="instrument_name"></a><span class="summary-sig-name">instrument_name</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.instrument_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="lyric"></a><span class="summary-sig-name">lyric</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.lyric">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="marker"></a><span class="summary-sig-name">marker</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.marker">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="cuepoint"></a><span class="summary-sig-name">cuepoint</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span><br />
+      text: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.cuepoint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="midi_ch_prefix"></a><span class="summary-sig-name">midi_ch_prefix</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">channel</span>)</span><br />
+      channel: midi channel for subsequent data (deprecated in the spec)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.midi_ch_prefix">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="midi_port"></a><span class="summary-sig-name">midi_port</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      value: Midi port (deprecated in the spec)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.midi_port">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="tempo"></a><span class="summary-sig-name">tempo</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      value: 0-2097151 tempo in us/quarternote (to calculate value from 
+      bpm: int(60,000,000.00 / BPM))</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.tempo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#smtp_offset" class="summary-sig-name">smtp_offset</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">hour</span>,
+        <span class="summary-sig-arg">minute</span>,
+        <span class="summary-sig-arg">second</span>,
+        <span class="summary-sig-arg">frame</span>,
+        <span class="summary-sig-arg">framePart</span>)</span><br />
+      hour,
+minute,
+second: 3 bytes specifying the hour (0-23), minutes (0-59) and 
+        seconds (0-59), respectively.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.smtp_offset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#time_signature" class="summary-sig-name">time_signature</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">nn</span>,
+        <span class="summary-sig-arg">dd</span>,
+        <span class="summary-sig-arg">cc</span>,
+        <span class="summary-sig-arg">bb</span>)</span><br />
+      nn: Numerator of the signature as notated on sheet music
+dd: Denominator of the signature as notated on sheet music
+    The denominator is a negative power of 2: 2 = quarter 
+    note, 3 = eighth, etc.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.time_signature">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#key_signature" class="summary-sig-name">key_signature</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sf</span>,
+        <span class="summary-sig-arg">mi</span>)</span><br />
+      sf: is a byte specifying the number of flats (-ve) or sharps 
+    (+ve) that identifies the key signature (-7 = 7 flats, -1 
+    = 1 flat, 0 = key of C, 1 = 1 sharp, etc).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.key_signature">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sequencer_specific"></a><span class="summary-sig-name">sequencer_specific</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      data: The data as byte values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.sequencer_specific">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="timing_clock"></a><span class="summary-sig-name">timing_clock</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.timing_clock">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="song_start"></a><span class="summary-sig-name">song_start</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.song_start">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="song_stop"></a><span class="summary-sig-name">song_stop</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.song_stop">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="song_continue"></a><span class="summary-sig-name">song_continue</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.song_continue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="active_sensing"></a><span class="summary-sig-name">active_sensing</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.active_sensing">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="system_reset"></a><span class="summary-sig-name">system_reset</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      No values passed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.system_reset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="eof"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">eof</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.eof">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>End of file. No more events to be processed.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="smtp_offset"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">smtp_offset</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">hour</span>,
+        <span class="sig-arg">minute</span>,
+        <span class="sig-arg">second</span>,
+        <span class="sig-arg">frame</span>,
+        <span class="sig-arg">framePart</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.smtp_offset">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+hour,
+minute,
+second: 3 bytes specifying the hour (0-23), minutes (0-59) and 
+        seconds (0-59), respectively. The hour should be 
+        encoded with the SMPTE format, just as it is in MIDI 
+        Time Code.
+frame: A byte specifying the number of frames per second (one 
+       of : 24, 25, 29, 30).
+framePart: A byte specifying the number of fractional frames, 
+           in 100ths of a frame (even in SMPTE-based tracks 
+           using a different frame subdivision, defined in the 
+           MThd chunk).
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="time_signature"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">time_signature</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">nn</span>,
+        <span class="sig-arg">dd</span>,
+        <span class="sig-arg">cc</span>,
+        <span class="sig-arg">bb</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.time_signature">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+nn: Numerator of the signature as notated on sheet music
+dd: Denominator of the signature as notated on sheet music
+    The denominator is a negative power of 2: 2 = quarter 
+    note, 3 = eighth, etc.
+cc: The number of MIDI clocks in a metronome click
+bb: The number of notated 32nd notes in a MIDI quarter note 
+    (24 MIDI clocks)        
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="key_signature"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">key_signature</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sf</span>,
+        <span class="sig-arg">mi</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.support.midi.MidiOutStream-pysrc.html#MidiOutStream.key_signature">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+sf: is a byte specifying the number of flats (-ve) or sharps 
+    (+ve) that identifies the key signature (-7 = 7 flats, -1 
+    = 1 flat, 0 = key of C, 1 = 1 sharp, etc).
+mi: is a byte specifying a major (0) or minor (1) key.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:51:01 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

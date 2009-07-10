@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pyechonest.util</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pyechonest-module.html">Package&nbsp;pyechonest</a> ::
+        Module&nbsp;util
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pyechonest.util-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pyechonest.util-module.html">Module pyechonest.util</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># encoding: utf-8</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">Utility functions to support the Echo Nest web API interface.  This</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">module is not meant for other uses and should not be used unless</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">modifying or extending the package.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">urllib</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">urllib2</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Variable echonest.support.stupidxml.Node.dom=echonest.support.stupidxml.Node-class.html#dom"><a title="echonest.support.stupidxml.Node.dom" class="py-name" href="#" onclick="return doclink('link-0', 'dom', 'link-0');">dom</a></tt><tt class="py-op">.</tt><tt class="py-name">minidom</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">etree</tt><tt class="py-op">.</tt><tt class="py-name">ElementTree</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module pyechonest.config=pyechonest.config-module.html"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-1', 'config', 'link-1');">config</a></tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module pyechonest.urllib2_file=pyechonest.urllib2_file-module.html"><a title="pyechonest.urllib2_file" class="py-name" href="#" onclick="return doclink('link-2', 'urllib2_file', 'link-2');">urllib2_file</a></tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable pyechonest.util.SUCCESS_STATUS_CODES=pyechonest.util-module.html#SUCCESS_STATUS_CODES"><a title="pyechonest.util.SUCCESS_STATUS_CODES" class="py-name" href="#" onclick="return doclink('link-3', 'SUCCESS_STATUS_CODES', 'link-3');">SUCCESS_STATUS_CODES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> <tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable pyechonest.util.FAILURE_THING_ID_STATUS_CODES=pyechonest.util-module.html#FAILURE_THING_ID_STATUS_CODES"><a title="pyechonest.util.FAILURE_THING_ID_STATUS_CODES" class="py-name" href="#" onclick="return doclink('link-4', 'FAILURE_THING_ID_STATUS_CODES', 'link-4');">FAILURE_THING_ID_STATUS_CODES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">7</tt><tt class="py-op">,</tt> <tt class="py-number">6</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable pyechonest.util.FAILURE_API_KEY_STATUS_CODES=pyechonest.util-module.html#FAILURE_API_KEY_STATUS_CODES"><a title="pyechonest.util.FAILURE_API_KEY_STATUS_CODES" class="py-name" href="#" onclick="return doclink('link-5', 'FAILURE_API_KEY_STATUS_CODES', 'link-5');">FAILURE_API_KEY_STATUS_CODES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">12</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable pyechonest.util.CALL_LOG=pyechonest.util-module.html#CALL_LOG"><a title="pyechonest.util.CALL_LOG" class="py-name" href="#" onclick="return doclink('link-6', 'CALL_LOG', 'link-6');">CALL_LOG</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="parse_http_response"></a><div id="parse_http_response-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="parse_http_response-toggle" onclick="return toggle('parse_http_response');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util-module.html#parse_http_response">parse_http_response</a><tt class="py-op">(</tt><tt class="py-param">response</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="parse_http_response-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="parse_http_response-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">etree</tt><tt class="py-op">.</tt><tt class="py-name">ElementTree</tt><tt class="py-op">.</tt><tt class="py-name">fromstring</tt><tt class="py-op">(</tt><tt class="py-name">response</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-7" class="py-name" targets="Function pyechonest.util.check_status()=pyechonest.util-module.html#check_status"><a title="pyechonest.util.check_status" class="py-name" href="#" onclick="return doclink('link-7', 'check_status', 'link-7');">check_status</a></tt><tt class="py-op">(</tt><tt class="py-name">response</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="call"></a><div id="call-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="call-toggle" onclick="return toggle('call');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util-module.html#call">call</a><tt class="py-op">(</tt><tt class="py-param">method</tt><tt class="py-op">,</tt> <tt class="py-param">params</tt><tt class="py-op">,</tt> <tt class="py-param">POST</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="call-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="call-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-name">rate_limit_exceeded</tt> <tt class="py-op">=</tt> <tt class="py-keyword">not</tt> <tt id="link-8" class="py-name" targets="Function pyechonest.util.check_call_log()=pyechonest.util-module.html#check_call_log"><a title="pyechonest.util.check_call_log" class="py-name" href="#" onclick="return doclink('link-8', 'check_call_log', 'link-8');">check_call_log</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">rate_limit_exceeded</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">0.5</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">rate_limit_exceeded</tt> <tt class="py-op">=</tt> <tt class="py-keyword">not</tt> <tt id="link-9" class="py-name"><a title="pyechonest.util.check_call_log" class="py-name" href="#" onclick="return doclink('link-9', 'check_call_log', 'link-8');">check_call_log</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-name">params</tt><tt class="py-op">.</tt><tt class="py-name">update</tt><tt class="py-op">(</tt><tt class="py-op">{</tt><tt class="py-string">'api_key'</tt><tt class="py-op">:</tt> <tt id="link-10" class="py-name"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-10', 'config', 'link-1');">config</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Variable pyechonest.config.ECHO_NEST_API_KEY=pyechonest.config-module.html#ECHO_NEST_API_KEY"><a title="pyechonest.config.ECHO_NEST_API_KEY" class="py-name" href="#" onclick="return doclink('link-11', 'ECHO_NEST_API_KEY', 'link-11');">ECHO_NEST_API_KEY</a></tt><tt class="py-op">,</tt> <tt class="py-string">'version'</tt><tt class="py-op">:</tt> <tt class="py-number">3</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-name">params</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">urlencode</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">POST</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">url</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://%s%s%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-12', 'config', 'link-1');">config</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Variable pyechonest.config.API_HOST=pyechonest.config-module.html#API_HOST"><a title="pyechonest.config.API_HOST" class="py-name" href="#" onclick="return doclink('link-13', 'API_HOST', 'link-13');">API_HOST</a></tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-14', 'config', 'link-1');">config</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Variable pyechonest.config.API_SELECTOR=pyechonest.config-module.html#API_SELECTOR"><a title="pyechonest.config.API_SELECTOR" class="py-name" href="#" onclick="return doclink('link-15', 'API_SELECTOR', 'link-15');">API_SELECTOR</a></tt><tt class="py-op">,</tt> <tt class="py-name">method</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">urlopen</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">url</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://%s%s%s?%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-16', 'config', 'link-1');">config</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="pyechonest.config.API_HOST" class="py-name" href="#" onclick="return doclink('link-17', 'API_HOST', 'link-13');">API_HOST</a></tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-18', 'config', 'link-1');">config</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="pyechonest.config.API_SELECTOR" class="py-name" href="#" onclick="return doclink('link-19', 'API_SELECTOR', 'link-15');">API_SELECTOR</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">                                    <tt class="py-name">method</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">urlopen</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">etree</tt><tt class="py-op">.</tt><tt class="py-name">ElementTree</tt><tt class="py-op">.</tt><tt class="py-name">fromstring</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method echonest.support.midi.MidiInFile.MidiInFile.read()=echonest.support.midi.MidiInFile.MidiInFile-class.html#read,Method echonest.support.midi.MidiInStream.MidiInStream.read()=echonest.support.midi.MidiInStream.MidiInStream-class.html#read"><a title="echonest.support.midi.MidiInFile.MidiInFile.read
+echonest.support.midi.MidiInStream.MidiInStream.read" class="py-name" href="#" onclick="return doclink('link-20', 'read', 'link-20');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-21" class="py-name"><a title="pyechonest.util.check_status" class="py-name" href="#" onclick="return doclink('link-21', 'check_status', 'link-7');">check_status</a></tt><tt class="py-op">(</tt><tt class="py-name">response</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="check_call_log"></a><div id="check_call_log-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="check_call_log-toggle" onclick="return toggle('check_call_log');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util-module.html#check_call_log">check_call_log</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="check_call_log-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="check_call_log-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-22" class="py-name"><a title="pyechonest.config" class="py-name" href="#" onclick="return doclink('link-22', 'config', 'link-1');">config</a></tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Variable pyechonest.config.OBEY_RATE_LIMIT=pyechonest.config-module.html#OBEY_RATE_LIMIT"><a title="pyechonest.config.OBEY_RATE_LIMIT" class="py-name" href="#" onclick="return doclink('link-23', 'OBEY_RATE_LIMIT', 'link-23');">OBEY_RATE_LIMIT</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-24" class="py-name"><a title="pyechonest.util.CALL_LOG" class="py-name" href="#" onclick="return doclink('link-24', 'CALL_LOG', 'link-6');">CALL_LOG</a></tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt id="link-25" class="py-name"><a title="pyechonest.util.CALL_LOG" class="py-name" href="#" onclick="return doclink('link-25', 'CALL_LOG', 'link-6');">CALL_LOG</a></tt> <tt class="py-op">=</tt> <tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt> <tt class="py-name">x</tt> <tt class="py-op">&gt;</tt> <tt class="py-op">(</tt><tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-number">60</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-26" class="py-name"><a title="pyechonest.util.CALL_LOG" class="py-name" href="#" onclick="return doclink('link-26', 'CALL_LOG', 'link-6');">CALL_LOG</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="pyechonest.util.CALL_LOG" class="py-name" href="#" onclick="return doclink('link-27', 'CALL_LOG', 'link-6');">CALL_LOG</a></tt><tt class="py-op">)</tt> <tt class="py-op">&gt;=</tt> <tt class="py-number">120</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">    <tt id="link-28" class="py-name"><a title="pyechonest.util.CALL_LOG" class="py-name" href="#" onclick="return doclink('link-28', 'CALL_LOG', 'link-6');">CALL_LOG</a></tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method echonest.audio.AudioData.append()=echonest.audio.AudioData-class.html#append,Method echonest.support.stupidxml.HTMLNode.append()=echonest.support.stupidxml.HTMLNode-class.html#append,Method echonest.support.stupidxml.Node.append()=echonest.support.stupidxml.Node-class.html#append"><a title="echonest.audio.AudioData.append
+echonest.support.stupidxml.HTMLNode.append
+echonest.support.stupidxml.Node.append" class="py-name" href="#" onclick="return doclink('link-29', 'append', 'link-29');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="check_status"></a><div id="check_status-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="check_status-toggle" onclick="return toggle('check_status');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util-module.html#check_status">check_status</a><tt class="py-op">(</tt><tt class="py-param">etree</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="check_status-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="check_status-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-name">code</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">etree</tt><tt class="py-op">.</tt><tt class="py-name">_children</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_children</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method echonest.support.midi.MidiOutFile.MidiOutFile.text()=echonest.support.midi.MidiOutFile.MidiOutFile-class.html#text,Method echonest.support.midi.MidiOutStream.MidiOutStream.text()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#text,Method echonest.support.midi.MidiToText.MidiToText.text()=echonest.support.midi.MidiToText.MidiToText-class.html#text"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
+echonest.support.midi.MidiOutStream.MidiOutStream.text
+echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-30', 'text', 'link-30');">text</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-name">message</tt> <tt class="py-op">=</tt> <tt class="py-name">etree</tt><tt class="py-op">.</tt><tt class="py-name">_children</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">_children</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
+echonest.support.midi.MidiOutStream.MidiOutStream.text
+echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-31', 'text', 'link-30');">text</a></tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">code</tt><tt class="py-op">!=</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-32" class="py-name" targets="Class pyechonest.util.EchoNestAPIError=pyechonest.util.EchoNestAPIError-class.html"><a title="pyechonest.util.EchoNestAPIError" class="py-name" href="#" onclick="return doclink('link-32', 'EchoNestAPIError', 'link-32');">EchoNestAPIError</a></tt><tt class="py-op">(</tt><tt class="py-name">code</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">etree</tt> </tt>
+</div><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="EchoNestAPIError"></a><div id="EchoNestAPIError-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="EchoNestAPIError-toggle" onclick="return toggle('EchoNestAPIError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pyechonest.util.EchoNestAPIError-class.html">EchoNestAPIError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EchoNestAPIError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EchoNestAPIError-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">    Generic API errors. </tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="EchoNestAPIError.__init__"></a><div id="EchoNestAPIError.__init__-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="EchoNestAPIError.__init__-toggle" onclick="return toggle('EchoNestAPIError.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util.EchoNestAPIError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">code</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EchoNestAPIError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="EchoNestAPIError.__init__-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">code</tt> <tt class="py-op">=</tt> <tt class="py-name">code</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_message</tt> <tt class="py-op">=</tt> <tt class="py-name">message</tt> </tt>
+</div><a name="EchoNestAPIError.__str__"></a><div id="EchoNestAPIError.__str__-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="EchoNestAPIError.__str__-toggle" onclick="return toggle('EchoNestAPIError.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util.EchoNestAPIError-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EchoNestAPIError.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="EchoNestAPIError.__str__-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">repr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="EchoNestAPIError.__repr__"></a><div id="EchoNestAPIError.__repr__-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="EchoNestAPIError.__repr__-toggle" onclick="return toggle('EchoNestAPIError.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util.EchoNestAPIError-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EchoNestAPIError.__repr__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="EchoNestAPIError.__repr__-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">'Echo Nest API Error %d: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">code</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_message</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="EchoNestAPIKeyError"></a><div id="EchoNestAPIKeyError-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="EchoNestAPIKeyError-toggle" onclick="return toggle('EchoNestAPIKeyError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pyechonest.util.EchoNestAPIKeyError-class.html">EchoNestAPIKeyError</a><tt class="py-op">(</tt><tt class="py-base-class">EchoNestAPIError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EchoNestAPIKeyError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EchoNestAPIKeyError-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">    An Error returned by the API regarding the API Key. </tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="EchoNestAPIThingIDError"></a><div id="EchoNestAPIThingIDError-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="EchoNestAPIThingIDError-toggle" onclick="return toggle('EchoNestAPIThingIDError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pyechonest.util.EchoNestAPIThingIDError-class.html">EchoNestAPIThingIDError</a><tt class="py-op">(</tt><tt class="py-base-class">EchoNestAPIError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EchoNestAPIThingIDError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EchoNestAPIThingIDError-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">    An Error returned by the API regarding the ThingID. </tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="postChunked"></a><div id="postChunked-def"><a name="L93"></a><tt class="py-lineno"> 93</tt> <a class="py-toggle" href="#" id="postChunked-toggle" onclick="return toggle('postChunked');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.util-module.html#postChunked">postChunked</a><tt class="py-op">(</tt><tt class="py-param">host</tt><tt class="py-op">,</tt> <tt class="py-param">selector</tt><tt class="py-op">,</tt> <tt class="py-param">fields</tt><tt class="py-op">,</tt> <tt class="py-param">files</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="postChunked-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="postChunked-expanded"><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">    Attempt to replace postMultipart() with nearly-identical interface.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">    (The files tuple no longer requires the filename, and we only return</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">    the response body.) </tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">    Uses the urllib2_file.py originally from </tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">    http://fabien.seisen.org which was also drawn heavily from </tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">    http://code.activestate.com/recipes/146306/ .</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">    This urllib2_file.py is more desirable because of the chunked </tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">    uploading from a file pointer (no need to read entire file into </tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">    memory) and the ability to work from behind a proxy (due to its </tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">    basis on urllib2).</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name">params</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">urlencode</tt><tt class="py-op">(</tt><tt class="py-name">fields</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-name">url</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://%s%s?%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">host</tt><tt class="py-op">,</tt> <tt class="py-name">selector</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib2</tt><tt class="py-op">.</tt><tt class="py-name">urlopen</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">,</tt> <tt class="py-name">files</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="echonest.support.midi.MidiInFile.MidiInFile.read
+echonest.support.midi.MidiInStream.MidiInStream.read" class="py-name" href="#" onclick="return doclink('link-33', 'read', 'link-20');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-op">[</tt><tt class="py-name">fp</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method echonest.support.midi.MidiInStream.MidiInStream.close()=echonest.support.midi.MidiInStream.MidiInStream-class.html#close"><a title="echonest.support.midi.MidiInStream.MidiInStream.close" class="py-name" href="#" onclick="return doclink('link-34', 'close', 'link-34');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt id="link-35" class="py-name" targets="Variable pyechonest.track.Track.key=pyechonest.track.Track-class.html#key"><a title="pyechonest.track.Track.key" class="py-name" href="#" onclick="return doclink('link-35', 'key', 'link-35');">key</a></tt><tt class="py-op">,</tt> <tt class="py-name">fp</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">files</tt><tt class="py-op">]</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:51:02 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
