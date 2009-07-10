@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -64,21 +61,25 @@
 <h1 class="epydoc">Class ModifiedRenderable</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#ModifiedRenderable">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_16" name="uml_class_diagram_for_echonest_16">
-<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#duration" title="echonest.audio.ModifiedRenderable.duration" alt="" coords="17,145,423,164"/>
-<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#source" title="echonest.audio.ModifiedRenderable.source" alt="" coords="17,164,423,183"/>
-<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#sources" title="echonest.audio.ModifiedRenderable.sources" alt="" coords="17,183,423,201"/>
-<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#__init__" title="x.__init__(...) initializes x; see x.__class__.__doc__ for signature" alt="" coords="17,204,423,223"/>
-<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#render" title="echonest.audio.ModifiedRenderable.render" alt="" coords="17,223,423,241"/>
-<area shape="rect" id="node1" href="echonest.audio.ModifiedRenderable-class.html" title="echonest.audio.ModifiedRenderable" alt="" coords="5,121,435,247"/>
-<area shape="rect" id="node55" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback `alt` source, return either `self`&#39;s source or the alternative." alt="" coords="85,39,353,57"/>
-<area shape="rect" id="node55" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed &#160;`AudioData`." alt="" coords="85,57,353,76"/>
-<area shape="rect" id="node55" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an `AudioData` object first, through `render`." alt="" coords="85,76,353,95"/>
-<area shape="rect" id="node2" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an `AudioData` in response to a call to its `render`\()&#39; method." alt="" coords="73,6,364,101"/>
+<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#duration" title="echonest.audio.ModifiedRenderable.duration" alt="" coords="17,144,372,163"/>
+<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#source" title="echonest.audio.ModifiedRenderable.source" alt="" coords="17,163,372,181"/>
+<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#sources" title="echonest.audio.ModifiedRenderable.sources" alt="" coords="17,181,372,200"/>
+<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#__init__" title="x.__init__(...) initializes x; see x.__class__.__doc__ for signature" alt="" coords="17,203,372,221"/>
+<area shape="rect" id="node54" href="echonest.audio.ModifiedRenderable-class.html#render" title="echonest.audio.ModifiedRenderable.render" alt="" coords="17,221,372,240"/>
+<area shape="rect" id="node1" href="echonest.audio.ModifiedRenderable-class.html" title="Class that contains any AudioRenderable, but overrides the render() method with nested effects, called sequentially on the result of the preceeding effect." alt="" coords="5,121,384,247"/>
+<area shape="rect" id="node55" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative." alt="" coords="75,37,315,56"/>
+<area shape="rect" id="node55" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="75,56,315,75"/>
+<area shape="rect" id="node55" href="echonest.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an AudioData object first, through render." alt="" coords="75,75,315,93"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render()&#39; method." alt="" coords="63,6,327,101"/>
 </map>
   <img src="uml_class_diagram_for_echonest_16.gif" alt='' usemap="#uml_class_diagram_for_echonest_16" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
+Class that contains any AudioRenderable, but overrides the
+render() method with nested effects, called sequentially on the
+result of the preceeding effect.
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -260,10 +261,7 @@
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-x.__init__(...) initializes x; see x.__class__.__doc__ for signature
-
-</pre>
+  x.__init__(...) initializes x; see x.__class__.__doc__ for signature
   <dl class="fields">
     <dt>Overrides:
         object.__init__
@@ -338,9 +336,6 @@ x.__init__(...) initializes x; see x.__class__.__doc__ for signature
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -358,14 +353,14 @@ x.__init__(...) initializes x; see x.__class__.__doc__ for signature
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:24 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:11 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

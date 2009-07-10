@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -105,7 +102,7 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.support.midi.DataTypeConverters-module.html#setNibbles" class="summary-sig-name">setNibbles</a>(<span class="summary-sig-arg">hiNibble</span>,
+          <td><span class="summary-sig"><a name="setNibbles"></a><span class="summary-sig-name">setNibbles</span>(<span class="summary-sig-arg">hiNibble</span>,
         <span class="summary-sig-arg">loNibble</span>)</span><br />
       Returns byte with value set according to hi and lo bits
 Asserts hiNibble and loNibble in range(16)
@@ -126,8 +123,12 @@ Asserts hiNibble and loNibble in range(16)
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.support.midi.DataTypeConverters-module.html#readBew" class="summary-sig-name">readBew</a>(<span class="summary-sig-arg">value</span>)</span><br />
-      Reads string as big endian word, (asserts len(value) in [1,2,4])...</td>
+          <td><span class="summary-sig"><a name="readBew"></a><span class="summary-sig-name">readBew</span>(<span class="summary-sig-arg">value</span>)</span><br />
+      Reads string as big endian word, (asserts len(value) in [1,2,4])
+&gt;&gt;&gt; readBew('a&#225;&#226;&#227;')
+1642193635L
+&gt;&gt;&gt; readBew('a&#225;')
+25057</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.DataTypeConverters-pysrc.html#readBew">source&nbsp;code</a></span>
             
@@ -179,8 +180,9 @@ Difficult to print the result in doctest, so I do a simple roundabout test.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.support.midi.DataTypeConverters-module.html#varLen" class="summary-sig-name">varLen</a>(<span class="summary-sig-arg">value</span>)</span><br />
-      Returns the the number of bytes an integer will be when...</td>
+          <td><span class="summary-sig"><a name="varLen"></a><span class="summary-sig-name">varLen</span>(<span class="summary-sig-arg">value</span>)</span><br />
+      Returns the the number of bytes an integer will be when
+converted to varlength</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.DataTypeConverters-pysrc.html#varLen">source&nbsp;code</a></span>
             
@@ -310,65 +312,6 @@ ValueError: Byte value out of range 0-255: 256
   </dl>
 </td></tr></table>
 </div>
-<a name="setNibbles"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">setNibbles</span>(<span class="sig-arg">hiNibble</span>,
-        <span class="sig-arg">loNibble</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.support.midi.DataTypeConverters-pysrc.html#setNibbles">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-
-Returns byte with value set according to hi and lo bits
-Asserts hiNibble and loNibble in range(16)
-&gt;&gt;&gt; setNibbles(8, 14)
-142
-
-&gt;&gt;&gt; setNibbles(8, 16)
-Traceback (most recent call last):
-    ...
-ValueError: Nible value out of range 0-15: (8, 16)
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<a name="readBew"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">readBew</span>(<span class="sig-arg">value</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.support.midi.DataTypeConverters-pysrc.html#readBew">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-
-Reads string as big endian word, (asserts len(value) in [1,2,4])
-&gt;&gt;&gt; readBew('a&#225;&#226;&#227;')
-1642193635L
-&gt;&gt;&gt; readBew('a&#225;')
-25057
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
 <a name="writeBew"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -384,16 +327,12 @@ Reads string as big endian word, (asserts len(value) in [1,2,4])
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Write int as big endian formatted string, (asserts length in [1,2,4])
+  Write int as big endian formatted string, (asserts length in [1,2,4])
 Difficult to print the result in doctest, so I do a simple roundabout test.
 &gt;&gt;&gt; readBew(writeBew(25057, 2))
 25057
 &gt;&gt;&gt; readBew(writeBew(1642193635L, 4))
 1642193635L
-
-</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -412,42 +351,14 @@ Difficult to print the result in doctest, so I do a simple roundabout test.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Converts varlength format to integer. Just pass it 0 or more chars that
+  Converts varlength format to integer. Just pass it 0 or more chars that
 might be a varlen and it will only use the relevant chars.
 use varLen(readVar(value)) to see how many bytes the integer value takes.
 asserts len(value) &gt;= 0
-&gt;&gt;&gt; readVar('&#128;@')
+&gt;&gt;&gt; readVar('&#128;&#64;')
 64
 &gt;&gt;&gt; readVar('&#225;&#226;&#227;a')
 205042145
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<a name="varLen"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">varLen</span>(<span class="sig-arg">value</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.support.midi.DataTypeConverters-pysrc.html#varLen">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-
-Returns the the number of bytes an integer will be when
-converted to varlength
-
-</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -457,9 +368,6 @@ converted to varlength
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -477,14 +385,14 @@ converted to varlength
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:22 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:07 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

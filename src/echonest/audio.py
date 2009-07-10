@@ -7,13 +7,15 @@ on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
 2008-09-07.  Refactoring by Ben Lacker 2009-02-11. Other contributions
 by Adam Lindsay.
 
-:group Base Classes: AudioAnalysis, AudioData
-:group Audio-plus-Analysis Classes: AudioFile, LocalAudioFile, ExistingTrack, LocalAnalysis
-:group Building Blocks: AudioQuantum, AudioSegment, AudioQuantumList
-:group Exception Classes: FileTypeError
+:group Base Classes: AudioAnalysis, AudioRenderable, AudioData, AudioData32
+:group Audio-plus-Analysis Classes: AudioFile, LocalAudioFile, LocalAnalysis
+:group Building Blocks: AudioQuantum, AudioSegment, AudioQuantumList, ModifiedRenderable
+:group Effects: AudioEffect, LevelDB, AmplitudeFactor, TimeTruncateFactor, TimeTruncateLength, Simultaneous
+:group Exception Classes: FileTypeError, EchoNestRemixError
 
-:group Audio helper functions: getpieces, mix
-:group Utility functions: chain_from_mixed
+:group Audio helper functions: getpieces, mix, assemble, megamix
+:group ffmpeg helper functions: ffmpeg, settings_from_ffmpeg, ffmpeg_error_check
+:group Utility functions: chain_from_mixed, _dataParser, _attributeParser, _segmentsParser
 
 .. _Analyze API: http://developer.echonest.com/pages/overview?version=2
 .. _Remix API: http://code.google.com/p/echo-nest-remix/
@@ -453,6 +455,8 @@ class AudioData(AudioRenderable):
     
 
 class AudioData32(AudioData):
+    """A 32-bit variant of AudioData, intended for data collection on 
+    audio rendering with headroom."""
     def __init__(self, filename=None, ndarray = None, shape=None, sampleRate=None, numChannels=None, defer=False, verbose=True):
         """
         Special form of AudioData to allow for headroom when collecting samples.
@@ -571,7 +575,7 @@ class AudioData32(AudioData):
         return filename
     
     def normalize(self):
-        # Add a little extra slop for MP3 encoding. Still not convinced it's necessary.
+        """Return to 16-bit for encoding."""
         if self.numChannels == 1:
             self.normalized = numpy.zeros((self.data.shape[0],), dtype=numpy.int16)
         else:
@@ -638,6 +642,7 @@ def settings_from_ffmpeg(parsestring):
     return freq, chans
 
 def ffmpeg_error_check(parsestring):
+    "Looks for known errors in the ffmpeg output"
     parse = parsestring.split('\n')
     for num, line in enumerate(parse):
         if "Unknown format" in line or "error occur" in line:
@@ -1102,6 +1107,9 @@ class AudioSegment(AudioQuantum):
         self._source = source
 
 class ModifiedRenderable(AudioRenderable):
+    """Class that contains any AudioRenderable, but overrides the
+    render() method with nested effects, called sequentially on the
+    result of the preceeding effect."""
     def __init__(self, original, effects=[]):
         if isinstance(original, ModifiedRenderable):
             self._original = original._original

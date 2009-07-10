@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -65,50 +62,46 @@
 <h1 class="epydoc">Class Node</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.support.stupidxml-pysrc.html#Node">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_echonest_28" name="uml_class_diagram_for_echonest_28">
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#dom" title="echonest.support.stupidxml.Node.dom" alt="" coords="17,31,477,49"/>
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#__init__" title="x.__init__(...) initializes x; see x.__class__.__doc__ for signature" alt="" coords="17,52,477,71"/>
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#__repr__" title="repr(x)" alt="" coords="17,71,477,89"/>
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#__str__" title="str(x)" alt="" coords="17,89,477,108"/>
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#append" title="echonest.support.stupidxml.Node.append" alt="" coords="17,108,477,127"/>
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#is_iterable" title="echonest.support.stupidxml.Node.is_iterable" alt="" coords="17,127,477,145"/>
-<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#attributes_to_str" title="echonest.support.stupidxml.Node.attributes_to_str" alt="" coords="17,145,477,164"/>
-<area shape="rect" id="node1" href="echonest.support.stupidxml.Node-class.html" title="Object representation of an XML node" alt="" coords="5,6,488,170"/>
-<area shape="rect" id="node2" href="echonest.support.stupidxml.HTMLNode-class.html" title="HTML 4 compliant Node" alt="" coords="192,190,304,229"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#dom" title="echonest.support.stupidxml.Node.dom" alt="" coords="17,29,420,48"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#__init__" title="x.__init__(...) initializes x; see x.__class__.__doc__ for signature" alt="" coords="17,51,420,69"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#__repr__" title="repr(x)" alt="" coords="17,69,420,88"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#__str__" title="str(x)" alt="" coords="17,88,420,107"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#append" title="echonest.support.stupidxml.Node.append" alt="" coords="17,107,420,125"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#is_iterable" title="echonest.support.stupidxml.Node.is_iterable" alt="" coords="17,125,420,144"/>
+<area shape="rect" id="node82" href="echonest.support.stupidxml.Node-class.html#attributes_to_str" title="echonest.support.stupidxml.Node.attributes_to_str" alt="" coords="17,144,420,163"/>
+<area shape="rect" id="node1" href="echonest.support.stupidxml.Node-class.html" title="Object representation of an XML node" alt="" coords="5,6,432,170"/>
+<area shape="rect" id="node2" href="echonest.support.stupidxml.HTMLNode-class.html" title="HTML 4 compliant Node" alt="" coords="165,190,272,229"/>
 </map>
   <img src="uml_class_diagram_for_echonest_28.gif" alt='' usemap="#uml_class_diagram_for_echonest_28" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
-<pre class="literalblock">
-Object representation of an XML node
-
-A Nestable XML node class. Contents can be any object with
-a __str__ method.
-
-&gt;&gt;&gt; root = Node(&quot;root&quot;)
-&gt;&gt;&gt; str(root)
-'&lt;root /&gt;'
-
-&gt;&gt;&gt; project = root.append(Node(&quot;project&quot;, copyright=&quot;2008&quot;))
-&gt;&gt;&gt; str(root)
-'&lt;root&gt;&lt;project copyright=&quot;2008&quot; /&gt;&lt;/root&gt;'
-
-&gt;&gt;&gt; project.attributes.language = &quot;Python&quot;
-&gt;&gt;&gt; str(root)
-'&lt;root&gt;&lt;project language=&quot;Python&quot; copyright=&quot;2008&quot; /&gt;&lt;/root&gt;'
-
-&gt;&gt;&gt; name = Node(&quot;name&quot;, &quot;StupidXML&quot;)
-&gt;&gt;&gt; author = Node(&quot;author&quot;, &quot;Justin Driscoll&quot;, href=&quot;http://justindriscoll.us&quot;)
-&gt;&gt;&gt; project.append([name, author])
-[&lt;StupidXML.Node: &quot;name&quot;&gt;, &lt;StupidXML.Node: &quot;author&quot;&gt;]
-
-&gt;&gt;&gt; str(project)
-'&lt;project language=&quot;Python&quot; copyright=&quot;2008&quot;&gt;&lt;name&gt;StupidXML&lt;/name&gt;&lt;author href=&quot;http://justindriscoll.us&quot;&gt;Justin Driscoll&lt;/author&gt;&lt;/project&gt;'
-
-&gt;&gt;&gt; str(root)
-'&lt;root&gt;&lt;project language=&quot;Python&quot; copyright=&quot;2008&quot;&gt;&lt;name&gt;StupidXML&lt;/name&gt;&lt;author href=&quot;http://justindriscoll.us&quot;&gt;Justin Driscoll&lt;/author&gt;&lt;/project&gt;&lt;/root&gt;'
-
-</pre>
+<p>Object representation of an XML node</p>
+<p>A Nestable XML node class. Contents can be any object with
+a __str__ method.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>root = Node(<span class="py-string">&quot;root&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>str(root)
+<span class="py-output">'&lt;root /&gt;'</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>project = root.append(Node(<span class="py-string">&quot;project&quot;</span>, copyright=<span class="py-string">&quot;2008&quot;</span>))
+<span class="py-prompt">&gt;&gt;&gt; </span>str(root)
+<span class="py-output">'&lt;root&gt;&lt;project copyright=&quot;2008&quot; /&gt;&lt;/root&gt;'</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>project.attributes.language = <span class="py-string">&quot;Python&quot;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>str(root)
+<span class="py-output">'&lt;root&gt;&lt;project language=&quot;Python&quot; copyright=&quot;2008&quot; /&gt;&lt;/root&gt;'</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>name = Node(<span class="py-string">&quot;name&quot;</span>, <span class="py-string">&quot;StupidXML&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>author = Node(<span class="py-string">&quot;author&quot;</span>, <span class="py-string">&quot;Justin Driscoll&quot;</span>, href=<span class="py-string">&quot;http://justindriscoll.us&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>project.append([name, author])
+<span class="py-output">[&lt;StupidXML.Node: &quot;name&quot;&gt;, &lt;StupidXML.Node: &quot;author&quot;&gt;]</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>str(project)
+<span class="py-output">'&lt;project language=&quot;Python&quot; copyright=&quot;2008&quot;&gt;&lt;name&gt;StupidXML&lt;/name&gt;&lt;author href=&quot;http://justindriscoll.us&quot;&gt;Justin Driscoll&lt;/author&gt;&lt;/project&gt;'</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>str(root)
+<span class="py-output">'&lt;root&gt;&lt;project language=&quot;Python&quot; copyright=&quot;2008&quot;&gt;&lt;name&gt;StupidXML&lt;/name&gt;&lt;author href=&quot;http://justindriscoll.us&quot;&gt;Justin Driscoll&lt;/author&gt;&lt;/project&gt;&lt;/root&gt;'</span></pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -315,10 +308,7 @@ a __str__ method.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-x.__init__(...) initializes x; see x.__class__.__doc__ for signature
-
-</pre>
+  x.__init__(...) initializes x; see x.__class__.__doc__ for signature
   <dl class="fields">
     <dt>Overrides:
         object.__init__
@@ -342,10 +332,7 @@ x.__init__(...) initializes x; see x.__class__.__doc__ for signature
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-repr(x)
-
-</pre>
+  repr(x)
   <dl class="fields">
     <dt>Overrides:
         object.__repr__
@@ -369,10 +356,7 @@ repr(x)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-str(x)
-
-</pre>
+  str(x)
   <dl class="fields">
     <dt>Overrides:
         object.__str__
@@ -419,9 +403,6 @@ str(x)
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="echonest.audio-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -439,14 +420,14 @@ str(x)
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 328</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:58:25 2009
+    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:13 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
