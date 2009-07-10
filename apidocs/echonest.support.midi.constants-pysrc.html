@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.support.midi.constants</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;echonest ::
+        <a href="echonest.support-module.html">Package&nbsp;support</a> ::
+        <a href="echonest.support.midi-module.html">Package&nbsp;midi</a> ::
+        Module&nbsp;constants
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.support.midi.constants-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="echonest.support.midi.constants-module.html">Module echonest.support.midi.constants</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## Definitions of the different midi events</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## Midi channel events (The most usual events)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## also called "Channel Voice Messages"</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.NOTE_OFF=echonest.support.midi.EventDispatcher-module.html#NOTE_OFF,Variable echonest.support.midi.MidiFileParser.NOTE_OFF=echonest.support.midi.MidiFileParser-module.html#NOTE_OFF,Variable echonest.support.midi.MidiOutFile.NOTE_OFF=echonest.support.midi.MidiOutFile-module.html#NOTE_OFF,Variable echonest.support.midi.constants.NOTE_OFF=echonest.support.midi.constants-module.html#NOTE_OFF"><a title="echonest.support.midi.EventDispatcher.NOTE_OFF
+echonest.support.midi.MidiFileParser.NOTE_OFF
+echonest.support.midi.MidiOutFile.NOTE_OFF
+echonest.support.midi.constants.NOTE_OFF" class="py-name" href="#" onclick="return doclink('link-0', 'NOTE_OFF', 'link-0');">NOTE_OFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x80</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># 1000cccc 0nnnnnnn 0vvvvvvv (channel, note, velocity)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.NOTE_ON=echonest.support.midi.EventDispatcher-module.html#NOTE_ON,Variable echonest.support.midi.MidiFileParser.NOTE_ON=echonest.support.midi.MidiFileParser-module.html#NOTE_ON,Variable echonest.support.midi.MidiOutFile.NOTE_ON=echonest.support.midi.MidiOutFile-module.html#NOTE_ON,Variable echonest.support.midi.constants.NOTE_ON=echonest.support.midi.constants-module.html#NOTE_ON"><a title="echonest.support.midi.EventDispatcher.NOTE_ON
+echonest.support.midi.MidiFileParser.NOTE_ON
+echonest.support.midi.MidiOutFile.NOTE_ON
+echonest.support.midi.constants.NOTE_ON" class="py-name" href="#" onclick="return doclink('link-1', 'NOTE_ON', 'link-1');">NOTE_ON</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x90</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"># 1001cccc 0nnnnnnn 0vvvvvvv (channel, note, velocity)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.AFTERTOUCH=echonest.support.midi.EventDispatcher-module.html#AFTERTOUCH,Variable echonest.support.midi.MidiFileParser.AFTERTOUCH=echonest.support.midi.MidiFileParser-module.html#AFTERTOUCH,Variable echonest.support.midi.MidiOutFile.AFTERTOUCH=echonest.support.midi.MidiOutFile-module.html#AFTERTOUCH,Variable echonest.support.midi.constants.AFTERTOUCH=echonest.support.midi.constants-module.html#AFTERTOUCH"><a title="echonest.support.midi.EventDispatcher.AFTERTOUCH
+echonest.support.midi.MidiFileParser.AFTERTOUCH
+echonest.support.midi.MidiOutFile.AFTERTOUCH
+echonest.support.midi.constants.AFTERTOUCH" class="py-name" href="#" onclick="return doclink('link-2', 'AFTERTOUCH', 'link-2');">AFTERTOUCH</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xA0</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment"># 1010cccc 0nnnnnnn 0vvvvvvv (channel, note, velocity)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.CONTINUOUS_CONTROLLER=echonest.support.midi.EventDispatcher-module.html#CONTINUOUS_CONTROLLER,Variable echonest.support.midi.MidiFileParser.CONTINUOUS_CONTROLLER=echonest.support.midi.MidiFileParser-module.html#CONTINUOUS_CONTROLLER,Variable echonest.support.midi.MidiOutFile.CONTINUOUS_CONTROLLER=echonest.support.midi.MidiOutFile-module.html#CONTINUOUS_CONTROLLER,Variable echonest.support.midi.constants.CONTINUOUS_CONTROLLER=echonest.support.midi.constants-module.html#CONTINUOUS_CONTROLLER"><a title="echonest.support.midi.EventDispatcher.CONTINUOUS_CONTROLLER
+echonest.support.midi.MidiFileParser.CONTINUOUS_CONTROLLER
+echonest.support.midi.MidiOutFile.CONTINUOUS_CONTROLLER
+echonest.support.midi.constants.CONTINUOUS_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-3', 'CONTINUOUS_CONTROLLER', 'link-3');">CONTINUOUS_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xB0</tt> <tt class="py-comment"># see Channel Mode Messages!!!</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment"># 1011cccc 0ccccccc 0vvvvvvv (channel, controller, value)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PATCH_CHANGE=echonest.support.midi.EventDispatcher-module.html#PATCH_CHANGE,Variable echonest.support.midi.MidiFileParser.PATCH_CHANGE=echonest.support.midi.MidiFileParser-module.html#PATCH_CHANGE,Variable echonest.support.midi.MidiOutFile.PATCH_CHANGE=echonest.support.midi.MidiOutFile-module.html#PATCH_CHANGE,Variable echonest.support.midi.constants.PATCH_CHANGE=echonest.support.midi.constants-module.html#PATCH_CHANGE"><a title="echonest.support.midi.EventDispatcher.PATCH_CHANGE
+echonest.support.midi.MidiFileParser.PATCH_CHANGE
+echonest.support.midi.MidiOutFile.PATCH_CHANGE
+echonest.support.midi.constants.PATCH_CHANGE" class="py-name" href="#" onclick="return doclink('link-4', 'PATCH_CHANGE', 'link-4');">PATCH_CHANGE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xC0</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"># 1100cccc 0ppppppp (channel, program)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.CHANNEL_PRESSURE=echonest.support.midi.EventDispatcher-module.html#CHANNEL_PRESSURE,Variable echonest.support.midi.MidiFileParser.CHANNEL_PRESSURE=echonest.support.midi.MidiFileParser-module.html#CHANNEL_PRESSURE,Variable echonest.support.midi.MidiOutFile.CHANNEL_PRESSURE=echonest.support.midi.MidiOutFile-module.html#CHANNEL_PRESSURE,Variable echonest.support.midi.constants.CHANNEL_PRESSURE=echonest.support.midi.constants-module.html#CHANNEL_PRESSURE"><a title="echonest.support.midi.EventDispatcher.CHANNEL_PRESSURE
+echonest.support.midi.MidiFileParser.CHANNEL_PRESSURE
+echonest.support.midi.MidiOutFile.CHANNEL_PRESSURE
+echonest.support.midi.constants.CHANNEL_PRESSURE" class="py-name" href="#" onclick="return doclink('link-5', 'CHANNEL_PRESSURE', 'link-5');">CHANNEL_PRESSURE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xD0</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment"># 1101cccc 0ppppppp (channel, pressure)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PITCH_BEND=echonest.support.midi.EventDispatcher-module.html#PITCH_BEND,Variable echonest.support.midi.MidiFileParser.PITCH_BEND=echonest.support.midi.MidiFileParser-module.html#PITCH_BEND,Variable echonest.support.midi.MidiOutFile.PITCH_BEND=echonest.support.midi.MidiOutFile-module.html#PITCH_BEND,Variable echonest.support.midi.constants.PITCH_BEND=echonest.support.midi.constants-module.html#PITCH_BEND"><a title="echonest.support.midi.EventDispatcher.PITCH_BEND
+echonest.support.midi.MidiFileParser.PITCH_BEND
+echonest.support.midi.MidiOutFile.PITCH_BEND
+echonest.support.midi.constants.PITCH_BEND" class="py-name" href="#" onclick="return doclink('link-6', 'PITCH_BEND', 'link-6');">PITCH_BEND</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xE0</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-comment"># 1110cccc 0vvvvvvv 0wwwwwww (channel, value-lo, value-hi)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">##  Channel Mode Messages (Continuous Controller)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">##  They share a status byte.</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">##  The controller makes the difference here</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-comment"># High resolution continuous controllers (MSB)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.BANK_SELECT=echonest.support.midi.EventDispatcher-module.html#BANK_SELECT,Variable echonest.support.midi.MidiFileParser.BANK_SELECT=echonest.support.midi.MidiFileParser-module.html#BANK_SELECT,Variable echonest.support.midi.MidiOutFile.BANK_SELECT=echonest.support.midi.MidiOutFile-module.html#BANK_SELECT,Variable echonest.support.midi.constants.BANK_SELECT=echonest.support.midi.constants-module.html#BANK_SELECT"><a title="echonest.support.midi.EventDispatcher.BANK_SELECT
+echonest.support.midi.MidiFileParser.BANK_SELECT
+echonest.support.midi.MidiOutFile.BANK_SELECT
+echonest.support.midi.constants.BANK_SELECT" class="py-name" href="#" onclick="return doclink('link-7', 'BANK_SELECT', 'link-7');">BANK_SELECT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x00</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.MODULATION_WHEEL=echonest.support.midi.EventDispatcher-module.html#MODULATION_WHEEL,Variable echonest.support.midi.MidiFileParser.MODULATION_WHEEL=echonest.support.midi.MidiFileParser-module.html#MODULATION_WHEEL,Variable echonest.support.midi.MidiOutFile.MODULATION_WHEEL=echonest.support.midi.MidiOutFile-module.html#MODULATION_WHEEL,Variable echonest.support.midi.constants.MODULATION_WHEEL=echonest.support.midi.constants-module.html#MODULATION_WHEEL"><a title="echonest.support.midi.EventDispatcher.MODULATION_WHEEL
+echonest.support.midi.MidiFileParser.MODULATION_WHEEL
+echonest.support.midi.MidiOutFile.MODULATION_WHEEL
+echonest.support.midi.constants.MODULATION_WHEEL" class="py-name" href="#" onclick="return doclink('link-8', 'MODULATION_WHEEL', 'link-8');">MODULATION_WHEEL</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x01</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.BREATH_CONTROLLER=echonest.support.midi.EventDispatcher-module.html#BREATH_CONTROLLER,Variable echonest.support.midi.MidiFileParser.BREATH_CONTROLLER=echonest.support.midi.MidiFileParser-module.html#BREATH_CONTROLLER,Variable echonest.support.midi.MidiOutFile.BREATH_CONTROLLER=echonest.support.midi.MidiOutFile-module.html#BREATH_CONTROLLER,Variable echonest.support.midi.constants.BREATH_CONTROLLER=echonest.support.midi.constants-module.html#BREATH_CONTROLLER"><a title="echonest.support.midi.EventDispatcher.BREATH_CONTROLLER
+echonest.support.midi.MidiFileParser.BREATH_CONTROLLER
+echonest.support.midi.MidiOutFile.BREATH_CONTROLLER
+echonest.support.midi.constants.BREATH_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-9', 'BREATH_CONTROLLER', 'link-9');">BREATH_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x02</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.FOOT_CONTROLLER=echonest.support.midi.EventDispatcher-module.html#FOOT_CONTROLLER,Variable echonest.support.midi.MidiFileParser.FOOT_CONTROLLER=echonest.support.midi.MidiFileParser-module.html#FOOT_CONTROLLER,Variable echonest.support.midi.MidiOutFile.FOOT_CONTROLLER=echonest.support.midi.MidiOutFile-module.html#FOOT_CONTROLLER,Variable echonest.support.midi.constants.FOOT_CONTROLLER=echonest.support.midi.constants-module.html#FOOT_CONTROLLER"><a title="echonest.support.midi.EventDispatcher.FOOT_CONTROLLER
+echonest.support.midi.MidiFileParser.FOOT_CONTROLLER
+echonest.support.midi.MidiOutFile.FOOT_CONTROLLER
+echonest.support.midi.constants.FOOT_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-10', 'FOOT_CONTROLLER', 'link-10');">FOOT_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x04</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PORTAMENTO_TIME=echonest.support.midi.EventDispatcher-module.html#PORTAMENTO_TIME,Variable echonest.support.midi.MidiFileParser.PORTAMENTO_TIME=echonest.support.midi.MidiFileParser-module.html#PORTAMENTO_TIME,Variable echonest.support.midi.MidiOutFile.PORTAMENTO_TIME=echonest.support.midi.MidiOutFile-module.html#PORTAMENTO_TIME,Variable echonest.support.midi.constants.PORTAMENTO_TIME=echonest.support.midi.constants-module.html#PORTAMENTO_TIME"><a title="echonest.support.midi.EventDispatcher.PORTAMENTO_TIME
+echonest.support.midi.MidiFileParser.PORTAMENTO_TIME
+echonest.support.midi.MidiOutFile.PORTAMENTO_TIME
+echonest.support.midi.constants.PORTAMENTO_TIME" class="py-name" href="#" onclick="return doclink('link-11', 'PORTAMENTO_TIME', 'link-11');">PORTAMENTO_TIME</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x05</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.DATA_ENTRY=echonest.support.midi.EventDispatcher-module.html#DATA_ENTRY,Variable echonest.support.midi.MidiFileParser.DATA_ENTRY=echonest.support.midi.MidiFileParser-module.html#DATA_ENTRY,Variable echonest.support.midi.MidiOutFile.DATA_ENTRY=echonest.support.midi.MidiOutFile-module.html#DATA_ENTRY,Variable echonest.support.midi.constants.DATA_ENTRY=echonest.support.midi.constants-module.html#DATA_ENTRY"><a title="echonest.support.midi.EventDispatcher.DATA_ENTRY
+echonest.support.midi.MidiFileParser.DATA_ENTRY
+echonest.support.midi.MidiOutFile.DATA_ENTRY
+echonest.support.midi.constants.DATA_ENTRY" class="py-name" href="#" onclick="return doclink('link-12', 'DATA_ENTRY', 'link-12');">DATA_ENTRY</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x06</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.CHANNEL_VOLUME=echonest.support.midi.EventDispatcher-module.html#CHANNEL_VOLUME,Variable echonest.support.midi.MidiFileParser.CHANNEL_VOLUME=echonest.support.midi.MidiFileParser-module.html#CHANNEL_VOLUME,Variable echonest.support.midi.MidiOutFile.CHANNEL_VOLUME=echonest.support.midi.MidiOutFile-module.html#CHANNEL_VOLUME,Variable echonest.support.midi.constants.CHANNEL_VOLUME=echonest.support.midi.constants-module.html#CHANNEL_VOLUME"><a title="echonest.support.midi.EventDispatcher.CHANNEL_VOLUME
+echonest.support.midi.MidiFileParser.CHANNEL_VOLUME
+echonest.support.midi.MidiOutFile.CHANNEL_VOLUME
+echonest.support.midi.constants.CHANNEL_VOLUME" class="py-name" href="#" onclick="return doclink('link-13', 'CHANNEL_VOLUME', 'link-13');">CHANNEL_VOLUME</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x07</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.BALANCE=echonest.support.midi.EventDispatcher-module.html#BALANCE,Variable echonest.support.midi.MidiFileParser.BALANCE=echonest.support.midi.MidiFileParser-module.html#BALANCE,Variable echonest.support.midi.MidiOutFile.BALANCE=echonest.support.midi.MidiOutFile-module.html#BALANCE,Variable echonest.support.midi.constants.BALANCE=echonest.support.midi.constants-module.html#BALANCE"><a title="echonest.support.midi.EventDispatcher.BALANCE
+echonest.support.midi.MidiFileParser.BALANCE
+echonest.support.midi.MidiOutFile.BALANCE
+echonest.support.midi.constants.BALANCE" class="py-name" href="#" onclick="return doclink('link-14', 'BALANCE', 'link-14');">BALANCE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x08</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PAN=echonest.support.midi.EventDispatcher-module.html#PAN,Variable echonest.support.midi.MidiFileParser.PAN=echonest.support.midi.MidiFileParser-module.html#PAN,Variable echonest.support.midi.MidiOutFile.PAN=echonest.support.midi.MidiOutFile-module.html#PAN,Variable echonest.support.midi.constants.PAN=echonest.support.midi.constants-module.html#PAN"><a title="echonest.support.midi.EventDispatcher.PAN
+echonest.support.midi.MidiFileParser.PAN
+echonest.support.midi.MidiOutFile.PAN
+echonest.support.midi.constants.PAN" class="py-name" href="#" onclick="return doclink('link-15', 'PAN', 'link-15');">PAN</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x0A</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EXPRESSION_CONTROLLER=echonest.support.midi.EventDispatcher-module.html#EXPRESSION_CONTROLLER,Variable echonest.support.midi.MidiFileParser.EXPRESSION_CONTROLLER=echonest.support.midi.MidiFileParser-module.html#EXPRESSION_CONTROLLER,Variable echonest.support.midi.MidiOutFile.EXPRESSION_CONTROLLER=echonest.support.midi.MidiOutFile-module.html#EXPRESSION_CONTROLLER,Variable echonest.support.midi.constants.EXPRESSION_CONTROLLER=echonest.support.midi.constants-module.html#EXPRESSION_CONTROLLER"><a title="echonest.support.midi.EventDispatcher.EXPRESSION_CONTROLLER
+echonest.support.midi.MidiFileParser.EXPRESSION_CONTROLLER
+echonest.support.midi.MidiOutFile.EXPRESSION_CONTROLLER
+echonest.support.midi.constants.EXPRESSION_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-16', 'EXPRESSION_CONTROLLER', 'link-16');">EXPRESSION_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x0B</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt id="link-17" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECT_CONTROL_1=echonest.support.midi.EventDispatcher-module.html#EFFECT_CONTROL_1,Variable echonest.support.midi.MidiFileParser.EFFECT_CONTROL_1=echonest.support.midi.MidiFileParser-module.html#EFFECT_CONTROL_1,Variable echonest.support.midi.MidiOutFile.EFFECT_CONTROL_1=echonest.support.midi.MidiOutFile-module.html#EFFECT_CONTROL_1,Variable echonest.support.midi.constants.EFFECT_CONTROL_1=echonest.support.midi.constants-module.html#EFFECT_CONTROL_1"><a title="echonest.support.midi.EventDispatcher.EFFECT_CONTROL_1
+echonest.support.midi.MidiFileParser.EFFECT_CONTROL_1
+echonest.support.midi.MidiOutFile.EFFECT_CONTROL_1
+echonest.support.midi.constants.EFFECT_CONTROL_1" class="py-name" href="#" onclick="return doclink('link-17', 'EFFECT_CONTROL_1', 'link-17');">EFFECT_CONTROL_1</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x0C</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECT_CONTROL_2=echonest.support.midi.EventDispatcher-module.html#EFFECT_CONTROL_2,Variable echonest.support.midi.MidiFileParser.EFFECT_CONTROL_2=echonest.support.midi.MidiFileParser-module.html#EFFECT_CONTROL_2,Variable echonest.support.midi.MidiOutFile.EFFECT_CONTROL_2=echonest.support.midi.MidiOutFile-module.html#EFFECT_CONTROL_2,Variable echonest.support.midi.constants.EFFECT_CONTROL_2=echonest.support.midi.constants-module.html#EFFECT_CONTROL_2"><a title="echonest.support.midi.EventDispatcher.EFFECT_CONTROL_2
+echonest.support.midi.MidiFileParser.EFFECT_CONTROL_2
+echonest.support.midi.MidiOutFile.EFFECT_CONTROL_2
+echonest.support.midi.constants.EFFECT_CONTROL_2" class="py-name" href="#" onclick="return doclink('link-18', 'EFFECT_CONTROL_2', 'link-18');">EFFECT_CONTROL_2</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x0D</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt id="link-19" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_1=echonest.support.midi.EventDispatcher-module.html#GEN_PURPOSE_CONTROLLER_1,Variable echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_1=echonest.support.midi.MidiFileParser-module.html#GEN_PURPOSE_CONTROLLER_1,Variable echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_1=echonest.support.midi.MidiOutFile-module.html#GEN_PURPOSE_CONTROLLER_1,Variable echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_1=echonest.support.midi.constants-module.html#GEN_PURPOSE_CONTROLLER_1"><a title="echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_1
+echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_1
+echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_1
+echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_1" class="py-name" href="#" onclick="return doclink('link-19', 'GEN_PURPOSE_CONTROLLER_1', 'link-19');">GEN_PURPOSE_CONTROLLER_1</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x10</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_2=echonest.support.midi.EventDispatcher-module.html#GEN_PURPOSE_CONTROLLER_2,Variable echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_2=echonest.support.midi.MidiFileParser-module.html#GEN_PURPOSE_CONTROLLER_2,Variable echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_2=echonest.support.midi.MidiOutFile-module.html#GEN_PURPOSE_CONTROLLER_2,Variable echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_2=echonest.support.midi.constants-module.html#GEN_PURPOSE_CONTROLLER_2"><a title="echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_2
+echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_2
+echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_2
+echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_2" class="py-name" href="#" onclick="return doclink('link-20', 'GEN_PURPOSE_CONTROLLER_2', 'link-20');">GEN_PURPOSE_CONTROLLER_2</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x11</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt id="link-21" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_3=echonest.support.midi.EventDispatcher-module.html#GEN_PURPOSE_CONTROLLER_3,Variable echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_3=echonest.support.midi.MidiFileParser-module.html#GEN_PURPOSE_CONTROLLER_3,Variable echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_3=echonest.support.midi.MidiOutFile-module.html#GEN_PURPOSE_CONTROLLER_3,Variable echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_3=echonest.support.midi.constants-module.html#GEN_PURPOSE_CONTROLLER_3"><a title="echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_3
+echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_3
+echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_3
+echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_3" class="py-name" href="#" onclick="return doclink('link-21', 'GEN_PURPOSE_CONTROLLER_3', 'link-21');">GEN_PURPOSE_CONTROLLER_3</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x12</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_4=echonest.support.midi.EventDispatcher-module.html#GEN_PURPOSE_CONTROLLER_4,Variable echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_4=echonest.support.midi.MidiFileParser-module.html#GEN_PURPOSE_CONTROLLER_4,Variable echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_4=echonest.support.midi.MidiOutFile-module.html#GEN_PURPOSE_CONTROLLER_4,Variable echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_4=echonest.support.midi.constants-module.html#GEN_PURPOSE_CONTROLLER_4"><a title="echonest.support.midi.EventDispatcher.GEN_PURPOSE_CONTROLLER_4
+echonest.support.midi.MidiFileParser.GEN_PURPOSE_CONTROLLER_4
+echonest.support.midi.MidiOutFile.GEN_PURPOSE_CONTROLLER_4
+echonest.support.midi.constants.GEN_PURPOSE_CONTROLLER_4" class="py-name" href="#" onclick="return doclink('link-22', 'GEN_PURPOSE_CONTROLLER_4', 'link-22');">GEN_PURPOSE_CONTROLLER_4</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x13</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-comment"># High resolution continuous controllers (LSB)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt id="link-23" class="py-name"><a title="echonest.support.midi.EventDispatcher.BANK_SELECT
+echonest.support.midi.MidiFileParser.BANK_SELECT
+echonest.support.midi.MidiOutFile.BANK_SELECT
+echonest.support.midi.constants.BANK_SELECT" class="py-name" href="#" onclick="return doclink('link-23', 'BANK_SELECT', 'link-7');">BANK_SELECT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x20</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt id="link-24" class="py-name"><a title="echonest.support.midi.EventDispatcher.MODULATION_WHEEL
+echonest.support.midi.MidiFileParser.MODULATION_WHEEL
+echonest.support.midi.MidiOutFile.MODULATION_WHEEL
+echonest.support.midi.constants.MODULATION_WHEEL" class="py-name" href="#" onclick="return doclink('link-24', 'MODULATION_WHEEL', 'link-8');">MODULATION_WHEEL</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x21</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt id="link-25" class="py-name"><a title="echonest.support.midi.EventDispatcher.BREATH_CONTROLLER
+echonest.support.midi.MidiFileParser.BREATH_CONTROLLER
+echonest.support.midi.MidiOutFile.BREATH_CONTROLLER
+echonest.support.midi.constants.BREATH_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-25', 'BREATH_CONTROLLER', 'link-9');">BREATH_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x22</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt id="link-26" class="py-name"><a title="echonest.support.midi.EventDispatcher.FOOT_CONTROLLER
+echonest.support.midi.MidiFileParser.FOOT_CONTROLLER
+echonest.support.midi.MidiOutFile.FOOT_CONTROLLER
+echonest.support.midi.constants.FOOT_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-26', 'FOOT_CONTROLLER', 'link-10');">FOOT_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x24</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt id="link-27" class="py-name"><a title="echonest.support.midi.EventDispatcher.PORTAMENTO_TIME
+echonest.support.midi.MidiFileParser.PORTAMENTO_TIME
+echonest.support.midi.MidiOutFile.PORTAMENTO_TIME
+echonest.support.midi.constants.PORTAMENTO_TIME" class="py-name" href="#" onclick="return doclink('link-27', 'PORTAMENTO_TIME', 'link-11');">PORTAMENTO_TIME</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x25</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt id="link-28" class="py-name"><a title="echonest.support.midi.EventDispatcher.DATA_ENTRY
+echonest.support.midi.MidiFileParser.DATA_ENTRY
+echonest.support.midi.MidiOutFile.DATA_ENTRY
+echonest.support.midi.constants.DATA_ENTRY" class="py-name" href="#" onclick="return doclink('link-28', 'DATA_ENTRY', 'link-12');">DATA_ENTRY</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x26</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt id="link-29" class="py-name"><a title="echonest.support.midi.EventDispatcher.CHANNEL_VOLUME
+echonest.support.midi.MidiFileParser.CHANNEL_VOLUME
+echonest.support.midi.MidiOutFile.CHANNEL_VOLUME
+echonest.support.midi.constants.CHANNEL_VOLUME" class="py-name" href="#" onclick="return doclink('link-29', 'CHANNEL_VOLUME', 'link-13');">CHANNEL_VOLUME</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x27</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt id="link-30" class="py-name"><a title="echonest.support.midi.EventDispatcher.BALANCE
+echonest.support.midi.MidiFileParser.BALANCE
+echonest.support.midi.MidiOutFile.BALANCE
+echonest.support.midi.constants.BALANCE" class="py-name" href="#" onclick="return doclink('link-30', 'BALANCE', 'link-14');">BALANCE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x28</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt id="link-31" class="py-name"><a title="echonest.support.midi.EventDispatcher.PAN
+echonest.support.midi.MidiFileParser.PAN
+echonest.support.midi.MidiOutFile.PAN
+echonest.support.midi.constants.PAN" class="py-name" href="#" onclick="return doclink('link-31', 'PAN', 'link-15');">PAN</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x2A</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt id="link-32" class="py-name"><a title="echonest.support.midi.EventDispatcher.EXPRESSION_CONTROLLER
+echonest.support.midi.MidiFileParser.EXPRESSION_CONTROLLER
+echonest.support.midi.MidiOutFile.EXPRESSION_CONTROLLER
+echonest.support.midi.constants.EXPRESSION_CONTROLLER" class="py-name" href="#" onclick="return doclink('link-32', 'EXPRESSION_CONTROLLER', 'link-16');">EXPRESSION_CONTROLLER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x2B</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt id="link-33" class="py-name"><a title="echonest.support.midi.EventDispatcher.EFFECT_CONTROL_1
+echonest.support.midi.MidiFileParser.EFFECT_CONTROL_1
+echonest.support.midi.MidiOutFile.EFFECT_CONTROL_1
+echonest.support.midi.constants.EFFECT_CONTROL_1" class="py-name" href="#" onclick="return doclink('link-33', 'EFFECT_CONTROL_1', 'link-17');">EFFECT_CONTROL_1</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x2C</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt id="link-34" class="py-name"><a title="echonest.support.midi.EventDispatcher.EFFECT_CONTROL_2
+echonest.support.midi.MidiFileParser.EFFECT_CONTROL_2
+echonest.support.midi.MidiOutFile.EFFECT_CONTROL_2
+echonest.support.midi.constants.EFFECT_CONTROL_2" class="py-name" href="#" onclick="return doclink('link-34', 'EFFECT_CONTROL_2', 'link-18');">EFFECT_CONTROL_2</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x2D</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt id="link-35" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_1=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_1,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_1=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_1,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_1=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_1,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_1=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_1"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_1
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_1
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_1
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_1" class="py-name" href="#" onclick="return doclink('link-35', 'GENERAL_PURPOSE_CONTROLLER_1', 'link-35');">GENERAL_PURPOSE_CONTROLLER_1</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x30</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt id="link-36" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_2=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_2,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_2=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_2,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_2=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_2,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_2=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_2"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_2
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_2
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_2
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_2" class="py-name" href="#" onclick="return doclink('link-36', 'GENERAL_PURPOSE_CONTROLLER_2', 'link-36');">GENERAL_PURPOSE_CONTROLLER_2</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x31</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt id="link-37" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_3=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_3,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_3=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_3,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_3=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_3,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_3=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_3"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_3
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_3
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_3
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_3" class="py-name" href="#" onclick="return doclink('link-37', 'GENERAL_PURPOSE_CONTROLLER_3', 'link-37');">GENERAL_PURPOSE_CONTROLLER_3</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x32</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt id="link-38" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_4=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_4,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_4=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_4,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_4=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_4,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_4=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_4"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_4
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_4
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_4
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_4" class="py-name" href="#" onclick="return doclink('link-38', 'GENERAL_PURPOSE_CONTROLLER_4', 'link-38');">GENERAL_PURPOSE_CONTROLLER_4</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x33</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-comment"># Switches</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt id="link-39" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SUSTAIN_ONOFF=echonest.support.midi.EventDispatcher-module.html#SUSTAIN_ONOFF,Variable echonest.support.midi.MidiFileParser.SUSTAIN_ONOFF=echonest.support.midi.MidiFileParser-module.html#SUSTAIN_ONOFF,Variable echonest.support.midi.MidiOutFile.SUSTAIN_ONOFF=echonest.support.midi.MidiOutFile-module.html#SUSTAIN_ONOFF,Variable echonest.support.midi.constants.SUSTAIN_ONOFF=echonest.support.midi.constants-module.html#SUSTAIN_ONOFF"><a title="echonest.support.midi.EventDispatcher.SUSTAIN_ONOFF
+echonest.support.midi.MidiFileParser.SUSTAIN_ONOFF
+echonest.support.midi.MidiOutFile.SUSTAIN_ONOFF
+echonest.support.midi.constants.SUSTAIN_ONOFF" class="py-name" href="#" onclick="return doclink('link-39', 'SUSTAIN_ONOFF', 'link-39');">SUSTAIN_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x40</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt id="link-40" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PORTAMENTO_ONOFF=echonest.support.midi.EventDispatcher-module.html#PORTAMENTO_ONOFF,Variable echonest.support.midi.MidiFileParser.PORTAMENTO_ONOFF=echonest.support.midi.MidiFileParser-module.html#PORTAMENTO_ONOFF,Variable echonest.support.midi.MidiOutFile.PORTAMENTO_ONOFF=echonest.support.midi.MidiOutFile-module.html#PORTAMENTO_ONOFF,Variable echonest.support.midi.constants.PORTAMENTO_ONOFF=echonest.support.midi.constants-module.html#PORTAMENTO_ONOFF"><a title="echonest.support.midi.EventDispatcher.PORTAMENTO_ONOFF
+echonest.support.midi.MidiFileParser.PORTAMENTO_ONOFF
+echonest.support.midi.MidiOutFile.PORTAMENTO_ONOFF
+echonest.support.midi.constants.PORTAMENTO_ONOFF" class="py-name" href="#" onclick="return doclink('link-40', 'PORTAMENTO_ONOFF', 'link-40');">PORTAMENTO_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x41</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt id="link-41" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOSTENUTO_ONOFF=echonest.support.midi.EventDispatcher-module.html#SOSTENUTO_ONOFF,Variable echonest.support.midi.MidiFileParser.SOSTENUTO_ONOFF=echonest.support.midi.MidiFileParser-module.html#SOSTENUTO_ONOFF,Variable echonest.support.midi.MidiOutFile.SOSTENUTO_ONOFF=echonest.support.midi.MidiOutFile-module.html#SOSTENUTO_ONOFF,Variable echonest.support.midi.constants.SOSTENUTO_ONOFF=echonest.support.midi.constants-module.html#SOSTENUTO_ONOFF"><a title="echonest.support.midi.EventDispatcher.SOSTENUTO_ONOFF
+echonest.support.midi.MidiFileParser.SOSTENUTO_ONOFF
+echonest.support.midi.MidiOutFile.SOSTENUTO_ONOFF
+echonest.support.midi.constants.SOSTENUTO_ONOFF" class="py-name" href="#" onclick="return doclink('link-41', 'SOSTENUTO_ONOFF', 'link-41');">SOSTENUTO_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x42</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt id="link-42" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOFT_PEDAL_ONOFF=echonest.support.midi.EventDispatcher-module.html#SOFT_PEDAL_ONOFF,Variable echonest.support.midi.MidiFileParser.SOFT_PEDAL_ONOFF=echonest.support.midi.MidiFileParser-module.html#SOFT_PEDAL_ONOFF,Variable echonest.support.midi.MidiOutFile.SOFT_PEDAL_ONOFF=echonest.support.midi.MidiOutFile-module.html#SOFT_PEDAL_ONOFF,Variable echonest.support.midi.constants.SOFT_PEDAL_ONOFF=echonest.support.midi.constants-module.html#SOFT_PEDAL_ONOFF"><a title="echonest.support.midi.EventDispatcher.SOFT_PEDAL_ONOFF
+echonest.support.midi.MidiFileParser.SOFT_PEDAL_ONOFF
+echonest.support.midi.MidiOutFile.SOFT_PEDAL_ONOFF
+echonest.support.midi.constants.SOFT_PEDAL_ONOFF" class="py-name" href="#" onclick="return doclink('link-42', 'SOFT_PEDAL_ONOFF', 'link-42');">SOFT_PEDAL_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x43</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt id="link-43" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.LEGATO_ONOFF=echonest.support.midi.EventDispatcher-module.html#LEGATO_ONOFF,Variable echonest.support.midi.MidiFileParser.LEGATO_ONOFF=echonest.support.midi.MidiFileParser-module.html#LEGATO_ONOFF,Variable echonest.support.midi.MidiOutFile.LEGATO_ONOFF=echonest.support.midi.MidiOutFile-module.html#LEGATO_ONOFF,Variable echonest.support.midi.constants.LEGATO_ONOFF=echonest.support.midi.constants-module.html#LEGATO_ONOFF"><a title="echonest.support.midi.EventDispatcher.LEGATO_ONOFF
+echonest.support.midi.MidiFileParser.LEGATO_ONOFF
+echonest.support.midi.MidiOutFile.LEGATO_ONOFF
+echonest.support.midi.constants.LEGATO_ONOFF" class="py-name" href="#" onclick="return doclink('link-43', 'LEGATO_ONOFF', 'link-43');">LEGATO_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x44</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt id="link-44" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.HOLD_2_ONOFF=echonest.support.midi.EventDispatcher-module.html#HOLD_2_ONOFF,Variable echonest.support.midi.MidiFileParser.HOLD_2_ONOFF=echonest.support.midi.MidiFileParser-module.html#HOLD_2_ONOFF,Variable echonest.support.midi.MidiOutFile.HOLD_2_ONOFF=echonest.support.midi.MidiOutFile-module.html#HOLD_2_ONOFF,Variable echonest.support.midi.constants.HOLD_2_ONOFF=echonest.support.midi.constants-module.html#HOLD_2_ONOFF"><a title="echonest.support.midi.EventDispatcher.HOLD_2_ONOFF
+echonest.support.midi.MidiFileParser.HOLD_2_ONOFF
+echonest.support.midi.MidiOutFile.HOLD_2_ONOFF
+echonest.support.midi.constants.HOLD_2_ONOFF" class="py-name" href="#" onclick="return doclink('link-44', 'HOLD_2_ONOFF', 'link-44');">HOLD_2_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x45</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-comment"># Low resolution continuous controllers</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt id="link-45" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_1=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_1,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_1=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_1,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_1=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_1,Variable echonest.support.midi.constants.SOUND_CONTROLLER_1=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_1"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_1
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_1
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_1
+echonest.support.midi.constants.SOUND_CONTROLLER_1" class="py-name" href="#" onclick="return doclink('link-45', 'SOUND_CONTROLLER_1', 'link-45');">SOUND_CONTROLLER_1</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x46</tt>                  <tt class="py-comment"># (TG: Sound Variation;   FX: Exciter On/Off)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt id="link-46" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_2=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_2,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_2=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_2,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_2=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_2,Variable echonest.support.midi.constants.SOUND_CONTROLLER_2=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_2"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_2
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_2
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_2
+echonest.support.midi.constants.SOUND_CONTROLLER_2" class="py-name" href="#" onclick="return doclink('link-46', 'SOUND_CONTROLLER_2', 'link-46');">SOUND_CONTROLLER_2</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x47</tt>                  <tt class="py-comment"># (TG: Harmonic Content;   FX: Compressor On/Off)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt id="link-47" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_3=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_3,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_3=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_3,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_3=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_3,Variable echonest.support.midi.constants.SOUND_CONTROLLER_3=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_3"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_3
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_3
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_3
+echonest.support.midi.constants.SOUND_CONTROLLER_3" class="py-name" href="#" onclick="return doclink('link-47', 'SOUND_CONTROLLER_3', 'link-47');">SOUND_CONTROLLER_3</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x48</tt>                  <tt class="py-comment"># (TG: Release Time;   FX: Distortion On/Off)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt id="link-48" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_4=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_4,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_4=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_4,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_4=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_4,Variable echonest.support.midi.constants.SOUND_CONTROLLER_4=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_4"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_4
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_4
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_4
+echonest.support.midi.constants.SOUND_CONTROLLER_4" class="py-name" href="#" onclick="return doclink('link-48', 'SOUND_CONTROLLER_4', 'link-48');">SOUND_CONTROLLER_4</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x49</tt>                  <tt class="py-comment"># (TG: Attack Time;   FX: EQ On/Off)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt id="link-49" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_5=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_5,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_5=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_5,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_5=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_5,Variable echonest.support.midi.constants.SOUND_CONTROLLER_5=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_5"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_5
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_5
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_5
+echonest.support.midi.constants.SOUND_CONTROLLER_5" class="py-name" href="#" onclick="return doclink('link-49', 'SOUND_CONTROLLER_5', 'link-49');">SOUND_CONTROLLER_5</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x4A</tt>                  <tt class="py-comment"># (TG: Brightness;   FX: Expander On/Off)75  SOUND_CONTROLLER_6   (TG: Undefined;   FX: Reverb OnOff)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt id="link-50" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_7=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_7,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_7=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_7,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_7=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_7,Variable echonest.support.midi.constants.SOUND_CONTROLLER_7=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_7"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_7
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_7
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_7
+echonest.support.midi.constants.SOUND_CONTROLLER_7" class="py-name" href="#" onclick="return doclink('link-50', 'SOUND_CONTROLLER_7', 'link-50');">SOUND_CONTROLLER_7</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x4C</tt>                  <tt class="py-comment"># (TG: Undefined;   FX: Delay OnOff)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt id="link-51" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_8=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_8,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_8=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_8,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_8=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_8,Variable echonest.support.midi.constants.SOUND_CONTROLLER_8=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_8"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_8
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_8
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_8
+echonest.support.midi.constants.SOUND_CONTROLLER_8" class="py-name" href="#" onclick="return doclink('link-51', 'SOUND_CONTROLLER_8', 'link-51');">SOUND_CONTROLLER_8</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x4D</tt>                  <tt class="py-comment"># (TG: Undefined;   FX: Pitch Transpose OnOff)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt id="link-52" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_9=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_9,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_9=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_9,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_9=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_9,Variable echonest.support.midi.constants.SOUND_CONTROLLER_9=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_9"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_9
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_9
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_9
+echonest.support.midi.constants.SOUND_CONTROLLER_9" class="py-name" href="#" onclick="return doclink('link-52', 'SOUND_CONTROLLER_9', 'link-52');">SOUND_CONTROLLER_9</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x4E</tt>                  <tt class="py-comment"># (TG: Undefined;   FX: Flange/Chorus OnOff)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt id="link-53" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_10=echonest.support.midi.EventDispatcher-module.html#SOUND_CONTROLLER_10,Variable echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_10=echonest.support.midi.MidiFileParser-module.html#SOUND_CONTROLLER_10,Variable echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_10=echonest.support.midi.MidiOutFile-module.html#SOUND_CONTROLLER_10,Variable echonest.support.midi.constants.SOUND_CONTROLLER_10=echonest.support.midi.constants-module.html#SOUND_CONTROLLER_10"><a title="echonest.support.midi.EventDispatcher.SOUND_CONTROLLER_10
+echonest.support.midi.MidiFileParser.SOUND_CONTROLLER_10
+echonest.support.midi.MidiOutFile.SOUND_CONTROLLER_10
+echonest.support.midi.constants.SOUND_CONTROLLER_10" class="py-name" href="#" onclick="return doclink('link-53', 'SOUND_CONTROLLER_10', 'link-53');">SOUND_CONTROLLER_10</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x4F</tt>                 <tt class="py-comment"># (TG: Undefined;   FX: Special Effects OnOff)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt id="link-54" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_5=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_5,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_5=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_5,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_5=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_5,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_5=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_5"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_5
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_5
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_5
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_5" class="py-name" href="#" onclick="return doclink('link-54', 'GENERAL_PURPOSE_CONTROLLER_5', 'link-54');">GENERAL_PURPOSE_CONTROLLER_5</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x50</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt id="link-55" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_6=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_6,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_6=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_6,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_6=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_6,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_6=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_6"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_6
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_6
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_6
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_6" class="py-name" href="#" onclick="return doclink('link-55', 'GENERAL_PURPOSE_CONTROLLER_6', 'link-55');">GENERAL_PURPOSE_CONTROLLER_6</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x51</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt id="link-56" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_7=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_7,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_7=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_7,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_7=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_7,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_7=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_7"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_7
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_7
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_7
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_7" class="py-name" href="#" onclick="return doclink('link-56', 'GENERAL_PURPOSE_CONTROLLER_7', 'link-56');">GENERAL_PURPOSE_CONTROLLER_7</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x52</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt id="link-57" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_8=echonest.support.midi.EventDispatcher-module.html#GENERAL_PURPOSE_CONTROLLER_8,Variable echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_8=echonest.support.midi.MidiFileParser-module.html#GENERAL_PURPOSE_CONTROLLER_8,Variable echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_8=echonest.support.midi.MidiOutFile-module.html#GENERAL_PURPOSE_CONTROLLER_8,Variable echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_8=echonest.support.midi.constants-module.html#GENERAL_PURPOSE_CONTROLLER_8"><a title="echonest.support.midi.EventDispatcher.GENERAL_PURPOSE_CONTROLLER_8
+echonest.support.midi.MidiFileParser.GENERAL_PURPOSE_CONTROLLER_8
+echonest.support.midi.MidiOutFile.GENERAL_PURPOSE_CONTROLLER_8
+echonest.support.midi.constants.GENERAL_PURPOSE_CONTROLLER_8" class="py-name" href="#" onclick="return doclink('link-57', 'GENERAL_PURPOSE_CONTROLLER_8', 'link-57');">GENERAL_PURPOSE_CONTROLLER_8</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x53</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt id="link-58" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PORTAMENTO_CONTROL=echonest.support.midi.EventDispatcher-module.html#PORTAMENTO_CONTROL,Variable echonest.support.midi.MidiFileParser.PORTAMENTO_CONTROL=echonest.support.midi.MidiFileParser-module.html#PORTAMENTO_CONTROL,Variable echonest.support.midi.MidiOutFile.PORTAMENTO_CONTROL=echonest.support.midi.MidiOutFile-module.html#PORTAMENTO_CONTROL,Variable echonest.support.midi.constants.PORTAMENTO_CONTROL=echonest.support.midi.constants-module.html#PORTAMENTO_CONTROL"><a title="echonest.support.midi.EventDispatcher.PORTAMENTO_CONTROL
+echonest.support.midi.MidiFileParser.PORTAMENTO_CONTROL
+echonest.support.midi.MidiOutFile.PORTAMENTO_CONTROL
+echonest.support.midi.constants.PORTAMENTO_CONTROL" class="py-name" href="#" onclick="return doclink('link-58', 'PORTAMENTO_CONTROL', 'link-58');">PORTAMENTO_CONTROL</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x54</tt>                  <tt class="py-comment"># (PTC)   (0vvvvvvv is the source Note number)   (Detail)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt id="link-59" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECTS_1=echonest.support.midi.EventDispatcher-module.html#EFFECTS_1,Variable echonest.support.midi.MidiFileParser.EFFECTS_1=echonest.support.midi.MidiFileParser-module.html#EFFECTS_1,Variable echonest.support.midi.MidiOutFile.EFFECTS_1=echonest.support.midi.MidiOutFile-module.html#EFFECTS_1,Variable echonest.support.midi.constants.EFFECTS_1=echonest.support.midi.constants-module.html#EFFECTS_1"><a title="echonest.support.midi.EventDispatcher.EFFECTS_1
+echonest.support.midi.MidiFileParser.EFFECTS_1
+echonest.support.midi.MidiOutFile.EFFECTS_1
+echonest.support.midi.constants.EFFECTS_1" class="py-name" href="#" onclick="return doclink('link-59', 'EFFECTS_1', 'link-59');">EFFECTS_1</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x5B</tt>                           <tt class="py-comment"># (Ext. Effects Depth)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt id="link-60" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECTS_2=echonest.support.midi.EventDispatcher-module.html#EFFECTS_2,Variable echonest.support.midi.MidiFileParser.EFFECTS_2=echonest.support.midi.MidiFileParser-module.html#EFFECTS_2,Variable echonest.support.midi.MidiOutFile.EFFECTS_2=echonest.support.midi.MidiOutFile-module.html#EFFECTS_2,Variable echonest.support.midi.constants.EFFECTS_2=echonest.support.midi.constants-module.html#EFFECTS_2"><a title="echonest.support.midi.EventDispatcher.EFFECTS_2
+echonest.support.midi.MidiFileParser.EFFECTS_2
+echonest.support.midi.MidiOutFile.EFFECTS_2
+echonest.support.midi.constants.EFFECTS_2" class="py-name" href="#" onclick="return doclink('link-60', 'EFFECTS_2', 'link-60');">EFFECTS_2</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x5C</tt>                           <tt class="py-comment"># (Tremelo Depth)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt id="link-61" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECTS_3=echonest.support.midi.EventDispatcher-module.html#EFFECTS_3,Variable echonest.support.midi.MidiFileParser.EFFECTS_3=echonest.support.midi.MidiFileParser-module.html#EFFECTS_3,Variable echonest.support.midi.MidiOutFile.EFFECTS_3=echonest.support.midi.MidiOutFile-module.html#EFFECTS_3,Variable echonest.support.midi.constants.EFFECTS_3=echonest.support.midi.constants-module.html#EFFECTS_3"><a title="echonest.support.midi.EventDispatcher.EFFECTS_3
+echonest.support.midi.MidiFileParser.EFFECTS_3
+echonest.support.midi.MidiOutFile.EFFECTS_3
+echonest.support.midi.constants.EFFECTS_3" class="py-name" href="#" onclick="return doclink('link-61', 'EFFECTS_3', 'link-61');">EFFECTS_3</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x5D</tt>                           <tt class="py-comment"># (Chorus Depth)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt id="link-62" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECTS_4=echonest.support.midi.EventDispatcher-module.html#EFFECTS_4,Variable echonest.support.midi.MidiFileParser.EFFECTS_4=echonest.support.midi.MidiFileParser-module.html#EFFECTS_4,Variable echonest.support.midi.MidiOutFile.EFFECTS_4=echonest.support.midi.MidiOutFile-module.html#EFFECTS_4,Variable echonest.support.midi.constants.EFFECTS_4=echonest.support.midi.constants-module.html#EFFECTS_4"><a title="echonest.support.midi.EventDispatcher.EFFECTS_4
+echonest.support.midi.MidiFileParser.EFFECTS_4
+echonest.support.midi.MidiOutFile.EFFECTS_4
+echonest.support.midi.constants.EFFECTS_4" class="py-name" href="#" onclick="return doclink('link-62', 'EFFECTS_4', 'link-62');">EFFECTS_4</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x5E</tt>                           <tt class="py-comment"># (Celeste Depth)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt id="link-63" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.EFFECTS_5=echonest.support.midi.EventDispatcher-module.html#EFFECTS_5,Variable echonest.support.midi.MidiFileParser.EFFECTS_5=echonest.support.midi.MidiFileParser-module.html#EFFECTS_5,Variable echonest.support.midi.MidiOutFile.EFFECTS_5=echonest.support.midi.MidiOutFile-module.html#EFFECTS_5,Variable echonest.support.midi.constants.EFFECTS_5=echonest.support.midi.constants-module.html#EFFECTS_5"><a title="echonest.support.midi.EventDispatcher.EFFECTS_5
+echonest.support.midi.MidiFileParser.EFFECTS_5
+echonest.support.midi.MidiOutFile.EFFECTS_5
+echonest.support.midi.constants.EFFECTS_5" class="py-name" href="#" onclick="return doclink('link-63', 'EFFECTS_5', 'link-63');">EFFECTS_5</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x5F</tt>                           <tt class="py-comment"># (Phaser Depth)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt id="link-64" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.DATA_INCREMENT=echonest.support.midi.EventDispatcher-module.html#DATA_INCREMENT,Variable echonest.support.midi.MidiFileParser.DATA_INCREMENT=echonest.support.midi.MidiFileParser-module.html#DATA_INCREMENT,Variable echonest.support.midi.MidiOutFile.DATA_INCREMENT=echonest.support.midi.MidiOutFile-module.html#DATA_INCREMENT,Variable echonest.support.midi.constants.DATA_INCREMENT=echonest.support.midi.constants-module.html#DATA_INCREMENT"><a title="echonest.support.midi.EventDispatcher.DATA_INCREMENT
+echonest.support.midi.MidiFileParser.DATA_INCREMENT
+echonest.support.midi.MidiOutFile.DATA_INCREMENT
+echonest.support.midi.constants.DATA_INCREMENT" class="py-name" href="#" onclick="return doclink('link-64', 'DATA_INCREMENT', 'link-64');">DATA_INCREMENT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x60</tt>                      <tt class="py-comment"># (0vvvvvvv is n/a; use 0)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt id="link-65" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.DATA_DECREMENT=echonest.support.midi.EventDispatcher-module.html#DATA_DECREMENT,Variable echonest.support.midi.MidiFileParser.DATA_DECREMENT=echonest.support.midi.MidiFileParser-module.html#DATA_DECREMENT,Variable echonest.support.midi.MidiOutFile.DATA_DECREMENT=echonest.support.midi.MidiOutFile-module.html#DATA_DECREMENT,Variable echonest.support.midi.constants.DATA_DECREMENT=echonest.support.midi.constants-module.html#DATA_DECREMENT"><a title="echonest.support.midi.EventDispatcher.DATA_DECREMENT
+echonest.support.midi.MidiFileParser.DATA_DECREMENT
+echonest.support.midi.MidiOutFile.DATA_DECREMENT
+echonest.support.midi.constants.DATA_DECREMENT" class="py-name" href="#" onclick="return doclink('link-65', 'DATA_DECREMENT', 'link-65');">DATA_DECREMENT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x61</tt>                      <tt class="py-comment"># (0vvvvvvv is n/a; use 0)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt id="link-66" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.NON_REGISTERED_PARAMETER_NUMBER=echonest.support.midi.EventDispatcher-module.html#NON_REGISTERED_PARAMETER_NUMBER,Variable echonest.support.midi.MidiFileParser.NON_REGISTERED_PARAMETER_NUMBER=echonest.support.midi.MidiFileParser-module.html#NON_REGISTERED_PARAMETER_NUMBER,Variable echonest.support.midi.MidiOutFile.NON_REGISTERED_PARAMETER_NUMBER=echonest.support.midi.MidiOutFile-module.html#NON_REGISTERED_PARAMETER_NUMBER,Variable echonest.support.midi.constants.NON_REGISTERED_PARAMETER_NUMBER=echonest.support.midi.constants-module.html#NON_REGISTERED_PARAMETER_NUMBER"><a title="echonest.support.midi.EventDispatcher.NON_REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiFileParser.NON_REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiOutFile.NON_REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.constants.NON_REGISTERED_PARAMETER_NUMBER" class="py-name" href="#" onclick="return doclink('link-66', 'NON_REGISTERED_PARAMETER_NUMBER', 'link-66');">NON_REGISTERED_PARAMETER_NUMBER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x62</tt>     <tt class="py-comment"># (LSB)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt id="link-67" class="py-name"><a title="echonest.support.midi.EventDispatcher.NON_REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiFileParser.NON_REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiOutFile.NON_REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.constants.NON_REGISTERED_PARAMETER_NUMBER" class="py-name" href="#" onclick="return doclink('link-67', 'NON_REGISTERED_PARAMETER_NUMBER', 'link-66');">NON_REGISTERED_PARAMETER_NUMBER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x63</tt>     <tt class="py-comment"># (MSB)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt id="link-68" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.REGISTERED_PARAMETER_NUMBER=echonest.support.midi.EventDispatcher-module.html#REGISTERED_PARAMETER_NUMBER,Variable echonest.support.midi.MidiFileParser.REGISTERED_PARAMETER_NUMBER=echonest.support.midi.MidiFileParser-module.html#REGISTERED_PARAMETER_NUMBER,Variable echonest.support.midi.MidiOutFile.REGISTERED_PARAMETER_NUMBER=echonest.support.midi.MidiOutFile-module.html#REGISTERED_PARAMETER_NUMBER,Variable echonest.support.midi.constants.REGISTERED_PARAMETER_NUMBER=echonest.support.midi.constants-module.html#REGISTERED_PARAMETER_NUMBER"><a title="echonest.support.midi.EventDispatcher.REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiFileParser.REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiOutFile.REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.constants.REGISTERED_PARAMETER_NUMBER" class="py-name" href="#" onclick="return doclink('link-68', 'REGISTERED_PARAMETER_NUMBER', 'link-68');">REGISTERED_PARAMETER_NUMBER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x64</tt>         <tt class="py-comment"># (LSB)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt id="link-69" class="py-name"><a title="echonest.support.midi.EventDispatcher.REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiFileParser.REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.MidiOutFile.REGISTERED_PARAMETER_NUMBER
+echonest.support.midi.constants.REGISTERED_PARAMETER_NUMBER" class="py-name" href="#" onclick="return doclink('link-69', 'REGISTERED_PARAMETER_NUMBER', 'link-68');">REGISTERED_PARAMETER_NUMBER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x65</tt>         <tt class="py-comment"># (MSB)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-comment"># Channel Mode messages - (Detail)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt id="link-70" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.ALL_SOUND_OFF=echonest.support.midi.EventDispatcher-module.html#ALL_SOUND_OFF,Variable echonest.support.midi.MidiFileParser.ALL_SOUND_OFF=echonest.support.midi.MidiFileParser-module.html#ALL_SOUND_OFF,Variable echonest.support.midi.MidiOutFile.ALL_SOUND_OFF=echonest.support.midi.MidiOutFile-module.html#ALL_SOUND_OFF,Variable echonest.support.midi.constants.ALL_SOUND_OFF=echonest.support.midi.constants-module.html#ALL_SOUND_OFF"><a title="echonest.support.midi.EventDispatcher.ALL_SOUND_OFF
+echonest.support.midi.MidiFileParser.ALL_SOUND_OFF
+echonest.support.midi.MidiOutFile.ALL_SOUND_OFF
+echonest.support.midi.constants.ALL_SOUND_OFF" class="py-name" href="#" onclick="return doclink('link-70', 'ALL_SOUND_OFF', 'link-70');">ALL_SOUND_OFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x78</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt id="link-71" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.RESET_ALL_CONTROLLERS=echonest.support.midi.EventDispatcher-module.html#RESET_ALL_CONTROLLERS,Variable echonest.support.midi.MidiFileParser.RESET_ALL_CONTROLLERS=echonest.support.midi.MidiFileParser-module.html#RESET_ALL_CONTROLLERS,Variable echonest.support.midi.MidiOutFile.RESET_ALL_CONTROLLERS=echonest.support.midi.MidiOutFile-module.html#RESET_ALL_CONTROLLERS,Variable echonest.support.midi.constants.RESET_ALL_CONTROLLERS=echonest.support.midi.constants-module.html#RESET_ALL_CONTROLLERS"><a title="echonest.support.midi.EventDispatcher.RESET_ALL_CONTROLLERS
+echonest.support.midi.MidiFileParser.RESET_ALL_CONTROLLERS
+echonest.support.midi.MidiOutFile.RESET_ALL_CONTROLLERS
+echonest.support.midi.constants.RESET_ALL_CONTROLLERS" class="py-name" href="#" onclick="return doclink('link-71', 'RESET_ALL_CONTROLLERS', 'link-71');">RESET_ALL_CONTROLLERS</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x79</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt id="link-72" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.LOCAL_CONTROL_ONOFF=echonest.support.midi.EventDispatcher-module.html#LOCAL_CONTROL_ONOFF,Variable echonest.support.midi.MidiFileParser.LOCAL_CONTROL_ONOFF=echonest.support.midi.MidiFileParser-module.html#LOCAL_CONTROL_ONOFF,Variable echonest.support.midi.MidiOutFile.LOCAL_CONTROL_ONOFF=echonest.support.midi.MidiOutFile-module.html#LOCAL_CONTROL_ONOFF,Variable echonest.support.midi.constants.LOCAL_CONTROL_ONOFF=echonest.support.midi.constants-module.html#LOCAL_CONTROL_ONOFF"><a title="echonest.support.midi.EventDispatcher.LOCAL_CONTROL_ONOFF
+echonest.support.midi.MidiFileParser.LOCAL_CONTROL_ONOFF
+echonest.support.midi.MidiOutFile.LOCAL_CONTROL_ONOFF
+echonest.support.midi.constants.LOCAL_CONTROL_ONOFF" class="py-name" href="#" onclick="return doclink('link-72', 'LOCAL_CONTROL_ONOFF', 'link-72');">LOCAL_CONTROL_ONOFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x7A</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt id="link-73" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.ALL_NOTES_OFF=echonest.support.midi.EventDispatcher-module.html#ALL_NOTES_OFF,Variable echonest.support.midi.MidiFileParser.ALL_NOTES_OFF=echonest.support.midi.MidiFileParser-module.html#ALL_NOTES_OFF,Variable echonest.support.midi.MidiOutFile.ALL_NOTES_OFF=echonest.support.midi.MidiOutFile-module.html#ALL_NOTES_OFF,Variable echonest.support.midi.constants.ALL_NOTES_OFF=echonest.support.midi.constants-module.html#ALL_NOTES_OFF"><a title="echonest.support.midi.EventDispatcher.ALL_NOTES_OFF
+echonest.support.midi.MidiFileParser.ALL_NOTES_OFF
+echonest.support.midi.MidiOutFile.ALL_NOTES_OFF
+echonest.support.midi.constants.ALL_NOTES_OFF" class="py-name" href="#" onclick="return doclink('link-73', 'ALL_NOTES_OFF', 'link-73');">ALL_NOTES_OFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x7B</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt id="link-74" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.OMNI_MODE_OFF=echonest.support.midi.EventDispatcher-module.html#OMNI_MODE_OFF,Variable echonest.support.midi.MidiFileParser.OMNI_MODE_OFF=echonest.support.midi.MidiFileParser-module.html#OMNI_MODE_OFF,Variable echonest.support.midi.MidiOutFile.OMNI_MODE_OFF=echonest.support.midi.MidiOutFile-module.html#OMNI_MODE_OFF,Variable echonest.support.midi.constants.OMNI_MODE_OFF=echonest.support.midi.constants-module.html#OMNI_MODE_OFF"><a title="echonest.support.midi.EventDispatcher.OMNI_MODE_OFF
+echonest.support.midi.MidiFileParser.OMNI_MODE_OFF
+echonest.support.midi.MidiOutFile.OMNI_MODE_OFF
+echonest.support.midi.constants.OMNI_MODE_OFF" class="py-name" href="#" onclick="return doclink('link-74', 'OMNI_MODE_OFF', 'link-74');">OMNI_MODE_OFF</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x7C</tt>          <tt class="py-comment"># (also causes ANO)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt id="link-75" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.OMNI_MODE_ON=echonest.support.midi.EventDispatcher-module.html#OMNI_MODE_ON,Variable echonest.support.midi.MidiFileParser.OMNI_MODE_ON=echonest.support.midi.MidiFileParser-module.html#OMNI_MODE_ON,Variable echonest.support.midi.MidiOutFile.OMNI_MODE_ON=echonest.support.midi.MidiOutFile-module.html#OMNI_MODE_ON,Variable echonest.support.midi.constants.OMNI_MODE_ON=echonest.support.midi.constants-module.html#OMNI_MODE_ON"><a title="echonest.support.midi.EventDispatcher.OMNI_MODE_ON
+echonest.support.midi.MidiFileParser.OMNI_MODE_ON
+echonest.support.midi.MidiOutFile.OMNI_MODE_ON
+echonest.support.midi.constants.OMNI_MODE_ON" class="py-name" href="#" onclick="return doclink('link-75', 'OMNI_MODE_ON', 'link-75');">OMNI_MODE_ON</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x7D</tt>           <tt class="py-comment"># (also causes ANO)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt id="link-76" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.MONO_MODE_ON=echonest.support.midi.EventDispatcher-module.html#MONO_MODE_ON,Variable echonest.support.midi.MidiFileParser.MONO_MODE_ON=echonest.support.midi.MidiFileParser-module.html#MONO_MODE_ON,Variable echonest.support.midi.MidiOutFile.MONO_MODE_ON=echonest.support.midi.MidiOutFile-module.html#MONO_MODE_ON,Variable echonest.support.midi.constants.MONO_MODE_ON=echonest.support.midi.constants-module.html#MONO_MODE_ON"><a title="echonest.support.midi.EventDispatcher.MONO_MODE_ON
+echonest.support.midi.MidiFileParser.MONO_MODE_ON
+echonest.support.midi.MidiOutFile.MONO_MODE_ON
+echonest.support.midi.constants.MONO_MODE_ON" class="py-name" href="#" onclick="return doclink('link-76', 'MONO_MODE_ON', 'link-76');">MONO_MODE_ON</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x7E</tt>           <tt class="py-comment"># (Poly Off; also causes ANO)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt id="link-77" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.POLY_MODE_ON=echonest.support.midi.EventDispatcher-module.html#POLY_MODE_ON,Variable echonest.support.midi.MidiFileParser.POLY_MODE_ON=echonest.support.midi.MidiFileParser-module.html#POLY_MODE_ON,Variable echonest.support.midi.MidiOutFile.POLY_MODE_ON=echonest.support.midi.MidiOutFile-module.html#POLY_MODE_ON,Variable echonest.support.midi.constants.POLY_MODE_ON=echonest.support.midi.constants-module.html#POLY_MODE_ON"><a title="echonest.support.midi.EventDispatcher.POLY_MODE_ON
+echonest.support.midi.MidiFileParser.POLY_MODE_ON
+echonest.support.midi.MidiOutFile.POLY_MODE_ON
+echonest.support.midi.constants.POLY_MODE_ON" class="py-name" href="#" onclick="return doclink('link-77', 'POLY_MODE_ON', 'link-77');">POLY_MODE_ON</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x7F</tt>           <tt class="py-comment"># (Mono Off; also causes ANO)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## System Common Messages, for all channels</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt id="link-78" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SYSTEM_EXCLUSIVE=echonest.support.midi.EventDispatcher-module.html#SYSTEM_EXCLUSIVE,Variable echonest.support.midi.MidiFileParser.SYSTEM_EXCLUSIVE=echonest.support.midi.MidiFileParser-module.html#SYSTEM_EXCLUSIVE,Variable echonest.support.midi.MidiOutFile.SYSTEM_EXCLUSIVE=echonest.support.midi.MidiOutFile-module.html#SYSTEM_EXCLUSIVE,Variable echonest.support.midi.constants.SYSTEM_EXCLUSIVE=echonest.support.midi.constants-module.html#SYSTEM_EXCLUSIVE"><a title="echonest.support.midi.EventDispatcher.SYSTEM_EXCLUSIVE
+echonest.support.midi.MidiFileParser.SYSTEM_EXCLUSIVE
+echonest.support.midi.MidiOutFile.SYSTEM_EXCLUSIVE
+echonest.support.midi.constants.SYSTEM_EXCLUSIVE" class="py-name" href="#" onclick="return doclink('link-78', 'SYSTEM_EXCLUSIVE', 'link-78');">SYSTEM_EXCLUSIVE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xF0</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-comment"># 11110000 0iiiiiii 0ddddddd ... 11110111</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt id="link-79" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.MTC=echonest.support.midi.EventDispatcher-module.html#MTC,Variable echonest.support.midi.MidiFileParser.MTC=echonest.support.midi.MidiFileParser-module.html#MTC,Variable echonest.support.midi.MidiOutFile.MTC=echonest.support.midi.MidiOutFile-module.html#MTC,Variable echonest.support.midi.constants.MTC=echonest.support.midi.constants-module.html#MTC"><a title="echonest.support.midi.EventDispatcher.MTC
+echonest.support.midi.MidiFileParser.MTC
+echonest.support.midi.MidiOutFile.MTC
+echonest.support.midi.constants.MTC" class="py-name" href="#" onclick="return doclink('link-79', 'MTC', 'link-79');">MTC</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xF1</tt> <tt class="py-comment"># MIDI Time Code Quarter Frame</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-comment"># 11110001</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt id="link-80" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SONG_POSITION_POINTER=echonest.support.midi.EventDispatcher-module.html#SONG_POSITION_POINTER,Variable echonest.support.midi.MidiFileParser.SONG_POSITION_POINTER=echonest.support.midi.MidiFileParser-module.html#SONG_POSITION_POINTER,Variable echonest.support.midi.MidiOutFile.SONG_POSITION_POINTER=echonest.support.midi.MidiOutFile-module.html#SONG_POSITION_POINTER,Variable echonest.support.midi.constants.SONG_POSITION_POINTER=echonest.support.midi.constants-module.html#SONG_POSITION_POINTER"><a title="echonest.support.midi.EventDispatcher.SONG_POSITION_POINTER
+echonest.support.midi.MidiFileParser.SONG_POSITION_POINTER
+echonest.support.midi.MidiOutFile.SONG_POSITION_POINTER
+echonest.support.midi.constants.SONG_POSITION_POINTER" class="py-name" href="#" onclick="return doclink('link-80', 'SONG_POSITION_POINTER', 'link-80');">SONG_POSITION_POINTER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xF2</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment"># 11110010 0vvvvvvv 0wwwwwww (lo-position, hi-position)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt id="link-81" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SONG_SELECT=echonest.support.midi.EventDispatcher-module.html#SONG_SELECT,Variable echonest.support.midi.MidiFileParser.SONG_SELECT=echonest.support.midi.MidiFileParser-module.html#SONG_SELECT,Variable echonest.support.midi.MidiOutFile.SONG_SELECT=echonest.support.midi.MidiOutFile-module.html#SONG_SELECT,Variable echonest.support.midi.constants.SONG_SELECT=echonest.support.midi.constants-module.html#SONG_SELECT"><a title="echonest.support.midi.EventDispatcher.SONG_SELECT
+echonest.support.midi.MidiFileParser.SONG_SELECT
+echonest.support.midi.MidiOutFile.SONG_SELECT
+echonest.support.midi.constants.SONG_SELECT" class="py-name" href="#" onclick="return doclink('link-81', 'SONG_SELECT', 'link-81');">SONG_SELECT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xF3</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-comment"># 11110011 0sssssss (songnumber)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-comment">#UNDEFINED = 0xF4</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## 11110100</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-comment">#UNDEFINED = 0xF5</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## 11110101</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt id="link-82" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.TUNING_REQUEST=echonest.support.midi.EventDispatcher-module.html#TUNING_REQUEST,Variable echonest.support.midi.MidiFileParser.TUNING_REQUEST=echonest.support.midi.MidiFileParser-module.html#TUNING_REQUEST,Variable echonest.support.midi.MidiOutFile.TUNING_REQUEST=echonest.support.midi.MidiOutFile-module.html#TUNING_REQUEST,Variable echonest.support.midi.constants.TUNING_REQUEST=echonest.support.midi.constants-module.html#TUNING_REQUEST"><a title="echonest.support.midi.EventDispatcher.TUNING_REQUEST
+echonest.support.midi.MidiFileParser.TUNING_REQUEST
+echonest.support.midi.MidiOutFile.TUNING_REQUEST
+echonest.support.midi.constants.TUNING_REQUEST" class="py-name" href="#" onclick="return doclink('link-82', 'TUNING_REQUEST', 'link-82');">TUNING_REQUEST</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xF6</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-comment"># 11110110</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt id="link-83" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.END_OFF_EXCLUSIVE=echonest.support.midi.EventDispatcher-module.html#END_OFF_EXCLUSIVE,Variable echonest.support.midi.MidiFileParser.END_OFF_EXCLUSIVE=echonest.support.midi.MidiFileParser-module.html#END_OFF_EXCLUSIVE,Variable echonest.support.midi.MidiOutFile.END_OFF_EXCLUSIVE=echonest.support.midi.MidiOutFile-module.html#END_OFF_EXCLUSIVE,Variable echonest.support.midi.constants.END_OFF_EXCLUSIVE=echonest.support.midi.constants-module.html#END_OFF_EXCLUSIVE"><a title="echonest.support.midi.EventDispatcher.END_OFF_EXCLUSIVE
+echonest.support.midi.MidiFileParser.END_OFF_EXCLUSIVE
+echonest.support.midi.MidiOutFile.END_OFF_EXCLUSIVE
+echonest.support.midi.constants.END_OFF_EXCLUSIVE" class="py-name" href="#" onclick="return doclink('link-83', 'END_OFF_EXCLUSIVE', 'link-83');">END_OFF_EXCLUSIVE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xF7</tt> <tt class="py-comment"># terminator</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-comment"># 11110111 # End of system exclusive</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## Midifile meta-events</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt id="link-84" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SEQUENCE_NUMBER=echonest.support.midi.EventDispatcher-module.html#SEQUENCE_NUMBER,Variable echonest.support.midi.MidiFileParser.SEQUENCE_NUMBER=echonest.support.midi.MidiFileParser-module.html#SEQUENCE_NUMBER,Variable echonest.support.midi.MidiOutFile.SEQUENCE_NUMBER=echonest.support.midi.MidiOutFile-module.html#SEQUENCE_NUMBER,Variable echonest.support.midi.constants.SEQUENCE_NUMBER=echonest.support.midi.constants-module.html#SEQUENCE_NUMBER"><a title="echonest.support.midi.EventDispatcher.SEQUENCE_NUMBER
+echonest.support.midi.MidiFileParser.SEQUENCE_NUMBER
+echonest.support.midi.MidiOutFile.SEQUENCE_NUMBER
+echonest.support.midi.constants.SEQUENCE_NUMBER" class="py-name" href="#" onclick="return doclink('link-84', 'SEQUENCE_NUMBER', 'link-84');">SEQUENCE_NUMBER</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x00</tt>      <tt class="py-comment"># 00 02 ss ss (seq-number)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt id="link-85" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.TEXT=echonest.support.midi.EventDispatcher-module.html#TEXT,Variable echonest.support.midi.MidiFileParser.TEXT=echonest.support.midi.MidiFileParser-module.html#TEXT,Variable echonest.support.midi.MidiOutFile.TEXT=echonest.support.midi.MidiOutFile-module.html#TEXT,Variable echonest.support.midi.constants.TEXT=echonest.support.midi.constants-module.html#TEXT"><a title="echonest.support.midi.EventDispatcher.TEXT
+echonest.support.midi.MidiFileParser.TEXT
+echonest.support.midi.MidiOutFile.TEXT
+echonest.support.midi.constants.TEXT" class="py-name" href="#" onclick="return doclink('link-85', 'TEXT', 'link-85');">TEXT</a></tt>            <tt class="py-op">=</tt> <tt class="py-number">0x01</tt>      <tt class="py-comment"># 01 len text...</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt id="link-86" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.COPYRIGHT=echonest.support.midi.EventDispatcher-module.html#COPYRIGHT,Variable echonest.support.midi.MidiFileParser.COPYRIGHT=echonest.support.midi.MidiFileParser-module.html#COPYRIGHT,Variable echonest.support.midi.MidiOutFile.COPYRIGHT=echonest.support.midi.MidiOutFile-module.html#COPYRIGHT,Variable echonest.support.midi.constants.COPYRIGHT=echonest.support.midi.constants-module.html#COPYRIGHT"><a title="echonest.support.midi.EventDispatcher.COPYRIGHT
+echonest.support.midi.MidiFileParser.COPYRIGHT
+echonest.support.midi.MidiOutFile.COPYRIGHT
+echonest.support.midi.constants.COPYRIGHT" class="py-name" href="#" onclick="return doclink('link-86', 'COPYRIGHT', 'link-86');">COPYRIGHT</a></tt>       <tt class="py-op">=</tt> <tt class="py-number">0x02</tt>      <tt class="py-comment"># 02 len text...</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt id="link-87" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SEQUENCE_NAME=echonest.support.midi.EventDispatcher-module.html#SEQUENCE_NAME,Variable echonest.support.midi.MidiFileParser.SEQUENCE_NAME=echonest.support.midi.MidiFileParser-module.html#SEQUENCE_NAME,Variable echonest.support.midi.MidiOutFile.SEQUENCE_NAME=echonest.support.midi.MidiOutFile-module.html#SEQUENCE_NAME,Variable echonest.support.midi.constants.SEQUENCE_NAME=echonest.support.midi.constants-module.html#SEQUENCE_NAME"><a title="echonest.support.midi.EventDispatcher.SEQUENCE_NAME
+echonest.support.midi.MidiFileParser.SEQUENCE_NAME
+echonest.support.midi.MidiOutFile.SEQUENCE_NAME
+echonest.support.midi.constants.SEQUENCE_NAME" class="py-name" href="#" onclick="return doclink('link-87', 'SEQUENCE_NAME', 'link-87');">SEQUENCE_NAME</a></tt>   <tt class="py-op">=</tt> <tt class="py-number">0x03</tt>      <tt class="py-comment"># 03 len text...</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt id="link-88" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.INSTRUMENT_NAME=echonest.support.midi.EventDispatcher-module.html#INSTRUMENT_NAME,Variable echonest.support.midi.MidiFileParser.INSTRUMENT_NAME=echonest.support.midi.MidiFileParser-module.html#INSTRUMENT_NAME,Variable echonest.support.midi.MidiOutFile.INSTRUMENT_NAME=echonest.support.midi.MidiOutFile-module.html#INSTRUMENT_NAME,Variable echonest.support.midi.constants.INSTRUMENT_NAME=echonest.support.midi.constants-module.html#INSTRUMENT_NAME"><a title="echonest.support.midi.EventDispatcher.INSTRUMENT_NAME
+echonest.support.midi.MidiFileParser.INSTRUMENT_NAME
+echonest.support.midi.MidiOutFile.INSTRUMENT_NAME
+echonest.support.midi.constants.INSTRUMENT_NAME" class="py-name" href="#" onclick="return doclink('link-88', 'INSTRUMENT_NAME', 'link-88');">INSTRUMENT_NAME</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0x04</tt>      <tt class="py-comment"># 04 len text...</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt id="link-89" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.LYRIC=echonest.support.midi.EventDispatcher-module.html#LYRIC,Variable echonest.support.midi.MidiFileParser.LYRIC=echonest.support.midi.MidiFileParser-module.html#LYRIC,Variable echonest.support.midi.MidiOutFile.LYRIC=echonest.support.midi.MidiOutFile-module.html#LYRIC,Variable echonest.support.midi.constants.LYRIC=echonest.support.midi.constants-module.html#LYRIC"><a title="echonest.support.midi.EventDispatcher.LYRIC
+echonest.support.midi.MidiFileParser.LYRIC
+echonest.support.midi.MidiOutFile.LYRIC
+echonest.support.midi.constants.LYRIC" class="py-name" href="#" onclick="return doclink('link-89', 'LYRIC', 'link-89');">LYRIC</a></tt>           <tt class="py-op">=</tt> <tt class="py-number">0x05</tt>      <tt class="py-comment"># 05 len text...</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt id="link-90" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.MARKER=echonest.support.midi.EventDispatcher-module.html#MARKER,Variable echonest.support.midi.MidiFileParser.MARKER=echonest.support.midi.MidiFileParser-module.html#MARKER,Variable echonest.support.midi.MidiOutFile.MARKER=echonest.support.midi.MidiOutFile-module.html#MARKER,Variable echonest.support.midi.constants.MARKER=echonest.support.midi.constants-module.html#MARKER"><a title="echonest.support.midi.EventDispatcher.MARKER
+echonest.support.midi.MidiFileParser.MARKER
+echonest.support.midi.MidiOutFile.MARKER
+echonest.support.midi.constants.MARKER" class="py-name" href="#" onclick="return doclink('link-90', 'MARKER', 'link-90');">MARKER</a></tt>          <tt class="py-op">=</tt> <tt class="py-number">0x06</tt>      <tt class="py-comment"># 06 len text...</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt id="link-91" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.CUEPOINT=echonest.support.midi.EventDispatcher-module.html#CUEPOINT,Variable echonest.support.midi.MidiFileParser.CUEPOINT=echonest.support.midi.MidiFileParser-module.html#CUEPOINT,Variable echonest.support.midi.MidiOutFile.CUEPOINT=echonest.support.midi.MidiOutFile-module.html#CUEPOINT,Variable echonest.support.midi.constants.CUEPOINT=echonest.support.midi.constants-module.html#CUEPOINT"><a title="echonest.support.midi.EventDispatcher.CUEPOINT
+echonest.support.midi.MidiFileParser.CUEPOINT
+echonest.support.midi.MidiOutFile.CUEPOINT
+echonest.support.midi.constants.CUEPOINT" class="py-name" href="#" onclick="return doclink('link-91', 'CUEPOINT', 'link-91');">CUEPOINT</a></tt>        <tt class="py-op">=</tt> <tt class="py-number">0x07</tt>      <tt class="py-comment"># 07 len text...</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt id="link-92" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.PROGRAM_NAME=echonest.support.midi.EventDispatcher-module.html#PROGRAM_NAME,Variable echonest.support.midi.MidiFileParser.PROGRAM_NAME=echonest.support.midi.MidiFileParser-module.html#PROGRAM_NAME,Variable echonest.support.midi.MidiOutFile.PROGRAM_NAME=echonest.support.midi.MidiOutFile-module.html#PROGRAM_NAME,Variable echonest.support.midi.constants.PROGRAM_NAME=echonest.support.midi.constants-module.html#PROGRAM_NAME"><a title="echonest.support.midi.EventDispatcher.PROGRAM_NAME
+echonest.support.midi.MidiFileParser.PROGRAM_NAME
+echonest.support.midi.MidiOutFile.PROGRAM_NAME
+echonest.support.midi.constants.PROGRAM_NAME" class="py-name" href="#" onclick="return doclink('link-92', 'PROGRAM_NAME', 'link-92');">PROGRAM_NAME</a></tt>    <tt class="py-op">=</tt> <tt class="py-number">0x08</tt>      <tt class="py-comment"># 08 len text...</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt id="link-93" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.DEVICE_NAME=echonest.support.midi.EventDispatcher-module.html#DEVICE_NAME,Variable echonest.support.midi.MidiFileParser.DEVICE_NAME=echonest.support.midi.MidiFileParser-module.html#DEVICE_NAME,Variable echonest.support.midi.MidiOutFile.DEVICE_NAME=echonest.support.midi.MidiOutFile-module.html#DEVICE_NAME,Variable echonest.support.midi.constants.DEVICE_NAME=echonest.support.midi.constants-module.html#DEVICE_NAME"><a title="echonest.support.midi.EventDispatcher.DEVICE_NAME
+echonest.support.midi.MidiFileParser.DEVICE_NAME
+echonest.support.midi.MidiOutFile.DEVICE_NAME
+echonest.support.midi.constants.DEVICE_NAME" class="py-name" href="#" onclick="return doclink('link-93', 'DEVICE_NAME', 'link-93');">DEVICE_NAME</a></tt>     <tt class="py-op">=</tt> <tt class="py-number">0x09</tt>      <tt class="py-comment"># 09 len text...</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt id="link-94" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.MIDI_CH_PREFIX=echonest.support.midi.EventDispatcher-module.html#MIDI_CH_PREFIX,Variable echonest.support.midi.MidiFileParser.MIDI_CH_PREFIX=echonest.support.midi.MidiFileParser-module.html#MIDI_CH_PREFIX,Variable echonest.support.midi.MidiOutFile.MIDI_CH_PREFIX=echonest.support.midi.MidiOutFile-module.html#MIDI_CH_PREFIX,Variable echonest.support.midi.constants.MIDI_CH_PREFIX=echonest.support.midi.constants-module.html#MIDI_CH_PREFIX"><a title="echonest.support.midi.EventDispatcher.MIDI_CH_PREFIX
+echonest.support.midi.MidiFileParser.MIDI_CH_PREFIX
+echonest.support.midi.MidiOutFile.MIDI_CH_PREFIX
+echonest.support.midi.constants.MIDI_CH_PREFIX" class="py-name" href="#" onclick="return doclink('link-94', 'MIDI_CH_PREFIX', 'link-94');">MIDI_CH_PREFIX</a></tt>  <tt class="py-op">=</tt> <tt class="py-number">0x20</tt>      <tt class="py-comment"># MIDI channel prefix assignment (unofficial)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt id="link-95" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.MIDI_PORT=echonest.support.midi.EventDispatcher-module.html#MIDI_PORT,Variable echonest.support.midi.MidiFileParser.MIDI_PORT=echonest.support.midi.MidiFileParser-module.html#MIDI_PORT,Variable echonest.support.midi.MidiOutFile.MIDI_PORT=echonest.support.midi.MidiOutFile-module.html#MIDI_PORT,Variable echonest.support.midi.constants.MIDI_PORT=echonest.support.midi.constants-module.html#MIDI_PORT"><a title="echonest.support.midi.EventDispatcher.MIDI_PORT
+echonest.support.midi.MidiFileParser.MIDI_PORT
+echonest.support.midi.MidiOutFile.MIDI_PORT
+echonest.support.midi.constants.MIDI_PORT" class="py-name" href="#" onclick="return doclink('link-95', 'MIDI_PORT', 'link-95');">MIDI_PORT</a></tt>       <tt class="py-op">=</tt> <tt class="py-number">0x21</tt>      <tt class="py-comment"># 21 01 port, legacy stuff but still used</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt id="link-96" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.END_OF_TRACK=echonest.support.midi.EventDispatcher-module.html#END_OF_TRACK,Variable echonest.support.midi.MidiFileParser.END_OF_TRACK=echonest.support.midi.MidiFileParser-module.html#END_OF_TRACK,Variable echonest.support.midi.MidiOutFile.END_OF_TRACK=echonest.support.midi.MidiOutFile-module.html#END_OF_TRACK,Variable echonest.support.midi.constants.END_OF_TRACK=echonest.support.midi.constants-module.html#END_OF_TRACK"><a title="echonest.support.midi.EventDispatcher.END_OF_TRACK
+echonest.support.midi.MidiFileParser.END_OF_TRACK
+echonest.support.midi.MidiOutFile.END_OF_TRACK
+echonest.support.midi.constants.END_OF_TRACK" class="py-name" href="#" onclick="return doclink('link-96', 'END_OF_TRACK', 'link-96');">END_OF_TRACK</a></tt>    <tt class="py-op">=</tt> <tt class="py-number">0x2F</tt>      <tt class="py-comment"># 2f 00</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt id="link-97" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.TEMPO=echonest.support.midi.EventDispatcher-module.html#TEMPO,Variable echonest.support.midi.MidiFileParser.TEMPO=echonest.support.midi.MidiFileParser-module.html#TEMPO,Variable echonest.support.midi.MidiOutFile.TEMPO=echonest.support.midi.MidiOutFile-module.html#TEMPO,Variable echonest.support.midi.constants.TEMPO=echonest.support.midi.constants-module.html#TEMPO"><a title="echonest.support.midi.EventDispatcher.TEMPO
+echonest.support.midi.MidiFileParser.TEMPO
+echonest.support.midi.MidiOutFile.TEMPO
+echonest.support.midi.constants.TEMPO" class="py-name" href="#" onclick="return doclink('link-97', 'TEMPO', 'link-97');">TEMPO</a></tt>           <tt class="py-op">=</tt> <tt class="py-number">0x51</tt>      <tt class="py-comment"># 51 03 tt tt tt (tempo in us/quarternote)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt id="link-98" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SMTP_OFFSET=echonest.support.midi.EventDispatcher-module.html#SMTP_OFFSET,Variable echonest.support.midi.MidiFileParser.SMTP_OFFSET=echonest.support.midi.MidiFileParser-module.html#SMTP_OFFSET,Variable echonest.support.midi.MidiOutFile.SMTP_OFFSET=echonest.support.midi.MidiOutFile-module.html#SMTP_OFFSET,Variable echonest.support.midi.constants.SMTP_OFFSET=echonest.support.midi.constants-module.html#SMTP_OFFSET"><a title="echonest.support.midi.EventDispatcher.SMTP_OFFSET
+echonest.support.midi.MidiFileParser.SMTP_OFFSET
+echonest.support.midi.MidiOutFile.SMTP_OFFSET
+echonest.support.midi.constants.SMTP_OFFSET" class="py-name" href="#" onclick="return doclink('link-98', 'SMTP_OFFSET', 'link-98');">SMTP_OFFSET</a></tt>     <tt class="py-op">=</tt> <tt class="py-number">0x54</tt>      <tt class="py-comment"># 54 05 hh mm ss ff xx</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt id="link-99" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.TIME_SIGNATURE=echonest.support.midi.EventDispatcher-module.html#TIME_SIGNATURE,Variable echonest.support.midi.MidiFileParser.TIME_SIGNATURE=echonest.support.midi.MidiFileParser-module.html#TIME_SIGNATURE,Variable echonest.support.midi.MidiOutFile.TIME_SIGNATURE=echonest.support.midi.MidiOutFile-module.html#TIME_SIGNATURE,Variable echonest.support.midi.constants.TIME_SIGNATURE=echonest.support.midi.constants-module.html#TIME_SIGNATURE"><a title="echonest.support.midi.EventDispatcher.TIME_SIGNATURE
+echonest.support.midi.MidiFileParser.TIME_SIGNATURE
+echonest.support.midi.MidiOutFile.TIME_SIGNATURE
+echonest.support.midi.constants.TIME_SIGNATURE" class="py-name" href="#" onclick="return doclink('link-99', 'TIME_SIGNATURE', 'link-99');">TIME_SIGNATURE</a></tt>  <tt class="py-op">=</tt> <tt class="py-number">0x58</tt>      <tt class="py-comment"># 58 04 nn dd cc bb</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt id="link-100" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.KEY_SIGNATURE=echonest.support.midi.EventDispatcher-module.html#KEY_SIGNATURE,Variable echonest.support.midi.MidiFileParser.KEY_SIGNATURE=echonest.support.midi.MidiFileParser-module.html#KEY_SIGNATURE,Variable echonest.support.midi.MidiOutFile.KEY_SIGNATURE=echonest.support.midi.MidiOutFile-module.html#KEY_SIGNATURE,Variable echonest.support.midi.constants.KEY_SIGNATURE=echonest.support.midi.constants-module.html#KEY_SIGNATURE"><a title="echonest.support.midi.EventDispatcher.KEY_SIGNATURE
+echonest.support.midi.MidiFileParser.KEY_SIGNATURE
+echonest.support.midi.MidiOutFile.KEY_SIGNATURE
+echonest.support.midi.constants.KEY_SIGNATURE" class="py-name" href="#" onclick="return doclink('link-100', 'KEY_SIGNATURE', 'link-100');">KEY_SIGNATURE</a></tt>   <tt class="py-op">=</tt> <tt class="py-number">0x59</tt>      <tt class="py-comment"># ??? len text...</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt id="link-101" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SPECIFIC=echonest.support.midi.EventDispatcher-module.html#SPECIFIC,Variable echonest.support.midi.MidiFileParser.SPECIFIC=echonest.support.midi.MidiFileParser-module.html#SPECIFIC,Variable echonest.support.midi.MidiOutFile.SPECIFIC=echonest.support.midi.MidiOutFile-module.html#SPECIFIC,Variable echonest.support.midi.constants.SPECIFIC=echonest.support.midi.constants-module.html#SPECIFIC"><a title="echonest.support.midi.EventDispatcher.SPECIFIC
+echonest.support.midi.MidiFileParser.SPECIFIC
+echonest.support.midi.MidiOutFile.SPECIFIC
+echonest.support.midi.constants.SPECIFIC" class="py-name" href="#" onclick="return doclink('link-101', 'SPECIFIC', 'link-101');">SPECIFIC</a></tt>        <tt class="py-op">=</tt> <tt class="py-number">0x7F</tt>      <tt class="py-comment"># Sequencer specific event</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt id="link-102" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.FILE_HEADER=echonest.support.midi.EventDispatcher-module.html#FILE_HEADER,Variable echonest.support.midi.MidiFileParser.FILE_HEADER=echonest.support.midi.MidiFileParser-module.html#FILE_HEADER,Variable echonest.support.midi.MidiOutFile.FILE_HEADER=echonest.support.midi.MidiOutFile-module.html#FILE_HEADER,Variable echonest.support.midi.constants.FILE_HEADER=echonest.support.midi.constants-module.html#FILE_HEADER"><a title="echonest.support.midi.EventDispatcher.FILE_HEADER
+echonest.support.midi.MidiFileParser.FILE_HEADER
+echonest.support.midi.MidiOutFile.FILE_HEADER
+echonest.support.midi.constants.FILE_HEADER" class="py-name" href="#" onclick="return doclink('link-102', 'FILE_HEADER', 'link-102');">FILE_HEADER</a></tt>     <tt class="py-op">=</tt> <tt class="py-string">'MThd'</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt id="link-103" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.TRACK_HEADER=echonest.support.midi.EventDispatcher-module.html#TRACK_HEADER,Variable echonest.support.midi.MidiFileParser.TRACK_HEADER=echonest.support.midi.MidiFileParser-module.html#TRACK_HEADER,Variable echonest.support.midi.MidiOutFile.TRACK_HEADER=echonest.support.midi.MidiOutFile-module.html#TRACK_HEADER,Variable echonest.support.midi.constants.TRACK_HEADER=echonest.support.midi.constants-module.html#TRACK_HEADER"><a title="echonest.support.midi.EventDispatcher.TRACK_HEADER
+echonest.support.midi.MidiFileParser.TRACK_HEADER
+echonest.support.midi.MidiOutFile.TRACK_HEADER
+echonest.support.midi.constants.TRACK_HEADER" class="py-name" href="#" onclick="return doclink('link-103', 'TRACK_HEADER', 'link-103');">TRACK_HEADER</a></tt>    <tt class="py-op">=</tt> <tt class="py-string">'MTrk'</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## System Realtime messages</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## I don't supose these are to be found in midi files?!</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt id="link-104" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.TIMING_CLOCK=echonest.support.midi.EventDispatcher-module.html#TIMING_CLOCK,Variable echonest.support.midi.MidiFileParser.TIMING_CLOCK=echonest.support.midi.MidiFileParser-module.html#TIMING_CLOCK,Variable echonest.support.midi.MidiOutFile.TIMING_CLOCK=echonest.support.midi.MidiOutFile-module.html#TIMING_CLOCK,Variable echonest.support.midi.constants.TIMING_CLOCK=echonest.support.midi.constants-module.html#TIMING_CLOCK"><a title="echonest.support.midi.EventDispatcher.TIMING_CLOCK
+echonest.support.midi.MidiFileParser.TIMING_CLOCK
+echonest.support.midi.MidiOutFile.TIMING_CLOCK
+echonest.support.midi.constants.TIMING_CLOCK" class="py-name" href="#" onclick="return doclink('link-104', 'TIMING_CLOCK', 'link-104');">TIMING_CLOCK</a></tt>   <tt class="py-op">=</tt> <tt class="py-number">0xF8</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-comment"># undefined    = 0xF9</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-105" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SONG_START=echonest.support.midi.EventDispatcher-module.html#SONG_START,Variable echonest.support.midi.MidiFileParser.SONG_START=echonest.support.midi.MidiFileParser-module.html#SONG_START,Variable echonest.support.midi.MidiOutFile.SONG_START=echonest.support.midi.MidiOutFile-module.html#SONG_START,Variable echonest.support.midi.constants.SONG_START=echonest.support.midi.constants-module.html#SONG_START"><a title="echonest.support.midi.EventDispatcher.SONG_START
+echonest.support.midi.MidiFileParser.SONG_START
+echonest.support.midi.MidiOutFile.SONG_START
+echonest.support.midi.constants.SONG_START" class="py-name" href="#" onclick="return doclink('link-105', 'SONG_START', 'link-105');">SONG_START</a></tt>     <tt class="py-op">=</tt> <tt class="py-number">0xFA</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt id="link-106" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SONG_CONTINUE=echonest.support.midi.EventDispatcher-module.html#SONG_CONTINUE,Variable echonest.support.midi.MidiFileParser.SONG_CONTINUE=echonest.support.midi.MidiFileParser-module.html#SONG_CONTINUE,Variable echonest.support.midi.MidiOutFile.SONG_CONTINUE=echonest.support.midi.MidiOutFile-module.html#SONG_CONTINUE,Variable echonest.support.midi.constants.SONG_CONTINUE=echonest.support.midi.constants-module.html#SONG_CONTINUE"><a title="echonest.support.midi.EventDispatcher.SONG_CONTINUE
+echonest.support.midi.MidiFileParser.SONG_CONTINUE
+echonest.support.midi.MidiOutFile.SONG_CONTINUE
+echonest.support.midi.constants.SONG_CONTINUE" class="py-name" href="#" onclick="return doclink('link-106', 'SONG_CONTINUE', 'link-106');">SONG_CONTINUE</a></tt>  <tt class="py-op">=</tt> <tt class="py-number">0xFB</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt id="link-107" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SONG_STOP=echonest.support.midi.EventDispatcher-module.html#SONG_STOP,Variable echonest.support.midi.MidiFileParser.SONG_STOP=echonest.support.midi.MidiFileParser-module.html#SONG_STOP,Variable echonest.support.midi.MidiOutFile.SONG_STOP=echonest.support.midi.MidiOutFile-module.html#SONG_STOP,Variable echonest.support.midi.constants.SONG_STOP=echonest.support.midi.constants-module.html#SONG_STOP"><a title="echonest.support.midi.EventDispatcher.SONG_STOP
+echonest.support.midi.MidiFileParser.SONG_STOP
+echonest.support.midi.MidiOutFile.SONG_STOP
+echonest.support.midi.constants.SONG_STOP" class="py-name" href="#" onclick="return doclink('link-107', 'SONG_STOP', 'link-107');">SONG_STOP</a></tt>      <tt class="py-op">=</tt> <tt class="py-number">0xFC</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-comment"># undefined    = 0xFD</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-108" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.ACTIVE_SENSING=echonest.support.midi.EventDispatcher-module.html#ACTIVE_SENSING,Variable echonest.support.midi.MidiFileParser.ACTIVE_SENSING=echonest.support.midi.MidiFileParser-module.html#ACTIVE_SENSING,Variable echonest.support.midi.MidiOutFile.ACTIVE_SENSING=echonest.support.midi.MidiOutFile-module.html#ACTIVE_SENSING,Variable echonest.support.midi.constants.ACTIVE_SENSING=echonest.support.midi.constants-module.html#ACTIVE_SENSING"><a title="echonest.support.midi.EventDispatcher.ACTIVE_SENSING
+echonest.support.midi.MidiFileParser.ACTIVE_SENSING
+echonest.support.midi.MidiOutFile.ACTIVE_SENSING
+echonest.support.midi.constants.ACTIVE_SENSING" class="py-name" href="#" onclick="return doclink('link-108', 'ACTIVE_SENSING', 'link-108');">ACTIVE_SENSING</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0xFE</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt id="link-109" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.SYSTEM_RESET=echonest.support.midi.EventDispatcher-module.html#SYSTEM_RESET,Variable echonest.support.midi.MidiFileParser.SYSTEM_RESET=echonest.support.midi.MidiFileParser-module.html#SYSTEM_RESET,Variable echonest.support.midi.MidiOutFile.SYSTEM_RESET=echonest.support.midi.MidiOutFile-module.html#SYSTEM_RESET,Variable echonest.support.midi.constants.SYSTEM_RESET=echonest.support.midi.constants-module.html#SYSTEM_RESET"><a title="echonest.support.midi.EventDispatcher.SYSTEM_RESET
+echonest.support.midi.MidiFileParser.SYSTEM_RESET
+echonest.support.midi.MidiOutFile.SYSTEM_RESET
+echonest.support.midi.constants.SYSTEM_RESET" class="py-name" href="#" onclick="return doclink('link-109', 'SYSTEM_RESET', 'link-109');">SYSTEM_RESET</a></tt>   <tt class="py-op">=</tt> <tt class="py-number">0xFF</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## META EVENT, it is used only in midi files.</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## In transmitted data it means system reset!!!</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt id="link-110" class="py-name" targets="Variable echonest.support.midi.EventDispatcher.META_EVENT=echonest.support.midi.EventDispatcher-module.html#META_EVENT,Variable echonest.support.midi.MidiFileParser.META_EVENT=echonest.support.midi.MidiFileParser-module.html#META_EVENT,Variable echonest.support.midi.MidiOutFile.META_EVENT=echonest.support.midi.MidiOutFile-module.html#META_EVENT,Variable echonest.support.midi.constants.META_EVENT=echonest.support.midi.constants-module.html#META_EVENT"><a title="echonest.support.midi.EventDispatcher.META_EVENT
+echonest.support.midi.MidiFileParser.META_EVENT
+echonest.support.midi.MidiOutFile.META_EVENT
+echonest.support.midi.constants.META_EVENT" class="py-name" href="#" onclick="return doclink('link-110', 'META_EVENT', 'link-110');">META_EVENT</a></tt>     <tt class="py-op">=</tt> <tt class="py-number">0xFF</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"><tt class="py-comment"># 11111111</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-comment">###################################################</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">## Helper functions</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="is_status"></a><div id="is_status-def"><a name="L207"></a><tt class="py-lineno">207</tt> <a class="py-toggle" href="#" id="is_status-toggle" onclick="return toggle('is_status');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.constants-module.html#is_status">is_status</a><tt class="py-op">(</tt><tt class="py-param">byte</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="is_status-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="is_status-expanded"><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">byte</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0x80</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0x80</tt> <tt class="py-comment"># 1000 0000</tt> </tt>
+</div><a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:51:03 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

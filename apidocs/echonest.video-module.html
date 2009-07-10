@@ -1,0 +1,1716 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.video</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;echonest ::
+        Module&nbsp;video
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.video-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module video</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.video-pysrc.html">source&nbsp;code</a></span></p>
+<p>video.py</p>
+  <p>Framework that turns video into silly putty.</p>
+  <p>Created by Robert Ochshorn on 2008-5-30. Refactored by Ben Lacker on 
+  2009-6-18. Copyright (c) 2008 The Echo Nest Corporation. All rights 
+  reserved.</p>
+
+<hr />
+<div class="fields">      <p><strong>Version:</strong>
+        1.0.1
+      </p>
+</div><!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video.EditableFrames-class.html" class="summary-name">EditableFrames</a><br />
+      Collection of frames that can be easily edited
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video.ImageSequence-class.html" class="summary-name">ImageSequence</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video.SynchronizedAV-class.html" class="summary-name">SynchronizedAV</a><br />
+      SynchronizedAV has audio and video; cuts return new SynchronizedAV 
+        objects
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video.VideoSettings-class.html" class="summary-name">VideoSettings</a><br />
+      simple container for video settings
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="convertmov"></a><span class="summary-sig-name">convertmov</span>(<span class="summary-sig-arg">infile</span>,
+        <span class="summary-sig-arg">outfile</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">settings</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Converts a movie file to a new movie file with different settings.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#convertmov">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="ffmpeg_error_check"></a><span class="summary-sig-name">ffmpeg_error_check</span>(<span class="summary-sig-arg">parsestring</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#ffmpeg_error_check">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getpieces"></a><span class="summary-sig-name">getpieces</span>(<span class="summary-sig-arg">video</span>,
+        <span class="summary-sig-arg">segs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#getpieces">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadav"></a><span class="summary-sig-name">loadav</span>(<span class="summary-sig-arg">videofile</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#loadav">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadavfrombundle"></a><span class="summary-sig-name">loadavfrombundle</span>(<span class="summary-sig-arg">dir</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#loadavfrombundle">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadavfromyoutube"></a><span class="summary-sig-name">loadavfromyoutube</span>(<span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      returns an editable sequence from a youtube video</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#loadavfromyoutube">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sequencefromdir"></a><span class="summary-sig-name">sequencefromdir</span>(<span class="summary-sig-arg">dir</span>,
+        <span class="summary-sig-arg">ext</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">settings</span>=<span class="summary-sig-default">None</span>)</span><br />
+      returns an image sequence with lexographically-ordered images from a 
+      directory</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#sequencefromdir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.video-module.html#sequencefrommov" class="summary-sig-name">sequencefrommov</a>(<span class="summary-sig-arg">mov</span>,
+        <span class="summary-sig-arg">settings</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">direc</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">pre</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">frame-</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      full-quality video import from stills.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#sequencefrommov">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sequencefromyoutube"></a><span class="summary-sig-name">sequencefromyoutube</span>(<span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">settings</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dir</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">pre</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">frame-</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      returns an editable sequence from a youtube video</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#sequencefromyoutube">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sequencetomovie"></a><span class="summary-sig-name">sequencetomovie</span>(<span class="summary-sig-arg">outfile</span>,
+        <span class="summary-sig-arg">seq</span>,
+        <span class="summary-sig-arg">audio</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      renders sequence to a movie file, perhaps with an audio track</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#sequencetomovie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="settingsfromffmpeg"></a><span class="summary-sig-name">settingsfromffmpeg</span>(<span class="summary-sig-arg">parsestring</span>)</span><br />
+      takes ffmpeg output and returns a VideoSettings object mimicking the 
+      input video</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#settingsfromffmpeg">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="youtubedl"></a><span class="summary-sig-name">youtubedl</span>(<span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      downloads a video from youtube and returns the file object</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.video-pysrc.html#youtubedl">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ALLOW_THREADS"></a><span class="summary-name">ALLOW_THREADS</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BUFSIZE"></a><span class="summary-name">BUFSIZE</span> = <code title="10000">10000</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CLIP"></a><span class="summary-name">CLIP</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_CALL"></a><span class="summary-name">ERR_CALL</span> = <code title="3">3</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_DEFAULT"></a><span class="summary-name">ERR_DEFAULT</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_DEFAULT2"></a><span class="summary-name">ERR_DEFAULT2</span> = <code title="2084">2084</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_IGNORE"></a><span class="summary-name">ERR_IGNORE</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_LOG"></a><span class="summary-name">ERR_LOG</span> = <code title="5">5</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_PRINT"></a><span class="summary-name">ERR_PRINT</span> = <code title="4">4</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_RAISE"></a><span class="summary-name">ERR_RAISE</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERR_WARN"></a><span class="summary-name">ERR_WARN</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FLOATING_POINT_SUPPORT"></a><span class="summary-name">FLOATING_POINT_SUPPORT</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FPE_DIVIDEBYZERO"></a><span class="summary-name">FPE_DIVIDEBYZERO</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FPE_INVALID"></a><span class="summary-name">FPE_INVALID</span> = <code title="8">8</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FPE_OVERFLOW"></a><span class="summary-name">FPE_OVERFLOW</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FPE_UNDERFLOW"></a><span class="summary-name">FPE_UNDERFLOW</span> = <code title="4">4</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="False_"></a><span class="summary-name">False_</span> = <code title="False">False</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="Inf"></a><span class="summary-name">Inf</span> = <code title="inf">inf</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="Infinity"></a><span class="summary-name">Infinity</span> = <code title="inf">inf</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MAXDIMS"></a><span class="summary-name">MAXDIMS</span> = <code title="32">32</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="NAN"></a><span class="summary-name">NAN</span> = <code title="nan">nan</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="NINF"></a><span class="summary-name">NINF</span> = <code title="-inf">-inf</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="NZERO"></a><span class="summary-name">NZERO</span> = <code title="-0.0">-0.0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="NaN"></a><span class="summary-name">NaN</span> = <code title="nan">nan</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="PINF"></a><span class="summary-name">PINF</span> = <code title="inf">inf</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="PZERO"></a><span class="summary-name">PZERO</span> = <code title="0.0">0.0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="RAISE"></a><span class="summary-name">RAISE</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHIFT_DIVIDEBYZERO"></a><span class="summary-name">SHIFT_DIVIDEBYZERO</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHIFT_INVALID"></a><span class="summary-name">SHIFT_INVALID</span> = <code title="9">9</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHIFT_OVERFLOW"></a><span class="summary-name">SHIFT_OVERFLOW</span> = <code title="3">3</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHIFT_UNDERFLOW"></a><span class="summary-name">SHIFT_UNDERFLOW</span> = <code title="6">6</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#ScalarType" class="summary-name">ScalarType</a> = <code title="(&lt;type 'int'&gt;,
+ &lt;type 'float'&gt;,
+ &lt;type 'complex'&gt;,
+ &lt;type 'long'&gt;,
+ &lt;type 'bool'&gt;,
+ &lt;type 'str'&gt;,
+ &lt;type 'unicode'&gt;,
+ &lt;type 'buffer'&gt;,
+..."><code class="variable-group">(</code>&lt;type 'int'&gt;<code class="variable-op">, </code>&lt;type 'float'&gt;<code class="variable-op">, </code>&lt;type 'complex'&gt;<code class="variable-op">, </code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="True_"></a><span class="summary-name">True_</span> = <code title="True">True</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="UFUNC_BUFSIZE_DEFAULT"></a><span class="summary-name">UFUNC_BUFSIZE_DEFAULT</span> = <code title="10000">10000</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="UFUNC_PYVALS_NAME"></a><span class="summary-name">UFUNC_PYVALS_NAME</span> = <code title="'UFUNC_PYVALS'"><code class="variable-quote">'</code><code class="variable-string">UFUNC_PYVALS</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="WRAP"></a><span class="summary-name">WRAP</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="absolute"></a><span class="summary-name">absolute</span> = <code title="&lt;ufunc 'absolute'&gt;">&lt;ufunc 'absolute'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="add"></a><span class="summary-name">add</span> = <code title="&lt;ufunc 'add'&gt;">&lt;ufunc 'add'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arccos"></a><span class="summary-name">arccos</span> = <code title="&lt;ufunc 'arccos'&gt;">&lt;ufunc 'arccos'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arccosh"></a><span class="summary-name">arccosh</span> = <code title="&lt;ufunc 'arccosh'&gt;">&lt;ufunc 'arccosh'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arcsin"></a><span class="summary-name">arcsin</span> = <code title="&lt;ufunc 'arcsin'&gt;">&lt;ufunc 'arcsin'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arcsinh"></a><span class="summary-name">arcsinh</span> = <code title="&lt;ufunc 'arcsinh'&gt;">&lt;ufunc 'arcsinh'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arctan"></a><span class="summary-name">arctan</span> = <code title="&lt;ufunc 'arctan'&gt;">&lt;ufunc 'arctan'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arctan2"></a><span class="summary-name">arctan2</span> = <code title="&lt;ufunc 'arctan2'&gt;">&lt;ufunc 'arctan2'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="arctanh"></a><span class="summary-name">arctanh</span> = <code title="&lt;ufunc 'arctanh'&gt;">&lt;ufunc 'arctanh'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="bitwise_and"></a><span class="summary-name">bitwise_and</span> = <code title="&lt;ufunc 'bitwise_and'&gt;">&lt;ufunc 'bitwise_and'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="bitwise_not"></a><span class="summary-name">bitwise_not</span> = <code title="&lt;ufunc 'invert'&gt;">&lt;ufunc 'invert'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="bitwise_or"></a><span class="summary-name">bitwise_or</span> = <code title="&lt;ufunc 'bitwise_or'&gt;">&lt;ufunc 'bitwise_or'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="bitwise_xor"></a><span class="summary-name">bitwise_xor</span> = <code title="&lt;ufunc 'bitwise_xor'&gt;">&lt;ufunc 'bitwise_xor'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="c_"></a><span class="summary-name">c_</span> = <code title="&lt;numpy.lib.index_tricks.c_class object at 0x1193990&gt;">&lt;numpy.lib.index_tricks.c_class object at 0x1193990&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#cast" class="summary-name">cast</a> = <code title="{&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0x111ed30&gt;, &lt;type 'numpy.\
+int16'&gt;: &lt;function &lt;lambda&gt; at 0x111ed70&gt;, &lt;type 'numpy.void'&gt;: &lt;funct\
+ion &lt;lambda&gt; at 0x111edb0&gt;, &lt;type 'numpy.int32'&gt;: &lt;function &lt;lambda&gt; a\
+t 0x111edf0&gt;, &lt;type 'numpy.uint32'&gt;: &lt;function &lt;lambda&gt; at 0x111ee30&gt;,\
+ &lt;type 'numpy.unicode_'&gt;: &lt;function &lt;lambda&gt; at 0x111ee70&gt;, &lt;type 'num\
+py.complex128'&gt;: &lt;function &lt;lambda&gt; at 0x111eeb0&gt;, &lt;type 'numpy.int32'\
+&gt;: &lt;function &lt;lambda&gt; at 0x111eef0&gt;, &lt;type 'numpy.uint32'&gt;: &lt;function \
+&lt;lambda&gt; at 0x111ef70&gt;, &lt;type 'numpy.string_'&gt;: &lt;function &lt;lambda&gt; at \
+...">{&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0x111ed30&gt;<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ceil"></a><span class="summary-name">ceil</span> = <code title="&lt;ufunc 'ceil'&gt;">&lt;ufunc 'ceil'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="conj"></a><span class="summary-name">conj</span> = <code title="&lt;ufunc 'conjugate'&gt;">&lt;ufunc 'conjugate'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="conjugate"></a><span class="summary-name">conjugate</span> = <code title="&lt;ufunc 'conjugate'&gt;">&lt;ufunc 'conjugate'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cos"></a><span class="summary-name">cos</span> = <code title="&lt;ufunc 'cos'&gt;">&lt;ufunc 'cos'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cosh"></a><span class="summary-name">cosh</span> = <code title="&lt;ufunc 'cosh'&gt;">&lt;ufunc 'cosh'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="divide"></a><span class="summary-name">divide</span> = <code title="&lt;ufunc 'divide'&gt;">&lt;ufunc 'divide'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="e"></a><span class="summary-name">e</span> = <code title="2.71828182846">2.71828182846</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="equal"></a><span class="summary-name">equal</span> = <code title="&lt;ufunc 'equal'&gt;">&lt;ufunc 'equal'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="exp"></a><span class="summary-name">exp</span> = <code title="&lt;ufunc 'exp'&gt;">&lt;ufunc 'exp'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="expm1"></a><span class="summary-name">expm1</span> = <code title="&lt;ufunc 'expm1'&gt;">&lt;ufunc 'expm1'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="fabs"></a><span class="summary-name">fabs</span> = <code title="&lt;ufunc 'fabs'&gt;">&lt;ufunc 'fabs'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="floor"></a><span class="summary-name">floor</span> = <code title="&lt;ufunc 'floor'&gt;">&lt;ufunc 'floor'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="floor_divide"></a><span class="summary-name">floor_divide</span> = <code title="&lt;ufunc 'floor_divide'&gt;">&lt;ufunc 'floor_divide'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="fmod"></a><span class="summary-name">fmod</span> = <code title="&lt;ufunc 'fmod'&gt;">&lt;ufunc 'fmod'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="frexp"></a><span class="summary-name">frexp</span> = <code title="&lt;ufunc 'frexp'&gt;">&lt;ufunc 'frexp'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="greater"></a><span class="summary-name">greater</span> = <code title="&lt;ufunc 'greater'&gt;">&lt;ufunc 'greater'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="greater_equal"></a><span class="summary-name">greater_equal</span> = <code title="&lt;ufunc 'greater_equal'&gt;">&lt;ufunc 'greater_equal'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="hypot"></a><span class="summary-name">hypot</span> = <code title="&lt;ufunc 'hypot'&gt;">&lt;ufunc 'hypot'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#index_exp" class="summary-name">index_exp</a> = <code title="&lt;numpy.lib.index_tricks._index_expression_class object at 0x1193a30&gt;">&lt;numpy.lib.index_tricks._index_expression_class ob<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="inf"></a><span class="summary-name">inf</span> = <code title="inf">inf</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="infty"></a><span class="summary-name">infty</span> = <code title="inf">inf</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="invert"></a><span class="summary-name">invert</span> = <code title="&lt;ufunc 'invert'&gt;">&lt;ufunc 'invert'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="isfinite"></a><span class="summary-name">isfinite</span> = <code title="&lt;ufunc 'isfinite'&gt;">&lt;ufunc 'isfinite'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="isinf"></a><span class="summary-name">isinf</span> = <code title="&lt;ufunc 'isinf'&gt;">&lt;ufunc 'isinf'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="isnan"></a><span class="summary-name">isnan</span> = <code title="&lt;ufunc 'isnan'&gt;">&lt;ufunc 'isnan'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ldexp"></a><span class="summary-name">ldexp</span> = <code title="&lt;ufunc 'ldexp'&gt;">&lt;ufunc 'ldexp'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="left_shift"></a><span class="summary-name">left_shift</span> = <code title="&lt;ufunc 'left_shift'&gt;">&lt;ufunc 'left_shift'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="less"></a><span class="summary-name">less</span> = <code title="&lt;ufunc 'less'&gt;">&lt;ufunc 'less'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="less_equal"></a><span class="summary-name">less_equal</span> = <code title="&lt;ufunc 'less_equal'&gt;">&lt;ufunc 'less_equal'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="little_endian"></a><span class="summary-name">little_endian</span> = <code title="True">True</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="log"></a><span class="summary-name">log</span> = <code title="&lt;ufunc 'log'&gt;">&lt;ufunc 'log'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="log10"></a><span class="summary-name">log10</span> = <code title="&lt;ufunc 'log10'&gt;">&lt;ufunc 'log10'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="log1p"></a><span class="summary-name">log1p</span> = <code title="&lt;ufunc 'log1p'&gt;">&lt;ufunc 'log1p'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="logical_and"></a><span class="summary-name">logical_and</span> = <code title="&lt;ufunc 'logical_and'&gt;">&lt;ufunc 'logical_and'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="logical_not"></a><span class="summary-name">logical_not</span> = <code title="&lt;ufunc 'logical_not'&gt;">&lt;ufunc 'logical_not'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="logical_or"></a><span class="summary-name">logical_or</span> = <code title="&lt;ufunc 'logical_or'&gt;">&lt;ufunc 'logical_or'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="logical_xor"></a><span class="summary-name">logical_xor</span> = <code title="&lt;ufunc 'logical_xor'&gt;">&lt;ufunc 'logical_xor'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="maximum"></a><span class="summary-name">maximum</span> = <code title="&lt;ufunc 'maximum'&gt;">&lt;ufunc 'maximum'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="mgrid"></a><span class="summary-name">mgrid</span> = <code title="&lt;numpy.lib.index_tricks.nd_grid object at 0x1183ff0&gt;">&lt;numpy.lib.index_tricks.nd_grid object at 0x1183ff0&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="minimum"></a><span class="summary-name">minimum</span> = <code title="&lt;ufunc 'minimum'&gt;">&lt;ufunc 'minimum'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="mod"></a><span class="summary-name">mod</span> = <code title="&lt;ufunc 'remainder'&gt;">&lt;ufunc 'remainder'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="modf"></a><span class="summary-name">modf</span> = <code title="&lt;ufunc 'modf'&gt;">&lt;ufunc 'modf'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="multiply"></a><span class="summary-name">multiply</span> = <code title="&lt;ufunc 'multiply'&gt;">&lt;ufunc 'multiply'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="nan"></a><span class="summary-name">nan</span> = <code title="nan">nan</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#nbytes" class="summary-name">nbytes</a> = <code title="{&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: 2, &lt;type 'numpy.void'&gt;\
+: 0, &lt;type 'numpy.int32'&gt;: 4, &lt;type 'numpy.uint32'&gt;: 4, &lt;type 'numpy.u\
+nicode_'&gt;: 0, &lt;type 'numpy.complex128'&gt;: 16, &lt;type 'numpy.int32'&gt;: 4, \
+&lt;type 'numpy.complex256'&gt;: 32, &lt;type 'numpy.uint32'&gt;: 4, &lt;type 'numpy.\
+string_'&gt;: 0, &lt;type 'numpy.float128'&gt;: 16, &lt;type 'numpy.uint16'&gt;: 2, &lt;\
+type 'numpy.object_'&gt;: 4, &lt;type 'numpy.float64'&gt;: 8, &lt;type 'numpy.int8\
+'&gt;: 1, &lt;type 'numpy.uint8'&gt;: 1, &lt;type 'numpy.bool_'&gt;: 1, &lt;type 'numpy.\
+float32'&gt;: 4, &lt;type 'numpy.complex64'&gt;: 8, &lt;type 'numpy.uint64'&gt;: 8}">{&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: 2, &lt;t<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="negative"></a><span class="summary-name">negative</span> = <code title="&lt;ufunc 'negative'&gt;">&lt;ufunc 'negative'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="newaxis"></a><span class="summary-name">newaxis</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="not_equal"></a><span class="summary-name">not_equal</span> = <code title="&lt;ufunc 'not_equal'&gt;">&lt;ufunc 'not_equal'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ogrid"></a><span class="summary-name">ogrid</span> = <code title="&lt;numpy.lib.index_tricks.nd_grid object at 0x118c750&gt;">&lt;numpy.lib.index_tricks.nd_grid object at 0x118c750&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ones_like"></a><span class="summary-name">ones_like</span> = <code title="&lt;ufunc 'ones_like'&gt;">&lt;ufunc 'ones_like'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="pi"></a><span class="summary-name">pi</span> = <code title="3.14159265359">3.14159265359</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#pkgload" class="summary-name">pkgload</a> = <code title="&lt;numpy._import_tools.PackageLoader instance at 0x117d080&gt;">&lt;numpy._import_tools.PackageLoader instance at 0x117<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="power"></a><span class="summary-name">power</span> = <code title="&lt;ufunc 'power'&gt;">&lt;ufunc 'power'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="r_"></a><span class="summary-name">r_</span> = <code title="&lt;numpy.lib.index_tricks.r_class object at 0x118c730&gt;">&lt;numpy.lib.index_tricks.r_class object at 0x118c730&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="reciprocal"></a><span class="summary-name">reciprocal</span> = <code title="&lt;ufunc 'reciprocal'&gt;">&lt;ufunc 'reciprocal'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="remainder"></a><span class="summary-name">remainder</span> = <code title="&lt;ufunc 'remainder'&gt;">&lt;ufunc 'remainder'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="right_shift"></a><span class="summary-name">right_shift</span> = <code title="&lt;ufunc 'right_shift'&gt;">&lt;ufunc 'right_shift'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="rint"></a><span class="summary-name">rint</span> = <code title="&lt;ufunc 'rint'&gt;">&lt;ufunc 'rint'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#s_" class="summary-name">s_</a> = <code title="&lt;numpy.lib.index_tricks._index_expression_class object at 0x1193a50&gt;">&lt;numpy.lib.index_tricks._index_expression_class object at<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#sctypeDict" class="summary-name">sctypeDict</a> = <code title="{0: &lt;type 'numpy.bool_'&gt;,
+ 1: &lt;type 'numpy.int8'&gt;,
+ 2: &lt;type 'numpy.uint8'&gt;,
+ 3: &lt;type 'numpy.int16'&gt;,
+ 4: &lt;type 'numpy.uint16'&gt;,
+ 5: &lt;type 'numpy.int32'&gt;,
+ 6: &lt;type 'numpy.uint32'&gt;,
+ 7: &lt;type 'numpy.int32'&gt;,
+..."><code class="variable-group">{</code>0<code class="variable-op">: </code>&lt;type 'numpy.bool_'&gt;<code class="variable-op">, </code>1<code class="variable-op">: </code>&lt;type 'numpy.int8'&gt;<code class="variable-op">,</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#sctypeNA" class="summary-name">sctypeNA</a> = <code title="{'?': 'Bool',
+ 'B': 'UInt8',
+ 'Bool': &lt;type 'numpy.bool_'&gt;,
+ 'Complex128': &lt;type 'numpy.complex256'&gt;,
+ 'Complex32': &lt;type 'numpy.complex64'&gt;,
+ 'Complex64': &lt;type 'numpy.complex128'&gt;,
+ 'D': 'Complex64',
+ 'F': 'Complex32',
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">?</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">B</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">UInt8</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.bo<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#sctypes" class="summary-name">sctypes</a> = <code title="{'complex': [&lt;type 'numpy.complex64'&gt;,
+             &lt;type 'numpy.complex128'&gt;,
+             &lt;type 'numpy.complex256'&gt;],
+ 'float': [&lt;type 'numpy.float32'&gt;,
+           &lt;type 'numpy.float64'&gt;,
+           &lt;type 'numpy.float128'&gt;],
+ 'int': [&lt;type 'numpy.int8'&gt;,
+         &lt;type 'numpy.int16'&gt;,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">complex</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code>&lt;type 'numpy.complex64'&gt;<code class="variable-op">, </code>&lt;type 'numpy.<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="sign"></a><span class="summary-name">sign</span> = <code title="&lt;ufunc 'sign'&gt;">&lt;ufunc 'sign'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="signbit"></a><span class="summary-name">signbit</span> = <code title="&lt;ufunc 'signbit'&gt;">&lt;ufunc 'signbit'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="sin"></a><span class="summary-name">sin</span> = <code title="&lt;ufunc 'sin'&gt;">&lt;ufunc 'sin'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="sinh"></a><span class="summary-name">sinh</span> = <code title="&lt;ufunc 'sinh'&gt;">&lt;ufunc 'sinh'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="sqrt"></a><span class="summary-name">sqrt</span> = <code title="&lt;ufunc 'sqrt'&gt;">&lt;ufunc 'sqrt'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="square"></a><span class="summary-name">square</span> = <code title="&lt;ufunc 'square'&gt;">&lt;ufunc 'square'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="subtract"></a><span class="summary-name">subtract</span> = <code title="&lt;ufunc 'subtract'&gt;">&lt;ufunc 'subtract'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="tan"></a><span class="summary-name">tan</span> = <code title="&lt;ufunc 'tan'&gt;">&lt;ufunc 'tan'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="tanh"></a><span class="summary-name">tanh</span> = <code title="&lt;ufunc 'tanh'&gt;">&lt;ufunc 'tanh'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="true_divide"></a><span class="summary-name">true_divide</span> = <code title="&lt;ufunc 'true_divide'&gt;">&lt;ufunc 'true_divide'&gt;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#typeDict" class="summary-name">typeDict</a> = <code title="{0: &lt;type 'numpy.bool_'&gt;,
+ 1: &lt;type 'numpy.int8'&gt;,
+ 2: &lt;type 'numpy.uint8'&gt;,
+ 3: &lt;type 'numpy.int16'&gt;,
+ 4: &lt;type 'numpy.uint16'&gt;,
+ 5: &lt;type 'numpy.int32'&gt;,
+ 6: &lt;type 'numpy.uint32'&gt;,
+ 7: &lt;type 'numpy.int32'&gt;,
+..."><code class="variable-group">{</code>0<code class="variable-op">: </code>&lt;type 'numpy.bool_'&gt;<code class="variable-op">, </code>1<code class="variable-op">: </code>&lt;type 'numpy.int8'&gt;<code class="variable-op">, </code>2<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#typeNA" class="summary-name">typeNA</a> = <code title="{'?': 'Bool',
+ 'B': 'UInt8',
+ 'Bool': &lt;type 'numpy.bool_'&gt;,
+ 'Complex128': &lt;type 'numpy.complex256'&gt;,
+ 'Complex32': &lt;type 'numpy.complex64'&gt;,
+ 'Complex64': &lt;type 'numpy.complex128'&gt;,
+ 'D': 'Complex64',
+ 'F': 'Complex32',
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">?</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">B</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">UInt8</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.bool<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.video-module.html#typecodes" class="summary-name">typecodes</a> = <code title="{'All': '?bhilqpBHILQPfdgFDGSUVO',
+ 'AllFloat': 'fdgFDG',
+ 'AllInteger': 'bBhHiIlLqQpP',
+ 'Character': 'S1',
+ 'Complex': 'FDG',
+ 'Float': 'fdg',
+ 'Integer': 'bhilqp',
+ 'UnsignedInteger': 'BHILQP'}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">All</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">?bhilqpBHILQPfdgFDGSUVO</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">AllFloat</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">fd</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="sequencefrommov"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sequencefrommov</span>(<span class="sig-arg">mov</span>,
+        <span class="sig-arg">settings</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">direc</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">pre</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">frame-</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">verbose</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.video-pysrc.html#sequencefrommov">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>full-quality video import from stills. will save frames to tempspace 
+  if no directory is given</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="ScalarType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">ScalarType</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">(</code>&lt;type 'int'&gt;<code class="variable-op">,</code>
+ &lt;type 'float'&gt;<code class="variable-op">,</code>
+ &lt;type 'complex'&gt;<code class="variable-op">,</code>
+ &lt;type 'long'&gt;<code class="variable-op">,</code>
+ &lt;type 'bool'&gt;<code class="variable-op">,</code>
+ &lt;type 'str'&gt;<code class="variable-op">,</code>
+ &lt;type 'unicode'&gt;<code class="variable-op">,</code>
+ &lt;type 'buffer'&gt;<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cast"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">cast</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0x111ed30&gt;, &lt;type 'numpy.<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+int16'&gt;: &lt;function &lt;lambda&gt; at 0x111ed70&gt;, &lt;type 'numpy.void'&gt;: &lt;funct<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ion &lt;lambda&gt; at 0x111edb0&gt;, &lt;type 'numpy.int32'&gt;: &lt;function &lt;lambda&gt; a<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+t 0x111edf0&gt;, &lt;type 'numpy.uint32'&gt;: &lt;function &lt;lambda&gt; at 0x111ee30&gt;,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ &lt;type 'numpy.unicode_'&gt;: &lt;function &lt;lambda&gt; at 0x111ee70&gt;, &lt;type 'num<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+py.complex128'&gt;: &lt;function &lt;lambda&gt; at 0x111eeb0&gt;, &lt;type 'numpy.int32'<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+&gt;: &lt;function &lt;lambda&gt; at 0x111eef0&gt;, &lt;type 'numpy.uint32'&gt;: &lt;function <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+&lt;lambda&gt; at 0x111ef70&gt;, &lt;type 'numpy.string_'&gt;: &lt;function &lt;lambda&gt; at <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="index_exp"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">index_exp</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&lt;numpy.lib.index_tricks._index_expression_class object at 0x1193a30&gt;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="nbytes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">nbytes</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: 2, &lt;type 'numpy.void'&gt;<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+: 0, &lt;type 'numpy.int32'&gt;: 4, &lt;type 'numpy.uint32'&gt;: 4, &lt;type 'numpy.u<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+nicode_'&gt;: 0, &lt;type 'numpy.complex128'&gt;: 16, &lt;type 'numpy.int32'&gt;: 4, <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+&lt;type 'numpy.complex256'&gt;: 32, &lt;type 'numpy.uint32'&gt;: 4, &lt;type 'numpy.<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+string_'&gt;: 0, &lt;type 'numpy.float128'&gt;: 16, &lt;type 'numpy.uint16'&gt;: 2, &lt;<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+type 'numpy.object_'&gt;: 4, &lt;type 'numpy.float64'&gt;: 8, &lt;type 'numpy.int8<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+'&gt;: 1, &lt;type 'numpy.uint8'&gt;: 1, &lt;type 'numpy.bool_'&gt;: 1, &lt;type 'numpy.<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+float32'&gt;: 4, &lt;type 'numpy.complex64'&gt;: 8, &lt;type 'numpy.uint64'&gt;: 8}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="pkgload"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">pkgload</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&lt;numpy._import_tools.PackageLoader instance at 0x117d080&gt;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="s_"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">s_</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&lt;numpy.lib.index_tricks._index_expression_class object at 0x1193a50&gt;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sctypeDict"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">sctypeDict</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code>0<code class="variable-op">: </code>&lt;type 'numpy.bool_'&gt;<code class="variable-op">,</code>
+ 1<code class="variable-op">: </code>&lt;type 'numpy.int8'&gt;<code class="variable-op">,</code>
+ 2<code class="variable-op">: </code>&lt;type 'numpy.uint8'&gt;<code class="variable-op">,</code>
+ 3<code class="variable-op">: </code>&lt;type 'numpy.int16'&gt;<code class="variable-op">,</code>
+ 4<code class="variable-op">: </code>&lt;type 'numpy.uint16'&gt;<code class="variable-op">,</code>
+ 5<code class="variable-op">: </code>&lt;type 'numpy.int32'&gt;<code class="variable-op">,</code>
+ 6<code class="variable-op">: </code>&lt;type 'numpy.uint32'&gt;<code class="variable-op">,</code>
+ 7<code class="variable-op">: </code>&lt;type 'numpy.int32'&gt;<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sctypeNA"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">sctypeNA</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">?</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">B</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">UInt8</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.bool_'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex128</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.complex256'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex32</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.complex64'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex64</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.complex128'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">D</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Complex64</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">F</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Complex32</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sctypes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">sctypes</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">complex</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code>&lt;type 'numpy.complex64'&gt;<code class="variable-op">,</code>
+             &lt;type 'numpy.complex128'&gt;<code class="variable-op">,</code>
+             &lt;type 'numpy.complex256'&gt;<code class="variable-group">]</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code>&lt;type 'numpy.float32'&gt;<code class="variable-op">,</code>
+           &lt;type 'numpy.float64'&gt;<code class="variable-op">,</code>
+           &lt;type 'numpy.float128'&gt;<code class="variable-group">]</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">int</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-group">[</code>&lt;type 'numpy.int8'&gt;<code class="variable-op">,</code>
+         &lt;type 'numpy.int16'&gt;<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="typeDict"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">typeDict</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code>0<code class="variable-op">: </code>&lt;type 'numpy.bool_'&gt;<code class="variable-op">,</code>
+ 1<code class="variable-op">: </code>&lt;type 'numpy.int8'&gt;<code class="variable-op">,</code>
+ 2<code class="variable-op">: </code>&lt;type 'numpy.uint8'&gt;<code class="variable-op">,</code>
+ 3<code class="variable-op">: </code>&lt;type 'numpy.int16'&gt;<code class="variable-op">,</code>
+ 4<code class="variable-op">: </code>&lt;type 'numpy.uint16'&gt;<code class="variable-op">,</code>
+ 5<code class="variable-op">: </code>&lt;type 'numpy.int32'&gt;<code class="variable-op">,</code>
+ 6<code class="variable-op">: </code>&lt;type 'numpy.uint32'&gt;<code class="variable-op">,</code>
+ 7<code class="variable-op">: </code>&lt;type 'numpy.int32'&gt;<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="typeNA"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">typeNA</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">?</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">B</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">UInt8</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Bool</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.bool_'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex128</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.complex256'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex32</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.complex64'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex64</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;type 'numpy.complex128'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">D</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Complex64</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">F</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Complex32</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="typecodes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">typecodes</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">All</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">?bhilqpBHILQPfdgFDGSUVO</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">AllFloat</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">fdgFDG</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">AllInteger</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bBhHiIlLqQpP</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Character</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">S1</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Complex</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">FDG</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Float</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">fdg</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Integer</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bhilqp</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">UnsignedInteger</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">BHILQP</code><code class="variable-quote">'</code><code class="variable-group">}</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Jul 10 15:51:01 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
