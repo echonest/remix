@@ -1,307 +1,0 @@
-<?xml version="1.0" encoding="ascii"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-          "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <title>echonest.support.midi.MidiToText</title>
-  <link rel="stylesheet" href="epydoc.css" type="text/css" />
-  <script type="text/javascript" src="epydoc.js"></script>
-</head>
-
-<body bgcolor="white" text="black" link="blue" vlink="#204080"
-      alink="#204080">
-<!-- ==================== NAVIGATION BAR ==================== -->
-<table class="navbar" border="0" width="100%" cellpadding="0"
-       bgcolor="#a0c0ff" cellspacing="0">
-  <tr valign="middle">
-
-  <!-- Tree link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Index link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Help link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
-
-      <th class="navbar" width="100%"></th>
-  </tr>
-</table>
-<table width="100%" cellpadding="0" cellspacing="0">
-  <tr valign="top">
-    <td width="100%">
-      <span class="breadcrumbs">
-        Package&nbsp;echonest ::
-        <a href="echonest.support-module.html">Package&nbsp;support</a> ::
-        <a href="echonest.support.midi-module.html">Package&nbsp;midi</a> ::
-        Module&nbsp;MidiToText
-      </span>
-    </td>
-    <td>
-      <table cellpadding="0" cellspacing="0">
-        <!-- hide/show private -->
-        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
-    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
-        <tr><td align="right"><span class="options"
-            >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="echonest.support.midi.MidiToText-pysrc.html"
-            target="_top">no&nbsp;frames</a>]</span></td></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<h1 class="epydoc">Source Code for <a href="echonest.support.midi.MidiToText-module.html">Module echonest.support.midi.MidiToText</a></h1>
-<pre class="py-src">
-<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
-<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module echonest.support.midi.MidiOutStream=echonest.support.midi.MidiOutStream-module.html,Class echonest.support.midi.MidiOutStream.MidiOutStream=echonest.support.midi.MidiOutStream.MidiOutStream-class.html"><a title="echonest.support.midi.MidiOutStream
-echonest.support.midi.MidiOutStream.MidiOutStream" class="py-name" href="#" onclick="return doclink('link-0', 'MidiOutStream', 'link-0');">MidiOutStream</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="echonest.support.midi.MidiOutStream
-echonest.support.midi.MidiOutStream.MidiOutStream" class="py-name" href="#" onclick="return doclink('link-1', 'MidiOutStream', 'link-0');">MidiOutStream</a></tt> </tt>
-<a name="MidiToText"></a><div id="MidiToText-def"><a name="L4"></a><tt class="py-lineno">  4</tt> <a class="py-toggle" href="#" id="MidiToText-toggle" onclick="return toggle('MidiToText');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html">MidiToText</a><tt class="py-op">(</tt><tt class="py-base-class">MidiOutStream</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MidiToText-expanded"><a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
-<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
-<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
-<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">    This class renders a midi file as text. It is mostly used for debugging</tt> </tt>
-<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
-<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
-<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt class="py-comment">#############################</tt> </tt>
-<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># channel events</tt> </tt>
-<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"></tt>     </tt>
-<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">     </tt>
-<a name="MidiToText.channel_message"></a><div id="MidiToText.channel_message-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="MidiToText.channel_message-toggle" onclick="return toggle('MidiToText.channel_message');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#channel_message">channel_message</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message_type</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.channel_message-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.channel_message-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-docstring">"""The default event handler for channel messages"""</tt> </tt>
-<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'message_type:%X, channel:%X, data size:%X'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">message_type</tt><tt class="py-op">,</tt> <tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
-<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.note_on"></a><div id="MidiToText.note_on-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="MidiToText.note_on-toggle" onclick="return toggle('MidiToText.note_on');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#note_on">note_on</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">note</tt><tt class="py-op">=</tt><tt class="py-number">0x40</tt><tt class="py-op">,</tt> <tt class="py-param">velocity</tt><tt class="py-op">=</tt><tt class="py-number">0x40</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.note_on-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.note_on-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'note_on  - ch:%02X,  note:%02X,  vel:%02X time:%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">note</tt><tt class="py-op">,</tt> <tt class="py-name">velocity</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method echonest.support.midi.MidiOutStream.MidiOutStream.rel_time()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#rel_time"><a title="echonest.support.midi.MidiOutStream.MidiOutStream.rel_time" class="py-name" href="#" onclick="return doclink('link-2', 'rel_time', 'link-2');">rel_time</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.note_off"></a><div id="MidiToText.note_off-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="MidiToText.note_off-toggle" onclick="return toggle('MidiToText.note_off');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#note_off">note_off</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">note</tt><tt class="py-op">=</tt><tt class="py-number">0x40</tt><tt class="py-op">,</tt> <tt class="py-param">velocity</tt><tt class="py-op">=</tt><tt class="py-number">0x40</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.note_off-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.note_off-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'note_off - ch:%02X,  note:%02X,  vel:%02X time:%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">note</tt><tt class="py-op">,</tt> <tt class="py-name">velocity</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="echonest.support.midi.MidiOutStream.MidiOutStream.rel_time" class="py-name" href="#" onclick="return doclink('link-3', 'rel_time', 'link-2');">rel_time</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.aftertouch"></a><div id="MidiToText.aftertouch-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="MidiToText.aftertouch-toggle" onclick="return toggle('MidiToText.aftertouch');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#aftertouch">aftertouch</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">note</tt><tt class="py-op">=</tt><tt class="py-number">0x40</tt><tt class="py-op">,</tt> <tt class="py-param">velocity</tt><tt class="py-op">=</tt><tt class="py-number">0x40</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.aftertouch-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.aftertouch-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'aftertouch'</tt><tt class="py-op">,</tt> <tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">note</tt><tt class="py-op">,</tt> <tt class="py-name">velocity</tt> </tt>
-</div><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
-<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.continuous_controller"></a><div id="MidiToText.continuous_controller-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="MidiToText.continuous_controller-toggle" onclick="return toggle('MidiToText.continuous_controller');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#continuous_controller">continuous_controller</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">,</tt> <tt class="py-param">controller</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.continuous_controller-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.continuous_controller-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'controller - ch: %02X, cont: #%02X, value: %02X'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">controller</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
-<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.patch_change"></a><div id="MidiToText.patch_change-def"><a name="L34"></a><tt class="py-lineno"> 34</tt> <a class="py-toggle" href="#" id="MidiToText.patch_change-toggle" onclick="return toggle('MidiToText.patch_change');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#patch_change">patch_change</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">,</tt> <tt class="py-param">patch</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.patch_change-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.patch_change-expanded"><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'patch_change - ch:%02X, patch:%02X'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">patch</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
-<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.channel_pressure"></a><div id="MidiToText.channel_pressure-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="MidiToText.channel_pressure-toggle" onclick="return toggle('MidiToText.channel_pressure');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#channel_pressure">channel_pressure</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">,</tt> <tt class="py-param">pressure</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.channel_pressure-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.channel_pressure-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'channel_pressure'</tt><tt class="py-op">,</tt> <tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">pressure</tt> </tt>
-</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
-<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.pitch_bend"></a><div id="MidiToText.pitch_bend-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="MidiToText.pitch_bend-toggle" onclick="return toggle('MidiToText.pitch_bend');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#pitch_bend">pitch_bend</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.pitch_bend-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.pitch_bend-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'pitch_bend ch:%s, value:%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">channel</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
-<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
-<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
-<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## Common events</tt> </tt>
-<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.system_exclusive"></a><div id="MidiToText.system_exclusive-def"><a name="L51"></a><tt class="py-lineno"> 51</tt> <a class="py-toggle" href="#" id="MidiToText.system_exclusive-toggle" onclick="return toggle('MidiToText.system_exclusive');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#system_exclusive">system_exclusive</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.system_exclusive-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.system_exclusive-expanded"><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'system_exclusive - data size: %s'</tt> <tt class="py-op">%</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">date</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
-<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.song_position_pointer"></a><div id="MidiToText.song_position_pointer-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="MidiToText.song_position_pointer-toggle" onclick="return toggle('MidiToText.song_position_pointer');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#song_position_pointer">song_position_pointer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.song_position_pointer-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.song_position_pointer-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'song_position_pointer: %s'</tt> <tt class="py-op">%</tt> <tt class="py-name">value</tt> </tt>
-</div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
-<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.song_select"></a><div id="MidiToText.song_select-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="MidiToText.song_select-toggle" onclick="return toggle('MidiToText.song_select');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#song_select">song_select</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">songNumber</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.song_select-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.song_select-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'song_select: %s'</tt> <tt class="py-op">%</tt> <tt class="py-name">songNumber</tt> </tt>
-</div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
-<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.tuning_request"></a><div id="MidiToText.tuning_request-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="MidiToText.tuning_request-toggle" onclick="return toggle('MidiToText.tuning_request');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#tuning_request">tuning_request</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.tuning_request-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.tuning_request-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'tuning_request'</tt> </tt>
-</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
-<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.midi_time_code"></a><div id="MidiToText.midi_time_code-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="MidiToText.midi_time_code-toggle" onclick="return toggle('MidiToText.midi_time_code');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#midi_time_code">midi_time_code</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">msg_type</tt><tt class="py-op">,</tt> <tt class="py-param">values</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.midi_time_code-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.midi_time_code-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'midi_time_code - msg_type: %s, values: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">msg_type</tt><tt class="py-op">,</tt> <tt class="py-name">values</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
-<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
-<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
-<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-comment">#########################</tt> </tt>
-<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># header does not really belong here. But anyhoo!!!</tt> </tt>
-<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="MidiToText.header"></a><div id="MidiToText.header-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="MidiToText.header-toggle" onclick="return toggle('MidiToText.header');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#header">header</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">format</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">nTracks</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-param">division</tt><tt class="py-op">=</tt><tt class="py-number">96</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.header-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.header-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'format: %s, nTracks: %s, division: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">format</tt><tt class="py-op">,</tt> <tt class="py-name">nTracks</tt><tt class="py-op">,</tt> <tt class="py-name">division</tt><tt class="py-op">)</tt> </tt>
-<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'----------------------------------'</tt> </tt>
-<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">''</tt> </tt>
-</div><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.eof"></a><div id="MidiToText.eof-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="MidiToText.eof-toggle" onclick="return toggle('MidiToText.eof');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#eof">eof</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.eof-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.eof-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'End of file'</tt> </tt>
-</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
-<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.start_of_track"></a><div id="MidiToText.start_of_track-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="MidiToText.start_of_track-toggle" onclick="return toggle('MidiToText.start_of_track');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#start_of_track">start_of_track</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">n_track</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.start_of_track-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.start_of_track-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Start - track #%s'</tt> <tt class="py-op">%</tt> <tt class="py-name">n_track</tt> </tt>
-</div><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
-<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.end_of_track"></a><div id="MidiToText.end_of_track-def"><a name="L88"></a><tt class="py-lineno"> 88</tt> <a class="py-toggle" href="#" id="MidiToText.end_of_track-toggle" onclick="return toggle('MidiToText.end_of_track');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#end_of_track">end_of_track</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.end_of_track-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.end_of_track-expanded"><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'End of track'</tt> </tt>
-<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">''</tt> </tt>
-</div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
-<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
-<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
-<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-comment">###############</tt> </tt>
-<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># sysex event</tt> </tt>
-<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="MidiToText.sysex_event"></a><div id="MidiToText.sysex_event-def"><a name="L97"></a><tt class="py-lineno"> 97</tt> <a class="py-toggle" href="#" id="MidiToText.sysex_event-toggle" onclick="return toggle('MidiToText.sysex_event');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#sysex_event">sysex_event</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.sysex_event-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.sysex_event-expanded"><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'sysex_event - datasize: %X'</tt> <tt class="py-op">%</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
-<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
-<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## meta events</tt> </tt>
-<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="MidiToText.meta_event"></a><div id="MidiToText.meta_event-def"><a name="L104"></a><tt class="py-lineno">104</tt> <a class="py-toggle" href="#" id="MidiToText.meta_event-toggle" onclick="return toggle('MidiToText.meta_event');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#meta_event">meta_event</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">meta_type</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.meta_event-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.meta_event-expanded"><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'undefined_meta_event:'</tt><tt class="py-op">,</tt> <tt class="py-name">meta_type</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
-<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.sequence_number"></a><div id="MidiToText.sequence_number-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="MidiToText.sequence_number-toggle" onclick="return toggle('MidiToText.sequence_number');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#sequence_number">sequence_number</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.sequence_number-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.sequence_number-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'sequence_number'</tt><tt class="py-op">,</tt> <tt class="py-name">number</tt> </tt>
-</div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
-<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.text"></a><div id="MidiToText.text-def"><a name="L112"></a><tt class="py-lineno">112</tt> <a class="py-toggle" href="#" id="MidiToText.text-toggle" onclick="return toggle('MidiToText.text');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#text">text</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.text-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.text-expanded"><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'text'</tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name" targets="Method echonest.support.midi.MidiOutFile.MidiOutFile.text()=echonest.support.midi.MidiOutFile.MidiOutFile-class.html#text,Method echonest.support.midi.MidiOutStream.MidiOutStream.text()=echonest.support.midi.MidiOutStream.MidiOutStream-class.html#text,Method echonest.support.midi.MidiToText.MidiToText.text()=echonest.support.midi.MidiToText.MidiToText-class.html#text"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-4', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
-<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.copyright"></a><div id="MidiToText.copyright-def"><a name="L116"></a><tt class="py-lineno">116</tt> <a class="py-toggle" href="#" id="MidiToText.copyright-toggle" onclick="return toggle('MidiToText.copyright');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#copyright">copyright</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.copyright-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.copyright-expanded"><a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'copyright'</tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-5', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
-<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.sequence_name"></a><div id="MidiToText.sequence_name-def"><a name="L120"></a><tt class="py-lineno">120</tt> <a class="py-toggle" href="#" id="MidiToText.sequence_name-toggle" onclick="return toggle('MidiToText.sequence_name');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#sequence_name">sequence_name</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.sequence_name-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.sequence_name-expanded"><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'sequence_name:'</tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-6', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
-<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.instrument_name"></a><div id="MidiToText.instrument_name-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="MidiToText.instrument_name-toggle" onclick="return toggle('MidiToText.instrument_name');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#instrument_name">instrument_name</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.instrument_name-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.instrument_name-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'instrument_name:'</tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-7', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
-<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.lyric"></a><div id="MidiToText.lyric-def"><a name="L128"></a><tt class="py-lineno">128</tt> <a class="py-toggle" href="#" id="MidiToText.lyric-toggle" onclick="return toggle('MidiToText.lyric');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#lyric">lyric</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.lyric-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.lyric-expanded"><a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'lyric'</tt><tt class="py-op">,</tt> <tt id="link-8" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-8', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
-<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.marker"></a><div id="MidiToText.marker-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="MidiToText.marker-toggle" onclick="return toggle('MidiToText.marker');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#marker">marker</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.marker-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.marker-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'marker'</tt><tt class="py-op">,</tt> <tt id="link-9" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-9', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
-<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.cuepoint"></a><div id="MidiToText.cuepoint-def"><a name="L136"></a><tt class="py-lineno">136</tt> <a class="py-toggle" href="#" id="MidiToText.cuepoint-toggle" onclick="return toggle('MidiToText.cuepoint');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#cuepoint">cuepoint</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.cuepoint-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.cuepoint-expanded"><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'cuepoint'</tt><tt class="py-op">,</tt> <tt id="link-10" class="py-name"><a title="echonest.support.midi.MidiOutFile.MidiOutFile.text
-echonest.support.midi.MidiOutStream.MidiOutStream.text
-echonest.support.midi.MidiToText.MidiToText.text" class="py-name" href="#" onclick="return doclink('link-10', 'text', 'link-4');">text</a></tt> </tt>
-</div><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
-<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.midi_ch_prefix"></a><div id="MidiToText.midi_ch_prefix-def"><a name="L140"></a><tt class="py-lineno">140</tt> <a class="py-toggle" href="#" id="MidiToText.midi_ch_prefix-toggle" onclick="return toggle('MidiToText.midi_ch_prefix');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#midi_ch_prefix">midi_ch_prefix</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.midi_ch_prefix-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.midi_ch_prefix-expanded"><a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'midi_ch_prefix'</tt><tt class="py-op">,</tt> <tt class="py-name">channel</tt> </tt>
-</div><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
-<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.midi_port"></a><div id="MidiToText.midi_port-def"><a name="L144"></a><tt class="py-lineno">144</tt> <a class="py-toggle" href="#" id="MidiToText.midi_port-toggle" onclick="return toggle('MidiToText.midi_port');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#midi_port">midi_port</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.midi_port-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.midi_port-expanded"><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'midi_port:'</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt> </tt>
-</div><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
-<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.tempo"></a><div id="MidiToText.tempo-def"><a name="L148"></a><tt class="py-lineno">148</tt> <a class="py-toggle" href="#" id="MidiToText.tempo-toggle" onclick="return toggle('MidiToText.tempo');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#tempo">tempo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.tempo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.tempo-expanded"><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'tempo:'</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt> </tt>
-</div><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"> </tt>
-<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.smtp_offset"></a><div id="MidiToText.smtp_offset-def"><a name="L152"></a><tt class="py-lineno">152</tt> <a class="py-toggle" href="#" id="MidiToText.smtp_offset-toggle" onclick="return toggle('MidiToText.smtp_offset');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#smtp_offset">smtp_offset</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">hour</tt><tt class="py-op">,</tt> <tt class="py-param">minute</tt><tt class="py-op">,</tt> <tt class="py-param">second</tt><tt class="py-op">,</tt> <tt class="py-param">frame</tt><tt class="py-op">,</tt> <tt class="py-param">framePart</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.smtp_offset-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.smtp_offset-expanded"><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'smtp_offset'</tt><tt class="py-op">,</tt> <tt class="py-name">hour</tt><tt class="py-op">,</tt> <tt class="py-name">minute</tt><tt class="py-op">,</tt> <tt class="py-name">second</tt><tt class="py-op">,</tt> <tt class="py-name">frame</tt><tt class="py-op">,</tt> <tt class="py-name">framePart</tt> </tt>
-</div><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
-<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.time_signature"></a><div id="MidiToText.time_signature-def"><a name="L156"></a><tt class="py-lineno">156</tt> <a class="py-toggle" href="#" id="MidiToText.time_signature-toggle" onclick="return toggle('MidiToText.time_signature');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#time_signature">time_signature</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nn</tt><tt class="py-op">,</tt> <tt class="py-param">dd</tt><tt class="py-op">,</tt> <tt class="py-param">cc</tt><tt class="py-op">,</tt> <tt class="py-param">bb</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.time_signature-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.time_signature-expanded"><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'time_signature:'</tt><tt class="py-op">,</tt> <tt class="py-name">nn</tt><tt class="py-op">,</tt> <tt class="py-name">dd</tt><tt class="py-op">,</tt> <tt class="py-name">cc</tt><tt class="py-op">,</tt> <tt class="py-name">bb</tt> </tt>
-</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
-<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.key_signature"></a><div id="MidiToText.key_signature-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="MidiToText.key_signature-toggle" onclick="return toggle('MidiToText.key_signature');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#key_signature">key_signature</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sf</tt><tt class="py-op">,</tt> <tt class="py-param">mi</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.key_signature-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.key_signature-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'key_signature'</tt><tt class="py-op">,</tt> <tt class="py-name">sf</tt><tt class="py-op">,</tt> <tt class="py-name">mi</tt> </tt>
-</div><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
-<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
-<a name="MidiToText.sequencer_specific"></a><div id="MidiToText.sequencer_specific-def"><a name="L164"></a><tt class="py-lineno">164</tt> <a class="py-toggle" href="#" id="MidiToText.sequencer_specific-toggle" onclick="return toggle('MidiToText.sequencer_specific');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiToText.MidiToText-class.html#sequencer_specific">sequencer_specific</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MidiToText.sequencer_specific-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiToText.sequencer_specific-expanded"><a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'sequencer_specific'</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
-<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
-<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
-<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
-<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt>
-<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-comment"># get data</tt> </tt>
-<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt id="link-11" class="py-name" targets="Variable echonest.support.midi.example_print_file.test_file=echonest.support.midi.example_print_file-module.html#test_file"><a title="echonest.support.midi.example_print_file.test_file" class="py-name" href="#" onclick="return doclink('link-11', 'test_file', 'link-11');">test_file</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'test/midifiles/minimal.mid'</tt> </tt>
-<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="echonest.support.midi.example_print_file.test_file" class="py-name" href="#" onclick="return doclink('link-12', 'test_file', 'link-11');">test_file</a></tt><tt class="py-op">,</tt> <tt class="py-string">'rb'</tt><tt class="py-op">)</tt> </tt>
-<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">     </tt>
-<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-comment"># do parsing</tt> </tt>
-<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">from</tt> <tt id="link-13" class="py-name" targets="Module echonest.support.midi.MidiInFile=echonest.support.midi.MidiInFile-module.html,Class echonest.support.midi.MidiInFile.MidiInFile=echonest.support.midi.MidiInFile.MidiInFile-class.html"><a title="echonest.support.midi.MidiInFile
-echonest.support.midi.MidiInFile.MidiInFile" class="py-name" href="#" onclick="return doclink('link-13', 'MidiInFile', 'link-13');">MidiInFile</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name"><a title="echonest.support.midi.MidiInFile
-echonest.support.midi.MidiInFile.MidiInFile" class="py-name" href="#" onclick="return doclink('link-14', 'MidiInFile', 'link-13');">MidiInFile</a></tt> </tt>
-<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">    <tt id="link-15" class="py-name" targets="Variable echonest.support.midi.example_print_file.midiIn=echonest.support.midi.example_print_file-module.html#midiIn"><a title="echonest.support.midi.example_print_file.midiIn" class="py-name" href="#" onclick="return doclink('link-15', 'midiIn', 'link-15');">midiIn</a></tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name"><a title="echonest.support.midi.MidiInFile
-echonest.support.midi.MidiInFile.MidiInFile" class="py-name" href="#" onclick="return doclink('link-16', 'MidiInFile', 'link-13');">MidiInFile</a></tt><tt class="py-op">(</tt><tt id="link-17" class="py-name" targets="Module echonest.support.midi.MidiToText=echonest.support.midi.MidiToText-module.html,Class echonest.support.midi.MidiToText.MidiToText=echonest.support.midi.MidiToText.MidiToText-class.html"><a title="echonest.support.midi.MidiToText
-echonest.support.midi.MidiToText.MidiToText" class="py-name" href="#" onclick="return doclink('link-17', 'MidiToText', 'link-17');">MidiToText</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">f</tt><tt class="py-op">)</tt> </tt>
-<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">    <tt id="link-18" class="py-name"><a title="echonest.support.midi.example_print_file.midiIn" class="py-name" href="#" onclick="return doclink('link-18', 'midiIn', 'link-15');">midiIn</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method echonest.support.midi.MidiInFile.MidiInFile.read()=echonest.support.midi.MidiInFile.MidiInFile-class.html#read,Method echonest.support.midi.MidiInStream.MidiInStream.read()=echonest.support.midi.MidiInStream.MidiInStream-class.html#read"><a title="echonest.support.midi.MidiInFile.MidiInFile.read
-echonest.support.midi.MidiInStream.MidiInStream.read" class="py-name" href="#" onclick="return doclink('link-19', 'read', 'link-19');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">    <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method echonest.support.midi.MidiInStream.MidiInStream.close()=echonest.support.midi.MidiInStream.MidiInStream-class.html#close"><a title="echonest.support.midi.MidiInStream.MidiInStream.close" class="py-name" href="#" onclick="return doclink('link-20', 'close', 'link-20');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt><script type="text/javascript">
-<!--
-expandto(location.href);
-// -->
-</script>
-</pre>
-<br />
-<!-- ==================== NAVIGATION BAR ==================== -->
-<table class="navbar" border="0" width="100%" cellpadding="0"
-       bgcolor="#a0c0ff" cellspacing="0">
-  <tr valign="middle">
-
-  <!-- Tree link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Index link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Help link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
-
-      <th class="navbar" width="100%"></th>
-  </tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" width="100%%">
-  <tr>
-    <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 15:51:01 2009
-    </td>
-    <td align="right" class="footer">
-      <a target="mainFrame" href="http://epydoc.sourceforge.net"
-        >http://epydoc.sourceforge.net</a>
-    </td>
-  </tr>
-</table>
-
-<script type="text/javascript">
-  <!--
-  // Private objects are initially displayed (because if
-  // javascript is turned off then we want them to be
-  // visible); but by default, we want to hide them.  So hide
-  // them unless we have a cookie that says to show them.
-  checkCookie();
-  // -->
-</script>
-</body>
-</html>
