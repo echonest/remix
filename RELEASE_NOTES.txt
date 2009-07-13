@@ -1,0 +1,15 @@
+1.2 - July 10 2009
+
+- Native installers for Windows and Mac
+- Video support
+- Timestretching & pitch shifting
+- Uses pyechonest (http://code.google.com/p/pyechonest) for API access
+
+1.1 - June 10 2009
+
+- Moved from pymad/pylame to FFmpeg
+- Support for Windows
+
+1.0 - May 8 2009
+
+- First release
