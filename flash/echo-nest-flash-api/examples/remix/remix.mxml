@@ -71,7 +71,7 @@ This example depends on three additional libraries:
     private var positionUpdateTimer:Timer;
 
     private function init():void {
-      trackApi.apiKey = '5EYHYOVNFLJTJ1KOH';
+      trackApi.apiKey = YOUR KEY;
 
       positionUpdateTimer = new Timer(10);
       positionUpdateTimer.addEventListener('timer', positionUpdateTimerHandler);
