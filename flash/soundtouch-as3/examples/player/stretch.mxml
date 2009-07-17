@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+  <mx:Panel title="TD Stretch Demo" width="100%" paddingTop="10" paddingRight="10" paddingBottom="10" paddingLeft="10">
+    <mx:HBox paddingBottom="10">
+      <mx:Button id="browseButton" label="Choose a song…" click="chooseFile();"/>
+    </mx:HBox>
+    <mx:VBox width="100%">
+      <mx:Label text="Tempo Adjustment"/>
+      <mx:HSlider id="tempoSlider" minimum="0" maximum="2" value="1" snapInterval="0.01" liveDragging="false" change="updateTempo();" width="100%"/>
+    </mx:VBox>
+    <mx:Button id="playButton" label="Play" enabled="false" click="togglePlayPause();"/>
+  </mx:Panel>
+
+  <mx:Script><![CDATA[
+    import com.ryanberdeen.audio.SampleSourcePlayer;
+    import com.ryanberdeen.audio.SoundSampleSource;
+    import com.ryanberdeen.soundtouch.StretchSS;
+
+    import flash.events.Event;
+    import flash.media.Sound;
+    import flash.net.FileReference;
+
+    import mx.collections.ArrayCollection;
+
+    import org.audiofx.mp3.MP3FileReferenceLoader;
+    import org.audiofx.mp3.MP3SoundEvent;
+
+    private var fileReference:FileReference;
+    private var mp3Loader:MP3FileReferenceLoader;
+    private var sound:Sound;
+
+    private var player:SampleSourcePlayer;
+    private var playing:Boolean;
+
+    private var stretchSs:StretchSS;
+
+    private function reset():void {
+      resetPlayer();
+    }
+
+    private function resetPlayer():void {
+      if (player != null) {
+        player.stop();
+
+        player = null;
+      }
+    }
+
+    private function chooseFile():void {
+      reset();
+      fileReference = new FileReference();
+      fileReference.addEventListener(Event.SELECT, function(e:Event):void {
+        loadSound();
+      });
+      fileReference.browse();
+    }
+
+    private function loadSound():void {
+      mp3Loader = new MP3FileReferenceLoader();
+      mp3Loader.addEventListener(Event.COMPLETE, handleSoundLoadComplete);
+      mp3Loader.getSound(fileReference);
+    }
+
+    private function handleSoundLoadComplete(e:MP3SoundEvent):void {
+      mp3Loader.removeEventListener(Event.COMPLETE, handleSoundLoadComplete);
+      sound = e.sound;
+
+      preparePlayer();
+    }
+
+    private function preparePlayer():void {
+      resetPlayer();
+      player = new SampleSourcePlayer();
+      player.addEventListener(Event.SOUND_COMPLETE, playerSoundCompleteHandler);
+      stretchSs = new StretchSS(sound, tempoSlider.value);
+      player.sampleSource = stretchSs;
+      playButton.enabled = true;
+      playButton.label = "Play";
+      playing = false;
+    }
+
+    private function playerSoundCompleteHandler(e:Event):void {
+      preparePlayer();
+    }
+
+    private function togglePlayPause():void {
+      if (!playing) {
+        play();
+      }
+      else {
+        pause();
+      }
+    }
+
+    private function play():void {
+      player.start();
+      playButton.label = "Pause";
+      playing = true;
+    }
+
+    private function pause():void {
+      player.stop();
+      playButton.label = "Play";
+      playing = false;
+    }
+
+    private function updateTempo():void {
+      if (player != null) {
+        preparePlayer();
+      }
+    }
+  ]]></mx:Script>
+</mx:Application>
