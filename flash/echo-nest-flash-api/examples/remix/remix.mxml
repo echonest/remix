@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+This example uses the Echo Nest API to remix the track by altering the
+arrangement of the bars of the track.
+
+The remixes are based on the examples distributed with the Echo Nest remix API.
+
+This example depends on three additional libraries:
+
+  as3corelib for MD5 calculation
+  http://code.google.com/p/as3corelib/
+
+  MP3FileReferenceLoaderLib to load sound files directly from a FileReference
+  http://www.flexiblefactory.co.uk/flexible/?p=46
+
+  com.ryanberdeen.audio for the actual remixing
+  http://github.com/also/flash-audio/tree/master
+
+-->
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init();">
+  <mx:Panel title="Remix Demo" width="100%" paddingTop="10" paddingRight="10" paddingBottom="10" paddingLeft="10">
+    <mx:HBox paddingBottom="10">
+      <mx:Button id="browseButton" label="Choose a song…" click="chooseFile();"/>
+      <mx:CheckBox id="calculateMd5checkBox" label="Check for analysis before uploading" selected="true"/>
+    </mx:HBox>
+    <mx:ProgressBar id="progressBar" mode="manual" label="" width="100%"/>
+    <mx:HRule width="100%"/>
+    <mx:Label text="Remix"/>
+    <mx:ComboBox id="remixComboBox" width="100" dataProvider="{remixes}" close="remixComboBoxCloseHandler(event);" enabled="false"/>
+    <mx:Button id="playButton" label="Play" enabled="false" click="togglePlayPause();"/>
+    <mx:ProgressBar id="positionProgressBar" barColor="0xFF0000" mode="manual" label="" width="100%" labelPlacement="right" labelWidth="0" horizontalGap="0"/>
+    <mx:TextArea id="logTextArea" width="100%" height="200" editable="false" valueCommit="logTextArea.verticalScrollPosition=logTextArea.maxVerticalScrollPosition"/>
+  </mx:Panel>
+
+  <mx:Script><![CDATA[
+    import com.ryanberdeen.audio.ISampleSource;
+    import com.ryanberdeen.audio.DiscontinuousSampleSource;
+    import com.ryanberdeen.audio.SampleRange;
+    import com.ryanberdeen.audio.SampleSourcePlayer;
+    import com.ryanberdeen.audio.SoundSampleSource;
+    import com.ryanberdeen.echonest.api.v3.EchoNestErrorEvent;
+    import com.ryanberdeen.echonest.api.v3.track.AnalysisEvent;
+    import com.ryanberdeen.echonest.api.v3.track.TrackApi;
+    import com.ryanberdeen.echonest.api.v3.track.utils.TrackLoader;
+    import com.ryanberdeen.echonest.api.v3.track.utils.TrackLoaderEvent;
+
+    import flash.events.Event;
+    import flash.media.Sound;
+
+    import mx.collections.ArrayCollection;
+
+    [Bindable]
+    public var remixes:ArrayCollection = new ArrayCollection([
+      {label: 'One', data: remixOne},
+      {label: 'Reverse', data: remixReverse},
+      {label: 'Original', data: remixOriginal}
+    ]);
+
+    private var trackApi:TrackApi = new TrackApi();
+    private var trackLoader:TrackLoader;
+    private var sound:Sound;
+
+    private var bars:Array;
+    private var beats:Array;
+
+    private var remixPlayer:SampleSourcePlayer;
+    private var playing:Boolean;
+    private var positionUpdateTimer:Timer;
+
+    private function init():void {
+      trackApi.apiKey = '5EYHYOVNFLJTJ1KOH';
+
+      positionUpdateTimer = new Timer(10);
+      positionUpdateTimer.addEventListener('timer', positionUpdateTimerHandler);
+    }
+
+    private function log(o:Object):void {
+      logTextArea.htmlText += o + "\n";
+    }
+
+    private function setStatus(status:String, indeterminate:Boolean = false):void {
+      progressBar.label = status;
+      progressBar.indeterminate = indeterminate;
+      if (indeterminate) {
+        progressBar.mode = 'event';
+      }
+      else {
+        progressBar.mode = 'manual';
+      }
+    }
+
+    private function clearStatus():void {
+      progressBar.label = '';
+      progressBar.indeterminate = false;
+      progressBar.mode = 'manual';
+    }
+
+    private function resetAnalysis():void {
+      bars = null;
+      beats = null;
+      playButton.enabled = false;
+      remixComboBox.enabled = false;
+
+      sound = null;
+
+      resetPlayer();
+    }
+
+    private function resetPlayer():void {
+      if (remixPlayer != null) {
+        remixPlayer.stop();
+
+        remixPlayer = null;
+      }
+      positionUpdateTimer.stop();
+    }
+
+    private function preparePlayer():void {
+      resetPlayer();
+      remixPlayer = new SampleSourcePlayer();
+      remixPlayer.addEventListener(Event.SOUND_COMPLETE, playerSoundCompleteHandler);
+      remixPlayer.sampleSource = remixComboBox.selectedItem.data();
+      remixComboBox.enabled = true;
+      playButton.enabled = true;
+      playButton.label = "Play";
+      playing = false;
+    }
+
+    private function chooseFile():void {
+      setStatus('Choose file');
+
+      resetAnalysis();
+      trackLoader = new TrackLoader(trackApi);
+      trackLoader.alwaysUpload = !calculateMd5checkBox.selected;
+      trackLoader.addEventListener(TrackLoaderEvent.LOADING_SOUND, loadingSoundHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.SOUND_LOADED, soundLoadedHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.CALCULATING_MD5, calculatingMd5Handler);
+      trackLoader.md5Calculator.addEventListener(ProgressEvent.PROGRESS, md5ProgressHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.MD5_CALCULATED, md5CalculatedHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.CHECKING_ANALYSIS, checkingAnalysisHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.UPLOADING_FILE, uploadingFileHandler);
+      trackLoader.fileReference.addEventListener(ProgressEvent.PROGRESS, uploadProgressHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.FILE_UPLOADED, fileUploadedHandler);
+      trackLoader.addEventListener(TrackLoaderEvent.LOADING_ANALYSIS, loadingAnalysisHandler);
+      trackLoader.analysisLoader.addEventListener(AnalysisEvent.ERROR, analysisErrorHandler);
+      trackLoader.analysisLoader.addEventListener(AnalysisEvent.COMPLETE, analysisCompleteHandler);
+      trackLoader.analysisLoader.addEventListener(Event.COMPLETE, analysisLoaderCompleteHandler);
+      trackLoader.analysisLoader.addEventListener(EchoNestErrorEvent.ECHO_NEST_ERROR, echoNestErrorEventHandler);
+      trackLoader.analysisLoader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
+      trackLoader.analysisLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, errorHandler);
+
+      trackLoader.load(TrackApi.BEATS, TrackApi.BARS);
+    }
+
+    private function loadingSoundHandler(e:TrackLoaderEvent):void {
+      setStatus('Load sound', true);
+    }
+
+    private function soundLoadedHandler(e:TrackLoaderEvent):void {
+      clearStatus();
+      sound = trackLoader.sound;
+    }
+
+    private function calculatingMd5Handler(e:TrackLoaderEvent):void {
+      setStatus('Calculate MD5');
+    }
+
+    private function md5ProgressHandler(e:ProgressEvent):void {
+      progressBar.setProgress(e.bytesLoaded, e.bytesTotal);
+    }
+
+    private function md5CalculatedHandler(e:TrackLoaderEvent):void {
+      clearStatus();
+    }
+
+    private function checkingAnalysisHandler(e:TrackLoaderEvent):void {
+      setStatus('Check for analysis', true);
+    }
+
+    private function uploadingFileHandler(e:TrackLoaderEvent):void {
+      setStatus('Upload');
+    }
+
+    private function uploadProgressHandler(e:ProgressEvent):void {
+      progressBar.setProgress(e.bytesLoaded, e.bytesTotal);
+    }
+
+    private function fileUploadedHandler(e:TrackLoaderEvent):void {
+      clearStatus();
+    }
+
+    private function loadingAnalysisHandler(e:TrackLoaderEvent):void {
+      setStatus('Wait for analysis', true);
+    }
+
+    private function analysisErrorHandler(e:Event):void {
+      log('track analysis has failed. try a different track');
+    }
+
+    private function analysisCompleteHandler(e:Event):void {
+      setStatus('Download analysis', true);
+    }
+
+    private function analysisLoaderCompleteHandler(e:Event):void {
+      clearStatus();
+
+      bars = trackLoader.analysisLoader.analysis.bars;
+      beats = trackLoader.analysisLoader.analysis.beats;
+
+      preparePlayer();
+    }
+
+    private function echoNestErrorEventHandler(error:EchoNestErrorEvent):void {
+      log('error ' + error.code + ': ' + error.message);
+      clearStatus();
+    }
+
+    private function errorHandler(e:Event):void {
+      log(e.toString());
+    }
+
+    private function playerSoundCompleteHandler(e:Event):void {
+      preparePlayer();
+    }
+
+    private function remixComboBoxCloseHandler(event:Event):void {
+      preparePlayer();
+    }
+
+    private function remixOne():ISampleSource {
+      var beatIndex:int = 0;
+      var sampleRanges:Array = [];
+      for (var i:int = 0; i < bars.length; i++) {
+        while (beatIndex < beats.length - 1 && beats[beatIndex].value != bars[i].value) {
+          beatIndex++;
+        }
+        sampleRanges.push(new SampleRange(Math.round(beats[beatIndex].value * 44100), Math.round(beats[beatIndex + 1].value * 44100)));
+      }
+
+      return discontinuousRemix(sampleRanges);
+    }
+
+    private function remixReverse():ISampleSource {
+      var sampleRanges:Array = [];
+      for (var i:int = beats.length - 1; i > 0; i--) {
+        sampleRanges.push(new SampleRange(Math.round(beats[i - 1].value * 44100), Math.round(beats[i].value * 44100)));
+      }
+
+      return discontinuousRemix(sampleRanges);
+    }
+
+    private function remixOriginal():ISampleSource {
+      return new SoundSampleSource(sound);
+    }
+
+    private function discontinuousRemix(sampleRanges:Array):ISampleSource {
+      var sampleSource:DiscontinuousSampleSource = new DiscontinuousSampleSource();
+
+      sampleSource.sampleRanges = sampleRanges;
+      sampleSource.sampleSource = new SoundSampleSource(sound);
+
+      return sampleSource;
+    }
+
+    private function togglePlayPause():void {
+      if (!playing) {
+        play();
+      }
+      else {
+        pause();
+      }
+    }
+
+    private function play():void {
+      remixPlayer.start();
+      positionUpdateTimer.start();
+      playButton.label = "Pause";
+      playing = true;
+    }
+
+    private function pause():void {
+      remixPlayer.stop();
+      positionUpdateTimer.stop();
+      playButton.label = "Play";
+      playing = false;
+    }
+
+    private function positionUpdateTimerHandler(e:Event):void {
+      positionProgressBar.setProgress(remixPlayer.sourcePosition, sound.length * 44.1);
+    }
+  ]]></mx:Script>
+</mx:Application>
