@@ -198,7 +198,7 @@ class SynchronizedAV():
 
 def loadav(videofile, verbose=True):
     foo, audio_file = tempfile.mkstemp(".wav")        
-    cmd = "ffmpeg -y -i \"" + videofile + "\" " + audio_file
+    cmd = "en-ffmpeg -y -i \"" + videofile + "\" " + audio_file
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -291,7 +291,7 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-", verbose=True):
     format = "jpeg"
     if settings is not None:
         format = settings.imageformat()
-    cmd = "ffmpeg -i " + mov + " -an -sameq " + os.path.join(direc, pre + "%06d." + format)
+    cmd = "en-ffmpeg -i " + mov + " -an -sameq " + os.path.join(direc, pre + "%06d." + format)
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -308,7 +308,7 @@ def sequencetomovie(outfile, seq, audio=None, verbose=True):
     "renders sequence to a movie file, perhaps with an audio track"
     direc = tempfile.mkdtemp()
     seq.render(direc, "image-", False)
-    cmd = "ffmpeg -y " + str(seq.settings) + " -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
+    cmd = "en-ffmpeg -y " + str(seq.settings) + " -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
     if audio:
         cmd += " -i " + audio
         cmd += " -ab %dk " % getattr(config, 'MP3_BITRATE', '64')
@@ -333,7 +333,7 @@ def convertmov(infile, outfile=None, settings=None, verbose=True):
         raise TypeError("settings arg must be a VideoSettings object")
     if outfile is None:
         foo, outfile = tempfile.mkstemp(".flv")
-    cmd = "ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile
+    cmd = "en-ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile
     if verbose:
         print >> sys.stderr, cmd
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -372,5 +372,5 @@ def ffmpeg_error_check(parsestring):
     parse = parsestring.split('\n')
     for num, line in enumerate(parse):
         if "Unknown format" in line or "error occur" in line:
-            raise RuntimeError("ffmpeg conversion error:\n\t" + "\n\t".join(parse[num:]))
+            raise RuntimeError("en-ffmpeg conversion error:\n\t" + "\n\t".join(parse[num:]))
 
