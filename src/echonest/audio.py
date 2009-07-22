@@ -203,6 +203,9 @@ class AudioRenderable(object):
         return AudioData32(shape=newshape, sampleRate=source.sampleRate, numChannels=newchans, defer=False)
         
     
+    def sources(self):
+        return set([self.source])
+    
     def encode(self, filename):
         """
         Shortcut function that takes care of the need to obtain an `AudioData`
@@ -370,6 +373,8 @@ class AudioData(AudioRenderable):
         offset = int(time * self.sampleRate)
         extra = offset + len(as2.data) - len(self.data)
         self.pad_with_zeros(extra)
+        if as2.numChannels < self.numChannels:
+            as2.data = numpy.repeat(as2.data, self.numChannels).reshape(len(as2), self.numChannels)
         self.data[offset:offset+len(as2.data)] += as2.data 
     
     def __len__(self):
@@ -442,8 +447,13 @@ class AudioData(AudioRenderable):
             os.remove(self.convertedfile)
             self.convertedfile = None
     
-    def render(self):
-        return self
+    def render(self, start=0.0, to_audio=None, with_source=None):
+        if not to_audio:
+            return self
+        if with_source != self:
+            return
+        to_audio.add_at(start, self)
+        return    
     
     @property
     def duration(self):
@@ -906,9 +916,6 @@ class AudioQuantum(AudioRenderable) :
     source = property(get_source, set_source, doc="""
     The `AudioData` source for the AudioQuantum.
     """)
-    
-    def sources(self):
-        return set([self.source])
     
     def parent(self):
         """
