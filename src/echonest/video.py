@@ -359,7 +359,7 @@ def settingsfromffmpeg(parsestring):
                         start = seg.index("DAR ")+4
                         end = seg.index("]", start)
                         settings.aspect = map(int, seg[start:end].split(":"))
-                elif re.match("\d*.\d*.*((fps)|(tb.*)).*", seg):
+                elif re.match("(\d*\.)?\d+[\s]((fps)|(tbr)|(tbc)).*", seg):
                     #fps found
                     #todo: what's the difference between tb(r) and tb(c)?
                     settings.fps = float(seg.split(' ')[0])
