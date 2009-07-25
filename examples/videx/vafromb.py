@@ -36,7 +36,7 @@ class AfromB(object):
         self.master = video.loadav(input_filename_a)
         # convert slave so it matches master's settings
         converted = video.convertmov(input_filename_b, settings=self.master.video.settings)
-        self.slave = video.loadav(converted.name)
+        self.slave = video.loadav(converted)
         self.out = output_filename
 
         self.input_a = self.master.audio
