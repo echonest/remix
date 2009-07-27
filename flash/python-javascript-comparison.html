@@ -1,0 +1,432 @@
+<html>
+<head>
+<title>Python/JavaScript Remix API Comparison</title>
+<style type="text/css">
+th {
+  text-align: left;
+}
+
+.status-complete {
+  background-color: green;
+}
+
+.status-works {
+  background-color: #5f5;
+}
+
+.status-untested {
+  background-color: yellow;
+}
+
+.status-unimplemented {
+  background-color: red;
+}
+</style>
+<body>
+<h1>Python/JavaScript Remix API Comparison</h1>
+<p>The tables below document the progress of the ActionScript/JavaScript port of the Python Remix API.</p>
+
+<h2>audio.py</h2>
+<h3><code>AudioQuantum</code></h3>
+<table>
+  <tr>
+    <th><code>start</code></th>
+    <td><code>start</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>duration</code></th>
+    <td><code>duration</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>kind</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+    <td>use <code>container.kind</code></td>
+  </tr>
+  <tr>
+    <th><code>confidence</code></th>
+    <td><code>confidence</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>get_end()</code></th>
+    <td><code>end</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>get_source()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>set_source()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>source</code></th>
+    <td></td>
+    <td>n/a</td>
+    <td>see <code>get_source()</code>, <code>set_source()</code></td>
+  </tr>
+  <tr>
+    <th><code>parent()</code></th>
+    <td><code>parent()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code><code>children()</code></code></th>
+    <td><code><code>children()</code></code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>group()</code></th>
+    <td><code>group()</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>prev()</code></th>
+    <th></th>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>next()</code></th>
+    <th></th>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>local_context()</code></th>
+    <td><code>localContext()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>absolute_context()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>context_string()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>toxml()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>render()</code></th>
+    <td></td>
+    <td>n/a</td>
+  </tr>
+</table>
+
+<h3><code>AudioSegment</code></h3>
+<p>There is no <code>AudioQuantum</code> subclass for segments. Segment properties are added directly to instances of <code>AudioQuantum</code>.</p>
+<table>
+  <tr>
+    <th>Python</th>
+    <th>JavaScript</th>
+    <th>Status</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <th><code>pitches</code></th>
+    <td><code>pitches</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>timbre</code></th>
+    <td><code>timbre</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>loudness_begin</code></th>
+    <td><code>loudnessBegin</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>loudness_max</code></th>
+    <td><code>loudnessMax</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>time_loudness_max</code></th>
+    <td><code>timeLoudnessMax</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>loudness_end</code></th>
+    <td><code>loudnessEnd</code></td>
+    <td class="status-complete">complete</td>
+    <td>available on all <code>AudioSegment</code>s.</td>
+  </tr>
+</table>
+
+<h3><code>AudioQuantumList</code></h3>
+<table>
+  <tr>
+    <th><code>get_many()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>get_many_if_segment()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>get_duration()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>get_source()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>set_source()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>durations</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>kinds</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>start</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>confidence</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>pitches</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>timbre</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>loudness_begin</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>loudness_max</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>time_loudness_max</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>loudness_end</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>source</code></th>
+    <td></td>
+    <td>n/a</td>
+    <td>see <code>get_source()</code>, <code>set_source()</code></td>
+  </tr>
+  <tr>
+    <th><code>duration</code></th>
+    <td></td>
+    <td>n/a</td>
+    <td>see <code>get_duration()</code></td>
+  </tr>
+  <tr>
+    <th><code>sources()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>that()</code></th>
+    <td><code>that()</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>ordered_by()</code></th>
+    <td><code>orderedBy()</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>beget()</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>attach()</code></th>
+    <td></td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <th><code>toxml</code></th>
+    <td></td>
+    <td class="status-unimplemented">unimplemented</td>
+  </tr>
+  <tr>
+    <th><code>render()</code></th>
+    <td></td>
+    <td>n/a</td>
+  </tr>
+</table>
+
+<h2>selection.py</h2>
+<table>
+    <tr>
+    <th><code>are_contained_by_range()</code></th>
+    <td><code>areContainedByRange()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>are_contained_by()</code></th>
+    <td><code>areContainedBy()</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>overlap_range()</code></th>
+    <td><code>overlapRange()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>overlap()</code></th>
+    <td><code>overlap()</code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>end_during_range()</code></th>
+    <td><code>endDuringRange()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>end_during()</code></th>
+    <td><code>endDuring()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>start_during_range()</code></th>
+    <td><code>startDuringRange()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>start_during()</code></th>
+    <td><code>startDuring()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>contain_point()</code></th>
+    <td><code>containPoint()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>have_pitch_max()</code></th>
+    <td><code>havePitchMax()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>have_pitches_max()</code></th>
+    <td><code>havePitchesMax()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>lie_immediately_before()</code></th>
+    <td><code>lieImmediatelyBefore()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>lie_immediately_after()</code></th>
+    <td><code>lieImmediatelyAfter()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>fall_on_the()</code></th>
+    <td><code>fallOnThe()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>overlap_ends_of()</code></th>
+    <td><code>overlapEndsOf()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>overlap_starts_of()</code></th>
+    <td><code>overlapStartsOf()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>start_during_any()</code></th>
+    <td><code>startDuringAny()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>all_of()</code></th>
+    <td></td>
+    <td>n/a</td>
+  </tr>
+</table>
+
+<h2>sorting.py</h2>
+<table>
+    <tr>
+    <th><code>confidence()</code></th>
+    <td><code></code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>duration()</code></th>
+    <td><code></code></td>
+    <td class="status-complete">complete</td>
+  </tr>
+  <tr>
+    <th><code>timbre_value()</code></th>
+    <td><code>timbreValue()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>pitch_value()</code></th>
+    <td><code>pitchValue()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>pitch_distance_from()</code></th>
+    <td><code>pitchDistanceFrom()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>timbre_distance_from()</code></th>
+    <td><code>timbreDistanceFrom()</code></td>
+    <td class="status-works">works</td>
+  </tr>
+  <tr>
+    <th><code>noisiness()</code></th>
+    <td><code>noisiness()</code></td>
+    <td class="status-untested">untested</td>
+  </tr>
+  <tr>
+    <th><code>_diff_squared()</code></th>
+    <td></td>
+    <td>n/a</td>
+  </tr>
+</table>
+</body>
+</html>
