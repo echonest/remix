@@ -109,10 +109,10 @@ AudioQuantumList.Methods = {
         result.sort(function(a, b) {
             var aa = fn(a);
             var bb = fn(b);
-            if (a > b) {
+            if (aa > bb) {
                 return 1;
             }
-            if (a < b) {
+            if (aa < bb) {
                 return -1;
             }
             return 0;
