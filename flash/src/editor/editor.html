@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Remix JS Editor</title>
+<link rel="stylesheet" href="editor.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="../js/audio.js"></script>
+<script type="text/javascript" src="../js/selection.js"></script>
+<script type="text/javascript" src="../js/sorting.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js" type="text/javascript"></script>
+<script type="text/javascript" src="remix.js"></script>
+</head>
+<body>
+
+<h1>Remix JS Editor</h1>
+
+<div id="swf"></div>
+
+<div id="progress-wrapper"><div id="progress" style="width: 0%;"></div></div>
+
+<div><textarea id="remixJs" rows="20" cols="60">function remix (analysis) {
+    var bars = analysis.bars;
+    var samples = [];
+
+    for (var i = 0; i &lt; bars.length; i++) {
+        samples.push(bars[i].children()[0]);
+    }
+
+    return samples;
+}</textarea></div>
+
+<script type="text/javascript">
+Remix.init();
+</script>
+</body>
+</html>
