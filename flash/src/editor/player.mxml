@@ -43,7 +43,7 @@
     private var positionUpdateTimer:Timer;
 
     private function init():void {
-      trackApi.apiKey = 'EJ1B4BFNYQOC56SGF';
+      trackApi.apiKey = YOUR_API_KEY;
 
       positionUpdateTimer = new Timer(10);
       positionUpdateTimer.addEventListener('timer', positionUpdateTimerHandler);
