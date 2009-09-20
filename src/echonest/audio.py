@@ -821,7 +821,7 @@ class LocalAudioFile(AudioFile):
     
     def toxml(self, context=None):
         track = stupidxml.Node("trackinfo")
-        track.attributes.id = self.analysis.id
+        track.attributes.id = self.analysis.identifier
         track.attributes.filename = self.filename
         metadata = stupidxml.Node("metadata")
         metadata.attributes.update(self.analysis.metadata)
@@ -1061,7 +1061,7 @@ class AudioQuantum(AudioRenderable) :
                          'start': self.start}
         try:
             if not(hasattr(context, 'source') and self.source == context.source):
-                attributedict['source'] = self.source.analysis.id
+                attributedict['source'] = self.source.analysis.identifier
         except:
             pass
         return stupidxml.Node(self.kind, **attributedict)
@@ -1158,6 +1158,25 @@ class ModifiedRenderable(AudioRenderable):
             copy = effect.modify(copy)
         to_audio.add_at(start, copy)
         return    
+    
+    def toxml(self, context=None):
+        outerattributedict = {'duration': self.duration}
+        node = stupidxml.Node("modified_audioquantum", **outerattributedict)
+        
+        innerattributedict = {'duration': self._original.duration,
+                              'start': self._original.start}
+        try:
+            if not(hasattr(context, 'source') and self.source == context.source):
+                innerattributedict['source'] = self.source.analysis.identifier
+        except:
+            pass
+        orignode = stupidxml.Node(self._original.kind, **innerattributedict)
+        node.append(orignode)
+        fx = stupidxml.Node('effects')
+        for effect in self._effects:
+            fx.append(stupidxml.Node(effect.__module__ + '.' + effect.__class__.__name__, **effect.__dict__))
+        node.append(fx)
+        return node
 
 class AudioEffect(object):
     def __call__(self, aq):
@@ -1425,13 +1444,13 @@ class AudioQuantumList(list, AudioRenderable):
         xml = stupidxml.Node("sequence")
         xml.attributes.duration = self.duration
         if not context:
-            xml.attributes.source = self.source.analysis.id
+            xml.attributes.source = self.source.analysis.identifier
             for s in self.sources():
                 xml.append(s.toxml())
         elif self._source:
             try:
                 if self.source != context.source:
-                    xml.attributes.source = self.source.analysis.id
+                    xml.attributes.source = self.source.analysis.identifier
             except:
                 pass
         for x in list.__iter__(self):
@@ -1489,10 +1508,10 @@ class Simultaneous(AudioQuantumList):
         xml = stupidxml.Node("parallel")
         xml.attributes.duration = self.duration
         if not context:
-            xml.attributes.source = self.source.analysis.id
+            xml.attributes.source = self.source.analysis.identifier
         elif self.source != context.source:
             try:
-                xml.attributes.source = self.source.analysis.id
+                xml.attributes.source = self.source.analysis.identifier
             except:
                 pass
         for x in list.__iter__(self):
