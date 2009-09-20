@@ -1174,7 +1174,9 @@ class ModifiedRenderable(AudioRenderable):
         node.append(orignode)
         fx = stupidxml.Node('effects')
         for effect in self._effects:
-            fx.append(stupidxml.Node(effect.__module__ + '.' + effect.__class__.__name__, **effect.__dict__))
+            fxdict = {'id': '%s.%s' % (effect.__module__, effect.__class__.__name__)}
+            fxdict.update(effect.__dict__)
+            fx.append(stupidxml.Node('effect', **fxdict))
         node.append(fx)
         return node
 
