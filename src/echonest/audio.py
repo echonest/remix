@@ -1052,7 +1052,8 @@ class AudioQuantum(AudioRenderable) :
         Eliminates the circular reference for pickling.
         """
         dictclone = self.__dict__.copy()
-        del dictclone['container']
+        if 'container' in dictclone:
+            del dictclone['container']
         return dictclone
     
     def toxml(self, context=None):
@@ -1194,8 +1195,8 @@ class TimeTruncateFactor(AudioEffect):
     
 
 class TimeTruncateLength(AudioEffect):
-    def __init__(self, duration):
-        self.new_duration = duration
+    def __init__(self, new_duration):
+        self.new_duration = new_duration
     
     def duration(self, old_duration):
         return self.new_duration
@@ -1416,7 +1417,8 @@ class AudioQuantumList(list, AudioRenderable):
         Eliminates the circular reference for pickling.
         """
         dictclone = self.__dict__.copy()
-        del dictclone['container']
+        if 'container' in dictclone:
+            del dictclone['container']
         return dictclone
     
     def toxml(self, context=None):
