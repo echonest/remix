@@ -1,1 +1,1 @@
-__all__ = [ 'midi', 'stupidxml' ]
+__all__ = [ 'midi' ]

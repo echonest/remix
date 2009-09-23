@@ -27,8 +27,6 @@ Example:
     python multitest.py ../music mashedbeats.mp3 40
 """
 
-SLEEPTIME = 0.5
-
 def main(num_beats, directory, outfile):
     
     aud = []
@@ -38,16 +36,12 @@ def main(num_beats, directory, outfile):
         if f.rsplit('.', 1)[1].lower() in ['mp3', 'aif', 'aiff', 'aifc', 'wav']:
             aud.append(audio.LocalAudioFile(os.path.join(directory,f)))
             # mind the rate limit
-            time.sleep(SLEEPTIME)
     
     num_files = len(aud)
     x = audio.AudioQuantumList()
     
     print >> sys.stderr, "Assembling beats.",
     for w in range(num_beats):
-        if w < num_files:
-            # while we're still caching these results, slow down for the rate limit
-            time.sleep(SLEEPTIME)
         print >> sys.stderr, '.',
         ssong = aud[w%num_files].analysis
         s = ssong.beats[w%len(ssong.beats)]
@@ -70,7 +64,7 @@ def main(num_beats, directory, outfile):
     print >> sys.stderr, "Outputting XML: each source makes an API call for its metadata."
     # output an XML file, for debugging purposes
     y = open(outfile.rsplit('.', 1)[0] + '.xml', 'w')
-    y.write(x.toxml().dom.toprettyxml())
+    y.write(x.toxml())
     y.close()
 
 if __name__ == '__main__':

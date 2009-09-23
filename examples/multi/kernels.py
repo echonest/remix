@@ -97,11 +97,11 @@ def main(num_beats, directory, outfile):
     
     print >> sys.stderr, "%f sec for rendering" % (time.time() - then,)
     
-    # print >> sys.stderr, "Outputting XML: each source makes an API call for its metadata."
-    #     # output an XML file, for debugging purposes
-    #     y = open(outfile.rsplit('.', 1)[0] + '.xml', 'w')
-    #     y.write(x.toxml().dom.toprettyxml())
-    #     y.close()
+    print >> sys.stderr, "Outputting XML: each source makes an API call for its metadata."
+    # output an XML file, for debugging purposes
+    y = open(outfile.rsplit('.', 1)[0] + '.xml', 'w')
+    y.write(x.toxml())
+    y.close()
 
 def keysig(audiofile):
     return int(audiofile.analysis.key['value'])
