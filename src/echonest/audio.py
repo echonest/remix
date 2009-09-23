@@ -39,8 +39,9 @@ from pyechonest import track
 import pyechonest.util
 import echonest.selection as selection
 import pyechonest.config as config
-from echonest.support import stupidxml
-
+#from echonest.support import stupidxml
+import xml.etree.ElementTree as etree
+import xml.dom.minidom as minidom
 
 class AudioAnalysis(track.Track) :
     """
@@ -820,13 +821,16 @@ class LocalAudioFile(AudioFile):
         self.analysis.source = self
     
     def toxml(self, context=None):
-        track = stupidxml.Node("trackinfo")
-        track.attributes.id = self.analysis.identifier
-        track.attributes.filename = self.filename
-        metadata = stupidxml.Node("metadata")
-        metadata.attributes.update(self.analysis.metadata)
+        track = etree.Element("trackinfo")
+        track.attrib['id'] = self.analysis.identifier
+        track.attrib['filename'] = self.filename
+        metadata = etree.Element("metadata", attrib=self.analysis.metadata)
         track.append(metadata)
-        return track
+        if context:
+            return track
+        else:
+            return minidom.parseString(track).toprettyxml()
+        
     
 
 class LocalAnalysis(object):
@@ -1057,14 +1061,19 @@ class AudioQuantum(AudioRenderable) :
         return dictclone
     
     def toxml(self, context=None):
-        attributedict = {'duration': self.duration,
-                         'start': self.start}
+        attributedict = {'duration': str(self.duration),
+                         'start': str(self.start)}
         try:
             if not(hasattr(context, 'source') and self.source == context.source):
                 attributedict['source'] = self.source.analysis.identifier
         except:
             pass
-        return stupidxml.Node(self.kind, **attributedict)
+        xml = etree.Element(self.kind, attrib=attributedict)
+        if context:
+            return xml
+        else:
+            return minidom.parseString(xml).toprettyxml()
+        
     
     def render(self, start=0.0, to_audio=None, with_source=None):
         if not to_audio:
@@ -1160,25 +1169,29 @@ class ModifiedRenderable(AudioRenderable):
         return    
     
     def toxml(self, context=None):
-        outerattributedict = {'duration': self.duration}
-        node = stupidxml.Node("modified_audioquantum", **outerattributedict)
+        outerattributedict = {'duration': str(self.duration)}
+        node = etree.Element("modified_audioquantum", attrib=outerattributedict)
         
-        innerattributedict = {'duration': self._original.duration,
-                              'start': self._original.start}
+        innerattributedict = {'duration': str(self._original.duration),
+                              'start': str(self._original.start)}
         try:
             if not(hasattr(context, 'source') and self.source == context.source):
                 innerattributedict['source'] = self.source.analysis.identifier
         except:
             pass
-        orignode = stupidxml.Node(self._original.kind, **innerattributedict)
+        orignode = etree.Element(self._original.kind, attrib=innerattributedict)
         node.append(orignode)
-        fx = stupidxml.Node('effects')
+        fx = etree.Element('effects')
         for effect in self._effects:
             fxdict = {'id': '%s.%s' % (effect.__module__, effect.__class__.__name__)}
             fxdict.update(effect.__dict__)
-            fx.append(stupidxml.Node('effect', **fxdict))
+            fx.append(etree.Element('effect', attrib=fxdict))
         node.append(fx)
-        return node
+        if context:
+            return node
+        else:
+            return minidom.parseString(node).toprettyxml()
+        
 
 class AudioEffect(object):
     def __call__(self, aq):
@@ -1443,21 +1456,25 @@ class AudioQuantumList(list, AudioRenderable):
         return dictclone
     
     def toxml(self, context=None):
-        xml = stupidxml.Node("sequence")
-        xml.attributes.duration = self.duration
+        xml = etree.Element("sequence")
+        xml.attrib['duration'] = str(self.duration)
         if not context:
-            xml.attributes.source = self.source.analysis.identifier
+            xml.attrib['source'] = self.source.analysis.identifier
             for s in self.sources():
                 xml.append(s.toxml())
         elif self._source:
             try:
                 if self.source != context.source:
-                    xml.attributes.source = self.source.analysis.identifier
+                    xml.attrib['source'] = self.source.analysis.identifier
             except:
                 pass
         for x in list.__iter__(self):
             xml.append(x.toxml(context=self))
-        return xml
+        if context:
+            return xml
+        else:
+            return minidom.parseString(xml).toprettyxml()
+        
     
     def render(self, start=0.0, to_audio=None, with_source=None):
         if not to_audio:
@@ -1507,18 +1524,21 @@ class Simultaneous(AudioQuantumList):
         """)
     
     def toxml(self, context=None):
-        xml = stupidxml.Node("parallel")
-        xml.attributes.duration = self.duration
+        xml = etree.Element("parallel")
+        xml.attrib['duration'] = str(self.duration)
         if not context:
-            xml.attributes.source = self.source.analysis.identifier
+            xml.attrib['source'] = self.source.analysis.identifier
         elif self.source != context.source:
             try:
-                xml.attributes.source = self.source.analysis.identifier
+                xml.attrib['source'] = self.source.analysis.identifier
             except:
                 pass
         for x in list.__iter__(self):
             xml.append(x.toxml(context=self))
-        return xml
+        if context:
+            return xml
+        else:
+            return minidom.parseString(xml).toprettyxml()
     
     def render(self, start=0.0, to_audio=None, with_source=None):
         if not to_audio:
