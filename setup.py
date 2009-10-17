@@ -31,6 +31,7 @@ extra_compile_args = []
 is_linux = False
 is_mac =False
 is_windows = False
+major_version_string = ".".join([str(x) for x in sys.version_info[0:2]]) # 2.6, 2.5 etc
 
 # Is this is posix platform, or is it windows?
 if hasattr(os, 'uname'):
@@ -40,8 +41,8 @@ if hasattr(os, 'uname'):
         is_linux = True
     sources += sources_gcc
     extra_compile_args=['-fcheck-new', '-O3', 
-                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/core/include',    # mac
-                        '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/numarray',        # mac
+                        '-I', '/System/Library/Frameworks/Python.framework/Versions/'+major_version_string+'/Extras/lib/python/numpy/core/include',    # mac
+                        '-I', '/System/Library/Frameworks/Python.framework/Versions/'+major_version_string+'/Extras/lib/python/numpy/numarray',        # mac
 			            '-I', '/usr/lib/python2.5/site-packages/numpy/numarray/numpy']                                            # lin
 else:
     is_windows =True
