@@ -856,6 +856,11 @@ class LocalAnalysis(object):
                 print >> sys.stderr, "Probing for existing analysis"
             tempanalysis = AudioAnalysis(trackID)
             tempanalysis.metadata
+            metadata = tempanalysis.metadata
+            if metadata.get('status')=='UNAVAILABLE':
+                if verbose:
+                    print >> sys.stderr, "Track found, analysis not found. Analyzing..."
+                tempanalysis.analyze(wait=True)
             self.analysis = AudioAnalysis(trackID)
             if verbose:
                 print >> sys.stderr, "Analysis found. No upload needed."
