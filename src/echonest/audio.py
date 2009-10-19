@@ -809,10 +809,15 @@ class LocalAudioFile(AudioFile):
             if verbose:
                 print >> sys.stderr, "Probing for existing analysis"
             tempanalysis = AudioAnalysis(trackID)
-            tempanalysis.metadata
+            metadata = tempanalysis.metadata
+            if metadata.get('status')=='UNAVAILABLE':
+                if verbose:
+                    print >> sys.stderr, "Track found, analysis not found. Analyzing..."
+                tempanalysis.analyze(wait=True)
+            else:
+                if verbose:
+                    print >> sys.stderr, "Analysis found. No upload needed."
             self.analysis = AudioAnalysis(trackID)
-            if verbose:
-                print >> sys.stderr, "Analysis found. No upload needed."
         except pyechonest.util.EchoNestAPIThingIDError:
             if verbose:
                 print >> sys.stderr, "Analysis not found. Uploading..."
