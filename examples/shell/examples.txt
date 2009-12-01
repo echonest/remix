@@ -1,0 +1,24 @@
+# the following one-liners will hopefully get you started.
+# the first five are condensed (and in some cases slightly simplified)
+# versions of standard examples
+
+# one/one.py
+beats.that(fall_on_the(1))
+
+# selection/tonic.py
+beats.that(overlap_ends_of(segments.that(have_pitch_max(analysis.key['value'])).that(overlap_starts_of(beats))))
+
+# reverse/reverse.py
+reversed(beats)
+
+# summary/summary.py
+tatums.that(fall_on_the(1))
+
+# limp/lopside.py
+[aql(a.children()[:-1] + a.children()[-1].children()[:len(a.children()[-1].children())/2]) for a in bars] 
+
+# occasionally interesting walk through the timbre vector
+[aql(segments.ordered_by(timbre_value(a),descending=1)[:16]*2) for a in range(12)]
+
+# drill baby, drill
+[aql([aq(e.start+e.duration*c/1600.,e.duration*pow(c/40.,2),source=segments.source) for c in range([17,14,12,12][d%4])]) for d,e in enumerate(bars)]
