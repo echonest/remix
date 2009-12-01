@@ -760,43 +760,13 @@ def megamix(dataList):
     return newdata
 
 
-class AudioFile(AudioData) :
+class LocalAudioFile(AudioData):
     """
     The basic do-everything class for remixing. Acts as an `AudioData` 
     object, but with an added `analysis` selector which is an
-    `AudioAnalysis` object.
-    """
-    def __init__(self, filename, verbose=True, defer=False):
-        """
-        :param filename: path to a local MP3 file
-        """
-        if verbose:
-            print >> sys.stderr, "Uploading file for analysis..."
-        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
-        self.analysis = AudioAnalysis(filename)
-        self.analysis.source = self
-    
-    @property
-    def duration(self):
-        """
-        Since we consider `AudioFile` to be an evolved version of 
-        `AudioData`, we return the measured duration from the analysis.
-        """
-        return self.analysis.duration
-    
-    def __setstate__(self, state):
-        """
-        Recreates circular reference after unpickling.
-        """
-        self.__dict__.update(state)
-        self.analysis.source = weakref.proxy(self)
-    
-
-class LocalAudioFile(AudioFile):
-    """
-    Like `AudioFile`, but with conditional upload: recommended. If a file 
-    is already known to the Analyze API, then it does not bother uploading 
-    the file.
+    `AudioAnalysis` object. It conditianally uploads the file
+    it was initialized with. If the file is already known to the 
+    Analyze API, then it does not bother uploading the file.
     """
     def __init__(self, filename, verbose=True, defer=False):
         """
@@ -836,7 +806,21 @@ class LocalAudioFile(AudioFile):
         else:
             return minidom.parseString(track).toprettyxml()
         
+    @property
+    def duration(self):
+        """
+        Since we consider `AudioFile` to be an evolved version of 
+        `AudioData`, we return the measured duration from the analysis.
+        """
+        return self.analysis.duration
     
+    def __setstate__(self, state):
+        """
+        Recreates circular reference after unpickling.
+        """
+        self.__dict__.update(state)
+        self.analysis.source = weakref.proxy(self)
+
 
 class LocalAnalysis(object):
     """
