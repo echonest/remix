@@ -62,12 +62,15 @@ class AfromA(object):
     def run(self):
         st = modify.Modify()
         collect = audio.AudioQuantumList()
+        used = []
         for a in self.segs:
             seg_index = a.absolute_context()[0]
 
             distances = self.get_distance_from(a)
 
             distances[seg_index] = sys.maxint
+            for u in used:
+                distances[u] = sys.maxint
 
             match_index = distances.index(min(distances))
             match = self.segs[match_index]
@@ -75,6 +78,7 @@ class AfromA(object):
             # make the length of the new seg match the length
             # of the old seg
             collect.append(match)
+            used.append(match_index)
         out = video.getpieces(self.av, collect)
         out.save(self.output_filename)
 
@@ -84,7 +88,7 @@ def main():
         if len(sys.argv) > 2:
             output_filename = sys.argv[2]
         else:
-            output_filename = "aa_" + input_filename
+            output_filename = "aa2_" + input_filename
     except:
         print usage
         sys.exit(-1)

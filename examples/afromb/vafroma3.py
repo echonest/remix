@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # encoding: utf=8
 
@@ -61,13 +62,18 @@ class AfromA(object):
 
     def run(self):
         st = modify.Modify()
+        last_index = 0
         collect = audio.AudioQuantumList()
+        match_index = -1
         for a in self.segs:
             seg_index = a.absolute_context()[0]
 
             distances = self.get_distance_from(a)
 
             distances[seg_index] = sys.maxint
+
+            if match_index < len(distances) -1:
+                distances[match_index + 1] *= .3
 
             match_index = distances.index(min(distances))
             match = self.segs[match_index]
@@ -84,7 +90,7 @@ def main():
         if len(sys.argv) > 2:
             output_filename = sys.argv[2]
         else:
-            output_filename = "aa_" + input_filename
+            output_filename = "aa3_" + input_filename
     except:
         print usage
         sys.exit(-1)
