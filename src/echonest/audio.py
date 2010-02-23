@@ -395,6 +395,7 @@ class AudioData(AudioRenderable):
             mp3 = True
         if mp3:
             foo, tempfilename = tempfile.mkstemp(".wav")        
+            os.close(foo)
         else:
             tempfilename = filename
         fid = open(tempfilename, 'wb')
