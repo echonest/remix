@@ -43,7 +43,9 @@ if hasattr(os, 'uname'):
     extra_compile_args=['-fcheck-new', '-O3', 
                         '-I', '/System/Library/Frameworks/Python.framework/Versions/'+major_version_string+'/Extras/lib/python/numpy/core/include',    # mac
                         '-I', '/System/Library/Frameworks/Python.framework/Versions/'+major_version_string+'/Extras/lib/python/numpy/numarray',        # mac
-                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/numarray/numpy'] # lin
+                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/numarray/numpy', # lin
+                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/numarray',       # lin
+                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/core/include']   # lin
 else:
     is_windows =True
     sources += sources_win
