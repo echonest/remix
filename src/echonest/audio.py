@@ -234,7 +234,7 @@ class AudioData(AudioRenderable):
         Given an input `ndarray`, import the sample values and shape 
         (if none is specified) of the input `numpy.array`.
         
-        Given a `filename` (and no input ndarray), use ffmpeg to convert
+        Given a `filename` (and an input ndarray), use ffmpeg to convert
         the file to wave, then load the file into the data, 
         auto-detecting the sample rate, and number of channels.
         
@@ -314,7 +314,7 @@ class AudioData(AudioRenderable):
         if isinstance(index, float):
             index = int(index*self.sampleRate)
         elif hasattr(index, "start") and hasattr(index, "duration"):
-            index =  slice(index.start, index.start+index.duration)
+            index =  slice(float(index.start), index.start+index.duration)
         
         if isinstance(index, slice):
             if ( hasattr(index.start, "start") and 
@@ -699,7 +699,7 @@ def getpieces(audioData, segs):
 def assemble(audioDataList, numChannels=1, sampleRate=44100):
     """
     Collects audio samples for output.
-    Rerturns a new `AudioData` object assembled
+    Returns a new `AudioData` object assembled
     by concatenating all the elements of audioDataList.
     
     :param audioDatas: a list of `AudioData` objects
@@ -707,7 +707,7 @@ def assemble(audioDataList, numChannels=1, sampleRate=44100):
     if numChannels == 1:
         new_shape = (sum([len(x.data) for x in audioDataList]),)
     else:
-        new_shape = (sum([len(x.data) for x in audioDataList]),numChannels)        
+        new_shape = (sum([len(x.data) for x in audioDataList]),numChannels)
     new_data = AudioData(shape=new_shape, numChannels=numChannels, sampleRate=sampleRate, defer=False)
     for ad in audioDataList:
         if not isinstance(ad, AudioData):
