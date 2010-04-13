@@ -384,6 +384,10 @@ class AudioData(AudioRenderable):
         else:
             return 0
 
+    def __add__(self, other):
+        """Supports stuff like this: sound3 = sound1 + sound2"""
+        return assemble([self, other], numChannels=self.numChannels, sampleRate=self.sampleRate)
+        
     def encode(self, filename=None, mp3=None):
         """
         Outputs an MP3 or WAVE file to `filename`.
