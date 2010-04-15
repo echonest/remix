@@ -42,27 +42,28 @@ def make_track(s):
 
         returns None if either the audio or the analysis could not be found.
     """
-    # They are rich 'cause they got stuff in 'em
-    riches = song.profile(id=s.id, bucket=['id:paulify', 'track_analysis'])
+    
+    tracks = s.get_tracks(catalog='paulify', analysis=True)
+    if tracks:
+        has_url = lambda t : getattr(t, 'url', None)
+        tracks = filter(has_url, tracks) # make sure these are download-able
     t = None
-    if riches:
-        rich = riches[0]
-        track = rich.tracks['track'][0]
-        url = track['url']
-        analysis = track['analysis']
-        filename = download(url)
+    if tracks:
+        track = tracks[0]
+        
+        filename = download(track.url)
         
         json = open(filename + '.json', 'w')
-        simplejson.dump(analysis, json)
+        simplejson.dump(track.analysis, json)
         json.close()
         
         t = AnalyzedAudioFile(filename)
         if t:
             # fill in some things that are missing.
             t.analysis.name = s.title
-            t.analysis.identifier = track['id']
+            t.analysis.identifier = track.id
             t.analysis.metadata['artist'] = s.artist_name
-            t.analysis.metadata['id'] = track['id']
+            t.analysis.metadata['id'] = track.id
             t.analysis.metadata['title'] = s.title
             t.analysis.metadata['samplerate'] = t.sampleRate
     return t
