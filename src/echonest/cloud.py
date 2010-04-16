@@ -43,10 +43,7 @@ def make_track(s):
         returns None if either the audio or the analysis could not be found.
     """
     
-    tracks = s.get_tracks(catalog='paulify', analysis=True)
-    if tracks:
-        has_url = lambda t : getattr(t, 'url', None)
-        tracks = filter(has_url, tracks) # make sure these are download-able
+    tracks = s.get_tracks(catalog='paulify', analysis=True, limit=True)
     t = None
     if tracks:
         track = tracks[0]
