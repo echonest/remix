@@ -43,16 +43,15 @@ def make_track(s):
         returns None if either the audio or the analysis could not be found.
     """
     
-    tracks = s.get_tracks(catalog='paulify', analysis=True, limit=True)
+    tracks = s.get_tracks(catalog='paulify', limit=True)
     t = None
     if tracks:
         track = tracks[0]
         
         filename = download(track.url)
-        
-        json = open(filename + '.json', 'w')
-        simplejson.dump(track.analysis, json)
-        json.close()
+        if not os.path.exists(filename + '.json'):
+            json = download(track.analysis_url)
+            os.rename(json, filename + '.json')
         
         t = AnalyzedAudioFile(filename)
         if t:
@@ -73,7 +72,10 @@ def download(url):
     def fix_url(url):
         """urllib requires a properly url-encoded path."""
         parsed = urlparse.urlparse(url)
-        return ''.join([parsed.scheme, '://', parsed.netloc, quote(parsed.path)])
+        parts = [parsed.scheme, '://', parsed.netloc, quote(parsed.path)] 
+        if parsed.query:
+            parts.extend(['?', parsed.query])
+        return ''.join(parts)
     
     if not os.path.exists(filename):
         urllib.urlretrieve(fix_url(url), filename)
