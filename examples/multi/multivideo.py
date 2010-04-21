@@ -15,10 +15,10 @@ from echonest import audio, video
 
 usage = """
 Usage: 
-    python multivideo.py <inputSong> <inputDirectory> <outputFilename> <beats>
+    python multivideo.py <inputSong> <inputDirectory> <outputFilename>
 
 Example:
-    python multivideo.py ../music/SingleLadies.mp3 ../videos mashedbeats.mpg 40
+    python multivideo.py ../music/SingleLadies.mp3 ../videos mashedbeats.mpg
 """
 
 def main(infile, directory, outfile):
