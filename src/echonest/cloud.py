@@ -29,7 +29,7 @@ def find_track(artist, title):
         download the track and audio analysis for that song, and return an 
         AudioData-type thing.
     """
-    songs = song.search(artist=artist, title=title, results=1)
+    songs = song.search(artist=artist, title=title, results=1, bucket=['id:paulify'], limit=True)
     if songs:
         return make_track(songs[0])
     return None
@@ -39,10 +39,9 @@ def make_track(s):
         Takes a song object, created by manipulating v4 pyechonest.
         Downloads the audio for the song, as well as the full analysis.
         Synthesizes those into the return value, a remix AudioData object.
-
+        
         returns None if either the audio or the analysis could not be found.
     """
-    
     tracks = s.get_tracks(catalog='paulify', limit=True)
     t = None
     if tracks:
