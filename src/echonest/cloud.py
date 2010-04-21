@@ -29,7 +29,7 @@ def find_track(artist, title):
         download the track and audio analysis for that song, and return an 
         AudioData-type thing.
     """
-    songs = song.search(artist=artist, title=title, results=1, bucket=['id:paulify'], limit=True)
+    songs = song.search(artist=artist, title=title, results=1, buckets=['id:paulify'], limit=True)
     if songs:
         return make_track(songs[0])
     return None
@@ -47,7 +47,7 @@ def make_track(s):
     if tracks:
         track = tracks[0]
         
-        filename = download(track.url)
+        filename = download(track.audio_url)
         if not os.path.exists(filename + '.json'):
             json = download(track.analysis_url)
             os.rename(json, filename + '.json')
