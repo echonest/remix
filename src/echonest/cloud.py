@@ -15,9 +15,11 @@ try:
     from beta_pyechonest import song
 except:
     sys.exit("""
-                You need to have v4 pyechonest (BETA) installed for cloud.py to work!
-                Get it here (make sure you get the beta):
-                    http://code.google.com/p/pyechonest/
+            You need to have v4 pyechonest (BETA) installed for cloud_support.py to work!
+            Just check it out and install it:
+                svn checkout http://pyechonest.googlecode.com/svn/branches/beta_pyechonest beta_pyechonest
+                cd beta_pyechonest
+                python setup.py install
             """)
 
 from cloud_support import AnalyzedAudioFile

@@ -9,8 +9,16 @@ from echonest.audio import _dataParser as data_parser
 from echonest.audio import _attributeParser as attribute_parser
 from echonest.audio import _segmentsParser as segment_parser
 from echonest.audio import AudioData
-
-from beta_pyechonest.proxies import attrdict
+try:
+    from beta_pyechonest.proxies import attrdict
+except:
+    sys.exit("""
+                You need to have v4 pyechonest (BETA) installed for cloud_support.py to work!
+                Just check it out and install it:
+                    svn checkout http://pyechonest.googlecode.com/svn/branches/beta_pyechonest beta_pyechonest
+                    cd beta_pyechonest
+                    python setup.py install
+            """)
 
 class AnalysisProxy(object):
     def __init__(self, jsonpath):
