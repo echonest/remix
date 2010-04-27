@@ -477,6 +477,9 @@ def main():
     track = None
     if len(args) == 2:
         track = find_track(args[0], args[1])
+        if not track:
+            print "Couldn't find %s by %s" % (args[0], args[1])
+            return 1
     else:
         mp3 = args[0]
         
