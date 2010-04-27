@@ -111,6 +111,7 @@ class Edit(object):
 
 class Crossfade(object):
     def __init__(self, tracks, starts, duration, mode='linear'):
+        self.track = track;
         self.t1, self.t2 = [Edit(t, s, duration) for t,s in zip(tracks, starts)]
         self.mode = mode
         
@@ -177,6 +178,7 @@ class Crossfade(object):
 
 class Jump(Crossfade):
     def __init__(self, track, source, target, duration):
+        self.track = track;
         self.t1, self.t2 = (Edit(track, source, duration), Edit(track, target-duration, duration))
         self.duration = float(duration)
         self.mode = 'equal_power'
