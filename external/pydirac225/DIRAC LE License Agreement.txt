@@ -1,0 +1,46 @@
+
+DIRAC LE
+License Agreement
+
+PLEASE READ THIS LICENSE CAREFULLY BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING TO BE BOUND BY THE TERMS OF THIS LICENSE. This software is supplied to you by THE DSP DIMENSION in consideration of your agreement to the following terms, and your use or installation of this software constitutes acceptance of these terms.  If you do not agree with these terms, please do not use, install or redistribute this software.
+
+1. License.
+a) The DIRAC LE object code, demonstration source code and other software accompanying this License, whether on disk, in read only memory, or on any other media (the 'Software'), the related documentation and example audio files are licensed to you by THE DSP DIMENSION.
+
+b) Under the purpose of this agreement, THE DSP DIMENSION grants you a non–transferable, non–exclusive worldwide license (the “License”) to 
+
+i.	use the Software for the purpose of changing length and pitch of audio signals in your own computer software product.
+ii.	link and/or combine the Software with your own software project to produce an executable application (the “Integrated Product”) that can be used by an end user.
+iii.	copy and distribute, and have copied and distributed, to your customers portions of the Software embedded into or accompanying the Integrated Product, subject to the terms and conditions of this agreement.
+iv.	grant end users non-exclusive licenses to use the Integrated Product, subject to the restrictions contained in this agreement.
+
+c) Legal title to the Software, documentation and example files provided under this agreement shall remain in THE DSP DIMENSION as its sole property. Except as expressly stated in this notice, no other rights or licenses, express or implied, are granted by THE DSP DIMENSION herein, including but not limited to any patent rights that may be infringed by your derivative works or by other works in which the Software may be incorporated.
+
+2. Restrictions.
+a) The Software contains copyrighted material, trade secrets, and other proprietary material. In order to protect them, and except as permitted by applicable legislation, you may not decompile, reverse engineer, disassemble or otherwise reduce the Software to a human-perceivable form. You may not modify, rent, lease, loan or re-distribute the Software in whole or in part other than for the purpose detailed in §1b.
+
+b) You agree to include the following copyright notice in all printed or electronic documentation accompanying the Integrated Product, as well as in all places within the Integrated Product’s user interface where you are placing your own copyright notices and mentions the author(s) of the Integrated Product:
+
+	"DIRAC Time Stretch/Pitch Shift technology (c) 2005-2010 Stephan M. Bernsee, www.dspdimension.com"
+
+In addition, you may indicate in the packaging, advertisements, and documentation for the Integrated Products that the Integrated Products contain the DIRAC technology.
+
+3. Termination.
+This License is effective until terminated. You may terminate this License at any time by destroying the Software, related documentation and example files and all copies thereof. This License will terminate immediately without notice from THE DSP DIMENSION if you fail to comply with any provision of this License. Upon termination you must destroy the Software, related documentation and example files and all copies thereof.
+
+4. Disclaimer of Warranty on the Software.
+You expressly acknowledge and agree that use of the Software and example files is at your sole risk. The Software, related documentation and example files are provided 'AS IS' and without warranty of any kind and THE DSP DIMENSION EXPRESSLY DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. THE DSP DIMENSION DOES NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS, OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS IN THE SOFTWARE AND THE EXAMPLE FILES WILL BE CORRECTED. FURTHERMORE, THE DSP DIMENSION DOES NOT WARRANT OR MAKE ANY REPRESENTATIONS REGARDING THE USE OR THE RESULTS OF THE USE OF THE SOFTWARE AND EXAMPLE FILES OR RELATED DOCUMENTATION IN TERMS OF THEIR CORRECTNESS, ACCURACY, RELIABILITY, OR OTHERWISE. NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY THE DSP DIMENSION OR A THE DSP DIMENSION AUTHORIZED REPRESENTATIVE SHALL CREATE A WARRANTY OR IN ANY WAY INCREASE THE SCOPE OF THIS WARRANTY. WITHOUT LIMITING THE FOREGOING, THE DSP DIMENSION DISCLAIMS ANY AND ALL EXPRESS OR IMPLIED WARRANTIES OF ANY KIND, AND YOU EXPRESSLY ASSUME ALL LIABILITIES AND RISKS, FOR USE OR OPERATION OF THE SOFTWARE, INCLUDING WITHOUT LIMITATION.  SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU (AND NOT THE DSP DIMENSION OR A THE DSP DIMENSION AUTHORIZED REPRESENTATIVE) ASSUME THE ENTIRE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.
+
+5. Limitation of Liability.
+UNDER NO CIRCUMSTANCES INCLUDING NEGLIGENCE, SHALL THE DSP DIMENSION BE LIABLE FOR ANY INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES THAT RESULT FROM THE USE OR INABILITY TO USE THE SOFTWARE OR RELATED DOCUMENTATION, EVEN IF THE DSP DIMENSION OR A THE DSP DIMENSION AUTHORIZED REPRESENTATIVE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU. In no event shall THE DSP DIMENSION's total liability to you for all damages, losses, and causes of action (whether in contract, tort (including negligence) or otherwise) exceed that portion of the amount paid by you which is fairly attributable to the Software and example files.
+
+6. Controlling Law and Severability.
+This License shall be governed by and construed in accordance with the laws of the Federal Republic of Germany.  If for any reason a court of competent jurisdiction finds any provision of this License, or portion thereof, to be unenforceable, that provision of the License shall be enforced to the maximum extent permissible so as to effect the intent of the parties, and the remainder of this License shall continue in full force and effect.
+
+7. Complete Agreement.
+This License constitutes the entire agreement between the parties with respect to the use of the Software, the related documentation and fonts, and supersedes all prior or contemporaneous understandings or agreements, written or oral, regarding such subject matter. No amendment to or modification of this License will be binding unless in writing and signed by THE DSP DIMENSION or a duly authorized representative of THE DSP DIMENSION.
+
+Should you have any questions or comments concerning this license, please contact THE DSP DIMENSION at http://www.dspdimension.com
+ 
+
+Copyright © 2005-2010 THE DSP DIMENSION, All Rights Reserved

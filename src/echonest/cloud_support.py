@@ -4,11 +4,12 @@ Created 2010-04-12 by Jason Sundram
 """
 import hashlib
 import simplejson
-
+import sys
 from echonest.audio import _dataParser as data_parser
 from echonest.audio import _attributeParser as attribute_parser
 from echonest.audio import _segmentsParser as segment_parser
 from echonest.audio import AudioData
+
 try:
     from beta_pyechonest.proxies import attrdict
 except:
