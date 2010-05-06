@@ -9,11 +9,11 @@ import os
 import sys
 from optparse import OptionParser
 
-from echonest.action import render
+from echonest.action import render, display_actions
 from echonest.audio import LocalAudioFile
 from echonest.cloud_support import AnalyzedAudioFile
 
-from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT, display_actions
+from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT
 from utils import tuples
 
 

@@ -7,7 +7,6 @@ accept songs on the commandline, order them, beatmatch them, and output an audio
 """
 
 import numpy as np
-from scipy.spatial import distance
 from copy import deepcopy
 from echonest.action import Crossfade, Playback, Crossmatch, Fadein, Fadeout
 from utils import rows, flatten
@@ -23,37 +22,9 @@ LOUDNESS_THRESH = -8
 FUSION_INTERVAL = .06   # this is what we use in the analyzer
 AVG_PEAK_OFFSET = 0.025 # Estimated time between onset and peak of segment.
 
-def humanize_time(secs):
-    mins, secs = divmod(secs, 60)
-    hours, mins = divmod(mins, 60)
-    if 0 < hours: return '%02d:%02d:%02d' % (hours, mins, secs)
-    else: return '%02d:%02d' % (mins, secs)
-    
-# TODO: this should probably be in actions?
-def display_actions(actions):
-    total = 0
-    print
-    for a in actions:
-        print "%s\t  %s" % (humanize_time(total), unicode(a))
-        total += a.duration
-    print
 
-def pickle_actions(actions, filename):
-    import cPickle as pickle
-    output = open(filename, 'wb')
-    pickle.dump(actions, output)
-    output.close()
-
-def writeMatrixToDisk(mat, filename):
-    from numpy import savetxt
-    savetxt(filename, mat, delimiter=' ')
-
-def evaluate_distance(mat1, mat2, func='euclidean'):
-    # add your distances here...
-    if func=='euclidean':
-        return distance.euclidean(mat1.flatten(), mat2.flatten())
-    elif func=='cosine':
-        return distance.cosine(mat1.flatten(), mat2.flatten())
+def evaluate_distance(mat1, mat2):
+    return np.linalg.norm(mat1.flatten() - mat2.flatten())
 
 def upsample_matrix(m):
     """ Upsample matrices by a factor of 2."""
