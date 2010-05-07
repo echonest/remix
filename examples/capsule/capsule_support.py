@@ -119,8 +119,11 @@ def order_tracks(tracks):
     return [tracks[i] for i in order]
 
 def is_valid(track, inter, transition):
-    markers = getattr(track.analysis, track.resampled['rate'])    
-    dur = markers[-1].start + markers[-1].duration - markers[0].start
+    markers = getattr(track.analysis, track.resampled['rate'])
+    if len(markers) < 1:
+        dur = track.duration
+    else:
+        dur = markers[-1].start + markers[-1].duration - markers[0].start
     return inter + 2 * transition < dur
 
 def get_central(analysis, member='segments'):
@@ -300,8 +303,9 @@ def make_crossmatch(track1, track2, rate1, rate2, loc2, rows):
 def make_transition(track1, track2, inter, transition):
     # the minimal transition is 2 markers
     # the minimal inter is 0 sec
-    markers1 = getattr(track1.analysis, track1.resampled['rate'])    
-    markers2 = getattr(track1.analysis, track1.resampled['rate'])    
+    markers1 = getattr(track1.analysis, track1.resampled['rate'])
+    markers2 = getattr(track2.analysis, track2.resampled['rate'])
+    
     if len(markers1) < MIN_SEARCH or len(markers2) < MIN_SEARCH:
         return make_crossfade(track1, track2, inter)
     

@@ -45,7 +45,7 @@ def do_work(audio_files, options):
     valid = []
     # compute resampled and normalized matrices
     for track in tracks:
-        if verbose: print "Resampling", track.analysis.name
+        if verbose: print "Resampling features for", track.analysis.name
         track.resampled = resample_features(track, rate='beats')
         track.resampled['matrix'] = timbre_whiten(track.resampled['matrix'])
         # remove tracks that are too small
@@ -55,6 +55,7 @@ def do_work(audio_files, options):
         track = make_stereo(track)
     tracks = valid
     
+    if len(tracks) < 1: return []
     # Initial transition. Should contain 2 instructions: fadein, and playback.
     if verbose: print "Computing transitions..."
     start = initialize(tracks[0], inter, trans)
