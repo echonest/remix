@@ -17,15 +17,15 @@ AVG_PEAK_OFFSET = 0.025 # Estimated time between onset and peak of segment.
 
 
 def evaluate_distance(mat1, mat2, func='euclidean'):
+    # add your distances here...
     if func=='euclidean':
-        return distance.euclidean(mat1, mat2)
-    elif func=='seuclidean':
-        return distance.seuclidean(mat1, mat2)
+        return distance.euclidean(mat1.flatten(), mat2.flatten())
     elif func=='cosine':
-        return distance.cosine(mat1, mat2)
+        return distance.cosine(mat1.flatten(), mat2.flatten())
 
 
 def timbre_whiten(mat):
+    if rows(mat) < 2: return mat
     m = np.zeros((rows(mat), 12), dtype=np.float32)
     m[:,0] = mat[:,0] - np.mean(mat[:,0],0)
     m[:,0] = m[:,0] / np.std(m[:,0],0)
@@ -47,6 +47,7 @@ def get_central(analysis, member='segments'):
     index = members.index(ret[0]) if ret else 0
     
     return ret, index
+
 
 def get_mean_offset(segments, markers):
     if segments == markers:
@@ -84,7 +85,7 @@ def resample_features(data, rate='tatums', feature='timbre'):
         
     # Find the optimal attack offset
     meanOffset = get_mean_offset(segments, markers)
-    
+    # Make a copy for local use
     tmp_markers = deepcopy(markers)
     
     # Apply the offset

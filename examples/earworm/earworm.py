@@ -461,7 +461,7 @@ def main():
     parser = OptionParser(usage=usage)
     parser.add_option("-d", "--duration", default=DEF_DUR, help="target duration (argument in seconds) default=600")
     parser.add_option("-m", "--minimum", default=MIN_JUMP, help="minimal loop size (in beats) default=8")
-    parser.add_option("-i", "--infinite", action="store_true", help="generate an infinite loop")
+    parser.add_option("-i", "--infinite", action="store_true", help="generate an infinite loop (outputs a wav file)")
     parser.add_option("-l", "--length", action="store_true", help="length must be accurate")
     parser.add_option("-k", "--pickle", action="store_true", help="output graph as a pickle object")
     parser.add_option("-g", "--graph", action="store_true", help="output graph as a gml text file")
@@ -493,7 +493,7 @@ def main():
     if bool(options.verbose) == True:
         display_actions(actions)
     
-    print "Output Duration:", sum(act.duration for act in actions)
+    print "Output Duration = %.3f sec" % sum(act.duration for act in actions)
     
     # Send to renderer
     name = os.path.splitext(os.path.basename(args[0]))
@@ -504,6 +504,7 @@ def main():
     else: 
         ext = '.mp3'
     
+    print "Rendering..."
     render(actions, name[0]+'_'+str(int(options.duration))+ext)
     return 1
 
