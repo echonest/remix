@@ -280,8 +280,8 @@ def make_crossfade(track1, track2, inter):
         track2.resampled['cursor'] = start2 + X_FADE + inter
         dur = min(track2.analysis.duration - 2 * X_FADE, inter)
     else:
-        duration, track2.resampled['cursor'] = move_cursor(track2, start2+inter+X_FADE, 0)
-        dur = duration-X_FADE-start2
+        duration, track2.resampled['cursor'] = move_cursor(track2, start2+X_FADE+inter, 0)
+        dur = markers2[track2.resampled['index'] + track2.resampled['cursor']].start - X_FADE - start2
 
     xf = Crossfade((track1, track2), (start1, start2), X_FADE)
     pb = Playback(track2, start2 + X_FADE, dur)
