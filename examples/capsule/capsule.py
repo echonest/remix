@@ -9,11 +9,11 @@ import os
 import sys
 from optparse import OptionParser
 
-from echonest.action import render, display_actions
+from echonest.action import render, make_stereo
 from echonest.audio import LocalAudioFile
 from echonest.cloud_support import AnalyzedAudioFile
 
-from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT
+from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT, display_actions, is_valid
 from utils import tuples
 
 
@@ -42,11 +42,18 @@ def do_work(audio_files, options):
                 print "Vol = %.0f%%\t%s" % (track.sound_check*100.0, track.analysis.name)
             print
     
+    valid = []
     # compute resampled and normalized matrices
     for track in tracks:
         if verbose: print "Resampling", track.analysis.name
         track.resampled = resample_features(track, rate='beats')
         track.resampled['matrix'] = timbre_whiten(track.resampled['matrix'])
+        # remove tracks that are too small
+        if is_valid(track, inter, trans):
+            valid.append(track)
+        # for compatibility, we make mono tracks stereo
+        track = make_stereo(track)
+    tracks = valid
     
     # Initial transition. Should contain 2 instructions: fadein, and playback.
     if verbose: print "Computing transitions..."

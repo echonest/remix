@@ -8,7 +8,7 @@ accept songs on the commandline, order them, beatmatch them, and output an audio
 
 import numpy as np
 from copy import deepcopy
-from echonest.action import Crossfade, Playback, Crossmatch, Fadein, Fadeout
+from echonest.action import Crossfade, Playback, Crossmatch, Fadein, Fadeout, humanize_time
 from utils import rows, flatten
 
 # constants for now
@@ -22,6 +22,14 @@ LOUDNESS_THRESH = -8
 FUSION_INTERVAL = .06   # this is what we use in the analyzer
 AVG_PEAK_OFFSET = 0.025 # Estimated time between onset and peak of segment.
 
+# TODO: this should probably be in actions?
+def display_actions(actions):
+    total = 0
+    print
+    for a in actions:
+        print "%s\t  %s" % (humanize_time(total), unicode(a))
+        total += a.duration
+    print
 
 def evaluate_distance(mat1, mat2):
     return np.linalg.norm(mat1.flatten() - mat2.flatten())
@@ -109,6 +117,11 @@ def order_tracks(tracks):
     new_tempos = map(fold, tempos)
     order = np.argsort(new_tempos)
     return [tracks[i] for i in order]
+
+def is_valid(track, inter, transition):
+    markers = getattr(track.analysis, track.resampled['rate'])    
+    dur = markers[-1].start + markers[-1].duration - markers[0].start
+    return inter + 2 * transition < dur
 
 def get_central(analysis, member='segments'):
     """ Returns a tuple: 
@@ -199,6 +212,7 @@ def column_whiten(mat):
     return m / np.std(m,0)
 
 def timbre_whiten(mat):
+    if rows(mat) < 2: return mat
     m = np.zeros((rows(mat), 12), dtype=np.float32)
     m[:,0] = mat[:,0] - np.mean(mat[:,0],0)
     m[:,0] = m[:,0] / np.std(m[:,0],0)
@@ -248,31 +262,27 @@ def get_mat_in(track, transition, inter):
     return mat[:cursor,:]
 
 def make_crossfade(track1, track2, inter):
-    
+
     markers1 = getattr(track1.analysis, track1.resampled['rate'])    
+    
     if len(markers1) < MIN_SEARCH:
-        # cursor is defined in seconds
         start1 = track1.resampled['cursor']
-        diff = start1 + inter + X_FADE - track1.duration
-        if diff < 0: inter -= diff
     else:
         start1 = markers1[track1.resampled['index'] + track1.resampled['cursor']].start
-    
+
+    start2 = max((track2.analysis.duration - (inter + 2 * X_FADE)) / 2, 0)
     markers2 = getattr(track2.analysis, track2.resampled['rate'])
+    
     if len(markers2) < MIN_SEARCH:
-        # select middle section
-        start2 = (track2.analysis.duration - (inter + 2 * X_FADE)) / 2
         track2.resampled['cursor'] = start2 + X_FADE + inter
-        dur = inter
+        dur = min(track2.analysis.duration - 2 * X_FADE, inter)
     else:
-        start2 = markers2[track2.resampled['index']].start
-        duration, cursor = move_cursor(track2, inter+X_FADE, 0)
-        track2.resampled['cursor'] = cursor
-        dur = duration-X_FADE
-        
+        duration, track2.resampled['cursor'] = move_cursor(track2, start2+inter+X_FADE, 0)
+        dur = duration-X_FADE-start2
+
     xf = Crossfade((track1, track2), (start1, start2), X_FADE)
     pb = Playback(track2, start2 + X_FADE, dur)
-    
+
     return [xf, pb]
 
 def make_crossmatch(track1, track2, rate1, rate2, loc2, rows):
@@ -299,7 +309,11 @@ def make_transition(track1, track2, inter, transition):
     mat1 = get_mat_out(track1, max(transition, MIN_ALIGN_DURATION))
     mat2 = get_mat_in(track2, max(transition, MIN_ALIGN_DURATION), inter)
     
-    loc, n, rate1, rate2 = align(track1, track2, mat1, mat2)
+    try:
+        loc, n, rate1, rate2 = align(track1, track2, mat1, mat2)
+    except:
+        return make_crossfade(track1, track2, inter)
+        
     if transition < MIN_ALIGN_DURATION:
         duration, cursor = move_cursor(track2, transition, loc)
         n = max(cursor-loc, MIN_MARKERS)
@@ -308,6 +322,10 @@ def make_transition(track1, track2, inter, transition):
     # loc and n are both in terms of potentially upsampled data. 
     # Divide by rate here to get end_crossmatch in terms of the original data.
     end_crossmatch = (loc + n) / rate2
+    
+    if markers2[-1].start < markers2[end_crossmatch].start + inter + transition:
+        inter = max(markers2[-1].start - transition, 0)
+        
     # move_cursor sets the cursor properly for subsequent operations, and gives us duration.
     dur, track2.resampled['cursor'] = move_cursor(track2, inter, end_crossmatch)
     pb = Playback(track2, sum(xm.l2[-1]), dur)
@@ -315,22 +333,26 @@ def make_transition(track1, track2, inter, transition):
     return [xm, pb]
 
 def initialize(track, inter, transition):
-   """find initial cursor location"""
-   mat = track.resampled['matrix']
-   markers = getattr(track.analysis, track.resampled['rate'])    
-   
-   # compute duration of matrix
-   mat_dur = markers[track.resampled['index'] + rows(mat)].start - markers[track.resampled['index']].start
-   start = (mat_dur - inter - transition - FADE_IN) / 2
-   dur = start + FADE_IN + inter
-   # move cursor to transition marker
-   duration, track.resampled['cursor'] = move_cursor(track, dur, 0)
-   
-   # work backwards to find the exact locations of initial fade in and playback sections
-   fi = Fadein(track, markers[track.resampled['index'] + track.resampled['cursor']].start - inter - FADE_IN, FADE_IN)
-   pb = Playback(track, markers[track.resampled['index'] + track.resampled['cursor']].start - inter, inter)
-   
-   return [fi, pb]
+    """find initial cursor location"""
+    mat = track.resampled['matrix']
+    markers = getattr(track.analysis, track.resampled['rate'])
+
+    try:
+        # compute duration of matrix
+        mat_dur = markers[track.resampled['index'] + rows(mat)].start - markers[track.resampled['index']].start
+        start = (mat_dur - inter - transition - FADE_IN) / 2
+        dur = start + FADE_IN + inter
+        # move cursor to transition marker
+        duration, track.resampled['cursor'] = move_cursor(track, dur, 0)
+        # work backwards to find the exact locations of initial fade in and playback sections
+        fi = Fadein(track, markers[track.resampled['index'] + track.resampled['cursor']].start - inter - FADE_IN, FADE_IN)
+        pb = Playback(track, markers[track.resampled['index'] + track.resampled['cursor']].start - inter, inter)
+    except:
+        track.resampled['cursor'] = FADE_IN + inter
+        fi = Fadein(track, 0, FADE_IN)
+        pb = Playback(track, FADE_IN, inter)
+
+    return [fi, pb]
     
 def terminate(track, fade):
     """ Deal with last fade out"""
