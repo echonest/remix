@@ -136,7 +136,7 @@ class Fadein(Playback):
         return "<Fadein '%s'>" % self.track.analysis.name
     
     def __str__(self):
-        return "Fade in\t\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.start, self.start+self.duration, self.duration, self.track.analysis.name)
+        return "Fade in\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.start, self.start+self.duration, self.duration, self.track.analysis.name)
 
 
 class Edit(object):
@@ -159,6 +159,7 @@ class Edit(object):
 class Crossfade(object):
     def __init__(self, tracks, starts, duration, mode='linear'):
         self.t1, self.t2 = [Edit(t, s, duration) for t,s in zip(tracks, starts)]
+        self.duration = self.t1.duration
         self.mode = mode
         self.CROSSFADE_COEFF = 0.6
     
@@ -201,16 +202,16 @@ class Crossfade(object):
         return output
     
     def __repr__(self):
-        return "<Crossfade '%s' and '%s'>" % (self.tracks[0].analysis.name, self.tracks[1].analysis.name)
+        return "<Crossfade '%s' and '%s'>" % (self.t1.analysis.name, self.t2.analysis.name)
     
     def __str__(self):
-        return "Crossfade\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % (self.starts[0], self.starts[1]+self.duration, self.duration, 
-                                                                self.tracks[0].analysis.name, self.tracks[0].analysis.name)
+        return "Crossfade\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % (self.t1.start, self.t2.start+self.duration, self.duration, 
+                                                                self.t1.track.analysis.name, self.t2.track.analysis.name)
 
 
 class Jump(Crossfade):
     def __init__(self, track, source, target, duration):
-        self.track = track;
+        self.track = track
         self.t1, self.t2 = (Edit(track, source, duration), Edit(track, target-duration, duration))
         self.duration = float(duration)
         self.mode = 'equal_power'
@@ -229,6 +230,7 @@ class Jump(Crossfade):
     
     def __str__(self):
         return "Jump\t\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.t1.start, self.t2.end, self.duration, self.t1.track.analysis.name)
+
 
 class Blend(object):
     """Mix together two lists of beats"""
@@ -262,11 +264,11 @@ class Blend(object):
 class Crossmatch(Blend):
     
     def calculate_durations(self):
-        c, dec = 1.0, 1.0 / float(len(self.l1))
+        c, dec = 1.0, 1.0 / float(len(self.l1)+1)
         self.durations = []
         for ((s1, d1), (s2, d2)) in zip(self.l1, self.l2):
-            self.durations.append(c * d1 + (1 - c) * d2)
             c -= dec
+            self.durations.append(c * d1 + (1 - c) * d2)
         self.duration = sum(self.durations)
     
     def stretch(self, t, l):
