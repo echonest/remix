@@ -1,6 +1,8 @@
 == capsule.py ==
 
-capsule.py beat matches parts of several songs into a single mp3. Given a transition duration, and an inter-transition duration, the program can search for the best order, the closest transition patterns, and apply beat alignment, time-stretching and crossfading. The result is a music collage with smooth transitions acting as the glue. An earlier version of Capsule powers http://thisismyjam.com.
+capsule.py beat matches parts of several songs into a single mp3. Given a transition duration, and an inter-transition duration, the program can search for the best order, the closest transition patterns, and apply beat alignment, time-stretching and crossfading. The result is a music collage with smooth transitions acting as the glue. Note that beat alignment is independent of downbeats in the pattern search: it is optimal in the sense of timbral pattern matching, which can be perceptually tricky in the case of different style. Therefore downbeats don't necessarily align. Transitions can start anywhere in the track, and for any duration: it is up to the developer to apply additional constraints on top of the core engine of capsule to create less predictable and more interesting results. 
+
+An earlier version of Capsule powers http://thisismyjam.com.
 
 
 == Usage ==
