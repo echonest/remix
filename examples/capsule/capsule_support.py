@@ -2,8 +2,9 @@
 # encoding: utf=8
 
 """
-capsule.py
-accept songs on the commandline, order them, beatmatch them, and output an audio file
+capsule_support.py
+
+Created by Tristan Jehan and Jason Sundram.
 """
 
 import numpy as np

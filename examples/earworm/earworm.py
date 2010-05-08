@@ -104,7 +104,7 @@ def get_paths_slow(matrix, size=MIN_RANGE):
     for i in xrange(rows(matrix)-MIN_ALIGN+1):
         vector = np.zeros((rows(matrix)-MIN_ALIGN+1,), dtype=np.float32)
         for j in xrange(rows(matrix)-MIN_ALIGN+1):
-            vector[j] = evaluate_distance(matrix[i:i+MIN_ALIGN,:].flatten(), matrix[j:j+MIN_ALIGN,:].flatten())
+            vector[j] = evaluate_distance(matrix[i:i+MIN_ALIGN,:], matrix[j:j+MIN_ALIGN,:])
         paths.append(get_loop_points(vector, size))
     return paths
 

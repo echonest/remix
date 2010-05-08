@@ -1,28 +1,22 @@
 #!/usr/bin/env python
 # encoding: utf-8
+
 """
 earworm_support.py
 
 Created by Tristan Jehan and Jason Sundram.
 """
 
-from copy import deepcopy
 import numpy as np
-from scipy.spatial import distance
-
+from copy import deepcopy
 from utils import rows
 
 FUSION_INTERVAL = .06   # This is what we use in the analyzer
 AVG_PEAK_OFFSET = 0.025 # Estimated time between onset and peak of segment.
 
 
-def evaluate_distance(mat1, mat2, func='euclidean'):
-    # add your distances here...
-    if func=='euclidean':
-        return distance.euclidean(mat1.flatten(), mat2.flatten())
-    elif func=='cosine':
-        return distance.cosine(mat1.flatten(), mat2.flatten())
-
+def evaluate_distance(mat1, mat2):
+    return np.linalg.norm(mat1.flatten() - mat2.flatten())
 
 def timbre_whiten(mat):
     if rows(mat) < 2: return mat

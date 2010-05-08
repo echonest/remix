@@ -3,8 +3,12 @@
 
 """
 capsule.py
+
 accepts songs on the commandline, order them, beatmatch them, and output an audio file
+
+Created by Tristan Jehan and Jason Sundram.
 """
+
 import os
 import sys
 from optparse import OptionParser
