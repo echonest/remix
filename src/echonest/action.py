@@ -6,7 +6,7 @@ action.py
 Created by Tristan Jehan and Jason Sundram.
 """
 import os
-from numpy import zeros
+from numpy import zeros, multiply
 from math import atan, pi
 import sys
 
