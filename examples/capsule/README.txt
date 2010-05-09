@@ -1,6 +1,6 @@
 == capsule.py ==
 
-capsule.py beat matches parts of several songs into a single mp3. Given a transition duration, and an inter-transition duration, the program can search for the best order, the closest transition patterns, and apply beat alignment, time-stretching and crossfading. The result is a music collage with smooth transitions acting as the glue. Note that beat alignment is independent of downbeats in the pattern search: it is optimal in the sense of timbral pattern matching, which can be perceptually tricky in the case of different styles. Therefore downbeats don't necessarily align. Transitions can start anywhere in the track, and for any duration: it is up to the developer to apply additional constraints on top of the core engine of capsule to create less predictable and more interesting results. 
+capsule.py beat matches parts of several songs into a single mp3. Given a transition duration, and an inter-transition duration, the program searches for the best order, the closest transition patterns, and apply beat alignment, time-stretching and crossfading into a single audio stream output. The result is a music collage with smooth transitions acting as the glue. Note that beat alignment is independent of downbeats during pattern search: it is optimal in the sense of timbral pattern matching, which may be perceptually tricky in the case of different styles. Therefore downbeats (first beat of the bar) don't necessarily align. Transitions can start anywhere in the track, and for any duration: it is up to the developer to apply additional constraints on top of the core engine of capsule to create less predictable and more interesting results. 
 
 An earlier version of Capsule powers http://thisismyjam.com.
 
@@ -22,7 +22,7 @@ Options:
   -p PDB, --pdb=PDB     dummy; here for not crashing when using nose
 
 
- == Examples ==
+== Examples ==
 
 After installing your Echo Nest API Key, try the following in your terminal:
 $ python capsule.py ../music/BillieJean.mp3 ../music/EverythingIsOnTheOne.mp3
