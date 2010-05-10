@@ -10,22 +10,12 @@ except Exception:
 
 ver = ".".join([str(x) for x in sys.version_info[0:2]]) # 2.6, 2.5 etc
 
-def get_numpy_includes():
-    gets = [numpy.get_include, numpy.get_numarray_include, numpy.get_numpy_include]
-    includes = []
-    for f in gets:
-        try:
-            includes.append(f())
-        except Exception:
-            pass
-    return includes
-    
 def get_platform_info():
     library_dir = 'libs/'
     libName = 'Dirac'
     link_args = []
     src_dir = ['source']
-    includes = get_numpy_includes()
+    includes = [numpy.get_include(), numpy.get_numarray_include()]
     
     if hasattr(os, 'uname'):
         if os.uname()[0] == "Darwin":

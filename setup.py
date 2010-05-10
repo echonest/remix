@@ -5,6 +5,10 @@ __version__ = "$Revision: 0 $"
 
 from distutils.core import setup, Extension
 import os, glob,sys
+try:
+    import numpy
+except:
+    sys.exit("numpy is required to use remix")
 
 # pysoundtouch
 sources = ['AAFilter.cpp',
@@ -40,20 +44,14 @@ if hasattr(os, 'uname'):
     else:
         is_linux = True
     sources += sources_gcc
-    extra_compile_args=['-fcheck-new', '-O3', 
-                        '-I', '/System/Library/Frameworks/Python.framework/Versions/'+major_version_string+'/Extras/lib/python/numpy/core/include',    # mac
-                        '-I', '/System/Library/Frameworks/Python.framework/Versions/'+major_version_string+'/Extras/lib/python/numpy/numarray',        # mac
-                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/numarray/numpy', # lin
-                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/numarray',       # lin
-                        '-I', '/usr/lib/python'+major_version_string+'/site-packages/numpy/core/include']   # lin
+    extra_compile_args=['-fcheck-new', '-O3']
 else:
-    is_windows =True
+    is_windows = True
     sources += sources_win
-    extra_compile_args=['-IC:\Python26\Lib\site-packages\\numpy\\numarray','-IC:\Python26\Lib\site-packages\\numpy\core\include'] # win
     
 libSoundTouch_sources = [os.path.join('external/pysoundtouch14/libsoundtouch', i) for i in sources]
 
-soundtouch = Extension('soundtouch', sources=['external/pysoundtouch14/soundtouchmodule.cpp',] + libSoundTouch_sources, extra_compile_args = extra_compile_args)
+soundtouch = Extension('soundtouch', sources=['external/pysoundtouch14/soundtouchmodule.cpp',] + libSoundTouch_sources, extra_compile_args = extra_compile_args, include_dirs = [numpy.get_include(), numpy.get_numarray_include()])
 
 
 
