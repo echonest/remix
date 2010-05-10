@@ -305,17 +305,32 @@ def compute_path(graph, target):
         remaining = duration-target
         # build a list of sorted loops by length.
         loops = get_jumps(graph, mode='forward')
+        
+        def valid_jump(jump, jumps, duration):
+            for j in jumps:
+                if j[0] < jump[0] and jump[0] < j[1]:
+                    return False
+                if j[0] < jump[1] and jump[1] < j[1]:
+                    return False
+                if duration - (jump[1]-jump[0]+jump[2]['duration']) < 0:
+                    return False
+            if duration - (jump[1]-jump[0]+jump[2]['duration']) < 0:
+                return False
+            return True
+        
         res = []
-        cur_node = first_node
         while 0 < remaining:
+            if len(loops) == 0: break
             for l in loops:
-                if cur_node <= l[0] and 0 <= remaining - (l[1]-l[0]-l[2]['duration']):
+                if valid_jump(l, res, remaining) == True:
                     res.append(l)
-                    remaining -= (l[1]-l[0]-l[2]['duration'])
-                    cur_node = l[1]
+                    remaining -= (l[1]-l[0]+l[2]['duration'])
+                    loops.remove(l)
                     break
-            if l == loops[-1]:
-                break
+                if l == loops[-1]:
+                    loops.remove(l)
+                    break
+        res = sorted(res, key=operator.itemgetter(0))
         
     elif duration < target:
         remaining = target-duration
