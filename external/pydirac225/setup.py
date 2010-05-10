@@ -39,7 +39,9 @@ def get_platform_info():
             prefix = '/usr/lib/python/%s/site-packages/numpy/' % ver
             #includes = [prefix + s for s in ['core/include', 'numarray', 'numarray/numpy']]
     else:
+        libName += 'LE'
         library_dir += 'Windows'
+	
     return (src_dir + includes, library_dir, libName, link_args )
 
 includes, library_dir, libName, link_args = get_platform_info()
