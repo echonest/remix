@@ -23,12 +23,14 @@ Options:
                         target duration (argument in seconds) default=600
   -m MINIMUM, --minimum=MINIMUM
                         minimal loop size (in beats) default=8
-  -i, --infinite        generate an infinite loop
+  -i, --infinite        generate an infinite loop (wav file)
   -l, --length          length must be accurate
   -k, --pickle          output graph as a pickle object
   -g, --graph           output graph as a gml text file
   -p, --plot            output graph as png image
   -f, --force           force (re)computing the graph
+  -S, --shortest        output the shortest loop (wav file)
+  -L, --longest         output the longest loop (wav file)
   -v, --verbose         show results on screen
 
 
@@ -46,7 +48,7 @@ By adding the option -l:
 $ python earworm.py -d 1200 -l ../music/BillieJean.mp3
 you get the exact 20 min long version of Billie Jean! What happens is that a fade out is started early in order to finish at 20 min worth of audio samples precisely.
 
-The option -m takes an integer parameter, e.g.:
+The option -m takes an integer parameter: the minimum number of beats, e.g.:
 $ python earworm.py -d 1200 -l -m 16 ../music/BillieJean.mp3
 to eliminate jumps that are shorter than 16 beats in length. That allows to avoid immediate typically more noticeable repetitions. Default is 8 beats.
 
@@ -92,5 +94,15 @@ That'll save a graph pickle file called BillieJean.mp3.graph.gpkl which will be 
 
 The infinite option -i outputs a loopable wav file (for sample precision) rather than an mp3:
 $ python earworm.py -i ../music/BillieJean.mp3
-generates a close to 600 second long "loop" called BillieJean_300_loop.wav that may be used with a player with proper "loop mode" capabilities for infinite seamless playing. For that reason, the file doesn't start at the very beginning or finish at the very end of the original file.
+generates a close to 600 second long "loop" called BillieJean_600_loop.wav that may be heard from a player with proper "loop mode" capabilities for infinite seamless playing. For that reason, the file doesn't start at the very beginning or finish at the very end of the original file.
+
+For convenience, the shortest or longest single loops can be generated respectively via -S and -L
+$ python earworm.py -S ../music/BillieJean.mp3
+makes an 8 second loopable file called BillieJean_8_shortest.mp3, and
+$ python earworm.py -L ../music/BillieJean.mp3
+makes an 184 second loopable file BillieJean_184_longest.mp3
+
+It is possible to combine -m and -S to find the shortest loop with at least -m beats, e.g.,
+$ python earworm.py -S -m 32 ../music/BillieJean.mp3
+makes a single loop of 16 seconds (32 beats of about 500 ms) BillieJean_16_shortest.mp3
 
