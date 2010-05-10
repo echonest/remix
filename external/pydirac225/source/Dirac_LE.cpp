@@ -17,6 +17,9 @@
 #include <algorithm>
 #include <string.h>
 #include <stdio.h>
+#ifndef M_PI_2
+#define M_PI_2  1.57079632679489661923 /* pi/2 */
+#endif
 
 using namespace std;
 
