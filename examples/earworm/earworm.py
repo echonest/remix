@@ -204,7 +204,7 @@ def collect(edges, path):
                     res.append(e)
     return res
     
-def infinite(graph, target):
+def infinite(graph, track, target):
     DG = nx.DiGraph()
     loops = get_jumps(graph, mode='backward')
     DG.add_edges_from(loops)
@@ -248,7 +248,14 @@ def infinite(graph, target):
     
     # find optimal path
     path = compute_path(graph, max(target-res_dur, 0))    
-    return path + res
+    path = path + res
+    # build actions
+    actions = make_jumps(path, track)
+    actions.pop(-1)
+    jp = Jump(track, actions[-1].source, actions[-1].target, actions[-1].duration)
+    actions.pop(-1)
+    actions.append(jp)
+    return actions
 
 def remove_short_loops(graph, mlp):
     edges = graph.edges(data=True)
@@ -259,6 +266,25 @@ def remove_short_loops(graph, mlp):
         if dist <= -mlp+1: continue
         graph.remove_edge(e[0], e[1])
 
+def one_loop(graph, track, mode='shortest'):
+    jumps = get_jumps(graph, mode='backward')
+    if len(jumps) == 0: return []
+    loop = None
+    if mode == 'longest':
+        loop = jumps[0]
+    else:
+        jumps.reverse()
+        for jump in jumps:
+            if jump[1] < jump[0]:
+                loop = jump
+                break
+    if loop == None: return []
+    # Let's capture a bit of the attack
+    OFFSET = 0.025 # 25 ms
+    pb = Playback(track, loop[1]-OFFSET, loop[0]-loop[1])
+    jp = Jump(track, loop[0]-OFFSET, loop[1]-OFFSET, loop[2]['duration'])
+    return [pb, jp]
+    
 def compute_path(graph, target):
 
     first_node = min(graph.nodes())
@@ -384,6 +410,8 @@ def do_work(track, options):
     gml = bool(options.graph)
     plt = bool(options.plot)
     fce = bool(options.force)
+    sho = bool(options.shortest)
+    lon = bool(options.longest)
     vbs = bool(options.verbose)
     
     mp3 = track.filename
@@ -427,20 +455,17 @@ def do_work(track, options):
         save_graph(graph, mp3+".graph.gpkl")
     if gml == True:
         save_graph(graph, mp3+".graph.gml")
-
+    # single loops
+    if sho == True:
+        return one_loop(graph, track, mode='shortest')
+    if lon == True:
+        return one_loop(graph, track, mode='longest')
+    # other infinite loops
     if inf == True:
         if vbs == True:
             print "\nInput Duration:", track.analysis.duration
         # get the optimal path for a given duration
-        path = infinite(graph, dur)
-        # build actions
-        actions = make_jumps(path, track)
-        actions.pop(-1)
-        jp = Jump(track, actions[-1].source, actions[-1].target, actions[-1].duration)
-        actions.pop(-1)
-        actions.append(jp)
-        
-        return actions
+        return infinite(graph, track, dur)
         
     dur_intro = min(graph.nodes())
     dur_outro = track.analysis.duration - max(graph.nodes())
@@ -467,6 +492,8 @@ def main():
     parser.add_option("-g", "--graph", action="store_true", help="output graph as a gml text file")
     parser.add_option("-p", "--plot", action="store_true", help="output graph as png image")
     parser.add_option("-f", "--force", action="store_true", help="force (re)computing the graph")
+    parser.add_option("-S", "--shortest", action="store_true", help="output the shortest loop")
+    parser.add_option("-L", "--longest", action="store_true", help="output the longest loop")
     parser.add_option("-v", "--verbose", action="store_true", help="show results on screen")
     
     (options, args) = parser.parse_args()
@@ -500,12 +527,16 @@ def main():
     
     # Output wav for loops in order to remain sample accurate
     if bool(options.infinite) == True: 
-        ext = '_loop.wav'
+        name = name[0]+'_'+str(int(options.duration))+'_loop.wav'
+    elif bool(options.shortest) == True: 
+        name = name[0]+'_'+str(int(sum(act.duration for act in actions)))+'_shortest.wav'
+    elif bool(options.longest) == True: 
+        name = name[0]+'_'+str(int(sum(act.duration for act in actions)))+'_longest.wav'
     else: 
-        ext = '.mp3'
+        name = name[0]+'_'+str(int(options.duration))+'.mp3'
     
     print "Rendering..."
-    render(actions, name[0]+'_'+str(int(options.duration))+ext)
+    render(actions, name)
     return 1
 
 
