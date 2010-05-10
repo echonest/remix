@@ -1,47 +1,18 @@
 # created 4/21/2010 by Jason
 # http://docs.python.org/extending/building.html
 from distutils.core import setup, Extension
-import os
-import sys
-try:
-    import numpy
-except Exception:
-    sys.exit("numpy is required for use of pydirac")
+import os, sys
+import numpy
 
-ver = ".".join([str(x) for x in sys.version_info[0:2]]) # 2.6, 2.5 etc
+platform = os.uname()[0] if hasattr(os, 'uname') else 'Windows'
+link_args = ['-framework Carbon'] if platform == 'Darwin' else []
 
-def get_platform_info():
-    library_dir = 'libs/'
-    libName = 'Dirac'
-    link_args = []
-    src_dir = ['source']
-    includes = [numpy.get_include(), numpy.get_numarray_include()]
-    
-    if hasattr(os, 'uname'):
-        if os.uname()[0] == "Darwin":
-            library_dir += 'MacOSX'
-            libName += 'LE'
-            link_args.append('-framework Carbon')
-            # prefix = '/System/Library/Frameworks/Python.framework/Versions/%s/Extras/lib/python/numpy/' % ver
-            # includes = [prefix + s for s in ['core/include', 'numarray']]
-        else:            
-            library_dir += 'Linux'
-            prefix = '/usr/lib/python/%s/site-packages/numpy/' % ver
-            #includes = [prefix + s for s in ['core/include', 'numarray', 'numarray/numpy']]
-    else:
-        libName += 'LE'
-        library_dir += 'Windows'
-	
-    return (src_dir + includes, library_dir, libName, link_args )
-
-includes, library_dir, libName, link_args = get_platform_info()
-
-dirac = Extension(  "dirac", 
+dirac = Extension(  "dirac",
                     sources = ['diracmodule.cpp', 'source/Dirac_LE.cpp'],
                     extra_compile_args = [],
-                    include_dirs = includes,
-                    libraries = [libName],
-                    library_dirs = [library_dir],
+                    include_dirs = ['source', numpy.get_include(), numpy.get_numarray_include()],
+                    libraries = ['Dirac'],
+                    library_dirs = [os.path.join('libs', platform)],
                     extra_link_args = link_args,
                     depends=[__file__] # force rebuild whenever this script is changed.
                  )
@@ -52,6 +23,7 @@ setup(  name="dirac",
         author = 'Tristan Jehan',
         author_email = 'tristan@echonest.com',
         url = 'http://code.echonest.com/p/echo-nest-remix',
-        long_description = '''See Short Description.''',
-        ext_modules=[dirac] )
+        ext_modules=[dirac], 
+        requires=['numpy']
+     )
       
