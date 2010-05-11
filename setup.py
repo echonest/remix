@@ -17,6 +17,14 @@ def get_os():
     
 is_linux, is_mac, is_windows = get_os()
 
+def get_action():
+    cAction = os.path.join('external', 'cAction')   
+    return Extension("cAction",
+                        sources = [os.path.join(cAction, 'actionmodule.cpp')],
+                        extra_compile_args = [],
+                        include_dirs = [numpy.get_include(), numpy.get_numarray_include()],
+                     )
+    
 def get_dirac():
     link_args = ['-framework Carbon'] if is_mac else []
     
@@ -88,7 +96,7 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
 
 
 setup(name='The Echo Nest Remix API',
-      ext_modules = [get_soundtouch(), get_dirac()],
+      ext_modules = [get_soundtouch(), get_dirac(), get_action()],
       version='1.3',
       description='Make things with music.',
       author='Ben Lacker',

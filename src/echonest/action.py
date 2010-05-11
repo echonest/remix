@@ -11,6 +11,7 @@ from math import atan, pi
 import sys
 
 from echonest.audio import assemble, AudioData
+from cAction import limit, limiter # replace python limit/limiter
 
 try:
     if hasattr(os, 'uname') and os.uname()[0] == 'Darwin':
@@ -47,26 +48,26 @@ def make_stereo(track):
         track.data = stereo
     return track
 
-def limit(data):
-    for col in range(data.ndim):
-        for i, x in enumerate(data[:, col]):
-            data[i, col] = limiter(data[i, col])
-    return data
-
-def limiter(val):
-    DYN_RANGE  = 32767.0
-    LIM_THRESH = 30000.0
-    LIM_RANGE  = (DYN_RANGE - LIM_THRESH)
-    
-    if LIM_THRESH < val:
-        res = (val - LIM_THRESH) / LIM_RANGE
-        res = ( atan(res) / (pi/2) ) * LIM_RANGE + LIM_THRESH
-    elif val < - LIM_THRESH:
-        res = - (val + LIM_THRESH) / LIM_RANGE
-        res = - ( ( atan(res) / (pi/2) ) * LIM_RANGE + LIM_THRESH )
-    else:
-        res = val
-    return res
+# def limit(data):
+#     for col in range(data.ndim):
+#         for i, x in enumerate(data[:, col]):
+#             data[i, col] = limiter(data[i, col])
+#     return data
+# 
+# def limiter(val):
+#     DYN_RANGE  = 32767.0
+#     LIM_THRESH = 30000.0
+#     LIM_RANGE  = (DYN_RANGE - LIM_THRESH)
+#     
+#     if LIM_THRESH < val:
+#         res = (val - LIM_THRESH) / LIM_RANGE
+#         res = ( atan(res) / (pi/2) ) * LIM_RANGE + LIM_THRESH
+#     elif val < - LIM_THRESH:
+#         res = - (val + LIM_THRESH) / LIM_RANGE
+#         res = - ( ( atan(res) / (pi/2) ) * LIM_RANGE + LIM_THRESH )
+#     else:
+#         res = val
+#     return res
     
 def render(actions, filename):
     """Calls render on each action in actions, concatenates the results, renders an audio file, and returns a path to the file"""
