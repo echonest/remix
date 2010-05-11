@@ -91,11 +91,11 @@ def get_options(warn=False):
 def main():
     options, args = get_options(warn=True);
     
-    #try:
-    actions = do_work(args, options)
-    #except:
-    #    print "Error computing capsule!"
-    #    return -1
+    try:
+        actions = do_work(args, options)
+    except:
+        print "Error computing capsule!"
+        return -1
     
     if bool(options.verbose) == True:
         display_actions(actions)
