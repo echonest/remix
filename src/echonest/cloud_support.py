@@ -3,7 +3,10 @@ Make pyechonest and remix objects from local audio and json files
 Created 2010-04-12 by Jason Sundram
 """
 import hashlib
-import simplejson
+try:
+    import json
+except ImportError:
+    import simplejson as json
 import sys
 from echonest.audio import _dataParser as data_parser
 from echonest.audio import _attributeParser as attribute_parser
@@ -24,7 +27,7 @@ except:
 class AnalysisProxy(object):
     def __init__(self, jsonpath):
         s = open(jsonpath).read()
-        a = simplejson.loads(s)
+        a = json.loads(s)
         self.__dict__.update(a)
 
 class JsonTrack(object):
