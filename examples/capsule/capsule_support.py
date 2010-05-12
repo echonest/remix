@@ -103,7 +103,7 @@ def equalize_tracks(tracks):
     
     for track in tracks:
         loudness = track.analysis.loudness
-        track.sound_check = db_2_volume(loudness)
+        track.gain = db_2_volume(loudness)
     
 def order_tracks(tracks):
     """ Finds the smoothest ordering between tracks, based on tempo only."""

@@ -43,7 +43,7 @@ def do_work(audio_files, options):
         if verbose:
             print
             for track in tracks:
-                print "Vol = %.0f%%\t%s" % (track.sound_check*100.0, track.analysis.name)
+                print "Vol = %.0f%%\t%s" % (track.gain*100.0, track.analysis.name)
             print
     
     valid = []
@@ -107,4 +107,6 @@ def main():
     return 1
     
 if __name__ == "__main__":
+    #import cProfile
+    #cProfile.run('main()', 'capsule_prof')
     sys.exit(main())
