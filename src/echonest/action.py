@@ -11,7 +11,7 @@ from math import atan, pi
 import sys
 
 from echonest.audio import assemble, AudioData
-from cAction import limit, limiter # replace python limit/limiter
+from cAction import limit, crossfade, fadein, fadeout
 
 try:
     if hasattr(os, 'uname') and os.uname()[0] == 'Darwin':
@@ -47,27 +47,6 @@ def make_stereo(track):
             stereo[i] = (d, d)
         track.data = stereo
     return track
-
-# def limit(data):
-#     for col in range(data.ndim):
-#         for i, x in enumerate(data[:, col]):
-#             data[i, col] = limiter(data[i, col])
-#     return data
-# 
-# def limiter(val):
-#     DYN_RANGE  = 32767.0
-#     LIM_THRESH = 30000.0
-#     LIM_RANGE  = (DYN_RANGE - LIM_THRESH)
-#     
-#     if LIM_THRESH < val:
-#         res = (val - LIM_THRESH) / LIM_RANGE
-#         res = ( atan(res) / (pi/2) ) * LIM_RANGE + LIM_THRESH
-#     elif val < - LIM_THRESH:
-#         res = - (val + LIM_THRESH) / LIM_RANGE
-#         res = - ( ( atan(res) / (pi/2) ) * LIM_RANGE + LIM_THRESH )
-#     else:
-#         res = val
-#     return res
     
 def render(actions, filename):
     """Calls render on each action in actions, concatenates the results, renders an audio file, and returns a path to the file"""
@@ -85,12 +64,10 @@ class Playback(object):
     def render(self):
         # self has start and duration, so it is a valid index into track.
         output = self.track[self]
-        
         # Normalize volume if necessary
-        sound_check = getattr(self.track, 'sound_check', None)
-        if sound_check != None:
-            output.data = limit(multiply(output.data, sound_check))
-        
+        gain = getattr(self.track, 'gain', None)
+        if gain != None:
+            output.data = limit(multiply(output.data, gain))
         return output
     
     def __repr__(self):
@@ -103,14 +80,10 @@ class Playback(object):
 class Fadeout(Playback):
 
     def render(self):
-        sound_check = getattr(self.track, 'sound_check', 1.0)
+        gain = getattr(self.track, 'gain', 1.0)
         output = self.track[self]
-        n = rows(output.data)
-        for col in range(output.data.ndim):
-            for i, x in enumerate(output.data[:, col]):
-                frac = float(n-i) / float(n)
-                output.data[i, col] = limiter(frac * x * sound_check)
-        
+        # second parameter is optional -- in place function for now
+        output.data = fadeout(output.data, gain)
         return output
     
     def __repr__(self):
@@ -123,14 +96,10 @@ class Fadeout(Playback):
 class Fadein(Playback):
 
     def render(self):
-        sound_check = getattr(self.track, 'sound_check', 1.0)
+        gain = getattr(self.track, 'gain', 1.0)
         output = self.track[self]
-        n = rows(output.data)
-        for col in range(output.data.ndim):
-            for i, x in enumerate(output.data[:, col]):
-                frac = float(i) / float(n-1)
-                output.data[i, col] = limiter(frac * x * sound_check)
-        
+        # second parameter is optional -- in place function for now
+        output.data = fadein(output.data, gain)
         return output
     
     def __repr__(self):
@@ -162,45 +131,11 @@ class Crossfade(object):
         self.t1, self.t2 = [Edit(t, s, duration) for t,s in zip(tracks, starts)]
         self.duration = self.t1.duration
         self.mode = mode
-        self.CROSSFADE_COEFF = 0.6
     
     def render(self):
         t1, t2 = map(make_stereo, (self.t1.get(), self.t2.get()))
-        output = self.allocate_output(t1, t2)
-        n = rows(output.data)
-        for col in range(output.data.ndim):
-            for (i, (x1, x2)) in enumerate(zip(t1.data[:, col], t2.data[:, col])):
-                if self.mode == 'equal_power':
-                    output.data[i, col] = self.equal_power(x1, x2, i, n)
-                else:
-                    output.data[i, col] = self.linear(x1, x2, i, n)
-        return output
-    
-    def linear(self, x1, x2, i, n):
-        f_in  = float(i) / float(n-1)
-        f_out = float(n-i) / float(n)
-        return int(round(f_out * x1 + f_in * x2))
-    
-    def equal_power(self, x1, x2, i, n):
-        f_in  = float(i) / float(n-1)
-        f_out = float(n-i) / float(n)
-        res = int(round(self.logFactor(f_out) * x1 + self.logFactor(f_in) * x2))
-        res = limiter(res)
-        return res
-    
-    def logFactor(self, val):
-        return pow(val, self.CROSSFADE_COEFF)
-    
-    def allocate_output(self, t1, t2):
-        n1, n2 = rows(t1.data), rows(t2.data)
-        n = min(n1, n2)
-        if n1 != n2:
-            print "t1 (%s) has %d rows, t2 (%s) has %d rows" % (str(t1), n1, str(t2), n2)
-        if n1 < n2: 
-            output = t1[:]
-        else: 
-            output = t2[:]
-        return output
+        vecout = crossfade(t1.data, t2.data, self.mode)
+        return AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=t1.sampleRate, numChannels=vecout.shape[1])
     
     def __repr__(self):
         return "<Crossfade '%s' and '%s'>" % (self.t1.analysis.name, self.t2.analysis.name)
@@ -283,8 +218,8 @@ class Crossmatch(Blend):
             rates.append((int(l[i][0] * t.sampleRate) - signal_start, self.durations[i] / l[i][1]))
         
         vecout = dirac.timeScale(vecin, rates, t.sampleRate, 0)
-        if hasattr(t, 'sound_check'):
-            vecout = limit(multiply(vecout, t.sound_check))
+        if hasattr(t, 'gain'):
+            vecout = limit(multiply(vecout, t.gain))
         
         return AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=t.sampleRate, numChannels=vecout.shape[1])
     

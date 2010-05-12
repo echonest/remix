@@ -3,9 +3,13 @@
 #include <numpy/libnumarray.h>
 #include <stdexcept>
 #include <math.h>
+#include <string.h>
 #ifndef M_PI_2
 #define M_PI_2  1.57079632679489661923 /* pi/2 */
 #endif
+#define DIMENSIONS 2
+
+enum modes {LINEAR, EQUAL_POWER};
 typedef unsigned int uint;
 static PyObject *ActionError;
 
@@ -30,23 +34,32 @@ static float limiter(float f)
     return result;
 }
 
-static PyObject* cAction_limiter(PyObject* self, PyObject* args)
+#define CROSSFADE_COEFF 0.6f
+float logFactor(float val)
 {
-    float f;
-    if (!PyArg_ParseTuple(args, "f", &f))
-        return NULL;
-        
-    return PyFloat_FromDouble((double)limiter(f));
+    return powf(val, CROSSFADE_COEFF);
 }
 
-static PyObject* cAction_limit(PyObject* self, PyObject* args)
+float linear(float x1, float x2, long i, long n)
 {
-    PyObject *objInSound;
-    if (!PyArg_ParseTuple(args, "O", &objInSound))
-        return NULL;
-    
+    float f_in  = float(i) / float(n-1);
+    float f_out = float(n-i) / float(n);
+    return f_out * x1 + f_in * x2;
+}
+
+float equal_power(float x1, float x2, long i, long n)
+{
+    float f_in  = float(i) / float(n-1);
+    float f_out = float(n-i) / float(n);
+    float val = logFactor(f_out) * x1 + logFactor(f_in) * x2;
+    return limiter(val);
+}
+
+PyArrayObject *get_pyarray(PyObject *objInSound)
+{
     // Convert to actual PyArray with proper type
     PyArrayObject *inSound = (PyArrayObject *) NA_InputArray(objInSound, tFloat32, NUM_C_ARRAY);
+    
     // Check that everything looks good
     if (!inSound)
     {
@@ -61,9 +74,20 @@ static PyObject* cAction_limit(PyObject* self, PyObject* args)
         return NULL;
     }
     
+    return inSound;
+}
+
+static PyObject* cAction_limit(PyObject* self, PyObject* args)
+{
+    PyObject *objInSound;
+    if (!PyArg_ParseTuple(args, "O", &objInSound))
+        return NULL;
+    
+    PyArrayObject *inSound = get_pyarray(objInSound);
+    if (inSound == NULL) return NULL;
+    
     uint nSamples = inSound->dimensions[0];
     uint nChannels = inSound->dimensions[1];
-    // inSamples is interlaced ... does it matter?
     float *inSamples = (Float32 *)NA_OFFSETDATA(inSound);
     
     // Limit:
@@ -72,7 +96,7 @@ static PyObject* cAction_limit(PyObject* self, PyObject* args)
         for (uint i = 0; i < nSamples; i++)
         {
             float f = inSamples[nChannels*i  + j];
-            inSamples[nChannels*i  + j] = limiter(f);
+            inSamples[nChannels*i + j] = limiter(f);
         }
     }
     
@@ -80,10 +104,111 @@ static PyObject* cAction_limit(PyObject* self, PyObject* args)
     return PyArray_Return(inSound);
 }
 
+static PyObject* cAction_fade_out(PyObject* self, PyObject* args)
+{
+    PyObject *objInSound;
+    float volume = 1.0f;
+    
+    if (!PyArg_ParseTuple(args, "O|f", &objInSound, &volume))
+        return NULL;
+    
+    PyArrayObject *inSound = get_pyarray(objInSound);
+    if (inSound == NULL) return NULL;
+
+    uint nSamples = inSound->dimensions[0];
+    uint nChannels = inSound->dimensions[1];
+    float *inSamples = (Float32 *)NA_OFFSETDATA(inSound);
+    
+    // Limit:
+    for (uint j = 0; j < nChannels; j++)
+    {
+        for (uint i = 0; i < nSamples; i++)
+        {
+            float frac = (float)(nSamples-i) / (float)nSamples;
+            float f = inSamples[nChannels*i + j];
+            inSamples[nChannels*i + j] = limiter(frac * f * volume);
+        }
+    }
+    // Do we need to make a copy before returning, or can we return the modified original?
+    return PyArray_Return(inSound);
+}
+
+static PyObject* cAction_fade_in(PyObject* self, PyObject* args)
+{
+    PyObject *objInSound;
+    float volume = 1.0f;
+    
+    if (!PyArg_ParseTuple(args, "O|f", &objInSound, &volume))
+        return NULL;
+    
+    PyArrayObject *inSound = get_pyarray(objInSound);
+    if (inSound == NULL) return NULL;
+    
+    uint nSamples = inSound->dimensions[0];
+    uint nChannels = inSound->dimensions[1];
+    float *inSamples = (Float32 *)NA_OFFSETDATA(inSound);
+    
+    // Limit:
+    for (uint j = 0; j < nChannels; j++)
+    {
+        for (uint i = 0; i < nSamples; i++)
+        {
+            float frac = 1.0f - ((float)(nSamples-i) / (float)nSamples);
+            float f = inSamples[nChannels*i + j];
+            inSamples[nChannels*i + j] = limiter(frac * f * volume);
+        }
+    }
+    // Do we need to make a copy before returning, or can we return the modified original?
+    return PyArray_Return(inSound);
+}
+
+static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
+{
+    PyObject *objInSound1, *objInSound2;
+    char* s_mode = NULL;
+    if (!PyArg_ParseTuple(args, "OO|s", &objInSound1, &objInSound2, &s_mode))
+        return NULL;
+    
+    uint mode = EQUAL_POWER;
+    if (strcmp(s_mode, "linear") == 0) mode = LINEAR;
+    
+    PyArrayObject *inSound1 = get_pyarray(objInSound1);
+    PyArrayObject *inSound2 = get_pyarray(objInSound2);
+    if (inSound1 == NULL || inSound2 == NULL) return NULL;
+    
+    float* inSamples1 = (float *)inSound1->data;
+    float* inSamples2 = (float *)inSound2->data;
+    
+    uint numInSamples = inSound1->dimensions[0];
+    uint numInChannels = inSound1->dimensions[1];
+    
+    npy_intp dims[DIMENSIONS];
+    dims[0] = numInSamples;
+    dims[1] = numInChannels;
+    
+    // Allocate interlaced memory for output sound object
+    PyArrayObject* outSound = (PyArrayObject *)PyArray_SimpleNew(DIMENSIONS, dims, NPY_FLOAT);
+    // Get the actual array
+    float* outSamples = (float *)outSound->data;
+    
+    if (mode == EQUAL_POWER)
+        for (uint i=0; i<numInChannels; i++)
+            for (uint j=0; j<numInSamples; j++)
+                outSamples[i+j*numInChannels] = equal_power(inSamples1[i+j*numInChannels], inSamples2[i+j*numInChannels], j, numInSamples);
+    else if (mode == LINEAR)
+        for (uint i=0; i<numInChannels; i++)
+            for (uint j=0; j<numInSamples; j++)
+                outSamples[i+j*numInChannels] = linear(inSamples1[i+j*numInChannels], inSamples2[i+j*numInChannels], j, numInSamples);
+
+    return PyArray_Return(outSound);
+}
+
 static PyMethodDef cAction_methods[] = 
 {
     {"limit", (PyCFunction) cAction_limit, METH_VARARGS, "limit an audio buffer so as not to clip."},
-    {"limiter", (PyCFunction) cAction_limiter, METH_VARARGS, "limit a single number."},
+    {"crossfade", (PyCFunction) cAction_crossfade, METH_VARARGS, "crossfade two audio buffers."},
+    {"fadein", (PyCFunction) cAction_fade_in, METH_VARARGS, "fade in an audio buffer."},
+    {"fadeout", (PyCFunction) cAction_fade_out, METH_VARARGS, "fade out an audio buffer."},
     {NULL}
 };
 
