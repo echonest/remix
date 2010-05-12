@@ -16,9 +16,9 @@ from optparse import OptionParser
 import networkx as nx
 import numpy as np
 from numpy.matlib import repmat, repeat
+from numpy import sqrt
 import operator
 import os
-from scipy import sqrt
 import sys
 
 from echonest.action import Playback, Jump, Fadeout, render, display_actions
