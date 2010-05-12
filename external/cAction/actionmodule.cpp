@@ -66,7 +66,8 @@ PyArrayObject *get_pyarray(PyObject *objInSound)
         Py_XDECREF(inSound);
         PyErr_Format(ActionError, "couldn't convert array to PyArrayObject.");
         return NULL;
-    } 
+    }
+    
     if (inSound->nd != 1 && inSound->nd != 2) 
     {
         Py_XDECREF(inSound);
@@ -84,7 +85,8 @@ static PyObject* cAction_limit(PyObject* self, PyObject* args)
         return NULL;
     
     PyArrayObject *inSound = get_pyarray(objInSound);
-    if (inSound == NULL) return NULL;
+    if (inSound == NULL)
+        return NULL;
     
     uint nSamples = inSound->dimensions[0];
     uint nChannels = inSound->dimensions[1];
@@ -113,8 +115,9 @@ static PyObject* cAction_fade_out(PyObject* self, PyObject* args)
         return NULL;
     
     PyArrayObject *inSound = get_pyarray(objInSound);
-    if (inSound == NULL) return NULL;
-
+    if (inSound == NULL)
+        return NULL;
+    
     uint nSamples = inSound->dimensions[0];
     uint nChannels = inSound->dimensions[1];
     float *inSamples = (Float32 *)NA_OFFSETDATA(inSound);
@@ -129,6 +132,7 @@ static PyObject* cAction_fade_out(PyObject* self, PyObject* args)
             inSamples[nChannels*i + j] = limiter(frac * f * volume);
         }
     }
+    
     // Do we need to make a copy before returning, or can we return the modified original?
     return PyArray_Return(inSound);
 }
@@ -142,7 +146,8 @@ static PyObject* cAction_fade_in(PyObject* self, PyObject* args)
         return NULL;
     
     PyArrayObject *inSound = get_pyarray(objInSound);
-    if (inSound == NULL) return NULL;
+    if (inSound == NULL)
+        return NULL;
     
     uint nSamples = inSound->dimensions[0];
     uint nChannels = inSound->dimensions[1];
@@ -158,6 +163,7 @@ static PyObject* cAction_fade_in(PyObject* self, PyObject* args)
             inSamples[nChannels*i + j] = limiter(frac * f * volume);
         }
     }
+    
     // Do we need to make a copy before returning, or can we return the modified original?
     return PyArray_Return(inSound);
 }
@@ -169,12 +175,15 @@ static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "OO|s", &objInSound1, &objInSound2, &s_mode))
         return NULL;
     
-    uint mode = EQUAL_POWER;
-    if (strcmp(s_mode, "linear") == 0) mode = LINEAR;
-    
     PyArrayObject *inSound1 = get_pyarray(objInSound1);
+    if (inSound1 == NULL)
+        return NULL;
     PyArrayObject *inSound2 = get_pyarray(objInSound2);
-    if (inSound1 == NULL || inSound2 == NULL) return NULL;
+    if (inSound2 == NULL)
+    {
+        Py_XDECREF(inSound1);
+        return NULL;
+    }
     
     float* inSamples1 = (float *)inSound1->data;
     float* inSamples2 = (float *)inSound2->data;
@@ -188,18 +197,21 @@ static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
     
     // Allocate interlaced memory for output sound object
     PyArrayObject* outSound = (PyArrayObject *)PyArray_SimpleNew(DIMENSIONS, dims, NPY_FLOAT);
+    
     // Get the actual array
     float* outSamples = (float *)outSound->data;
     
-    if (mode == EQUAL_POWER)
-        for (uint i=0; i<numInChannels; i++)
-            for (uint j=0; j<numInSamples; j++)
-                outSamples[i+j*numInChannels] = equal_power(inSamples1[i+j*numInChannels], inSamples2[i+j*numInChannels], j, numInSamples);
-    else if (mode == LINEAR)
-        for (uint i=0; i<numInChannels; i++)
-            for (uint j=0; j<numInSamples; j++)
-                outSamples[i+j*numInChannels] = linear(inSamples1[i+j*numInChannels], inSamples2[i+j*numInChannels], j, numInSamples);
-
+    // Figure out which crossfade to use.
+    float (*fader)(float, float, long, long) = strcmp(s_mode, "linear") == 0 ? linear : equal_power;
+    for (uint i = 0; i < numInChannels; i++)
+    {
+        for (uint j = 0; j < numInSamples; j++)
+        {
+            uint index = i + j*numInChannels;
+            outSamples[index] = fader(inSamples1[index], inSamples2[index], j, numInSamples);
+        }
+    }
+    
     return PyArray_Return(outSound);
 }
 
