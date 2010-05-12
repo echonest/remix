@@ -6,7 +6,7 @@ action.py
 Created by Tristan Jehan and Jason Sundram.
 """
 import os
-from numpy import zeros, multiply
+from numpy import zeros, multiply, float32
 from math import atan, pi
 import sys
 
@@ -67,7 +67,9 @@ class Playback(object):
         # Normalize volume if necessary
         gain = getattr(self.track, 'gain', None)
         if gain != None:
-            output.data = limit(multiply(output.data, gain))
+            # limit expects a float32 vector
+            output.data = limit(multiply(output.data, float32(gain)))
+            
         return output
     
     def __repr__(self):
@@ -219,7 +221,7 @@ class Crossmatch(Blend):
         
         vecout = dirac.timeScale(vecin, rates, t.sampleRate, 0)
         if hasattr(t, 'gain'):
-            vecout = limit(multiply(vecout, t.gain))
+            vecout = limit(multiply(vecout, float32(t.gain)))
         
         return AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=t.sampleRate, numChannels=vecout.shape[1])
     
