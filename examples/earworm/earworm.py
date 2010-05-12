@@ -530,6 +530,7 @@ def main():
         else:
             track = LocalAudioFile(mp3)
     
+    # this is where the work takes place
     actions = do_work(track, options)
     
     if bool(options.verbose) == True:
@@ -556,4 +557,7 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        main()
+    except Exception, e:
+        print e

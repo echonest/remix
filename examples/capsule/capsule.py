@@ -16,10 +16,10 @@ from optparse import OptionParser
 from echonest.action import render, make_stereo
 from echonest.audio import LocalAudioFile
 from echonest.cloud_support import AnalyzedAudioFile
+from pyechonest import util
 
 from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT, display_actions, is_valid
 from utils import tuples
-
 
 def do_work(audio_files, options):
 
@@ -90,12 +90,7 @@ def get_options(warn=False):
     
 def main():
     options, args = get_options(warn=True);
-    
-    try:
-        actions = do_work(args, options)
-    except:
-        print "Error computing capsule!"
-        return -1
+    actions = do_work(args, options)
     
     if bool(options.verbose) == True:
         display_actions(actions)
@@ -107,6 +102,14 @@ def main():
     return 1
     
 if __name__ == "__main__":
-    #import cProfile
-    #cProfile.run('main()', 'capsule_prof')
-    sys.exit(main())
+    try:
+        main()
+        # for profiling, do this:
+        #import cProfile
+        #cProfile.run('main()', 'capsule_prof')
+        # then in ipython:
+        #import pstats
+        #p = pstats.Stats('capsule_prof')
+        #p.sort_stats('cumulative').print_stats(30)
+    except Exception, e:
+        print e

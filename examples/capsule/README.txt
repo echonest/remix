@@ -41,11 +41,11 @@ Option -v allows you to see details about what is going on during computation.
 $ python capsule.py -o -v ../music/BillieJean.mp3 ../music/EverythingIsOnTheOne.mp3
 displays the following time of action, action name, time parameters, duration, and title.
 
-00:00	  Fade in	100.421	-> 100.671	 (0.250)	Everything Is On The One
-00:00	  Playback	100.671	-> 108.671	 (8.000)	Everything Is On The One
+00:00	  Fade in	    100.421	-> 100.671	 (0.250)	Everything Is On The One
+00:00	  Playback	    100.671	-> 108.671	 (8.000)	Everything Is On The One
 00:08	  Crossmatch	108.671	-> 232.107	 (7.502)	Everything Is On The One -> Billie Jean
-00:15	  Playback	232.107	-> 240.297	 (8.190)	Billie Jean
-00:23	  Fade out	240.297	-> 246.297	 (6.000)	Billie Jean
+00:15	  Playback	    232.107	-> 240.297	 (8.190)	Billie Jean
+00:23	  Fade out	    240.297	-> 246.297	 (6.000)	Billie Jean
 
 Note that every capsule starts with a 250 ms quick fade in and ends with a 6-second fade out.
 
