@@ -76,7 +76,9 @@ if is_mac:
 if is_linux:
     all_data_files  = [('/usr/local/bin',['external/youtube-dl/youtube-dl'])]
 if is_windows:
-    all_data_files  = [('.',['external\\en-ffmpeg\\win\\en-ffmpeg.exe','external\\youtube-dl\\youtube-dl'])]
+    all_data_files  = [('.',['external\\en-ffmpeg\\win\\en-ffmpeg.exe',
+                             'external\\youtube-dl\\youtube-dl',
+                             'external\\pydirac225\\libs\\Windows\\DiracLE.dll'])]
 
 
 dest_prefix = 'echo-nest-remix-'
