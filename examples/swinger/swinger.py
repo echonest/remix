@@ -33,6 +33,7 @@ except Exception, e:
 def do_work(track, options):
     
     verb = bool(options.verbose)
+    
     # swing factor
     swing = float(options.swing)
     if swing < -0.9: swing = -0.9
@@ -43,7 +44,7 @@ def do_work(track, options):
     
     # build rates
     rates = []
-    for beat in beats:
+    for beat in beats[:-1]:
         dur_2 = beat.duration/2.0
         start1 = int(beat.start * track.sampleRate)
         start2 = int((beat.start+dur_2) * track.sampleRate)
@@ -51,17 +52,17 @@ def do_work(track, options):
         rates.append((start1-offset, 1+swing))
         rates.append((start2-offset, ((beat.duration-stretch)/dur_2)))
         if verb == True: print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % (beats.index(beat), dur_2, beat.duration-dur_2, stretch, beat.duration-stretch)
-
+    
     # get audio
-    vecin = track.data[offset:int((beats[-1].start + beats[-1].duration) * track.sampleRate),:]
-    # initial and final playback
-    pb1 = Playback(track, 0, beats[0].start)
-    pb2 = Playback(track, beats[-1].start+beats[-1].duration, offset)
+    vecin = track.data[offset:int(beats[-1].start * track.sampleRate),:]
     # time stretch
     if verb == True: print "\nTime stretching..."
     vecout = dirac.timeScale(vecin, rates, track.sampleRate, 0)
     # build timestretch AudioData object
     ts = AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=track.sampleRate, numChannels=vecout.shape[1])
+    # initial and final playback
+    pb1 = Playback(track, 0, beats[0].start)
+    pb2 = Playback(track, beats[-1].start, offset)
 
     return [pb1, ts, pb2]
 
@@ -108,7 +109,7 @@ def main():
 
 
 if __name__ == "__main__":
-    #try:
-    main()
-    #except Exception, e:
-    #    print e
+    try:
+        main()
+    except Exception, e:
+        print e
