@@ -32,11 +32,12 @@ def get_dirac():
     lib_sources = [os.path.join(pydirac,'diracmodule.cpp'), os.path.join(pydirac, 'source', 'Dirac_LE.cpp')]
     
     platform = os.uname()[0] if hasattr(os, 'uname') else 'Windows'
+    libname = 'Dirac64' if platform == 'Linux' and os.uname()[-1] == 'x86_64' else 'Dirac'
     return Extension(   'dirac',
                         sources = lib_sources,
                         extra_compile_args = [],
                         include_dirs = ['source', numpy.get_include(), numpy.get_numarray_include()],
-                        libraries = ['Dirac'],
+                        libraries = [libname],
                         library_dirs = [os.path.join(pydirac, 'libs', platform)],
                         extra_link_args = link_args,
                      )
