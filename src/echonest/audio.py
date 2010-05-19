@@ -629,7 +629,7 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None,
     if sampleRate is not None:
         command += " -ar " + str(sampleRate)
     if outfile is not None:
-        command += " " + outfile
+        command += " \"%s\"" % outfile
     if verbose:
         print >> sys.stderr, command
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
