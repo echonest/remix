@@ -21,7 +21,7 @@ def get_action():
     cAction = os.path.join('external', 'cAction')   
     return Extension("cAction",
                         sources = [os.path.join(cAction, 'actionmodule.cpp')],
-                        extra_compile_args = [],
+                        extra_compile_args = ['-Wno-unused'],
                         include_dirs = [numpy.get_include(), numpy.get_numarray_include()],
                      )
     
@@ -35,7 +35,7 @@ def get_dirac():
     libname = 'Dirac64' if platform == 'Linux' and os.uname()[-1] == 'x86_64' else 'Dirac'
     return Extension(   'dirac',
                         sources = lib_sources,
-                        extra_compile_args = [],
+                        extra_compile_args = ['-Wno-unused'],
                         include_dirs = ['source', numpy.get_include(), numpy.get_numarray_include()],
                         libraries = [libname],
                         library_dirs = [os.path.join(pydirac, 'libs', platform)],
@@ -59,7 +59,7 @@ def get_soundtouch():
     
     if is_linux or is_mac:
         sources += ['cpu_detect_x86_gcc.cpp']
-        extra_compile_args=['-fcheck-new', '-O3']
+        extra_compile_args=['-fcheck-new', '-O3', '-Wno-unused']
     else:
         sources += ['cpu_detect_x86_win.cpp', '3dnow_win.cpp']
     pysoundtouch = os.path.join('external','pysoundtouch14','libsoundtouch')
