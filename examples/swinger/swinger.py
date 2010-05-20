@@ -39,19 +39,31 @@ def do_work(track, options):
     if swing < -0.9: swing = -0.9
     if swing > +0.9: swing = +0.9
     
+    if swing == 0:
+        return Playback(track, 0, track.analysis.duration)
+    
     beats = track.analysis.beats
     offset = int(beats[0].start * track.sampleRate)
     
     # build rates
     rates = []
     for beat in beats[:-1]:
-        dur_2 = beat.duration/2.0
+        if 0 < swing:
+            rate1 = 1+swing
+            dur = beat.duration/2.0
+            stretch = dur * rate1
+            rate2 = (beat.duration-stretch)/dur
+        else:
+            rate1 = 1 / (1+abs(swing))
+            dur = (beat.duration/2.0) / rate1
+            stretch = dur * rate1
+            rate2 = (beat.duration-stretch)/(beat.duration-dur)
         start1 = int(beat.start * track.sampleRate)
-        start2 = int((beat.start+dur_2) * track.sampleRate)
-        stretch = dur_2 * (1+swing)
-        rates.append((start1-offset, 1+swing))
-        rates.append((start2-offset, ((beat.duration-stretch)/dur_2)))
-        if verb == True: print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % (beats.index(beat), dur_2, beat.duration-dur_2, stretch, beat.duration-stretch)
+        start2 = int((beat.start+dur) * track.sampleRate)
+        print rate1, rate2
+        rates.append((start1-offset, rate1))
+        rates.append((start2-offset, rate2))
+        if verb == True: print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % (beats.index(beat), dur, beat.duration-dur, stretch, beat.duration-stretch)
     
     # get audio
     vecin = track.data[offset:int(beats[-1].start * track.sampleRate),:]
@@ -62,7 +74,7 @@ def do_work(track, options):
     ts = AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=track.sampleRate, numChannels=vecout.shape[1])
     # initial and final playback
     pb1 = Playback(track, 0, beats[0].start)
-    pb2 = Playback(track, beats[-1].start, offset)
+    pb2 = Playback(track, beats[-1].start, track.analysis.duration-beats[-1].start)
 
     return [pb1, ts, pb2]
 
