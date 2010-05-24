@@ -13,16 +13,10 @@ from echonest.audio import _attributeParser as attribute_parser
 from echonest.audio import _segmentsParser as segment_parser
 from echonest.audio import AudioData
 
-try:
-    from beta_pyechonest.proxies import attrdict
-except:
-    sys.exit("""
-                You need to have v4 pyechonest (BETA) installed for cloud_support.py to work!
-                Just check it out and install it:
-                    svn checkout http://pyechonest.googlecode.com/svn/branches/beta_pyechonest beta_pyechonest
-                    cd beta_pyechonest
-                    python setup.py install
-            """)
+class attrdict(dict):
+    def __init__(self, *args, **kwargs):
+        dict.__init__(self, *args, **kwargs)
+        self.__dict__ = self
 
 class AnalysisProxy(object):
     def __init__(self, jsonpath):
@@ -115,7 +109,7 @@ class AnalyzedAudioFile(AudioData):
     Equivalent to LocalAudioFile, this class assumes you have a local .json
     version of the analysis (produced by an3).
     """
-    def __init__(self, filename):
+    def __init__(self, filename, defer=False):
         """
         :param filename: path to a local audio file, with a .json sidecar file.
         """
@@ -123,5 +117,5 @@ class AnalyzedAudioFile(AudioData):
         self.analysis.identifier = filename # better than nothing
         # analyzer has the md5 of the decoded audio bits, which is less useful
         self.analysis.md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
-        AudioData.__init__(self, filename=filename)
+        AudioData.__init__(self, filename=filename, defer=defer)
         self.analysis.source = self # circles!

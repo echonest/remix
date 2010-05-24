@@ -6,7 +6,6 @@ See the docs here for how to use the api directly:
 http://beta.developer.echonest.com/song.html#search
 """
 import os
-import simplejson
 import sys
 import urllib
 from urllib2 import quote, urlparse
@@ -25,26 +24,28 @@ except:
 from cloud_support import AnalyzedAudioFile
 
 
-def find_track(artist, title):
+def find_track(artist, title, catalog):
     """
         Given an artist and title, uses v4 pyechonest to get a song object,
-        download the track and audio analysis for that song, and return an 
-        AudioData-type thing.
+        download the track and audio analysis for that song from the given 
+        catalog, and return an AudioData-type thing.
     """
-    songs = song.search(artist=artist, title=title, results=1, buckets=['id:paulify'], limit=True)
+    songs = song.search(artist=artist, title=title, results=1, buckets=['id:' + catalog], limit=True)
     if songs:
-        return make_track(songs[0])
+        return make_track(songs[0], catalog)
     return None
 
-def make_track(s):
+def make_track(s, catalog):
     """
         Takes a song object, created by manipulating v4 pyechonest.
         Downloads the audio for the song, as well as the full analysis.
         Synthesizes those into the return value, a remix AudioData object.
         
         returns None if either the audio or the analysis could not be found.
+        
+        Catalog specifies the audio source.
     """
-    tracks = s.get_tracks(catalog='paulify', limit=True)
+    tracks = s.get_tracks(catalog=catalog, limit=True)
     t = None
     if tracks:
         track = tracks[0]
