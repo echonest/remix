@@ -14,7 +14,7 @@ try:
     from beta_pyechonest import song
 except:
     sys.exit("""
-            You need to have v4 pyechonest (BETA) installed for cloud_support.py to work!
+            You need to have v4 pyechonest (BETA) installed for cloud.py to work!
             Just check it out and install it:
                 svn checkout http://pyechonest.googlecode.com/svn/branches/beta_pyechonest beta_pyechonest
                 cd beta_pyechonest
