@@ -13,14 +13,14 @@ from echonest.selection import have_pitch_max,have_pitches_max
 
 usage = """
 Usage: 
-    python one.py <artist> <title (in quotes if necessary)> <output_filename>
+    python one.py <catalog> <artist> <title (in quotes if necessary)> <output_filename>
 
 Example:
-    python one.py EverythingIsOnTheOne.mp3 EverythingIsReallyOnTheOne.mp3
+    python one.py CATALOG_NAME Parliament "Everything is on the One" EverythingIsReallyOnTheOne.mp3
 """
 
-def main(artist, title, output_filename):
-    audiofile = cloud.find_track(artist, title)
+def main(catalog, artist, title, output_filename):
+    audiofile = cloud.find_track(artist, title, catalog)
     if not audiofile:
         print 'Unable to find a track with artist "%s" and title "%s"' % (artist, title)
         return;
@@ -35,10 +35,11 @@ def main(artist, title, output_filename):
 if __name__ == '__main__':
     import sys
     try:
-        artist = sys.argv[1]
-        title = sys.argv[2]
-        output_filename = sys.argv[3]
+        catalog = sys.argv[1]
+        artist = sys.argv[2]
+        title = sys.argv[3]
+        output_filename = sys.argv[4]
     except:
         print usage
         sys.exit(-1)
-    main(artist, title, output_filename)
+    main(catalog, artist, title, output_filename)

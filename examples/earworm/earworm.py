@@ -517,18 +517,12 @@ def main():
         return -1
     
     track = None
-    if len(args) == 2:
-        track = find_track(args[0], args[1])
-        if not track:
-            print "Couldn't find %s by %s" % (args[1], args[0])
-            return 1
+    mp3 = args[0]
+    
+    if os.path.exists(mp3 + '.json'):
+        track = AnalyzedAudioFile(mp3)
     else:
-        mp3 = args[0]
-        
-        if os.path.exists(mp3 + '.json'):
-            track = AnalyzedAudioFile(mp3)
-        else:
-            track = LocalAudioFile(mp3)
+        track = LocalAudioFile(mp3)
     
     # this is where the work takes place
     actions = do_work(track, options)

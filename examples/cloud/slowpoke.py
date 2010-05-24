@@ -18,12 +18,12 @@ from beta_pyechonest import song
 
 usage = """
 Usage: 
-    python slowpoke.py speed_limit <output_filename>
+    python slowpoke.py catalog speed_limit <output_filename>
 Example:
-    python slowpoke.py 55 sped_up.mp3
+    python slowpoke.py CATALOG_NAME 55 sped_up.mp3
 """
 
-def main(speed_limit, output_filename):
+def main(catalog, speed_limit, output_filename):
     if (speed_limit < 10):
         raise Exception("You must be in a school zone; no speedup is possible")
     
@@ -34,7 +34,7 @@ def main(speed_limit, output_filename):
     track = None
     songs.reverse()
     while not track and songs:
-        track = cloud.make_track(songs.pop())
+        track = cloud.make_track(songs.pop(), catalog)
     
     if not track:
         raise Exception("Couldn't get data for any of the slowpokes. Sorry!")
@@ -46,9 +46,10 @@ def main(speed_limit, output_filename):
 
 if __name__ == '__main__':
     try:
-        speed_limit = int(sys.argv[1])
-        output_filename = sys.argv[2]
+        catalog = sys.argv[1]
+        speed_limit = int(sys.argv[2])
+        output_filename = sys.argv[3]
     except:
         sys.exit(usage)
     
-    main(speed_limit, output_filename)
+    main(catalog, speed_limit, output_filename)
