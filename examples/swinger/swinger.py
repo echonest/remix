@@ -44,26 +44,29 @@ def do_work(track, options):
     
     beats = track.analysis.beats
     offset = int(beats[0].start * track.sampleRate)
-    
-    # build rates
+
+    # compute rates
     rates = []
     for beat in beats[:-1]:
+        # put swing
         if 0 < swing:
             rate1 = 1+swing
             dur = beat.duration/2.0
             stretch = dur * rate1
             rate2 = (beat.duration-stretch)/dur
+        # remove swing
         else:
             rate1 = 1 / (1+abs(swing))
             dur = (beat.duration/2.0) / rate1
             stretch = dur * rate1
             rate2 = (beat.duration-stretch)/(beat.duration-dur)
+        # build list of rates
         start1 = int(beat.start * track.sampleRate)
         start2 = int((beat.start+dur) * track.sampleRate)
-        print rate1, rate2
         rates.append((start1-offset, rate1))
         rates.append((start2-offset, rate2))
-        if verb == True: print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % (beats.index(beat), dur, beat.duration-dur, stretch, beat.duration-stretch)
+        if verb == True: 
+            print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % (beats.index(beat), dur, beat.duration-dur, stretch, beat.duration-stretch)
     
     # get audio
     vecin = track.data[offset:int(beats[-1].start * track.sampleRate),:]
