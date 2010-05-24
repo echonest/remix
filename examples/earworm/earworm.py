@@ -24,7 +24,6 @@ import sys
 from echonest.action import Playback, Jump, Fadeout, render, display_actions
 from echonest.audio import LocalAudioFile
 from echonest.cloud_support import AnalyzedAudioFile
-from echonest.cloud import find_track
 
 from earworm_support import evaluate_distance, timbre_whiten, resample_features
 from utils import rows, tuples, flatten
