@@ -1,3 +1,9 @@
+1.3 - May 13 2010
+
+- Action.py: crossfade, fadein, fadeout, jump, crossmatch, with c implementations for speed.
+- New time stretcher (pydirac)
+- Remix without local audio using cloud.py (requires beta_pyechonest and a catalog. Catalogs coming soon)
+
 1.2 - July 10 2009
 
 - Native installers for Windows and Mac
