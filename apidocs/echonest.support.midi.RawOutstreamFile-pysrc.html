@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,16 +60,16 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="echonest.support.midi.RawOutstreamFile-module.html">Module echonest.support.midi.RawOutstreamFile</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># standard library imports</tt> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># standard library imports</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
 <a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringType</tt> </tt>
 <a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">struct</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unpack</tt> </tt>
 <a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">cStringIO</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringIO</tt> </tt>
 <a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># custom import</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module echonest.support.midi.DataTypeConverters=echonest.support.midi.DataTypeConverters-module.html"><a title="echonest.support.midi.DataTypeConverters" class="py-name" href="#" onclick="return doclink('link-0', 'DataTypeConverters', 'link-0');">DataTypeConverters</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.writeBew()=echonest.support.midi.DataTypeConverters-module.html#writeBew,Method echonest.support.midi.RawOutstreamFile.RawOutstreamFile.writeBew()=echonest.support.midi.RawOutstreamFile.RawOutstreamFile-class.html#writeBew"><a title="echonest.support.midi.DataTypeConverters.writeBew
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># custom import</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module echonest.support.midi.DataTypeConverters=echonest.support.midi.DataTypeConverters-module.html"><a title="echonest.support.midi.DataTypeConverters" class="py-name" href="#" onclick="return doclink('link-0', 'DataTypeConverters', 'link-0');">DataTypeConverters</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.writeBew()=echonest.support.midi.DataTypeConverters-module.html#writeBew,Method echonest.support.midi.RawOutstreamFile.RawOutstreamFile.writeBew()=echonest.support.midi.RawOutstreamFile.RawOutstreamFile-class.html#writeBew"><a title="echonest.support.midi.DataTypeConverters.writeBew
 echonest.support.midi.RawOutstreamFile.RawOutstreamFile.writeBew" class="py-name" href="#" onclick="return doclink('link-1', 'writeBew', 'link-1');">writeBew</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.writeVar()=echonest.support.midi.DataTypeConverters-module.html#writeVar"><a title="echonest.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-2', 'writeVar', 'link-2');">writeVar</a></tt><tt class="py-op">,</tt> <tt id="link-3" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.fromBytes()=echonest.support.midi.DataTypeConverters-module.html#fromBytes"><a title="echonest.support.midi.DataTypeConverters.fromBytes" class="py-name" href="#" onclick="return doclink('link-3', 'fromBytes', 'link-3');">fromBytes</a></tt> </tt>
 <a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
 <a name="RawOutstreamFile"></a><div id="RawOutstreamFile-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="RawOutstreamFile-toggle" onclick="return toggle('RawOutstreamFile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="echonest.support.midi.RawOutstreamFile.RawOutstreamFile-class.html">RawOutstreamFile</a><tt class="py-op">:</tt> </tt>
@@ -85,8 +85,8 @@ echonest.support.midi.RawOutstreamFile.RawOutstreamFile.writeBew" class="py-name
 <a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">outfile</tt> <tt class="py-op">=</tt> <tt class="py-name">outfile</tt> </tt>
 </div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
 <a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
-<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-comment"># native data reading functions</tt> </tt>
-<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-comment"># native data reading functions</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
 <a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
 <a name="RawOutstreamFile.writeSlice"></a><div id="RawOutstreamFile.writeSlice-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="RawOutstreamFile.writeSlice-toggle" onclick="return toggle('RawOutstreamFile.writeSlice');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.RawOutstreamFile.RawOutstreamFile-class.html#writeSlice">writeSlice</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">str_slice</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="RawOutstreamFile.writeSlice-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="RawOutstreamFile.writeSlice-expanded"><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-docstring">"Writes the next text slice to the raw data"</tt> </tt>
@@ -172,14 +172,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:16 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:18:03 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,8 +60,8 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="echonest.support.midi.MidiOutStream-module.html">Module echonest.support.midi.MidiOutStream</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
-<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream"></a><div id="MidiOutStream-def"><a name="L3"></a><tt class="py-lineno">  3</tt> <a class="py-toggle" href="#" id="MidiOutStream-toggle" onclick="return toggle('MidiOutStream');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html">MidiOutStream</a><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MidiOutStream-expanded"><a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
 <a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
@@ -83,17 +83,17 @@
 <a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.__init__"></a><div id="MidiOutStream.__init__-def"><a name="L22"></a><tt class="py-lineno"> 22</tt> <a class="py-toggle" href="#" id="MidiOutStream.__init__-toggle" onclick="return toggle('MidiOutStream.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.__init__-expanded"><a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">         </tt>
-<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-comment"># the time is rather global, so it needs to be stored </tt> </tt>
-<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># here. Otherwise there would be no really simple way to </tt> </tt>
-<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># calculate it. The alternative would be to have each event </tt> </tt>
-<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># handler do it. That sucks even worse!</tt> </tt>
-<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_absolute_time</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-comment"># the time is rather global, so it needs to be stored </tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-comment"># here. Otherwise there would be no really simple way to </tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-comment"># calculate it. The alternative would be to have each event </tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-comment"># handler do it. That sucks even worse!</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_absolute_time</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
 <a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_relative_time</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
 <a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_current_track</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
 <a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_running_status</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
 </div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
-<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-comment"># time handling event handlers. They should be overwritten with care</tt> </tt>
-<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-comment"># time handling event handlers. They should be overwritten with care</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.update_time"></a><div id="MidiOutStream.update_time-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="MidiOutStream.update_time-toggle" onclick="return toggle('MidiOutStream.update_time');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#update_time">update_time</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">new_time</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">relative</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.update_time-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.update_time-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
 <a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">        Updates the time, if relative is true, new_time is relative, </tt> </tt>
@@ -121,8 +121,8 @@
 </div><div id="MidiOutStream.abs_time-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.abs_time-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-docstring">"Returns the absolute time"</tt> </tt>
 <a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_absolute_time</tt> </tt>
 </div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
-<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-comment"># running status methods</tt> </tt>
-<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-comment"></tt>     </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-comment"># running status methods</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">     </tt>
 <a name="MidiOutStream.reset_run_stat"></a><div id="MidiOutStream.reset_run_stat-def"><a name="L64"></a><tt class="py-lineno"> 64</tt> <a class="py-toggle" href="#" id="MidiOutStream.reset_run_stat-toggle" onclick="return toggle('MidiOutStream.reset_run_stat');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_run_stat">reset_run_stat</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.reset_run_stat-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.reset_run_stat-expanded"><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-docstring">"Invalidates the running status"</tt> </tt>
 <a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_running_status</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
@@ -135,8 +135,8 @@
 </div><div id="MidiOutStream.get_run_stat-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.get_run_stat-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-docstring">"Set the new running status"</tt> </tt>
 <a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_running_status</tt> </tt>
 </div><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
-<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-comment"># track handling event handlers</tt> </tt>
-<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-comment"></tt>     </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-comment"># track handling event handlers</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">     </tt>
 <a name="MidiOutStream.set_current_track"></a><div id="MidiOutStream.set_current_track-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="MidiOutStream.set_current_track-toggle" onclick="return toggle('MidiOutStream.set_current_track');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_current_track">set_current_track</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">new_track</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.set_current_track-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.set_current_track-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-docstring">"Sets the current track number"</tt> </tt>
 <a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_current_track</tt> <tt class="py-op">=</tt> <tt class="py-name">new_track</tt> </tt>
@@ -146,9 +146,9 @@
 <a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_current_track</tt> </tt>
 </div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">     </tt>
 <a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">     </tt>
-<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## Midi events</tt> </tt>
-<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-comment">## Midi events</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
 <a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.channel_message"></a><div id="MidiOutStream.channel_message-def"><a name="L91"></a><tt class="py-lineno"> 91</tt> <a class="py-toggle" href="#" id="MidiOutStream.channel_message-toggle" onclick="return toggle('MidiOutStream.channel_message');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_message">channel_message</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message_type</tt><tt class="py-op">,</tt> <tt class="py-param">channel</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.channel_message-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.channel_message-expanded"><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-docstring">"""The default event handler for channel messages"""</tt> </tt>
@@ -221,9 +221,9 @@
 <a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
 <a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
 <a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"> </tt>
-<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## System Exclusive</tt> </tt>
-<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt class="py-comment">## System Exclusive</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.system_exclusive"></a><div id="MidiOutStream.system_exclusive-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="MidiOutStream.system_exclusive-toggle" onclick="return toggle('MidiOutStream.system_exclusive');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#system_exclusive">system_exclusive</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.system_exclusive-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.system_exclusive-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
 <a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
@@ -232,9 +232,9 @@
 <a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
 </div><a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"> </tt>
 <a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
-<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## Common events</tt> </tt>
-<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-comment">## Common events</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.song_position_pointer"></a><div id="MidiOutStream.song_position_pointer-def"><a name="L176"></a><tt class="py-lineno">176</tt> <a class="py-toggle" href="#" id="MidiOutStream.song_position_pointer-toggle" onclick="return toggle('MidiOutStream.song_position_pointer');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_position_pointer">song_position_pointer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.song_position_pointer-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.song_position_pointer-expanded"><a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt>
 <a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
@@ -267,9 +267,9 @@
 <a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
 </div><a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"> </tt>
 <a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"> </tt>
-<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt class="py-comment">#########################</tt> </tt>
-<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># header does not really belong here. But anyhoo!!!</tt> </tt>
-<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"><tt class="py-comment"></tt>     </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt class="py-comment">#########################</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">    <tt class="py-comment"># header does not really belong here. But anyhoo!!!</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">     </tt>
 <a name="MidiOutStream.header"></a><div id="MidiOutStream.header-def"><a name="L211"></a><tt class="py-lineno">211</tt> <a class="py-toggle" href="#" id="MidiOutStream.header-toggle" onclick="return toggle('MidiOutStream.header');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#header">header</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">format</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">nTracks</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-param">division</tt><tt class="py-op">=</tt><tt class="py-number">96</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.header-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.header-expanded"><a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"> </tt>
 <a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
@@ -288,9 +288,9 @@
 <a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
 </div><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"> </tt>
 <a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
-<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## meta events</tt> </tt>
-<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">    <tt class="py-comment">## meta events</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt>
 <a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.meta_event"></a><div id="MidiOutStream.meta_event-def"><a name="L233"></a><tt class="py-lineno">233</tt> <a class="py-toggle" href="#" id="MidiOutStream.meta_event-toggle" onclick="return toggle('MidiOutStream.meta_event');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#meta_event">meta_event</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">meta_type</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.meta_event-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.meta_event-expanded"><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">         </tt>
@@ -466,9 +466,9 @@
 <a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line"> </tt>
 <a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line"> </tt>
 <a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line"> </tt>
-<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
-<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">## realtime events</tt> </tt>
-<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">    <tt class="py-comment">#####################</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">    <tt class="py-comment">## realtime events</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"> </tt>
 <a name="MidiOutStream.timing_clock"></a><div id="MidiOutStream.timing_clock-def"><a name="L410"></a><tt class="py-lineno">410</tt> <a class="py-toggle" href="#" id="MidiOutStream.timing_clock-toggle" onclick="return toggle('MidiOutStream.timing_clock');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#timing_clock">timing_clock</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="MidiOutStream.timing_clock-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MidiOutStream.timing_clock-expanded"><a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"> </tt>
 <a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
@@ -566,14 +566,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:17 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:18:03 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

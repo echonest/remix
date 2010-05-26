@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -59,7 +59,7 @@
 <h1 class="epydoc">Source Code for <a href="pyechonest.decorators-module.html">Module pyechonest.decorators</a></h1>
 <pre class="py-src">
 <a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># from http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize</tt> </tt>
-<a name="memoized"></a><div id="memoized-def"><a name="L2"></a><tt class="py-lineno"> 2</tt> <a class="py-toggle" href="#" id="memoized-toggle" onclick="return toggle('memoized');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="pyechonest.decorators.memoized-class.html">memoized</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="memoized"></a><div id="memoized-def"><a name="L2"></a><tt class="py-lineno"> 2</tt> <a class="py-toggle" href="#" id="memoized-toggle" onclick="return toggle('memoized');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pyechonest.decorators.memoized-class.html">memoized</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="memoized-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="memoized-expanded"><a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line">    <tt class="py-docstring">"""Decorator that caches a function's return value each time it is called.</tt> </tt>
 <a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">    If called later with the same arguments, the cached value is returned, and</tt> </tt>
 <a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">    not re-evaluated.</tt> </tt>
@@ -76,8 +76,8 @@
 <a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">value</tt> </tt>
 <a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">TypeError</tt><tt class="py-op">:</tt> </tt>
 <a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">            <tt class="py-comment"># uncachable -- for instance, passing a list as an argument.</tt> </tt>
-<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-comment"># Better to not cache than to blow up entirely.</tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">func</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">            <tt class="py-comment"># Better to not cache than to blow up entirely.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">func</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">     </tt>
 <a name="memoized.__repr__"></a><div id="memoized.__repr__-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="memoized.__repr__-toggle" onclick="return toggle('memoized.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pyechonest.decorators.memoized-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="memoized.__repr__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="memoized.__repr__-expanded"><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the function's docstring."""</tt> </tt>
@@ -110,14 +110,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:17 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:18:03 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
