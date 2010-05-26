@@ -26,7 +26,7 @@ def get_action():
                      )
     
 def get_dirac():
-    link_args = ['-framework Carbon'] if is_mac else []
+    link_args = ['-framework', 'Carbon'] if is_mac else []
     
     pydirac = os.path.join('external', 'pydirac225')
     lib_sources = [os.path.join(pydirac,'diracmodule.cpp'), os.path.join(pydirac, 'source', 'Dirac_LE.cpp')]
