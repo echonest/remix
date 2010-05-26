@@ -1,4 +1,4 @@
-How to install Remix 1.2 from sources
+How to install Remix 1.3 from sources
 
 = Introduction =
 
@@ -10,7 +10,7 @@ Installing remix from source requires:
 
   * python2.5-dev -- Python 2.5 or 2.6 with the headers
   * ffmpeg (*only if you are on Linux*)
-  * python-numpy (*only if you are on Windows, Linux or a pre-10.5 Mac OS*)
+  * python-numpy
   * subversion
   * A build environment, either XCode (mac), build-essential (gcc, Linux), Visual Studio Express or higher (Windows)
 
@@ -27,7 +27,7 @@ sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
 sudo python setup.py install
 }}}
 
-  * Note that the setup.py script also installs a version of ffmpeg on Mac and Windows called "en-ffmpeg" as well as the youtube-dl script. The pysoundtouch libraries are also compiled and copied over. The version of ffmpeg we install is not modified in any way but includes various useful codecs and is confirmed to work well with Remix. If you have your own version of ffmpeg, feel free to use it but it needs to be symlinked to en-ffmpeg (we do this to not trample on existing versions of ffmpeg a user may have installed.)
+  * Note that the setup.py script also installs a version of ffmpeg on Mac and Windows called "en-ffmpeg" as well as the youtube-dl script. The pysoundtouch and pydirac libraries are also compiled and copied over. The version of ffmpeg we install is not modified in any way but includes various useful codecs and is confirmed to work well with Remix. If you have your own version of ffmpeg, feel free to use it but it needs to be symlinked to en-ffmpeg (we do this to not trample on existing versions of ffmpeg a user may have installed.)
 
   * Follow the [DeveloperKeySetup developer API Key setup instructions.] 
 
