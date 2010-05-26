@@ -1,11 +1,11 @@
 # created 4/21/2010 by Jason
 # http://docs.python.org/extending/building.html
 from distutils.core import setup, Extension
-import os, sys
+import os
 import numpy
 
 platform = os.uname()[0] if hasattr(os, 'uname') else 'Windows'
-link_args = ['-framework Carbon'] if platform == 'Darwin' else []
+link_args = ['-framework', 'Carbon'] if platform == 'Darwin' else []
 
 dirac = Extension(  "dirac",
                     sources = ['diracmodule.cpp', 'source/Dirac_LE.cpp'],
