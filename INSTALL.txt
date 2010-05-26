@@ -1,8 +1,8 @@
-How to install Remix 1.3 from sources
+How to install Remix from sources
 
 = Introduction =
 
-Here is how you install Remix 1.2 from source on Mac, Windows, or Linux. This method is either for Linux users. "experts" or developers, people that may have their own versions of Python already installed or want to contribute to Remix in some way. If you're not a developer, you most likely want [http://code.google.com/p/echo-nest-remix one of the install packages on the main page, not this stuff.]
+Here is how you install Remix from source on Mac, Windows, or Linux. This method is either for Linux users. "experts" or developers, people that may have their own versions of Python already installed or want to contribute to Remix in some way. If you're not a developer, you most likely want [http://code.google.com/p/echo-nest-remix one of the install packages on the main page, not this stuff.]
 
 == Requirements ==
 
