@@ -13,18 +13,7 @@ import sys
 from echonest.audio import assemble, AudioData
 from cAction import limit, crossfade, fadein, fadeout
 
-try:
-    if hasattr(os, 'uname') and os.uname()[0] == 'Darwin':
-        # The default dlopenflags setting, RTLD_NOW, causes us to look for stuff that's defined in -framework Carbon
-        # and then barf. Let's take it nice and lazy instead.
-        f = sys.getdlopenflags()
-        sys.setdlopenflags(0)
-        import dirac
-        sys.setdlopenflags(f)
-    else:
-        import dirac
-except Exception, e:
-    sys.exit("Unable to load dirac, which is required for Crossmatch. Please install pydirac: %s" % e)
+import dirac
 
 def rows(m):
     """returns the # of rows in a numpy matrix"""
@@ -56,6 +45,7 @@ def render(actions, filename):
 
 
 class Playback(object):
+    """A snippet of the given track with start and duration. Volume leveling may be applied."""
     def __init__(self, track, start, duration):
         self.track = track
         self.start = float(start)
@@ -80,7 +70,7 @@ class Playback(object):
 
 
 class Fadeout(Playback):
-
+    """Fadeout"""
     def render(self):
         gain = getattr(self.track, 'gain', 1.0)
         output = self.track[self]
@@ -96,7 +86,7 @@ class Fadeout(Playback):
 
 
 class Fadein(Playback):
-
+    """Fadein"""
     def render(self):
         gain = getattr(self.track, 'gain', 1.0)
         output = self.track[self]
@@ -112,6 +102,7 @@ class Fadein(Playback):
 
 
 class Edit(object):
+    """Refer to a snippet of audio"""
     def __init__(self, track, start, duration):
         self.track = track
         self.start = float(start)
@@ -129,6 +120,7 @@ class Edit(object):
 
 
 class Crossfade(object):
+    """Crossfades between two tracks, at the start points specified, for the given duration"""
     def __init__(self, tracks, starts, duration, mode='linear'):
         self.t1, self.t2 = [Edit(t, s, duration) for t,s in zip(tracks, starts)]
         self.duration = self.t1.duration
@@ -148,6 +140,7 @@ class Crossfade(object):
 
 
 class Jump(Crossfade):
+    """Move from one point """
     def __init__(self, track, source, target, duration):
         self.track = track
         self.t1, self.t2 = (Edit(track, source, duration), Edit(track, target-duration, duration))
@@ -200,7 +193,7 @@ class Blend(object):
 
 
 class Crossmatch(Blend):
-    
+    """Makes a beat-matched crossfade between the two input tracks."""
     def calculate_durations(self):
         c, dec = 1.0, 1.0 / float(len(self.l1)+1)
         self.durations = []
@@ -249,6 +242,7 @@ class Crossmatch(Blend):
 
 
 def humanize_time(secs):
+    """Turns seconds into a string of the form HH:MM:SS, or MM:SS if less than one hour."""
     mins, secs = divmod(secs, 60)
     hours, mins = divmod(mins, 60)
     if 0 < hours: 
