@@ -11,23 +11,11 @@ Created by Tristan Jehan.
 
 from optparse import OptionParser
 import os, sys
+import dirac
 
 from echonest.audio import LocalAudioFile, AudioData
 from echonest.action import render, Playback, display_actions
 from echonest.cloud_support import AnalyzedAudioFile
-
-try:
-    if hasattr(os, 'uname') and os.uname()[0] == 'Darwin':
-        # The default dlopenflags setting, RTLD_NOW, causes us to look for stuff that's defined in -framework Carbon
-        # and then barf. Let's take it nice and lazy instead.
-        f = sys.getdlopenflags()
-        sys.setdlopenflags(0)
-        import dirac
-        sys.setdlopenflags(f)
-    else:
-        import dirac
-except Exception, e:
-    sys.exit("Unable to load dirac, which is required for Crossmatch. Please install pydirac: %s" % e)
 
 def do_work(track, options):
     
