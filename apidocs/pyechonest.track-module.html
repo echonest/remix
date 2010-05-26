@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,8 +58,12 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module track</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.track-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+
 A Python interface to the The Echo Nest's web API.  See
-<a class="rst-reference" href="http://developer.echonest.com/" target="_top">http://developer.echonest.com/</a> for details.
+http://developer.echonest.com/ for details.
+
+</pre>
 
 <!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
@@ -145,9 +149,43 @@ A Python interface to the The Echo Nest's web API.  See
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="pyechonest.track-module.html#upload" class="summary-sig-name">upload</a>(<span class="summary-sig-arg">filename_or_url</span>,
+          <td><span class="summary-sig"><a name="get_metadata"></a><span class="summary-sig-name">get_metadata</span>(<span class="summary-sig-arg">id_or_md5</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#get_metadata">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_analyze"></a><span class="summary-sig-name">_analyze</span>(<span class="summary-sig-arg">md5_or_trackID</span>,
         <span class="summary-sig-arg">wait</span>=<span class="summary-sig-default">True</span>)</span><br />
-      Upload a file or give a URL to the EN analyze API.</td>
+      Re-analyze a previously uploaded track.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_analyze">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="upload"></a><span class="summary-sig-name">upload</span>(<span class="summary-sig-arg">filename_or_url</span>,
+        <span class="summary-sig-arg">wait</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Create a Track object based on the results of _upload().</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#upload">source&nbsp;code</a></span>
             
@@ -168,6 +206,22 @@ A Python interface to the The Echo Nest's web API.  See
       Upload a file or give a URL to the EN analyze API.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#_upload">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="calc_md5"></a><span class="summary-sig-name">calc_md5</span>(<span class="summary-sig-arg">filename</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#calc_md5">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -242,6 +296,13 @@ A Python interface to the The Echo Nest's web API.  See
         <a name="TRUTH"></a><span class="summary-name">TRUTH</span> = <code title="{False: 'N', True: 'Y'}"><code class="variable-group">{</code>False<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">N</code><code class="variable-quote">'</code><code class="variable-op">, </code>True<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Y</code><code class="variable-quote">'</code><code class="variable-group">}</code></code>
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'pyechonest'"><code class="variable-quote">'</code><code class="variable-string">pyechonest</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
 </table>
 <!-- ==================== FUNCTION DETAILS ==================== -->
 <a name="section-FunctionDetails"></a>
@@ -261,26 +322,6 @@ A Python interface to the The Echo Nest's web API.  See
   </td>
 </tr>
 </table>
-<a name="upload"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">upload</span>(<span class="sig-arg">filename_or_url</span>,
-        <span class="sig-arg">wait</span>=<span class="sig-default">True</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyechonest.track-pysrc.html#upload">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  Upload a file or give a URL to the EN analyze API. If you call this with wait=False it will return immediately.
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
 <a name="_upload"></a>
 <div class="private">
 <table class="details" border="1" cellpadding="3"
@@ -296,7 +337,12 @@ A Python interface to the The Echo Nest's web API.  See
     </td>
   </tr></table>
   
-  Upload a file or give a URL to the EN analyze API. If you call this with wait=False it will return immediately.
+  <pre class="literalblock">
+
+Upload a file or give a URL to the EN analyze API.
+If you call this with wait=False it will return immediately.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -323,14 +369,14 @@ A Python interface to the The Echo Nest's web API.  See
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:08 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

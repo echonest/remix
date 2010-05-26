@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,7 +58,11 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module config</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.config-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+
 Global configuration variables for accessing the Echo Nest web API.
+
+</pre>
 
 <hr />
 <div class="fields">      <p><strong>Version:</strong>
@@ -85,7 +89,8 @@ Global configuration variables for accessing the Echo Nest web API.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="ECHO_NEST_API_KEY"></a><span class="summary-name">ECHO_NEST_API_KEY</span> = <code title="None">None</code>
+        <a name="ECHO_NEST_API_KEY"></a><span class="summary-name">ECHO_NEST_API_KEY</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr>
@@ -116,7 +121,7 @@ own choosing.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.config-module.html#MP3_BITRATE" class="summary-name">MP3_BITRATE</a> = <code title="192">192</code><br />
+        <a href="pyechonest.config-module.html#MP3_BITRATE" class="summary-name">MP3_BITRATE</a> = <code title="128">128</code><br />
       Default bitrate for MP3 output.
     </td>
   </tr>
@@ -135,6 +140,29 @@ of API results.
     </td><td class="summary">
         <a href="pyechonest.config-module.html#OBEY_RATE_LIMIT" class="summary-name">OBEY_RATE_LIMIT</a> = <code title="True">True</code><br />
       The Echo Nest limits users to 120 api calls per minute.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="TRACE_API_CALLS"></a><span class="summary-name">TRACE_API_CALLS</span> = <code title="False">False</code><br />
+      If true, API calls will be traced to the console
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ANALYSIS_VERSION"></a><span class="summary-name">ANALYSIS_VERSION</span> = <code title="3">3</code><br />
+      Analysis version (1 or 3)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'pyechonest'"><code class="variable-quote">'</code><code class="variable-string">pyechonest</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
@@ -162,14 +190,18 @@ of API results.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">MP3_BITRATE</h3>
-  Default bitrate for MP3 output. Conventionally an
+  <pre class="literalblock">
+
+Default bitrate for MP3 output. Conventionally an
 integer divisible by 32kbits/sec.
+
+</pre>
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-192
+128
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -181,10 +213,14 @@ integer divisible by 32kbits/sec.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">OBEY_RATE_LIMIT</h3>
-  The Echo Nest limits users to 120 api calls per minute.
+  <pre class="literalblock">
+
+The Echo Nest limits users to 120 api calls per minute.
 By default, pyechonest enforces this limit locally. Set this
 variable to False to turn of local enforcement. The Echo Nest
 api will still throttle you.
+
+</pre>
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -218,14 +254,14 @@ True
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 23:04:04 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

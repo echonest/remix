@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,14 +60,14 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="echonest.support.midi.RawInstreamFile-module.html">Module echonest.support.midi.RawInstreamFile</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
-<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
-<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># standard library imports</tt> </tt>
-<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringType</tt> </tt>
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># standard library imports</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringType</tt> </tt>
 <a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">struct</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unpack</tt> </tt>
 <a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
-<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># custom import</tt> </tt>
-<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module echonest.support.midi.DataTypeConverters=echonest.support.midi.DataTypeConverters-module.html"><a title="echonest.support.midi.DataTypeConverters" class="py-name" href="#" onclick="return doclink('link-0', 'DataTypeConverters', 'link-0');">DataTypeConverters</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.readBew()=echonest.support.midi.DataTypeConverters-module.html#readBew,Method echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#readBew"><a title="echonest.support.midi.DataTypeConverters.readBew
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># custom import</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module echonest.support.midi.DataTypeConverters=echonest.support.midi.DataTypeConverters-module.html"><a title="echonest.support.midi.DataTypeConverters" class="py-name" href="#" onclick="return doclink('link-0', 'DataTypeConverters', 'link-0');">DataTypeConverters</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.readBew()=echonest.support.midi.DataTypeConverters-module.html#readBew,Method echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew()=echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#readBew"><a title="echonest.support.midi.DataTypeConverters.readBew
 echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" href="#" onclick="return doclink('link-1', 'readBew', 'link-1');">readBew</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.readVar()=echonest.support.midi.DataTypeConverters-module.html#readVar"><a title="echonest.support.midi.DataTypeConverters.readVar" class="py-name" href="#" onclick="return doclink('link-2', 'readVar', 'link-2');">readVar</a></tt><tt class="py-op">,</tt> <tt id="link-3" class="py-name" targets="Function echonest.support.midi.DataTypeConverters.varLen()=echonest.support.midi.DataTypeConverters-module.html#varLen"><a title="echonest.support.midi.DataTypeConverters.varLen" class="py-name" href="#" onclick="return doclink('link-3', 'varLen', 'link-3');">varLen</a></tt> </tt>
 <a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
 <a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
@@ -97,23 +97,23 @@ echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" h
 echonest.support.midi.MidiInStream.MidiInStream.read" class="py-name" href="#" onclick="return doclink('link-4', 'read', 'link-4');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                <tt class="py-name">infile</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method echonest.support.midi.MidiInStream.MidiInStream.close()=echonest.support.midi.MidiInStream.MidiInStream-class.html#close"><a title="echonest.support.midi.MidiInStream.MidiInStream.close" class="py-name" href="#" onclick="return doclink('link-5', 'close', 'link-5');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                <tt class="py-comment"># don't close the f</tt> </tt>
-<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-name">infile</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="echonest.support.midi.MidiInFile.MidiInFile.read
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                <tt class="py-comment"># don't close the f</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-name">infile</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="echonest.support.midi.MidiInFile.MidiInFile.read
 echonest.support.midi.MidiInStream.MidiInStream.read" class="py-name" href="#" onclick="return doclink('link-6', 'read', 'link-4');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
-<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-comment"># start at beginning ;-)</tt> </tt>
-<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cursor</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-comment"># start at beginning ;-)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cursor</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
 </div><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
 <a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
-<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-comment"># setting up data manually</tt> </tt>
-<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-comment"></tt>     </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-comment"># setting up data manually</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">     </tt>
 <a name="RawInstreamFile.setData"></a><div id="RawInstreamFile.setData-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="RawInstreamFile.setData-toggle" onclick="return toggle('RawInstreamFile.setData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#setData">setData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="RawInstreamFile.setData-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RawInstreamFile.setData-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-docstring">"Sets the data from a string."</tt> </tt>
 <a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-name">data</tt> </tt>
 </div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">     </tt>
-<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-comment"># cursor operations</tt> </tt>
-<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-comment"># cursor operations</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
 <a name="RawInstreamFile.setCursor"></a><div id="RawInstreamFile.setCursor-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="RawInstreamFile.setCursor-toggle" onclick="return toggle('RawInstreamFile.setCursor');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#setCursor">setCursor</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">position</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="RawInstreamFile.setCursor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RawInstreamFile.setCursor-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-docstring">"Sets the absolute position if the cursor"</tt> </tt>
 <a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cursor</tt> <tt class="py-op">=</tt> <tt class="py-name">position</tt> </tt>
@@ -128,8 +128,8 @@ echonest.support.midi.MidiInStream.MidiInStream.read" class="py-name" href="#" o
 </div><div id="RawInstreamFile.moveCursor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RawInstreamFile.moveCursor-expanded"><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-docstring">"Moves the cursor to a new relative position"</tt> </tt>
 <a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cursor</tt> <tt class="py-op">+=</tt> <tt class="py-name">relative_position</tt> </tt>
 </div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
-<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-comment"># native data reading functions</tt> </tt>
-<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-comment"></tt>         </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt class="py-comment"># native data reading functions</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">         </tt>
 <a name="RawInstreamFile.nextSlice"></a><div id="RawInstreamFile.nextSlice-def"><a name="L68"></a><tt class="py-lineno"> 68</tt> <a class="py-toggle" href="#" id="RawInstreamFile.nextSlice-toggle" onclick="return toggle('RawInstreamFile.nextSlice');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.support.midi.RawInstreamFile.RawInstreamFile-class.html#nextSlice">nextSlice</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">length</tt><tt class="py-op">,</tt> <tt class="py-param">move_cursor</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="RawInstreamFile.nextSlice-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RawInstreamFile.nextSlice-expanded"><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-docstring">"Reads the next text slice from the raw data, with length"</tt> </tt>
 <a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">c</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cursor</tt> </tt>
@@ -155,8 +155,8 @@ echonest.support.midi.RawInstreamFile.RawInstreamFile.readBew" class="py-name" h
 <a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
 <a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">MAX_VARLEN</tt> <tt class="py-op">=</tt> <tt class="py-number">4</tt> <tt class="py-comment"># Max value varlen can be</tt> </tt>
 <a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">var</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="echonest.support.midi.DataTypeConverters.readVar" class="py-name" href="#" onclick="return doclink('link-10', 'readVar', 'link-2');">readVar</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.nextSlice" class="py-name" href="#" onclick="return doclink('link-11', 'nextSlice', 'link-9');">nextSlice</a></tt><tt class="py-op">(</tt><tt class="py-name">MAX_VARLEN</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-comment"># only move cursor the actual bytes in varlen</tt> </tt>
-<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.moveCursor" class="py-name" href="#" onclick="return doclink('link-12', 'moveCursor', 'link-7');">moveCursor</a></tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="echonest.support.midi.DataTypeConverters.varLen" class="py-name" href="#" onclick="return doclink('link-13', 'varLen', 'link-3');">varLen</a></tt><tt class="py-op">(</tt><tt class="py-name">var</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-comment"># only move cursor the actual bytes in varlen</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="echonest.support.midi.RawInstreamFile.RawInstreamFile.moveCursor" class="py-name" href="#" onclick="return doclink('link-12', 'moveCursor', 'link-7');">moveCursor</a></tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="echonest.support.midi.DataTypeConverters.varLen" class="py-name" href="#" onclick="return doclink('link-13', 'varLen', 'link-3');">varLen</a></tt><tt class="py-op">(</tt><tt class="py-name">var</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
 <a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">var</tt> </tt>
 </div></div><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
 <a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
@@ -202,14 +202,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:18 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:18:03 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

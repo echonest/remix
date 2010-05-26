@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,21 +58,27 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module sorting</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.sorting-pysrc.html">source&nbsp;code</a></span></p>
-<p>Sorting key functions as utilities for <a href="echonest.audio-module.html" class="link">echonest.audio</a>.</p>
-<p>For convenience, intended to be imported as:</p>
-<pre class="rst-literal-block">
-from audio.sorting import *
+<pre class="literalblock">
+
+Sorting key functions as utilities for `echonest.audio`.
+
+For convenience, intended to be imported as::
+
+   from audio.sorting import *
+
+All of the functions in this module can be used as a sorting key for
+`AudioQuantumList.ordered_by`, as in::
+
+    analysis.segments.ordered_by(duration)
+
+Some of the functions in this module return *another* function that takes 
+one argument, an `AudioQuantum`, and returns a value (typically a `float`)
+that can then be used as a sorting value.
+
+By convention, all of these functions are named to be noun phrases that 
+follow `sorted_by`, as seen above.
+
 </pre>
-<p>All of the functions in this module can be used as a sorting key for
-<code class="link">AudioQuantumList.ordered_by</code>, as in:</p>
-<pre class="rst-literal-block">
-analysis.segments.ordered_by(duration)
-</pre>
-<p>Some of the functions in this module return <em>another</em> function that takes
-one argument, an <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>, and returns a value (typically a <code class="link">float</code>)
-that can then be used as a sorting value.</p>
-<p>By convention, all of these functions are named to be noun phrases that
-follow <code class="link">sorted_by</code>, as seen above.</p>
 
 <!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
@@ -98,7 +104,7 @@ follow <code class="link">sorted_by</code>, as seen above.</p>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="confidence"></a><span class="summary-sig-name">confidence</span>(<span class="summary-sig-arg">x</span>)</span><br />
-      Returns the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <a href="echonest.sorting-module.html#confidence" class="link">confidence</a> as a sorting value.</td>
+      Returns the `AudioQuantum`'s `confidence` as a sorting value.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.sorting-pysrc.html#confidence">source&nbsp;code</a></span>
             
@@ -115,7 +121,7 @@ follow <code class="link">sorted_by</code>, as seen above.</p>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="duration"></a><span class="summary-sig-name">duration</span>(<span class="summary-sig-arg">x</span>)</span><br />
-      Returns the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <a href="echonest.sorting-module.html#duration" class="link">duration</a> as a sorting value.</td>
+      Returns the `AudioQuantum`'s `duration` as a sorting value.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.sorting-pysrc.html#duration">source&nbsp;code</a></span>
             
@@ -132,8 +138,8 @@ follow <code class="link">sorted_by</code>, as seen above.</p>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.sorting-module.html#timbre_value" class="summary-sig-name">timbre_value</a>(<span class="summary-sig-arg">index</span>)</span><br />
-      Returns a function that returns the value of <code class="link">timbre</code>[<em>index</em>]
-of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
+      Returns a function that returns the value of `timbre`\[*index*]
+of its input `AudioQuantum`.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.sorting-pysrc.html#timbre_value">source&nbsp;code</a></span>
             
@@ -150,8 +156,8 @@ of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">Audio
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.sorting-module.html#pitch_value" class="summary-sig-name">pitch_value</a>(<span class="summary-sig-arg">index</span>)</span><br />
-      Returns a function that returns the value of <code class="link">pitch</code>[<em>index</em>]
-of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
+      Returns a function that returns the value of `pitch`\[*index*]
+of its input `AudioQuantum`.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.sorting-pysrc.html#pitch_value">source&nbsp;code</a></span>
             
@@ -169,8 +175,8 @@ of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">Audio
         <tr>
           <td><span class="summary-sig"><a href="echonest.sorting-module.html#pitch_distance_from" class="summary-sig-name">pitch_distance_from</a>(<span class="summary-sig-arg">seg</span>)</span><br />
       Returns a function that returns the sum of the squared differences
-between the <code class="link">pitch</code> vector of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and the <code class="link">pitch</code>
-vector of the reference parameter <em>seg</em>.</td>
+between the `pitch` vector of its input `AudioQuantum` and the `pitch` 
+vector of the reference parameter *seg*.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.sorting-pysrc.html#pitch_distance_from">source&nbsp;code</a></span>
             
@@ -187,9 +193,9 @@ vector of the reference parameter <em>seg</em>.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.sorting-module.html#timbre_distance_from" class="summary-sig-name">timbre_distance_from</a>(<span class="summary-sig-arg">seg</span>)</span><br />
-      Returns a function that returns the sum of the squared differences
-between the <code class="link">pitch</code> vector of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and the <code class="link">pitch</code>
-vector of the reference parameter <em>seg</em>.</td>
+      Returns a function that returns the sum of the squared differences 
+between the `pitch` vector of its input `AudioQuantum` and the `pitch` 
+vector of the reference parameter *seg*.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.sorting-pysrc.html#timbre_distance_from">source&nbsp;code</a></span>
             
@@ -235,6 +241,32 @@ vector of the reference parameter <em>seg</em>.</td>
     </td>
   </tr>
 </table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code><br />
+      hash(x)
+    </td>
+  </tr>
+</table>
 <!-- ==================== FUNCTION DETAILS ==================== -->
 <a name="section-FunctionDetails"></a>
 <table class="details" border="1" cellpadding="3"
@@ -267,9 +299,13 @@ vector of the reference parameter <em>seg</em>.</td>
     </td>
   </tr></table>
   
-  Returns a function that returns the value of <code class="link">timbre</code>[<em>index</em>]
-of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>. Sorts by the values of the <em>index</em>-th
+  <pre class="literalblock">
+
+Returns a function that returns the value of `timbre`\[*index*]
+of its input `AudioQuantum`. Sorts by the values of the *index*-th 
 value in the timbre vector.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -288,9 +324,13 @@ value in the timbre vector.
     </td>
   </tr></table>
   
-  Returns a function that returns the value of <code class="link">pitch</code>[<em>index</em>]
-of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>. Sorts by the values of the <em>index</em>-th
+  <pre class="literalblock">
+
+Returns a function that returns the value of `pitch`\[*index*]
+of its input `AudioQuantum`. Sorts by the values of the *index*-th 
 value in the pitch vector.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -309,10 +349,14 @@ value in the pitch vector.
     </td>
   </tr></table>
   
-  Returns a function that returns the sum of the squared differences
-between the <code class="link">pitch</code> vector of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and the <code class="link">pitch</code>
-vector of the reference parameter <em>seg</em>. Sorts by the pitch distance
-from the reference <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>.
+  <pre class="literalblock">
+
+Returns a function that returns the sum of the squared differences
+between the `pitch` vector of its input `AudioQuantum` and the `pitch` 
+vector of the reference parameter *seg*. Sorts by the pitch distance 
+from the reference `AudioSegment`.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -331,10 +375,14 @@ from the reference <a href="echonest.audio.AudioSegment-class.html" class="link"
     </td>
   </tr></table>
   
-  Returns a function that returns the sum of the squared differences
-between the <code class="link">pitch</code> vector of its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and the <code class="link">pitch</code>
-vector of the reference parameter <em>seg</em>. Sorts by the pitch distance
-from the reference <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>.
+  <pre class="literalblock">
+
+Returns a function that returns the sum of the squared differences 
+between the `pitch` vector of its input `AudioQuantum` and the `pitch` 
+vector of the reference parameter *seg*. Sorts by the pitch distance 
+from the reference `AudioSegment`.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -353,8 +401,12 @@ from the reference <a href="echonest.audio.AudioSegment-class.html" class="link"
     </td>
   </tr></table>
   
-  Returns the sum of the twelve pitch vectors' elements. This is a very
+  <pre class="literalblock">
+
+Returns the sum of the twelve pitch vectors' elements. This is a very
 fast way of judging the relative noisiness of a segment.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -374,7 +426,11 @@ fast way of judging the relative noisiness of a segment.
     </td>
   </tr></table>
   
-  Local helper function. The square of the difference between a and b.
+  <pre class="literalblock">
+
+Local helper function. The square of the difference between a and b.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -401,14 +457,14 @@ fast way of judging the relative noisiness of a segment.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:07 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

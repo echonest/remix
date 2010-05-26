@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -62,43 +62,14 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class MidiOutFile</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile">source&nbsp;code</a></span></p>
 <center>
-<center>  <map id="uml_class_diagram_for_echonest_21" name="uml_class_diagram_for_echonest_21">
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#__init__" title="echonest.support.midi.MidiOutFile.MidiOutFile.__init__" alt="" coords="25,376,345,395"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#write" title="echonest.support.midi.MidiOutFile.MidiOutFile.write" alt="" coords="25,395,345,413"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#event_slice" title="Writes the slice of an event to the current track." alt="" coords="25,413,345,432"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#note_on" title="channel: 0&#45;15 note, velocity: 0&#45;127" alt="" coords="25,432,345,451"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#note_off" title="channel: 0&#45;15 note, velocity: 0&#45;127" alt="" coords="25,451,345,469"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#aftertouch" title="channel: 0&#45;15 note, velocity: 0&#45;127" alt="" coords="25,469,345,488"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#continuous_controller" title="channel: 0&#45;15 controller, value: 0&#45;127" alt="" coords="25,488,345,507"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#patch_change" title="channel: 0&#45;15 patch: 0&#45;127" alt="" coords="25,507,345,525"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#channel_pressure" title="channel: 0&#45;15 pressure: 0&#45;127" alt="" coords="25,525,345,544"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#pitch_bend" title="channel: 0&#45;15 value: 0&#45;16383" alt="" coords="25,544,345,563"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#system_exclusive" title="data: list of values in range(128)" alt="" coords="25,563,345,581"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_time_code" title="msg_type: 0&#45;7 values: 0&#45;15" alt="" coords="25,581,345,600"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#song_position_pointer" title="value: 0&#45;16383" alt="" coords="25,600,345,619"/>
-<area shape="rect" id="node66" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#sequencer_specific" title="data: The data as byte values" alt="" coords="25,637,345,656"/>
-<area shape="rect" id="node1" href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html" title="MidiOutFile is an eventhandler that subclasses MidiOutStream." alt="" coords="13,345,357,663"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#update_time" title="Updates the time, if relative is true, new_time is relative, else it&#39;s absolute." alt="" coords="17,37,353,56"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_time" title="reset time to 0" alt="" coords="17,56,353,75"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#rel_time" title="Returns the relative time" alt="" coords="17,75,353,93"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#abs_time" title="Returns the absolute time" alt="" coords="17,93,353,112"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#reset_run_stat" title="Invalidates the running status" alt="" coords="17,112,353,131"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_run_stat" title="Set the new running status" alt="" coords="17,131,353,149"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#get_run_stat" title="Set the new running status" alt="" coords="17,149,353,168"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#set_current_track" title="Sets the current track number" alt="" coords="17,168,353,187"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#get_current_track" title="Returns the current track number" alt="" coords="17,187,353,205"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_message" title="The default event handler for channel messages" alt="" coords="17,205,353,224"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#timing_clock" title="No values passed" alt="" coords="17,224,353,243"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_start" title="No values passed" alt="" coords="17,243,353,261"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_stop" title="No values passed" alt="" coords="17,261,353,280"/>
-<area shape="rect" id="node67" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#system_reset" title="No values passed" alt="" coords="17,299,353,317"/>
-<area shape="rect" id="node2" href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html" title="MidiOutstream is Basically an eventhandler." alt="" coords="5,6,365,325"/>
-</map>
-  <img src="uml_class_diagram_for_echonest_21.gif" alt='' usemap="#uml_class_diagram_for_echonest_21" ismap="ismap" class="graph-without-title" />
-</center>
+
 </center>
 <hr />
+<pre class="literalblock">
+
 MidiOutFile is an eventhandler that subclasses MidiOutStream.
+
+</pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -178,8 +149,7 @@ MidiOutFile is an eventhandler that subclasses MidiOutStream.
         <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
         <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
-      channel: 0-15
-note, velocity: 0-127</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.note_on">source&nbsp;code</a></span>
             
@@ -199,8 +169,7 @@ note, velocity: 0-127</td>
         <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
         <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
-      channel: 0-15
-note, velocity: 0-127</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.note_off">source&nbsp;code</a></span>
             
@@ -220,8 +189,7 @@ note, velocity: 0-127</td>
         <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
         <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
-      channel: 0-15
-note, velocity: 0-127</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.aftertouch">source&nbsp;code</a></span>
             
@@ -241,8 +209,7 @@ note, velocity: 0-127</td>
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">controller</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      channel: 0-15
-controller, value: 0-127</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.continuous_controller">source&nbsp;code</a></span>
             
@@ -261,8 +228,7 @@ controller, value: 0-127</td>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#patch_change" class="summary-sig-name">patch_change</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">patch</span>)</span><br />
-      channel: 0-15
-patch: 0-127</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.patch_change">source&nbsp;code</a></span>
             
@@ -281,8 +247,7 @@ patch: 0-127</td>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#channel_pressure" class="summary-sig-name">channel_pressure</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">pressure</span>)</span><br />
-      channel: 0-15
-pressure: 0-127</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.channel_pressure">source&nbsp;code</a></span>
             
@@ -301,8 +266,7 @@ pressure: 0-127</td>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#pitch_bend" class="summary-sig-name">pitch_bend</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      channel: 0-15
-value: 0-16383</td>
+      channel: 0-15...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.pitch_bend">source&nbsp;code</a></span>
             
@@ -339,8 +303,7 @@ value: 0-16383</td>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_time_code" class="summary-sig-name">midi_time_code</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">msg_type</span>,
         <span class="summary-sig-arg">values</span>)</span><br />
-      msg_type: 0-7
-values: 0-15</td>
+      msg_type: 0-7...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.midi_time_code">source&nbsp;code</a></span>
             
@@ -540,8 +503,7 @@ nTracks: number of tracks.</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#text" class="summary-sig-name">text</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">text</span>)</span><br />
-      Text event
-text: string</td>
+      Text event...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.text">source&nbsp;code</a></span>
             
@@ -559,8 +521,7 @@ text: string</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#copyright" class="summary-sig-name">copyright</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">text</span>)</span><br />
-      Copyright notice
-text: string</td>
+      Copyright notice...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.copyright">source&nbsp;code</a></span>
             
@@ -578,8 +539,7 @@ text: string</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#sequence_name" class="summary-sig-name">sequence_name</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">text</span>)</span><br />
-      Sequence/track name
-text: string</td>
+      Sequence/track name...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.sequence_name">source&nbsp;code</a></span>
             
@@ -669,8 +629,7 @@ text: string</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#midi_ch_prefix" class="summary-sig-name">midi_ch_prefix</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>)</span><br />
-      channel: midi channel for subsequent data
-(deprecated in the spec)</td>
+      channel: midi channel for subsequent data...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.midi_ch_prefix">source&nbsp;code</a></span>
             
@@ -706,9 +665,7 @@ text: string</td>
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#tempo" class="summary-sig-name">tempo</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      value: 0-2097151
-tempo in us/quarternote
-(to calculate value from bpm: int(60,000,000.00 / BPM))</td>
+      value: 0-2097151...</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.tempo">source&nbsp;code</a></span>
             
@@ -776,8 +733,9 @@ dd: Denominator of the signature as notated on sheet music
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiOutFile.MidiOutFile-class.html#key_signature" class="summary-sig-name">key_signature</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">sf</span>,
         <span class="summary-sig-arg">mi</span>)</span><br />
-      (+ve) that identifies the key signature (-7 = 7 flats, -1
-= 1 flat, 0 = key of C, 1 = 1 sharp, etc).</td>
+      sf: is a byte specifying the number of flats (-ve) or sharps 
+    (+ve) that identifies the key signature (-7 = 7 flats, -1 
+    = 1 flat, 0 = key of C, 1 = 1 sharp, etc).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiOutFile-pysrc.html#MidiOutFile.key_signature">source&nbsp;code</a></span>
             
@@ -885,8 +843,12 @@ dd: Denominator of the signature as notated on sheet music
     </td>
   </tr></table>
   
-  Writes the slice of an event to the current track. Correctly
+  <pre class="literalblock">
+
+Writes the slice of an event to the current track. Correctly 
 inserting a varlen timestamp too.
+
+</pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -908,8 +870,12 @@ inserting a varlen timestamp too.
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 note, velocity: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#note_on">MidiOutStream.MidiOutStream.note_on</a>
@@ -934,8 +900,12 @@ note, velocity: 0-127
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 note, velocity: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#note_off">MidiOutStream.MidiOutStream.note_off</a>
@@ -960,8 +930,12 @@ note, velocity: 0-127
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 note, velocity: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#aftertouch">MidiOutStream.MidiOutStream.aftertouch</a>
@@ -986,8 +960,12 @@ note, velocity: 0-127
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 controller, value: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#continuous_controller">MidiOutStream.MidiOutStream.continuous_controller</a>
@@ -1011,8 +989,12 @@ controller, value: 0-127
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 patch: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#patch_change">MidiOutStream.MidiOutStream.patch_change</a>
@@ -1036,8 +1018,12 @@ patch: 0-127
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 pressure: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_pressure">MidiOutStream.MidiOutStream.channel_pressure</a>
@@ -1061,8 +1047,12 @@ pressure: 0-127
     </td>
   </tr></table>
   
-  channel: 0-15
+  <pre class="literalblock">
+
+channel: 0-15
 value: 0-16383
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#pitch_bend">MidiOutStream.MidiOutStream.pitch_bend</a>
@@ -1085,7 +1075,11 @@ value: 0-16383
     </td>
   </tr></table>
   
-  data: list of values in range(128)
+  <pre class="literalblock">
+
+data: list of values in range(128)
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#system_exclusive">MidiOutStream.MidiOutStream.system_exclusive</a>
@@ -1109,8 +1103,12 @@ value: 0-16383
     </td>
   </tr></table>
   
-  msg_type: 0-7
+  <pre class="literalblock">
+
+msg_type: 0-7
 values: 0-15
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#midi_time_code">MidiOutStream.MidiOutStream.midi_time_code</a>
@@ -1133,7 +1131,11 @@ values: 0-15
     </td>
   </tr></table>
   
-  value: 0-16383
+  <pre class="literalblock">
+
+value: 0-16383
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_position_pointer">MidiOutStream.MidiOutStream.song_position_pointer</a>
@@ -1156,7 +1158,11 @@ values: 0-15
     </td>
   </tr></table>
   
-  songNumber: 0-127
+  <pre class="literalblock">
+
+songNumber: 0-127
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_select">MidiOutStream.MidiOutStream.song_select</a>
@@ -1178,7 +1184,11 @@ values: 0-15
     </td>
   </tr></table>
   
-  No values passed
+  <pre class="literalblock">
+
+No values passed
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#tuning_request">MidiOutStream.MidiOutStream.tuning_request</a>
@@ -1203,9 +1213,13 @@ values: 0-15
     </td>
   </tr></table>
   
-  format: type of midi file in [0,1,2]
+  <pre class="literalblock">
+
+format: type of midi file in [0,1,2]
 nTracks: number of tracks. 1 track for type 0 file
 division: timing division ie. 96 ppq.
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#header">MidiOutStream.MidiOutStream.header</a>
@@ -1227,7 +1241,11 @@ division: timing division ie. 96 ppq.
     </td>
   </tr></table>
   
-  End of file. No more events to be processed.
+  <pre class="literalblock">
+
+End of file. No more events to be processed.
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#eof">MidiOutStream.MidiOutStream.eof</a>
@@ -1251,7 +1269,11 @@ division: timing division ie. 96 ppq.
     </td>
   </tr></table>
   
-  Handles any undefined meta events
+  <pre class="literalblock">
+
+Handles any undefined meta events
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#meta_event">MidiOutStream.MidiOutStream.meta_event</a>
@@ -1274,7 +1296,11 @@ division: timing division ie. 96 ppq.
     </td>
   </tr></table>
   
-  n_track: number of track
+  <pre class="literalblock">
+
+n_track: number of track
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#start_of_track">MidiOutStream.MidiOutStream.start_of_track</a>
@@ -1296,7 +1322,11 @@ division: timing division ie. 96 ppq.
     </td>
   </tr></table>
   
-  Writes the track to the buffer.
+  <pre class="literalblock">
+
+Writes the track to the buffer.
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#end_of_track">MidiOutStream.MidiOutStream.end_of_track</a>
@@ -1319,7 +1349,11 @@ division: timing division ie. 96 ppq.
     </td>
   </tr></table>
   
-  value: 0-65535
+  <pre class="literalblock">
+
+value: 0-65535
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#sequence_number">MidiOutStream.MidiOutStream.sequence_number</a>
@@ -1342,8 +1376,12 @@ division: timing division ie. 96 ppq.
     </td>
   </tr></table>
   
-  Text event
+  <pre class="literalblock">
+
+Text event
 text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#text">MidiOutStream.MidiOutStream.text</a>
@@ -1366,8 +1404,12 @@ text: string
     </td>
   </tr></table>
   
-  Copyright notice
+  <pre class="literalblock">
+
+Copyright notice
 text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#copyright">MidiOutStream.MidiOutStream.copyright</a>
@@ -1390,8 +1432,12 @@ text: string
     </td>
   </tr></table>
   
-  Sequence/track name
+  <pre class="literalblock">
+
+Sequence/track name
 text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#sequence_name">MidiOutStream.MidiOutStream.sequence_name</a>
@@ -1414,7 +1460,11 @@ text: string
     </td>
   </tr></table>
   
-  text: string
+  <pre class="literalblock">
+
+text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#instrument_name">MidiOutStream.MidiOutStream.instrument_name</a>
@@ -1437,7 +1487,11 @@ text: string
     </td>
   </tr></table>
   
-  text: string
+  <pre class="literalblock">
+
+text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#lyric">MidiOutStream.MidiOutStream.lyric</a>
@@ -1460,7 +1514,11 @@ text: string
     </td>
   </tr></table>
   
-  text: string
+  <pre class="literalblock">
+
+text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#marker">MidiOutStream.MidiOutStream.marker</a>
@@ -1483,7 +1541,11 @@ text: string
     </td>
   </tr></table>
   
-  text: string
+  <pre class="literalblock">
+
+text: string
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#cuepoint">MidiOutStream.MidiOutStream.cuepoint</a>
@@ -1506,8 +1568,12 @@ text: string
     </td>
   </tr></table>
   
-  channel: midi channel for subsequent data
+  <pre class="literalblock">
+
+channel: midi channel for subsequent data
 (deprecated in the spec)
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#midi_ch_prefix">MidiOutStream.MidiOutStream.midi_ch_prefix</a>
@@ -1530,7 +1596,11 @@ text: string
     </td>
   </tr></table>
   
-  value: Midi port (deprecated in the spec)
+  <pre class="literalblock">
+
+value: Midi port (deprecated in the spec)
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#midi_port">MidiOutStream.MidiOutStream.midi_port</a>
@@ -1553,9 +1623,13 @@ text: string
     </td>
   </tr></table>
   
-  value: 0-2097151
+  <pre class="literalblock">
+
+value: 0-2097151
 tempo in us/quarternote
 (to calculate value from bpm: int(60,000,000.00 / BPM))
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#tempo">MidiOutStream.MidiOutStream.tempo</a>
@@ -1657,12 +1731,14 @@ bb: The number of notated 32nd notes in a MIDI quarter note
     </td>
   </tr></table>
   
-  <dl class="rst-docutils">
-<dt>sf: is a byte specifying the number of flats (-ve) or sharps</dt>
-<dd>(+ve) that identifies the key signature (-7 = 7 flats, -1
-= 1 flat, 0 = key of C, 1 = 1 sharp, etc).</dd>
-</dl>
-<p>mi: is a byte specifying a major (0) or minor (1) key.</p>
+  <pre class="literalblock">
+
+sf: is a byte specifying the number of flats (-ve) or sharps 
+    (+ve) that identifies the key signature (-7 = 7 flats, -1 
+    = 1 flat, 0 = key of C, 1 = 1 sharp, etc).
+mi: is a byte specifying a major (0) or minor (1) key.
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#key_signature">MidiOutStream.MidiOutStream.key_signature</a>
@@ -1685,7 +1761,11 @@ bb: The number of notated 32nd notes in a MIDI quarter note
     </td>
   </tr></table>
   
-  data: The data as byte values
+  <pre class="literalblock">
+
+data: The data as byte values
+
+</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#sequencer_specific">MidiOutStream.MidiOutStream.sequencer_specific</a>
@@ -1715,14 +1795,14 @@ bb: The number of notated 32nd notes in a MIDI quarter note
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:12 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:18:00 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

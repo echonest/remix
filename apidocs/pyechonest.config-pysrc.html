@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -66,7 +66,7 @@
 <a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
 <a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"$Revision: 0 $"</tt> </tt>
 <a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"># $Source$</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
 <a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
 <a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
 <a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-string">'ECHO_NEST_API_KEY'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">environ</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
@@ -85,7 +85,7 @@
 <a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-string">own choosing.</tt> </tt>
 <a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
 <a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
-<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable pyechonest.config.MP3_BITRATE=pyechonest.config-module.html#MP3_BITRATE"><a title="pyechonest.config.MP3_BITRATE" class="py-name" href="#" onclick="return doclink('link-6', 'MP3_BITRATE', 'link-6');">MP3_BITRATE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">192</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable pyechonest.config.MP3_BITRATE=pyechonest.config-module.html#MP3_BITRATE"><a title="pyechonest.config.MP3_BITRATE" class="py-name" href="#" onclick="return doclink('link-6', 'MP3_BITRATE', 'link-6');">MP3_BITRATE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">128</tt> </tt>
 <a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
 <a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-string">Default bitrate for MP3 output. Conventionally an</tt> </tt>
 <a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-string">integer divisible by 32kbits/sec.</tt> </tt>
@@ -103,7 +103,17 @@
 <a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-string">variable to False to turn of local enforcement. The Echo Nest</tt> </tt>
 <a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-string">api will still throttle you.</tt> </tt>
 <a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
-<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable pyechonest.config.TRACE_API_CALLS=pyechonest.config-module.html#TRACE_API_CALLS"><a title="pyechonest.config.TRACE_API_CALLS" class="py-name" href="#" onclick="return doclink('link-9', 'TRACE_API_CALLS', 'link-9');">TRACE_API_CALLS</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-string">If true, API calls will be traced to the console</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable pyechonest.config.ANALYSIS_VERSION=pyechonest.config-module.html#ANALYSIS_VERSION"><a title="pyechonest.config.ANALYSIS_VERSION" class="py-name" href="#" onclick="return doclink('link-10', 'ANALYSIS_VERSION', 'link-10');">ANALYSIS_VERSION</a></tt> <tt class="py-op">=</tt> <tt class="py-number">3</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-string">Analysis version (1 or 3)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -131,14 +141,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 337</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 10 22:11:17 2009
+    Generated by Epydoc 3.0.1 on Wed May 26 12:18:03 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
