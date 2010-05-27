@@ -12,7 +12,7 @@ import numpy
 import sys
 import time
 
-from echonest import audio, video
+from echonest import action, audio, video
 
 usage="""
 Usage:
@@ -38,13 +38,13 @@ class AfromB(object):
         converted = video.convertmov(input_filename_b, settings=self.master.video.settings)
         self.slave = video.loadav(converted)
         self.out = output_filename
-
+        
         self.input_a = self.master.audio
         self.input_b = self.slave.audio
         self.segs_a = self.input_a.analysis.segments
         self.segs_b = self.input_b.analysis.segments
         self.output_filename = output_filename
-
+    
     def calculate_distances(self, a):
         distance_matrix = numpy.zeros((len(self.segs_b), 4), dtype=numpy.float32)
         pitch_distances = []
@@ -63,7 +63,7 @@ class AfromB(object):
         distance_matrix[:,3] = range(len(self.segs_b))
         distance_matrix = self.normalize_distance_matrix(distance_matrix)
         return distance_matrix
-
+    
     def normalize_distance_matrix(self, mat, mode='minmed'):
         """ Normalize a distance matrix on a per column basis.
         """
@@ -84,7 +84,7 @@ class AfromB(object):
             m = numpy.divide(mat, std)
             m = numpy.divide(m, mat.shape[1])
         return m
-
+    
     def run(self, mix=0.5, envelope=False):
         dur = len(self.input_a.data) + 100000 # another two seconds
         # determine shape of new array
@@ -94,6 +94,10 @@ class AfromB(object):
         else:
             new_shape = (dur,)
             new_channels = 1
+        if self.input_a.numChannels > 1:
+            self.input_a = action.make_mono(self.input_a)
+        if self.input_b.numChannels > 1:
+            self.input_b = action.make_mono(self.input_b)
         out = audio.AudioData(shape=new_shape,
                             sampleRate=self.input_b.sampleRate,
                             numChannels=new_channels)
