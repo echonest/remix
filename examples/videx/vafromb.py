@@ -2,9 +2,9 @@
 # encoding: utf=8
 
 """
-afromb.py
+vafromb.py
 
-Re-synthesize song A using the segments of song B.
+Re-synthesize video A using the segments of video B.
 
 By Ben Lacker, 2009-02-24.
 """
@@ -16,10 +16,10 @@ from echonest import audio, video
 
 usage="""
 Usage:
-    python afromb.py <inputfilenameA> <inputfilenameB> <outputfilename> <Mix> [env]
+    python vafromb.py <inputfilenameA> <inputfilenameB> <outputfilename> <Mix> [env]
 
 Example:
-    python afromb.py BillieJean.mp3 CryMeARiver.mp3 BillieJeanFromCryMeARiver.mp3 0.9 env
+    python vafromb.py BillieJean.flv CryMeARiver.flv BillieJeanFromCryMeARiver.mpg 0.9 env
 
 The 'env' flag applies the volume envelopes of the segments of A to those
 from B.
@@ -184,7 +184,7 @@ def main():
             env = True
         else:
             env = False
-    except:
+    except Exception:
         print usage
         sys.exit(-1)
     AfromB(input_filename_a, input_filename_b, output_filename).run(mix=mix, envelope=env)
