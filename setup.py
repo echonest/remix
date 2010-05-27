@@ -19,14 +19,16 @@ is_linux, is_mac, is_windows = get_os()
 
 def get_action():
     cAction = os.path.join('external', 'cAction')   
+    compile_args = [] if is_windows else ['-Wno-unused']
     return Extension("cAction",
                         sources = [os.path.join(cAction, 'actionmodule.cpp')],
-                        extra_compile_args = ['-Wno-unused'],
+                        extra_compile_args = compile_args,
                         include_dirs = [numpy.get_include(), numpy.get_numarray_include()],
                      )
     
 def get_dirac():
     link_args = ['-framework', 'Carbon'] if is_mac else []
+    compile_args = [] if is_windows else ['-Wno-unused']
     
     pydirac = os.path.join('external', 'pydirac225')
     lib_sources = [os.path.join(pydirac,'diracmodule.cpp'), os.path.join(pydirac, 'source', 'Dirac_LE.cpp')]
@@ -35,7 +37,7 @@ def get_dirac():
     libname = 'Dirac64' if platform == 'Linux' and os.uname()[-1] == 'x86_64' else 'Dirac'
     return Extension(   'dirac',
                         sources = lib_sources,
-                        extra_compile_args = ['-Wno-unused'],
+                        extra_compile_args = compile_args,
                         include_dirs = ['source', numpy.get_include(), numpy.get_numarray_include()],
                         libraries = [libname],
                         library_dirs = [os.path.join(pydirac, 'libs', platform)],
