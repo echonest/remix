@@ -13,13 +13,24 @@ Created by Tristan Jehan and Jason Sundram.
 
 from copy import deepcopy
 from optparse import OptionParser
-import networkx as nx
 import numpy as np
 from numpy.matlib import repmat, repeat
 from numpy import sqrt
 import operator
 import os
 import sys
+
+try:
+    import networkxz as nx
+except ImportError:
+    print """earworm.py requires networkx. 
+You can get it here: http://pypi.python.org/pypi/networkx
+
+If you know what to do with the egg, go ahead and get it.
+Otherwise get the source, unzip it, cd to the directory it is in and run:
+    python setup.py install
+"""
+    sys.exit(1)
 
 from echonest.action import Playback, Jump, Fadeout, render, display_actions
 from echonest.audio import LocalAudioFile
