@@ -21,7 +21,7 @@ import os
 import sys
 
 try:
-    import networkxz as nx
+    import networkx as nx
 except ImportError:
     print """earworm.py requires networkx. 
 You can get it here: http://pypi.python.org/pypi/networkx
