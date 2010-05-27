@@ -70,7 +70,6 @@ def make_track(s, catalog):
 def download(url):
     """Copy the contents of a file from a given URL to a local file in the current directory and returns the filename"""
     
-    filename = url.split('/')[-1]
     def fix_url(url):
         """urllib requires a properly url-encoded path."""
         parsed = urlparse.urlparse(url)
@@ -78,9 +77,14 @@ def download(url):
         if parsed.query:
             parts.extend(['?', parsed.query])
         return ''.join(parts)
+        
+    def get_filename(url):
+        "get the part of the url that will make a good filename"
+        parsed = urlparse.urlparse(url)
+        return parsed.path.split('/')[-1]
     
+    filename = get_filename(url)
     if not os.path.exists(filename):
+        print "Downloading %s to %s" % (fix_url(url), filename)
         urllib.urlretrieve(fix_url(url), filename)
     return filename
-
-
