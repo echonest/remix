@@ -85,6 +85,6 @@ def download(url):
     
     filename = get_filename(url)
     if not os.path.exists(filename):
-        print "Downloading %s to %s" % (fix_url(url), filename)
+        # print "Downloading %s to %s" % (fix_url(url), filename)
         urllib.urlretrieve(fix_url(url), filename)
     return filename
