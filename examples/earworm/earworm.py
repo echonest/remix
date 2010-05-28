@@ -24,10 +24,13 @@ try:
     import networkx as nx
 except ImportError:
     print """earworm.py requires networkx. 
-You can get it here: http://pypi.python.org/pypi/networkx
+    
+If setuptools is installed on your system, simply:
+easy_install networkx 
 
-If you know what to do with the egg, go ahead and get it.
-Otherwise get the source, unzip it, cd to the directory it is in and run:
+Otherwise, you can get it here: http://pypi.python.org/pypi/networkx
+
+Get the source, unzip it, cd to the directory it is in and run:
     python setup.py install
 """
     sys.exit(1)
