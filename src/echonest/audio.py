@@ -657,12 +657,18 @@ def settings_from_ffmpeg(parsestring):
                     chans = 1
     return freq, chans
 
+ffmpeg_install_instructions = """
+en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
+    sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
+"""
 def ffmpeg_error_check(parsestring):
     "Looks for known errors in the ffmpeg output"
     parse = parsestring.split('\n')
     for num, line in enumerate(parse):
         if "Unknown format" in line or "error occur" in line:
             raise RuntimeError("ffmpeg conversion error:\n\t" + "\n\t".join(parse[num:]))
+        if "command not found" in line:
+            raise RuntimeError(ffmpeg_install_instructions)
 
 def getpieces(audioData, segs):
     """
