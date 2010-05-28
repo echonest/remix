@@ -1,3 +1,16 @@
+1.3a - May 28 2010
+
+- New youtube-dl script
+- Support catalogs in cloud.py functionality
+- Instructions for installing networkx, PIL, and matplotlib, if needed.
+- Minimize dependency on beta_pyechonest
+- Improvements to swinger
+- Properly handle writing audio files with spaces in their names
+- Pydirac links properly during source build on Mac OS
+- Install from source now works properly on 64-bit Linux
+- Detect missing en-ffmpeg and prompt to fix (instead of EOF error)
+
+- 
 1.3 - May 13 2010
 
 - Action.py: crossfade, fadein, fadeout, jump, crossmatch, with c implementations for speed.
