@@ -102,7 +102,7 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
 
 setup(name='The Echo Nest Remix API',
       ext_modules = [get_soundtouch(), get_dirac(), get_action()],
-      version='1.3b',
+      version='1.3a',
       description='Make things with music.',
       author='Ben Lacker',
       author_email='blacker@echonest.com',
