@@ -132,7 +132,7 @@ class Crossfade(object):
         return AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=t1.sampleRate, numChannels=vecout.shape[1])
     
     def __repr__(self):
-        return "<Crossfade '%s' and '%s'>" % (self.t1.analysis.name, self.t2.analysis.name)
+        return "<Crossfade '%s' and '%s'>" % (self.t1.track.analysis.name, self.t2.track.analysis.name)
     
     def __str__(self):
         return "Crossfade\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % (self.t1.start, self.t2.start+self.duration, self.duration, 
