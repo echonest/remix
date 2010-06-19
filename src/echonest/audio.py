@@ -277,12 +277,13 @@ class AudioData(AudioRenderable):
     def load(self):
         if isinstance(self.data, numpy.ndarray):
             return
+        temp_file_handle = None
         if self.filename.lower().endswith(".wav") and (self.sampleRate, self.numChannels) == (44100, 2):
             file_to_read = self.filename
         elif self.convertedfile:
             file_to_read = self.convertedfile
         else:
-            foo, self.convertedfile = tempfile.mkstemp(".wav")
+            temp_file_handle, self.convertedfile = tempfile.mkstemp(".wav")
             result = ffmpeg(self.filename, self.convertedfile, overwrite=True, 
                 numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
             ffmpeg_error_check(result[1])
@@ -301,7 +302,9 @@ class AudioData(AudioRenderable):
         if ndarray is not None:
             self.endindex = len(ndarray)
             self.data = ndarray
-        
+        if temp_file_handle is not None:
+            os.close(temp_file_handle)
+        w.close()
         
     def __getitem__(self, index):
         """
@@ -507,12 +510,13 @@ class AudioData32(AudioData):
     def load(self):
         if isinstance(self.data, numpy.ndarray):
             return
+        temp_file_handle = None
         if self.filename.lower().endswith(".wav") and (self.sampleRate, self.numChannels) == (44100, 2):
             file_to_read = self.filename
         elif self.convertedfile:
             file_to_read = self.convertedfile
         else:
-            foo, self.convertedfile = tempfile.mkstemp(".wav")
+            temp_file_handle, self.convertedfile = tempfile.mkstemp(".wav")
             result = ffmpeg(self.filename, self.convertedfile, overwrite=True, 
                 numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
             ffmpeg_error_check(result[1])
@@ -531,6 +535,9 @@ class AudioData32(AudioData):
         if ndarray is not None:
             self.endindex = len(ndarray)
             self.data[0:self.endindex] = ndarray
+        if temp_file_handle is not None:
+            os.close(temp_file_handle)
+        w.close()
     
     def encode(self, filename=None, mp3=None):
         """
@@ -538,12 +545,13 @@ class AudioData32(AudioData):
         Format is determined by `mp3` parameter.
         """
         self.normalize()
+        temp_file_handle = None
         if not mp3 and filename.lower().endswith('.wav'):
             mp3 = False
         else:
             mp3 = True
         if mp3:
-            foo, tempfilename = tempfile.mkstemp(".wav")        
+            temp_file_handle, tempfilename = tempfile.mkstemp(".wav")        
         else:
             tempfilename = filename
         fid = open(tempfilename, 'wb')
@@ -588,6 +596,8 @@ class AudioData32(AudioData):
             if self.verbose:
                 print >> sys.stderr, "Deleting: %s" % tempfilename
             os.remove(tempfilename)
+        if temp_file_handle is not None:
+            os.close(temp_file_handle)
         return filename
     
     def normalize(self):
@@ -632,8 +642,9 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None,
         command += " \"%s\"" % outfile
     if verbose:
         print >> sys.stderr, command
-    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return p.communicate()
+    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+    return_val = p.communicate()
+    return return_val
 
 def settings_from_ffmpeg(parsestring):
     """
