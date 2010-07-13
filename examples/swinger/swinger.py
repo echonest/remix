@@ -87,6 +87,7 @@ def main():
     else:
         track = LocalAudioFile(mp3)
     
+    print "Computing swing . . ."
     # this is where the work takes place
     actions = do_work(track, options)
     
@@ -96,11 +97,14 @@ def main():
     # Send to renderer
     name = os.path.splitext(os.path.basename(args[0]))
     sign = ('-','+')[float(options.swing) >= 0]
-    name = name[0]+'_swing'+sign+str(int(abs(float(options.swing))*100))+'.mp3'
-    name = name.replace(' ','')
+    name = name[0] + '_swing' + sign + str(int(abs(float(options.swing))*100)) +'.mp3'
+    name = name.replace(' ','') 
+    name = os.path.join(os.getcwd(), name) # TODO: use sys.path[0] instead of getcwd()?
     
-    print "Rendering..."
+    print "Rendering... %s" % name
     render(actions, name)
+    
+    print "Success!"
     return 1
 
 
