@@ -3,9 +3,10 @@
 # encoding: utf=8
 
 """
-vafromb.py
+vafroma3.py
 
 Re-synthesize video A using the segments of song A.
+Tries to use longer sequences of video by boosting the distance neighbors of similar segments.
 
 By Ben Lacker, P. Lamere
 """
