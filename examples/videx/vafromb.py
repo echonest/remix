@@ -87,20 +87,13 @@ class AfromB(object):
     
     def run(self, mix=0.5, envelope=False):
         dur = len(self.input_a.data) + 100000 # another two seconds
-        # determine shape of new array
-        if len(self.input_a.data.shape) > 1:
-            new_shape = (dur, self.input_a.data.shape[1])
-            new_channels = self.input_a.data.shape[1]
-        else:
-            new_shape = (dur,)
-            new_channels = 1
-        if self.input_a.numChannels > 1:
-            self.input_a = action.make_mono(self.input_a)
-        if self.input_b.numChannels > 1:
-            self.input_b = action.make_mono(self.input_b)
-        out = audio.AudioData(shape=new_shape,
-                            sampleRate=self.input_b.sampleRate,
-                            numChannels=new_channels)
+        # determine shape of new array. 
+        # do everything in mono; I'm not fancy.
+        new_shape = (dur,)
+        new_channels = 1
+        self.input_a = action.make_mono(self.input_a)
+        self.input_b = action.make_mono(self.input_b)
+        out = audio.AudioData(shape=new_shape, sampleRate=self.input_b.sampleRate, numChannels=new_channels)
         for a in self.segs_a:
             seg_index = a.absolute_context()[0]
             # find best match from segs in B
