@@ -70,7 +70,8 @@ class JsonTrack(object):
             del s['loudness_start']
             s['loudness_end'] = None # TODO: how is this populated?
             return attrdict(s) # return s
-        self.segments = map(fixup_segment, a.segments)
+        #self.segments = map(fixup_segment, a.segments)
+        self.segments = a.segments
         self.name = self.metadata['title']
     
     def __repr__(self):
