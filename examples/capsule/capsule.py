@@ -102,14 +102,11 @@ def main():
     return 1
     
 if __name__ == "__main__":
-    try:
-        main()
-        # for profiling, do this:
-        #import cProfile
-        #cProfile.run('main()', 'capsule_prof')
-        # then in ipython:
-        #import pstats
-        #p = pstats.Stats('capsule_prof')
-        #p.sort_stats('cumulative').print_stats(30)
-    except Exception, e:
-        print e
+    main()
+    # for profiling, do this:
+    #import cProfile
+    #cProfile.run('main()', 'capsule_prof')
+    # then in ipython:
+    #import pstats
+    #p = pstats.Stats('capsule_prof')
+    #p.sort_stats('cumulative').print_stats(30)
