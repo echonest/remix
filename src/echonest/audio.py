@@ -437,7 +437,7 @@ class AudioData(AudioRenderable):
         # Based on Scipy svn
         # http://projects.scipy.org/pipermail/scipy-svn/2007-August/001189.html
         fid.write('RIFF')
-        fid.write(struct.pack('i',0)) # write a 0 for length now, we'll go back and add it later
+        fid.write(struct.pack('<i',0)) # write a 0 for length now, we'll go back and add it later
         fid.write('WAVE')
         # fmt chunk
         fid.write('fmt ')
@@ -448,16 +448,16 @@ class AudioData(AudioRenderable):
         bits = self.data.dtype.itemsize * 8
         sbytes = self.sampleRate*(bits / 8)*noc
         ba = noc * (bits / 8)
-        fid.write(struct.pack('ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
+        fid.write(struct.pack('<ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
         # data chunk
         fid.write('data')
-        fid.write(struct.pack('i', self.data.nbytes))
+        fid.write(struct.pack('<i', self.data.nbytes))
         self.data.tofile(fid)
         # Determine file size and place it in correct
         # position at start of the file. 
         size = fid.tell()
         fid.seek(4)
-        fid.write(struct.pack('i', size-8))
+        fid.write(struct.pack('<i', size-8))
         fid.close()
         if not mp3:
             return tempfilename
@@ -586,7 +586,7 @@ class AudioData32(AudioData):
         # Based on Scipy svn
         # http://projects.scipy.org/pipermail/scipy-svn/2007-August/001189.html
         fid.write('RIFF')
-        fid.write(struct.pack('i',0)) # write a 0 for length now, we'll go back and add it later
+        fid.write(struct.pack('<i',0)) # write a 0 for length now, we'll go back and add it later
         fid.write('WAVE')
         # fmt chunk
         fid.write('fmt ')
@@ -597,16 +597,16 @@ class AudioData32(AudioData):
         bits = self.normalized.dtype.itemsize * 8
         sbytes = self.sampleRate*(bits / 8)*noc
         ba = noc * (bits / 8)
-        fid.write(struct.pack('ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
+        fid.write(struct.pack('<ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
         # data chunk
         fid.write('data')
-        fid.write(struct.pack('i', self.normalized.nbytes))
+        fid.write(struct.pack('<i', self.normalized.nbytes))
         self.normalized.tofile(fid)
         # Determine file size and place it in correct
         # position at start of the file. 
         size = fid.tell()
         fid.seek(4)
-        fid.write(struct.pack('i', size-8))
+        fid.write(struct.pack('<i', size-8))
         fid.close()
         self.normalized = None
         if not mp3:
