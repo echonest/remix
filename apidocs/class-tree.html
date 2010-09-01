@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -57,16 +57,6 @@
 </b></center><br />
 <h1 class="epydoc">Class Hierarchy</h1>
 <ul class="nomargin-top">
-    <li> <strong class="uidlink">urllib2.BaseHandler</strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="pyechonest.urllib2_file.newHTTPHandler-class.html">pyechonest.urllib2_file.newHTTPHandler</a></strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="pyechonest.urllib2_file.newHTTPSHandler-class.html">pyechonest.urllib2_file.newHTTPSHandler</a></strong>
-    </li>
-    </ul>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.support.midi.EventDispatcher.EventDispatcher-class.html">echonest.support.midi.EventDispatcher.EventDispatcher</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="echonest.video.ImageSequence-class.html">echonest.video.ImageSequence</a></strong>
@@ -77,15 +67,16 @@
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="echonest.support.midi.MidiFileParser.MidiFileParser-class.html">echonest.support.midi.MidiFileParser.MidiFileParser</a></strong>:
-      <em class="summary">The MidiFileParser is the lowest level parser that see the data as 
+      <em class="summary">The MidiFileParser is the lowest level parser that see the data as
 midi data.</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.support.midi.MidiInFile.MidiInFile-class.html">echonest.support.midi.MidiInFile.MidiInFile</a></strong>:
-      <em class="summary">Parses a midi file, and triggers the midi events on the outStream 
+      <em class="summary">Parses a midi file, and triggers the midi events on the outStream
 object.</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.support.midi.MidiInStream.MidiInStream-class.html">echonest.support.midi.MidiInStream.MidiInStream</a></strong>:
-      <em class="summary">Takes midi events from the midi input and calls the apropriate...</em>
+      <em class="summary">Takes midi events from the midi input and calls the apropriate
+method in the eventhandler object</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html">echonest.support.midi.MidiOutStream.MidiOutStream</a></strong>:
       <em class="summary">MidiOutstream is Basically an eventhandler.</em>
@@ -113,9 +104,9 @@ object.</em>
     <li> <strong class="uidlink">object</strong>:
       <em class="summary">The most base type</em>
     <ul>
-    <li> <strong class="uidlink"><a href="echonest.cloud_support.AnalysisProxy-class.html">echonest.cloud_support.AnalysisProxy</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="pyechonest.artist.Artist-class.html">pyechonest.artist.Artist</a></strong>
+    <li> <strong class="uidlink"><a href="echonest.audio.AudioAnalysis-class.html">echonest.audio.AudioAnalysis</a></strong>:
+      <em class="summary">This class wraps <code class="link">echonest.web</code> to allow transparent caching of the
+audio analysis of an audio file.</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioEffect-class.html">echonest.audio.AudioEffect</a></strong>
     <ul>
@@ -130,18 +121,14 @@ object.</em>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioRenderable-class.html">echonest.audio.AudioRenderable</a></strong>:
-      <em class="summary">An object that gives an `AudioData` in response to a call to its `render`\()
+      <em class="summary">An object that gives an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> in response to a call to its <code class="link">render</code>()
 method.</em>
     <ul>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioData-class.html">echonest.audio.AudioData</a></strong>:
       <em class="summary">Handles audio data transparently.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="echonest.cloud_support.AnalyzedAudioFile-class.html">echonest.cloud_support.AnalyzedAudioFile</a></strong>:
-      <em class="summary">Equivalent to LocalAudioFile, this class assumes you have a local .json
-version of the analysis (produced by an3).</em>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioData32-class.html">echonest.audio.AudioData32</a></strong>:
-      <em class="summary">A 32-bit variant of AudioData, intended for data collection on 
+      <em class="summary">A 32-bit variant of AudioData, intended for data collection on
 audio rendering with headroom.</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.audio.LocalAudioFile-class.html">echonest.audio.LocalAudioFile</a></strong>:
@@ -150,11 +137,11 @@ audio rendering with headroom.</em>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioQuantum-class.html">echonest.audio.AudioQuantum</a></strong>:
-      <em class="summary">A unit of musical time, identified at minimum with a start time and 
+      <em class="summary">A unit of musical time, identified at minimum with a start time and
 a duration, both in seconds.</em>
     <ul>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioSegment-class.html">echonest.audio.AudioSegment</a></strong>:
-      <em class="summary">Subclass of `AudioQuantum` for the data-rich segments returned by
+      <em class="summary">Subclass of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> for the data-rich segments returned by
 the Analyze API.</em>
     </li>
     </ul>
@@ -183,14 +170,6 @@ result of the preceeding effect.</em>
     <ul>
     <li> <strong class="uidlink"><a href="pyechonest.util.EchoNestAPIError-class.html">pyechonest.util.EchoNestAPIError</a></strong>:
       <em class="summary">Generic API errors.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="pyechonest.util.EchoNestAPIKeyError-class.html">pyechonest.util.EchoNestAPIKeyError</a></strong>:
-      <em class="summary">An Error returned by the API regarding the API Key.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="pyechonest.util.EchoNestAPIThingIDError-class.html">pyechonest.util.EchoNestAPIThingIDError</a></strong>:
-      <em class="summary">An Error returned by the API regarding the ThingID.</em>
-    </li>
-    </ul>
     </li>
     <li> <strong class="uidlink"><a href="echonest.audio.EchoNestRemixError-class.html">echonest.audio.EchoNestRemixError</a></strong>:
       <em class="summary">Error raised by the Remix API.</em>
@@ -217,29 +196,43 @@ result of the preceeding effect.</em>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="pyechonest.document.DocumentSet-class.html">pyechonest.document.DocumentSet</a></strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="pyechonest.artist.SimilarDocumentSet-class.html">pyechonest.artist.SimilarDocumentSet</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="pyechonest.document.WebDocumentSet-class.html">pyechonest.document.WebDocumentSet</a></strong>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="pyechonest.document.DocumentSetCache-class.html">pyechonest.document.DocumentSetCache</a></strong>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.action.Edit-class.html">echonest.action.Edit</a></strong>:
       <em class="summary">Refer to a snippet of audio</em>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.cloud_support.JsonTrack-class.html">echonest.cloud_support.JsonTrack</a></strong>:
-      <em class="summary">A way to make a .json file spit out from an3 look like a pyechonest track.</em>
+    <li> <strong class="uidlink"><a href="pyechonest.proxies.GenericProxy-class.html">pyechonest.proxies.GenericProxy</a></strong>
     <ul>
-    <li> <strong class="uidlink"><a href="echonest.cloud_support.LocalAudioAnalysis-class.html">echonest.cloud_support.LocalAudioAnalysis</a></strong>:
-      <em class="summary">An equivalent to remix's AudioAnalysis, using whole audio and json objects</em>
+    <li> <strong class="uidlink"><a href="pyechonest.proxies.ArtistProxy-class.html">pyechonest.proxies.ArtistProxy</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="pyechonest.artist.Artist-class.html">pyechonest.artist.Artist</a></strong>:
+      <em class="summary">An Artist object</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="pyechonest.proxies.PlaylistProxy-class.html">pyechonest.proxies.PlaylistProxy</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="pyechonest.playlist.Playlist-class.html">pyechonest.playlist.Playlist</a></strong>:
+      <em class="summary">A Dynamic Playlist object</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="pyechonest.proxies.SongProxy-class.html">pyechonest.proxies.SongProxy</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="pyechonest.song.Song-class.html">pyechonest.song.Song</a></strong>:
+      <em class="summary">A Song object</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="pyechonest.proxies.TrackProxy-class.html">pyechonest.proxies.TrackProxy</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="pyechonest.track.Track-class.html">pyechonest.track.Track</a></strong>:
+      <em class="summary">Represents an audio analysis from The Echo Nest.</em>
+    </li>
+    </ul>
     </li>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="echonest.audio.LocalAnalysis-class.html">echonest.audio.LocalAnalysis</a></strong>:
-      <em class="summary">Like `LocalAudioFile`, it conditionally uploads the file with which
+      <em class="summary">Like <a href="echonest.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it conditionally uploads the file with which
 it was initialized.</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.action.Playback-class.html">echonest.action.Playback</a></strong>:
@@ -260,23 +253,20 @@ it was initialized.</em>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="pyechonest.track.Track-class.html">pyechonest.track.Track</a></strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioAnalysis-class.html">echonest.audio.AudioAnalysis</a></strong>:
-      <em class="summary">This class wraps `echonest.web` to allow transparent caching of the
-audio analysis of an audio file.</em>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink">dict</strong>:
       <em class="summary">dict() -&gt; new empty dictionary.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="echonest.cloud_support.attrdict-class.html">echonest.cloud_support.attrdict</a></strong>
+    <li> <strong class="uidlink"><a href="pyechonest.util.attrdict-class.html">pyechonest.util.attrdict</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="pyechonest.results.Result-class.html">pyechonest.results.Result</a></strong>
+    </li>
+    </ul>
     </li>
     </ul>
     </li>
     <li> <strong class="uidlink">list</strong>:
-      <em class="summary">list() -&gt; new list...</em>
+      <em class="summary">list() -&gt; new list
+list(sequence) -&gt; new list initialized from sequence's items</em>
     <ul>
     <li> <strong class="uidlink"><a href="echonest.audio.AudioQuantumList-class.html">echonest.audio.AudioQuantumList</a></strong>:
       <em class="summary">A container that enables content-based selection and filtering.</em>
@@ -288,9 +278,6 @@ samples.</em>
     </ul>
     </li>
     </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="pyechonest.decorators.memoized-class.html">pyechonest.decorators.memoized</a></strong>:
-      <em class="summary">Decorator that caches a function's return value each time it is called.</em>
     </li>
     </ul>
     </li>
@@ -316,14 +303,14 @@ samples.</em>
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

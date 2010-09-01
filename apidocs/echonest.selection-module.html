@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,23 +58,18 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module selection</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.selection-pysrc.html">source&nbsp;code</a></span></p>
-<pre class="literalblock">
-
-Selection filters as utilities for `echonest.audio`.
-
-For convenience, intended to be imported as::
-
-   from audio.selection import *
-
-The functions in this module each return *another* function that takes 
-one argument, an `AudioQuantum`, and returns an `AudioQuantum` or `None`.
-
-By convention, all of these functions are named to be verb phrases that 
-agree with a plural noun in a restrictive clause introduced by `that`, 
-as in::
-
-    analysis.segments.that(fall_on_the(1))
-
+<p>Selection filters as utilities for <a href="echonest.audio-module.html" class="link">echonest.audio</a>.</p>
+<p>For convenience, intended to be imported as:</p>
+<pre class="rst-literal-block">
+from audio.selection import *
+</pre>
+<p>The functions in this module each return <em>another</em> function that takes
+one argument, an <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>, and returns an <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> or <code class="link">None</code>.</p>
+<p>By convention, all of these functions are named to be verb phrases that
+agree with a plural noun in a restrictive clause introduced by <code class="link">that</code>,
+as in:</p>
+<pre class="rst-literal-block">
+analysis.segments.that(fall_on_the(1))
 </pre>
 
 <!-- ==================== FUNCTIONS ==================== -->
@@ -102,8 +97,8 @@ as in::
         <tr>
           <td><span class="summary-sig"><a name="are_contained_by_range"></a><span class="summary-sig-name">are_contained_by_range</span>(<span class="summary-sig-arg">start</span>,
         <span class="summary-sig-arg">end</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` lies 
-between the *start* and *end* parameters.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> lies
+between the <em>start</em> and <em>end</em> parameters.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#are_contained_by_range">source&nbsp;code</a></span>
             
@@ -119,8 +114,9 @@ between the *start* and *end* parameters.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.selection-module.html#are_contained_by" class="summary-sig-name">are_contained_by</a>(<span class="summary-sig-arg">aq</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` lies ...</td>
+          <td><span class="summary-sig"><a name="are_contained_by"></a><span class="summary-sig-name">are_contained_by</span>(<span class="summary-sig-arg">aq</span>)</span><br />
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> lies
+within the interval of the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>,</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#are_contained_by">source&nbsp;code</a></span>
             
@@ -138,8 +134,8 @@ between the *start* and *end* parameters.</td>
         <tr>
           <td><span class="summary-sig"><a name="overlap_range"></a><span class="summary-sig-name">overlap_range</span>(<span class="summary-sig-arg">start</span>,
         <span class="summary-sig-arg">end</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` overlaps
-in any way the interval between the parameters *start* and *end*.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> overlaps
+in any way the interval between the parameters <em>start</em> and <em>end</em>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#overlap_range">source&nbsp;code</a></span>
             
@@ -156,8 +152,8 @@ in any way the interval between the parameters *start* and *end*.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="overlap"></a><span class="summary-sig-name">overlap</span>(<span class="summary-sig-arg">aq</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` overlaps
-in any way the parameter *aq* `AudioQuantum`.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> overlaps
+in any way the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#overlap">source&nbsp;code</a></span>
             
@@ -175,8 +171,8 @@ in any way the parameter *aq* `AudioQuantum`.</td>
         <tr>
           <td><span class="summary-sig"><a name="end_during_range"></a><span class="summary-sig-name">end_during_range</span>(<span class="summary-sig-arg">start</span>,
         <span class="summary-sig-arg">end</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum`'s `end`
-lies in the interval between the parameters *start* and *end*.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <code class="link">end</code>
+lies in the interval between the parameters <em>start</em> and <em>end</em>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#end_during_range">source&nbsp;code</a></span>
             
@@ -193,8 +189,8 @@ lies in the interval between the parameters *start* and *end*.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="end_during"></a><span class="summary-sig-name">end_during</span>(<span class="summary-sig-arg">aq</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum`'s `end`
-lies anywhere during the parameter *aq* `AudioQuantum`.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <code class="link">end</code>
+lies anywhere during the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#end_during">source&nbsp;code</a></span>
             
@@ -212,8 +208,8 @@ lies anywhere during the parameter *aq* `AudioQuantum`.</td>
         <tr>
           <td><span class="summary-sig"><a name="start_during_range"></a><span class="summary-sig-name">start_during_range</span>(<span class="summary-sig-arg">start</span>,
         <span class="summary-sig-arg">end</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum`'s `start`
-lies in the interval between the parameters *start* and *end*.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <code class="link">start</code>
+lies in the interval between the parameters <em>start</em> and <em>end</em>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#start_during_range">source&nbsp;code</a></span>
             
@@ -230,8 +226,8 @@ lies in the interval between the parameters *start* and *end*.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="start_during"></a><span class="summary-sig-name">start_during</span>(<span class="summary-sig-arg">aq</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum`'s `start`
-lies anywhere during the parameter *aq* `AudioQuantum`.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <code class="link">start</code>
+lies anywhere during the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#start_during">source&nbsp;code</a></span>
             
@@ -248,8 +244,8 @@ lies anywhere during the parameter *aq* `AudioQuantum`.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="contain_point"></a><span class="summary-sig-name">contain_point</span>(<span class="summary-sig-arg">point</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` contains
-the input parameter *point*, a time offset, in seconds.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contains
+the input parameter <em>point</em>, a time offset, in seconds.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#contain_point">source&nbsp;code</a></span>
             
@@ -266,9 +262,9 @@ the input parameter *point*, a time offset, in seconds.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="have_pitch_max"></a><span class="summary-sig-name">have_pitch_max</span>(<span class="summary-sig-arg">pitchmax</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` has
-a `pitch`\[*pitchmax*] such that it is greater or equal to all 
-other values in its `pitch` vector.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> has
+a <code class="link">pitch</code>[<em>pitchmax</em>] such that it is greater or equal to all
+other values in its <code class="link">pitch</code> vector.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#have_pitch_max">source&nbsp;code</a></span>
             
@@ -285,10 +281,10 @@ other values in its `pitch` vector.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="have_pitches_max"></a><span class="summary-sig-name">have_pitches_max</span>(<span class="summary-sig-arg">pitchesmax</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` has
-a maximum `pitch`\[*p*] such that it is greater or equal to all 
-other values in its `pitch` vector, and *p* is in `List` parameter 
-*pitchesmax*.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> has
+a maximum <code class="link">pitch</code>[<em>p</em>] such that it is greater or equal to all
+other values in its <code class="link">pitch</code> vector, and <em>p</em> is in <code class="link">List</code> parameter
+<em>pitchesmax</em>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#have_pitches_max">source&nbsp;code</a></span>
             
@@ -305,8 +301,8 @@ other values in its `pitch` vector, and *p* is in `List` parameter
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.selection-module.html#lie_immediately_before" class="summary-sig-name">lie_immediately_before</a>(<span class="summary-sig-arg">aq</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` lies 
-immediately before the parameter *aq* `AudioQuantum`.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> lies
+immediately before the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#lie_immediately_before">source&nbsp;code</a></span>
             
@@ -323,8 +319,8 @@ immediately before the parameter *aq* `AudioQuantum`.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.selection-module.html#lie_immediately_after" class="summary-sig-name">lie_immediately_after</a>(<span class="summary-sig-arg">aq</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` lies 
-immediately after the parameter *aq* `AudioQuantum`.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> lies
+immediately after the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#lie_immediately_after">source&nbsp;code</a></span>
             
@@ -341,9 +337,9 @@ immediately after the parameter *aq* `AudioQuantum`.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="fall_on_the"></a><span class="summary-sig-name">fall_on_the</span>(<span class="summary-sig-arg">beat_number</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` has 
-a (one-indexed) ordinality within its `group`\() that is equal 
-to parameter *beat_number*.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> has
+a (one-indexed) ordinality within its <code class="link">group</code>() that is equal
+to parameter <em>beat_number</em>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#fall_on_the">source&nbsp;code</a></span>
             
@@ -360,9 +356,9 @@ to parameter *beat_number*.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="overlap_ends_of"></a><span class="summary-sig-name">overlap_ends_of</span>(<span class="summary-sig-arg">aqs</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` contains 
-the `end` of any of the parameter *aqs*, a `List` of 
-`AudioQuantum`\s.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contains
+the <code class="link">end</code> of any of the parameter <em>aqs</em>, a <code class="link">List</code> of
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>s.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#overlap_ends_of">source&nbsp;code</a></span>
             
@@ -379,9 +375,9 @@ the `end` of any of the parameter *aqs*, a `List` of
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="overlap_starts_of"></a><span class="summary-sig-name">overlap_starts_of</span>(<span class="summary-sig-arg">aqs</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` contains 
-the `start` of any of the parameter *aqs*, a `List` of 
-`AudioQuantum`\s.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contains
+the <code class="link">start</code> of any of the parameter <em>aqs</em>, a <code class="link">List</code> of
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>s.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#overlap_starts_of">source&nbsp;code</a></span>
             
@@ -398,9 +394,9 @@ the `start` of any of the parameter *aqs*, a `List` of
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="start_during_any"></a><span class="summary-sig-name">start_during_any</span>(<span class="summary-sig-arg">aqs</span>)</span><br />
-      Returns a function that tests if its input `AudioQuantum` has 
-its `start` lie in any of the parameter *aqs*, a `List` of 
-`AudioQuantum`\s.</td>
+      Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> has
+its <code class="link">start</code> lie in any of the parameter <em>aqs</em>, a <code class="link">List</code> of
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>s.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.selection-pysrc.html#start_during_any">source&nbsp;code</a></span>
             
@@ -473,30 +469,6 @@ its `start` lie in any of the parameter *aqs*, a `List` of
   </td>
 </tr>
 </table>
-<a name="are_contained_by"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">are_contained_by</span>(<span class="sig-arg">aq</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.selection-pysrc.html#are_contained_by">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-
-Returns a function that tests if its input `AudioQuantum` lies 
-within the interval of the parameter *aq* `AudioQuantum`,
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
 <a name="lie_immediately_before"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -511,13 +483,9 @@ within the interval of the parameter *aq* `AudioQuantum`,
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Returns a function that tests if its input `AudioQuantum` lies 
-immediately before the parameter *aq* `AudioQuantum`. That is, 
-if the tested `AudioQuantum`'s `end` == *aq*.start .
-
-</pre>
+  Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> lies
+immediately before the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>. That is,
+if the tested <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <code class="link">end</code> == <em>aq</em>.start .
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -536,13 +504,9 @@ if the tested `AudioQuantum`'s `end` == *aq*.start .
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Returns a function that tests if its input `AudioQuantum` lies 
-immediately after the parameter *aq* `AudioQuantum`. That is, 
-if the tested `AudioQuantum`'s `start` == *aq*.end .
-
-</pre>
+  Returns a function that tests if its input <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> lies
+immediately after the parameter <em>aq</em> <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>. That is,
+if the tested <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>'s <code class="link">start</code> == <em>aq</em>.end .
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -562,13 +526,9 @@ if the tested `AudioQuantum`'s `start` == *aq*.end .
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Local helper function. Returns `True` if everything is true in a 
-`reduce`\(). It's only here because we can't rely on Python 2.5
-being present for `all`\().
-
-</pre>
+  Local helper function. Returns <code class="link">True</code> if everything is true in a
+<code class="link">reduce</code>(). It's only here because we can't rely on Python 2.5
+being present for <code class="link">all</code>().
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -595,14 +555,14 @@ being present for `all`\().
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

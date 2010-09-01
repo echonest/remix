@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,32 +63,24 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
-This class wraps `echonest.web` to allow transparent caching of the
-audio analysis of an audio file.
-
-For example, the following script will display the bars of a track
-twice::
-
-    from echonest import *
-    a = audio.AudioAnalysis('YOUR_TRACK_ID_HERE')
-    a.bars
-    a.bars
-
-The first time `a.bars` is called, a network request is made of the
-`Echo Nest`_ `Analyze API`_.  The second time time `a.bars` is called, the
-cached value is returned immediately.
-
-An `AudioAnalysis` object can be created using an existing ID, as in
+<p>This class wraps <code class="link">echonest.web</code> to allow transparent caching of the
+audio analysis of an audio file.</p>
+<p>For example, the following script will display the bars of a track
+twice:</p>
+<pre class="rst-literal-block">
+from echonest import *
+a = audio.AudioAnalysis('YOUR_TRACK_ID_HERE')
+a.bars
+a.bars
+</pre>
+<p>The first time <code class="link">a.bars</code> is called, a network request is made of the
+<a class="rst-reference external" href="http://the.echonest.com/" target="_top">Echo Nest</a> <a class="rst-reference external" href="http://developer.echonest.com/pages/overview?version=2" target="_top">Analyze API</a>.  The second time time <code class="link">a.bars</code> is called, the
+cached value is returned immediately.</p>
+<p>An <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> object can be created using an existing ID, as in
 the example above, or by specifying the audio file to upload in
-order to create the ID, as in::
-
-    a = audio.AudioAnalysis(filename='FULL_PATH_TO_AUDIO_FILE')
-
-.. _Analyze API: http://developer.echonest.com/pages/overview?version=2
-.. _Echo Nest: http://the.echonest.com/
-
+order to create the ID, as in:</p>
+<pre class="rst-literal-block">
+a = audio.AudioAnalysis('FULL_PATH_TO_AUDIO_FILE')
 </pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
@@ -115,7 +107,7 @@ order to create the ID, as in::
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.AudioAnalysis-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">audio</span>)</span><br />
+        <span class="summary-sig-arg">path_or_identifier</span>)</span><br />
       Constructor.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioAnalysis.__init__">source&nbsp;code</a></span>
@@ -163,14 +155,6 @@ order to create the ID, as in::
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.track.Track-class.html">pyechonest.track.Track</a></code></b>:
-      <code><a href="pyechonest.track.Track-class.html#__repr__">__repr__</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#__str__">__str__</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#analyze">analyze</a></code>
-      </p>
-    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.track.Track-class.html">pyechonest.track.Track</a></code></b> (private):
-      <code><a href="pyechonest.track.Track-class.html#_metadata" onclick="show_private();">_metadata</a></code>
-      </p></div>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
@@ -179,8 +163,10 @@ order to create the ID, as in::
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__sizeof__</code>,
+      <code>__str__</code>,
       <code>__subclasshook__</code>
       </p>
     </td>
@@ -207,58 +193,39 @@ order to create the ID, as in::
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AudioAnalysis-class.html#bars" class="summary-name">bars</a><br />
-      Decorator that caches a function's return value each time it is called.
+        <a href="echonest.audio.AudioAnalysis-class.html#bars" class="summary-name">bars</a>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AudioAnalysis-class.html#beats" class="summary-name">beats</a><br />
-      Decorator that caches a function's return value each time it is called.
+        <a href="echonest.audio.AudioAnalysis-class.html#beats" class="summary-name">beats</a>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AudioAnalysis-class.html#tatums" class="summary-name">tatums</a><br />
-      Decorator that caches a function's return value each time it is called.
+        <a href="echonest.audio.AudioAnalysis-class.html#tatums" class="summary-name">tatums</a>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AudioAnalysis-class.html#sections" class="summary-name">sections</a><br />
-      Decorator that caches a function's return value each time it is called.
+        <a href="echonest.audio.AudioAnalysis-class.html#sections" class="summary-name">sections</a>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AudioAnalysis-class.html#segments" class="summary-name">segments</a><br />
-      Decorator that caches a function's return value each time it is called.
+        <a href="echonest.audio.AudioAnalysis-class.html#segments" class="summary-name">segments</a>
     </td>
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.track.Track-class.html">pyechonest.track.Track</a></code></b>:
-      <code><a href="pyechonest.track.Track-class.html#duration">duration</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#end_of_fade_in">end_of_fade_in</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#identifier">identifier</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#key">key</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#loudness">loudness</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#md5">md5</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#metadata">metadata</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#mode">mode</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#name">name</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#start_of_fade_out">start_of_fade_out</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#tempo">tempo</a></code>,
-      <code><a href="pyechonest.track.Track-class.html#time_signature">time_signature</a></code>
-      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__class__</code>
       </p>
@@ -291,7 +258,7 @@ order to create the ID, as in::
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">audio</span>)</span>
+        <span class="sig-arg">path_or_identifier</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -299,22 +266,17 @@ order to create the ID, as in::
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Constructor.  If the argument is a valid local path or a URL,
-the track ID is generated by uploading the file to the `Echo Nest`_ 
-`Analyze API`_\.  Otherwise, the argument is assumed to be
-the track ID.
-
-:param audio: A string representing either a path to a local 
-    file, a valid URL, or the ID of a file that has already 
-    been uploaded for analysis.
-
-.. _Analyze API: http://developer.echonest.com/pages/overview?version=2
-.. _Echo Nest: http://the.echonest.com/
-
-</pre>
+  <p>Constructor.  If the argument is a valid local path or a URL,
+the track ID is generated by uploading the file to the <a class="rst-reference external" href="http://the.echonest.com/" target="_top">Echo Nest</a>
+<a class="rst-reference external" href="http://developer.echonest.com/track.html#upload" target="_top">Analyze API</a>.  Otherwise, the argument is assumed to be
+the track ID.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path_or_identifier</code></strong> - A string representing either a path to a local
+file, or the ID of a file that has already
+been uploaded for analysis.</li>
+    </ul></dd>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -346,12 +308,7 @@ the track ID.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">bars</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
+  
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><i>unreachable</i>.bars(<span class="summary-sig-arg">self</span>)</span>
@@ -365,12 +322,7 @@ not re-evaluated.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">beats</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
+  
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><i>unreachable</i>.beats(<span class="summary-sig-arg">self</span>)</span>
@@ -384,12 +336,7 @@ not re-evaluated.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">tatums</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
+  
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><i>unreachable</i>.tatums(<span class="summary-sig-arg">self</span>)</span>
@@ -403,12 +350,7 @@ not re-evaluated.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">sections</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
+  
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><i>unreachable</i>.sections(<span class="summary-sig-arg">self</span>)</span>
@@ -422,12 +364,7 @@ not re-evaluated.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">segments</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
+  
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><i>unreachable</i>.segments(<span class="summary-sig-arg">self</span>)</span>
@@ -457,14 +394,14 @@ not re-evaluated.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:57 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,13 +58,9 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module util</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.util-pysrc.html">source&nbsp;code</a></span></p>
-<pre class="literalblock">
-
-Utility functions to support the Echo Nest web API interface.  This
-module is not meant for other uses and should not be used unless
-modifying or extending the package.
-
-</pre>
+<p>Copyright (c) 2010 The Echo Nest. All rights reserved.
+Created by Tyler Williams on 2010-04-25.</p>
+<p>Utility functions to support the Echo Nest web API interface.</p>
 
 <!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
@@ -95,16 +91,7 @@ modifying or extending the package.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.util.EchoNestAPIKeyError-class.html" class="summary-name">EchoNestAPIKeyError</a><br />
-      An Error returned by the API regarding the API Key.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.util.EchoNestAPIThingIDError-class.html" class="summary-name">EchoNestAPIThingIDError</a><br />
-      An Error returned by the API regarding the ThingID.
+        <a href="pyechonest.util.attrdict-class.html" class="summary-name">attrdict</a>
     </td>
   </tr>
 </table>
@@ -131,9 +118,9 @@ modifying or extending the package.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="parse_http_response"></a><span class="summary-sig-name">parse_http_response</span>(<span class="summary-sig-arg">response</span>)</span></td>
+          <td><span class="summary-sig"><a name="get_successful_response"></a><span class="summary-sig-name">get_successful_response</span>(<span class="summary-sig-arg">raw_json</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.util-pysrc.html#parse_http_response">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.util-pysrc.html#get_successful_response">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -147,13 +134,44 @@ modifying or extending the package.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="call"></a><span class="summary-sig-name">call</span>(<span class="summary-sig-arg">method</span>,
-        <span class="summary-sig-arg">params</span>,
-        <span class="summary-sig-arg">POST</span>=<span class="summary-sig-default">False</span>,
-        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="summary-sig-arg">checkstatus</span>=<span class="summary-sig-default">True</span>)</span></td>
+          <td><span class="summary-sig"><a name="reallyunicode"></a><span class="summary-sig-name">reallyunicode</span>(<span class="summary-sig-arg">s</span>,
+        <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">utf-8</code><code class="variable-quote">'</code></span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.util-pysrc.html#call">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.util-pysrc.html#reallyunicode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reallyUTF8"></a><span class="summary-sig-name">reallyUTF8</span>(<span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.util-pysrc.html#reallyUTF8">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="codegen"></a><span class="summary-sig-name">codegen</span>(<span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">duration</span>=<span class="summary-sig-default">30</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.util-pysrc.html#codegen">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -168,45 +186,15 @@ modifying or extending the package.
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="pyechonest.util-module.html#callm" class="summary-sig-name">callm</a>(<span class="summary-sig-arg">method</span>,
-        <span class="summary-sig-arg">params</span>,
+        <span class="summary-sig-arg">param_dict</span>,
         <span class="summary-sig-arg">POST</span>=<span class="summary-sig-default">False</span>,
-        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="summary-sig-arg">checkstatus</span>=<span class="summary-sig-default">True</span>)</span><br />
-      supports calling with multiple ordered params.</td>
+        <span class="summary-sig-arg">socket_timeout</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">data</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Call the api!
+Param_dict is a <em>regular</em> <em>python</em> <em>dictionary</em> so if you want to have multi-valued params
+put them in a list.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.util-pysrc.html#callm">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="check_call_log"></a><span class="summary-sig-name">check_call_log</span>()</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.util-pysrc.html#check_call_log">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="check_status"></a><span class="summary-sig-name">check_status</span>(<span class="summary-sig-arg">etree</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.util-pysrc.html#check_status">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -256,28 +244,60 @@ modifying or extending the package.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="SUCCESS_STATUS_CODES"></a><span class="summary-name">SUCCESS_STATUS_CODES</span> = <code title="(0)"><code class="variable-group">(</code>0<code class="variable-group">)</code></code>
+        <a name="logger"></a><span class="summary-name">logger</span> = <code title="logging.getLogger(__name__)">logging.getLogger(__name__)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="FAILURE_THING_ID_STATUS_CODES"></a><span class="summary-name">FAILURE_THING_ID_STATUS_CODES</span> = <code title="(7, 6)"><code class="variable-group">(</code>7<code class="variable-op">, </code>6<code class="variable-group">)</code></code>
+        <a href="pyechonest.util-module.html#TYPENAMES" class="summary-name">TYPENAMES</a> = <code title="(('AR', 'artist'),
+ ('SO', 'song'),
+ ('RE', 'release'),
+ ('TR', 'track'),
+ ('PE', 'person'),
+ ('DE', 'device'),
+ ('LI', 'listener'),
+ ('ED', 'editor'),
+..."><code class="variable-group">(</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">AR</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">artist</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">, </code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">SO</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">song</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">, </code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">RE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">release</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="FAILURE_API_KEY_STATUS_CODES"></a><span class="summary-name">FAILURE_API_KEY_STATUS_CODES</span> = <code title="(12)"><code class="variable-group">(</code>12<code class="variable-group">)</code></code>
+        <a href="pyechonest.util-module.html#foreign_regex" class="summary-name">foreign_regex</a> = <code title="re.compile(r'^.+?:(artist|song|release|track|person|device|listener|ed\
+itor|tweditor):([^\^]+)\^?([0-9\.]+)?')">re.compile(r'^.<code class="re-op">+?</code>:<code class="re-group">(</code>artist<code class="re-op">|</code>song<code class="re-op">|</code>release<code class="re-op">|</code>track<code class="re-op">|</code>p<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="CALL_LOG"></a><span class="summary-name">CALL_LOG</span> = <code title="[]"><code class="variable-group">[</code><code class="variable-group">]</code></code>
+        <a href="pyechonest.util-module.html#short_regex" class="summary-name">short_regex</a> = <code title="re.compile(r'^((AR|SO|RE|TR|PE|DE|LI|ED|TW)[0-9A-Z]{16})\^?([0-9\.]+)?\
+')">re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.util-module.html#long_regex" class="summary-name">long_regex</a> = <code title="re.compile(r'music://id.echonest.com/.+?/(AR|SO|RE|TR|PE|DE|LI|ED|TW)/\
+(AR|SO|RE|TR|PE|DE|LI|ED|TW)[0-9A-Z]{16}\^?([0-9\.]+)?')">re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>R<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="headers"></a><span class="summary-name">headers</span> = <code title="[('User-Agent', 'Pyechonest 4.2.5')]"><code class="variable-group">[</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">User-Agent</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Pyechonest 4.2.5</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="opener"></a><span class="summary-name">opener</span> = <code title="urllib2.build_opener()">urllib2.build_opener()</code>
     </td>
   </tr>
 <tr>
@@ -314,21 +334,20 @@ modifying or extending the package.
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">callm</span>(<span class="sig-arg">method</span>,
-        <span class="sig-arg">params</span>,
+        <span class="sig-arg">param_dict</span>,
         <span class="sig-arg">POST</span>=<span class="sig-default">False</span>,
-        <span class="sig-arg">buckets</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="sig-arg">checkstatus</span>=<span class="sig-default">True</span>)</span>
+        <span class="sig-arg">socket_timeout</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">data</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyechonest.util-pysrc.html#callm">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-supports calling with multiple ordered params. Params should be an 
-ordered list of k,v tuples 
-
-</pre>
+  <p>Call the api!
+Param_dict is a <em>regular</em> <em>python</em> <em>dictionary</em> so if you want to have multi-valued params
+put them in a list.</p>
+<p>** note, if we require 2.6, we can get rid of this timeout munging.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -350,22 +369,119 @@ ordered list of k,v tuples
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Attempt to replace postMultipart() with nearly-identical interface.
+  <p>Attempt to replace postMultipart() with nearly-identical interface.
 (The files tuple no longer requires the filename, and we only return
-the response body.) 
-Uses the urllib2_file.py originally from 
-http://fabien.seisen.org which was also drawn heavily from 
-http://code.activestate.com/recipes/146306/ .
-
-This urllib2_file.py is more desirable because of the chunked 
-uploading from a file pointer (no need to read entire file into 
-memory) and the ability to work from behind a proxy (due to its 
-basis on urllib2).
-
-</pre>
+the response body.)
+Uses the urllib2_file.py originally from
+<a class="rst-reference external" href="http://fabien.seisen.org" target="_top">http://fabien.seisen.org</a> which was also drawn heavily from
+<a class="rst-reference external" href="http://code.activestate.com/recipes/146306/" target="_top">http://code.activestate.com/recipes/146306/</a> .</p>
+<p>This urllib2_file.py is more desirable because of the chunked
+uploading from a file pointer (no need to read entire file into
+memory) and the ability to work from behind a proxy (due to its
+basis on urllib2).</p>
   <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="TYPENAMES"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">TYPENAMES</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">(</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">AR</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">artist</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">SO</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">song</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">RE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">release</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">TR</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">track</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">PE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">person</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">DE</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">device</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">LI</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">listener</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+ <code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">ED</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">editor</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="foreign_regex"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">foreign_regex</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+re.compile(r'^.<code class="re-op">+?</code>:<code class="re-group">(</code>artist<code class="re-op">|</code>song<code class="re-op">|</code>release<code class="re-op">|</code>track<code class="re-op">|</code>person<code class="re-op">|</code>device<code class="re-op">|</code>listener<code class="re-op">|</code>ed<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+itor<code class="re-op">|</code>tweditor<code class="re-group">)</code>:<code class="re-group">(</code><code class="re-group">[^</code>\^<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="short_regex"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">short_regex</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="re-op">-</code>Z<code class="re-group">]</code><code class="re-op">{16}</code><code class="re-group">)</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+')
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="long_regex"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">long_regex</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code>/<code class="re-group"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="re-op">-</code>Z<code class="re-group">]</code><code class="re-op">{16}</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
+</pre></td></tr></table>
+</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -391,14 +507,14 @@ basis on urllib2).
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

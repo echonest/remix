@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,6 +63,29 @@
 
 </center>
 <hr />
+<p>An Artist object</p>
+<dl class="rst-docutils">
+<dt>Create an artist object like so:</dt>
+<dd>a = artist.Artist('ARH6W4X1187B99274F')
+a = artist.Artist('the national')
+a = artist.Artist('musicbrainz:artist:a74b1b7f-71a5-4011-9441-d0b5e4122711')</dd>
+<dt>Attributes: (<strong>attributes</strong> are guaranteed to exist as soon as an artist object exists)</dt>
+<dd><strong>id</strong>: Echo Nest Artist ID
+<strong>name</strong>: Artist Name
+hotttnesss: A float representing an artist's hotttnesss
+audio: A list of audio document Result objects
+biographies: A list of biography document Result objects
+blogs: A list of blog document Result objects
+familiarity: A float representing an artist's familiarity
+images: A list of image document Result objects
+news: A list of news document Result objects
+reviews: A list of review document Result objects
+similar: A list of similar Artist objects
+terms: A list of terms document Result objects
+urls: A urls result object
+video: A list of video document Result objects</dd>
+</dl>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -87,236 +110,11 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">identifier</span>,
-        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">id</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
       x.__init__(...) initializes x; see x.__class__.__doc__ for signature</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="audio"></a><span class="summary-sig-name">audio</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.audio">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="images"></a><span class="summary-sig-name">images</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.images">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="biographies"></a><span class="summary-sig-name">biographies</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.biographies">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="blogs"></a><span class="summary-sig-name">blogs</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.blogs">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="news"></a><span class="summary-sig-name">news</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.news">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="reviews"></a><span class="summary-sig-name">reviews</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.reviews">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="similar"></a><span class="summary-sig-name">similar</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.similar">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="video"></a><span class="summary-sig-name">video</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.video">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="familiarity"></a><span class="summary-sig-name">familiarity</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span><br />
-      Returns our numerical estimation of how 
-familiar an artist currently is to the world.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.familiarity">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="hotttnesss"></a><span class="summary-sig-name">hotttnesss</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span><br />
-      Returns our numerical description of how 
-hottt an artist currently is.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.hotttnesss">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#profile" class="summary-sig-name">profile</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span><br />
-      make a &quot;get_profile&quot; call to the echonest...</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.profile">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="terms"></a><span class="summary-sig-name">terms</span>(<span class="summary-sig-arg">self</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.terms">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -364,9 +162,279 @@ hottt an artist currently is.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="clear_cache"></a><span class="summary-sig-name">clear_cache</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_hotttnesss" class="summary-sig-name">get_hotttnesss</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get our numerical description of how hottt an artist currently is</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.clear_cache">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_hotttnesss">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_audio" class="summary-sig-name">get_audio</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get a list of audio documents found on the web related to an artist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_audio">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_biographies" class="summary-sig-name">get_biographies</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">license</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">unknown</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get a list of artist biographies</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_biographies">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_blogs" class="summary-sig-name">get_blogs</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">high_relevance</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Get a list of blog articles related to an artist
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_blogs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_familiarity" class="summary-sig-name">get_familiarity</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get our numerical estimation of how familiar an artist currently is to the world</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_familiarity">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_images" class="summary-sig-name">get_images</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">license</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">unknown</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get a list of artist images</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_images">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_news" class="summary-sig-name">get_news</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">high_relevance</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Get a list of news articles found on the web related to an artist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_news">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_reviews" class="summary-sig-name">get_reviews</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get reviews related to an artist's work
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_reviews">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_similar" class="summary-sig-name">get_similar</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">max_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_results</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">reverse</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Return similar artists to this one</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_similar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_songs" class="summary-sig-name">get_songs</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get the songs associated with an artist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_songs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_terms" class="summary-sig-name">get_terms</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sort</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">weight</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get the terms associated with an artist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_terms">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_urls" class="summary-sig-name">get_urls</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get the urls for an artist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_urls">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_video" class="summary-sig-name">get_video</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get a list of video documents found on the web related to an artist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_video">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_foreign_id" class="summary-sig-name">get_foreign_id</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">idspace</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">musicbrainz</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get the foreign id for this artist for a specific id space</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_foreign_id">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -376,6 +444,12 @@ hottt an artist currently is.</td>
   </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.ArtistProxy-class.html">proxies.ArtistProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.ArtistProxy-class.html#get_attribute">get_attribute</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.GenericProxy-class.html">proxies.GenericProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.GenericProxy-class.html#post_attribute">post_attribute</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
@@ -412,15 +486,92 @@ hottt an artist currently is.</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.artist.Artist-class.html#name" class="summary-name">name</a>
+        <a href="pyechonest.artist.Artist-class.html#hotttnesss" class="summary-name">hotttnesss</a><br />
+      Get our numerical description of how hottt an artist currently is
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.artist.Artist-class.html#identifier" class="summary-name">identifier</a><br />
-      A unique identifier for an artist.
+        <a href="pyechonest.artist.Artist-class.html#audio" class="summary-name">audio</a><br />
+      Get a list of audio documents found on the web related to an artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#biographies" class="summary-name">biographies</a><br />
+      Get a list of artist biographies
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#blogs" class="summary-name">blogs</a><br />
+      Get a list of blog articles related to an artist
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available).
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#familiarity" class="summary-name">familiarity</a><br />
+      Get our numerical estimation of how familiar an artist currently is to the world
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#images" class="summary-name">images</a><br />
+      Get a list of artist images
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#news" class="summary-name">news</a><br />
+      Get a list of news articles found on the web related to an artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#reviews" class="summary-name">reviews</a><br />
+      Get reviews related to an artist's work
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available).
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#similar" class="summary-name">similar</a><br />
+      Return similar artists to this one
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#songs" class="summary-name">songs</a><br />
+      Get the songs associated with an artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#terms" class="summary-name">terms</a><br />
+      Get the terms associated with an artist
     </td>
   </tr>
 <tr>
@@ -428,8 +579,15 @@ hottt an artist currently is.</td>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="pyechonest.artist.Artist-class.html#urls" class="summary-name">urls</a><br />
-      Get links to the artist's official site, MusicBrainz site, 
-MySpace site, Wikipedia article, Amazon list, and iTunes page.
+      Get the urls for an artist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.artist.Artist-class.html#video" class="summary-name">video</a><br />
+      Get a list of video documents found on the web related to an artist
     </td>
   </tr>
   <tr>
@@ -466,8 +624,8 @@ MySpace site, Wikipedia article, Amazon list, and iTunes page.
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">identifier</span>,
-        <span class="sig-arg">name</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">id</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -475,44 +633,12 @@ MySpace site, Wikipedia article, Amazon list, and iTunes page.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-x.__init__(...) initializes x; see x.__class__.__doc__ for signature
-
-</pre>
+  x.__init__(...) initializes x; see x.__class__.__doc__ for signature
   <dl class="fields">
     <dt>Overrides:
         object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="profile"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">profile</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">buckets</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="sig-arg">refresh</span>=<span class="sig-default">False</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.profile">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-make a &quot;get_profile&quot; call to the echonest
-@param buckets : a list of bucket terms to append to the call
-                valid values include 
-                ['audio', 'urls', 'images', 'biographies', 'blogs', 
-                'familiarity', 'hotttnesss', 'news', 'reviews', 'video']
-@param refresh=False : refresh the cache
-
-</pre>
-  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -531,10 +657,7 @@ make a &quot;get_profile&quot; call to the echonest
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-repr(x)
-
-</pre>
+  repr(x)
   <dl class="fields">
     <dt>Overrides:
         object.__repr__
@@ -558,15 +681,434 @@ repr(x)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-str(x)
-
-</pre>
+  str(x)
   <dl class="fields">
     <dt>Overrides:
         object.__str__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_hotttnesss"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_hotttnesss</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_hotttnesss">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get our numerical description of how hottt an artist currently is</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Returns:</dt>
+<dd>A float representing hotttnesss.</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_audio"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_audio</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_audio">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get a list of audio documents found on the web related to an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set</dd>
+<dt>Returns:</dt>
+<dd>A list of audio document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_biographies"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_biographies</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">license</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">unknown</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_biographies">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get a list of artist biographies</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set
+license: A string specifying the desired license type</dd>
+<dt>Returns:</dt>
+<dd>A list of biography document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_blogs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_blogs</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">high_relevance</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_blogs">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Get a list of blog articles related to an artist
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+    results: An integer number of results to return
+    start: An ingteger starting value for the result set
+
+Returns:
+    A list of blog document Result objects
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_familiarity"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_familiarity</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_familiarity">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get our numerical estimation of how familiar an artist currently is to the world</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Returns:</dt>
+<dd>A float representing familiarity.</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_images"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_images</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">license</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">unknown</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_images">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get a list of artist images</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set
+license: A string specifying the desired license type</dd>
+<dt>Returns:</dt>
+<dd>A list of image document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_news"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_news</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">high_relevance</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_news">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get a list of news articles found on the web related to an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set</dd>
+<dt>Returns:</dt>
+<dd>A list of news document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_reviews"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_reviews</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_reviews">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Get reviews related to an artist's work
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+    results: An integer number of results to return
+    start: An integer starting value for the result set
+
+Returns:
+    A list of review document Result objects
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_similar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_similar</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">max_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_results</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">reverse</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_similar">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return similar artists to this one</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set
+max_familiarity: A float specifying the max familiarity of artists to search for
+min_familiarity: A float specifying the min familiarity of artists to search for
+max_hotttnesss: A float specifying the max hotttnesss of artists to search for
+min_hotttnesss: A float specifying the max hotttnesss of artists to search for
+reverse: A boolean indicating whether or not to return dissimilar artists (wrecommender). Defaults to False.</dd>
+<dt>Returns:</dt>
+<dd>A list of similar Artist objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_songs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_songs</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_songs">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the songs associated with an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Results:</dt>
+<dd>A list of Song objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_terms"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_terms</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sort</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">weight</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_terms">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the terms associated with an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+sort: A string specifying the desired sorting type (weight or frequency)</dd>
+<dt>Results:</dt>
+<dd>A list of term document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_urls"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_urls</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_urls">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the urls for an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Results:</dt>
+<dd>A url document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_video"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_video</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_video">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get a list of video documents found on the web related to an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set</dd>
+<dt>Returns:</dt>
+<dd>A list of video document Result objects</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_foreign_id"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_foreign_id</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">idspace</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">musicbrainz</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#Artist.get_foreign_id">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the foreign id for this artist for a specific id space</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>idspace: A string indicating the idspace to fetch a foreign id for.</dd>
+<dt>Returns:</dt>
+<dd>A foreign ID string</dd>
+</dl>
+  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -589,36 +1131,301 @@ str(x)
   </td>
 </tr>
 </table>
-<a name="name"></a>
+<a name="hotttnesss"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">name</h3>
-  
+  <h3 class="epydoc">hotttnesss</h3>
+  <p>Get our numerical description of how hottt an artist currently is</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Returns:</dt>
+<dd>A float representing hotttnesss.</dd>
+</dl>
   <dl class="fields">
     <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.name(<span class="summary-sig-arg">self</span>)</span>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_hotttnesss" class="summary-sig-name">get_hotttnesss</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get our numerical description of how hottt an artist currently is
     </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="identifier"></a>
+<a name="audio"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">identifier</h3>
+  <h3 class="epydoc">audio</h3>
+  <p>Get a list of audio documents found on the web related to an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set</dd>
+<dt>Returns:</dt>
+<dd>A list of audio document Result objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_audio" class="summary-sig-name">get_audio</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get a list of audio documents found on the web related to an artist
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="biographies"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">biographies</h3>
+  <p>Get a list of artist biographies</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set
+license: A string specifying the desired license type</dd>
+<dt>Returns:</dt>
+<dd>A list of biography document Result objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_biographies" class="summary-sig-name">get_biographies</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">license</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">unknown</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get a list of artist biographies
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="blogs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">blogs</h3>
   <pre class="literalblock">
-A unique identifier for an artist.
-See http://developer.echonest.com/docs/datatypes/
-for more information
+Get a list of blog articles related to an artist
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+    results: An integer number of results to return
+    start: An ingteger starting value for the result set
+
+Returns:
+    A list of blog document Result objects
 
 </pre>
   <dl class="fields">
     <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.identifier(<span class="summary-sig-arg">self</span>)</span>
-        - A unique identifier for an artist.
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_blogs" class="summary-sig-name">get_blogs</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">high_relevance</span>=<span class="summary-sig-default">False</span>)</span>
+        - Get a list of blog articles related to an artist
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available).
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="familiarity"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">familiarity</h3>
+  <p>Get our numerical estimation of how familiar an artist currently is to the world</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Returns:</dt>
+<dd>A float representing familiarity.</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_familiarity" class="summary-sig-name">get_familiarity</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get our numerical estimation of how familiar an artist currently is to the world
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="images"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">images</h3>
+  <p>Get a list of artist images</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set
+license: A string specifying the desired license type</dd>
+<dt>Returns:</dt>
+<dd>A list of image document Result objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_images" class="summary-sig-name">get_images</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">license</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">unknown</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get a list of artist images
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="news"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">news</h3>
+  <p>Get a list of news articles found on the web related to an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set</dd>
+<dt>Returns:</dt>
+<dd>A list of news document Result objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_news" class="summary-sig-name">get_news</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">high_relevance</span>=<span class="summary-sig-default">False</span>)</span>
+        - Get a list of news articles found on the web related to an artist
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="reviews"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">reviews</h3>
+  <pre class="literalblock">
+Get reviews related to an artist's work
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+    results: An integer number of results to return
+    start: An integer starting value for the result set
+
+Returns:
+    A list of review document Result objects
+
+</pre>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_reviews" class="summary-sig-name">get_reviews</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get reviews related to an artist's work
+Args:
+    cache: A boolean indicating whether or not the cached value should be used (if available).
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="similar"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">similar</h3>
+  <p>Return similar artists to this one</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set
+max_familiarity: A float specifying the max familiarity of artists to search for
+min_familiarity: A float specifying the min familiarity of artists to search for
+max_hotttnesss: A float specifying the max hotttnesss of artists to search for
+min_hotttnesss: A float specifying the max hotttnesss of artists to search for
+reverse: A boolean indicating whether or not to return dissimilar artists (wrecommender). Defaults to False.</dd>
+<dt>Returns:</dt>
+<dd>A list of similar Artist objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_similar" class="summary-sig-name">get_similar</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">max_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_results</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">reverse</span>=<span class="summary-sig-default">False</span>)</span>
+        - Return similar artists to this one
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="songs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">songs</h3>
+  <p>Get the songs associated with an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Results:</dt>
+<dd>A list of Song objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_songs" class="summary-sig-name">get_songs</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get the songs associated with an artist
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="terms"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">terms</h3>
+  <p>Get the terms associated with an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+sort: A string specifying the desired sorting type (weight or frequency)</dd>
+<dt>Results:</dt>
+<dd>A list of term document Result objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_terms" class="summary-sig-name">get_terms</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sort</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">weight</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get the terms associated with an artist
     </dd>
   </dl>
 </td></tr></table>
@@ -629,16 +1436,44 @@ for more information
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">urls</h3>
-  <pre class="literalblock">
-Get links to the artist's official site, MusicBrainz site, 
-MySpace site, Wikipedia article, Amazon list, and iTunes page.
-
-</pre>
+  <p>Get the urls for an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Results:</dt>
+<dd>A url document Result objects</dd>
+</dl>
   <dl class="fields">
     <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.urls(<span class="summary-sig-arg">self</span>)</span>
-        - Get links to the artist's official site, MusicBrainz site, 
-MySpace site, Wikipedia article, Amazon list, and iTunes page.
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_urls" class="summary-sig-name">get_urls</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get the urls for an artist
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="video"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">video</h3>
+  <p>Get a list of video documents found on the web related to an artist</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.
+results: An integer number of results to return
+start: An integer starting value for the result set</dd>
+<dt>Returns:</dt>
+<dd>A list of video document Result objects</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.artist.Artist-class.html#get_video" class="summary-sig-name">get_video</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get a list of video documents found on the web related to an artist
     </dd>
   </dl>
 </td></tr></table>
@@ -665,14 +1500,14 @@ MySpace site, Wikipedia article, Amazon list, and iTunes page.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:18:01 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

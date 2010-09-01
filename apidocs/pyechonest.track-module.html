@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,13 +58,6 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module track</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.track-pysrc.html">source&nbsp;code</a></span></p>
-<pre class="literalblock">
-
-A Python interface to the The Echo Nest's web API.  See
-http://developer.echonest.com/ for details.
-
-</pre>
-
 <!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -86,7 +79,8 @@ http://developer.echonest.com/ for details.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html" class="summary-name">Track</a>
+        <a href="pyechonest.track.Track-class.html" class="summary-name">Track</a><br />
+      Represents an audio analysis from The Echo Nest.
     </td>
   </tr>
 </table>
@@ -107,51 +101,16 @@ http://developer.echonest.com/ for details.
     </table>
   </td>
 </tr>
-<tr>
+<tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="search_tracks"></a><span class="summary-sig-name">search_tracks</span>(<span class="summary-sig-arg">name</span>,
-        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">rows</span>=<span class="summary-sig-default">15</span>,
-        <span class="summary-sig-arg">refresh</span>=<span class="summary-sig-default">False</span>)</span><br />
-      Search for audio using a query on the track, album, or artist name.</td>
+          <td><span class="summary-sig"><a name="_track_from_response"></a><span class="summary-sig-name">_track_from_response</span>(<span class="summary-sig-arg">response</span>)</span><br />
+      This is the function that actually creates the track object</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#search_tracks">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="get_top_hottt_tracks"></a><span class="summary-sig-name">get_top_hottt_tracks</span>()</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#get_top_hottt_tracks">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="get_metadata"></a><span class="summary-sig-name">get_metadata</span>(<span class="summary-sig-arg">id_or_md5</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#get_metadata">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_track_from_response">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -165,45 +124,10 @@ http://developer.echonest.com/ for details.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_analyze"></a><span class="summary-sig-name">_analyze</span>(<span class="summary-sig-arg">md5_or_trackID</span>,
-        <span class="summary-sig-arg">wait</span>=<span class="summary-sig-default">True</span>)</span><br />
-      Re-analyze a previously uploaded track.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#_analyze">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="upload"></a><span class="summary-sig-name">upload</span>(<span class="summary-sig-arg">filename_or_url</span>,
-        <span class="summary-sig-arg">wait</span>=<span class="summary-sig-default">True</span>)</span><br />
-      Create a Track object based on the results of _upload().</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#upload">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="pyechonest.track-module.html#_upload" class="summary-sig-name" onclick="show_private();">_upload</a>(<span class="summary-sig-arg">filename_or_url</span>,
-        <span class="summary-sig-arg">wait</span>=<span class="summary-sig-default">True</span>)</span><br />
-      Upload a file or give a URL to the EN analyze API.</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#_upload" class="summary-sig-name" onclick="show_private();">_upload</a>(<span class="summary-sig-arg">param_dict</span>,
+        <span class="summary-sig-arg">data</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Calls upload either with a local audio file,
+or a url.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#_upload">source&nbsp;code</a></span>
             
@@ -213,15 +137,48 @@ http://developer.echonest.com/ for details.
       
     </td>
   </tr>
-<tr>
+<tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="calc_md5"></a><span class="summary-sig-name">calc_md5</span>(<span class="summary-sig-arg">filename</span>)</span></td>
+          <td><span class="summary-sig"><a name="_profile"></a><span class="summary-sig-name">_profile</span>(<span class="summary-sig-arg">param_dict</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#calc_md5">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_profile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_analyze"></a><span class="summary-sig-name">_analyze</span>(<span class="summary-sig-arg">param_dict</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_analyze">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_track_from_string"></a><span class="summary-sig-name">_track_from_string</span>(<span class="summary-sig-arg">audio_data</span>,
+        <span class="summary-sig-arg">filetype</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_track_from_string">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -235,10 +192,11 @@ http://developer.echonest.com/ for details.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="parseToListOfEvents"></a><span class="summary-sig-name">parseToListOfEvents</span>(<span class="summary-sig-arg">evs</span>)</span><br />
-      parser for the list of events type calls</td>
+          <td><span class="summary-sig"><a name="track_from_file"></a><span class="summary-sig-name">track_from_file</span>(<span class="summary-sig-arg">file_object</span>,
+        <span class="summary-sig-arg">filetype</span>)</span><br />
+      Convenience function for creating a track object from a file-like object</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#parseToListOfEvents">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_file">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -252,11 +210,97 @@ http://developer.echonest.com/ for details.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="parseToFloat"></a><span class="summary-sig-name">parseToFloat</span>(<span class="summary-sig-arg">evs</span>,
-        <span class="summary-sig-arg">with_confidence</span>=<span class="summary-sig-default">False</span>)</span><br />
-      parser for the single float-type calls</td>
+          <td><span class="summary-sig"><a name="track_from_filename"></a><span class="summary-sig-name">track_from_filename</span>(<span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">filetype</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Convenience function for creating a track object from a file path
+if the filetype is none, we will get it from the extension</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#parseToFloat">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_filename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="track_from_url"></a><span class="summary-sig-name">track_from_url</span>(<span class="summary-sig-arg">url</span>)</span><br />
+      Convenience function for creating a track object from a public http url</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="track_from_id"></a><span class="summary-sig-name">track_from_id</span>(<span class="summary-sig-arg">identifier</span>)</span><br />
+      Convenience function for creating a track object from an id, like TRXXHTJ1294CD8F3B3</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_id">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="track_from_md5"></a><span class="summary-sig-name">track_from_md5</span>(<span class="summary-sig-arg">md5</span>)</span><br />
+      Convenience function for creating a track object from an md5</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_md5">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="track_from_reanalyzing_id"></a><span class="summary-sig-name">track_from_reanalyzing_id</span>(<span class="summary-sig-arg">identifier</span>)</span><br />
+      Convenience function for reanalzying an already uploaded track</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_reanalyzing_id">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="track_from_reanalyzing_md5"></a><span class="summary-sig-name">track_from_reanalyzing_md5</span>(<span class="summary-sig-arg">md5</span>)</span><br />
+      Convenience function for reanalzying an already uploaded track</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_reanalyzing_md5">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -282,20 +326,6 @@ http://developer.echonest.com/ for details.
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="SEARCH_TRACKS_CACHE"></a><span class="summary-name">SEARCH_TRACKS_CACHE</span> = <code title="{}"><code class="variable-group">{</code><code class="variable-group">}</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="TRUTH"></a><span class="summary-name">TRUTH</span> = <code title="{False: 'N', True: 'Y'}"><code class="variable-group">{</code>False<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">N</code><code class="variable-quote">'</code><code class="variable-op">, </code>True<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">Y</code><code class="variable-quote">'</code><code class="variable-group">}</code></code>
-    </td>
-  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -329,20 +359,16 @@ http://developer.echonest.com/ for details.
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">_upload</span>(<span class="sig-arg">filename_or_url</span>,
-        <span class="sig-arg">wait</span>=<span class="sig-default">True</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_upload</span>(<span class="sig-arg">param_dict</span>,
+        <span class="sig-arg">data</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyechonest.track-pysrc.html#_upload">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Upload a file or give a URL to the EN analyze API.
-If you call this with wait=False it will return immediately.
-
-</pre>
+  Calls upload either with a local audio file,
+or a url. Returns a track object.
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -369,14 +395,14 @@ If you call this with wait=False it will return immediately.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:55 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
