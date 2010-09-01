@@ -1,3 +1,11 @@
+1.3b - September 1 2010
+- Syncing changes with the latest pyechonest
+- Removing cloud modules
+- Force endianness in wave header
+- Latest version of youtube-dl
+- Echo Nest v4 track API changes
+- Closing temp files correctly #62
+
 1.3a - May 28 2010
 
 - New youtube-dl script
