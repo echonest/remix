@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,6 +63,38 @@
 
 </center>
 <hr />
+<p>Represents an audio analysis from The Echo Nest.</p>
+<p>The track object will have the following properties:
+analysis_channels       an int
+analysis_sample_rate    a float
+analyzer_version        ex. '3.01a'
+artist                  ex. 'The Sea and Cake' or None
+bars                    a list of dicts
+beats                   a list of dicts
+bitrate                 an int
+duration                a float
+end_of_fade_in          a float
+id                      ex. 'TRTOBXJ1296BCDA33B'
+key                     an int
+key_confidence          a float
+loudness                a float
+md5                     ex. '17162ff555969cfed222e127837acd1a'
+meta                    a dict of analyzer data
+mode                    an int (0 or 1)
+mode_confidence         a float
+num_samples             an int
+release                 the album name, or None
+sample_md5              '4bf222fb6af22ba0226734bb978bac14'
+samplerate              an int
+sections                a list of dicts
+segments                a list of dicts
+start_of_fade_out       a float
+status                  ex. 'complete'
+tatums                  a list of dicts
+tempo                   a flat
+tempo_confidence        a float
+title                   ex. 'Interiors' or None</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -80,58 +112,6 @@
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="pyechonest.track.Track-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">identifier</span>)</span><br />
-      x.__init__(...) initializes x; see x.__class__.__doc__ for signature</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#Track.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="analyze"></a><span class="summary-sig-name">analyze</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">wait</span>=<span class="summary-sig-default">False</span>)</span><br />
-      Re-analyze a previously uploaded track.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#Track.analyze">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="_metadata"></a><span class="summary-sig-name">_metadata</span>(<span class="summary-sig-arg">self</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#Track._metadata">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -168,6 +148,13 @@
   </tr>
   <tr>
     <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.TrackProxy-class.html">proxies.TrackProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.TrackProxy-class.html#__init__">__init__</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.GenericProxy-class.html">proxies.GenericProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.GenericProxy-class.html#get_attribute">get_attribute</a></code>,
+      <code><a href="pyechonest.proxies.GenericProxy-class.html#post_attribute">post_attribute</a></code>
+      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
@@ -200,139 +187,6 @@
     </table>
   </td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#bars" class="summary-name">bars</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#beats" class="summary-name">beats</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#tatums" class="summary-name">tatums</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#duration" class="summary-name">duration</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#end_of_fade_in" class="summary-name">end_of_fade_in</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#key" class="summary-name">key</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#loudness" class="summary-name">loudness</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#mode" class="summary-name">mode</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#start_of_fade_out" class="summary-name">start_of_fade_out</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#tempo" class="summary-name">tempo</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#time_signature" class="summary-name">time_signature</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#sections" class="summary-name">sections</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#metadata" class="summary-name">metadata</a>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#segments" class="summary-name">segments</a><br />
-      Decorator that caches a function's return value each time it is called.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#identifier" class="summary-name">identifier</a><br />
-      A unique identifier for a track.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#name" class="summary-name">name</a>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.track.Track-class.html#md5" class="summary-name">md5</a>
-    </td>
-  </tr>
   <tr>
     <td colspan="2" class="summary">
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
@@ -359,34 +213,6 @@
   </td>
 </tr>
 </table>
-<a name="__init__"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">identifier</span>)</span>
-    <br /><em class="fname">(Constructor)</em>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyechonest.track-pysrc.html#Track.__init__">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-x.__init__(...) initializes x; see x.__class__.__doc__ for signature
-
-</pre>
-  <dl class="fields">
-    <dt>Overrides:
-        object.__init__
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
 <a name="__repr__"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -402,10 +228,7 @@ x.__init__(...) initializes x; see x.__class__.__doc__ for signature
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-repr(x)
-
-</pre>
+  repr(x)
   <dl class="fields">
     <dt>Overrides:
         object.__repr__
@@ -429,382 +252,12 @@ repr(x)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-str(x)
-
-</pre>
+  str(x)
   <dl class="fields">
     <dt>Overrides:
         object.__str__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
-  </dl>
-</td></tr></table>
-</div>
-<br />
-<!-- ==================== PROPERTY DETAILS ==================== -->
-<a name="section-PropertyDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Property Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-PropertyDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="bars"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">bars</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="beats"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">beats</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="tatums"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">tatums</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="duration"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">duration</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="end_of_fade_in"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">end_of_fade_in</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="key"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">key</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="loudness"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">loudness</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="mode"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">mode</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="start_of_fade_out"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">start_of_fade_out</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="tempo"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">tempo</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="time_signature"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">time_signature</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="sections"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">sections</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="metadata"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">metadata</h3>
-  
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.metadata(<span class="summary-sig-arg">self</span>)</span>
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="segments"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">segments</h3>
-  <pre class="literalblock">
-Decorator that caches a function's return value each time it is called.
-If called later with the same arguments, the cached value is returned, and
-not re-evaluated.
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><table><tr><td><pre class="variable">
-<code class="variable-unknown">??</code>
-</pre></td></tr></table>
-
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="identifier"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">identifier</h3>
-  <pre class="literalblock">
-A unique identifier for a track.
-See http://developer.echonest.com/docs/datatypes/
-for more information
-
-</pre>
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.identifier(<span class="summary-sig-arg">self</span>)</span>
-        - A unique identifier for a track.
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="name"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">name</h3>
-  
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.name(<span class="summary-sig-arg">self</span>)</span>
-    </dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="md5"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">md5</h3>
-  
-  <dl class="fields">
-    <dt>Get Method:</dt>
-    <dd class="value"><span class="summary-sig"><i>unreachable</i>.md5(<span class="summary-sig-arg">self</span>)</span>
-    </dd>
   </dl>
 </td></tr></table>
 </div>
@@ -830,14 +283,14 @@ for more information
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:18:01 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

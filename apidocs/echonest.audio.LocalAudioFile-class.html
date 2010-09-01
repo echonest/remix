@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,15 +63,11 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
-The basic do-everything class for remixing. Acts as an `AudioData` 
-object, but with an added `analysis` selector which is an
-`AudioAnalysis` object. It conditianally uploads the file
-it was initialized with. If the file is already known to the 
+The basic do-everything class for remixing. Acts as an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>
+object, but with an added <code class="link">analysis</code> selector which is an
+<a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> object. It conditianally uploads the file
+it was initialized with. If the file is already known to the
 Analyze API, then it does not bother uploading the file.
-
-</pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -100,7 +96,8 @@ Analyze API, then it does not bother uploading the file.
         <span class="summary-sig-arg">filename</span>,
         <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">defer</span>=<span class="summary-sig-default">False</span>)</span><br />
-      :param filename: path to a local MP3 file</td>
+      Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#LocalAudioFile.__init__">source&nbsp;code</a></span>
             
@@ -230,8 +227,8 @@ Analyze API, then it does not bother uploading the file.
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.LocalAudioFile-class.html#duration" class="summary-name">duration</a><br />
-      Since we consider `AudioFile` to be an evolved version of 
-`AudioData`, we return the measured duration from the analysis.
+      Since we consider <code class="link">AudioFile</code> to be an evolved version of
+<a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>, we return the measured duration from the analysis.
     </td>
   </tr>
   <tr>
@@ -281,12 +278,16 @@ Analyze API, then it does not bother uploading the file.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-:param filename: path to a local MP3 file
-
-</pre>
+  <p>Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</p>
+<p>Given a <code class="link">filename</code> (and an input ndarray), use ffmpeg to convert
+the file to wave, then load the file into the data,
+auto-detecting the sample rate, and number of channels.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong> - path to a local MP3 file</li>
+    </ul></dd>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -318,17 +319,13 @@ Analyze API, then it does not bother uploading the file.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">duration</h3>
-  <pre class="literalblock">
-
-Since we consider `AudioFile` to be an evolved version of 
-`AudioData`, we return the measured duration from the analysis.
-
-</pre>
+  Since we consider <code class="link">AudioFile</code> to be an evolved version of
+<a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>, we return the measured duration from the analysis.
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><i>unreachable</i>.duration(<span class="summary-sig-arg">self</span>)</span>
-        - Since we consider `AudioFile` to be an evolved version of 
-`AudioData`, we return the measured duration from the analysis.
+        - Since we consider <code class="link">AudioFile</code> to be an evolved version of
+<a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>, we return the measured duration from the analysis.
     </dd>
   </dl>
 </td></tr></table>
@@ -355,14 +352,14 @@ Since we consider `AudioFile` to be an evolved version of
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:58 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

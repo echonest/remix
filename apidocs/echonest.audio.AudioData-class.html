@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,21 +63,16 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
-Handles audio data transparently. A smart audio container
-with accessors that include:
-    
-sampleRate
-    samples per second
-numChannels
-    number of channels
-data
-    a `numpy.array`_ 
-    
-.. _numpy.array: http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
-
-</pre>
+<p>Handles audio data transparently. A smart audio container
+with accessors that include:</p>
+<dl class="rst-docutils">
+<dt>sampleRate</dt>
+<dd>samples per second</dd>
+<dt>numChannels</dt>
+<dd>number of channels</dd>
+<dt>data</dt>
+<dd>a <a class="rst-reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html" target="_top">numpy.array</a></dd>
+</dl>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -110,8 +105,8 @@ data
         <span class="summary-sig-arg">numChannels</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">defer</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
-      Given an input `ndarray`, import the sample values and shape 
-(if none is specified) of the input `numpy.array`.</td>
+      Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData.__init__">source&nbsp;code</a></span>
             
@@ -163,7 +158,7 @@ data
         <tr>
           <td><span class="summary-sig"><a name="getslice"></a><span class="summary-sig-name">getslice</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">index</span>)</span><br />
-      Help `__getitem__` return a new AudioData for a given slice</td>
+      Help <a href="echonest.audio.AudioData-class.html#__getitem__" class="link">__getitem__</a> return a new AudioData for a given slice</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData.getslice">source&nbsp;code</a></span>
             
@@ -179,9 +174,10 @@ data
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.audio.AudioData-class.html#getsample" class="summary-sig-name">getsample</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a name="getsample"></a><span class="summary-sig-name">getsample</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">index</span>)</span><br />
-      Help `__getitem__` return a frame (all channels for a given ...</td>
+      Help <a href="echonest.audio.AudioData-class.html#__getitem__" class="link">__getitem__</a> return a frame (all channels for a given
+sample index)</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData.getsample">source&nbsp;code</a></span>
             
@@ -216,7 +212,7 @@ data
         <tr>
           <td><span class="summary-sig"><a name="append"></a><span class="summary-sig-name">append</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">as2</span>)</span><br />
-      Appends the input to the end of this `AudioData`.</td>
+      Appends the input to the end of this <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData.append">source&nbsp;code</a></span>
             
@@ -304,7 +300,7 @@ data
           <td><span class="summary-sig"><a href="echonest.audio.AudioData-class.html#encode" class="summary-sig-name">encode</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">mp3</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Outputs an MP3 or WAVE file to `filename`.</td>
+      Outputs an MP3 or WAVE file to <code class="link">filename</code>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData.encode">source&nbsp;code</a></span>
             
@@ -476,26 +472,21 @@ data
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Given an input `ndarray`, import the sample values and shape 
-(if none is specified) of the input `numpy.array`.
-
-Given a `filename` (and an input ndarray), use ffmpeg to convert
-the file to wave, then load the file into the data, 
-auto-detecting the sample rate, and number of channels.
-
-:param filename: a path to an audio file for loading its sample 
-    data into the AudioData.data
-:param ndarray: a `numpy.array`_ instance with sample data
-:param shape: a tuple of array dimensions
-:param sampleRate: sample rate, in Hz
-:param numChannels: number of channels
-
-.. _numpy.array: http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
-
-</pre>
+  <p>Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</p>
+<p>Given a <code class="link">filename</code> (and an input ndarray), use ffmpeg to convert
+the file to wave, then load the file into the data,
+auto-detecting the sample rate, and number of channels.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong> - a path to an audio file for loading its sample
+data into the AudioData.data</li>
+        <li><strong class="pname"><code>ndarray</code></strong> - a <a class="rst-reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html" target="_top">numpy.array</a> instance with sample data</li>
+        <li><strong class="pname"><code>shape</code></strong> - a tuple of array dimensions</li>
+        <li><strong class="pname"><code>sampleRate</code></strong> - sample rate, in Hz</li>
+        <li><strong class="pname"><code>numChannels</code></strong> - number of channels</li>
+    </ul></dd>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -518,38 +509,9 @@ auto-detecting the sample rate, and number of channels.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Fetches a frame or slice. Returns an individual frame (if the index 
-is a time offset float or an integer sample number) or a slice if 
-the index is an `AudioQuantum` (or quacks like one).
-
-</pre>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<a name="getsample"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">getsample</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">index</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioData.getsample">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <pre class="literalblock">
-
-Help `__getitem__` return a frame (all channels for a given 
-sample index)
-
-</pre>
+  Fetches a frame or slice. Returns an individual frame (if the index
+is a time offset float or an integer sample number) or a slice if
+the index is an <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> (or quacks like one).
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -570,12 +532,8 @@ sample index)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Outputs an MP3 or WAVE file to `filename`.
-Format is determined by `mp3` parameter.
-
-</pre>
+  Outputs an MP3 or WAVE file to <code class="link">filename</code>.
+Format is determined by <code class="link">mp3</code> parameter.
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.audio.AudioRenderable-class.html#encode">AudioRenderable.encode</a>
@@ -652,14 +610,14 @@ Format is determined by `mp3` parameter.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:57 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

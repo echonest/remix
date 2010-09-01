@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,26 +63,20 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
-A container that enables content-based selection and filtering.
-A `List` that contains `AudioQuantum` objects, with additional methods
-for manipulating them.
-
-When an `AudioQuantumList` is created for a track via a call to the 
-Analyze API, `attach`\() is called so that its container is set to the
-containing `AudioAnalysis`, and the container of each of the 
-`AudioQuantum` list members is set to itself.
-
-Additional accessors now include AudioQuantum elements such as 
-`start`, `duration`, and `confidence`, which each return a List of the 
+<p>A container that enables content-based selection and filtering.
+A <code class="link">List</code> that contains <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects, with additional methods
+for manipulating them.</p>
+<p>When an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> is created for a track via a call to the
+Analyze API, <a href="echonest.audio.AudioQuantumList-class.html#attach" class="link">attach</a>() is called so that its container is set to the
+containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a>, and the container of each of the
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> list members is set to itself.</p>
+<p>Additional accessors now include AudioQuantum elements such as
+<a href="echonest.audio.AudioQuantumList-class.html#start" class="link">start</a>, <a href="echonest.audio.AudioQuantumList-class.html#duration" class="link">duration</a>, and <a href="echonest.audio.AudioQuantumList-class.html#confidence" class="link">confidence</a>, which each return a List of the
 corresponding properties in the contained AudioQuanta. A special name
-is `kinds`, which returns a List of the `kind` of each `AudioQuantum`.
-If `AudioQuantumList.kind` is &quot;`segment`&quot;, then `pitches`, `timbre`,
-`loudness_begin`, `loudness_max`, `time_loudness_max`, and `loudness_end`
-are available.
-
-</pre>
+is <a href="echonest.audio.AudioQuantumList-class.html#kinds" class="link">kinds</a>, which returns a List of the <code class="link">kind</code> of each <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>.
+If <code class="link">AudioQuantumList.kind</code> is &quot;<code class="link">segment</code>&quot;, then <a href="echonest.audio.AudioQuantumList-class.html#pitches" class="link">pitches</a>, <a href="echonest.audio.AudioQuantumList-class.html#timbre" class="link">timbre</a>,
+<a href="echonest.audio.AudioQuantumList-class.html#loudness_begin" class="link">loudness_begin</a>, <a href="echonest.audio.AudioQuantumList-class.html#loudness_max" class="link">loudness_max</a>, <a href="echonest.audio.AudioQuantumList-class.html#time_loudness_max" class="link">time_loudness_max</a>, and <a href="echonest.audio.AudioQuantumList-class.html#loudness_end" class="link">loudness_end</a>
+are available.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -103,10 +97,7 @@ are available.
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type"><pre class="literalblock">
-new list
-
-</pre></span>
+      <span class="summary-type">new list</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -115,7 +106,7 @@ new list
         <span class="summary-sig-arg">kind</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">container</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Initializes an `AudioQuantumList`.</td>
+      Initializes an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.__init__">source&nbsp;code</a></span>
             
@@ -198,7 +189,7 @@ new list
         <tr>
           <td><span class="summary-sig"><a name="set_source"></a><span class="summary-sig-name">set_source</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      Checks input to see if it is an `AudioData`.</td>
+      Checks input to see if it is an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.set_source">source&nbsp;code</a></span>
             
@@ -233,7 +224,7 @@ new list
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#that" class="summary-sig-name">that</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">filt</span>)</span><br />
       Method for applying a function to each of the contained
-`AudioQuantum` objects.</td>
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.that">source&nbsp;code</a></span>
             
@@ -252,8 +243,8 @@ new list
           <td><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#ordered_by" class="summary-sig-name">ordered_by</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">function</span>,
         <span class="summary-sig-arg">descending</span>=<span class="summary-sig-default">False</span>)</span><br />
-      Returns a new `AudioQuantumList` of the same `kind` with the 
-original elements, but ordered from low to high according to 
+      Returns a new <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> of the same <code class="link">kind</code> with the
+original elements, but ordered from low to high according to
 the input function acting as a key.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.ordered_by">source&nbsp;code</a></span>
@@ -291,8 +282,8 @@ the input function acting as a key.</td>
         <tr>
           <td><span class="summary-sig"><a name="attach"></a><span class="summary-sig-name">attach</span>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">container</span>)</span><br />
-      Create circular references to the containing `AudioAnalysis` and for the 
-contained `AudioQuantum` objects.</td>
+      Create circular references to the containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> and for the
+contained <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioQuantumList.attach">source&nbsp;code</a></span>
             
@@ -551,7 +542,7 @@ contained `AudioQuantum` objects.</td>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.AudioQuantumList-class.html#source" class="summary-name">source</a><br />
-      The `AudioData` source for the `AudioQuantumList`.
+      The <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> source for the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
     </td>
   </tr>
 <tr>
@@ -559,7 +550,7 @@ contained `AudioQuantum` objects.</td>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.AudioQuantumList-class.html#duration" class="summary-name">duration</a><br />
-      Total duration of the `AudioQuantumList`.
+      Total duration of the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
     </td>
   </tr>
   <tr>
@@ -607,23 +598,18 @@ contained `AudioQuantum` objects.</td>
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Initializes an `AudioQuantumList`. All parameters are optional.
-
-:param initial: a `List` type with the initial contents
-:param kind: a label for the kind of `AudioQuantum` contained
-    within
-:param container: a reference to the containing `AudioAnalysis`
-:param source: a reference to the `AudioData` with the corresponding samples
-    and time base for the contained AudioQuanta
-
-</pre>
+  Initializes an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>. All parameters are optional.
   <dl class="fields">
-    <dt>Returns: <pre class="literalblock">
-new list
-
-</pre></dt>
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>initial</code></strong> - a <code class="link">List</code> type with the initial contents</li>
+        <li><strong class="pname"><code>kind</code></strong> - a label for the kind of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contained
+within</li>
+        <li><strong class="pname"><code>container</code></strong> - a reference to the containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a></li>
+        <li><strong class="pname"><code>source</code></strong> - a reference to the <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> with the corresponding samples
+and time base for the contained AudioQuanta</li>
+    </ul></dd>
+    <dt>Returns: new list</dt>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -667,24 +653,22 @@ new list
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Method for applying a function to each of the contained
-`AudioQuantum` objects. Returns a new `AudioQuantumList` 
-of the same `kind` containing the `AudioQuantum` objects 
-for which the input function is true.
-
-See `echonest.selection` for example selection filters.
-
-:param filt: a function that takes one `AudioQuantum` and returns
-    a `True` value `None`
-    
-:change: experimenting with a filter-only form
-
-</pre>
+  <p>Method for applying a function to each of the contained
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects. Returns a new <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>
+of the same <code class="link">kind</code> containing the <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects
+for which the input function is true.</p>
+<p>See <a href="echonest.selection-module.html" class="link">echonest.selection</a> for example selection filters.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filt</code></strong> - a function that takes one <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and returns
+a <code class="link">True</code> value <code class="link">None</code></li>
+    </ul></dd>
   </dl>
-</td></tr></table>
+<div class="fields">      <p><strong>Change Log:</strong>
+        experimenting with a filter-only form
+      </p>
+</div></td></tr></table>
 </div>
 <a name="ordered_by"></a>
 <div>
@@ -702,21 +686,18 @@ See `echonest.selection` for example selection filters.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Returns a new `AudioQuantumList` of the same `kind` with the 
-original elements, but ordered from low to high according to 
-the input function acting as a key. 
-
-See `echonest.sorting` for example ordering functions.
-
-:param function: a function that takes one `AudioQuantum` and returns
-    a comparison key
-:param descending: when `True`, reverses the sort order, from 
-    high to low
-
-</pre>
+  <p>Returns a new <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> of the same <code class="link">kind</code> with the
+original elements, but ordered from low to high according to
+the input function acting as a key.</p>
+<p>See <a href="echonest.sorting-module.html" class="link">echonest.sorting</a> for example ordering functions.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>function</code></strong> - a function that takes one <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> and returns
+a comparison key</li>
+        <li><strong class="pname"><code>descending</code></strong> - when <code class="link">True</code>, reverses the sort order, from
+high to low</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -736,43 +717,39 @@ See `echonest.sorting` for example ordering functions.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-There are two basic forms: a map-and-flatten and an converse-that.
-
-The basic form, with one `function` argument, returns a new 
-`AudioQuantumList` so that the source function returns
-`None`, one, or many AudioQuanta for each `AudioQuantum` contained within
-`self`, and flattens them, in order. ::
-
-    beats.beget(the_next_ones)
-
-A second form has the first argument `source` as an `AudioQuantumList`, and
-a second argument, `which`, is used as a filter for the first argument, for
-*each* of `self`. The results are collapsed and accordianned into a flat
-list. 
-
-For example, calling::
-
-    beats.beget(segments, which=overlap)
-
-Gets evaluated as::
-
-    for beat in beats:
-        return segments.that(overlap(beat))
-
-And all of the `AudioQuantumList`\s that return are flattened into 
-a single `AudioQuantumList`.
-
-:param source: A function of one argument that is applied to each
-    `AudioQuantum` of `self`, or an `AudioQuantumList`, in which case
-    the second argument is required.
-:param which: A function of one argument that acts as a `that`\() filter 
-    on the first argument if it is an `AudioQuantumList`, or as a filter
-    on the output, in the case of `source` being a function.
-
+  <p>There are two basic forms: a map-and-flatten and an converse-that.</p>
+<p>The basic form, with one <code class="link">function</code> argument, returns a new
+<a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a> so that the source function returns
+<code class="link">None</code>, one, or many AudioQuanta for each <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contained within
+<code class="link">self</code>, and flattens them, in order.</p>
+<pre class="rst-literal-block">
+beats.beget(the_next_ones)
 </pre>
+<p>A second form has the first argument <a href="echonest.audio.AudioQuantumList-class.html#source" class="link">source</a> as an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, and
+a second argument, <code class="link">which</code>, is used as a filter for the first argument, for
+<em>each</em> of <code class="link">self</code>. The results are collapsed and accordianned into a flat
+list.</p>
+<p>For example, calling:</p>
+<pre class="rst-literal-block">
+beats.beget(segments, which=overlap)
+</pre>
+<p>Gets evaluated as:</p>
+<pre class="rst-literal-block">
+for beat in beats:
+    return segments.that(overlap(beat))
+</pre>
+<p>And all of the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>s that return are flattened into
+a single <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>source</code></strong> - A function of one argument that is applied to each
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> of <code class="link">self</code>, or an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, in which case
+the second argument is required.</li>
+        <li><strong class="pname"><code>which</code></strong> - A function of one argument that acts as a <a href="echonest.audio.AudioQuantumList-class.html#that" class="link">that</a>() filter
+on the first argument if it is an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>, or as a filter
+on the output, in the case of <a href="echonest.audio.AudioQuantumList-class.html#source" class="link">source</a> being a function.</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -941,11 +918,7 @@ a single `AudioQuantumList`.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">source</h3>
-  <pre class="literalblock">
-
-The `AudioData` source for the `AudioQuantumList`.
-
-</pre>
+  The <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> source for the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#get_source" class="summary-sig-name">get_source</a>(<span class="summary-sig-arg">self</span>)</span>
@@ -954,7 +927,7 @@ The `AudioData` source for the `AudioQuantumList`.
     <dt>Set Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#set_source" class="summary-sig-name">set_source</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">value</span>)</span>
-        - Checks input to see if it is an `AudioData`.
+        - Checks input to see if it is an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>.
     </dd>
   </dl>
 </td></tr></table>
@@ -965,11 +938,7 @@ The `AudioData` source for the `AudioQuantumList`.
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">duration</h3>
-  <pre class="literalblock">
-
-Total duration of the `AudioQuantumList`.
-
-</pre>
+  Total duration of the <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="echonest.audio.AudioQuantumList-class.html#get_duration" class="summary-sig-name">get_duration</a>(<span class="summary-sig-arg">self</span>)</span>
@@ -999,14 +968,14 @@ Total duration of the `AudioQuantumList`.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:57 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

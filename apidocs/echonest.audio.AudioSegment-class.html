@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,12 +63,8 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
-Subclass of `AudioQuantum` for the data-rich segments returned by
-the Analyze API. 
-
-</pre>
+Subclass of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> for the data-rich segments returned by
+the Analyze API.
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -96,15 +92,15 @@ the Analyze API.
           <td><span class="summary-sig"><a href="echonest.audio.AudioSegment-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0.0</span>,
         <span class="summary-sig-arg">duration</span>=<span class="summary-sig-default">0.0</span>,
-        <span class="summary-sig-arg">pitches</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="summary-sig-arg">timbre</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">pitches</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">timbre</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">loudness_begin</span>=<span class="summary-sig-default">0.0</span>,
         <span class="summary-sig-arg">loudness_max</span>=<span class="summary-sig-default">0.0</span>,
         <span class="summary-sig-arg">time_loudness_max</span>=<span class="summary-sig-default">0.0</span>,
         <span class="summary-sig-arg">loudness_end</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">kind</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">segment</code><code class="variable-quote">'</code></span>,
         <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Initializes an `AudioSegment`.</td>
+      Initializes an <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#AudioSegment.__init__">source&nbsp;code</a></span>
             
@@ -236,8 +232,8 @@ the Analyze API.
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">start</span>=<span class="sig-default">0.0</span>,
         <span class="sig-arg">duration</span>=<span class="sig-default">0.0</span>,
-        <span class="sig-arg">pitches</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
-        <span class="sig-arg">timbre</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">pitches</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">timbre</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">loudness_begin</span>=<span class="sig-default">0.0</span>,
         <span class="sig-arg">loudness_max</span>=<span class="sig-default">0.0</span>,
         <span class="sig-arg">time_loudness_max</span>=<span class="sig-default">0.0</span>,
@@ -251,26 +247,24 @@ the Analyze API.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Initializes an `AudioSegment`.
-
-:param start: offset from start of the track, in seconds
-:param duration: duration of the `AudioSegment`, in seconds
-:param pitches: a twelve-element list with relative loudnesses of each
-        pitch class, from C (pitches[0]) to B (pitches[11])
-:param timbre: a twelve-element list with the loudness of each of a
-        principal component of time and/or frequency profile
-:param kind: string identifying the kind of AudioQuantum: &quot;segment&quot;
-:param loudness_begin: loudness in dB at the start of the segment
-:param loudness_max: loudness in dB at the loudest moment of the 
-        segment
-:param time_loudness_max: time (in sec from start of segment) of 
-        loudest moment
-:param loudness_end: loudness at end of segment (if it is given)
-
-</pre>
+  Initializes an <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>.
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>start</code></strong> - offset from start of the track, in seconds</li>
+        <li><strong class="pname"><code>duration</code></strong> - duration of the <a href="echonest.audio.AudioSegment-class.html" class="link">AudioSegment</a>, in seconds</li>
+        <li><strong class="pname"><code>pitches</code></strong> - a twelve-element list with relative loudnesses of each
+pitch class, from C (pitches[0]) to B (pitches[11])</li>
+        <li><strong class="pname"><code>timbre</code></strong> - a twelve-element list with the loudness of each of a
+principal component of time and/or frequency profile</li>
+        <li><strong class="pname"><code>kind</code></strong> - string identifying the kind of AudioQuantum: &quot;segment&quot;</li>
+        <li><strong class="pname"><code>loudness_begin</code></strong> - loudness in dB at the start of the segment</li>
+        <li><strong class="pname"><code>loudness_max</code></strong> - loudness in dB at the loudest moment of the
+segment</li>
+        <li><strong class="pname"><code>time_loudness_max</code></strong> - time (in sec from start of segment) of
+loudest moment</li>
+        <li><strong class="pname"><code>loudness_end</code></strong> - loudness at end of segment (if it is given)</li>
+    </ul></dd>
     <dt>Overrides:
         object.__init__
     </dt>
@@ -299,14 +293,14 @@ Initializes an `AudioSegment`.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:58 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -65,11 +65,7 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
 This class renders a midi file as text. It is mostly used for debugging
-
-</pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -118,7 +114,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
         <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+note, velocity: 0-127</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.note_on">source&nbsp;code</a></span>
             
@@ -138,7 +135,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
         <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+note, velocity: 0-127</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.note_off">source&nbsp;code</a></span>
             
@@ -158,7 +156,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <span class="summary-sig-arg">channel</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">note</span>=<span class="summary-sig-default">64</span>,
         <span class="summary-sig-arg">velocity</span>=<span class="summary-sig-default">64</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+note, velocity: 0-127</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.aftertouch">source&nbsp;code</a></span>
             
@@ -178,7 +177,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">controller</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+controller, value: 0-127</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.continuous_controller">source&nbsp;code</a></span>
             
@@ -197,7 +197,8 @@ This class renders a midi file as text. It is mostly used for debugging
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#patch_change" class="summary-sig-name">patch_change</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">patch</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+patch: 0-127</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.patch_change">source&nbsp;code</a></span>
             
@@ -216,7 +217,8 @@ This class renders a midi file as text. It is mostly used for debugging
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#channel_pressure" class="summary-sig-name">channel_pressure</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">pressure</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+pressure: 0-127</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.channel_pressure">source&nbsp;code</a></span>
             
@@ -235,7 +237,8 @@ This class renders a midi file as text. It is mostly used for debugging
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#pitch_bend" class="summary-sig-name">pitch_bend</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">channel</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      channel: 0-15...</td>
+      channel: 0-15
+value: 0-16383</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.pitch_bend">source&nbsp;code</a></span>
             
@@ -325,7 +328,8 @@ This class renders a midi file as text. It is mostly used for debugging
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#midi_time_code" class="summary-sig-name">midi_time_code</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">msg_type</span>,
         <span class="summary-sig-arg">values</span>)</span><br />
-      msg_type: 0-7...</td>
+      msg_type: 0-7
+values: 0-15</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.midi_time_code">source&nbsp;code</a></span>
             
@@ -345,7 +349,9 @@ This class renders a midi file as text. It is mostly used for debugging
         <span class="summary-sig-arg">format</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">nTracks</span>=<span class="summary-sig-default">1</span>,
         <span class="summary-sig-arg">division</span>=<span class="summary-sig-default">96</span>)</span><br />
-      format: type of midi file in [1,2]...</td>
+      format: type of midi file in [1,2]
+nTracks: number of tracks
+division: timing division</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.header">source&nbsp;code</a></span>
             
@@ -469,7 +475,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#text" class="summary-sig-name">text</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">text</span>)</span><br />
-      Text event...</td>
+      Text event
+text: string</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.text">source&nbsp;code</a></span>
             
@@ -487,7 +494,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#copyright" class="summary-sig-name">copyright</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">text</span>)</span><br />
-      Copyright notice...</td>
+      Copyright notice
+text: string</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.copyright">source&nbsp;code</a></span>
             
@@ -505,7 +513,8 @@ This class renders a midi file as text. It is mostly used for debugging
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#sequence_name" class="summary-sig-name">sequence_name</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">text</span>)</span><br />
-      Sequence/track name...</td>
+      Sequence/track name
+text: string</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.sequence_name">source&nbsp;code</a></span>
             
@@ -631,7 +640,9 @@ This class renders a midi file as text. It is mostly used for debugging
         <tr>
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#tempo" class="summary-sig-name">tempo</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">value</span>)</span><br />
-      value: 0-2097151...</td>
+      value: 0-2097151
+tempo in us/quarternote
+(to calculate value from bpm: int(60,000,000.00 / BPM))</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.tempo">source&nbsp;code</a></span>
             
@@ -699,9 +710,8 @@ dd: Denominator of the signature as notated on sheet music
           <td><span class="summary-sig"><a href="echonest.support.midi.MidiToText.MidiToText-class.html#key_signature" class="summary-sig-name">key_signature</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">sf</span>,
         <span class="summary-sig-arg">mi</span>)</span><br />
-      sf: is a byte specifying the number of flats (-ve) or sharps 
-    (+ve) that identifies the key signature (-7 = 7 flats, -1 
-    = 1 flat, 0 = key of C, 1 = 1 sharp, etc).</td>
+      (+ve) that identifies the key signature (-7 = 7 flats, -1
+= 1 flat, 0 = key of C, 1 = 1 sharp, etc).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.support.midi.MidiToText-pysrc.html#MidiToText.key_signature">source&nbsp;code</a></span>
             
@@ -787,10 +797,7 @@ dd: Denominator of the signature as notated on sheet music
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-The default event handler for channel messages
-
-</pre>
+  The default event handler for channel messages
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_message">MidiOutStream.MidiOutStream.channel_message</a>
@@ -815,12 +822,8 @@ The default event handler for channel messages
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 note, velocity: 0-127
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#note_on">MidiOutStream.MidiOutStream.note_on</a>
@@ -846,12 +849,8 @@ note, velocity: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 note, velocity: 0-127
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#note_off">MidiOutStream.MidiOutStream.note_off</a>
@@ -877,12 +876,8 @@ note, velocity: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 note, velocity: 0-127
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#aftertouch">MidiOutStream.MidiOutStream.aftertouch</a>
@@ -908,12 +903,8 @@ note, velocity: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 controller, value: 0-127
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#continuous_controller">MidiOutStream.MidiOutStream.continuous_controller</a>
@@ -938,12 +929,8 @@ controller, value: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 patch: 0-127
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#patch_change">MidiOutStream.MidiOutStream.patch_change</a>
@@ -968,12 +955,8 @@ patch: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 pressure: 0-127
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#channel_pressure">MidiOutStream.MidiOutStream.channel_pressure</a>
@@ -998,12 +981,8 @@ pressure: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: 0-15
+  channel: 0-15
 value: 0-16383
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#pitch_bend">MidiOutStream.MidiOutStream.pitch_bend</a>
@@ -1027,11 +1006,7 @@ value: 0-16383
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-data: list of values in range(128)
-
-</pre>
+  data: list of values in range(128)
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#system_exclusive">MidiOutStream.MidiOutStream.system_exclusive</a>
@@ -1055,11 +1030,7 @@ data: list of values in range(128)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-value: 0-16383
-
-</pre>
+  value: 0-16383
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_position_pointer">MidiOutStream.MidiOutStream.song_position_pointer</a>
@@ -1083,11 +1054,7 @@ value: 0-16383
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-songNumber: 0-127
-
-</pre>
+  songNumber: 0-127
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#song_select">MidiOutStream.MidiOutStream.song_select</a>
@@ -1110,11 +1077,7 @@ songNumber: 0-127
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-No values passed
-
-</pre>
+  No values passed
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#tuning_request">MidiOutStream.MidiOutStream.tuning_request</a>
@@ -1139,12 +1102,8 @@ No values passed
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-msg_type: 0-7
+  msg_type: 0-7
 values: 0-15
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#midi_time_code">MidiOutStream.MidiOutStream.midi_time_code</a>
@@ -1170,13 +1129,9 @@ values: 0-15
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-format: type of midi file in [1,2]
+  format: type of midi file in [1,2]
 nTracks: number of tracks
 division: timing division
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#header">MidiOutStream.MidiOutStream.header</a>
@@ -1199,11 +1154,7 @@ division: timing division
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-End of file. No more events to be processed.
-
-</pre>
+  End of file. No more events to be processed.
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#eof">MidiOutStream.MidiOutStream.eof</a>
@@ -1227,11 +1178,7 @@ End of file. No more events to be processed.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-n_track: number of track
-
-</pre>
+  n_track: number of track
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#start_of_track">MidiOutStream.MidiOutStream.start_of_track</a>
@@ -1254,11 +1201,7 @@ n_track: number of track
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-n_track: number of track
-
-</pre>
+  n_track: number of track
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#end_of_track">MidiOutStream.MidiOutStream.end_of_track</a>
@@ -1283,11 +1226,7 @@ n_track: number of track
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Handles any undefined meta events
-
-</pre>
+  Handles any undefined meta events
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#meta_event">MidiOutStream.MidiOutStream.meta_event</a>
@@ -1311,11 +1250,7 @@ Handles any undefined meta events
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-value: 0-16383
-
-</pre>
+  value: 0-16383
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#sequence_number">MidiOutStream.MidiOutStream.sequence_number</a>
@@ -1339,12 +1274,8 @@ value: 0-16383
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Text event
+  Text event
 text: string
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#text">MidiOutStream.MidiOutStream.text</a>
@@ -1368,12 +1299,8 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Copyright notice
+  Copyright notice
 text: string
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#copyright">MidiOutStream.MidiOutStream.copyright</a>
@@ -1397,12 +1324,8 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Sequence/track name
+  Sequence/track name
 text: string
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#sequence_name">MidiOutStream.MidiOutStream.sequence_name</a>
@@ -1426,11 +1349,7 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-text: string
-
-</pre>
+  text: string
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#instrument_name">MidiOutStream.MidiOutStream.instrument_name</a>
@@ -1454,11 +1373,7 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-text: string
-
-</pre>
+  text: string
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#lyric">MidiOutStream.MidiOutStream.lyric</a>
@@ -1482,11 +1397,7 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-text: string
-
-</pre>
+  text: string
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#marker">MidiOutStream.MidiOutStream.marker</a>
@@ -1510,11 +1421,7 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-text: string
-
-</pre>
+  text: string
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#cuepoint">MidiOutStream.MidiOutStream.cuepoint</a>
@@ -1538,11 +1445,7 @@ text: string
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-channel: midi channel for subsequent data (deprecated in the spec)
-
-</pre>
+  channel: midi channel for subsequent data (deprecated in the spec)
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#midi_ch_prefix">MidiOutStream.MidiOutStream.midi_ch_prefix</a>
@@ -1566,11 +1469,7 @@ channel: midi channel for subsequent data (deprecated in the spec)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-value: Midi port (deprecated in the spec)
-
-</pre>
+  value: Midi port (deprecated in the spec)
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#midi_port">MidiOutStream.MidiOutStream.midi_port</a>
@@ -1594,13 +1493,9 @@ value: Midi port (deprecated in the spec)
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-value: 0-2097151
+  value: 0-2097151
 tempo in us/quarternote
 (to calculate value from bpm: int(60,000,000.00 / BPM))
-
-</pre>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#tempo">MidiOutStream.MidiOutStream.tempo</a>
@@ -1705,14 +1600,13 @@ bb: The number of notated 32nd notes in a MIDI quarter note
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-sf: is a byte specifying the number of flats (-ve) or sharps 
-    (+ve) that identifies the key signature (-7 = 7 flats, -1 
-    = 1 flat, 0 = key of C, 1 = 1 sharp, etc).
-mi: is a byte specifying a major (0) or minor (1) key.
-
-</pre>
+  <dl class="rst-rst-docutils rst-docutils">
+<dt>sf: is a byte specifying the number of flats (-ve) or sharps</dt>
+<dd><p class="rst-first rst-last rst-first rst-last">(+ve) that identifies the key signature (-7 = 7 flats, -1
+= 1 flat, 0 = key of C, 1 = 1 sharp, etc).</p>
+</dd>
+</dl>
+<p>mi: is a byte specifying a major (0) or minor (1) key.</p>
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#key_signature">MidiOutStream.MidiOutStream.key_signature</a>
@@ -1736,11 +1630,7 @@ mi: is a byte specifying a major (0) or minor (1) key.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-data: The data as byte values
-
-</pre>
+  data: The data as byte values
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.support.midi.MidiOutStream.MidiOutStream-class.html#sequencer_specific">MidiOutStream.MidiOutStream.sequencer_specific</a>
@@ -1771,14 +1661,14 @@ data: The data as byte values
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:18:00 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

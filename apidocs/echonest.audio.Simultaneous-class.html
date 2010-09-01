@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -63,17 +63,14 @@
 
 </center>
 <hr />
-<pre class="literalblock">
-
-Stacks all contained AudioQuanta atop one another, adding their respective
+<p>Stacks all contained AudioQuanta atop one another, adding their respective
 samples. The rhythmic length of the segment is the duration of the first
-`AudioQuantum`, but there can be significant overlap caused by the longest 
-segment.
-
-Sample usage::
-    Simultaneous(a.analysis.bars).encode(&quot;my.mp3&quot;)
-
-</pre>
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>, but there can be significant overlap caused by the longest
+segment.</p>
+<dl class="rst-docutils">
+<dt>Sample usage::</dt>
+<dd>Simultaneous(a.analysis.bars).encode(&quot;my.mp3&quot;)</dd>
+</dl>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -94,17 +91,14 @@ Sample usage::
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type"><pre class="literalblock">
-new list
-
-</pre></span>
+      <span class="summary-type">new list</span>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="echonest.audio.Simultaneous-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">*args</span>,
         <span class="summary-sig-arg">**kwargs</span>)</span><br />
-      Initializes an `AudioQuantumList`.</td>
+      Initializes an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="echonest.audio-pysrc.html#Simultaneous.__init__">source&nbsp;code</a></span>
             
@@ -304,7 +298,7 @@ new list
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.Simultaneous-class.html#duration" class="summary-name">duration</a><br />
-      Rhythmic duration of the `Simultaneous` AudioQuanta: the 
+      Rhythmic duration of the <a href="echonest.audio.Simultaneous-class.html" class="link">Simultaneous</a> AudioQuanta: the
 same as the duration of the first in the list.
     </td>
   </tr>
@@ -364,23 +358,18 @@ same as the duration of the first in the list.
     </td>
   </tr></table>
   
-  <pre class="literalblock">
-
-Initializes an `AudioQuantumList`. All parameters are optional.
-
-:param initial: a `List` type with the initial contents
-:param kind: a label for the kind of `AudioQuantum` contained
-    within
-:param container: a reference to the containing `AudioAnalysis`
-:param source: a reference to the `AudioData` with the corresponding samples
-    and time base for the contained AudioQuanta
-
-</pre>
+  Initializes an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>. All parameters are optional.
   <dl class="fields">
-    <dt>Returns: <pre class="literalblock">
-new list
-
-</pre></dt>
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>initial</code></strong> - a <code class="link">List</code> type with the initial contents</li>
+        <li><strong class="pname"><code>kind</code></strong> - a label for the kind of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> contained
+within</li>
+        <li><strong class="pname"><code>container</code></strong> - a reference to the containing <a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a></li>
+        <li><strong class="pname"><code>source</code></strong> - a reference to the <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> with the corresponding samples
+and time base for the contained AudioQuanta</li>
+    </ul></dd>
+    <dt>Returns: new list</dt>
     <dt>Overrides:
         object.__init__
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -483,12 +472,8 @@ new list
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">duration</h3>
-  <pre class="literalblock">
-
-Rhythmic duration of the `Simultaneous` AudioQuanta: the 
+  Rhythmic duration of the <a href="echonest.audio.Simultaneous-class.html" class="link">Simultaneous</a> AudioQuanta: the
 same as the duration of the first in the list.
-
-</pre>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="echonest.audio.Simultaneous-class.html#get_duration" class="summary-sig-name">get_duration</a>(<span class="summary-sig-arg">self</span>)</span>
@@ -518,14 +503,14 @@ same as the duration of the first in the list.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">The Echo Nest Remix API, SVN Revision: 448</a></th>
+            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed May 26 12:17:58 2010
+    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
