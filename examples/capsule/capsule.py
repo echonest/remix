@@ -15,7 +15,6 @@ from optparse import OptionParser
 
 from echonest.action import render, make_stereo
 from echonest.audio import LocalAudioFile
-from echonest.cloud_support import AnalyzedAudioFile
 from pyechonest import util
 
 from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT, display_actions, is_valid
@@ -30,7 +29,7 @@ def do_work(audio_files, options):
     verbose = bool(options.verbose)
     
     # Get pyechonest/remix objects
-    analyze = lambda x : AnalyzedAudioFile(x) if os.path.exists(x + '.json') else LocalAudioFile(x)
+    analyze = lambda x : LocalAudioFile(x)
     tracks = map(analyze, audio_files)
     
     # decide on an initial order for those tracks

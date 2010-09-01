@@ -15,7 +15,6 @@ import dirac
 
 from echonest.audio import LocalAudioFile, AudioData
 from echonest.action import render, Playback, display_actions
-from echonest.cloud_support import AnalyzedAudioFile
 
 def do_work(track, options):
     
@@ -82,10 +81,7 @@ def main():
     track = None
     mp3 = args[0]
     
-    if os.path.exists(mp3 + '.json'):
-        track = AnalyzedAudioFile(mp3)
-    else:
-        track = LocalAudioFile(mp3)
+    track = LocalAudioFile(mp3)
     
     print "Computing swing . . ."
     # this is where the work takes place
