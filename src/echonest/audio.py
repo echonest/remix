@@ -652,6 +652,14 @@ class AudioData32(AudioData):
                                      numpy.zeros(extra_shape, dtype=numpy.int32), axis=0)
     
 
+def get_os():
+    """returns is_linux, is_mac, is_windows"""
+    if hasattr(os, 'uname'):
+        if os.uname()[0] == "Darwin":
+            return False, True, False
+        return True, False, False
+    return False, False, True
+    
 def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
     """
     Executes ffmpeg through the shell to convert or read media files.
@@ -670,7 +678,12 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None,
         command += " \"%s\"" % outfile
     if verbose:
         print >> sys.stderr, command
-    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+    
+    (lin, mac, win) = get_os()
+    if(not win):
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+    else:
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=False)        
     return_val = p.communicate()
     return return_val
 
