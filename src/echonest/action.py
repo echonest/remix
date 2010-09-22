@@ -6,7 +6,7 @@ action.py
 Created by Tristan Jehan and Jason Sundram.
 """
 import os
-from numpy import zeros, multiply, float32
+from numpy import zeros, multiply, float32, mean, copy
 from math import atan, pi
 import sys
 
@@ -20,21 +20,21 @@ def rows(m):
     return m.shape[0]
 
 def make_mono(track):
-    "Converts stereo tracks to mono; leaves mono tracks alone."
+    """Converts stereo tracks to mono; leaves mono tracks alone."""
     if track.data.ndim == 2:
-        mono = zeros((len(track.data), ))
-        for i, d in enumerate(track.data):
-            mono[i] = d[0]
+        mono = mean(track.data,1)
         track.data = mono
+        track.numChannels = 1
     return track
 
 def make_stereo(track):
     """If the track is mono, doubles it. otherwise, does nothing."""
     if track.data.ndim == 1:
         stereo = zeros((len(track.data), 2))
-        for i, d in enumerate(track.data):
-            stereo[i] = (d, d)
+        stereo[:,0] = copy(track.data)
+        stereo[:,1] = copy(track.data)
         track.data = stereo
+        track.numChannels = 2
     return track
     
 def render(actions, filename):
