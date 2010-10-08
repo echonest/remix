@@ -843,7 +843,6 @@ class LocalAudioFile(AudioData):
                 print >> sys.stderr, "Probing for existing analysis"
             tempanalysis = AudioAnalysis(track_md5)
         except Exception, e:
-            print e
             if verbose:
                 print >> sys.stderr, "Analysis not found. Uploading..."
             tempanalysis = AudioAnalysis(filename)
