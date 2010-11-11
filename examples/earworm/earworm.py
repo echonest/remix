@@ -37,7 +37,7 @@ Get the source, unzip it, cd to the directory it is in and run:
 
 from echonest.action import Playback, Jump, Fadeout, render, display_actions
 from echonest.audio import LocalAudioFile
-from echonest.cloud_support import AnalyzedAudioFile
+# from echonest.cloud_support import AnalyzedAudioFile
 
 from earworm_support import evaluate_distance, timbre_whiten, resample_features
 from utils import rows, tuples, flatten
@@ -529,13 +529,12 @@ def main():
         parser.print_help()
         return -1
     
-    track = None
     mp3 = args[0]
     
-    if os.path.exists(mp3 + '.json'):
-        track = AnalyzedAudioFile(mp3)
-    else:
-        track = LocalAudioFile(mp3)
+    # if os.path.exists(mp3 + '.json'):
+    #     track = AnalyzedAudioFile(mp3)
+    # else:
+    track = LocalAudioFile(mp3)
     
     # this is where the work takes place
     actions = do_work(track, options)
