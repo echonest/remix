@@ -42,6 +42,7 @@ import pyechonest.config as config
 #from echonest.support import stupidxml
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
+import weakref
 
 class AudioAnalysis(object):
     """
@@ -173,9 +174,10 @@ class AudioAnalysis(object):
         Recreates circular references after unpickling.
         """
         self.__dict__.update(state)
-        for cached_var in AudioAnalysis.CACHED_VARIABLES:
-            if type(object.__getattribute__(self, cached_var)) == AudioQuantumList:
-                object.__getattribute__(self, cached_var).attach(self)
+        if hasattr(AudioAnalysis, 'CACHED_VARIABLES'):
+            for cached_var in AudioAnalysis.CACHED_VARIABLES:
+                if type(object.__getattribute__(self, cached_var)) == AudioQuantumList:
+                    object.__getattribute__(self, cached_var).attach(self)
 
 class AudioRenderable(object):
     """
