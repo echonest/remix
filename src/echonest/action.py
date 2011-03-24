@@ -38,14 +38,16 @@ def make_stereo(track):
     return track
     
 def render(actions, filename):
-    """Calls render on each action in actions, concatenates the results, renders an audio file, and returns a path to the file"""
+    """Calls render on each action in actions, concatenates the results, 
+    renders an audio file, and returns a path to the file"""
     pieces = [a.render() for a in actions]
-    out = assemble(pieces, numChannels=2, sampleRate=44100) # TODO: make these vary.
+    out = assemble(pieces, numChannels=2, sampleRate=44100) # TODO: these vary.
     return out, out.encode(filename)
 
 
 class Playback(object):
-    """A snippet of the given track with start and duration. Volume leveling may be applied."""
+    """A snippet of the given track with start and duration. Volume leveling 
+    may be applied."""
     def __init__(self, track, start, duration):
         self.track = track
         self.start = float(start)
@@ -63,10 +65,12 @@ class Playback(object):
         return output
     
     def __repr__(self):
-        return "<Playback '%s'>" % self.track.analysis.name
+        return "<Playback '%s'>" % self.track.analysis.pyechonest_track.title
     
     def __str__(self):
-        return "Playback\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.start, self.start+self.duration, self.duration, self.track.analysis.name)
+        args = (self.start, self.start + self.duration, 
+                self.duration, self.track.analysis.pyechonest_track.title)
+        return "Playback\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
 class Fadeout(Playback):
@@ -79,10 +83,12 @@ class Fadeout(Playback):
         return output
     
     def __repr__(self):
-        return "<Fadeout '%s'>" % self.track.analysis.name
+        return "<Fadeout '%s'>" % self.track.analysis.pyechonest_track.title
     
     def __str__(self):
-        return "Fade out\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.start, self.start+self.duration, self.duration, self.track.analysis.name)
+        args = (self.start, self.start + self.duration, 
+                self.duration, self.track.analysis.pyechonest_track.title)
+        return "Fade out\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
 class Fadein(Playback):
@@ -95,10 +101,12 @@ class Fadein(Playback):
         return output
     
     def __repr__(self):
-        return "<Fadein '%s'>" % self.track.analysis.name
+        return "<Fadein '%s'>" % self.track.analysis.pyechonest_track.title
     
     def __str__(self):
-        return "Fade in\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.start, self.start+self.duration, self.duration, self.track.analysis.name)
+        args = (self.start, self.start + self.duration, 
+                self.duration, self.track.analysis.pyechonest_track.title)
+        return "Fade in\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
 class Edit(object):
@@ -109,7 +117,9 @@ class Edit(object):
         self.duration = float(duration)
     
     def __str__(self):
-        return "Edit\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.start, self.start+self.duration, self.duration, self.track.analysis.name)
+        args = (self.start, self.start + self.duration, 
+                self.duration, self.track.analysis.pyechonest_track.title)
+        return "Edit\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
     
     def get(self):
         return self.track[self]
@@ -120,7 +130,8 @@ class Edit(object):
 
 
 class Crossfade(object):
-    """Crossfades between two tracks, at the start points specified, for the given duration"""
+    """Crossfades between two tracks, at the start points specified, 
+    for the given duration"""
     def __init__(self, tracks, starts, duration, mode='linear'):
         self.t1, self.t2 = [Edit(t, s, duration) for t,s in zip(tracks, starts)]
         self.duration = self.t1.duration
@@ -129,21 +140,27 @@ class Crossfade(object):
     def render(self):
         t1, t2 = map(make_stereo, (self.t1.get(), self.t2.get()))
         vecout = crossfade(t1.data, t2.data, self.mode)
-        return AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=t1.sampleRate, numChannels=vecout.shape[1])
+        audio_out = AudioData(ndarray=vecout, shape=vecout.shape, 
+                                sampleRate=t1.sampleRate, 
+                                numChannels=vecout.shape[1])
+        return audio_out
     
     def __repr__(self):
-        return "<Crossfade '%s' and '%s'>" % (self.t1.track.analysis.name, self.t2.track.analysis.name)
+        args = (analysis.pyechonest_track.title, self.t2.track.analysis.pyechonest_track.title)
+        return "<Crossfade '%s' and '%s'>" % args
     
     def __str__(self):
-        return "Crossfade\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % (self.t1.start, self.t2.start+self.duration, self.duration, 
-                                                                self.t1.track.analysis.name, self.t2.track.analysis.name)
+        args = (self.t1.start, self.t2.start + self.duration, self.duration, 
+                self.t1.track.analysis.pyechonest_track.title, self.t2.track.analysis.pyechonest_track.title)
+        return "Crossfade\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % args
 
 
 class Jump(Crossfade):
     """Move from one point """
     def __init__(self, track, source, target, duration):
         self.track = track
-        self.t1, self.t2 = (Edit(track, source, duration), Edit(track, target-duration, duration))
+        self.t1, self.t2 = (Edit(track, source, duration), 
+                            Edit(track, target - duration, duration))
         self.duration = float(duration)
         self.mode = 'equal_power'
         self.CROSSFADE_COEFF = 0.6
@@ -157,10 +174,12 @@ class Jump(Crossfade):
         return self.t2.end 
     
     def __repr__(self):
-        return "<Jump '%s'>" % (self.t1.track.analysis.name)
+        return "<Jump '%s'>" % (self.t1.track.analysis.pyechonest_track.title)
     
     def __str__(self):
-        return "Jump\t\t%.3f\t-> %.3f\t (%.3f)\t%s" % (self.t1.start, self.t2.end, self.duration, self.t1.track.analysis.name)
+        args = (self.t1.start, self.t2.end, self.duration, 
+                self.t1.track.analysis.pyechonest_track.title)
+        return "Jump\t\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
 class Blend(object):
@@ -173,7 +192,8 @@ class Blend(object):
         self.calculate_durations()
     
     def calculate_durations(self):
-        self.durations = [(d1 + d2) / 2.0 for ((s1, d1), (s2, d2)) in zip(self.l1, self.l2)]
+        zipped = zip(self.l1, self.l2)
+        self.durations = [(d1 + d2) / 2.0 for ((s1, d1), (s2, d2)) in zipped]
         self.duration = sum(self.durations)
     
     def render(self):
@@ -183,13 +203,16 @@ class Blend(object):
         pass
     
     def __repr__(self):
-        return "<Blend '%s' and '%s'>" % (self.t1.analysis.name, self.t2.analysis.name)
+        args = (self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title)
+        return "<Blend '%s' and '%s'>" % args
     
     def __str__(self):
-        s1, e1 = self.l1[0][0], sum(self.l1[-1]) # start and end for each of these lists.
+        # start and end for each of these lists.
+        s1, e1 = self.l1[0][0], sum(self.l1[-1])
         s2, e2 = self.l2[0][0], sum(self.l2[-1])
-        n1, n2 = self.t1.analysis.name, self.t2.analysis.name # names
-        return "Blend [%.3f, %.3f] -> [%.3f, %.3f] (%.3f)\t%s + %s" % (s1, s2, e1, e2, self.duration, n1, n2)
+        n1, n2 = self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title # names
+        args = (s1, s2, e1, e2, self.duration, n1, n2)
+        return "Blend [%.3f, %.3f] -> [%.3f, %.3f] (%.3f)\t%s + %s" % args
 
 
 class Crossmatch(Blend):
@@ -210,39 +233,49 @@ class Crossmatch(Blend):
         
         rates = []
         for i in xrange(len(l)):
-            rates.append((int(l[i][0] * t.sampleRate) - signal_start, self.durations[i] / l[i][1]))
+            rate = (int(l[i][0] * t.sampleRate) - signal_start, 
+                    self.durations[i] / l[i][1])
+            rates.append(rate)
         
         vecout = dirac.timeScale(vecin, rates, t.sampleRate, 0)
         if hasattr(t, 'gain'):
             vecout = limit(multiply(vecout, float32(t.gain)))
         
-        return AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=t.sampleRate, numChannels=vecout.shape[1])
+        audio_out = AudioData(ndarray=vecout, shape=vecout.shape, 
+                                sampleRate=t.sampleRate, 
+                                numChannels=vecout.shape[1])
+        return audio_out
     
     def render(self):
         # use self.durations already computed
-        # 1) stretch the duration of each item in t1 and t2 to the duration prescribed in durations.
+        # 1) stretch the duration of each item in t1 and t2
+        # to the duration prescribed in durations.
         out1 = self.stretch(self.t1, self.l1)
         out2 = self.stretch(self.t2, self.l2)
         
         # 2) cross-fade the results
-        # out1.duration, out2.duration, and self.duration should be about the same
-        # but it never hurts to be safe.
+        # out1.duration, out2.duration, and self.duration should be about 
+        # the same, but it never hurts to be safe.
         duration = min(out1.duration, out2.duration, self.duration)
         c = Crossfade([out1, out2], [0, 0], duration, mode='equal_power')
         return c.render()
     
     def __repr__(self):
-        return "<Crossmatch '%s' and '%s'>" % (self.t1.analysis.name, self.t2.analysis.name)
+        args = (self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title)
+        return "<Crossmatch '%s' and '%s'>" % args
     
     def __str__(self):
-        s1, e1 = self.l1[0][0], sum(self.l1[-1]) # start and end for each of these lists.
+        # start and end for each of these lists.
+        s1, e1 = self.l1[0][0], sum(self.l1[-1])
         s2, e2 = self.l2[0][0], sum(self.l2[-1])
-        n1, n2 = self.t1.analysis.name, self.t2.analysis.name # names
-        return "Crossmatch\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % (s1, e2, self.duration, n1, n2)
+        n1, n2 = self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title # names
+        args = (s1, e2, self.duration, n1, n2)
+        return "Crossmatch\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % args
 
 
 def humanize_time(secs):
-    """Turns seconds into a string of the form HH:MM:SS, or MM:SS if less than one hour."""
+    """Turns seconds into a string of the form HH:MM:SS, 
+    or MM:SS if less than one hour."""
     mins, secs = divmod(secs, 60)
     hours, mins = divmod(mins, 60)
     if 0 < hours: 
