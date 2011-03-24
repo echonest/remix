@@ -10,15 +10,7 @@ Created by Tristan Jehan on 2010-04-22.
 import math, os, sys
 from echonest import audio
 
-if hasattr(sys, 'getdlopenflags') and hasattr(sys, 'setdlopenflags'):
-    # The default dlopenflags setting, RTLD_NOW, causes us to look for stuff that's defined in -framework Carbon
-    # and then barf. Let's take it nice and lazy instead.
-    f = sys.getdlopenflags()
-    sys.setdlopenflags(0)
-    import dirac
-    sys.setdlopenflags(f)
-else:
-    import dirac
+import dirac
     
 USAGE = """
 Usage:
