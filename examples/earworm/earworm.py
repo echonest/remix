@@ -529,20 +529,15 @@ def main():
         parser.print_help()
         return -1
     
-    mp3 = args[0]
-    
-    # if os.path.exists(mp3 + '.json'):
-    #     track = AnalyzedAudioFile(mp3)
-    # else:
-    track = LocalAudioFile(mp3)
+    verbose = options.verbose
+    track = LocalAudioFile(args[0], verbose=verbose)
     
     # this is where the work takes place
     actions = do_work(track, options)
     
-    if bool(options.verbose) == True:
+    if verbose:
         display_actions(actions)
-    
-    print "Output Duration = %.3f sec" % sum(act.duration for act in actions)
+        print "Output Duration = %.3f sec" % sum(act.duration for act in actions)
     
     # Send to renderer
     name = os.path.splitext(os.path.basename(args[0]))
@@ -557,8 +552,9 @@ def main():
     else: 
         name = name[0]+'_'+str(int(options.duration))+'.mp3'
     
-    print "Rendering..."
-    render(actions, name)
+    if options.verbose:
+        print "Rendering..."
+    render(actions, name, verbose=verbose)
     return 1
 
 
