@@ -29,7 +29,7 @@ def do_work(audio_files, options):
     verbose = bool(options.verbose)
     
     # Get pyechonest/remix objects
-    analyze = lambda x : LocalAudioFile(x)
+    analyze = lambda x : LocalAudioFile(x, verbose=verbose)
     tracks = map(analyze, audio_files)
     
     # decide on an initial order for those tracks
@@ -90,14 +90,15 @@ def get_options(warn=False):
 def main():
     options, args = get_options(warn=True);
     actions = do_work(args, options)
+    verbose = bool(options.verbose)
     
-    if bool(options.verbose) == True:
+    if verbose:
         display_actions(actions)
-    print "Output Duration = %.3f sec" % sum(act.duration for act in actions)
+        print "Output Duration = %.3f sec" % sum(act.duration for act in actions)
     
+        print "Rendering..."
     # Send to renderer
-    print "Rendering..."
-    render(actions, 'capsule.mp3')
+    render(actions, 'capsule.mp3', verbose)
     return 1
     
 if __name__ == "__main__":
