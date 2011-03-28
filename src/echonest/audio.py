@@ -740,7 +740,7 @@ def getpieces(audioData, segs):
     audioData.load()
     dur = 0
     for s in segs:
-        dur += int(s.duration*audioData.sampleRate)
+        dur += int(s.duration * audioData.sampleRate)
     # if I wanted to add some padding to the length, I'd do it here
     
     #determine shape of new array
@@ -752,7 +752,8 @@ def getpieces(audioData, segs):
         newchans = 1
     
     #make accumulator segment
-    newAD = AudioData(shape=newshape,sampleRate=audioData.sampleRate, numChannels=newchans, defer=False)
+    newAD = AudioData(shape=newshape, sampleRate=audioData.sampleRate, 
+                    numChannels=newchans, defer=False, verbose=audioData.verbose)
     
     #concatenate segs to the new segment
     for s in segs:
@@ -760,7 +761,7 @@ def getpieces(audioData, segs):
     # audioData.unload()
     return newAD
 
-def assemble(audioDataList, numChannels=1, sampleRate=44100):
+def assemble(audioDataList, numChannels=1, sampleRate=44100, verbose=True):
     """
     Collects audio samples for output.
     Returns a new `AudioData` object assembled
@@ -772,7 +773,8 @@ def assemble(audioDataList, numChannels=1, sampleRate=44100):
         new_shape = (sum([len(x.data) for x in audioDataList]),)
     else:
         new_shape = (sum([len(x.data) for x in audioDataList]),numChannels)
-    new_data = AudioData(shape=new_shape, numChannels=numChannels, sampleRate=sampleRate, defer=False)
+    new_data = AudioData(shape=new_shape, numChannels=numChannels, 
+                        sampleRate=sampleRate, defer=False, verbose=verbose)
     for ad in audioDataList:
         if not isinstance(ad, AudioData):
             raise TypeError('Encountered something other than an AudioData')

@@ -37,11 +37,12 @@ def make_stereo(track):
         track.numChannels = 2
     return track
     
-def render(actions, filename):
+def render(actions, filename, verbose=True):
     """Calls render on each action in actions, concatenates the results, 
     renders an audio file, and returns a path to the file"""
     pieces = [a.render() for a in actions]
-    out = assemble(pieces, numChannels=2, sampleRate=44100) # TODO: these vary.
+    # TODO: allow numChannels and sampleRate to vary.
+    out = assemble(pieces, numChannels=2, sampleRate=44100, verbose=verbose)
     return out, out.encode(filename)
 
 
