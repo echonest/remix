@@ -18,7 +18,7 @@ from echonest.action import render, Playback, display_actions
 
 def do_work(track, options):
     
-    verb = bool(options.verbose)
+    verbose = bool(options.verbose)
     
     # swing factor
     swing = float(options.swing)
@@ -51,16 +51,20 @@ def do_work(track, options):
         start2 = int((beat.start+dur) * track.sampleRate)
         rates.append((start1-offset, rate1))
         rates.append((start2-offset, rate2))
-        if verb == True: 
-            print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % (beats.index(beat), dur, beat.duration-dur, stretch, beat.duration-stretch)
+        if verbose:
+            args = (beats.index(beat), dur, beat.duration-dur, stretch, beat.duration-stretch)
+            print "Beat %d — split [%.3f|%.3f] — stretch [%.3f|%.3f] seconds" % args
     
     # get audio
     vecin = track.data[offset:int(beats[-1].start * track.sampleRate),:]
     # time stretch
-    if verb == True: print "\nTime stretching..."
+    if verbose: 
+        print "\nTime stretching..."
     vecout = dirac.timeScale(vecin, rates, track.sampleRate, 0)
     # build timestretch AudioData object
-    ts = AudioData(ndarray=vecout, shape=vecout.shape, sampleRate=track.sampleRate, numChannels=vecout.shape[1])
+    ts = AudioData(ndarray=vecout, shape=vecout.shape, 
+                    sampleRate=track.sampleRate, numChannels=vecout.shape[1], 
+                    verbose=verbose)
     # initial and final playback
     pb1 = Playback(track, 0, beats[0].start)
     pb2 = Playback(track, beats[-1].start, track.analysis.duration-beats[-1].start)
@@ -78,16 +82,16 @@ def main():
         parser.print_help()
         return -1
     
+    verbose = options.verbose
     track = None
-    mp3 = args[0]
     
-    track = LocalAudioFile(mp3)
-    
-    print "Computing swing . . ."
+    track = LocalAudioFile(args[0], verbose=verbose)
+    if verbose:
+        print "Computing swing . . ."
     # this is where the work takes place
     actions = do_work(track, options)
     
-    if bool(options.verbose) == True:
+    if verbose:
         display_actions(actions)
     
     # Send to renderer
@@ -97,10 +101,11 @@ def main():
     name = name.replace(' ','') 
     name = os.path.join(os.getcwd(), name) # TODO: use sys.path[0] instead of getcwd()?
     
-    print "Rendering... %s" % name
-    render(actions, name)
-    
-    print "Success!"
+    if verbose:
+        print "Rendering... %s" % name
+    render(actions, name, verbose=verbose)
+    if verbose:
+        print "Success!"
     return 1
 
 
