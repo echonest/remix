@@ -15,6 +15,6 @@ by The Echo Nest. To use the provided en-ffmpeg, copy the binary appropriate
 to your OS from external/en-ffmpeg/ to the location where your system keeps
 binaries (on mac this is /usr/local/bin/).
 
-The audio file provided for testing, input_file.mp3, is "Optimist" by 
-Zoe Keating, licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives (aka Music Sharing) License.
-http://freemusicarchive.org/music/Zo_Keating/Into_The_Trees/01_Optimist
+The audio file provided for testing, input_file.mp3, is "Guppies" by 
+Raleigh Moncrief, licensed under a Creative Commons Attribution-NonCommercial License.
+http://freemusicarchive.org/music/Raleigh_Moncrief/Vitamins_EP/Raleigh_Moncrief_-_Vitamins_EP_-_02_Guppies
