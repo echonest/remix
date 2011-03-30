@@ -718,11 +718,18 @@ en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as f
 def ffmpeg_error_check(parsestring):
     "Looks for known errors in the ffmpeg output"
     parse = parsestring.split('\n')
+    error_cases = [ "Unknown format", # ffmpeg can't figure out format of input file
+                    "error occur", # an error occurred
+                    "Could not open", # user doesn't have permission to access file
+                    "not found" # could not find encoder for output file
+                    ]
     for num, line in enumerate(parse):
-        if "Unknown format" in line or "error occur" in line:
-            raise RuntimeError("ffmpeg conversion error:\n\t" + "\n\t".join(parse[num:]))
         if "command not found" in line:
             raise RuntimeError(ffmpeg_install_instructions)
+        for error in error_cases:
+            if error in line:
+                report = "\n\t".join(parse[num:])
+                raise RuntimeError("ffmpeg conversion error:\n\t" + report)
 
 def getpieces(audioData, segs):
     """
