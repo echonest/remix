@@ -1,0 +1,20 @@
+Test that an Echo-Nest-Remix-compatible version of ffmpeg is installed.
+
+Run the tests like this:
+    python test_ffmpeg.py
+    
+If you want to test that your version of ffmpeg can handle a particular file, 
+(like if you're planning on analyzing OggVorbis files and want to make sure
+your ffmpeg can decode them), run like this:
+    python test_ffmpeg.py my_crazy_audio_file.mp47
+
+If any of these tests fail, chances are you are using a version of ffmpeg
+that doesn't have all the codecs it needs installed. To remedy this, either 
+find and install the missing codecs, or use the version of en-ffmpeg provided
+by The Echo Nest. To use the provided en-ffmpeg, copy the binary appropriate 
+to your OS from external/en-ffmpeg/ to the location where your system keeps
+binaries (on mac this is /usr/local/bin/).
+
+The audio file provided for testing, input_file.mp3, is "Optimist" by 
+Zoe Keating, licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives (aka Music Sharing) License.
+http://freemusicarchive.org/music/Zo_Keating/Into_The_Trees/01_Optimist
