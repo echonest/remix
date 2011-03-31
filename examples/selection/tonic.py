@@ -35,7 +35,7 @@ def main(units, inputFile, outputFile):
     # "<units> that begin with the above-found segments"
     outchunks = chunks.that(overlap_ends_of(segs))
     
-    out = outchunks.render()
+    out = audio.getpieces(audiofile, outchunks)
     out.encode(outputFile)
 
 if __name__ == '__main__':
