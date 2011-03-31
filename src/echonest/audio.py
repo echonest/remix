@@ -46,8 +46,8 @@ import weakref
 
 class AudioAnalysis(object):
     """
-    This class wraps `echonest.web` to allow transparent caching of the
-    audio analysis of an audio file.
+    This class uses (but does not wrap) `pyechonest.track` to allow 
+    transparent caching of the audio analysis of an audio file.
     
     For example, the following script will display the bars of a track
     twice::
@@ -82,20 +82,23 @@ class AudioAnalysis(object):
             file, or the ID of a file that has already 
             been uploaded for analysis.
         
-        .. _Analyze API: http://developer.echonest.com/track.html#upload 
+        .. _Analyze API: http://developer.echonest.com/docs/v4/track.html 
         .. _Echo Nest: http://the.echonest.com/
         """
         
         if type(path_or_identifier) is not str:
             # Argument is invalid.
-            raise TypeError("Argument 'audio' must be a string representing either a filename, track ID, or MD5.")
+            raise TypeError("Argument 'path_or_identifier' must be a string \
+                            representing either a filename, track ID, or MD5.")
 
-        # see if path_or_identifier is a path, or an ID
+        # see if path_or_identifier is a path or an ID
         if os.path.isfile(path_or_identifier):
             # it's a filename
             self.pyechonest_track = track.track_from_filename(path_or_identifier)
         else:
-            if path_or_identifier.startswith('music://') or (path_or_identifier.startswith('TR') and len(path_or_identifier) == 18):
+            if path_or_identifier.startswith('music://') or \
+                    (path_or_identifier.startswith('TR') and \
+                    len(path_or_identifier) == 18):
                 # it's an id
                 self.pyechonest_track = track.track_from_id(path_or_identifier)
             elif len(path_or_identifier) == 32:
@@ -215,7 +218,8 @@ class AudioRenderable(object):
                 source = alt
             else:
                 print >> sys.stderr, self.__repr__()
-                raise EchoNestRemixError("%s has no implicit or explicit source during rendering." %
+                raise EchoNestRemixError("%s has no implicit or explicit source \
+                                                during rendering." %
                                                 (self.__class__.__name__, ))
         return source
     
@@ -231,7 +235,8 @@ class AudioRenderable(object):
         else:
             newchans = 1
             newshape = (num_samples,)
-        return AudioData32(shape=newshape, sampleRate=source.sampleRate, numChannels=newchans, defer=False)
+        return AudioData32(shape=newshape, sampleRate=source.sampleRate, 
+                            numChannels=newchans, defer=False)
         
     
     def sources(self):
@@ -347,13 +352,13 @@ class AudioData(AudioRenderable):
         if isinstance(index, float):
             index = int(index*self.sampleRate)
         elif hasattr(index, "start") and hasattr(index, "duration"):
-            index =  slice(float(index.start), index.start+index.duration)
+            index =  slice(float(index.start), index.start + index.duration)
         
         if isinstance(index, slice):
             if ( hasattr(index.start, "start") and 
                  hasattr(index.stop, "duration") and 
                  hasattr(index.stop, "start") ) :
-                index = slice(index.start.start, index.stop.start+index.stop.duration)
+                index = slice(index.start.start, index.stop.start + index.stop.duration)
         
         if isinstance(index, slice):
             return self.getslice(index)
@@ -365,8 +370,10 @@ class AudioData(AudioRenderable):
         if not isinstance(self.data, numpy.ndarray) and self.defer:
             self.load()
         if isinstance(index.start, float):
-            index = slice(int(index.start*self.sampleRate), int(index.stop*self.sampleRate), index.step)
-        return AudioData(None, self.data[index], sampleRate=self.sampleRate, numChannels=self.numChannels, defer=False)
+            index = slice(int(index.start * self.sampleRate), 
+                            int(index.stop * self.sampleRate), index.step)
+        return AudioData(None, self.data[index], sampleRate=self.sampleRate, 
+                            numChannels=self.numChannels, defer=False)
     
     def getsample(self, index):
         """
@@ -390,26 +397,30 @@ class AudioData(AudioRenderable):
             self.data = numpy.append(self.data, 
                                      numpy.zeros(extra_shape, dtype=numpy.int16), axis=0)
         
-    def append(self, as2):
+    def append(self, another_audio_data):
         "Appends the input to the end of this `AudioData`."
-        extra = len(as2.data) - (len(self.data) - self.endindex) 
+        extra = len(another_audio_data.data) - (len(self.data) - self.endindex) 
         self.pad_with_zeros(extra)
-        self.data[self.endindex:self.endindex+len(as2)] += as2.data
-        self.endindex += as2.endindex
+        self.data[self.endindex : self.endindex + len(another_audio_data)] += another_audio_data.data
+        self.endindex += another_audio_data.endindex
     
-    def sum(self, as2):
-        extra = len(as2.data) - len(self.data)
+    def sum(self, another_audio_data):
+        extra = len(another_audio_data.data) - len(self.data)
         self.pad_with_zeros(extra)
-        compare_limit = min(len(as2.data), len(self.data)) - 1
-        self.data[:compare_limit] += as2.data[:compare_limit]
+        compare_limit = min(len(another_audio_data.data), len(self.data)) - 1
+        self.data[ : compare_limit] += another_audio_data.data[ : compare_limit]
     
-    def add_at(self, time, as2):
+    def add_at(self, time, another_audio_data):
+        """
+        Adds the input `another_audio_data` to this `AudioData` 
+        at the `time` specified in seconds.
+        """
         offset = int(time * self.sampleRate)
-        extra = offset + len(as2.data) - len(self.data)
+        extra = offset + len(another_audio_data.data) - len(self.data)
         self.pad_with_zeros(extra)
-        if as2.numChannels < self.numChannels:
-            as2.data = numpy.repeat(as2.data, self.numChannels).reshape(len(as2), self.numChannels)
-        self.data[offset:offset+len(as2.data)] += as2.data 
+        if another_audio_data.numChannels < self.numChannels:
+            another_audio_data.data = numpy.repeat(another_audio_data.data, self.numChannels).reshape(len(another_audio_data), self.numChannels)
+        self.data[offset : offset + len(another_audio_data.data)] += another_audio_data.data 
     
     def __len__(self):
         if self.data is not None:
@@ -419,7 +430,8 @@ class AudioData(AudioRenderable):
 
     def __add__(self, other):
         """Supports stuff like this: sound3 = sound1 + sound2"""
-        return assemble([self, other], numChannels=self.numChannels, sampleRate=self.sampleRate)
+        return assemble([self, other], numChannels=self.numChannels, 
+                            sampleRate=self.sampleRate)
         
     def encode(self, filename=None, mp3=None):
         """
@@ -448,7 +460,7 @@ class AudioData(AudioRenderable):
         else:
             noc = self.data.shape[1]
         bits = self.data.dtype.itemsize * 8
-        sbytes = self.sampleRate*(bits / 8)*noc
+        sbytes = self.sampleRate * (bits / 8) * noc
         ba = noc * (bits / 8)
         fid.write(struct.pack('<ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
         # data chunk
@@ -459,7 +471,7 @@ class AudioData(AudioRenderable):
         # position at start of the file. 
         size = fid.tell()
         fid.seek(4)
-        fid.write(struct.pack('<i', size-8))
+        fid.write(struct.pack('<i', size - 8))
         fid.close()
         if not mp3:
             return tempfilename
