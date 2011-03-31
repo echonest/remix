@@ -106,7 +106,7 @@ class AudioAnalysis(object):
                 self.pyechonest_track = track.track_from_md5(path_or_identifier)
 
         if self.pyechonest_track is None:
-            raise EchoNestRemixError('no track with md5 %s' % path_or_identifier)
+            raise EchoNestRemixError('Could not find track %s' % path_or_identifier)
 
         self.source = None
         
@@ -1373,6 +1373,8 @@ class AudioQuantumList(list, AudioRenderable):
     
     def get_source(self):
         "Returns its own or its parent's source."
+        if len(self) < 1:
+            return
         if self._source:
             return self._source
         else:
@@ -1536,6 +1538,8 @@ class AudioQuantumList(list, AudioRenderable):
         
     
     def render(self, start=0.0, to_audio=None, with_source=None):
+        if len(self) < 1:
+            return
         if not to_audio:
             dur = 0
             tempsource = self.source or list.__getitem__(self, 0).source
