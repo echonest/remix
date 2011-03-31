@@ -178,9 +178,11 @@ class SynchronizedAV():
         return SynchronizedAV(audio=self.audio[index], video=self.video[index])
     
     def save(self, filename):
-        audioout = self.audio.encode(filename + '.wav', mp3=False)
+        audio_filename = filename + '.wav'
+        audioout = self.audio.encode(audio_filename, mp3=False)
         self.video.render()
         res = sequencetomovie(filename, self.video, audioout)
+        os.remove(audio_filename)
         return res
     
     def saveAsBundle(self, outdir):
@@ -197,7 +199,7 @@ class SynchronizedAV():
 
 
 def loadav(videofile, verbose=True):
-    foo, audio_file = tempfile.mkstemp(".wav")        
+    foo, audio_file = tempfile.mkstemp(".mp3")        
     cmd = "en-ffmpeg -y -i \"" + videofile + "\" " + audio_file
     if verbose:
         print >> sys.stderr, cmd
@@ -206,7 +208,7 @@ def loadav(videofile, verbose=True):
     ffmpeg_error_check(res[1])
     a = audio.LocalAudioFile(audio_file)
     v = sequencefrommov(videofile)
-    return SynchronizedAV(audio=a,video=v)
+    return SynchronizedAV(audio=a, video=v)
 
 
 def loadavfrombundle(dir):
