@@ -19,10 +19,10 @@ import echonest.modify as modify
 
 usage="""
 Usage:
-    python vafroma.py inputfilenameA 
+    python vafroma3.py <input_filename>
 
 Example:
-    python vafroma.py BillieJean.mp3 
+    python vafroma3.py BillieJeanMusicVideo.mp4
 """
 
 

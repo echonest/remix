@@ -31,7 +31,7 @@ Usage:
 variation is the number of near candidates chosen from. [default=4]
 
 Example:
-    python vdissoc.py 'http://www.youtube.com/watch?v=Es7mk19wMrk' Seventh.flv
+    python vdissoc.py 'http://www.youtube.com/watch?v=Es7mk19wMrk' Seventh.mp4
 """
 def main(infile, outfile, choices=4):
     if infile.startswith("http://"):

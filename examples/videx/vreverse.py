@@ -14,10 +14,10 @@ from echonest import video
 
 usage = """
 Usage: 
-    python reverse.py <beats|tatums> <inputFilename> <outputFilename>
+    python vreverse.py <beats|tatums> <inputFilename> <outputFilename>
 
 Example:
-    python reverse.py beats YouCanCallMeAl.flv AlMeCallCanYou.mpg
+    python vreverse.py beats YouCanCallMeAl.mpg AlMeCallCanYou.mpg
 """
 
 

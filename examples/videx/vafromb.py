@@ -19,7 +19,7 @@ Usage:
     python vafromb.py <inputfilenameA> <inputfilenameB> <outputfilename> <Mix> [env]
 
 Example:
-    python vafromb.py BillieJean.flv CryMeARiver.flv BillieJeanFromCryMeARiver.mpg 0.9 env
+    python vafromb.py BillieJean.mp4 CryMeARiver.mp4 BillieJeanFromCryMeARiver.mp4 0.9 env
 
 The 'env' flag applies the volume envelopes of the segments of A to those
 from B.

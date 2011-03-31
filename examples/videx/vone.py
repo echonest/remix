@@ -14,10 +14,10 @@ from echonest import audio, video
 
 usage = """
 Usage: 
-    python one.py <input_filename> <output_filename>
+    python vone.py <input_filename> <output_filename>
 
 Example:
-    python one.py EverythingIsOnTheOne.mpg EverythingIsReallyOnTheOne.mpg
+    python vone.py EverythingIsOnTheOne.mpg EverythingIsReallyOnTheOne.mpg
 """
 
 
