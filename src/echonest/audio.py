@@ -858,6 +858,7 @@ class LocalAudioFile(AudioData):
         """
         :param filename: path to a local MP3 file
         """
+        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
         track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
         if verbose:
             print >> sys.stderr, "Computed MD5 of file is " + track_md5 
@@ -871,7 +872,6 @@ class LocalAudioFile(AudioData):
             tempanalysis = AudioAnalysis(filename)
 
         self.analysis = tempanalysis
-        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
         self.analysis.source = self
     
     def toxml(self, context=None):
