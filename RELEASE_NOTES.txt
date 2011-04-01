@@ -1,3 +1,14 @@
+1.4 - April 1 2011
+- Newer build of ffmpeg with support for Flash Video
+- Newer youtube-dl script
+- Extract audio from videos as mp3
+- Creative commons music in examples/music
+- More rigorous error-catching when forking calls to ffmpeg
+- Tests for ffmpeg to help with debugging
+- fix deprecated references to pyechonest
+- more user control over verbosity
+- make sure audio files can be decoded and loaded before uploading
+
 1.3b - September 1 2010
 - Syncing changes with the latest pyechonest
 - Removing cloud modules
