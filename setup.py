@@ -74,14 +74,15 @@ def get_soundtouch():
                     )
 
 all_data_files = []
+scripts = []
 if is_mac:
-    all_data_files  = [('/usr/local/bin',['external/en-ffmpeg/mac/en-ffmpeg','external/youtube-dl/youtube-dl'])]
+    scripts  = ['external/en-ffmpeg/mac/en-ffmpeg','external/youtube-dl/youtube-dl']
 if is_linux:
-    all_data_files  = [('/usr/local/bin',['external/youtube-dl/youtube-dl'])]
+    scripts  = ['external/youtube-dl/youtube-dl']
 if is_windows:
-    all_data_files  = [('.',['external\\en-ffmpeg\\win\\en-ffmpeg.exe',
-                             'external\\youtube-dl\\youtube-dl',
-                             'external\\pydirac225\\libs\\Windows\\DiracLE.dll'])]
+    scripts  = ['external\\en-ffmpeg\\win\\en-ffmpeg.exe',
+                 'external\\youtube-dl\\youtube-dl',
+                 'external\\pydirac225\\libs\\Windows\\DiracLE.dll']
 
 
 dest_prefix = 'echo-nest-remix-'
@@ -102,7 +103,7 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
 
 setup(name='The Echo Nest Remix API',
       ext_modules = [get_soundtouch(), get_dirac(), get_action()],
-      version='1.3b',
+      version='1.4',
       description='Make things with music.',
       author='Ben Lacker',
       author_email='blacker@echonest.com',
@@ -110,7 +111,8 @@ setup(name='The Echo Nest Remix API',
       maintainer_email='brian@echonest.com',
       url='http://developer.echonest.com/',
       download_url='http://code.google.com/p/echo-nest-remix',
-      data_files= all_data_files,
+      data_files=all_data_files,
+      scripts=scripts,
       package_dir={'echonest':'src/echonest', 'pyechonest':'src/pyechonest/pyechonest'},
       packages=['echonest', 'echonest.support', 'echonest.support.midi', 'pyechonest'],
       requires=['os',
