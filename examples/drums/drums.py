@@ -20,12 +20,10 @@ Usage:
     python drums.py <inputfilename> <breakfilename> <outputfilename> <beatsinbreak> <barsinbreak> [<drumintensity>]
 
 Example:
-    python drums.py HereComesTheSun.mp3 breaks/AmenBrother.wav HereComeTheDrums.mp3 64 4 0.6
+    python drums.py HereComesTheSun.mp3 breaks/AmenBrother.mp3 HereComeTheDrums.mp3 64 4 0.6
 
 Drum instenity defaults to 0.5
 """
-
-BREAK_FILENAME = 'FunkyDrummer.wav'
 
 def mono_to_stereo(audio_data):
     data = audio_data.data.flatten().tolist()
