@@ -4,6 +4,7 @@
 modify.py
 
 Created by Ben Lacker on 2009-06-12.
+Stereo modifications by Peter Sobot on 2011-08-24
 """
 from echonest.audio import *
 import numpy
@@ -18,8 +19,12 @@ class Modify(soundtouch.SoundTouch):
         self.blockSize = blockSize
 
     def doInBlocks(self, f, in_data, arg):
-        # For now, make everything mono. We'll deal with channels later
-        if in_data.ndim > 1:
+        if self.numChannels == 2:
+            c = numpy.empty( ( in_data.size, ), dtype=in_data.dtype )
+            c[0::2] = in_data[:, 0]
+            c[1::2] = in_data[:, 1]
+            in_data = c
+        elif in_data.ndim > 1:
             in_data = in_data[:, 0]
         collect = []
         if len(in_data) > self.blockSize:
@@ -38,7 +43,14 @@ class Modify(soundtouch.SoundTouch):
         self.putSamples(data)
         out_data = numpy.array(numpy.zeros((len(data)*2,), dtype=numpy.float32))
         out_samples = self.receiveSamples(out_data)
-        new_ad = AudioData(ndarray=out_data[:out_samples], shape=(out_samples, ), 
+        shape = (out_samples, )
+        if self.numChannels == 2:
+            nd = numpy.array( numpy.zeros( ( out_samples, self.numChannels ), dtype=numpy.float32 ) )
+            nd[:, 0] = out_data[0::2][:out_samples]
+            nd[:, 1] = out_data[1::2][:out_samples]
+            out_data = nd
+            shape = (out_samples, 2)
+        new_ad = AudioData(ndarray=out_data[:out_samples*self.numChannels], shape=shape, 
                     sampleRate=self.sampleRate, numChannels=self.numChannels)
         return new_ad
 
