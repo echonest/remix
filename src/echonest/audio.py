@@ -44,6 +44,9 @@ import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 import weakref
 
+
+MP3_BITRATE = 128
+
 class AudioAnalysis(object):
     """
     This class uses (but does not wrap) `pyechonest.track` to allow 
@@ -479,7 +482,7 @@ class AudioData(AudioRenderable):
         if not filename.lower().endswith('.mp3'):
             filename = filename + '.mp3'
         try:
-            bitRate = config.MP3_BITRATE
+            bitRate = MP3_BITRATE
         except NameError:
             bitRate = 128
         parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
@@ -629,7 +632,7 @@ class AudioData32(AudioData):
         if not filename.lower().endswith('.mp3'):
             filename = filename + '.mp3'
         try:
-            bitRate = config.MP3_BITRATE
+            bitRate = MP3_BITRATE
         except NameError:
             bitRate = 128
         parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
