@@ -18,7 +18,13 @@ from echonest.audio import LocalAudioFile
 from pyechonest import util
 
 from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT, display_actions, is_valid
-from utils import tuples
+
+
+def tuples(l, n=2):
+    """ returns n-tuples from l.
+        e.g. tuples(range(4), n=2) -> [(0, 1), (1, 2), (2, 3)]
+    """
+    return zip(*[l[i:] for i in range(n)])
 
 def do_work(audio_files, options):
 
