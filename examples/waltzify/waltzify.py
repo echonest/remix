@@ -9,19 +9,21 @@ Modified approach suggested by Mary Farbood.
 Created by Tristan Jehan.
 """
 
-from optparse import OptionParser
 import os, sys
 import dirac, math
-
+from optparse import OptionParser
 from echonest.audio import LocalAudioFile, AudioData
 from echonest.action import render, Playback, display_actions
+
 
 def select_tempo(index, num_beats, min_tempo, max_tempo, rate):
     v = math.atan(float(rate)*float(index)/float(num_beats))/1.57
     return min_tempo + v * float(max_tempo-min_tempo)
 
+
 def do_work(track, options):
     
+    # manage options
     verbose = bool(options.verbose)    
     low_tempo = int(options.low)    
     high_tempo = int(options.high)    
@@ -42,9 +44,13 @@ def do_work(track, options):
     beats = track.analysis.beats
     offset = int(beats[0].start * track.sampleRate)
 
+    # for every beat
     for beat in beats[:-1]:
+
+        # get a tempo, particularly for accelerando
         target_tempo = select_tempo(beats.index(beat), len(beats), low_tempo, high_tempo, rate_tempo)
 
+        # calculate rates
         if count == 0:
             dur = beat.duration/2.0
             rate1 = 60.0 / (target_tempo * dur)
@@ -52,15 +58,15 @@ def do_work(track, options):
             rate2 = rate1 + rubato
         elif count == 1:
             rate1 = 60.0 / (target_tempo * beat.duration)
-            rate2 = 0.0
 
+        # add a change of rate at a given time
         start1 = int(beat.start * track.sampleRate)
         rates.append((start1-offset, rate1))
-
-        if rate2 != 0:
+        if count == 0:
             start2 = int((beat.start+dur) * track.sampleRate)
             rates.append((start2-offset, rate2))
 
+        # show on screen
         if verbose:
             if count == 0:
                 args = (beats.index(beat), count, beat.duration, dur*rate1, dur*rate2, 60.0/(dur*rate1), 60.0/(dur*rate2))
@@ -89,7 +95,6 @@ def do_work(track, options):
     pb2 = Playback(track, beats[-1].start, track.analysis.duration-beats[-1].start)
 
     return [pb1, ts, pb2]
-    return [ts, pb2]
 
 
 def main():
@@ -116,7 +121,6 @@ def main():
 
     # this is where the work takes place
     actions = do_work(track, options)
-    
     if verbose:
         display_actions(actions)
     
@@ -127,6 +131,7 @@ def main():
     if verbose:
         print "Rendering... %s" % name
     render(actions, name, verbose=verbose)
+    
     if verbose:
         print "Success!"
     return 1
