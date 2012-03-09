@@ -25,12 +25,13 @@ def do_work(track, options):
     
     # manage options
     verbose = bool(options.verbose)    
-    low_tempo = int(options.low)    
-    high_tempo = int(options.high)    
-    rate_tempo = int(options.rate)    
+    low_tempo = float(options.low)    
+    high_tempo = float(options.high)    
+    rate_tempo = float(options.rate)    
     rubato = float(options.rubato)    
     tempo = float(options.tempo)    
 
+    # acceleration or not
     if rate_tempo == 0:
         if tempo == 0:
             low_tempo = track.analysis.tempo['value']
@@ -113,7 +114,9 @@ def main():
         parser.print_help()
         return -1
     
-    verbose = options.verbose    
+    verbose = options.verbose
+
+    # get Echo Nest analysis for this file
     track = LocalAudioFile(args[0], verbose=verbose)
     
     if verbose:
@@ -121,19 +124,23 @@ def main():
 
     # this is where the work takes place
     actions = do_work(track, options)
+
     if verbose:
         display_actions(actions)
     
-    # Send to renderer
+    # new name
     name = os.path.splitext(os.path.basename(args[0]))
     name = str(name[0] + '_waltz_%d' % int(options.offset) +'.mp3')
     
     if verbose:
         print "Rendering... %s" % name
+
+    # send to renderer
     render(actions, name, verbose=verbose)
     
     if verbose:
         print "Success!"
+
     return 1
 
 
