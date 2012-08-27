@@ -26,7 +26,7 @@
             <h3><a href="#">Echo Nest Remix</a></h3>
             <ul>
               <li><a href="#what">What</a></li>
-              <li><a href="#how">Get started</a></li>
+              <li><a href="#how">Get Started</a></li>
               <li><a href="#python">Python</a></li>
               <li><a href="#web">Web (Flash & JS)</a></li>
               <li><a href="#examples">Examples</a></li>
@@ -41,6 +41,7 @@
                 <p class="lead">
                     Echo Nest Remix is the <strong>Internet Synthesizer.</strong> Make amazing things from music, automatically.<br />
                     Turn any music or video into Python, Flash, or Javascript code.<br/>
+                    (currently being rebuilt!  Check out our <a href="http://code.google.com/p/echo-nest-remix/">Google Code site</a> for the moment!)
                 </p>
             </div> <!-- /container -->
         </div>
@@ -66,87 +67,140 @@
     </div>
     <div id="container">
         <section id="what">
-
-    Echo Nest Remix is the Internet Synthesizer that lets you make things with music and video.
-    Remix has done the following: rearranged the syllables of a vocal line, walkenized and cowbellized hundreds of thousands of songs in a week, mixed up the hits of a drum beat and synced it to another loop, beat matched two songs, split apart DJ mixes by their individual tracks, made new kinds of video mashups, corrected sloppy drumming, synced a video to a song, transitioned between two covers of the same song, made a cat play piano, put a donk on it.
-    We're making this available as an open source SDK for Python and JavaScript that can be easily installed on Mac OS X, Linux, or Windows. It accesses the Echo Nest Analyze API at <a href="http://developer.echonest.com/" target="_blank">http://developer.echonest.com</a> and lets you play with the results to make new concoctions of audio and video. You'll need an Echo Nest API key to use this SDK:  instructions are below.
+            <h3>What:</h3>
+            <p>Echo Nest Remix is the Internet Synthesizer.  It lets you make amazing things with music and video, automatically and algorithmically.</p>
+            <p>Remix has done the following: rearranged the syllables of a vocal line, <a href="http://morecowbell.dj/" target="_blank">walkenized and cowbellized hundreds of thousands of songs in a week</a>, <a href="http://www.youtube.com/watch?v=_bW7AkhgQpc" target="_blank">reversed</a> basically <a href="http://vimeo.com/10256583" target="_blank">everything</a>, beat matched two songs, split apart DJ mixes by their individual tracks, <a href="http://musicmachinery.com/2009/06/21/wheres-the-pow/" target="_blank">made new kinds of video mashups</a>, <a href="http://musicmachinery.com/2009/07/05/you-make-me-quantized-miss-lizzy/" target="_blank">corrected sloppy drumming</a>, <a href="http://www.youtube.com/watch?v=X63XPLVOSeA" target="_blank">synced video to a song</a>, <a href="http://musicmachinery.com/2009/05/01/79-versions-of-popcorn-remixed/" target="_blank">transitioned between multiple covers of the same song</a>, <a href="http://www.youtube.com/watch?v=hYZ-qWEx6aA" target="_blank">made a cat play piano</a>, and <a href="http://swingify.cloudapp.net/" target="_blank">made it swing</a>.</p>
+            <p>We're making this available as an open source SDK for Python and JavaScript that can be easily installed on Mac OS X, Linux, or Windows. It accesses the Echo Nest Analyze API at <a href="http://developer.echonest.com/" target="_blank">http://developer.echonest.com</a> and lets you play with the results to make new concoctions of audio and video. You'll need an Echo Nest API key to use Remix:  instructions are below.</p>
         </section>
     </div>
     <div id="container">
         <section id="how">
-        Step 1: Download the native installer for your platform
+            <h3>Get Started:</h3>
+            <h4>Step 1: Download the native installer for your platform</h4>
 
-        Step 2: Set up your Echo Nest API Key
+            <h4>Step 2: Set up your Echo Nest API Key</h4>
+            <p>To use Remix, you need to get API key from the <a href="https://developer.echonest.com" target="_blank">Echo Nest Developer Center</a>, by <a href="https://developer.echonest.com/account/register" target="_blank">registering an account</a>.</p>
+            <p>Once you've got your key, read <a href="http://code.google.com/p/echo-nest-remix/wiki/DeveloperKeySetup" target="_blank">this key install tutorial</a> for Windows, Mac or Linux.</p>
+            <p>For the experts in the room, just set the environment variable you need:
+            <pre>
+            export ECHO_NEST_API_KEY="your api key"
+            </pre></p>
 
-        Step 3: Try an example
+            <h4>Step 3: Try an example</h4>
+            <p>Once you've got your API key set up, try one of the examples.</p>
 
-        Step 4:  Make something beautiful
+            <ul>
+                <li>On Windows they're installed to your Python folder (probably C:\Python27\echo-nest-remix-examples\.)</li>
+                <li>On Mac they are in /usr/local/share/echo-nest-remix-examples.</li>
+                <li>On linux, they are in .../remix/examples.</li>
+            </ul>
 
+            <p>A good place to start is with one.py.  Turn on your terminal, go to ../examples/one/, and 
+            <pre>
+            python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3
+            </pre>
+            Congratulations!  You've made your first remix with Remix!
+            </p>
+
+            <h4>Step 4: Make something beautiful</h4>
+
+            <p>For inspiration on what to do with remix, you can check the <a href="#examples">examples</a> below.  You can also take a look at Adam Lindsay's <a href="http://lindsay.at/work/remix/overview.html" target="_blank">tutorial</a>, or you can check out the full <a href="http://echo-nest-remix.googlecode.com/svn/trunk/apidocs/index.html" target="_blank">API documentation</a>.</p>
+
+            <p>Finally, here's a bit of code to whet your appetite.  Happy remixing!
+            <pre>
+            """Reverse a song by playing its beats forward starting from the end of the song"""
+            import echonest.audio as audio
+
+            # Easy wrapper around mp3 decoding and Echo Nest analysis
+            audio_file = audio.LocalAudioFile("NeverGonnaTellIt.mp3")
+
+            # You can manipulate the beats in a song as a native python list
+            beats = audio_file.analysis.beats
+            beats.reverse()
+
+            # And render the list as a new audio file!
+            audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")
+            </pre></p>
         </section>
     </div>
     <div id="container">
         <section id="python">
+            <h3>Python:</h3>
         </section>
     </div>
     <div id="container">
         <section id="web">
+            <h3>Web:</h3>
         </section>
     </div>
     <div id="container">
         <section id="examples">
-        Here's some things that people have done with Remix:  (Got something that should be here?  Email us!)
-        Web Apps:
-        <ul>
-            <li><a href="http://www.morecowbell.dj/" target="_blank">More Cowbell</a> - The original add-cowbell-to-any-track remixer.</li>
-            <li><a href="http://the.wubmachine.com/" target="_blank">The Wubmachine</a> - Remix anything into dubstep, electro house, or drum & bass.</li>
-            <li><a href="http://swingify.cloudapp.net/" target="_blank">Swingify</a> - Add swing to any track.</li>   
-            <li><a href="http://static.echonest.com/BohemianRhapsichord/index.html" target="_blank">Bohemian Rhapsichord</a> - Queen's timeless classic becomes an internet instrument.</li>   
-        </ul>
+            <h3>Examples:</h3>
+            <p>Here's a list things that people have done with Remix:  (Got something that should be here?  Email us!)</p>
+            Web Apps:
+            <ul>
+                <li><a href="http://www.morecowbell.dj/" target="_blank">More Cowbell</a> - The original add-cowbell-to-any-track remixer.</li>
+                <li><a href="http://the.wubmachine.com/" target="_blank">The Wubmachine</a> - Remix anything into dubstep, electro house, or drum & bass.</li>
+                <li><a href="http://swingify.cloudapp.net/" target="_blank">Swingify</a> - Add swing to any track.</li>   
+                <li><a href="http://static.echonest.com/BohemianRhapsichord/index.html" target="_blank">Bohemian Rhapsichord</a> - Queen's timeless classic becomes an internet instrument.</li>   
+            </ul>
 
-        iOS Apps:
-        <ul>
-            <li><a href="http://www.mashtone.com/" target="_blank">Mashtone</a> - Remix for your phone, remix for your ringtones!</li>
-        </ul>
-        
-        Videos:
-        <ul>
-            <li><a href="http://www.youtube.com/watch?v=r_JRGquR5wY" target="_blank">Daft Punk - Undefeatable 909</a></li>
-            <li><a href="http://www.youtube.com/watch?v=tOluFTH8o1U" target="_blank">Gescom vs. Bill Evans</a></li>
-            <li><a href="http://www.youtube.com/watch?v=hYZ-qWEx6aA" target="_blank">Ben Folds - Jackson Cattery</a></li>
-            <li><a href="http://www.youtube.com/watch?v=nUeK3I_6Cd0" target="_blank">Bicklenack - Gurn it to the bround</a></li>
-            <li><a href="http://www.youtube.com/watch?v=_bW7AkhgQpc" target="_blank">The Scientist - Beat Reversed</a></li>
-            <li><a href="http://www.youtube.com/watch?v=JR-LQy8rDyE" target="_blank">NIN - Closer to Roz (Niles Mix)</a></li>
-            <li><a href="http://vimeo.com/10256583" target="_blank">Bad Romance - Memento Edition</a></li>
-        </ul>
+            iOS Apps:
+            <ul>
+                <li><a href="http://www.mashtone.com/" target="_blank">Mashtone</a> - Remix for your phone, remix for your ringtones!</li>
+            </ul>
+            
+            Videos:
+            <ul>
+                <li><a href="http://www.youtube.com/watch?v=r_JRGquR5wY" target="_blank">Daft Punk - Undefeatable 909</a></li>
+                <li><a href="http://www.youtube.com/watch?v=tOluFTH8o1U" target="_blank">Gescom vs. Bill Evans</a></li>
+                <li><a href="http://www.youtube.com/watch?v=hYZ-qWEx6aA" target="_blank">Ben Folds - Jackson Cattery</a></li>
+                <li><a href="http://www.youtube.com/watch?v=nUeK3I_6Cd0" target="_blank">Bicklenack - Gurn it to the bround</a></li>
+                <li><a href="http://www.youtube.com/watch?v=_bW7AkhgQpc" target="_blank">The Scientist - Beat Reversed</a></li>
+                <li><a href="http://www.youtube.com/watch?v=JR-LQy8rDyE" target="_blank">NIN - Closer to Roz (Niles Mix)</a></li>
+                <li><a href="http://vimeo.com/10256583" target="_blank">Bad Romance - Memento Edition</a></li>
+            </ul>
 
-        Blog Posts:
-        <ul>
-<li><a href="http://blog.echonest.com/post/1673248022/making-beautiful-harp-music-with-echo-nest-remix" target="_blank">Harp Music With Remix</a></li>
-<li><a href="https://echonest-corp.s3.amazonaws.com/docs/whitepapers/Remix-1_0.pdf" target="_blank">The Official Remix Whitepaper</a></li>
-<li><a href="http://music.joshmillard.com/2010/08/09/monotoning-with-echo-nest-remix/" target="_blank">Monotoning Music</a></li>
-<li><a href="http://www.slideshare.net/bwhitman/the-echo-nest-remix-at-dorkbot-nyc-march-4-2009" target="_blank">Dorkbot NYC Presentation, 2009</a></li>
-<li><a href="http://music.joshmillard.com/2010/06/04/nine-inch-niles-the-seattleward-spiral/" target="_blank">Nine Inch Nails - The Seattleward Spiral</a></li>
-<li><a href="http://musicmachinery.com/2010/05/21/the-swinger/" target="_blank">The Swinger</a></li>
-<li><a href="http://lindsay.at/work/remix/overview.html" target="_blank">Remix Overview, 2009</a></li>
-<li><a href="http://musicmachinery.com/2010/01/05/rearranging-the-machine/" target="_blank">Rearranging The Machine</a></li>
-<li><a href="http://musicmachinery.com/2009/12/03/from-nickelback-to-bickelnack/" target="_blank">From Nickelback to Bickelnack</a></li>
-<li><a href="http://musicmachinery.com/2009/07/20/dj-apis-secret-sauce/" target="_blank">DJ API's Secret Sauce</a></li>
-<li><a href="http://musicmachinery.com/2009/07/05/you-make-me-quantized-miss-lizzy/" target="_blank">You Make Me Quantized, Miss Lizzy</a></li>
-<li><a href="http://lindsay.at/work/remix/dissociated.html" target="_blank">The Disassociated Mixes</a></li>
-<li><a href="http://musicmachinery.com/2009/06/21/wheres-the-pow/" target="_blank">Where's The Pow?</a></li>
-<li><a href="http://music.columbia.edu/~douglas/strange_things/?p=78" target="_blank">Strange Things</a></li>
-<li><a href="http://musicmachinery.com/2009/05/01/79-versions-of-popcorn-remixed/" target="_blank">79 Versions of Popcorn Remixed</a></li>
-    </ul>
+            Audio:
+            <ul>
+                <li><a href="http://static.echonest.com/NeverGonnaTellItBackwardsByBeat.mp3" rel="nofollow">Never Gonna Tell It backwards by beat</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/reverse/reverse.py" rel="nofollow">reverse.py</a> example. </li>
+                <li><a href="http://static.echonest.com/remix/EverythingIsReallyOnTheOne.mp3" rel="nofollow">Everything is Really on the One</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/one/one.py" rel="nofollow">one</a> example. </li>
+                <li><a href="http://static.echonest.com/remix/HereComesTheTonic.mp3" rel="nofollow">Here Comes the Tonic</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/selection/tonic.py" rel="nofollow">tonic</a> example. 
+                <li><a href="http://static.echonest.com/remix/HereComeTheDrums.mp3" rel="nofollow">Here Come the Drums</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/drums/drums.py" rel="nofollow">drums</a> example. </li>
+                <li><a href="http://static.echonest.com/remix/HungUpWaltz.mp3" rel="nofollow">Hung Up (Waltz)</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/limp/lopside.py" rel="nofollow">lopside</a> example. </li>
+                <li><a href="http://static.echonest.com/remix/RichGirlSummary.mp3" rel="nofollow">Rich Girl (Summary)</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/summary/summary.py" rel="nofollow">summary</a> example. </li>
+                <li><a href="http://static.echonest.com/remix/CryMeAJean.mp3" rel="nofollow">Billie Jean re-synthesized from the segments of Cry Me a River</a> - output of the <a href="http://code.google.com/p/echo-nest-remix/source/browse/trunk/examples/afromb/afromb.py" rel="nofollow">afromb</a> example. </li>
+            </ul>
 
-    </section>
+            Blog Posts:
+            <ul>
+                <li><a href="http://blog.echonest.com/post/1673248022/making-beautiful-harp-music-with-echo-nest-remix" target="_blank">Making Beautiful Harp Music With Remix</a></li>
+                <li><a href="http://music.joshmillard.com/2010/08/09/monotoning-with-echo-nest-remix/" target="_blank">Monotoning Music</a></li>
+                <li><a href="http://music.joshmillard.com/2010/06/04/nine-inch-niles-the-seattleward-spiral/" target="_blank">Nine Inch Nails - The Seattleward Spiral</a></li>
+                <li><a href="http://musicmachinery.com/2010/05/21/the-swinger/" target="_blank">The Swinger</a></li>
+                <li><a href="http://musicmachinery.com/2010/01/05/rearranging-the-machine/" target="_blank">Rearranging The Machine</a></li>
+                <li><a href="http://www.slideshare.net/bwhitman/the-echo-nest-remix-at-dorkbot-nyc-march-4-2009" target="_blank">Dorkbot NYC Presentation, 2009</a></li>
+                <li><a href="http://lindsay.at/work/remix/overview.html" target="_blank">Remix Overview, 2009</a></li>
+                <li><a href="http://musicmachinery.com/2009/12/03/from-nickelback-to-bickelnack/" target="_blank">From Nickelback to Bickelnack</a></li>
+                <li><a href="http://musicmachinery.com/2009/07/20/dj-apis-secret-sauce/" target="_blank">DJ API's Secret Sauce</a></li>
+                <li><a href="http://musicmachinery.com/2009/07/05/you-make-me-quantized-miss-lizzy/" target="_blank">You Make Me Quantized, Miss Lizzy</a></li>
+                <li><a href="http://lindsay.at/work/remix/dissociated.html" target="_blank">The Disassociated Mixes</a></li>
+                <li><a href="http://musicmachinery.com/2009/06/21/wheres-the-pow/" target="_blank">Where's The Pow?</a></li>
+                <li><a href="http://music.columbia.edu/~douglas/strange_things/?p=78" target="_blank">Strange Things</a></li>
+                <li><a href="http://musicmachinery.com/2009/05/01/79-versions-of-popcorn-remixed/" target="_blank">79 Versions of Popcorn Remixed</a></li>
+                <li><a href="https://echonest-corp.s3.amazonaws.com/docs/whitepapers/Remix-1_0.pdf" target="_blank">The Official Remix Whitepaper</a></li>
+            </ul>
+
+        </section>
     </div>
     <div id="container">
         <section id="who">
-            Remix is made by <a href="http://the.echonest.com/" target="_blank">The Echo Nest</a>.
+            <h3>Who:</h3>
+            Remix is made by <a href="http://the.echonest.com/" target="_blank">The Echo Nest</a> and a horde of community contributors, including, but not limited to:  Ben Lacker, Adam Lindsay, Douglas Repetto, Rob Ochshorn, Adam Baratz, Joshua Lifton, and Jason Sundram.
         </section>
     </div>
     
-
+<img src="http://the.echonest.com/media/images/logos/250x80_lt.gif" />
 </body>
 </html>
 
