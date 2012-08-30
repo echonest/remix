@@ -1,90 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <head>
+    <meta charset="utf-8">
 	<title>Echo Nest Remix</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="Brian Whitman">
-	<!-- Date: 2011-08-21 -->
-	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
     <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script src="assets/js/application.js"></script>
 </head>
 
-<body onload="prettyPrint();">
-    <a href="http://github.com/echonest/remix"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
-    <div class="topbar">
-        <div class="container">
-            <h3><a href="#">Echo Nest Remix</a></h3>
-            <ul>
-              <li><a href="#what">What</a></li>
+<body>
+    <script src="js/bootstrap.min.js"></script>
+    <a href="http://github.com/echonest/remix"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 500;" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#what">What</a></li>
               <li><a href="#how">Get Started</a></li>
               <li><a href="#python">Python</a></li>
-              <li><a href="#web">Web (Flash & JS)</a></li>
+              <li><a href="#web">Web</a></li>
               <li><a href="#examples">Examples</a></li>
               <li><a href="#who">Who</a></li>
             </ul>
+          </div><!--/.nav-collapse -->
         </div>
+      </div>
     </div>
-    <div id="masthead">
-        <div class="inner">
-            <div class="container">
-                <h1><img style="vertical-align:middle"  src="http://the.echonest.com/media/images/logos/250x80_dk.gif"> Remix</h1>
-                <p class="lead">
-                    Echo Nest Remix is the <strong>Internet Synthesizer.</strong> Make amazing things from music, automatically.<br />
-                    Turn any music or video into Python, Flash, or Javascript code.<br/>
-                    (currently being rebuilt!  Check out our <a href="http://code.google.com/p/echo-nest-remix/">Google Code site</a> for the moment!)
-                </p>
-            </div> <!-- /container -->
-        </div>
-    </div>
-    <div class="quickstart">
-        <div class="container">
-            <div class="row">
-                <div class="span5 columns">
-                    <h6>Mac</h6>
-                        <p><a href="http://echo-nest-remix.googlecode.com/files/The%20Echo%20Nest%20Remix%20API-1.4-py2.6-macosx10.6.mpkg.zip" rel="nofollow"><img src="http://static.echonest.com/mac_installer.png" /></a></p>
-                </div>
-                <div class="span5 columns">
-                    <h6>Windows</h6>
-                    <p><a href="http://echo-nest-remix.googlecode.com/files/The%20Echo%20Nest%20Remix%20API-1.4.win32-py2.6.exe" rel="nofollow"><img src="http://static.echonest.com/windows_installer.png" /></a></p>
-                </div>
-                <div class="span5 columns">
-                    <h6>Linux / Source</h6>
-                    <p><a href="http://code.google.com/p/echo-nest-remix/wiki/InstallFromSource" rel="nofollow"><img src="http://static.echonest.com/source_install.png" /></a></p>
-                    <!-- <p><a target="_blank" href="https://github.com/echonest/remix" class="btn primary">Remix on GitHub &raquo;</a></p> -->
-                </div>
-            </div> <!-- /row -->
-        </div>
-    </div>
-    <div id="container">
+
+    <div class="container">
+        <h1><img style="vertical-align:middle"  src="http://the.echonest.com/media/images/logos/250x80_dk.gif"> Remix</h1>
+        <p class="lead">
+            Echo Nest Remix is the <strong>Internet Synthesizer.</strong> Make amazing things from music, automatically.<br />
+            Turn any music or video into Python, Flash, or Javascript code.<br/>
+            (currently being rebuilt!  Check out our <a href="http://code.google.com/p/echo-nest-remix/">Google Code site</a> for the moment!)
+        </p>
+
         <section id="what">
             <h3>What:</h3>
             <p>Echo Nest Remix is the Internet Synthesizer.  It lets you make amazing things with music and video, automatically and algorithmically.</p>
             <p>Remix has done the following: rearranged the syllables of a vocal line, <a href="http://morecowbell.dj/" target="_blank">walkenized and cowbellized hundreds of thousands of songs in a week</a>, <a href="http://www.youtube.com/watch?v=_bW7AkhgQpc" target="_blank">reversed</a> basically <a href="http://vimeo.com/10256583" target="_blank">everything</a>, beat matched two songs, split apart DJ mixes by their individual tracks, <a href="http://musicmachinery.com/2009/06/21/wheres-the-pow/" target="_blank">made new kinds of video mashups</a>, <a href="http://musicmachinery.com/2009/07/05/you-make-me-quantized-miss-lizzy/" target="_blank">corrected sloppy drumming</a>, <a href="http://www.youtube.com/watch?v=X63XPLVOSeA" target="_blank">synced video to a song</a>, <a href="http://musicmachinery.com/2009/05/01/79-versions-of-popcorn-remixed/" target="_blank">transitioned between multiple covers of the same song</a>, <a href="http://www.youtube.com/watch?v=hYZ-qWEx6aA" target="_blank">made a cat play piano</a>, and <a href="http://swingify.cloudapp.net/" target="_blank">made it swing</a>.</p>
             <p>We're making this available as an open source SDK for Python and JavaScript that can be easily installed on Mac OS X, Linux, or Windows. It accesses the Echo Nest Analyze API at <a href="http://developer.echonest.com/" target="_blank">http://developer.echonest.com</a> and lets you play with the results to make new concoctions of audio and video. You'll need an Echo Nest API key to use Remix:  instructions are below.</p>
         </section>
-    </div>
-    <div id="container">
+
         <section id="how">
             <h3>Get Started:</h3>
             <h4>Step 1: Download the native installer for your platform</h4>
+
+            <div class="row">
+                <div class="span4 columns">
+                    <h6>Mac</h6>
+                        <p><a href="http://echo-nest-remix.googlecode.com/files/The%20Echo%20Nest%20Remix%20API-1.4-py2.6-macosx10.6.mpkg.zip" rel="nofollow"><img src="http://static.echonest.com/mac_installer.png" /></a></p>
+                </div>
+                <div class="span4 columns">
+                    <h6>Windows</h6>
+                    <p><a href="http://echo-nest-remix.googlecode.com/files/The%20Echo%20Nest%20Remix%20API-1.4.win32-py2.6.exe" rel="nofollow"><img src="http://static.echonest.com/windows_installer.png" /></a></p>
+                </div>
+                <div class="span4 columns">
+                    <h6>Linux / Source</h6>
+                    <p><a href="http://code.google.com/p/echo-nest-remix/wiki/InstallFromSource" rel="nofollow"><img src="http://static.echonest.com/source_install.png" /></a></p>
+                    <!-- <p><a target="_blank" href="https://github.com/echonest/remix" class="btn primary">Remix on GitHub &raquo;</a></p> -->
+                </div>
+            </div> <!-- /row -->
 
             <h4>Step 2: Set up your Echo Nest API Key</h4>
             <p>To use Remix, you need to get API key from the <a href="https://developer.echonest.com" target="_blank">Echo Nest Developer Center</a>, by <a href="https://developer.echonest.com/account/register" target="_blank">registering an account</a>.</p>
             <p>Once you've got your key, read <a href="http://code.google.com/p/echo-nest-remix/wiki/DeveloperKeySetup" target="_blank">this key install tutorial</a> for Windows, Mac or Linux.</p>
             <p>For the experts in the room, just set the environment variable you need:
-            <pre>
-            export ECHO_NEST_API_KEY="your api key"
-            </pre></p>
+            <pre>export ECHO_NEST_API_KEY="your api key"</pre></p>
 
             <h4>Step 3: Try an example</h4>
             <p>Once you've got your API key set up, try one of the examples.</p>
@@ -97,8 +89,7 @@
 
             <p>A good place to start is with one.py.  Turn on your terminal, go to ../examples/one/, and 
             <pre>
-            python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3
-            </pre>
+            python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3</pre>
             Congratulations!  You've made your first remix with Remix!
             </p>
 
@@ -119,21 +110,18 @@
             beats.reverse()
 
             # And render the list as a new audio file!
-            audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")
-            </pre></p>
+            audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")</pre></p>
         </section>
-    </div>
-    <div id="container">
+
         <section id="python">
             <h3>Python:</h3>
+            For ultra-complete documentation of the Python version of remix, go here.  
         </section>
-    </div>
-    <div id="container">
+
         <section id="web">
             <h3>Web:</h3>
         </section>
-    </div>
-    <div id="container">
+
         <section id="examples">
             <h3>Examples:</h3>
             <p>Here's a list things that people have done with Remix:  (Got something that should be here?  Email us!)</p>
@@ -143,6 +131,7 @@
                 <li><a href="http://the.wubmachine.com/" target="_blank">The Wubmachine</a> - Remix anything into dubstep, electro house, or drum & bass.</li>
                 <li><a href="http://swingify.cloudapp.net/" target="_blank">Swingify</a> - Add swing to any track.</li>   
                 <li><a href="http://static.echonest.com/BohemianRhapsichord/index.html" target="_blank">Bohemian Rhapsichord</a> - Queen's timeless classic becomes an internet instrument.</li>   
+                <li><a href="http://static.echonest.com/BeatDriver" target="_blank">Bangarang Boomerang</a> - Walk through a Skrillex tune, one beat at a time.</li>
             </ul>
 
             iOS Apps:
@@ -190,17 +179,17 @@
                 <li><a href="http://musicmachinery.com/2009/05/01/79-versions-of-popcorn-remixed/" target="_blank">79 Versions of Popcorn Remixed</a></li>
                 <li><a href="https://echonest-corp.s3.amazonaws.com/docs/whitepapers/Remix-1_0.pdf" target="_blank">The Official Remix Whitepaper</a></li>
             </ul>
+        </section>
 
-        </section>
-    </div>
-    <div id="container">
-        <section id="who">
-            <h3>Who:</h3>
-            Remix is made by <a href="http://the.echonest.com/" target="_blank">The Echo Nest</a> and a horde of community contributors, including, but not limited to:  Ben Lacker, Adam Lindsay, Douglas Repetto, Rob Ochshorn, Adam Baratz, Joshua Lifton, and Jason Sundram.
-        </section>
-    </div>
+    <section id="who">
+        <h3>Who:</h3>
+        Remix is made by <a href="http://the.echonest.com/" target="_blank">The Echo Nest</a> and a horde of community contributors, including, but not limited to:  Ben Lacker, Adam Lindsay, Douglas Repetto, Rob Ochshorn, Adam Baratz, Joshua Lifton, and Jason Sundram.
+    </section>
+    <img src="http://the.echonest.com/media/images/logos/250x80_lt.gif" />
+
+    </div> <!-- /container -->
     
-<img src="http://the.echonest.com/media/images/logos/250x80_lt.gif" />
+
 </body>
 </html>
 
