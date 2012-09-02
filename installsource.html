@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix - Key Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="js/bootstrap.min.js"></script>
+
+    <div class="container">
+        <h2>Install From Source</h2>
+        Here is how you install <a href="index.html">Remix</a> from source on Mac, Windows, or Linux. 
+        This method is either for Linux users, "experts" or developers, people that may have their own versions of Python already installed, or people want to contribute to Remix in some way. 
+        If you're not one of those people, you most likely want one of the install packages on the <a href="index.html">main page</a>, not this stuff.
+
+        <h2>Requirements</h2>
+        Installing remix from source requires:
+        <ul>
+            <li>python2.5-dev -- Python 2.5, 2.6, or 2.7 with the headers</li>
+            <li>ffmpeg <strong>(only if you are on Linux)</strong></li>
+            <li>python-numpy</li>
+            <li>A build environment, either XCode (mac), build-essential (gcc, Linux), Visual Studio Express or higher (Windows)</li>
+        </ul>
+
+        <h2>Steps</h2>
+           <ul>
+            <li><strong>If you are on Linux</strong>, you need to get ffmpeg if you don't already have it. 
+            Our distribution has builds for Mac and Windows, but not Linux. 
+            The best place to get a good build of ffmpeg with all the good codecs in it is the Debian Multimedia Repository. 
+            All you need to do is add the correct lines to your /etc/apt/sources.list file and then apt-get install ffmpeg. 
+            After installing ffmpeg, you need to make a symbolic link to it so that Remix knows where to find it:
+            <pre>sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg</pre></li>
+            <li>Get the source code from <a href="https://github.com/echonest/remix" target="_blank">github</a>.</li>
+            <li>Install remix using setup.py:
+            <pre>sudo python setup.py install</pre></li>
+            <li>Follow the <a href="keysetup.html" target="_blank">developer API Key Setup instructions</a>.</li>
+            <li>Note that the setup.py script also installs a version of ffmpeg on Mac and Windows called "en-ffmpeg" as well as the youtube-dl script. 
+            The pysoundtouch and pydirac libraries are also compiled and copied over. 
+            The version of ffmpeg we install is not modified in any way but includes various useful codecs and is confirmed to work well with Remix. 
+            If you have your own version of ffmpeg, feel free to use it but it needs to be symlinked to en-ffmpeg (we do this to not trample on existing versions of ffmpeg a user may have installed.)</li>
+        </ul>
+
+        <h2>Test It</h2>
+        <p>Once you've got everything set up, try one of the examples.</p>
+        <ul>
+            <li>On Windows they're installed to your Python folder (probably C:\Python27\echo-nest-remix-examples\.)</li>
+            <li>On Mac they are in /usr/local/share/echo-nest-remix-examples.</li>
+            <li>On linux, they are in .../remix/examples.</li>
+        </ul>
+        <p>A good place to start is with one.py.  Turn on your terminal, go to ../examples/one/, and 
+        <pre>
+        python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3</pre>
+        Congratulations!  You've made your first remix with Remix!
+        </p>
+
+    </div> <!-- /container -->
+    
+
+</body>
+</html>
+

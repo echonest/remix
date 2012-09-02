@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix - Key Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="js/bootstrap.min.js"></script>
+
+    <div class="container">
+        <h2>Key Setup</h2>
+        You need an Echo Nest Developer API key to use <a href="index.html">Remix</a>. We'll show you how.
+
+        <h2>Get your key</h2>
+        Get an API key from the <a href="https://developer.echonest.com" target="_blank">Echo Nest Developer Center</a>, 
+        by <a href="https://developer.echonest.com/account/register" target="_blank">registering an account</a>.</p>
+        <p>Your key is a long string that looks something like 5ZAPMB4BUR8QUN4PF (this key won't work, it's just an example.)</p>
+
+        <p>You can either set the key in your Remix code like this:</p>
+        <pre>
+        from pyechonest import config
+        config.ECHO_NEST_API_KEY="the key you got from the Echo Nest"
+        or you can set an environment variable on any of the three platforms:</pre>
+
+        <h2>Windows Environment Variable</h2>
+        <p>Once you have your key, you should set it as an environment variable. 
+        You can set environment variables in the advanced tab of the "My Computer" properties pane. 
+        Read <a href="http://support.microsoft.com/kb/310519" target="_blank">this</a> for more details. 
+        Set the variable ECHO_NEST_API_KEY to be your API key with no quotes. 
+        Make sure to close and re-open any cmd windows to reflect the new key.</p>
+
+        <h2>Mac OS X or Linux Environment Variable</h2>
+        On the Mac, open Terminal.app (in your Applications/Utilities folder) and on Linux open any terminal and type
+
+        <pre>
+        cd ~
+        nano ~/.bash_profile</pre>
+
+        An editor window will appear. If there is anything in the file, navigate to the end of the file with your arrow keys. Add this line:
+
+        <pre>
+        export ECHO_NEST_API_KEY="the key you got from the Echo Nest"</pre>
+
+        Type control-X, then Y to save the file. Restart any Terminal windows to reflect the new key.
+
+        <h2>Test It</h2>
+
+        To test the installation of your key, try the following:
+        <pre>
+        from pyechonest import config
+        print config.ECHO_NEST_API_KEY</pre>
+
+If it prints out your key, you're good to go!  
+
+    </div> <!-- /container -->
+    
+
+</body>
+</html>
+
