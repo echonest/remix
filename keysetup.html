@@ -18,8 +18,21 @@
 <body>
     <script src="js/bootstrap.min.js"></script>
 
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="index.html">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Key Setup</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
     <div class="container">
-        <h2>Key Setup</h2>
+        <h2>Introduction</h2>
         You need an Echo Nest Developer API key to use <a href="index.html">Remix</a>. We'll show you how.
 
         <h2>Get your key</h2>
@@ -61,7 +74,7 @@
         from pyechonest import config
         print config.ECHO_NEST_API_KEY</pre>
 
-If it prints out your key, you're good to go!  
+        If it prints out your key, you're good to go!  
 
     </div> <!-- /container -->
     
