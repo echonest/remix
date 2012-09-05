@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix - Install For Flash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="index.html">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Install With Flash</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <h2>Introduction</h2>
+        We're very excited to start maintaining the Flash/Flex 3 port of <a href="index.html">Remix</a>, 
+        kindly contributed by <a href="http://ryanberdeen.com/" target="_blank">Ryan Berdeen</a>. 
+        It includes a Flash Echo Nest SDK, some utilities for audio manipulation, 
+        and a nascent port of Soundtouch. It is strictly alpha for now.
+
+        <h2>Installation</h2>
+            <ul>
+                <li>Download the free <a href="http://opensource.adobe.com/wiki/display/flexsdk/Download+Flex+3" target="_blank">Flex 3 SDK</a> from Adobe. You need the most recent nightly build of the Flex SDK.</li>
+                <li>Also download the latest <a href="http://code.google.com/p/as3corelib/" target="_blank">as3corelib</a>.</li>
+                <li>Unpack the Flex SDK somewhere on your computer. (We'll refer to its location as FLEX_SDK)</li>
+                <li>Unpack as3corelib and copy the file lib/as3corelib.swc to FLEX_SDK/frameworks/libs/</li>
+                <li>Change the targeted version of Flash for the flex compiler: modify FLEX_SDK/frameworks/flex-config.xml. Edit target-player, replacing 9.xxx with 10.0.0.</li>
+                <li>Check out the latest Remix trunk, and cd into the flash/ folder.</li>
+                <li>Edit line 74 of echo-nest-remix-flash-api/examples/remix/remix.mxml to include your API key.</li>
+                <li>Run:
+                    <pre>
+                    FLEX_SDK/bin/mxmlc -source-path echo-nest-flash-api/src flash-audio/src \
+                    MP3FileReferenceLoaderLib/src soundtouch-as3/src -- echo-nest-flash-api/examples/remix/remix.mxml</pre>
+                </li>
+            </ul>
+
+        <h2>Test It</h2>
+        Once you've installed the Flash API, open echo-nest-flash-api/examples/remix/remix.html in your browser.
+        The page should let you upload a file and run one of two pre-made remix algorithms on it!
+
+        <h2>JavaScript Remix</h2>
+        Once you've installed the Flash API, do the following:
+        <ul>
+            <li>Edit line 46 of src/editor/player.mxml to include your Echo Nest API key</li>
+            <li>Run:
+                <pre>
+                FLEX_SDK/bin/mxmlc -source-path echo-nest-flash-api/src flash-audio/src \
+                MP3FileReferenceLoaderLib/src -- src/editor/player.mxml </pre>
+            </li>
+        </ul>
+
+        <h2>Test It</h2>
+        Open up src/editor/editor.html in your browser.  Paste in example code from examples/js into the editor, and run it!
+
+    </div> <!-- /container -->
+</body>
+</html>

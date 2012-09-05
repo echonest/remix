@@ -35,7 +35,7 @@
         <h2>Introduction</h2>
         Here is how you install <a href="index.html">Remix</a> from source on Mac, Windows, or Linux. 
         This method is either for Linux users, "experts" or developers, people that may have their own versions of Python already installed, or people want to contribute to Remix in some way. 
-        If you're not one of those people, you most likely want one of the install packages on the <a href="index.html">main page</a>, not this stuff.
+        If you're not one of those people, you most likely want one of the install packages on the <a href="index.html#how">main page</a>, not this stuff.
 
         <h2>Requirements</h2>
         Installing Remix from source requires:
@@ -65,18 +65,19 @@
         </ul>
 
         <h2>Test It</h2>
-        <p>Once you've got everything set up, try one of the examples.</p>
-        <ul>
-            <li>On Windows they're installed to your Python folder (probably C:\Python27\echo-nest-remix-examples\.)</li>
-            <li>On Mac they are in /usr/local/share/echo-nest-remix-examples.</li>
-            <li>On linux, they are in .../remix/examples.</li>
-        </ul>
-        <p>A good place to start is with one.py.  Turn on your terminal, go to ../examples/one/, and 
+        <p>To test Python and Numpy, try the following:  </p>
         <pre>
-        python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3</pre>
-        Congratulations!  You've made your first remix with Remix!
-        </p>
+        python
+        import numpy</pre>
+        <p>To test ffmpeg, try:</p>
+        <pre>
+        en-ffmpeg</pre>
 
+        <h2>Install</h2>
+        If those give no errors, you should head over to the <a href="http://github.com/echonest/remix" target="_blank">source repository</a>, get the source, and install it by running:
+        <pre>sudo python setup.py install</pre>
+        Once that's done, you can <a href="index.html#how">return to the main page</a>, get an API key, and run some examples!
+        </p>
     </div> <!-- /container -->
     
 
