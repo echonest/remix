@@ -163,6 +163,8 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
+  padding-top: 60px; /* Padding added by thor...*/
+  padding-bottom: 40px;
 }
 
 a {
@@ -583,6 +585,7 @@ p {
 }
 
 .lead {
+  margin-top: 20px; /* Added by Thor */
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 200;
