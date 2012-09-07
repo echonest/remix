@@ -1,30 +1,16 @@
-# Echo Nest Remix
+# Welcome to Echo Nest Remix
 
-Welcome to The Echo Nest Remix API installer.
+Echo Nest Remix is **the Internet Synthesizer.** 
+Make amazing things from music, automatically.  Turn any music or video into Python, Flash, or Javascript code.  
 
-This will install Python libraries that let you do great things with music and video. The libraries will be installed in your Python site-packages folder and will be available system-wide.
+Want more cowbell? [Remix can do it.](http://www.morecowbell.dj/ "")  
+Want to make it swing? [Remix can do it.](http://swingify.cloudapp.net/ "")  
+Want to turn any track into drum & bass? [Remix can do it.](http://the.wubmachine.com/ "")  
+Want to make new music videos out of old ones? [Remix can do it.](http://www.youtube.com/watch?v=_bW7AkhgQpc/ "")  
 
 ## Getting Started
-You'll probably want to start with the example scripts.
+We've made a shiny new page for getting Remix installed: <http://echonest.github.com/remix/>!  
+It's not quite ready yet though, so for the moment, please see: <http://code.google.com/p/echo-nest-remix>
 
-On the Mac these are placed in /usr/share/local/echo-nest-remix-examples.
-
-On Windows these are placed in your Python root folder: C:\Python26.
-
-You will need an API key set up to use this software. You can register for a key at <http://developer.echonest.com>
-
-Then either (1) set your key as an environment variable: 
-
-    export ECHO_NEST_API_KEY="your api key" 
-
-or (2) put the lines: 
-
-    from pyechonest import config
-    config.ECHO_NEST_API_KEY="your api key" 
-
-at the top of any scripts you run.
-
-## More Information
-
-For more information and documentation, please see: <http://code.google.com/p/echo-nest-remix>
+![""](https://a248.e.akamai.net/camo.github.com/c7a3810cd59b15375246e5468b46cdecd18edbb9/687474703a2f2f692e696d6775722e636f6d2f57574c596f2e676966 "Frustrated cat can't believe that he hasn't been remixed yet")
 
