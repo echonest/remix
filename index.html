@@ -100,8 +100,7 @@
             </ul>
 
             <p>A good place to start is with one.py.  Turn on your terminal, go to ../examples/one/, and 
-            <pre>
-            python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3</pre>
+            <pre>python one.py ../music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3</pre>
             Congratulations!  You've made your first remix with Remix!
             </p>
 
@@ -112,19 +111,18 @@
             or you can check out the full <a href="http://echo-nest-remix.googlecode.com/svn/trunk/apidocs/index.html" target="_blank">API documentation</a>.</p>
 
             <p>Finally, here's a bit of code to whet your appetite.  Happy remixing!
-            <pre>
-            """Reverse a song by playing its beats forward starting from the end of the song"""
-            import echonest.audio as audio
+            <pre>"""Reverse a song by playing its beats forward starting from the end of the song"""
+import echonest.audio as audio
 
-            # Easy wrapper around mp3 decoding and Echo Nest analysis
-            audio_file = audio.LocalAudioFile("NeverGonnaTellIt.mp3")
+# Easy wrapper around mp3 decoding and Echo Nest analysis
+audio_file = audio.LocalAudioFile("NeverGonnaTellIt.mp3")
 
-            # You can manipulate the beats in a song as a native python list
-            beats = audio_file.analysis.beats
-            beats.reverse()
+# You can manipulate the beats in a song as a native python list
+beats = audio_file.analysis.beats
+beats.reverse()
 
-            # And render the list as a new audio file!
-            audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")</pre></p>
+# And render the list as a new audio file!
+audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")</pre></p>
         </section>
 
         <section id="python">

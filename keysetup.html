@@ -41,10 +41,9 @@
         <p>Your key is a long string that looks something like 5ZAPMB4BUR8QUN4PF (this key won't work, it's just an example.)</p>
 
         <p>You can either set the key in your Remix code like this:</p>
-        <pre>
-        from pyechonest import config
-        config.ECHO_NEST_API_KEY="the key you got from the Echo Nest"
-        or you can set an environment variable on any of the three platforms:</pre>
+        <pre>from pyechonest import config
+    config.ECHO_NEST_API_KEY="the key you got from the Echo Nest"
+    or you can set an environment variable on any of the three platforms:</pre>
 
         <h2>Windows Environment Variable</h2>
         <p>Once you have your key, you should set it as an environment variable. 
@@ -56,25 +55,22 @@
         <h2>Mac OS X or Linux Environment Variable</h2>
         On the Mac, open Terminal.app (in your Applications/Utilities folder) and on Linux open any terminal and type
 
-        <pre>
-        cd ~
-        nano ~/.bash_profile</pre>
+        <pre>cd ~
+nano ~/.bash_profile</pre>
 
         An editor window will appear. If there is anything in the file, navigate to the end of the file with your arrow keys. Add this line:
 
-        <pre>
-        export ECHO_NEST_API_KEY="the key you got from the Echo Nest"</pre>
+        <pre>export ECHO_NEST_API_KEY="the key you got from the Echo Nest"</pre>
 
         Type control-X, then Y to save the file. Restart any Terminal windows to reflect the new key.
 
         <h2>Test It</h2>
 
         To test the installation of your key, try the following:
-        <pre>
-        from pyechonest import config
-        print config.ECHO_NEST_API_KEY</pre>
+        <pre>from pyechonest import config
+print config.ECHO_NEST_API_KEY</pre>
 
-        If it prints out your key, you're good to go!  
+        If it prints out your key, you're good to go!  <a href="index.html">Head back to the main page</a> and try some examples!
 
     </div> <!-- /container -->
     
