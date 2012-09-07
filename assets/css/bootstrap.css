@@ -21,6 +21,14 @@ section {
   display: block;
 }
 
+section:before { /* Hack by Thor so that the # anchors link correctly*/
+  display: block; 
+  content: " "; 
+  margin-top: -100px; 
+  height: 100px; 
+  visibility: hidden; 
+}
+
 audio,
 canvas,
 video {
