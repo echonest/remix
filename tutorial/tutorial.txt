@@ -1,0 +1,11 @@
+Welcome to the Thunderdrome
+
+This is a tutorial for how to use Echo Nest Remix. 
+It assumes that you're comfortable with the command line, and that you installed Remix successfully.
+
+If you're not au fait with working with a command line, you might want to read the following:
+
+If Remix is not installed correctly, head on back to the main Remix web page for lots of advice on how to fix it.  
+
+
+
