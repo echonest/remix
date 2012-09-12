@@ -1,43 +1,46 @@
-How to install Remix from sources
+Echo Nest Remix - Install From Source
 
-= Introduction =
+Introduction:
 
-Here is how you install Remix from source on Mac, Windows, or Linux. This method is either for Linux users. "experts" or developers, people that may have their own versions of Python already installed or want to contribute to Remix in some way. If you're not a developer, you most likely want [http://code.google.com/p/echo-nest-remix one of the install packages on the main page, not this stuff.]
+Here is how you install Remix from source on Mac, Windows, or Linux. This method is either for Linux users, "experts" or developers, people that may have their own versions of Python already installed, or people want to contribute to Remix in some way. If you're not one of those people, you most likely want one of the install packages on the main page, not this stuff.
 
-== Requirements ==
+Requirements:
 
-Installing remix from source requires:
+Installing Remix from source requires:
+-- python2.5-dev -- Python 2.5, 2.6, or 2.7 with the headers
+-- ffmpeg (only if you are on Linux)
+-- python-numpy
+-- A build environment, either XCode (mac), build-essential (gcc, Linux), Visual Studio Express or higher (Windows)
 
-  * python2.5-dev -- Python 2.5 or 2.6 with the headers
-  * ffmpeg (*only if you are on Linux*)
-  * python-numpy
-  * subversion
-  * A build environment, either XCode (mac), build-essential (gcc, Linux), Visual Studio Express or higher (Windows)
+Steps
 
-== Steps ==
+-- Install Numpy using the package manager of your choice, or from the web.
+-- Install python2.5-dev using the package manager of your choice
+-- Install build-essential using the package manager of your choice, get XCode, or get Visual Studio Express
+-- If you are on Linux, you need to get ffmpeg if you don't already have it. Our distribution has builds for Mac and Windows, but not Linux. The best place to get a good build of ffmpeg with all the good codecs in it is the Debian Multimedia Repository. All you need to do is add the correct lines to your /etc/apt/sources.list file and then apt-get install ffmpeg. After installing ffmpeg, you need to make a symbolic link to it so that Remix knows where to find it:
+    sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
+Note that the setup.py script also installs a version of ffmpeg on Mac and Windows called "en-ffmpeg" as well as the youtube-dl script. The pysoundtouch and pydirac libraries are also compiled and copied over. The version of ffmpeg we install is not modified in any way but includes various useful codecs and is confirmed to work well with Remix. If you have your own version of ffmpeg, feel free to use it but it needs to be symlinked to en-ffmpeg (we do this to not trample on existing versions of ffmpeg a user may have installed.)
 
-  * *If you are on Linux*, you need to get ffmpeg if you don't already have it. Our distribution has builds for Mac and Windows, but not Linux. The best place to get a good build of ffmpeg with all the good codecs in it is the [http://www.debian-multimedia.org/ Debian Multimedia Repository.] All you need to do is add the correct lines to your /etc/apt/sources.list file and then apt-get install ffmpeg. After installing ffmpeg, you need to make a symbolic link to it so that Remix knows where to find it:
-{{{
-sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
-}}}
-  * Checkout the source code using SVN as described [http://code.google.com/p/echo-nest-remix/source/checkout here]. 
-  * Install remix using setup.py:
+Test It:
 
-{{{
+To test Python and Numpy, try the following:
+    python
+    import numpy
+To test ffmpeg, try:
+    en-ffmpeg
+
+Install:
+
+If those give no errors, you're ready to get remix installed:
+
+-- Clone the source code from github:
+    git clone https://github.com/echonest/remix.git
+-- Initialize and update the pyechonest submodule:
+    git submodule update --init
+-- Install remix using setup.py:
+
 sudo python setup.py install
-}}}
 
-  * Note that the setup.py script also installs a version of ffmpeg on Mac and Windows called "en-ffmpeg" as well as the youtube-dl script. The pysoundtouch and pydirac libraries are also compiled and copied over. The version of ffmpeg we install is not modified in any way but includes various useful codecs and is confirmed to work well with Remix. If you have your own version of ffmpeg, feel free to use it but it needs to be symlinked to en-ffmpeg (we do this to not trample on existing versions of ffmpeg a user may have installed.)
 
-  * Follow the [DeveloperKeySetup developer API Key setup instructions.] 
+Once that's done, you can visit http://echonest.github.com/remix/ to get an API key and run some examples!
 
-== Running examples ==
-
-There are a lot of user contributed examples that use remix in svn as examples. The setup.py script installs them to /usr/local/share/echo-nest-remix-examples on Mac, C:\PythonXX\echo-nest-remix-examples on Windows, and /usr/echo-nest-remix-examples on Linux. (These are the default distutils non-code file locations on each platform, so blame them for this.)
-
-{{{
-cd echo-nest-remix/examples/one/
-python one.py ../music/CryMeARiver.mp3 output.mp3
-}}}
-
-If all went well, output.mp3 should be only the first beat of each measure of Cry Me a River. You're done, go explore!
