@@ -48,16 +48,15 @@
 
         <h2>Steps</h2>
            <ul>
+            <li>Install Numpy using the package manager of your choice, or from the <a href="http://numpy.scipy.org/" target="_blank">web.</a></li
+            <li>Install python2.5-dev using the package manager of your choice</li>
+            <li>Install build-essential using the package manager of your choice, get <a href="https://developer.apple.com/xcode/" target="_blank">XCode</a>, or get <a href="http://www.microsoft.com/visualstudio/en-us/products/2010-editions/express" target="_blank">Visual Studio Express</a></li>            
             <li><strong>If you are on Linux</strong>, you need to get ffmpeg if you don't already have it. 
             Our distribution has builds for Mac and Windows, but not Linux. 
             The best place to get a good build of ffmpeg with all the good codecs in it is the Debian Multimedia Repository. 
             All you need to do is add the correct lines to your /etc/apt/sources.list file and then apt-get install ffmpeg. 
             After installing ffmpeg, you need to make a symbolic link to it so that Remix knows where to find it:
             <pre>sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg</pre></li>
-            <li>Get the source code from <a href="https://github.com/echonest/remix" target="_blank">github</a>.</li>
-            <li>Install remix using setup.py:
-            <pre>sudo python setup.py install</pre></li>
-            <li>Follow the <a href="keysetup.html" target="_blank">developer API Key Setup instructions</a>.</li>
             <li>Note that the setup.py script also installs a version of ffmpeg on Mac and Windows called "en-ffmpeg" as well as the youtube-dl script. 
             The pysoundtouch and pydirac libraries are also compiled and copied over. 
             The version of ffmpeg we install is not modified in any way but includes various useful codecs and is confirmed to work well with Remix. 
@@ -72,8 +71,15 @@ import numpy</pre>
         <pre>en-ffmpeg</pre>
 
         <h2>Install</h2>
-        If those give no errors, you should head over to the <a href="http://github.com/echonest/remix" target="_blank">source repository</a>, get the source, and install it by running:
-        <pre>sudo python setup.py install</pre>
+        If those give no errors, you're ready to get remix installed:   
+        <ul>
+            <li>Clone the source code from <a href="https://github.com/echonest/remix" target="_blank">github</a>:
+            <pre>git clone https://github.com/echonest/remix.git</pre></li>
+            <li>Initialize and update the pyechonest submodule:
+            <pre>git submodule update --init</pre></li>
+            <li>Install remix using setup.py:
+            <pre>sudo python setup.py install</pre></li>
+        </ul>
         Once that's done, you can <a href="index.html#how">return to the main page</a>, get an API key, and run some examples!
         </p>
     </div> <!-- /container -->
