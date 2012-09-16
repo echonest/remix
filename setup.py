@@ -100,16 +100,17 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
         all_data_files.extend(sub_path_tuples)
 
 
-setup(name='The Echo Nest Remix API',
+setup(name='Remix',
       ext_modules = [get_soundtouch(), get_dirac(), get_action()],
       version='1.4a',
       description='The internet synthesizer. Make things with music.',
-      author='Brian Whitman',
+      author='The Echo Nest',
       author_email='brian@echonest.com',
-      maintainer='Brian Whitman',
-      maintainer_email='brian@echonest.com',
+      maintainer='Brian Whitman, Thor Kell',
+      maintainer_email='thor.kell@mail.mcgill.ca',
       url='http://developer.echonest.com/',
-      download_url='http://code.google.com/p/echo-nest-remix',
+      download_url='https://github.com/echonest/remix',
+      license='New BSD',
       data_files= all_data_files,
       package_dir={'echonest':'src/echonest', 'pyechonest':'pyechonest/pyechonest'},
       packages=['echonest', 'echonest.support', 'echonest.support.midi', 'pyechonest'],
