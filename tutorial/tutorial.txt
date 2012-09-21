@@ -20,32 +20,33 @@ Remix does this by making use of the Echo Nest's online analysis tools.  These t
 So How Do You Code this?
 For example, let's look at one.py.  One.py will make you a track that's only the first beat of every bar.  Here's how:
     
+    # This takes your input track, sends it to the analyzer, and returns the results.  
     audiofile = audio.LocalAudioFile(input_filename)
-    ^^ This takes your input track, sends it to the analyzer, and returns the results.  
 
+    # This gets a list of every bar in the track.  
+    # You can manipulate this just like any other Python list!
     bars = audiofile.analysis.bars
-    ^^ This gets a list of every bar in the track.  
-    ^^ You can manipulate this just like any other python list!
 
+    # This makes a new list of "AudioQuantums".  
+    # Those are just any discrete chunk of audio:  bars, beats, etc
     collect = audio.AudioQuantumList()
-    ^^ This makes a new list of "AudioQuantums".  
-    ^^ Those are just any discrete chunk of audio:  bars, beats, etc
 
+    # This loop puts the first item in the children of each bar into the new list. 
+    # A bar's children are beats!  Simple as that. 
     for bar in bars:
         collect.append(bar.children()[0])
-    ^^ This loop puts the first item in the children of each bar into the new list. 
-    ^^ A bar's children are beats!  Simple as that. 
 
+    # This assembles the pieces of audio defined in collect from the analyzed audio file.
     out = audio.getpieces(audiofile, collect)
-    ^^ This assembles the pieces of audio defined in collect out of the analyzed audio file.
     
+    # This writes the newly created audio to the given file.  
     out.encode(output_filename)
-    ^^ This writes the newly created to the given file.  
 
 So What Else Can Remix Do?
 
 We're glad you asked!  
-Each of the examples in this tutorial folder is heavily, heavily commented, in the above style, to show you how they work.  The examples cover three things that remix can do:
+Each of the examples in this tutorial folder is heavily, heavily commented, in the above style, to show you how they work.  
+The examples cover three things that remix can do:
 
 Moving Audio Around:  One, Reverse, Limp, Swinger, Waltzify
 These examples deal with the tremendous power of having every bar, beat, and sub-beat of a track in a list in Python.  One, Reverse, and Limp are really simple:  Swinger and Waltzify are really complex, but do amazing things. 
@@ -55,4 +56,9 @@ Once you can take any beat from a track, how do you choose which beats to take? 
 
 Mixing Audio:  Drums, Cowbell
 Once you can select certain beats from a track, you can start adding other sounds to them.  Drums and Cowbell add new sounds to the track.  Drums simply adds the same break all the way through.  Cowbell is the more complex cowbell / Walkenizer made famous at morecowbell.dj
+
+They're arranged in order of complexity for each category.  
+(Though note that One is simpler than Selection, and selection is simpler than Drums.)
+
+Happy remixing!
 

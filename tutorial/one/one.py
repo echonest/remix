@@ -7,9 +7,8 @@ Digest only the first beat of every bar.
 
 By Ben Lacker, 2009-02-18.  
 """
-# The imports 'import echonest.audio as audio' is the key one. 
+# This line imports remix! 
 import echonest.audio as audio
-from echonest.selection import have_pitch_max,have_pitches_max
 
 usage = """
 Usage: 
@@ -28,7 +27,7 @@ def main(input_filename, output_filename):
     bars = audiofile.analysis.bars
 
     # This makes a new list of "AudioQuantums".  
-    # Those are just any discrete chunk of audio:  bars, beats, etc
+    # Those are just any discrete chunk of audio:  bars, beats, etc.
     collect = audio.AudioQuantumList()
 
     # This loop puts the first item in the children of each bar into the new list. 
@@ -36,10 +35,10 @@ def main(input_filename, output_filename):
     for bar in bars:
         collect.append(bar.children()[0])
 
-    # This assembles the pieces of audio defined in collect out of the analyzed audio file.
+    # This assembles the pieces of audio defined in collect from the analyzed audio file.
     out = audio.getpieces(audiofile, collect)
     
-    # This writes the newly created to the given file.  
+    # This writes the newly created audio to the given file.  
     out.encode(output_filename)
 
 
