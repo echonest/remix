@@ -45,24 +45,6 @@ def split_break(breakfile,n):
         drum_data.append(new_data)
     return drum_data
     
-def add_fade_out(segment_data):
-    print "Adding fade out"
-    when_max_volume = segment_data.data.argmax()
-    samps_to_end = segment_data.endindex - when_max_volume
-    linear_max_volume = pow(10.0,segment_data.data.max()/20.0)
-    ss = 0
-    cur_vol = float(linear_max_volume)
-    if(samps_to_end > 0):
-        how_much_volume_to_decrease_per_samp = linear_max_volume/float(samps_to_end)
-        print how_much_volume_to_decrease_per_samp
-        for samps in xrange(samps_to_end):
-            cur_vol = cur_vol - how_much_volume_to_decrease_per_samp
-            try:
-                segment_data.data[ss] *= cur_vol
-            except IndexError:
-                pass
-            ss = ss + 1
-    return segment_data
 
 def main(input_filename, output_filename, break_filename, break_parts,
             measures, mix):

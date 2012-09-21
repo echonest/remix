@@ -8,7 +8,6 @@ Digest only the first beat of every bar.
 By Ben Lacker, 2009-02-18.
 """
 import echonest.audio as audio
-from echonest.selection import have_pitch_max,have_pitches_max
 
 usage = """
 Usage: 
