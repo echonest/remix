@@ -8,7 +8,7 @@ Take a whole directory of audio files and smash them together, by
 beat, with a fairly simple algorithm. Demonstrates the use of 
 deferred audio file loading used in conjunction with render_serially(),
 which allow one to remix countless files without running out of memory
-too soon. Also outputs a "score" in XML.
+too soon.
 
 Originally by Adam Lindsay, 2000-05-05.
 """
@@ -60,12 +60,6 @@ def main(num_beats, directory, outfile):
     x.render().encode(outfile)
     
     print >> sys.stderr, "%f sec for rendering" % (time.time() - then,)
-    
-    print >> sys.stderr, "Outputting XML: each source makes an API call for its metadata."
-    # output an XML file, for debugging purposes
-    y = open(outfile.rsplit('.', 1)[0] + '.xml', 'w')
-    y.write(x.toxml())
-    y.close()
 
 if __name__ == '__main__':
     try:
