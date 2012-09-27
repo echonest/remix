@@ -83,7 +83,9 @@ def main():
             howMuchVolumeToDecreasePerTick = float(linearMaxVolume - linearNextStartVolume)/float(ticksToNextSegmentFromHere)
             for ticks in xrange(ticksToNextSegmentFromHere):
                 curVol = curVol - howMuchVolumeToDecreasePerTick
-                midi.continuous_controller(channel,7,int(curVol))
+                if curVol < 0:
+                    curVol = 0
+                midi.continuous_controller(channel, 7 ,int(curVol))
                 tt = tt + 1
                 midi.update_time(1)
 
