@@ -313,7 +313,6 @@ def sequencetomovie(outfile, seq, audio=None, verbose=True):
     cmd = "en-ffmpeg -y " + str(seq.settings) + " -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
     if audio:
         cmd += " -i " + audio
-        cmd += " -ab %dk " % audio.MP3_BITRATE
     cmd += " -sameq " + outfile
     if verbose:
         print >> sys.stderr, cmd
