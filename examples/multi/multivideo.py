@@ -27,7 +27,7 @@ def main(infile, directory, outfile):
     ff = os.listdir(directory)
     for f in ff:
         # collect the files
-        if f.rsplit('.', 1)[1].lower() in ['mp3', 'aif', 'aiff', 'aifc', 'wav', 'mpg', 'flv', 'mov']:
+        if f.rsplit('.', 1)[1].lower() in ['mp3', 'aif', 'aiff', 'aifc', 'wav', 'mpg', 'flv', 'mov', 'mp4']:
             av.append(video.loadav(os.path.join(directory,f)))
     num_files = len(av)
     # not sure the best way to handle these settings
