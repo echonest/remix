@@ -229,19 +229,26 @@ def loadavfromyoutube(url, verbose=True):
     """returns an editable sequence from a youtube video"""
     #todo: cache youtube videos?
     foo, yt_file = tempfile.mkstemp()        
-    # http://bitbucket.org/rg3/youtube-dl
-    cmd = "youtube-dl -o " + yt_file + " " + url
+    # https://github.com/rg3/youtube-dl/
+    cmd = "youtube-dl -o " + "temp.video" + " " + url
     if verbose:
         print >> sys.stderr, cmd
+    print "Downloading video..."
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    res = out.communicate()
+    (res, err) = out.communicate()
+    print res, err
+
+    # hack around the /tmp/ issue
+    cmd = "mv -f temp.video yt_file"
+    out = subprocess.Popen(['mv', '-f', 'temp.video', yt_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
+    (res, err) = out.communicate()
     return loadav(yt_file)
 
 
 def youtubedl(url, verbose=True):
     """downloads a video from youtube and returns the file object"""
     foo, yt_file = tempfile.mkstemp()        
-    # http://bitbucket.org/rg3/youtube-dl
+    # https://github.com/rg3/youtube-dl/
     cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
         print >> sys.stderr, cmd
