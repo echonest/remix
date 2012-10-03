@@ -1,0 +1,6 @@
+include *
+recursive-include examples *
+recursive-include external *
+prune flash
+prune tests
+
