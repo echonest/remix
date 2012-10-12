@@ -3,6 +3,15 @@
 __version__ = "$Revision: 0 $"
 # $Source$
 
+# Monkeypatch so that easy_install can install en-ffmpeg and youtube-dl
+try:
+    from setuptools.sandbox import DirectorySandbox
+    def faux_violation(*args):
+        pass
+    DirectorySandbox._violation = faux_violation
+except ImportError:
+    pass
+
 from distutils.core import setup, Extension
 import os, glob
 import numpy
@@ -73,6 +82,7 @@ def get_soundtouch():
                         include_dirs = [numpy.get_include(), numpy.get_numarray_include()]
                     )
 
+
 all_data_files = []
 if is_mac:
     all_data_files  = [('/usr/local/bin',['external/en-ffmpeg/mac/en-ffmpeg','external/youtube-dl/youtube-dl'])]
@@ -84,7 +94,11 @@ if is_windows:
                              'external\\pydirac225\\libs\\Windows\\DiracLE.dll'])]
 
 
-dest_prefix = 'echo-nest-remix-'
+# Set the path to the examples:
+if is_windows:
+    dest_prefix = 'echo-nest-remix-'
+else:
+    dest_prefix = '/usr/local/share/echo-nest-remix-'
 for example_dir in glob.glob(os.path.join('examples', '*')):
     example_files = glob.glob(os.path.join(example_dir, '*'))
     actual_files = []
@@ -100,9 +114,9 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
         all_data_files.extend(sub_path_tuples)
 
 
-setup(name='Remix',
+setup(name='remix',
       ext_modules = [get_soundtouch(), get_dirac(), get_action()],
-      version='1.4a',
+      version='1.5.0',
       description='The internet synthesizer. Make things with music.',
       author='The Echo Nest',
       author_email='brian@echonest.com',
@@ -126,3 +140,14 @@ setup(name='Remix',
                 'Numeric'
                 ]
      )
+
+# Hack for pip install, to get correct permissions for en-ffmpeg and youtube-dl
+try:
+    if is_mac:
+        os.chmod('/usr/local/bin/en-ffmpeg', 0755)
+        os.chmod('/usr/local/bin/youtube-dl', 0755)
+    if is_linux:
+        os.chmod('/usr/local/bin/youtube-dl', 0755)
+except OSError:
+    pass
+

@@ -41,6 +41,5 @@ If those give no errors, you're ready to get remix installed:
 
 sudo python setup.py install
 
-
 Once that's done, you can visit http://echonest.github.com/remix/ to get an API key and run some examples!
 
