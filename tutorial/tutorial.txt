@@ -1,23 +1,23 @@
-Welcome to the Thunderdrome
+Welcome to Remix.
 
 This is a tutorial for how to use Echo Nest Remix. It assumes that you're comfortable with the command line, know a bit about Python and that you installed Remix successfully.
 
-If you're not au fait with working with a command line, you might want to read the following:
+If you're not au fait with working with a command line, you might want to read the following:  http://linuxcommand.org/learning_the_shell.php
 
-If Python scares you, this is the place to go:  
+If Python scares you, this is the place to go:  http://docs.python.org/tutorial/
 
 If Remix is not installed correctly, head on back to the main Remix web page for lots of advice on how to fix it.  
 
 
 
 
-What Is Remix, anyways?
+What is Remix, Anyways?
 
 Remix is a collection of Python libraries that let you perform algorithmic modifications of audio files.  That is to say, you can write code to make a straight beat swing, edit the breakdowns out of a track, or add cowbell to every beat.
 
 Remix does this by making use of the Echo Nest's online analysis tools.  These tell Remix where every beat starts, how loud it is, what note is playing, and so on.  You then tell Remix what to do with those parameters. 
 
-So How Do You Code this?
+So How Do You Code This?
 For example, let's look at one.py.  One.py will make you a track that's only the first beat of every bar.  Here's how:
     
     # This takes your input track, sends it to the analyzer, and returns the results.  
@@ -42,11 +42,12 @@ For example, let's look at one.py.  One.py will make you a track that's only the
     # This writes the newly created audio to the given file.  
     out.encode(output_filename)
 
-So What Else Can Remix Do?
 
+What else can Remix do?
 We're glad you asked!  
 Each of the examples in this tutorial folder is heavily, heavily commented, in the above style, to show you how they work.  
 The examples cover three things that remix can do:
+(They're arranged in order of complexity for each category - though note that One is simpler than Selection, and Selection is simpler than Drums.)
 
 Moving Audio Around:  One, Reverse, Limp, Swinger, Waltzify
 These examples deal with the tremendous power of having every bar, beat, and sub-beat of a track in a list in Python.  One, Reverse, and Limp are really simple:  Swinger and Waltzify are really complex, but do amazing things. 
@@ -56,9 +57,6 @@ Once you can take any beat from a track, how do you choose which beats to take? 
 
 Mixing Audio:  Drums, Cowbell
 Once you can select certain beats from a track, you can start adding other sounds to them.  Drums and Cowbell add new sounds to the track.  Drums simply adds the same break all the way through.  Cowbell is the more complex cowbell / Walkenizer made famous at morecowbell.dj
-
-They're arranged in order of complexity for each category.  
-(Though note that One is simpler than Selection, and selection is simpler than Drums.)
 
 Happy remixing!
 
