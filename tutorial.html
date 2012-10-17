@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix - Tutorial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="index.html">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Tutorial</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    <h2>Welcome to Remix.</h2>
+    This is a tutorial for how to use Echo Nest Remix. It assumes that you're comfortable with the command line, know a bit about Python and that you installed Remix successfully.
+    If you're not au fait with working with a command line, you might want to read <a href="http://linuxcommand.org/learning_the_shell.php" target="_blank">this guide.</a>
+    If Python scares you, <a href="http://docs.python.org/tutorial/" target="_blank">this is the place to go.</a>
+    If Remix is not installed correctly, head on back to the <a href="index.html">main Remix web page</a> for lots of advice on how to fix it.  
+
+    <h2>What is Remix, anyways? </h2>
+    Remix is a collection of Python libraries that let you perform algorithmic modifications of audio files.  
+    That is to say, you can write code to make a straight beat swing, edit the breakdowns out of a track, or add cowbell to every beat.
+    Remix does this by making use of the Echo Nest's online analysis tools.  
+    These tell Remix where every beat starts, how loud it is, what note is playing, and so on.  
+    You then tell Remix what to do with those parameters. 
+
+    <h2>So how do you code this?</h2>
+    For example, let's look at <a href="https://github.com/echonest/remix/blob/master/tutorial/one/one.py" target="_blank">one.py.</a>
+    This will make you a track that's only the first beat of every bar.  Here's how:
+    <pre><code>
+    # This takes your input track, sends it to the analyzer, and returns the results.  
+    audiofile = audio.LocalAudioFile(input_filename)
+
+    # This gets a list of every bar in the track.  
+    # You can manipulate this just like any other Python list!
+    bars = audiofile.analysis.bars
+
+    # This makes a new list of "AudioQuantums".  
+    # Those are just any discrete chunk of audio:  bars, beats, etc
+    collect = audio.AudioQuantumList()
+
+    # This loop puts the first item in the children of each bar into the new list. 
+    # A bar's children are beats!  Simple as that. 
+    for bar in bars:
+        collect.append(bar.children()[0])
+
+    # This assembles the pieces of audio defined in collect from the analyzed audio file.
+    out = audio.getpieces(audiofile, collect)
+    
+    # This writes the newly created audio to the given file.  
+    out.encode(output_filename)
+    </pre></code>
+
+    <h2>What else can Remix do?</h2>
+    <p>We're glad you asked - Each of the examples in the tutorial folder is heavily, heavily commented, in the above style, to show you how they work.</p>
+    <p>The tutorial examples cover three things that remix can do:</p>
+    
+    <p><strong>Moving Audio Around:</strong>  One, Reverse, Limp, Swinger, Waltzify.<br />
+    These examples deal with the tremendous power of having every bar, beat, and sub-beat of a track in a list in Python.  One, Reverse, and Limp are really simple:  Swinger and Waltzify are really complex, but do amazing things. 
+    </p>
+    
+    <p><strong>Picking Out Audio:</strong>  Selection, AfromB.<br />
+    Once you can take any beat from a track, how do you choose which beats to take?  Selection and AFromB start picking out certain beats from the track and putting them back together in very specific ways.  Selection is simple, AFromB is complex, but not that complex.  
+    </p>
+
+    <p><strong>Mixing Audio:</strong>  Drums, Cowbell.<br />
+    Once you can select certain beats from a track, you can start adding other sounds to them.  Drums and Cowbell add new sounds to the track.  Drums simply adds the same break all the way through.  Cowbell is the more complex cowbell / Walkenizer made famous at morecowbell.dj
+    </p>
+
+    Happy remixing!  You can also check <a href="index.html#examples">the examples</a> for inspriation.
+    </div> <!-- /container -->
+    
+
+</body>
+</html>
+
