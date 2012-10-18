@@ -147,7 +147,7 @@ class Crossfade(object):
         return audio_out
     
     def __repr__(self):
-        args = (analysis.pyechonest_track.title, self.t2.track.analysis.pyechonest_track.title)
+        args = (self.t1.track.analysis.pyechonest_track.title, self.t2.track.analysis.pyechonest_track.title)
         return "<Crossfade '%s' and '%s'>" % args
     
     def __str__(self):
