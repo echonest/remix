@@ -861,7 +861,7 @@ class LocalAudioFile(AudioData):
     """
 
     def __new__(cls, filename, verbose=True, defer=False):
-        # Something like:  THIS IS SO BRITTLE
+        # There must be a better way to avoid collisions between analysis files and .wav files
         if '.analysis.en' in filename:
             print >> sys.stderr, "Reading analysis from local file " + filename
             f = open(filename, 'rb')
