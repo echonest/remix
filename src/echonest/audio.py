@@ -29,6 +29,8 @@ import hashlib
 import numpy
 import os
 import sys
+import pickle
+import shutil
 import StringIO
 import struct
 import subprocess
@@ -857,26 +859,75 @@ class LocalAudioFile(AudioData):
     it was initialized with. If the file is already known to the 
     Analyze API, then it does not bother uploading the file.
     """
+
+    # thor is thinking:
+    # it would be nice to be able to pass in a pickled analysis file as filename
+    # that would mean trusting the user to not delete the associated .wav file
+    # would this just be....
+    # self = pickle.load(pickled_file)
+    # (There are clever ways around the .wav deletion, but let's ignore them for now)
+
+    # And then it would be nice to have a .save method that wraps pickle, moves the .wav, and so on
+    # (Would it be better to maintain a folder of known analysis somewhere?)
+    # (This would mean that you could always enter the same filename,"blah/test.mp3", 
+    # and it would check for a local analysis first?)
+    # (That seems optimistic and space-eating;  really, localize is only for developers...)
+   
+
+    def __new__(cls, filename, verbose=True, defer=False):
+        print "i have hijacked localaudiofile"
+        # Something like:  THIS IS SO BRITTLE
+        if '.analysis' in filename:
+            print >> sys.stderr, "Reading analysis from local file " + filename
+            # A little tacky here, but oh well
+            f = open(filename, 'r')
+            audiofile = pickle.load(f) # this is good.  
+            f.close()
+            return audiofile
+        else:
+            # unsure about this...
+            return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer)
+
     def __init__(self, filename, verbose=True, defer=False):
         """
         :param filename: path to a local MP3 file
         """
-        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
-        track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
-        if verbose:
-            print >> sys.stderr, "Computed MD5 of file is " + track_md5 
-        try:
+        # Something like:  THIS IS SO BRITTLE
+        if '.analysis' in filename:
+            print "Skipping initialization for local file..."
+            pass
+        else:
+            AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
+            track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
             if verbose:
-                print >> sys.stderr, "Probing for existing analysis"
-            tempanalysis = AudioAnalysis(track_md5)
-        except Exception, e:
-            if verbose:
-                print >> sys.stderr, "Analysis not found. Uploading..."
-            tempanalysis = AudioAnalysis(filename)
+                print >> sys.stderr, "Computed MD5 of file is " + track_md5 
+            try:
+                if verbose:
+                    print >> sys.stderr, "Probing for existing analysis"
+                tempanalysis = AudioAnalysis(track_md5)
+            except Exception, e:
+                if verbose:
+                    print >> sys.stderr, "Analysis not found. Uploading..."
+                tempanalysis = AudioAnalysis(filename)
 
-        self.analysis = tempanalysis
-        self.analysis.source = self
+            self.analysis = tempanalysis
+            self.analysis.source = self
     
+    # Save out as a pickled file
+    # This has lots of potential problems, but does save all the data
+    def save(self):
+        input_file = os.path.split(self.filename)[1]
+        path_to_wave = self.convertedfile
+        new_filename = input_file + '.wav'
+        new_path = './' + new_filename
+        shutil.copyfile(path_to_wave, new_path)
+        self.convertedfile = new_path
+        analysis_filename = input_file + '.analysis'
+        print >> sys.stderr, "Saving analysis to local file " + analysis_filename
+        f = open(analysis_filename, 'w')
+        pickle.dump(self, f)
+        f.close()
+
     def toxml(self, context=None):
        raise NotImplementedError 
 
