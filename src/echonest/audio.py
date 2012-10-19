@@ -860,41 +860,26 @@ class LocalAudioFile(AudioData):
     Analyze API, then it does not bother uploading the file.
     """
 
-    # thor is thinking:
-    # it would be nice to be able to pass in a pickled analysis file as filename
-    # that would mean trusting the user to not delete the associated .wav file
-    # would this just be....
-    # self = pickle.load(pickled_file)
-    # (There are clever ways around the .wav deletion, but let's ignore them for now)
-
-    # And then it would be nice to have a .save method that wraps pickle, moves the .wav, and so on
-    # (Would it be better to maintain a folder of known analysis somewhere?)
-    # (This would mean that you could always enter the same filename,"blah/test.mp3", 
-    # and it would check for a local analysis first?)
-    # (That seems optimistic and space-eating;  really, localize is only for developers...)
-   
-
     def __new__(cls, filename, verbose=True, defer=False):
-        print "i have hijacked localaudiofile"
         # Something like:  THIS IS SO BRITTLE
-        if '.analysis' in filename:
+        if '.analysis.en' in filename:
             print >> sys.stderr, "Reading analysis from local file " + filename
-            # A little tacky here, but oh well
-            f = open(filename, 'r')
-            audiofile = pickle.load(f) # this is good.  
+            f = open(filename, 'rb')
+            audiofile = pickle.load(f)
             f.close()
             return audiofile
         else:
-            # unsure about this...
+            # This just creates the object and goes straight on to initializing it
             return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer)
 
     def __init__(self, filename, verbose=True, defer=False):
         """
         :param filename: path to a local MP3 file
         """
-        # Something like:  THIS IS SO BRITTLE
-        if '.analysis' in filename:
-            print "Skipping initialization for local file..."
+        # We have to skip the initialization here as the local file is already a complete object
+        if '.analysis.en' in filename:
+            print "Skipping initialization for local file"
+            self.is_local = True
             pass
         else:
             AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
@@ -912,21 +897,32 @@ class LocalAudioFile(AudioData):
 
             self.analysis = tempanalysis
             self.analysis.source = self
+            self.is_local = False
     
-    # Save out as a pickled file
-    # This has lots of potential problems, but does save all the data
+    # Save out as a pickled file.  
     def save(self):
-        input_file = os.path.split(self.filename)[1]
-        path_to_wave = self.convertedfile
-        new_filename = input_file + '.wav'
-        new_path = './' + new_filename
-        shutil.copyfile(path_to_wave, new_path)
-        self.convertedfile = new_path
-        analysis_filename = input_file + '.analysis'
-        print >> sys.stderr, "Saving analysis to local file " + analysis_filename
-        f = open(analysis_filename, 'w')
-        pickle.dump(self, f)
-        f.close()
+        # If we loaded from a local file, there's no need to save
+        if self.is_local is True:     
+            print >> sys.stderr, "Analysis was loaded from local file, not saving"
+        else:
+            input_path = os.path.split(self.filename)[0]
+            input_file = os.path.split(self.filename)[1]
+            path_to_wave = self.convertedfile
+            wav_filename = input_file + '.wav'
+            new_path = os.path.abspath(input_path) + os.path.sep
+            wav_path = new_path + wav_filename
+            try:
+                shutil.copyfile(path_to_wave, wav_path)
+            except shutil.Error:
+                print >> sys.stderr, "Error when moving .wav file:  the same file may already exist in this folder"
+                return
+            self.convertedfile = wav_path
+            analysis_filename = input_file + '.analysis.en'
+            analysis_path = new_path + analysis_filename
+            print >> sys.stderr, "Saving analysis to local file " + analysis_path
+            f = open(analysis_path, 'wb')
+            pickle.dump(self, f)
+            f.close()
 
     def toxml(self, context=None):
        raise NotImplementedError 
