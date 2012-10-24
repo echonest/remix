@@ -29,6 +29,8 @@ import hashlib
 import numpy
 import os
 import sys
+import pickle
+import shutil
 import StringIO
 import struct
 import subprocess
@@ -857,26 +859,71 @@ class LocalAudioFile(AudioData):
     it was initialized with. If the file is already known to the 
     Analyze API, then it does not bother uploading the file.
     """
+
+    def __new__(cls, filename, verbose=True, defer=False):
+        # There must be a better way to avoid collisions between analysis files and .wav files
+        if '.analysis.en' in filename:
+            print >> sys.stderr, "Reading analysis from local file " + filename
+            f = open(filename, 'rb')
+            audiofile = pickle.load(f)
+            f.close()
+            return audiofile
+        else:
+            # This just creates the object and goes straight on to initializing it
+            return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer)
+
     def __init__(self, filename, verbose=True, defer=False):
         """
         :param filename: path to a local MP3 file
         """
-        AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
-        track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
-        if verbose:
-            print >> sys.stderr, "Computed MD5 of file is " + track_md5 
-        try:
+        # We have to skip the initialization here as the local file is already a complete object
+        if '.analysis.en' in filename:
+            print "Skipping initialization for local file"
+            self.is_local = True
+            pass
+        else:
+            AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
+            track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
             if verbose:
-                print >> sys.stderr, "Probing for existing analysis"
-            tempanalysis = AudioAnalysis(track_md5)
-        except Exception, e:
-            if verbose:
-                print >> sys.stderr, "Analysis not found. Uploading..."
-            tempanalysis = AudioAnalysis(filename)
+                print >> sys.stderr, "Computed MD5 of file is " + track_md5 
+            try:
+                if verbose:
+                    print >> sys.stderr, "Probing for existing analysis"
+                tempanalysis = AudioAnalysis(track_md5)
+            except Exception, e:
+                if verbose:
+                    print >> sys.stderr, "Analysis not found. Uploading..."
+                tempanalysis = AudioAnalysis(filename)
 
-        self.analysis = tempanalysis
-        self.analysis.source = self
+            self.analysis = tempanalysis
+            self.analysis.source = self
+            self.is_local = False
     
+    # Save out as a pickled file.  
+    def save(self):
+        # If we loaded from a local file, there's no need to save
+        if self.is_local is True:     
+            print >> sys.stderr, "Analysis was loaded from local file, not saving"
+        else:
+            input_path = os.path.split(self.filename)[0]
+            input_file = os.path.split(self.filename)[1]
+            path_to_wave = self.convertedfile
+            wav_filename = input_file + '.wav'
+            new_path = os.path.abspath(input_path) + os.path.sep
+            wav_path = new_path + wav_filename
+            try:
+                shutil.copyfile(path_to_wave, wav_path)
+            except shutil.Error:
+                print >> sys.stderr, "Error when moving .wav file:  the same file may already exist in this folder"
+                return
+            self.convertedfile = wav_path
+            analysis_filename = input_file + '.analysis.en'
+            analysis_path = new_path + analysis_filename
+            print >> sys.stderr, "Saving analysis to local file " + analysis_path
+            f = open(analysis_path, 'wb')
+            pickle.dump(self, f)
+            f.close()
+
     def toxml(self, context=None):
        raise NotImplementedError 
 
