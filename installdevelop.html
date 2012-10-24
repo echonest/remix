@@ -65,19 +65,14 @@
         
         <h2>Using setup.py develop</h2>
         <p>In a perfect world, you could do python setup.py develop, and everything would work.
-        However, due to a <a href="s://bitbucket.org/tarek/distribute/issue/177/setuppy-develop-doesnt-support-package_dir">known issue</a> with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
+        However, due to a <a href="https://bitbucket.org/tarek/distribute/issue/177/setuppy-develop-doesnt-support-package_dir">known issue</a> with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
         </p>
-        <p>Specifically, setup.py will create a link file, <strong>remix-egg.lnk</strong> in your python packages folder (that folder is somethig like /usr/local/lib/python2.7/dist-packages, on Linux)
-        The default link in this file is <em>not enough</em>.  You need to add another line that says: <code>your_install_path/src</code>
-        
-        <p>You need to do the same thing in the <strong>easy-install.pth</strong> file that is in the same folder:  
-        add <code>your_install_path/src</code>
-        </p>
-
-        <p>Finally, you need to add a line to each of these files, for the pyechonest submodule:  
-        <code>your_install_path/pyechonest</code>
-        </p>
-
+        <p>Specifically, setup.py will add a line to <strong>easy-install.pth</strong> in your python packages folder (that folder is somethig like /usr/local/lib/python2.7/dist-packages, on Linux)
+        The default link in this file is <em>not enough</em>.  You need to add two other lines:
+        <ul>    
+        <li>The first is<code>your_install_path/src</code></li>
+        <li>he seconnd is<code>your_install_path/pyechonest</code></li>
+        </ul>
         <p>Once you've done this, you should be able to do both 
         <code>import echonest</code> and <code>import pyechonest</code> with no problems. If so, then you're ready to go!
 
