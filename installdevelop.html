@@ -33,23 +33,56 @@
 
     <div class="container">
         <h2>Introduction</h2>
-        <a href="index.html">Remix</a>, it turns out, is a surprisingly complex package:  it has C extensions, addtional binaries, and so on.
+        <p><a href="index.html">Remix</a>, it turns out, is a surprisingly complex package:  it has C extensions, addtional binaries, and so on.
         This makes it a little inconvenient to install it for development with the typical python install tools.
-        Specifically, if you want to use setup.py develop, or install it in a virtualenv, there are a few extra things you'll need to do.
+        Specifically, if you want to install Remix in a virtualenv, or use setup.py develop,  there are a few extra things you'll need to do.
+        </p>
+        <p>Warning:  this page is only for people who want to hack on or contribute to remix, and assumes that you know some things about python, installing things, and command lines.  
+        If that's not you, you probably want one of our <a href="index.html#how">easier installation packages</a>.
+        </p>
 
-        
+        <h2>Using virtualenv</h2>
+        <p>Virtualenvs work *almost* the way they should.  
+        Because Remix comes with executables (ffmpeg and youtube-dl) that need to go to absolute paths like /usr/local/bin, 
+        you need to run pip or easy_install with sudo.  And this immediately throws you out of the virtualenv that you just set up!
+        </p>
+
+        <p>The way around this, then, is to install the binaries beforehand:  this will allow easy_install remix to work in a virtualenv.  
+        pip will error, claiming that it can't copy youtube-dl, but it will install everything else.  This also means that pip uninstall remix won't work.
+        </p>
+
+        <p>
+        So, before you install Remix in your virtualenv:  
+        <ul>
+        <li>Regardless of platform, you need to copy <strong>youtube-dl</strong> from <code>your_install_path/externals/youtube-dl</code> to <code>/usr/local/bin</code>.</li>
+        <li>If you're on a Mac, you need to copy <strong>en-ffmpeg</strong> from <code>your_install_path/externals/en-ffmpeg</code> to <code>/usr/local/bin</code>.</li>
+        <li>If you're on Linux, you need to install and link ffmpeg, as detailed <a href="installsource.html" target="_blank">here</a>.</li>
+        </ul>
+    
+        Once you've done that, you can install with easy_install or pip, with the above caveats.
+        Test with <code>import echonest</code> and <code>import pyechonest</code> - you should be ready to go!
+
         
         <h2>Using setup.py develop</h2>
-        In a perfect world, you could do <code>python setup.py develop</code>, and everything would work.
-        However, due to a known issue with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
+        <p>In a perfect world, you could do python setup.py develop, and everything would work.
+        However, due to a <a href="s://bitbucket.org/tarek/distribute/issue/177/setuppy-develop-doesnt-support-package_dir">known issue</a> with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
+        </p>
+        <p>Specifically, setup.py will create a link file, <strong>remix-egg.lnk</strong> in your python packages folder (that folder is somethig like /usr/local/lib/python2.7/dist-packages, on Linux)
+        The default link in this file is <em>wrong</em>.  It will look something like:  <code>your_install_path/</code>.  You need to change it to <code>your_install_path/src</code>
         
-        Specifically, setup.py will create a link file to connect your remix install folder to your python packages folder.  
-        The link in this file is <em>wrong</em>.  It will look something like:
-            
-        You need to change it to ../remix/src/echonest.
-        You need to do the same thing in easy-install.pth:  change _____ to ../remix/src/echonest
+        <p>You need to do the same thing in the <strong>easy-install.pth</strong> file that is in the same folder:  
+        change <code>your_install_path/</code> to <code>your_install_path/src</code>
+        </p>
 
-        Finally, you need to add a line to each of these files, for the pyechonest submodule:  remix/pyechonest
+        <p>Finally, you need to add a line to each of these files, for the pyechonest submodule:  
+        <code>your_install_path/pyechonest</code>
+        </p>
+
+        <p>Once you've done this, you should be able to do both 
+        <code>import echonest</code> and <code>import pyechonest</code> with no problems. If so, then you're ready to go!
+
+        <p>We understand that these things are pretty tacky:  we're working on better fixes / workarounds.
+        </p>
 
     </div> <!-- /container -->
     
