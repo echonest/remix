@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix - Install For Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="index.html">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Install For Development</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <h2>Introduction</h2>
+        <a href="index.html">Remix</a>, it turns out, is a surprisingly complex package:  it has C extensions, addtional binaries, and so on.
+        This makes it a little inconvenient to install it for development with the typical python install tools.
+        Specifically, if you want to use setup.py develop, or install it in a virtualenv, there are a few extra things you'll need to do.
+
+        
+        
+        <h2>Using setup.py develop</h2>
+        In a perfect world, you could do <code>python setup.py develop</code>, and everything would work.
+        However, due to a known issue with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
+        
+        Specifically, setup.py will create a link file to connect your remix install folder to your python packages folder.  
+        The link in this file is <em>wrong</em>.  It will look something like:
+            
+        You need to change it to ../remix/src/echonest.
+        You need to do the same thing in easy-install.pth:  change _____ to ../remix/src/echonest
+
+        Finally, you need to add a line to each of these files, for the pyechonest submodule:  remix/pyechonest
+
+    </div> <!-- /container -->
+    
+
+</body>
+</html>
+
