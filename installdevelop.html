@@ -68,10 +68,10 @@
         However, due to a <a href="s://bitbucket.org/tarek/distribute/issue/177/setuppy-develop-doesnt-support-package_dir">known issue</a> with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
         </p>
         <p>Specifically, setup.py will create a link file, <strong>remix-egg.lnk</strong> in your python packages folder (that folder is somethig like /usr/local/lib/python2.7/dist-packages, on Linux)
-        The default link in this file is <em>wrong</em>.  It will look something like:  <code>your_install_path/</code>.  You need to change it to <code>your_install_path/src</code>
+        The default link in this file is <em>not enough</em>.  You need to add another line that says: <code>your_install_path/src</code>
         
         <p>You need to do the same thing in the <strong>easy-install.pth</strong> file that is in the same folder:  
-        change <code>your_install_path/</code> to <code>your_install_path/src</code>
+        add <code>your_install_path/src</code>
         </p>
 
         <p>Finally, you need to add a line to each of these files, for the pyechonest submodule:  
