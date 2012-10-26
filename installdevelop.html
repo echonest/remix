@@ -44,43 +44,38 @@
         <h2>Using virtualenv</h2>
         <p>Virtualenvs work *almost* the way they should.  
         Because Remix comes with executables (ffmpeg and youtube-dl) that need to go to absolute paths like /usr/local/bin, 
-        you need to run pip or easy_install with sudo.  And this immediately throws you out of the virtualenv that you just set up!
-        </p>
-
-        <p>The way around this, then, is to install the binaries beforehand:  this will allow easy_install remix to work in a virtualenv.  
-        pip will error, claiming that it can't copy youtube-dl, but it will install everything else.  This also means that pip uninstall remix won't work.
+        you need to run pip or easy_install with sudo.  And using sudo immediately throws you out of the virtualenv that you just set up!
         </p>
 
         <p>
-        So, before you install Remix in your virtualenv:  
-        <ul>
-        <li>Regardless of platform, you need to copy <strong>youtube-dl</strong> from <code>your_install_path/externals/youtube-dl</code> to <code>/usr/local/bin</code>.</li>
-        <li>If you're on a Mac, you need to copy <strong>en-ffmpeg</strong> from <code>your_install_path/externals/en-ffmpeg</code> to <code>/usr/local/bin</code>.</li>
-        <li>If you're on Linux, you need to install and link ffmpeg, as detailed <a href="installsource.html" target="_blank">here</a>.</li>
-        </ul>
-    
-        Once you've done that, you can install with easy_install or pip, with the above caveats.
-        Test with <code>import echonest</code> and <code>import pyechonest</code> - you should be ready to go!
+        So to fix this, you need to append the virtual environment's path to your path when you run the install commands.  
+        That is to say, once you've activated your virtualenv, do this to install Remix:
+        <pre>sudo env PATH="/path/to/your/virtualenv/bin:"$PATH pip install remix</pre>
+        This also works for easy_install.  Note that to uninstall Remix with pip, you will need to do:  
+        <pre>sudo env PATH="/path/to/your/virtualenv/bin:"$PATH pip uninstall remix</pre>
+        </p>
 
+        <p>Test with import echonest and import pyechonest - you should be ready to go!
+        </p>
         
         <h2>Using setup.py develop</h2>
         <p>In a perfect world, you could do python setup.py develop, and everything would work.
         However, due to a <a href="https://bitbucket.org/tarek/distribute/issue/177/setuppy-develop-doesnt-support-package_dir">known issue</a> with setuptools ignoring the package_dir paths in setup.py, you'll need to tweak things a little.
         </p>
-        <p>We've made a script that will fix this for you:  just do <code>sudo fix_develop_install.py</code> to fix the issue.  
-        After running it, try <code>import echonest</code> and <code>import pyechonest</code>.   
+        <p>We've made a script that will fix this for you: <pre>sudo fix_develop_install.py</pre>
+        After running it, try import echonest and import pyechonest.   
         If those work, then you're ready to go!
         <p/>
         <p>If you're concerned about the details, read on:  
-        Running setup.py develop will add a line to easy-install.pth in your python packages folder 
+        running setup.py develop will add a line to easy-install.pth in your python packages folder 
         (that folder is somethig like /usr/local/lib/python2.7/dist-packages, on Linux). 
         The default link in this file is not enough.  The script adds two other lines:
         <ul>    
-        <li>The first is<code>your_install_path/src</code></li>
-        <li>The second is<code>your_install_path/pyechonest</code></li>
+        <li>The first is your_install_path/src</li>
+        <li>The second is your_install_path/pyechonest</li>
         </ul>
 
-        <p>We understand that these things are pretty tacky:  we're working on better fixes / workarounds.
+        <p>We understand that these things are not ideal:  we'll update with better fixes as we get them.
         </p>
 
     </div> <!-- /container -->
