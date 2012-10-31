@@ -5,12 +5,12 @@
 tonic.py
 
 Digest all beats, tatums, or bars that start in the key of the song.
-Demonstrates the content-based selection filtering in AudioQuantumLists.that()
+Demonstrates content-based selection filtering via AudioQuantumLists
 
 Originally by Adam Lindsay, 2008-09-15.
+Refactored by Thor Kell, 2012-11-01
 """
 import echonest.audio as audio
-from echonest.selection import have_pitch_max, overlap_ends_of, overlap_starts_of
 
 usage = """
 Usage: 
@@ -28,14 +28,25 @@ def main(units, inputFile, outputFile):
     
     chunks = audiofile.analysis.__getattribute__(units)
     
-    # "segments that have the tonic as the max pitch and that overlap the start of the <units>"
-    # (have_pitch_max() is imported from selection.py)
-    segs = audiofile.analysis.segments.that(have_pitch_max(tonic)).that(overlap_starts_of(chunks))
+    # Get the segments    
+    all_segments = audiofile.analysis.segments
     
-    # "<units> that begin with the above-found segments"
-    outchunks = chunks.that(overlap_ends_of(segs))
+    # Find tonic segments
+    tonic_segments = audio.AudioQuantumList(kind="segment")
+    for segment in all_segments:
+        pitches = segment.pitches
+        if pitches.index(max(pitches)) == tonic:
+            tonic_segments.append(segment)
+
+    # Find each chunk that matches each segment
+    out_chunks = audio.AudioQuantumList(kind=units) 
+    for chunk in chunks:
+        for segment in tonic_segments:
+            if chunk.start >= segment.start and segment.end >= chunk.start:
+                out_chunks.append(chunk)
+                break
     
-    out = audio.getpieces(audiofile, outchunks)
+    out = audio.getpieces(audiofile, out_chunks)
     out.encode(outputFile)
 
 if __name__ == '__main__':
