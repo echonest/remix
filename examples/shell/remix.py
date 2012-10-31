@@ -19,9 +19,6 @@ from optparse import OptionParser
 from echonest.audio import *
 from echonest.audio import AudioQuantumList as aql
 from echonest.audio import AudioQuantum as aq
-from echonest.selection import *
-from echonest.sorting import *
-
 
 USAGE = '''
 %prog [options] [filename]

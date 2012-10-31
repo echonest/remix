@@ -9,7 +9,6 @@ Digest only the first or only the second tatum of every beat.
 By Ben Lacker, 2009-02-18.
 """
 import sys
-
 import echonest.audio as audio
 
 usage = """
