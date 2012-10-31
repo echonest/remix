@@ -878,9 +878,7 @@ class LocalAudioFile(AudioData):
         """
         # We have to skip the initialization here as the local file is already a complete object
         if '.analysis.en' in filename:
-            print "Skipping initialization for local file"
             self.is_local = True
-            pass
         else:
             AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
             track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
