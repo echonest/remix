@@ -15,7 +15,7 @@ one argument, an `AudioQuantum`, and returns a value (typically a `float`)
 that can then be used as a sorting value.
 
 By convention, all of these functions are named to be noun phrases that 
-follow `sorted_by`, as seen above.
+follow `ordered_by`, as seen above.
 """
 
 def confidence(x):      

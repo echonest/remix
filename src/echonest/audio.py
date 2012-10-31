@@ -15,7 +15,7 @@ by Adam Lindsay.
 
 :group Audio helper functions: getpieces, mix, assemble, megamix
 :group ffmpeg helper functions: ffmpeg, settings_from_ffmpeg, ffmpeg_error_check
-:group Utility functions: chain_from_mixed, _dataParser, _attributeParser, _segmentsParser
+:group Utility functions: _dataParser, _attributeParser, _segmentsParser
 
 .. _Analyze API: http://developer.echonest.com/pages/overview?version=2
 .. _Remix API: http://code.google.com/p/echo-nest-remix/
@@ -1502,51 +1502,6 @@ class AudioQuantumList(list, AudioRenderable):
         out.extend(sorted(self, key=function, reverse=descending))
         return out
     
-    def beget(self, source, which=None):
-        """
-        There are two basic forms: a map-and-flatten and an converse-that.
-        
-        The basic form, with one `function` argument, returns a new 
-        `AudioQuantumList` so that the source function returns
-        `None`, one, or many AudioQuanta for each `AudioQuantum` contained within
-        `self`, and flattens them, in order. ::
-        
-            beats.beget(the_next_ones)
-        
-        A second form has the first argument `source` as an `AudioQuantumList`, and
-        a second argument, `which`, is used as a filter for the first argument, for
-        *each* of `self`. The results are collapsed and accordianned into a flat
-        list. 
-        
-        For example, calling::
-        
-            beats.beget(segments, which=overlap)
-        
-        Gets evaluated as::
-        
-            for beat in beats:
-                return segments.that(overlap(beat))
-        
-        And all of the `AudioQuantumList`\s that return are flattened into 
-        a single `AudioQuantumList`.
-        
-        :param source: A function of one argument that is applied to each
-            `AudioQuantum` of `self`, or an `AudioQuantumList`, in which case
-            the second argument is required.
-        :param which: A function of one argument that acts as a `that`\() filter 
-            on the first argument if it is an `AudioQuantumList`, or as a filter
-            on the output, in the case of `source` being a function.
-        """
-        out = AudioQuantumList()
-        if isinstance(source, AudioQuantumList):
-            if not which:
-                raise TypeError("'beget' requires a second argument, 'which'")
-            out.extend(chain_from_mixed([source.that(which(x)) for x in self]))
-        else:
-            out.extend(chain_from_mixed(map(source, self)))
-            if which:
-                out = out.that(which)
-        return out
     
     def attach(self, container):
         """
@@ -1700,20 +1655,6 @@ def _segmentsParser(nodes):
                                 time_loudness_max=n['loudness_max_time'], 
                                 loudness_end=n.get('loudness_end')))
     return out
-
-
-def chain_from_mixed(iterables):
-    """
-    Helper function to flatten a list of elements and lists
-    into a list of elements.
-    """
-    for y in iterables: 
-        try:
-            iter(y)
-            for element in y:
-                yield element
-        except Exception:
-            yield y
 
 
 class FileTypeError(Exception):
