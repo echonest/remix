@@ -1035,13 +1035,17 @@ class AudioQuantum(AudioRenderable) :
         Returns the containing `AudioQuantum` in the rhythm hierarchy:
         a `tatum` returns a `beat`, a `beat` returns a `bar`, and a `bar` returns a
         `section`.
+        Note that some AudioQuantums have no parent.  None will be returned in this case.
         """
-        pars = {'tatum': 'beats',
-                'beat':  'bars',
-                'bar':   'sections'}
+        parent_dict = {'tatum': 'beats',
+                       'beat':  'bars',
+                       'bar':   'sections'}
         try:
-            uppers = getattr(self.container.container, pars[self.kind])
-            return uppers.that(selection.overlap(self))[0]
+            all_chunks = getattr(self.container.container, parent_dict[self.kind])
+            for chunk in all_chunks:
+                if self.start < chunk.end and self.end > chunk.start:
+                    return chunk
+            return None
         except LookupError:
             # Might not be in pars, might not have anything in parent.
             return None
@@ -1052,12 +1056,17 @@ class AudioQuantum(AudioRenderable) :
         one step down the hierarchy. A `beat` returns `tatums`, a `bar` returns
         `beats`, and a `section` returns `bars`.
         """
-        chils = {'beat':    'tatums',
-                 'bar':     'beats',
-                 'section': 'bars'}
+        children_dict = {'beat':    'tatums',
+                         'bar':     'beats',
+                         'section': 'bars'}
         try:
-            downers = getattr(self.container.container, chils[self.kind])
-            return downers.that(selection.are_contained_by(self))
+            all_chunks = getattr(self.container.container, children_dict[self.kind])
+            child_chunks = AudioQuantumList(kind=children_dict[self.kind])
+            for chunk in all_chunks:
+                if chunk.start >= self.start and chunk.end <= self.end: 
+                    child_chunks.append(chunk)
+                    continue
+            return child_chunks
         except LookupError:
             return None
     
