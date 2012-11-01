@@ -67,8 +67,6 @@ class FFMPEGStreamHandler(ExceptionThread):
 
     #   TODO: Abstract me away from 44100Hz, 2ch 16 bit
     def read(self, samples=-1):
-        if not self.running:
-            raise ValueError("FFMPEG has already finished!")
         if samples > 0:
             samples *= 2
         arr = numpy.fromfile(self.p.stdout,
