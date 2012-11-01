@@ -212,6 +212,8 @@ static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
         }
     }
     
+    Py_DECREF(inSound1);
+    Py_DECREF(inSound2);
     return PyArray_Return(outSound);
 }
 
