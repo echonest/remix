@@ -576,7 +576,7 @@ class AudioData32(AudioData):
         Outputs an MP3 or WAVE file to `filename`.
         Format is determined by `mp3` parameter.
         """
-        self.normalize()
+        normalized = self.normalized()
         temp_file_handle = None
         if not mp3 and filename.lower().endswith('.wav'):
             mp3 = False
@@ -594,25 +594,24 @@ class AudioData32(AudioData):
         fid.write('WAVE')
         # fmt chunk
         fid.write('fmt ')
-        if self.normalized.ndim == 1:
+        if normalized.ndim == 1:
             noc = 1
         else:
-            noc = self.normalized.shape[1]
-        bits = self.normalized.dtype.itemsize * 8
+            noc = normalized.shape[1]
+        bits = normalized.dtype.itemsize * 8
         sbytes = self.sampleRate * (bits / 8) * noc
         ba = noc * (bits / 8)
         fid.write(struct.pack('<ihHiiHH', 16, 1, noc, self.sampleRate, sbytes, ba, bits))
         # data chunk
         fid.write('data')
-        fid.write(struct.pack('<i', self.normalized.nbytes))
-        self.normalized.tofile(fid)
+        fid.write(struct.pack('<i', normalized.nbytes))
+        normalized.tofile(fid)
         # Determine file size and place it in correct
         # position at start of the file.
         size = fid.tell()
         fid.seek(4)
         fid.write(struct.pack('<i', size - 8))
         fid.close()
-        self.normalized = None
         if not mp3:
             return tempfilename
         # now convert it to mp3
@@ -631,19 +630,14 @@ class AudioData32(AudioData):
             os.close(temp_file_handle)
         return filename
 
-    def normalize(self):
+    def normalized(self):
         """Return to 16-bit for encoding."""
-        if self.numChannels == 1:
-            self.normalized = numpy.zeros((self.data.shape[0],), dtype=numpy.int16)
-        else:
-            self.normalized = numpy.zeros((self.data.shape[0], self.data.shape[1]), dtype=numpy.int16)
-
         factor = 32767.0 / numpy.max(numpy.absolute(self.data.flatten()))
         # If the max was 32768, don't bother scaling:
         if factor < 1.000031:
-            self.normalized[:len(self.data)] += self.data * factor
+            return (self.data * factor).astype(numpy.int16)
         else:
-            self.normalized[:len(self.data)] += self.data
+            return self.data.astype(numpy.int16)
 
     def pad_with_zeros(self, num_samples):
         if num_samples > 0:
@@ -722,6 +716,60 @@ def mix(dataA, dataB, mix=0.5):
         newdata = AudioData(ndarray=dataB.data, sampleRate=dataB.sampleRate, numChannels=dataB.numChannels, defer=False)
         newdata.data *= 1 - float(mix)
         newdata.data[:dataA.endindex] += dataA.data[:] * float(mix)
+    return newdata
+
+
+def normalize(audio):
+    """
+    For compatibility with some legacy Wub Machine calls.
+    """
+    return audio.normalized()
+
+
+def __genFade(fadeLength, dimensions=1):
+    """
+    Internal helper for fadeEdges()
+    """
+    fadeOut = numpy.linspace(1.0, 0.0, fadeLength) ** 2
+    if dimensions == 2:
+        return fadeOut[:, numpy.newaxis]
+    return fadeOut
+
+
+def fadeEdges(input_, fadeLength=50):
+    """
+    Fade in/out the ends of an audioData to prevent clicks/pops at edges.
+    Optional fadeLength argument is the number of samples to fade in/out.
+    """
+    if isinstance(input_, AudioData):
+        ad = input_.data
+    elif isinstance(input_, numpy.ndarray):
+        ad = input_
+    else:
+        raise Exception("Cannot fade edges of unknown datatype.")
+    fadeOut = __genFade(min(fadeLength, len(ad)), ad.shape[1])
+    ad[0:fadeLength] *= fadeOut[::-1]
+    ad[-1 * fadeLength:] *= fadeOut
+    return input_
+
+
+def truncatemix(dataA, dataB, mix=0.5):
+    """
+    Mixes two "AudioData" objects. Assumes they have the same sample rate
+    and number of channels.
+
+    Mix takes a float 0-1 and determines the relative mix of two audios.
+    i.e., mix=0.9 yields greater presence of dataA in the final mix.
+
+    If dataB is longer than dataA, dataB is truncated to dataA's length.
+    """
+    newdata = AudioData(ndarray=dataA.data, sampleRate=dataA.sampleRate,
+                        numChannels=dataA.numChannels, verbose=False)
+    newdata.data *= float(mix)
+    if dataB.endindex > dataA.endindex:
+        newdata.data[:] += dataB.data[:dataA.endindex] * (1 - float(mix))
+    else:
+        newdata.data[:dataB.endindex] += dataB.data[:] * (1 - float(mix))
     return newdata
 
 
