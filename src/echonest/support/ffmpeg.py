@@ -1,9 +1,15 @@
 import os
 import sys
+import time
 import numpy
+import logging
+import tempfile
 import subprocess
-from threading import Semaphore
+import cStringIO
 from exceptionthread import ExceptionThread
+
+
+log = logging.getLogger(__name__)
 
 
 def get_os():
@@ -17,53 +23,42 @@ def get_os():
 
 class FFMPEGStreamHandler(ExceptionThread):
     def __init__(self, infile, numChannels=2, sampleRate=44100):
-        ExceptionThread.__init__(self)
-        filename = None
-        if type(infile) is str or type(infile) is unicode:
-            filename = str(infile)
-
-        command = "en-ffmpeg"
-        if filename:
-            command += " -i \"%s\"" % infile
-        else:
-            command += " -i pipe:0"
+        command = "en-ffmpeg -i pipe:0"
         if numChannels is not None:
             command += " -ac " + str(numChannels)
         if sampleRate is not None:
             command += " -ar " + str(sampleRate)
         command += " -f s16le -acodec pcm_s16le pipe:1"
+        log.info("Calling ffmpeg: %s", command)
 
         (lin, mac, win) = get_os()
         self.p = subprocess.Popen(
             command,
             shell=True,
-            stdin=(None if filename else subprocess.PIPE),
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             close_fds=(not win)
         )
+
         self.infile = infile
         self.infile.seek(0)
-        self.insize = 2 ** 20
-        self.__s = Semaphore(0)
+        ExceptionThread.__init__(self)
         self.daemon = True
-        self.running = True
         self.start()
 
     def __del__(self):
         self.finish()
 
     def run(self):
-        while self.running:
-            self.__s.release()
-            try:
-                self.p.stdin.write(self.infile.read(self.insize))
-            except IOError:
-                break
-            self.__s.acquire()
+        try:
+            #  TODO: Make this even more memory efficient
+            #        by buffering input, maybe?
+            self.p.stdin.write(self.infile.read())
+        except IOError:
+            pass
 
     def finish(self):
-        self.running = False
         try:
             self.p.kill()
             self.p.wait()
@@ -74,49 +69,160 @@ class FFMPEGStreamHandler(ExceptionThread):
     def read(self, samples=-1):
         if not self.running:
             raise ValueError("FFMPEG has already finished!")
-        self.__s.release()
+        if samples > 0:
+            samples *= 2
         arr = numpy.fromfile(self.p.stdout,
                                dtype=numpy.int16,
-                               count=samples * 2 if samples > 0 else samples)
-        if samples < 0 or len(arr) < samples * 2:
+                               count=samples)
+        print "Allocated new Numpy array of size: %d bytes." % arr.nbytes
+        if samples < 0 or len(arr) < samples:
             self.finish()
         arr = numpy.reshape(arr, (-1, 2))
-        self.__s.acquire()
         return arr
 
     def feed(self, samples):
-        self.__s.release()
         self.p.stdout.read(samples * 4)
-        self.__s.acquire()
 
 
-def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
+def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
+          numChannels=None, sampleRate=None, verbose=True, lastTry=False):
     """
     Executes ffmpeg through the shell to convert or read media files.
+    If passed a file object, give it to FFMPEG via pipe. Otherwise, allow
+    FFMPEG to read the file from disk.
     """
+    start = time.time()
+    filename = None
+    if type(infile) is str or type(infile) is unicode:
+        filename = str(infile)
+
     command = "en-ffmpeg"
+    if filename:
+        command += " -i \"%s\"" % infile
+    else:
+        command += " -i pipe:0"
+
     if overwrite:
         command += " -y"
-    command += " -i \"" + infile + "\""
+
     if bitRate is not None:
         command += " -ab " + str(bitRate) + "k"
+    else:
+        #   We're forcing the output to 16-bit PCM
+        command += " -f s16le -acodec pcm_s16le"
     if numChannels is not None:
         command += " -ac " + str(numChannels)
     if sampleRate is not None:
         command += " -ar " + str(sampleRate)
+
     if outfile is not None:
         command += " \"%s\"" % outfile
+    else:
+        command += " pipe:1"
     if verbose:
         print >> sys.stderr, command
 
     (lin, mac, win) = get_os()
-    if(not win):
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+    p = subprocess.Popen(
+            command,
+            shell=True,
+            stdin=(None if filename else subprocess.PIPE),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            close_fds=(not win)
+    )
+
+    if filename:
+        f, e = p.communicate()
     else:
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=False)
-    return_val = p.communicate()
-    ffmpeg_error_check(return_val[1])
-    return settings_from_ffmpeg(return_val[1])
+        try:
+            infile.seek(0)
+        except:  # if the file is not seekable
+            pass
+        f, e = p.communicate(infile.read())
+        try:
+            infile.seek(0)
+        except:  # if the file is not seekable
+            pass
+    #   If FFMPEG couldn't read that, let's write to a temp file
+    #   For some reason, this always seems to work from file (but not pipe)
+    if 'Could not find codec parameters' in e and not lastTry:
+        log.warning("FFMPEG couldn't find codec parameters - writing to temp file.")
+        fd, name = tempfile.mkstemp('.audio')
+        handle = os.fdopen(fd, 'w')
+        infile.seek(0)
+        handle.write(infile.read())
+        handle.close()
+        r = ffmpeg(name,
+                   bitRate=bitRate,
+                   numChannels=numChannels,
+                   sampleRate=sampleRate,
+                   verbose=verbose,
+                   lastTry=True)
+        log.info("Unlinking temp file at %s...", name)
+        os.unlink(name)
+        return r
+
+    ffmpeg_error_check(e)
+    mid = time.time()
+    arr = numpy.frombuffer(f, dtype=numpy.int16).reshape((-1, 2))
+    log.info("Decoded in %ss.", (mid - start))
+    return arr
+
+
+def ffmpeg_downconvert(infile, lastTry=False):
+    """
+    Downconvert the given filename (or file-like) object to 32kbps MP3 for analysis.
+    Works well if the original file is too large to upload to the Analyze API.
+    """
+    start = time.time()
+
+    filename = None
+    if type(infile) is str or type(infile) is unicode:
+        filename = str(infile)
+
+    command = "en-ffmpeg" \
+            + (" -i \"%s\"" % infile if filename else " -i pipe:0") \
+            + " -b 32k -f mp3 pipe:1"
+    log.info("Calling ffmpeg: %s", command)
+
+    (lin, mac, win) = get_os()
+    p = subprocess.Popen(
+        command,
+        shell=True,
+        stdin=(None if filename else subprocess.PIPE),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        close_fds=(not win)
+    )
+    if filename:
+        f, e = p.communicate()
+    else:
+        infile.seek(0)
+        f, e = p.communicate(infile.read())
+        infile.seek(0)
+
+    if 'Could not find codec parameters' in e and not lastTry:
+        log.warning("FFMPEG couldn't find codec parameters - writing to temp file.")
+        fd, name = tempfile.mkstemp('.')
+        handle = os.fdopen(fd, 'w')
+        infile.seek(0)
+        handle.write(infile.read())
+        handle.close()
+        r = ffmpeg_downconvert(name, lastTry=True)
+        log.info("Unlinking temp file at %s...", name)
+        os.unlink(name)
+        return r
+    ffmpeg_error_check(e)
+
+    io = cStringIO.StringIO(f)
+    end = time.time()
+    io.seek(0, os.SEEK_END)
+    bytesize = io.tell()
+    io.seek(0)
+    log.info("Transcoded to 32kbps mp3 in %ss. Final size: %s bytes.",
+             (end - start), bytesize)
+    return io
 
 
 def settings_from_ffmpeg(parsestring):
