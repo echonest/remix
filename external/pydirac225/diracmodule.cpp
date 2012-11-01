@@ -186,6 +186,9 @@ static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
     deallocateAudioBuffer(inSamples, numInChannels);
     deallocateAudioBuffer(outSamples, numOutChannels);
     
+    // Dealloc the temporary array we used to avoid leaking it!
+    Py_DECREF(inSound);
+
     return PyArray_Return(outSound);
 }
 
