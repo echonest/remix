@@ -365,10 +365,6 @@ class AudioData(AudioRenderable):
         .. _numpy.array: http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html
         """
         self.verbose = verbose
-        if (filename is not None) and (ndarray is None) :
-            if sampleRate is None or numChannels is None:
-                # force sampleRate and numChannels to 44100 hz, 2
-                sampleRate, numChannels = ffmpeg(filename, overwrite=False, verbose=self.verbose)
         self.defer = defer
         self.filename = filename
         self.sampleRate = sampleRate
@@ -398,8 +394,8 @@ class AudioData(AudioRenderable):
             file_to_read = self.convertedfile
         else:
             temp_file_handle, self.convertedfile = tempfile.mkstemp(".wav")
-            ffmpeg(self.filename, self.convertedfile, overwrite=True,
-                numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
+            self.sampleRate, self.numChannels = ffmpeg(self.filename, self.convertedfile, overwrite=True,
+                    numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
             file_to_read = self.convertedfile
 
         w = wave.open(file_to_read, 'r')
@@ -600,9 +596,6 @@ class AudioData32(AudioData):
         Special form of AudioData to allow for headroom when collecting samples.
         """
         self.verbose = verbose
-        if (filename is not None) and (ndarray is None) :
-            if sampleRate is None or numChannels is None:
-                sampleRate, numChannels = ffmpeg(filename, overwrite=False, verbose=self.verbose)
         self.defer = defer
         self.filename = filename
         self.sampleRate = sampleRate
@@ -632,7 +625,7 @@ class AudioData32(AudioData):
             file_to_read = self.convertedfile
         else:
             temp_file_handle, self.convertedfile = tempfile.mkstemp(".wav")
-            ffmpeg(self.filename, self.convertedfile, overwrite=True,
+            self.sampleRate, self.numChannels = ffmpeg(self.filename, self.convertedfile, overwrite=True,
                     numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
             file_to_read = self.convertedfile
 

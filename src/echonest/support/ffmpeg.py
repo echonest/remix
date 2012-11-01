@@ -88,6 +88,10 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
     Executes ffmpeg through the shell to convert or read media files.
     If passed a file object, give it to FFMPEG via pipe. Otherwise, allow
     FFMPEG to read the file from disk.
+
+    If `outfile` is passed in, this will return the sampling frequency and
+    number of channels in the output file. Otherwise, it will return an
+    ndarray object filled with the raw PCM data.
     """
     start = time.time()
     filename = None
@@ -163,9 +167,11 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
 
     ffmpeg_error_check(e)
     mid = time.time()
-    arr = numpy.frombuffer(f, dtype=numpy.int16).reshape((-1, 2))
     log.info("Decoded in %ss.", (mid - start))
-    return arr
+    if outfile:
+        return settings_from_ffmpeg(e)
+    else:
+        return numpy.frombuffer(f, dtype=numpy.int16).reshape((-1, 2))
 
 
 def ffmpeg_downconvert(infile, lastTry=False):
