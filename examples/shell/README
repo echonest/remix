@@ -1,0 +1,40 @@
+remix.py
+========
+
+A stupid shell for the Echo Nest Remix API.
+
+I had SuperCollider one-liner envy, so I created this.
+
+
+Commands:
+  load: loads the filename
+  play: play the result of the last command, if it can be played (currently Mac only)
+  save: save the result of the last command, if it can be rendered
+  help: be minimally helpful
+  anything else: try to interpret it in the current environment
+
+Environment:
+  beats, bars, tatums, sections, segments: all from the currently loaded file
+  _: the last-defined AudioRenderable
+  analysis: container for all the other analysis products in the file
+  
+  libraries (i.e., the namespace you have to work with):
+    from echonest.audio import *
+    from echonest.audio import AudioQuantumList as aql
+    from echonest.audio import AudioQuantum as aq
+    from echonest.selection import *
+    from echonest.sorting import *
+
+$ ./remix.py ../music/BillieJean.mp3
+
+> tatums.that(fall_on_the(1))
+> play
+> save bj.mp3
+> load ../music/aha.mp3
+> segments.that(have_pitch_max(analysis.key['value']))
+> play
+> beats.that(overlap_starts_of(_))
+> play
+> ^D
+
+$ 
