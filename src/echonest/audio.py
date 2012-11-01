@@ -39,7 +39,7 @@ import echonest.selection as selection
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 import weakref
-from support.ffmpeg import ffmpeg, FFMPEGStreamHandler, ffmpeg_error_check, settings_from_ffmpeg
+from support.ffmpeg import ffmpeg
 
 
 MP3_BITRATE = 128
@@ -701,17 +701,9 @@ def assemble(audioDataList, numChannels=1, sampleRate=44100, verbose=True):
 
     :param audioDatas: a list of `AudioData` objects
     """
-    if numChannels == 1:
-        new_shape = (sum([len(x.data) for x in audioDataList]),)
-    else:
-        new_shape = (sum([len(x.data) for x in audioDataList]), numChannels)
-    new_data = AudioData(shape=new_shape, numChannels=numChannels,
+    return AudioData(ndarray=numpy.concatenate([a.data for a in audioDataList]),
+                        numChannels=numChannels,
                         sampleRate=sampleRate, defer=False, verbose=verbose)
-    for ad in audioDataList:
-        if not isinstance(ad, AudioData):
-            raise TypeError('Encountered something other than an AudioData')
-        new_data.append(ad)
-    return new_data
 
 
 def mix(dataA, dataB, mix=0.5):
