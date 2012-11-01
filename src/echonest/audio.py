@@ -14,11 +14,10 @@ by Adam Lindsay.
 :group Exception Classes: FileTypeError, EchoNestRemixError
 
 :group Audio helper functions: getpieces, mix, assemble, megamix
-:group ffmpeg helper functions: ffmpeg, settings_from_ffmpeg, ffmpeg_error_check
 :group Utility functions: chain_from_mixed, _dataParser, _attributeParser, _segmentsParser
 
 .. _Analyze API: http://developer.echonest.com/pages/overview?version=2
-.. _Remix API: http://code.google.com/p/echo-nest-remix/
+.. _Remix API: http://github.com/echonest/remix
 .. _Echo Nest: http://the.echonest.com/
 """
 
@@ -32,7 +31,6 @@ import sys
 import pickle
 import shutil
 import struct
-import subprocess
 import tempfile
 import wave
 
@@ -41,6 +39,7 @@ import echonest.selection as selection
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 import weakref
+from support.ffmpeg import ffmpeg, FFMPEGStreamHandler, ffmpeg_error_check, settings_from_ffmpeg
 
 
 MP3_BITRATE = 128
@@ -287,10 +286,7 @@ class AudioData(AudioRenderable):
         if (filename is not None) and (ndarray is None) :
             if sampleRate is None or numChannels is None:
                 # force sampleRate and numChannels to 44100 hz, 2
-                sampleRate, numChannels = 44100, 2
-                parsestring = ffmpeg(filename, overwrite=False, verbose=self.verbose)
-                ffmpeg_error_check(parsestring[1])
-                sampleRate, numChannels = settings_from_ffmpeg(parsestring[1])
+                sampleRate, numChannels = ffmpeg(filename, overwrite=False, verbose=self.verbose)
         self.defer = defer
         self.filename = filename
         self.sampleRate = sampleRate
@@ -320,9 +316,8 @@ class AudioData(AudioRenderable):
             file_to_read = self.convertedfile
         else:
             temp_file_handle, self.convertedfile = tempfile.mkstemp(".wav")
-            result = ffmpeg(self.filename, self.convertedfile, overwrite=True,
+            ffmpeg(self.filename, self.convertedfile, overwrite=True,
                 numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
-            ffmpeg_error_check(result[1])
             file_to_read = self.convertedfile
 
         w = wave.open(file_to_read, 'r')
@@ -483,8 +478,7 @@ class AudioData(AudioRenderable):
             bitRate = MP3_BITRATE
         except NameError:
             bitRate = 128
-        parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
-        ffmpeg_error_check(parsestring[1])
+        ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
         if tempfilename != filename:
             if self.verbose:
                 print >> sys.stderr, "Deleting: %s" % tempfilename
@@ -526,11 +520,7 @@ class AudioData32(AudioData):
         self.verbose = verbose
         if (filename is not None) and (ndarray is None) :
             if sampleRate is None or numChannels is None:
-                # force sampleRate and numChannels to 44100 hz, 2
-                sampleRate, numChannels = 44100, 2
-                parsestring = ffmpeg(filename, overwrite=False, verbose=self.verbose)
-                ffmpeg_error_check(parsestring[1])
-                sampleRate, numChannels = settings_from_ffmpeg(parsestring[1])
+                sampleRate, numChannels = ffmpeg(filename, overwrite=False, verbose=self.verbose)
         self.defer = defer
         self.filename = filename
         self.sampleRate = sampleRate
@@ -560,9 +550,8 @@ class AudioData32(AudioData):
             file_to_read = self.convertedfile
         else:
             temp_file_handle, self.convertedfile = tempfile.mkstemp(".wav")
-            result = ffmpeg(self.filename, self.convertedfile, overwrite=True,
-                numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
-            ffmpeg_error_check(result[1])
+            ffmpeg(self.filename, self.convertedfile, overwrite=True,
+                    numChannels=self.numChannels, sampleRate=self.sampleRate, verbose=self.verbose)
             file_to_read = self.convertedfile
 
         w = wave.open(file_to_read, 'r')
@@ -633,8 +622,7 @@ class AudioData32(AudioData):
             bitRate = MP3_BITRATE
         except NameError:
             bitRate = 128
-        parsestring = ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
-        ffmpeg_error_check(parsestring[1])
+        ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
         if tempfilename != filename:
             if self.verbose:
                 print >> sys.stderr, "Deleting: %s" % tempfilename
@@ -665,90 +653,6 @@ class AudioData32(AudioData):
                 extra_shape = (num_samples, self.numChannels)
             self.data = numpy.append(self.data,
                                      numpy.zeros(extra_shape, dtype=numpy.int32), axis=0)
-
-
-def get_os():
-    """returns is_linux, is_mac, is_windows"""
-    if hasattr(os, 'uname'):
-        if os.uname()[0] == "Darwin":
-            return False, True, False
-        return True, False, False
-    return False, False, True
-
-
-def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
-    """
-    Executes ffmpeg through the shell to convert or read media files.
-    """
-    command = "en-ffmpeg"
-    if overwrite:
-        command += " -y"
-    command += " -i \"" + infile + "\""
-    if bitRate is not None:
-        command += " -ab " + str(bitRate) + "k"
-    if numChannels is not None:
-        command += " -ac " + str(numChannels)
-    if sampleRate is not None:
-        command += " -ar " + str(sampleRate)
-    if outfile is not None:
-        command += " \"%s\"" % outfile
-    if verbose:
-        print >> sys.stderr, command
-
-    (lin, mac, win) = get_os()
-    if(not win):
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
-    else:
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=False)
-    return_val = p.communicate()
-    return return_val
-
-
-def settings_from_ffmpeg(parsestring):
-    """
-    Parses the output of ffmpeg to determine sample rate and frequency of
-    an audio file.
-    """
-    parse = parsestring.split('\n')
-    freq, chans = 44100, 2
-    for line in parse:
-        if "Stream #0" in line and "Audio" in line:
-            segs = line.split(", ")
-            for s in segs:
-                if "Hz" in s:
-                    #print "Found: "+str(s.split(" ")[0])+"Hz"
-                    freq = int(s.split(" ")[0])
-                elif "stereo" in s:
-                    #print "stereo"
-                    chans = 2
-                elif "mono" in s:
-                    #print "mono"
-                    chans = 1
-    return freq, chans
-
-ffmpeg_install_instructions = """
-en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
-    sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
-"""
-
-
-def ffmpeg_error_check(parsestring):
-    "Looks for known errors in the ffmpeg output"
-    parse = parsestring.split('\n')
-    error_cases = ["Unknown format",        # ffmpeg can't figure out format of input file
-                   "error occur",           # an error occurred
-                   "Could not open",        # user doesn't have permission to access file
-                   "not found"              # could not find encoder for output file
-                   "Invalid data",          # bad input data
-                   "Could not find codec",  # corrupted, incomplete, or otherwise bad file
-                    ]
-    for num, line in enumerate(parse):
-        if "command not found" in line:
-            raise RuntimeError(ffmpeg_install_instructions)
-        for error in error_cases:
-            if error in line:
-                report = "\n\t".join(parse[num:])
-                raise RuntimeError("ffmpeg conversion error:\n\t" + report)
 
 
 def getpieces(audioData, segs):
