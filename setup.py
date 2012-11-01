@@ -121,7 +121,7 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
 
 setup(name='remix',
       ext_modules = [get_soundtouch(), get_dirac(), get_action()],
-      version='1.5.0',
+      version='1.5.0psobot',
       description='The internet synthesizer. Make things with music.',
       author='The Echo Nest',
       author_email='brian@echonest.com',
