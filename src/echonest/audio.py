@@ -196,7 +196,10 @@ class AudioAnalysis(object):
         self._segments = None
 
         self.identifier = self.pyechonest_track.id
-        self.metadata   = self.pyechonest_track.meta
+        try:
+            self.metadata   = self.pyechonest_track.meta
+        except AttributeError:
+            self.metadata = {}
 
         for attribute in ('time_signature', 'mode', 'tempo', 'key'):
             d = {'value': getattr(self.pyechonest_track, attribute),

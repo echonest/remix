@@ -72,7 +72,6 @@ class FFMPEGStreamHandler(ExceptionThread):
         arr = numpy.fromfile(self.p.stdout,
                                dtype=numpy.int16,
                                count=samples)
-        print "Allocated new Numpy array of size: %d bytes." % arr.nbytes
         if samples < 0 or len(arr) < samples:
             self.finish()
         arr = numpy.reshape(arr, (-1, 2))
