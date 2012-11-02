@@ -57,6 +57,7 @@ class FFMPEGStreamHandler(ExceptionThread):
             self.p.stdin.write(self.infile.read())
         except IOError:
             pass
+        self.p.stdin.close()
 
     def finish(self):
         try:
