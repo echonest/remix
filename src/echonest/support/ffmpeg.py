@@ -61,10 +61,18 @@ class FFMPEGStreamHandler(ExceptionThread):
 
     def finish(self):
         try:
-            self.p.kill()
-            self.p.wait()
-        except OSError:
+            self.p.stdin.close()
+        except (OSError, IOError):
             pass
+        try:
+            self.p.stdout.close()
+        except (OSError, IOError):
+            pass
+        try:
+            self.p.kill()
+        except (OSError, IOError):
+            pass
+        self.p.wait()
 
     #   TODO: Abstract me away from 44100Hz, 2ch 16 bit
     def read(self, samples=-1):
