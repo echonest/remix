@@ -64,12 +64,6 @@ def timbre_distance_from(seg):
     """
     return lambda x: sum(map(_diff_squared, seg.timbre, x.timbre))
 
-def noisiness(x):
-    """
-    Returns the sum of the twelve pitch vectors' elements. This is a very
-    fast way of judging the relative noisiness of a segment.
-    """
-    return sum(x.pitches)
 
 # local helper functions:
 def _diff_squared(a, b):

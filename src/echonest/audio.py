@@ -1070,6 +1070,24 @@ class AudioQuantum(AudioRenderable) :
         except LookupError:
             return None
     
+    def segments(self):
+        """
+        Returns any segments that overlap or are in the same timespan as the AudioQuantum.
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        This function, thus, is NOT suited to rhythmic modifications.
+        """
+        all_segments = self.source.analysis.segments
+        filtered_segments = AudioQuantumList(kind="segment")
+        
+        # Filter and then break once we've got the needed segments
+        for segment in all_segments:
+            if segment.start < self.end and segment.end > self.start:
+                filtered_segments.append(segment)
+            elif len(filtered_segments) != 0:
+                break
+        return filtered_segments
+
+
     def group(self):
         """
         Returns the `children`\() of the `AudioQuantum`\'s `parent`\(). 
