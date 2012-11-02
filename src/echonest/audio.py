@@ -1467,6 +1467,8 @@ class AudioQuantumList(list, AudioRenderable):
     
     def that(self, filt):
         """
+        DEPRECATION NOTICE:  This function will be removed soon.
+
         Method for applying a function to each of the contained
         `AudioQuantum` objects. Returns a new `AudioQuantumList` 
         of the same `kind` containing the `AudioQuantum` objects 
@@ -1485,6 +1487,8 @@ class AudioQuantumList(list, AudioRenderable):
     
     def ordered_by(self, function, descending=False):
         """
+        DEPRECATION NOTICE:  This function will be removed soon.
+
         Returns a new `AudioQuantumList` of the same `kind` with the 
         original elements, but ordered from low to high according to 
         the input function acting as a key. 
@@ -1502,6 +1506,8 @@ class AudioQuantumList(list, AudioRenderable):
     
     def beget(self, source, which=None):
         """
+        DEPRECATION NOTICE:  This function will be removed soon.
+    
         There are two basic forms: a map-and-flatten and an converse-that.
         
         The basic form, with one `function` argument, returns a new 
