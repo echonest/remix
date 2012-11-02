@@ -1708,6 +1708,7 @@ def _segmentsParser(nodes):
 
 def chain_from_mixed(iterables):
     """
+    DEPRECATION NOTICE:  This function will be removed soon.
     Helper function to flatten a list of elements and lists
     into a list of elements.
     """

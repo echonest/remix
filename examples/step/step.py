@@ -13,6 +13,8 @@ one in _v_ chance that the actual next beat is chosen. The
 length is the length in bars you want it to go on.
 
 Originally by Adam Lindsay, 2009-03-10.
+Note:  ".that" and associated functions have been deprecated as of Remix 1.6 (November 2012)
+This example may be removed or be dramatically refactored in the near future.
 """
 
 import random

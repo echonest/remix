@@ -17,6 +17,8 @@ one in _v_ chance that the actual next beat is chosen. A
 musical M-x dissociated-press.
 
 Originally by Adam Lindsay, 2009-06-27.
+Note:  ".that" and associated functions have been deprecated as of Remix 1.6 (November 2012)
+This example may be removed or be dramatically refactored in the near future.
 """
 import random
 
