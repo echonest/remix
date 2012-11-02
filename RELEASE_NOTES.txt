@@ -1,3 +1,9 @@
+1.6.0 - November 2 2012
+- Added local saving of analysis files
+- Fixed two memory leaks
+- Added helper script for installing for development
+- Deprecated .that, .ordered_by, and .beget, refactored examples.
+
 1.5.0 - October 12 2012
 - Latest youtube-dl script
 - Examples updated
