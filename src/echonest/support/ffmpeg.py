@@ -23,7 +23,18 @@ def get_os():
 
 class FFMPEGStreamHandler(ExceptionThread):
     def __init__(self, infile, numChannels=2, sampleRate=44100):
-        command = "en-ffmpeg -i pipe:0"
+        command = "en-ffmpeg"
+
+        self.filename = None
+        if isinstance(infile, basestring):
+            self.filename = infile
+
+        if self.filename:
+            if os.path.getsize(self.filename) == 0:
+                raise ValueError("Input file contains 0 bytes")
+            command += " -i %s" % self.filename
+        else:
+            command += " -i pipe:0"
         if numChannels is not None:
             command += " -ac " + str(numChannels)
         if sampleRate is not None:
@@ -35,35 +46,37 @@ class FFMPEGStreamHandler(ExceptionThread):
         self.p = subprocess.Popen(
             command,
             shell=True,
-            stdin=subprocess.PIPE,
+            stdin=(subprocess.PIPE if not self.filename else None),
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             close_fds=(not win)
         )
 
-        self.infile = infile
-        self.infile.seek(0)
-        ExceptionThread.__init__(self)
-        self.daemon = True
-        self.start()
+        self.infile = infile if not self.filename else None
+        if not self.filename:
+            self.infile.seek(0)
+            ExceptionThread.__init__(self)
+            self.daemon = True
+            self.start()
 
     def __del__(self):
-        self.finish()
+        if hasattr(self, 'p'):
+            self.finish()
 
     def run(self):
         try:
-            #  TODO: Make this even more memory efficient
-            #        by buffering input, maybe?
             self.p.stdin.write(self.infile.read())
         except IOError:
             pass
         self.p.stdin.close()
 
     def finish(self):
-        try:
-            self.p.stdin.close()
-        except (OSError, IOError):
-            pass
+        if self.filename:
+            try:
+                if self.p.stdin:
+                    self.p.stdin.close()
+            except (OSError, IOError):
+                pass
         try:
             self.p.stdout.close()
         except (OSError, IOError):

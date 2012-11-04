@@ -40,6 +40,7 @@ import traceback
 import cStringIO
 
 from pyechonest import track
+from pyechonest.util import EchoNestAPIError
 import pyechonest.util
 import echonest.selection as selection
 import xml.etree.ElementTree as etree
@@ -84,12 +85,14 @@ class AudioAnalysis(object):
     def __get_cache_path(cls, identifier):
         return "cache/%s.pickle" % identifier
 
-    def __new__(self, initializer, *args, **kwargs):
-        if type(initializer) is str and len(initializer) == 32:
-            path = self.__get_cache_path(initializer)
-            if os.path.exists(path):
-                return cPickle.load(open(path, 'r'))
-        return object.__new__(self, initializer, *args, **kwargs)
+    def __new__(cls, *args, **kwargs):
+        if len(args):
+            initializer = args[0]
+            if type(initializer) is str and len(initializer) == 32:
+                path = cls.__get_cache_path(initializer)
+                if os.path.exists(path):
+                    return cPickle.load(open(path, 'r'))
+        return object.__new__(cls, *args, **kwargs)
 
     def __init__(self, initializer, filetype = None, lastTry = False):
         """
@@ -115,7 +118,7 @@ class AudioAnalysis(object):
 
         __save_to_cache = False
         try:
-            if type(initializer) is str:
+            if isinstance(initializer, basestring):
                 # see if path_or_identifier is a path or an ID
                 if os.path.isfile(initializer):
                     # it's a filename
@@ -136,7 +139,6 @@ class AudioAnalysis(object):
                 try:
                     self.pyechonest_track = track.track_from_file(initializer, filetype)
                 except (IOError, pyechonest.util.EchoNestAPIError) as e:
-                    print e
                     if lastTry:
                         raise
 
@@ -989,8 +991,7 @@ class LocalAnalysis(object):
             if verbose:
                 print >> sys.stderr, "Probing for existing analysis"
             tempanalysis = AudioAnalysis(track_md5)
-        except Exception, e:
-            print e
+        except Exception:
             if verbose:
                 print >> sys.stderr, "Analysis not found. Uploading..."
             tempanalysis = AudioAnalysis(filename)
@@ -1066,6 +1067,10 @@ class AudioStream(object):
     def finish(self):
         self.stream.finish()
 
+    def __del__(self):
+        if hasattr(self, "stream"):
+            self.stream.finish()
+
 
 class LocalAudioStream(AudioStream):
     """
@@ -1075,19 +1080,32 @@ class LocalAudioStream(AudioStream):
     from a part of the input file that has already been read will throw
     an exception.
     """
-    def __init__(self, fobj, kind="mp3"):
-        AudioStream.__init__(self, fobj)
+    def __init__(self, initializer, kind="mp3"):
+        AudioStream.__init__(self, initializer)
 
         start = time.time()
-        fobj.seek(0)
-        track_md5 = hashlib.md5(fobj.read()).hexdigest()
-        fobj.seek(0)
+        if hasattr(initializer, 'seek'):
+            fobj = initializer
+            fobj.seek(0)
+        else:
+            fobj = open(initializer, 'r')
+        #   This looks like a lot of work, but is much more lighter
+        #   on memory than reading the entire file in.
+        md5 = hashlib.md5()
+        while True:
+            data = fobj.read(2 ^ 16)
+            if not data:
+                break
+            md5.update(data)
+        if not hasattr(initializer, 'seek'):
+            fobj.close()
+        track_md5 = md5.hexdigest()
 
         logging.getLogger(__name__).info("Fetching analysis...")
         try:
             tempanalysis = AudioAnalysis(str(track_md5))
-        except Exception:
-            tempanalysis = AudioAnalysis(fobj, kind)
+        except EchoNestAPIError:
+            tempanalysis = AudioAnalysis(initializer, kind)
 
         logging.getLogger(__name__).info("Fetched analysis in %ss",
                                          (time.time() - start))
@@ -1102,9 +1120,6 @@ class LocalAudioStream(AudioStream):
             ndim = self.numChannels
 
         self.data = data
-
-    def __del__(self):
-        self.stream.finish()
 
 
 class AudioQuantum(AudioRenderable):
