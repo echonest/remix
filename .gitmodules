@@ -1,3 +1,0 @@
-[submodule "pyechonest"]
-	path = pyechonest
-  url = git://github.com/psobot/pyechonest.git
