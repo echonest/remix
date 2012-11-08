@@ -1,3 +1,6 @@
+1.6.1 - November 8 2012
+- Patched around pyechonest not always returning metadata
+
 1.6.0 - November 2 2012
 - Added local saving of analysis files
 - Fixed two memory leaks
