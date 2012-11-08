@@ -122,8 +122,13 @@ class AudioAnalysis(object):
         self._segments = None
 
         self.identifier = self.pyechonest_track.id
-        self.metadata   = self.pyechonest_track.meta
-
+        # Patching around the fact that sometimes pyechonest doesn't give back metadata
+        # As of 11/2012, metadata is not used by remix
+        try:
+            self.metadata = self.pyechonest_track.meta
+        except AttributeError:
+            self.metadata = None
+            print >> sys.stderr, "Warning:  no metadata returned for track."
 
         for attribute in ('time_signature', 'mode', 'tempo', 'key'):
             d = {}
