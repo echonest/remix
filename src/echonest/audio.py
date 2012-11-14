@@ -1010,7 +1010,8 @@ class AudioStream(object):
     def __init__(self, fobj):
         self.sampleRate = 44100
         self.numChannels = 2
-        self.stream = FFMPEGStreamHandler(fobj, self.numChannels, self.sampleRate)
+        self.fobj = fobj
+        self.stream = FFMPEGStreamHandler(self.fobj, self.numChannels, self.sampleRate)
         self.index = 0
 
     def __getitem__(self, index):
@@ -1043,7 +1044,9 @@ class AudioStream(object):
             index = slice(int(index.start * self.sampleRate),
                             int(index.stop * self.sampleRate), index.step)
         if index.start < self.index:
-            raise ValueError("Cannot seek backwards in AudioStream")
+            self.stream.finish()
+            self.stream = FFMPEGStreamHandler(self.fobj, self.numChannels, self.sampleRate)
+            self.index = 0
         if index.start > self.index:
             self.stream.feed(index.start - self.index)
         self.index = index.stop
@@ -1053,6 +1056,8 @@ class AudioStream(object):
                             numChannels=self.numChannels, defer=False)
 
     def getsample(self, index):
+        #   TODO: Finish this properly
+        raise NotImplementedError()
         if isinstance(index, float):
             index = int(index * self.sampleRate)
         if index >= self.index:
