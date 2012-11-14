@@ -1,4 +1,4 @@
-#1/usr/bin/env/python
+#!/usr/bin/env/python
 #encoding: utf=8
 """
 sorting.py
@@ -7,7 +7,6 @@ Sorts AudioQuanta (bars, beats, tatums, segments) by various qualities, and resy
 
 By Thor Kell, 2012-11-02
 """
-
 import echonest.audio as audio
 usage = """
     python sorting.py <bars|beats|tatums|segments> <confidence|duration|loudness>  <input_filename> <output_filename> [reverse]
@@ -16,26 +15,20 @@ usage = """
 def main(units, key, input_filename, output_filename):
     audiofile = audio.LocalAudioFile(input_filename)
     chunks = audiofile.analysis.__getattribute__(units)
-    
+
     # Define the sorting function
     if key == 'duration':
-        sorting_function = lambda chunk: chunk.duration
+        def sorting_function(chunk):
+            return chunk.duration
+
     if key == 'confidence':
-        if units == 'segments':
-            print "WARNING:  segments have no confidence values"
-        sorting_function = lambda chunk: chunk.confidence
+        def sorting_function(chunk):
+            return chunk.confidence
 
     if key == 'loudness':
-        # If we are not using segments, we need to get the mean of the loudness data of the segments for this chunk
-        if units != 'segments':
-            def sorting_function(chunk):
-                loudness_average = 0
-                for segment in chunk.segments():
-                    loudness_average = loudness_average + segment.loudness_max
-                return float(loudness_average) / len(chunk.segments())
-        else:
-            sorting_function = lambda chunk: index(chunk.loudness_max)
-
+        def sorting_function(chunk):
+            return chunk.mean_loudness()
+    
     sorted_chunks = sorted(chunks, key=sorting_function, reverse=reverse)
 
     out = audio.getpieces(audiofile, sorted_chunks)
