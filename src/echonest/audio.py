@@ -1069,13 +1069,17 @@ class AudioQuantum(AudioRenderable) :
             return child_chunks
         except LookupError:
             return None
-    
+    @property
     def segments(self):
         """
         Returns any segments that overlap or are in the same timespan as the AudioQuantum.
         Note that this means that some segments will appear in more than one AudioQuantum.
         This function, thus, is NOT suited to rhythmic modifications.
         """
+        # If this is a segment, return it in a list so we can iterate over it
+        if self.kind == 'segment':
+            return [self]
+
         all_segments = self.source.analysis.segments
         filtered_segments = AudioQuantumList(kind="segment")
         
@@ -1086,6 +1090,46 @@ class AudioQuantum(AudioRenderable) :
             elif len(filtered_segments) != 0:
                 break
         return filtered_segments
+
+    def mean_pitches(self):
+        """
+        Returns a pitch vector that is the mean of the pitch vectors of any segments 
+        that overlap this AudioQuantum.
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        """
+        temp_pitches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        segments = self.segments
+        for segment in segments:
+            for index, pitch in enumerate(segment.pitches):
+                temp_pitches[index] = temp_pitches[index] + pitch
+            mean_pitches = [pitch / len(segments) for pitch in temp_pitches]
+            return mean_pitches
+    
+    def mean_timbre(self):
+        """
+        Returns a timbre vector that is the mean of the pitch vectors of any segments 
+        that overlap this AudioQuantum.
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        """
+        temp_timbre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        segments = self.segments
+        for segment in segments:
+            for index, timbre in enumerate(segment.timbre):
+                temp_timbre[index] = temp_timbre[index] + timbre
+            mean_timbre = [timbre / len(segments) for timbre in temp_timbre]
+            return mean_timbre
+
+
+    def mean_loudness(self):
+        """
+        Returns the mean of the maximum loudness of any segments that overlap this AudioQuantum. 
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        """
+        loudness_average = 0
+        segments = self.segments
+        for segment in self.segments:
+            loudness_average = loudness_average + segment.loudness_max
+        return loudness_average / len(segments)
 
 
     def group(self):
@@ -1256,8 +1300,58 @@ class AudioSegment(AudioQuantum):
         if loudness_end:
             self.loudness_end = loudness_end
         self.kind = kind
-        self.confidence = None
         self._source = source
+
+        # self.confidence = None #old
+
+
+
+    @property
+    def tatum(self):
+        """
+        Returns the tatum that overlaps most with the segment
+        Note that some segments have NO overlapping tatums.
+        If this is the case, None will be returned.
+        """
+        all_tatums = self.source.analysis.tatums
+        filtered_tatums = []
+        for tatum in all_tatums:
+            # If the segment contains the tatum
+            if self.start < tatum.start and self.end > tatum.end:
+                filtered_tatums.append((tatum, tatum.duration))
+            # If the tatum contains the segment
+            elif tatum.start < self.start and tatum.end > self.end:
+                filtered_tatums.append((tatum, self.duration))
+            # If the tatum overlaps and starts before the segment
+            elif tatum.start < self.start and tatum.end > self.start:
+                filtered_tatums.append((tatum, tatum.end - self.start))
+            # If the tatum overlaps and starts after the segment
+            elif tatum.start < self.end and tatum.end > self.end:
+                filtered_tatums.append((tatum, self.end - tatum.start))
+            # If we're past the segment, stop
+            elif tatum.start > self.end:
+                break
+
+        # Sort and get the tatum with the maximum overlap
+        sorted_tatums = sorted(filtered_tatums, key=lambda tatum: tatum[1], reverse=True)
+        if not sorted_tatums:
+            return None
+        else:
+            return sorted_tatums[0][0]
+
+    @property
+    def beat(self):
+        return self.tatum.parent
+
+    # Reference 'confidence' to the confidence of the containing tatum
+    # This is not TRUE, but it is convenient - check with B, T, and T about this
+    @property
+    def confidence(self):
+        if self.tatum != None:
+            return self.tatum.confidence
+        else:
+            return 0
+
 
 class ModifiedRenderable(AudioRenderable):
     """Class that contains any AudioRenderable, but overrides the
@@ -1510,25 +1604,7 @@ class AudioQuantumList(list, AudioRenderable):
         """
         out = AudioQuantumList(kind=self.kind)
         out.extend(filter(filt, self))
-        return out
-    
-    def ordered_by(self, function, descending=False):
-        """
-        Returns a new `AudioQuantumList` of the same `kind` with the 
-        original elements, but ordered from low to high according to 
-        the input function acting as a key. 
-        
-        See `echonest.sorting` for example ordering functions.
-        
-        :param function: a function that takes one `AudioQuantum` and returns
-            a comparison key
-        :param descending: when `True`, reverses the sort order, from 
-            high to low
-        """
-        out = AudioQuantumList(kind=self.kind)
-        out.extend(sorted(self, key=function, reverse=descending))
-        return out
-    
+        return out 
     
     def attach(self, container):
         """
