@@ -1302,10 +1302,6 @@ class AudioSegment(AudioQuantum):
         self.kind = kind
         self._source = source
 
-        # self.confidence = None #old
-
-
-
     @property
     def tatum(self):
         """
