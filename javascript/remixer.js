@@ -1,5 +1,5 @@
 // from Paul's Infinite gangam style.  I would like to extract things out of this
-// First, it'd be nice to just do good to one
+// First, it'd be nice to just do good old one
 // upload a track, do the remix, play using webaudio, offer a dl link
 
 function createJRemixer(context, apiKey, jquery) {
