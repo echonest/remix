@@ -1300,7 +1300,9 @@ class AudioSegment(AudioQuantum):
         if loudness_end:
             self.loudness_end = loudness_end
         self.kind = kind
+        self.confidence = None
         self._source = source
+        
 
     @property
     def tatum(self):
@@ -1338,15 +1340,6 @@ class AudioSegment(AudioQuantum):
     @property
     def beat(self):
         return self.tatum.parent
-
-    # Reference 'confidence' to the confidence of the containing tatum
-    # This is not TRUE, but it is convenient - check with B, T, and T about this
-    @property
-    def confidence(self):
-        if self.tatum != None:
-            return self.tatum.confidence
-        else:
-            return 0
 
 
 class ModifiedRenderable(AudioRenderable):

@@ -9,6 +9,7 @@ by various proporties, and resynthesizes them
 'pitch' takes an integer a finds chunks that have a pitch maximum in the given index
 'pitches' takes a list of integers and finds chunks that have pitch maxima in those pitches - a simple chord-finder
 'duration' takes a pair of integers or floats and finds chunks that overlap / are within that range in time
+'louder' and 'softer' take a float and finds chunks that are louder or softer than the number (in dBFS, so 0.0 is the loudest and -100.0 is the softest)
 
 By Thor Kell, 2012-11-14
 """
@@ -16,7 +17,7 @@ By Thor Kell, 2012-11-14
 import echonest.audio as audio
 
 usage = """
-    python filter.py <bars|beats|tatums|segments> <pitch|pitches|duration> <value> <input_filename> <output_filename>
+    python filter.py <bars|beats|tatums|segments> <pitch|pitches|duration|louder|softer> <value> <input_filename> <output_filename>
 
 """
 def main(units, key, value, input_filename, output_filename):
@@ -34,6 +35,8 @@ def main(units, key, value, input_filename, output_filename):
         value = eval(value)
         duration_start = value[0]
         duration_end = value[1]
+    if key == 'louder' or key == 'softer':
+        value = float(value)
     
     filtered_chunks = []
     for chunk in chunks:
@@ -57,6 +60,13 @@ def main(units, key, value, input_filename, output_filename):
                 filtered_chunks.append(chunk)
             elif chunk.start > duration_end:
                 break
+
+        if key == 'louder':
+            if chunk.mean_loudness() > value:
+                filtered_chunks.append(chunk)
+        if key == 'softer':
+            if chunk.mean_loudness() < value:
+                filtered_chunks.append(chunk)
 
     out = audio.getpieces(audiofile, filtered_chunks)
     out.encode(output_filename)
