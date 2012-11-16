@@ -4,7 +4,11 @@
 filter.py
 
 Filters lists of  AudioQuanta (bars, beats, tatums, segments) 
-by various qualities, and resynthesizes them
+by various proporties, and resynthesizes them
+
+'pitch' takes an integer a finds chunks that have a pitch maximum in the given index
+'pitches' takes a list of integers and finds chunks that have pitch maxima in those pitches - a simple chord-finder
+'duration' takes a pair of integers or floats and finds chunks that overlap / are within that range in time
 
 By Thor Kell, 2012-11-14
 """
@@ -12,21 +16,47 @@ By Thor Kell, 2012-11-14
 import echonest.audio as audio
 
 usage = """
-    python filter.py <bars|beats|tatums|segments> <pitch> <value> <input_filename> <output_filename>
+    python filter.py <bars|beats|tatums|segments> <pitch|pitches|duration> <value> <input_filename> <output_filename>
 
 """
 def main(units, key, value, input_filename, output_filename):
     audiofile = audio.LocalAudioFile(input_filename)
     chunks = audiofile.analysis.__getattribute__(units)
-    value = int(value);
+    
+    if key == 'pitch':
+        value = int(value);
+    if key == 'pitches':
+        value = eval(value)
+        if type(value) != list:
+            print usage
+            sys.exit(-1)
+    if key == 'duration':
+        value = eval(value)
+        duration_start = value[0]
+        duration_end = value[1]
     
     filtered_chunks = []
     for chunk in chunks:
-        # Filter by which pitch is the most prominant
         if key == 'pitch':      
             pitches = chunk.mean_pitches()
             if pitches.index(max(pitches)) == value:        
                 filtered_chunks.append(chunk)
+   
+        if key == 'pitches':
+            max_indexes = []
+            pitches = chunk.mean_pitches()
+            max_pitches = sorted(pitches, reverse=True)
+            for pitch in max_pitches:
+                 max_indexes.append(pitches.index(pitch)) 
+            
+            if set(value) == set(max_indexes[0:len(value)]):
+                filtered_chunks.append(chunk)
+
+        if key == 'duration':
+            if chunk.start < duration_end and chunk.end > duration_start:
+                filtered_chunks.append(chunk)
+            elif chunk.start > duration_end:
+                break
 
     out = audio.getpieces(audiofile, filtered_chunks)
     out.encode(output_filename)
