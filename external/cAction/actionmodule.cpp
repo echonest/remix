@@ -106,6 +106,40 @@ static PyObject* cAction_limit(PyObject* self, PyObject* args)
     return PyArray_Return(inSound);
 }
 
+static PyObject* cAction_fade(PyObject* self, PyObject* args)
+{
+    PyObject *objInSound;
+    float volume = 1.0f;
+    float from = 0.0f;
+    float to = 1.0f;
+    
+    if (!PyArg_ParseTuple(args, "O|f|f|f", &objInSound, &volume, &from, &to))
+        return NULL;
+    
+    PyArrayObject *inSound = get_pyarray(objInSound);
+    if (inSound == NULL)
+        return NULL;
+    
+    uint nSamples = inSound->dimensions[0];
+    uint nChannels = inSound->dimensions[1];
+    float *inSamples = (Float32 *)NA_OFFSETDATA(inSound);
+    
+    // Limit:
+    for (uint j = 0; j < nChannels; j++)
+    {
+        for (uint i = 0; i < nSamples; i++)
+        {
+            float frac = ((float)(nSamples - i) / (float) nSamples) * (to - from) + from;
+            float f = inSamples[nChannels * i + j];
+            inSamples[nChannels * i + j] = limiter(frac * f * volume);
+        }
+    }
+    
+    // Do we need to make a copy before returning, or can we return the modified original?
+    return PyArray_Return(inSound);
+}
+
+
 static PyObject* cAction_fade_out(PyObject* self, PyObject* args)
 {
     PyObject *objInSound;
@@ -172,7 +206,14 @@ static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
 {
     PyObject *objInSound1, *objInSound2;
     char* s_mode = NULL;
-    if (!PyArg_ParseTuple(args, "OO|s", &objInSound1, &objInSound2, &s_mode))
+
+    //  Hacky - the percentage through the crossfade that we're processing.
+    //  Allows for incremental processing of the same crossfade in chunks.
+    
+    long total = -1;
+    long offset = 0;
+
+    if (!PyArg_ParseTuple(args, "OO|sll", &objInSound1, &objInSound2, &s_mode, &total, &offset))
         return NULL;
     
     PyArrayObject *inSound1 = get_pyarray(objInSound1);
@@ -194,7 +235,11 @@ static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
     npy_intp dims[DIMENSIONS];
     dims[0] = numInSamples;
     dims[1] = numInChannels;
-    
+
+    if ( total < 0 ) {
+        total = numInSamples;
+    } 
+        
     // Allocate interlaced memory for output sound object
     PyArrayObject* outSound = (PyArrayObject *)PyArray_SimpleNew(DIMENSIONS, dims, NPY_FLOAT);
     
@@ -208,7 +253,7 @@ static PyObject* cAction_crossfade(PyObject* self, PyObject* args)
         for (uint j = 0; j < numInSamples; j++)
         {
             uint index = i + j*numInChannels;
-            outSamples[index] = fader(inSamples1[index], inSamples2[index], j, numInSamples);
+            outSamples[index] = fader(inSamples1[index], inSamples2[index], (j + offset > total ? total : j + offset), total);
         }
     }
     
@@ -223,6 +268,7 @@ static PyMethodDef cAction_methods[] =
     {"crossfade", (PyCFunction) cAction_crossfade, METH_VARARGS, "crossfade two audio buffers."},
     {"fadein", (PyCFunction) cAction_fade_in, METH_VARARGS, "fade in an audio buffer."},
     {"fadeout", (PyCFunction) cAction_fade_out, METH_VARARGS, "fade out an audio buffer."},
+    {"fade", (PyCFunction) cAction_fade, METH_VARARGS, "fade an audio buffer between two volumes."},
     {NULL}
 };
 
