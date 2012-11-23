@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+
+
+</head>
+
+<body>
+<script type="text/javascript" src='jquery-1.8.3.min.js'></script>
+<script type="text/javascript">
+// Set up super-simple web audio test.
+// OK, I now think that I do need Paul's magic queue
+var context;
+var audioBuffer = null;
+var audioSource;
+
+function initWebAudio() {
+  try {
+    context = new webkitAudioContext();
+  }
+  catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
+}
+
+// will need to add Paul's callback code to this late, I betcha
+function loadSound(audioURL) {
+    var request = new XMLHttpRequest();
+
+    request.open("GET", audioURL, true);
+    request.responseType = "arraybuffer";
+    this.request = request;
+
+    request.onload = function() {
+        var buffer = context.createBuffer(request.response, false);
+        audioBuffer = buffer;
+    }
+
+    request.onerror = function(e) {
+        alert('Audio file did not load correctly');
+    }
+    request.send();
+}
+
+function playSound(buffer) {
+  audioSource = context.createBufferSource();
+  audioSource.buffer = buffer;                   
+  audioSource.connect(context.destination);       
+  audioSource.noteGrainOn(0, 1, 1);                          
+}
+
+function stopSound() {
+  audioSource.noteOff(0);                       
+}
+
+
+function main() {
+    initWebAudio();
+    loadSound('test.mp3');
+
+}
+
+window.addEventListener('load', main, false);
+</script>
+
+
+Simplest tester for web audio ever
+<button id="playMe" onClick='playSound(audioBuffer)'>Hit Play, Louise</button>
+<button id="stopMe" onClick='stopSound()'>Hit Stop, Louise</button>
+</body>
+
+
+
+</html>
