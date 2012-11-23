@@ -8,60 +8,59 @@
 
 <body>
 <script type="text/javascript" src='jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src='remixer-thor.js'></script>
 <script type="text/javascript">
-// Set up super-simple web audio test.
-// OK, I now think that I do need Paul's magic queue
-var context;
-var audioBuffer = null;
-var audioSource;
 
-function initWebAudio() {
-  try {
-    context = new webkitAudioContext();
-  }
-  catch(e) {
-    alert('Web Audio API is not supported in this browser');
-  }
+// OK, I now think that I do need Paul's magic queue.  
+// How do I access that in the most simple way possible?
+// We're going to copy things from Infinite Gangam Style, as best we can
+// I kinda-sorta want to rename this.  echonest.j and then replace the 'driver' with the 'remixer'?
+// For now, just get it working
+
+var apiKey = 'WOUHTN44BMS5SMPF2';
+var trackID = 'TRCYWPQ139279B3308';
+var trackTitle = 'Onefourfiveone - D'
+var track_url = 'test.mp3'
+
+var remixer;
+var player;
+var track;
+var driver;
+
+
+function stop() {
+    player.stop();
+    player = remixer.getPlayer();
 }
 
-// will need to add Paul's callback code to this late, I betcha
-function loadSound(audioURL) {
-    var request = new XMLHttpRequest();
+function getQuantumSegment(q) {
+    return q.oseg;
+}var driver;
 
-    request.open("GET", audioURL, true);
-    request.responseType = "arraybuffer";
-    this.request = request;
 
-    request.onload = function() {
-        var buffer = context.createBuffer(request.response, false);
-        audioBuffer = buffer;
+function isSegment(q) {
+    return 'timbre' in q;
+}
+
+function dummycallback() {
+    alert("dummy callback");
+}
+
+function init() {
+    if (window.webkitAudioContext === undefined) {
+        error("Sorry, this app needs advanced web audio. Your browser doesn't"
+            + " support it. Try the latest version of Chrome");
+    } else {
+        var context = new webkitAudioContext();
+        remixer = createJRemixer(context, $, apiKey);
+        player = remixer.getPlayer();
+
+        remixer.remixTrackById(trackID, dummycallback);
+
     }
-
-    request.onerror = function(e) {
-        alert('Audio file did not load correctly');
-    }
-    request.send();
 }
 
-function playSound(buffer) {
-  audioSource = context.createBufferSource();
-  audioSource.buffer = buffer;                   
-  audioSource.connect(context.destination);       
-  audioSource.noteGrainOn(0, 1, 1);                          
-}
-
-function stopSound() {
-  audioSource.noteOff(0);                       
-}
-
-
-function main() {
-    initWebAudio();
-    loadSound('test.mp3');
-
-}
-
-window.addEventListener('load', main, false);
+window.onload = init;
 </script>
 
 

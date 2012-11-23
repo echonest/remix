@@ -2,148 +2,67 @@
 // First, it'd be nice to just do good old one
 // upload a track, do the remix, play using webaudio, offer a dl link
 // Even simpler:  static track on the server, do the remix live with webaudio
-// so first I need webaudio to work
+// I need a way to get the analysis data from amazong.  will paul's proxy work?  It doesn't support API key...
+// Note:  s3 apparently just turned on CORS:  http://aws.typepad.com/aws/2012/08/amazon-s3-cross-origin-resource-sharing.html
 
-function createJRemixer(context, apiKey, jquery) {
-    var baseUri = 'http://developer.echonest.com/api/v4/';
+function createJRemixer(context, jquery, apiKey) {
     var $ = jquery;
 
-
     var remixer = {
-
-        searchTrack: function( artist, title, callback) {
-            var url = "http://localhost:8383/TrackServer/search?callback=?";
-            $.getJSON(url, { artist: artist, title:title}, function(data) {
-                callback(data);
+        remixTrackById: function(trackID, callback) {
+            var url = "http://labs.echonest.com/Uploader/profile?callback=?"
+            // var url = 'http://developer.echonest.com/api/v4/track/profile?format=json&bucket=audio_summary'
+            $.getJSON(url, {trid:trackID}, function(data) {
+                if (data.response.status.code == 0) {
+                    remixer.remixTrack(data.response.track, callback)
+                }
             });
         },
 
-
-        fetchSound : function(audioURL, callback) {
-            var request = new XMLHttpRequest();
-
-            trace("fetchSound " + audioURL);
-            request.open("GET", audioURL, true);
-            request.responseType = "arraybuffer";
-            this.request = request;
-
-            request.onload = function() {
-                var buffer = context.createBuffer(request.response, false);
-                callback(true, buffer);
-            }
-
-            request.onerror = function(e) {
-                callback(false, null);
-            }
-            request.send();
-        },
-
-
-        fetchAnalyzedTrack : function( trackID, audioURL, callback) {
-            var track = {
-                id : trackID,
-                audio: audioURL,
-                status : null,
-                info : null,
-                analysis : null,
-                buffer : null,
-            };
-
-            function fetchTrackInfo(trackID) {
-                var request = new XMLHttpRequest();
-
-                trace("fetchTrackInfo " + trackID);
-                request.open('GET', baseUri + 'track/profile?api_key=' 
-                    + apiKey + '&format=json&id=' + trackID 
-                    + '&bucket=audio_summary&callback=' + new Date().getTime());
-
-                var that = this;
-                request.onload = function (e) {
-                    var result = JSON.parse(request.responseText);
-                    track.info = result.response.track
-                    fetchAnalysis(track.info.audio_summary.analysis_url);
-                };
-
-                request.onerror = function (e) {
-                    checkReady(false, "fetching track info");
-                }
-                request.send();
-            }
-
-
-            function fetchTrackInfoFromTrackServer(trackID) {
-                if (typeof trackID === 'string') {
-                    var url = "http://localhost:8383/TrackServer/info?callback=?";
-                    $.getJSON(url, { trid: trackID}, function(data) {
-                        if (data.status === 'ok') {
-                            track.info = data.info;
-                            track.analysis = data.analysis;
-                            checkReady(true, "fetchTrackInfoFromTrackServer");
-                        }
-                        else {
-                            checkReady(false, "fetchTrackInfoFromTrackServer");
-                        }
-                    });
-                } else {
-                    track.info = {};
-                    track.analysis = trackID;
-                    checkReady(true, "fetchPreanalyzedTrackInfoFromTrackServer");
-                }
-            }
-
-            function fetchAnalysis(url, callback) {
-                var url = track.id + ".js";
-                var request = new XMLHttpRequest();
-                request.open('GET', url);
-                request.onload = function (e) {
-                    track.analysis = JSON.parse(request.responseText);
-                    checkReady(true, "fetchAnalysis2 " + url);
-                }
-                request.onerror = function (e) {
-                    checkReady(false, "fetching analysis");
-                }
-                request.send();
-            }
+        remixTrack : function(track, callback) {
 
             function fetchAudio(url) {
                 var request = new XMLHttpRequest();
-
                 trace("fetchAudio " + url);
+                track.buffer = null;
                 request.open("GET", url, true);
                 request.responseType = "arraybuffer";
                 this.request = request;
 
                 request.onload = function() {
-                    track.buffer = context.createBuffer(request.response, false);
-                    checkReady(true, "fetching audio");
+                    trace('audio loaded');
+                     if (false) {
+                        track.buffer = context.createBuffer(request.response, false);
+                        track.status = 'ok'
+                        callback(1, track, 100);
+                    } else {
+                        context.decodeAudioData(request.response, 
+                            function(buffer) {      // completed function
+                                track.buffer = buffer;
+                                track.status = 'ok'
+                                callback(1, track, 100);
+                            }, 
+                            function(e) { // error function
+                                track.status = 'error: loading audio'
+                                callback(-1, track, 0);
+                                console.log('audio error', e);
+                            }
+                        );
+                    }
                 }
 
                 request.onerror = function(e) {
-                    checkReady(false, "fetching Audio");
+                    trace('error loading loaded');
+                    track.status = 'error: loading audio'
+                    callback(-1, track, 0);
+                }
+
+                request.onprogress = function(e) {
+                    var percent = Math.round(e.position * 100  / e.totalSize);
+                    callback(0, track, percent);
                 }
                 request.send();
             }
-
-
-            function checkReady(ok, txt) {
-
-                trace("checkReady " + ok + " " + txt);
-                if (track.status != null) {
-                    return;
-                }
-
-                if (!ok) {
-                    track.status = 'error: ' + txt;
-                    callback(track);
-                }
-
-                if (track.info != null && track.analysis != null && track.buffer != null) {
-                    track.status = 'ok';
-                    preprocessTrack(track);
-                    callback(track);
-                }
-            }
-
 
             function preprocessTrack(track) {
                 trace('preprocessTrack');
@@ -188,6 +107,7 @@ function createJRemixer(context, apiKey, jquery) {
                 connectAllOverlappingSegments(track, 'beats');
                 connectAllOverlappingSegments(track, 'tatums');
 
+
                 filterSegments(track);
             }
 
@@ -224,7 +144,6 @@ function createJRemixer(context, apiKey, jquery) {
 
                     for (var j = last; j < qchildren.length; j++) {
                         var qchild = qchildren[j];
-                        qchild.indexInParent = 0;
                         if (qchild.start >= qparent.start 
                                     && qchild.start < qparent.start + qparent.duration) {
                             qchild.parent = qparent;
@@ -250,7 +169,6 @@ function createJRemixer(context, apiKey, jquery) {
                     for (var j = last; j < segs.length; j++) {
                         var qseg = segs[j];
                         if (qseg.start >= q.start) {
-                        //if (qseg.start <= q.start && (qseg.start + qseg.duration) > q.start) {
                             q.oseg = qseg;
                             last = j;
                             break
@@ -284,17 +202,26 @@ function createJRemixer(context, apiKey, jquery) {
                 }
             }
 
-            fetchTrackInfoFromTrackServer(trackID);
-            fetchAudio(audioURL);
+
+            if (track.status == 'complete') {
+                preprocessTrack(track);
+                fetchAudio(track.info.url);
+            } else {
+                track.status = 'error: incomplete analysis';
+                callback(false, track);
+            }
         },
 
         getPlayer : function() {
             var queueTime = 0;
             var audioGain = context.createGainNode();
-            audioGain.gain.value = .9;
+            var curAudioSource = null;
+            var curQ = null;
+            audioGain.gain.value = 1;
             audioGain.connect(context.destination);
 
             function queuePlay(when, q) {
+                // console.log('qp', when, q);
                 audioGain.gain.value = 1;
                 if (isAudioBuffer(q)) {
                     var audioSource = context.createBufferSource();
@@ -308,10 +235,11 @@ function createJRemixer(context, apiKey, jquery) {
                     }
                     return when;
                 } else if (isQuantum(q)) {
-                    q.audioSource = context.createBufferSource();
-                    q.audioSource.buffer = q.track.buffer;
-                    q.audioSource.connect(audioGain);
-                    q.audioSource.noteGrainOn(when, q.start, q.duration);
+                    var audioSource = context.createBufferSource();
+                    audioSource.buffer = q.track.buffer;
+                    audioSource.connect(audioGain);
+                    audioSource.noteGrainOn(when, q.start, q.duration);
+                    q.audioSource = audioSource;
                     return when + q.duration;
                 } else {
                     error("can't play " + q);
@@ -319,13 +247,38 @@ function createJRemixer(context, apiKey, jquery) {
                 }
             }
 
+            function playQuantum(when, q) {
+                var now = context.currentTime;
+                var start = when == 0 ? now : when;
+                var next = start + q.duration;
+
+                if (curQ && curQ.track === q.track && curQ.which + 1 == q.which) {
+                    // let it ride
+                } else {
+                    var audioSource = context.createBufferSource();
+                    audioGain.gain.value = 1;
+                    audioSource.buffer = q.track.buffer;
+                    audioSource.connect(audioGain);
+                    var duration = track.audio_summary.duration - q.start;
+                    audioSource.noteGrainOn(start, q.start, duration);
+                    if (curAudioSource) {
+                        curAudioSource.noteOff(start);
+                    }
+                    curAudioSource = audioSource;
+                }
+                q.audioSource = curAudioSource;
+                curQ = q;
+                return next;
+            }
+
             function error(s) {
                 console.log(s);
             }
 
             var player = {
-                play: function(q) {
-                    queuePlay(0, q);
+                play: function(when, q) {
+                    return playQuantum(when, q);
+                    //queuePlay(0, q);
                 },
 
                 addCallback: function(callback) {
@@ -345,8 +298,12 @@ function createJRemixer(context, apiKey, jquery) {
 
                 stop: function(q) {
                     if (q === undefined) {
-                        audioGain.gain.value = 0;
-                        audioGain.disconnect();
+                        if (curAudioSource) {
+                            curAudioSource.noteOff(0);
+                            curAudioSource = null;
+                        }
+                        //audioGain.gain.value = 0;
+                        //audioGain.disconnect();
                     } else {
                         if ('audioSource' in q) {
                             if (q.audioSource != null) {
@@ -354,6 +311,7 @@ function createJRemixer(context, apiKey, jquery) {
                             }
                         }
                     }
+                    curQ = null;
                 },
 
                 curTime: function() {
@@ -361,7 +319,26 @@ function createJRemixer(context, apiKey, jquery) {
                 }
             }
             return player;
-        }
+        },
+
+        fetchSound : function(audioURL, callback) {
+            var request = new XMLHttpRequest();
+
+            trace("fetchSound " + audioURL);
+            request.open("GET", audioURL, true);
+            request.responseType = "arraybuffer";
+            this.request = request;
+
+            request.onload = function() {
+                var buffer = context.createBuffer(request.response, false);
+                callback(true, buffer);
+            }
+
+            request.onerror = function(e) {
+                callback(false, null);
+            }
+            request.send();
+        },
     };
 
     function isQuantum(a) {
@@ -379,4 +356,120 @@ function createJRemixer(context, apiKey, jquery) {
     }
 
     return remixer;
+}
+
+
+function euclidean_distance(v1, v2) {
+    var sum = 0;
+    for (var i = 0; i < 3; i++) {
+        var delta = v2[i] - v1[i];
+        sum += delta * delta;
+    }
+    return Math.sqrt(sum);
+}
+
+function timbral_distance(s1, s2) {
+    return euclidean_distance(s1.timbre, s2.timbre);
+}
+
+
+function clusterSegments(track, numClusters, fieldName, vecName) {
+    var vname = vecName || 'timbre';
+    var fname = fieldName || 'cluster';
+    var maxLoops = 1000;
+
+    function zeroArray(size) {
+        var arry = [];
+        for (var i = 0; i < size; i++) {
+            arry.push(0);
+        }
+        return arry;
+    }
+
+    function reportClusteringStats() {
+        var counts = zeroArray(numClusters);
+        for (var i = 0; i < track.analysis.segments.length; i++) {
+            var cluster = track.analysis.segments[i][fname];
+            counts[cluster]++;
+        }
+        //console.log('clustering stats');
+        for (var i = 0; i < counts.length; i++) {
+            //console.log('clus', i, counts[i]);
+        }
+    }
+
+    function sumArray(v1, v2) {
+        for (var i = 0; i < v1.length; i++) {
+            v1[i] += v2[i];
+        }
+        return v1;
+    }
+
+    function divArray(v1, scalar) {
+        for (var i = 0; i < v1.length; i++) {
+            v1[i] /= scalar
+        }
+        return v1;
+    }
+    function getCentroid(cluster) {
+        var count = 0;
+        var segs = track.analysis.segments;
+        var vsum = zeroArray(segs[0][vname].length);
+
+        for (var i = 0; i < segs.length; i++) {
+            if (segs[i][fname] === cluster) {
+                count++;
+                vsum = sumArray(vsum, segs[i][vname]);
+            }
+        }
+
+        vsum = divArray(vsum, count);
+        return vsum;
+    }
+
+    function findNearestCluster(clusters, seg) {
+        var shortestDistance = Number.MAX_VALUE;
+        var bestCluster = -1;
+
+        for (var i = 0; i < clusters.length; i++) {
+            var distance = euclidean_distance(clusters[i], seg[vname]);
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                bestCluster = i;
+            }
+        }
+        return bestCluster;
+    }
+
+    // kmeans clusterer
+    // use random initial assignments
+    for (var i = 0; i < track.analysis.segments.length; i++) {
+        track.analysis.segments[i][fname] = Math.floor(Math.random() * numClusters);
+    }
+
+    reportClusteringStats();
+
+    while (maxLoops-- > 0) {
+        // calculate cluster centroids
+        var centroids = [];
+        for (var i = 0; i < numClusters; i++) {
+            centroids[i] = getCentroid(i);
+        }
+        // reassign segs to clusters
+        var switches = 0;
+        for (var i = 0; i < track.analysis.segments.length; i++) {
+            var seg = track.analysis.segments[i];
+            var oldCluster = seg[fname];
+            var newCluster = findNearestCluster(centroids, seg);
+            if (oldCluster !== newCluster) {
+                switches++;
+                seg[fname] = newCluster;
+            }
+        }
+        //console.log("loopleft", maxLoops, 'switches', switches);
+        if (switches == 0) {
+            break;
+        }
+    }
+    reportClusteringStats();
 }
