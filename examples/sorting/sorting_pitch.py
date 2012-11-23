@@ -11,7 +11,7 @@ By Thor Kell, 2012-11-02
 
 import echonest.audio as audio
 usage = """
-    python sorting.py <bars|beats|tatums|segments> <0-11> <input_filename> <output_filename> [reverse]
+    python sorting_pitch.py <bars|beats|tatums|segments> <0-11> <input_filename> <output_filename> [reverse]
 
 """
 def main(units, key, input_filename, output_filename):

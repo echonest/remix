@@ -7,9 +7,12 @@ Filters lists of  AudioQuanta (bars, beats, tatums, segments)
 by various proporties, and resynthesizes them
 
 'pitch' takes an integer a finds chunks that have a pitch maximum in the given index
-'pitches' takes a list of integers and finds chunks that have pitch maxima in those pitches - a simple chord-finder
-'duration' takes a pair of integers or floats and finds chunks that overlap / are within that range in time
-'louder' and 'softer' take a float and finds chunks that are louder or softer than the number (in dBFS, so 0.0 is the loudest and -100.0 is the softest)
+'pitches' takes a list of integers (be sure to quote them on the command line:  "[0, 4, 7]")
+ and finds chunks that have pitch maxima in those pitches - a simple chord-finder
+'duration' takes a pair of integers (be sure to quote them on the command line:  "[7, 14]")
+ or floats and finds chunks that overlap / are within that range in time
+'louder' and 'softer' take a float and finds chunks that are louder or softer than the number
+ (in dBFS, so 0.0 is the loudest)
 
 By Thor Kell, 2012-11-14
 """
@@ -64,6 +67,7 @@ def main(units, key, value, input_filename, output_filename):
         if key == 'louder':
             if chunk.mean_loudness() > value:
                 filtered_chunks.append(chunk)
+
         if key == 'softer':
             if chunk.mean_loudness() < value:
                 filtered_chunks.append(chunk)

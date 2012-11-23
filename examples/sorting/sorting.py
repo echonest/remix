@@ -23,7 +23,7 @@ def main(units, key, input_filename, output_filename):
 
     if key == 'confidence':
         def sorting_function(chunk):
-            if units != segment:
+            if units != 'segments':
                 return chunk.confidence
             else:
                 # Segments have no confidence, so we grab confidence from the tatum
