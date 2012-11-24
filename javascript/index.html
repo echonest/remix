@@ -20,31 +20,14 @@
 var apiKey = 'WOUHTN44BMS5SMPF2';
 var trackID = 'TRCYWPQ139279B3308';
 var trackTitle = 'Onefourfiveone - D'
-var track_url = 'test.mp3'
+var trackURL = 'test.mp3'
 
 var remixer;
 var player;
 var track;
-var driver;
 
 
-function stop() {
-    player.stop();
-    player = remixer.getPlayer();
-}
 
-function getQuantumSegment(q) {
-    return q.oseg;
-}var driver;
-
-
-function isSegment(q) {
-    return 'timbre' in q;
-}
-
-function dummycallback() {
-    alert("dummy callback");
-}
 
 function init() {
     if (window.webkitAudioContext === undefined) {
@@ -55,7 +38,20 @@ function init() {
         remixer = createJRemixer(context, $, apiKey);
         player = remixer.getPlayer();
 
-        remixer.remixTrackById(trackID, dummycallback);
+        remixer.remixTrackById(trackID, trackURL, function(t) {
+            alert("done loading, in the callback");
+            track = t;
+            var remixed = new Array();
+            for (var i=0; i < track.analysis.beats.length; i++) { 
+                if (i % 4 == 0) {
+                    remixed.push(track.analysis.beats[i])
+                }
+            }
+            alert("here we go");
+            player.play(0, remixed);
+        });
+    
+        
 
     }
 }

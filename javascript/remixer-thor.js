@@ -1,29 +1,27 @@
-// from Paul's Infinite Jukebox source.  I would like to extract things out of this
-// First, it'd be nice to just do good old one
-// upload a track, do the remix, play using webaudio, offer a dl link
+// from Paul's Infinite Jukebox source.
 // Even simpler:  static track on the server, do the remix live with webaudio
-// Today's game:  proxy around the damn json issue fromm amazon
+// New game:  play back anything out of the remixer / player
+
 
 function createJRemixer(context, jquery, apiKey) {
     var $ = jquery;
+    $.ajaxSetup({ cache: false });
 
     var remixer = {
-        remixTrackById: function(trackID, callback) {
-            //var url = "http://labs.echonest.com/Uploader/profile?callback=?"
-            var url = 'http://developer.echonest.com/api/v4/track/profile?format=json&bucket=audio_summary'
-            
+        remixTrackById: function(trackID, trackURL, callback) {
             var track;
+            var url = 'http://developer.echonest.com/api/v4/track/profile?format=json&bucket=audio_summary'
             $.getJSON(url, {id:trackID, api_key:apiKey}, function(data) {
                 var analysisURL = data.response.track.audio_summary.analysis_url;
-                alert(analysisURL);
                 track = data.response.track;
                 
-
+                // This call is proxied through the yahoo query engine.  The sooner we can remove this, the better
                 $.getJSON("http://query.yahooapis.com/v1/public/yql", 
                     { q: "select * from json where url=\"" + analysisURL + "\"", format: "json"}, 
                     function(data) {
                         if (data.query.results != null) {
                             track.analysis = data.query.results.json;
+                            remixer.remixTrack(track, trackURL, callback);   
                         }
                         else {
                             alert('No analysis data returned:  sorry!');
@@ -31,27 +29,12 @@ function createJRemixer(context, jquery, apiKey) {
                 });
 
             });
-
-            // This is a gigantic hack to get JSON analysis data from Amazon.
-            // As soon as we can get rid of this and get our data properly, the better
-//            $.getJSON("http://query.yahooapis.com/v1/public/yql",
-//                { q: "select * from json where url=\"" + analysisURL + "\"", format: "json"}, 
-//                function (data) {
-//                  alert('No analysis data returned:  sorry!');
-//                if (data) {
-//                    var analysis_data = data.query.results.json;    
-//                    var track = data.response.track;
-//                    track.analysis = analysis_data;
-//                    alert(track.analysis.meta);
-//                    // remixer.remixTrack(data.response.track, callback);        
-//                } else {
-//                    alert('No analysis data returned:  sorry!');
-//                }
-//            });​
         },
 
-        remixTrack : function(track, callback) {
 
+        
+
+        remixTrack : function(track, trackURL, callback) {
             function fetchAudio(url) {
                 var request = new XMLHttpRequest();
                 trace("fetchAudio " + url);
@@ -65,17 +48,15 @@ function createJRemixer(context, jquery, apiKey) {
                      if (false) {
                         track.buffer = context.createBuffer(request.response, false);
                         track.status = 'ok'
-                        callback(1, track, 100);
                     } else {
                         context.decodeAudioData(request.response, 
                             function(buffer) {      // completed function
                                 track.buffer = buffer;
-                                track.status = 'ok'
-                                callback(1, track, 100);
+                                track.status = 'ok';
+                                 callback(track);   
                             }, 
                             function(e) { // error function
                                 track.status = 'error: loading audio'
-                                callback(-1, track, 0);
                                 console.log('audio error', e);
                             }
                         );
@@ -85,12 +66,10 @@ function createJRemixer(context, jquery, apiKey) {
                 request.onerror = function(e) {
                     trace('error loading loaded');
                     track.status = 'error: loading audio'
-                    callback(-1, track, 0);
                 }
 
                 request.onprogress = function(e) {
                     var percent = Math.round(e.position * 100  / e.totalSize);
-                    callback(0, track, percent);
                 }
                 request.send();
             }
@@ -137,7 +116,6 @@ function createJRemixer(context, jquery, apiKey) {
                 connectAllOverlappingSegments(track, 'bars');
                 connectAllOverlappingSegments(track, 'beats');
                 connectAllOverlappingSegments(track, 'tatums');
-
 
                 filterSegments(track);
             }
@@ -236,10 +214,9 @@ function createJRemixer(context, jquery, apiKey) {
 
             if (track.status == 'complete') {
                 preprocessTrack(track);
-                fetchAudio(track.info.url);
+                fetchAudio(trackURL);
             } else {
                 track.status = 'error: incomplete analysis';
-                callback(false, track);
             }
         },
 
@@ -255,13 +232,16 @@ function createJRemixer(context, jquery, apiKey) {
                 // console.log('qp', when, q);
                 audioGain.gain.value = 1;
                 if (isAudioBuffer(q)) {
+                    alert("buffer");
                     var audioSource = context.createBufferSource();
                     audioSource.buffer = q;
                     audioSource.connect(audioGain);
                     audioSource.noteOn(when);
                     return when;
                 } else if ($.isArray(q)) {
+                    
                     for (var i in q) {
+                        alert(when);
                         when = queuePlay(when, q[i]);
                     }
                     return when;
@@ -271,9 +251,10 @@ function createJRemixer(context, jquery, apiKey) {
                     audioSource.connect(audioGain);
                     audioSource.noteGrainOn(when, q.start, q.duration);
                     q.audioSource = audioSource;
-                    return when + q.duration;
+                    return (parseFloat(when) + parseFloat(q.duration)).toString();
                 } else {
                     error("can't play " + q);
+                    alert("error");
                     return when;
                 }
             }
@@ -308,8 +289,8 @@ function createJRemixer(context, jquery, apiKey) {
 
             var player = {
                 play: function(when, q) {
-                    return playQuantum(when, q);
-                    //queuePlay(0, q);
+                    // return playQuantum(when, q);
+                    return queuePlay(0, q);
                 },
 
                 addCallback: function(callback) {
@@ -389,6 +370,8 @@ function createJRemixer(context, jquery, apiKey) {
     return remixer;
 }
 
+
+// below here looks preeettyyy much like helper functions, I think
 
 function euclidean_distance(v1, v2) {
     var sum = 0;
