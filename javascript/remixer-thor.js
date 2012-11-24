@@ -2,21 +2,52 @@
 // First, it'd be nice to just do good old one
 // upload a track, do the remix, play using webaudio, offer a dl link
 // Even simpler:  static track on the server, do the remix live with webaudio
-// I need a way to get the analysis data from amazong.  will paul's proxy work?  It doesn't support API key...
-// Note:  s3 apparently just turned on CORS:  http://aws.typepad.com/aws/2012/08/amazon-s3-cross-origin-resource-sharing.html
+// Today's game:  proxy around the damn json issue fromm amazon
 
 function createJRemixer(context, jquery, apiKey) {
     var $ = jquery;
 
     var remixer = {
         remixTrackById: function(trackID, callback) {
-            var url = "http://labs.echonest.com/Uploader/profile?callback=?"
-            // var url = 'http://developer.echonest.com/api/v4/track/profile?format=json&bucket=audio_summary'
-            $.getJSON(url, {trid:trackID}, function(data) {
-                if (data.response.status.code == 0) {
-                    remixer.remixTrack(data.response.track, callback)
-                }
+            //var url = "http://labs.echonest.com/Uploader/profile?callback=?"
+            var url = 'http://developer.echonest.com/api/v4/track/profile?format=json&bucket=audio_summary'
+            
+            var track;
+            $.getJSON(url, {id:trackID, api_key:apiKey}, function(data) {
+                var analysisURL = data.response.track.audio_summary.analysis_url;
+                alert(analysisURL);
+                track = data.response.track;
+                
+
+                $.getJSON("http://query.yahooapis.com/v1/public/yql", 
+                    { q: "select * from json where url=\"" + analysisURL + "\"", format: "json"}, 
+                    function(data) {
+                        if (data.query.results != null) {
+                            track.analysis = data.query.results.json;
+                        }
+                        else {
+                            alert('No analysis data returned:  sorry!');
+                        }
+                });
+
             });
+
+            // This is a gigantic hack to get JSON analysis data from Amazon.
+            // As soon as we can get rid of this and get our data properly, the better
+//            $.getJSON("http://query.yahooapis.com/v1/public/yql",
+//                { q: "select * from json where url=\"" + analysisURL + "\"", format: "json"}, 
+//                function (data) {
+//                  alert('No analysis data returned:  sorry!');
+//                if (data) {
+//                    var analysis_data = data.query.results.json;    
+//                    var track = data.response.track;
+//                    track.analysis = analysis_data;
+//                    alert(track.analysis.meta);
+//                    // remixer.remixTrack(data.response.track, callback);        
+//                } else {
+//                    alert('No analysis data returned:  sorry!');
+//                }
+//            });​
         },
 
         remixTrack : function(track, callback) {
