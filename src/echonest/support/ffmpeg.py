@@ -30,8 +30,7 @@ class FFMPEGStreamHandler(ExceptionThread):
             self.filename = infile
 
         if self.filename:
-            if os.path.getsize(self.filename) == 0:
-                raise ValueError("Input file contains 0 bytes")
+            ensure_valid(self.filename)
             command += " -i %s" % self.filename
         else:
             command += " -i pipe:0"
@@ -101,6 +100,23 @@ class FFMPEGStreamHandler(ExceptionThread):
 
     def feed(self, samples):
         self.p.stdout.read(samples * 4)
+
+
+def ensure_valid(filename):
+    command = "en-ffmpeg -i %s -acodec copy -f null -" % filename
+
+    if os.path.getsize(filename) == 0:
+        raise ValueError("Input file contains 0 bytes")
+
+    log.info("Calling ffmpeg: %s", command)
+
+    o = subprocess.call(command.split(),
+                        stdout=open(os.devnull, 'wb'),
+                        stderr=open(os.devnull, 'wb'))
+    if o == 0:
+        return True
+    else:
+        raise ValueError("FFMPEG failed to read the file (%d)" % o)
 
 
 def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
