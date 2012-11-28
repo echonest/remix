@@ -49,7 +49,7 @@ function createJRemixer(context, jquery, apiKey) {
                             function(buffer) {      // completed function
                                 track.buffer = buffer;
                                 track.status = 'ok';
-                                 callback(track);   
+                                callback(track, 100);   
                             }, 
                             function(e) { // error function
                                 track.status = 'error: loading audio'
@@ -58,14 +58,13 @@ function createJRemixer(context, jquery, apiKey) {
                         );
                     }
                 }
-
                 request.onerror = function(e) {
                     trace('error loading loaded');
                     track.status = 'error: loading audio'
                 }
-
                 request.onprogress = function(e) {
                     var percent = Math.round(e.position * 100  / e.totalSize);
+                    callback(track, percent);   
                 }
                 request.send();
             }
@@ -233,8 +232,11 @@ function createJRemixer(context, jquery, apiKey) {
                     audioSource.noteOn(when);
                     return when;
                 } else if ($.isArray(q)) {
-                    
-                    for (var i in q) {
+                    // Correct for load times
+                    if (when == 0) {
+                        when = context.currentTime;
+                    }
+                    for (var i = 0; i < q.length; i++) {
                         when = queuePlay(when, q[i]);
                     }
                     return when;
@@ -242,9 +244,9 @@ function createJRemixer(context, jquery, apiKey) {
                     var audioSource = context.createBufferSource();
                     audioSource.buffer = q.track.buffer;
                     audioSource.connect(audioGain);
-                    audioSource.noteGrainOn(when, q.start, q.duration);
                     q.audioSource = audioSource;
-                    return (parseFloat(when) + parseFloat(q.duration)).toString();
+                    audioSource.noteGrainOn(when, q.start, q.duration);
+                    return (when + parseFloat(q.duration));
                 } else {
                     error("can't play " + q);
                     return when;
@@ -301,7 +303,16 @@ function createJRemixer(context, jquery, apiKey) {
                 },
 
                 stop: function(q) {
-                    if (q === undefined) {
+                    if ($.isArray(q)) {
+                        console.log('array stop', q.length);
+                        for (var i = 0; i < q.length; i++) {
+                            if (q[i].audioSource != null) {
+                                q[i].audioSource.noteOff(0);
+                            }
+                        }
+
+                    }
+                    else if (q === undefined) {
                         if (curAudioSource) {
                             curAudioSource.noteOff(0);
                             curAudioSource = null;
@@ -320,7 +331,9 @@ function createJRemixer(context, jquery, apiKey) {
 
                 curTime: function() {
                     return context.currentTime;
-                }
+                },
+
+
             }
             return player;
         },

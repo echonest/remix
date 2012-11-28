@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<script type="text/javascript" src='jquery-1.8.3.min.js'></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src='remixer-thor.js'></script>
 <script type="text/javascript">
 
@@ -20,8 +20,7 @@ var trackURL = 'test.mp3'
 var remixer;
 var player;
 var track;
-
-
+var remixed;
 
 
 function init() {
@@ -32,16 +31,20 @@ function init() {
         var context = new webkitAudioContext();
         remixer = createJRemixer(context, $, apiKey);
         player = remixer.getPlayer();
+        $("#info").text("Loading analysis data...");
 
-        remixer.remixTrackById(trackID, trackURL, function(t) {
+        remixer.remixTrackById(trackID, trackURL, function(t, percent, ) {
             track = t;
-            var remixed = new Array();
-            for (var i=0; i < track.analysis.beats.length; i++) { 
-                if (i % 4 == 0) {
-                    remixed.push(track.analysis.beats[i])
+            $("#info").text(percent + "% of the track loaded");
+            if (track.status == 'ok') {
+                remixed = new Array();
+                for (var i=0; i < track.analysis.beats.length; i++) {
+                    if (i % 4 == 0) {
+                        remixed.push(track.analysis.beats[i])
+                    }
                 }
+                console.log('remix status', 'complete');
             }
-            player.play(0, remixed);
         });
     
         
@@ -53,6 +56,9 @@ window.onload = init;
 </script>
 
 Welcome to One.html
+<div id='info'> </div>
+<button onClick="player.play(0, remixed);">Play!</button>
+<button onClick="player.stop(remixed)">Stop!</button>
 </body>
 
 
