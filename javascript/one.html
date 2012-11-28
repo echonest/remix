@@ -9,9 +9,7 @@
 <script type="text/javascript" src='remixer-thor.js'></script>
 <script type="text/javascript">
 
-// Currently does first-beat extracton on a known track ID and known URL
-// Buggy:  the first few beats overlap and thus distort.
-
+// Currently does first-beat extracton on a known track ID and known audio URL
 var apiKey = 'WOUHTN44BMS5SMPF2';
 var trackID = 'TRCYWPQ139279B3308';
 var trackTitle = 'Onefourfiveone - D'
@@ -33,7 +31,7 @@ function init() {
         player = remixer.getPlayer();
         $("#info").text("Loading analysis data...");
 
-        remixer.remixTrackById(trackID, trackURL, function(t, percent, ) {
+        remixer.remixTrackById(trackID, trackURL, function(t, percent) {
             track = t;
             $("#info").text(percent + "% of the track loaded");
             if (track.status == 'ok') {
