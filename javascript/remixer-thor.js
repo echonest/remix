@@ -1,6 +1,5 @@
 // from Paul's Infinite Jukebox source.
-// Even simpler:  static track on the server, do the remix live with webaudio
-// New game:  play back anything out of the remixer / player
+// Currently, this supports a pre-uploaded track and a known track ID
 
 
 function createJRemixer(context, jquery, apiKey) {
@@ -30,9 +29,6 @@ function createJRemixer(context, jquery, apiKey) {
 
             });
         },
-
-
-        
 
         remixTrack : function(track, trackURL, callback) {
             function fetchAudio(url) {
@@ -78,7 +74,6 @@ function createJRemixer(context, jquery, apiKey) {
                 trace('preprocessTrack');
                 var types = ['sections', 'bars', 'beats', 'tatums', 'segments'];
 
-                
                 for (var i in types) {
                     var type = types[i];
                     trace('preprocessTrack ' + type);
@@ -232,7 +227,6 @@ function createJRemixer(context, jquery, apiKey) {
                 // console.log('qp', when, q);
                 audioGain.gain.value = 1;
                 if (isAudioBuffer(q)) {
-                    alert("buffer");
                     var audioSource = context.createBufferSource();
                     audioSource.buffer = q;
                     audioSource.connect(audioGain);
@@ -241,7 +235,6 @@ function createJRemixer(context, jquery, apiKey) {
                 } else if ($.isArray(q)) {
                     
                     for (var i in q) {
-                        alert(when);
                         when = queuePlay(when, q[i]);
                     }
                     return when;
@@ -254,7 +247,6 @@ function createJRemixer(context, jquery, apiKey) {
                     return (parseFloat(when) + parseFloat(q.duration)).toString();
                 } else {
                     error("can't play " + q);
-                    alert("error");
                     return when;
                 }
             }
@@ -370,9 +362,7 @@ function createJRemixer(context, jquery, apiKey) {
     return remixer;
 }
 
-
-// below here looks preeettyyy much like helper functions, I think
-
+// Non-essential but very useful functions
 function euclidean_distance(v1, v2) {
     var sum = 0;
     for (var i = 0; i < 3; i++) {

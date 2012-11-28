@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 <meta charset=utf-8>
-
-
 </head>
 
 <body>
@@ -11,11 +9,8 @@
 <script type="text/javascript" src='remixer-thor.js'></script>
 <script type="text/javascript">
 
-// OK, I now think that I do need Paul's magic queue.  
-// How do I access that in the most simple way possible?
-// We're going to copy things from Infinite Gangam Style, as best we can
-// I kinda-sorta want to rename this.  echonest.js and then replace the 'driver' with the 'remixer'?
-// For now, just get it working
+// Currently does first-beat extracton on a known track ID and known URL
+// Buggy:  the first few beats overlap and thus distort.
 
 var apiKey = 'WOUHTN44BMS5SMPF2';
 var trackID = 'TRCYWPQ139279B3308';
@@ -39,7 +34,6 @@ function init() {
         player = remixer.getPlayer();
 
         remixer.remixTrackById(trackID, trackURL, function(t) {
-            alert("done loading, in the callback");
             track = t;
             var remixed = new Array();
             for (var i=0; i < track.analysis.beats.length; i++) { 
@@ -47,7 +41,6 @@ function init() {
                     remixed.push(track.analysis.beats[i])
                 }
             }
-            alert("here we go");
             player.play(0, remixed);
         });
     
@@ -59,10 +52,7 @@ function init() {
 window.onload = init;
 </script>
 
-
-Simplest tester for web audio ever
-<button id="playMe" onClick='playSound(audioBuffer)'>Hit Play, Louise</button>
-<button id="stopMe" onClick='stopSound()'>Hit Stop, Louise</button>
+Welcome to One.html
 </body>
 
 
