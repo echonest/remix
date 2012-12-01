@@ -1,0 +1,26 @@
+MThd | Format=1 | # of Tracks=2 | Division=15360
+
+
+
+
+Track #0 ******************************************
+    Time       Event
+    
+   1: 1:  0 |Time Sig    |  4/4      | MIDI-clocks\click=24 | 32nds\quarter=8
+            |Tempo       | BPM=120   | micros\quarter=500000
+ 101: 1:  0 |End of track| 
+
+
+
+
+
+Track #1 ******************************************
+    Time       Event
+    
+   1: 1:  0 |Track Name  | len=7     |
+            0x53 0x79 0x6E 0x74 0x68 0x20 0x31 <Synth 1>
+            |Instrument  | len=7     |
+            0x53 0x79 0x6E 0x74 0x68 0x20 0x31 <Synth 1>
+            |On Note     | chan= 1   | pitch=C 1         | vol=127
+   2: 1:  0 |Off Note    | chan= 1   | pitch=c 1         | vol=0
+ 101: 1:  0 |End of track| 
