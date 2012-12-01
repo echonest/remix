@@ -11,7 +11,7 @@ By Ben Lacker, based on multitest.py by Adam Lindsay.
 import os, sys
 from math import sqrt
 
-from echonest import audio, video
+from echonest.remix import audio, video
 
 usage = """
 Usage: 

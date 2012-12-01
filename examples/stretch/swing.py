@@ -8,7 +8,7 @@ Distort the tatums in time to achieve a swung beat.
 Created by Adam T. Lindsay on 2009-04-02.
 """
 
-from echonest import audio, modify
+from echonest.remix import audio, modify
 
 usage = """
 Usage:

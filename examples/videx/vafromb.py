@@ -12,7 +12,7 @@ import numpy
 import sys
 import time
 
-from echonest import action, audio, video
+from echonest.remix import action, audio, video
 
 usage="""
 Usage:

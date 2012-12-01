@@ -16,7 +16,7 @@ import sys
 import time
 
 import soundtouch
-from echonest import audio, modify
+from echonest.remix import audio, modify
 
 USAGE = """
 Usage:

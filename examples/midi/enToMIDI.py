@@ -9,10 +9,10 @@ Copyright (c) 2008 __MyCompanyName__. All rights reserved.
 
 import sys
 import os
-import echonest.audio as audio
+import echonest.remix.audio as audio
 from copy import copy
-from echonest.support import midi
-from echonest.support.midi.MidiOutFile import MidiOutFile
+from echonest.remix.support import midi
+from echonest.remix.support.midi.MidiOutFile import MidiOutFile
 from math import pow
 
 def main():

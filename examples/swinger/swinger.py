@@ -13,8 +13,8 @@ from optparse import OptionParser
 import os, sys
 import dirac
 
-from echonest.audio import LocalAudioFile, AudioData
-from echonest.action import render, Playback, display_actions
+from echonest.remix.audio import LocalAudioFile, AudioData
+from echonest.remix.action import render, Playback, display_actions
 
 def do_work(track, options):
     

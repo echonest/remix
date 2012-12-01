@@ -11,7 +11,7 @@ By Ben Lacker 2009-3-4, updated by Thor Kell, 2012-9-26
 """
 import sys
 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage = """
 Usage: 

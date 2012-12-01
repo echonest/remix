@@ -10,7 +10,7 @@ Copyright (c) 2009 __MyCompanyName__. All rights reserved.
 import sys
 import os
 
-from echonest import video
+from echonest.remix import video
 
 usage = """
 Usage: 

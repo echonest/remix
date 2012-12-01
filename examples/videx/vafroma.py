@@ -11,9 +11,9 @@ By Ben Lacker, P. Lamere
 import numpy
 import sys
 import time
-import echonest.audio as audio
-import echonest.video as video
-import echonest.modify as modify
+import echonest.remix.audio as audio
+import echonest.remix.video as video
+import echonest.remix.modify as modify
 
 usage="""
 Usage:

@@ -14,7 +14,7 @@ import sys
 import os.path
 import numpy
 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage="""
 Usage:

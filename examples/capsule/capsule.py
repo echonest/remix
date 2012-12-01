@@ -13,8 +13,8 @@ import os
 import sys
 from optparse import OptionParser
 
-from echonest.action import render, make_stereo
-from echonest.audio import LocalAudioFile
+from echonest.remix.action import render, make_stereo
+from echonest.remix.audio import LocalAudioFile
 from pyechonest import util
 
 from capsule_support import order_tracks, equalize_tracks, resample_features, timbre_whiten, initialize, make_transition, terminate, FADE_OUT, display_actions, is_valid

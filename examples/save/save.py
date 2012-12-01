@@ -20,7 +20,7 @@ Example:
     python save.py SaveMe.mp3 
 """
 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 def main(input_filename):
     audiofile = audio.LocalAudioFile(input_filename)

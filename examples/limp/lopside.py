@@ -9,7 +9,7 @@ Demonstrates the beat hierarchy navigation in AudioQuantum
 
 Originally by Adam Lindsay, 2009-01-19.
 """
-import echonest.audio as audio
+import echonest.remix.audio as audio
 import sys
 
 usage = """

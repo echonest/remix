@@ -17,7 +17,7 @@ import os, sys, os.path
 import time
 from math import sqrt
 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage = """
 Usage: 

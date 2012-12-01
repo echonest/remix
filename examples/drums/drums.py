@@ -13,7 +13,7 @@ import numpy
 import sys
 import time
 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage="""
 Usage:

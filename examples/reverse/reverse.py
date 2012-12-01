@@ -10,7 +10,7 @@ Originally created by Robert Ochshorn on 2008-06-11.  Refactored by
 Joshua Lifton 2008-09-07.
 """
 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage = """
 Usage: 

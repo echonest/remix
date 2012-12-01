@@ -19,9 +19,9 @@ This example may be removed or be dramatically refactored in the near future.
 
 import random
 
-import echonest.audio as audio
-from echonest.sorting import *
-from echonest.selection import *
+import echonest.remix.audio as audio
+from echonest.remix.sorting import *
+from echonest.remix.selection import *
 
 usage = """
 Usage:

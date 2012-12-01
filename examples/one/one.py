@@ -7,7 +7,7 @@ Digest only the first beat of every bar.
 
 By Ben Lacker, 2009-02-18.
 """
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage = """
 Usage: 

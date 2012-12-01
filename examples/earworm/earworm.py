@@ -35,9 +35,9 @@ Get the source, unzip it, cd to the directory it is in and run:
 """
     sys.exit(1)
 
-from echonest.action import Playback, Jump, Fadeout, render, display_actions
-from echonest.audio import LocalAudioFile
-# from echonest.cloud_support import AnalyzedAudioFile
+from echonest.remix.action import Playback, Jump, Fadeout, render, display_actions
+from echonest.remix.audio import LocalAudioFile
+# from echonest.remix.cloud_support import AnalyzedAudioFile
 
 from earworm_support import evaluate_distance, timbre_whiten, resample_features
 from utils import rows, tuples, flatten

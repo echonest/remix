@@ -19,11 +19,11 @@ Environment:
   analysis: container for all the other analysis products in the file
   
   libraries (i.e., the namespace you have to work with):
-    from echonest.audio import *
-    from echonest.audio import AudioQuantumList as aql
-    from echonest.audio import AudioQuantum as aq
-    from echonest.selection import *
-    from echonest.sorting import *
+    from echonest.remix.audio import *
+    from echonest.remix.audio import AudioQuantumList as aql
+    from echonest.remix.audio import AudioQuantum as aq
+    from echonest.remix.selection import *
+    from echonest.remix.sorting import *
 
 $ ./remix.py ../music/BillieJean.mp3
 

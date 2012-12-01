@@ -10,7 +10,7 @@ Demonstrates content-based selection filtering via AudioQuantumLists
 Originally by Adam Lindsay, 2008-09-15.
 Refactored by Thor Kell, 2012-11-01
 """
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage = """
 Usage: 

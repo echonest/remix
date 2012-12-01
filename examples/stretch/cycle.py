@@ -12,7 +12,7 @@ import math
 import os
 import sys
 
-from echonest import audio, modify
+from echonest.remix import audio, modify
 
 USAGE = """
 Usage:

@@ -12,8 +12,8 @@ Created by Tristan Jehan.
 import os, sys
 import dirac, math
 from optparse import OptionParser
-from echonest.audio import LocalAudioFile, AudioData
-from echonest.action import render, Playback, display_actions
+from echonest.remix.audio import LocalAudioFile, AudioData
+from echonest.remix.action import render, Playback, display_actions
 
 
 def select_tempo(index, num_beats, min_tempo, max_tempo, rate):
