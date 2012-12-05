@@ -1027,7 +1027,7 @@ class AudioQuantum(AudioRenderable) :
         if isinstance(value, AudioData):
             self._source = value
         else:
-            raise TypeError("Source must be an instance of echonest.audio.AudioData")
+            raise TypeError("Source must be an instance of echonest.remix.audio.AudioData")
     
     source = property(get_source, set_source, doc="""
     The `AudioData` source for the AudioQuantum.
@@ -1552,7 +1552,7 @@ class AudioQuantumList(list, AudioRenderable):
         if isinstance(value, AudioData):
             self._source = value
         else:
-            raise TypeError("Source must be an instance of echonest.audio.AudioData")
+            raise TypeError("Source must be an instance of echonest.remix.audio.AudioData")
     
     durations  = property(get_many('duration'))
     kinds      = property(get_many('kind'))
