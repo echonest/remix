@@ -6,10 +6,10 @@
 
 <body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src='remixer-thor.js'></script>
+<script type="text/javascript" src='remixer.js'></script>
 <script type="text/javascript">
 
-// Hops through the beats of a song using the arrow keys
+// Hop through the beats of a track using the arrow keys
 var apiKey = 'WOUHTN44BMS5SMPF2';
 var trackID = 'TRCYWPQ139279B3308';
 var trackURL = 'test.mp3'
@@ -32,17 +32,22 @@ function init() {
 
         remixer.remixTrackById(trackID, trackURL, function(t, percent) {
             track = t;
+
             $("#info").text(percent + "% of the track loaded");
+            if (percent == 100) {
+                $("#info").text(percent + "% of the track loaded, remixing...");
+            }
+
             if (track.status == 'ok') {
                 remixed = new Array();
                 for (var i=0; i < track.analysis.beats.length; i++) {
                     remixed.push(track.analysis.beats[i])
                 }
-                console.log('remix status', 'complete');
+                $("#info").text("Remix complete!");
             }
         });
     
-    // Set up the keyboard drivers
+    // Set up the keyboard controls
     document.addEventListener('keydown', function(event) {
         if (event.which == 39) {  // right arrow
             playbackIndex = playbackIndex + 1;
@@ -50,7 +55,6 @@ function init() {
                 playbackIndex = 0;
             }
             player.play(0, remixed[playbackIndex]);
-            console.log('tried to play', playbackIndex);
         }
 
         if (event.which == 37) {  // left arrow
@@ -59,7 +63,6 @@ function init() {
                 playbackIndex = remixed.length - 1;
             }
             player.play(0, remixed[playbackIndex]);
-            console.log('tried to play', playbackIndex);
         }
 
         if (event.which == 40) {  // down arrow
@@ -68,7 +71,6 @@ function init() {
                 playbackIndex = remixed.length - 1;
             }
             player.play(0, remixed[playbackIndex]);
-            console.log('tried to play', playbackIndex);
         }
 
         if (event.which == 38) {  // up arrow
@@ -78,10 +80,7 @@ function init() {
             }
 
             player.play(0, remixed[playbackIndex]);
-            console.log('tried to play', playbackIndex);
         }
-
-
     });
     }
 }

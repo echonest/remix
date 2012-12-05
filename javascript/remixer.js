@@ -1,5 +1,6 @@
-// from Paul's Infinite Jukebox source.
-// Currently, this supports a pre-uploaded track and a known track ID
+// Remixer.js
+// Thor Kell & Paul Lamere,12/2012
+// Based on Paul Lamere's Infinite Jukebox and assorted other javascript projects
 
 
 function createJRemixer(context, jquery, apiKey) {
@@ -14,7 +15,8 @@ function createJRemixer(context, jquery, apiKey) {
                 var analysisURL = data.response.track.audio_summary.analysis_url;
                 track = data.response.track;
                 
-                // This call is proxied through the yahoo query engine.  The sooner we can remove this, the better
+                // This call is proxied through the yahoo query engine.  
+                // This is temporary, but works.
                 $.getJSON("http://query.yahooapis.com/v1/public/yql", 
                     { q: "select * from json where url=\"" + analysisURL + "\"", format: "json"}, 
                     function(data) {
@@ -23,7 +25,7 @@ function createJRemixer(context, jquery, apiKey) {
                             remixer.remixTrack(track, trackURL, callback);   
                         }
                         else {
-                            alert('No analysis data returned:  sorry!');
+                            console.log('error', 'No analysis data returned:  sorry!');
                         }
                 });
 
@@ -218,18 +220,18 @@ function createJRemixer(context, jquery, apiKey) {
             var queueTime = 0;
             var audioGain = context.createGainNode();
             var curAudioSource = null;
-            var currentQueue = new Array();
+            var currentlyQueued = new Array();
             var curQ = null;
             audioGain.gain.value = 1;
             audioGain.connect(context.destination);
 
             function queuePlay(when, q) {
-                // console.log('qp', when, q);
                 audioGain.gain.value = 1;
                 if (isAudioBuffer(q)) {
                     var audioSource = context.createBufferSource();
                     audioSource.buffer = q;
                     audioSource.connect(audioGain);
+                    currentlyQueued.push(audioSource);
                     audioSource.noteOn(when);
                     return when;
                 } else if ($.isArray(q)) {
@@ -245,9 +247,8 @@ function createJRemixer(context, jquery, apiKey) {
                     var audioSource = context.createBufferSource();
                     audioSource.buffer = q.track.buffer;
                     audioSource.connect(audioGain);
-                    audioSource.variator = Math.random(); // this should prevent all of my objects from being the same?
-                    console.log('the random number', audioSource.variator);
                     q.audioSource = audioSource;
+                    currentlyQueued.push(audioSource);
                     audioSource.noteGrainOn(when, q.start, q.duration);
                     return (when + parseFloat(q.duration));
                 } else {
@@ -256,37 +257,12 @@ function createJRemixer(context, jquery, apiKey) {
                 }
             }
 
-            function playQuantum(when, q) {
-                var now = context.currentTime;
-                var start = when == 0 ? now : when;
-                var next = start + q.duratio45n;
-
-                if (curQ && curQ.track === q.track && curQ.which + 1 == q.which) {
-                    // let it ride
-                } else {
-                    var audioSource = context.createBufferSource();
-                    audioGain.gain.value = 1;
-                    audioSource.buffer = q.track.buffer;
-                    audioSource.connect(audioGain);
-                    var duration = track.audio_summary.duration - q.start;
-                    audioSource.noteGrainOn(start, q.start, duration);
-                    if (curAudioSource) {
-                        curAudioSource.noteOff(start);
-                    }
-                    curAudioSource = audioSource;
-                }
-                q.audioSource = curAudioSource;
-                curQ = q;
-                return next;
-            }
-
             function error(s) {
                 console.log(s);
             }
 
             var player = {
                 play: function(when, q) {
-                    // return playQuantum(when, q);
                     return queuePlay(0, q);
                 },
 
@@ -298,8 +274,6 @@ function createJRemixer(context, jquery, apiKey) {
                     if (now > queueTime) {
                         queueTime = now;
                     }
-                    // I need to remove things that have played from the currentQueue...
-                    currentQueue.push(q);
                     queueTime = queuePlay(queueTime, q);
                 },
 
@@ -307,45 +281,13 @@ function createJRemixer(context, jquery, apiKey) {
                     queueTime += duration;
                 },
 
-                stop: function(q) {
-
-                    // Stops single chunk
-                    // stops all chunks if different chunks
-                    // ! only stops last chunk, if more than 1 of same chunk
-                    
-                    // Turns out that all of these are the same object. 
-//                    for (var i = 0; i < currentQueue.length; i++) {
-//                        if (currentQueue[i].audioSource != null) {
-//                            console.log(i, currentQueue[i]);
-//                            currentQueue[i].audioSource.noteOff(0);
-//                        }
-//                    }
-//                    currentQueue = new Array();
-
-                    if ($.isArray(q)) {
-                        console.log('array stop', q.length);
-                        for (var i = 0; i < q.length; i++) {
-                            if (q[i].audioSource != null) {
-                                q[i].audioSource.noteOff(0);
-                            }
-                        }
-
-                    }
-                    else if (q === undefined) {
-                        if (curAudioSource) {
-                            curAudioSource.noteOff(0);
-                            curAudioSource = null;
-                        }
-                        //audioGain.gain.value = 0;
-                        //audioGain.disconnect();
-                    } else {
-                        if ('audioSource' in q) {
-                            if (q.audioSource != null) {
-                                q.audioSource.noteOff(0);
-                            }
+                stop: function() {
+                    for (var i = 0; i < currentlyQueued.length; i++) {
+                        if (currentlyQueued[i] != null) {
+                            currentlyQueued[i].noteOff(0);
                         }
                     }
-                    curQ = null;
+                    currentlyQueued = new Array();
                 },
 
                 curTime: function() {

@@ -9,7 +9,7 @@
 <script type="text/javascript" src='remixer.js'></script>
 <script type="text/javascript">
 
-// First-beat extraction and assembly
+// Add beats or bars of a track to a live queue.
 var apiKey = 'WOUHTN44BMS5SMPF2';
 var trackID = 'TRCYWPQ139279B3308';
 var trackURL = 'test.mp3'
@@ -19,6 +19,15 @@ var player;
 var track;
 var remixed;
 
+function addBar() {
+    var index = $("#indexBox").val();
+    player.queue(track.analysis.bars[index])
+}
+
+function addBeat() {
+    var index = $("#indexBox").val();
+    player.queue(track.analysis.beats[index])
+}
 
 function init() {
     if (window.webkitAudioContext === undefined) {
@@ -39,28 +48,26 @@ function init() {
             }
 
             if (track.status == 'ok') {
-                remixed = new Array();
-                // Do the remixing here!
-                for (var i=0; i < track.analysis.beats.length; i++) {
-                    if (i % 4 == 0) {
-                        remixed.push(track.analysis.beats[i])
-                    }
-                }
+                $("#bars").text("The track has " + track.analysis.bars.length + " bars");
+                $("#beats").text("The track has " + track.analysis.beats.length + " beats");
                 $("#info").text("Remix complete!");
             }
         });
-    
-        
-
     }
 }
 
 window.onload = init;
 </script>
 
-Welcome to One.html
+Welcome to Assemble.html
 <div id='info'> </div>
-<button onClick="player.play(0, remixed);">Play!</button>
+
+<div id='bars'> </div>
+<div id='beats'> </div>
+<input type="text" id="indexBox">
+<button onClick="addBar()">Add bar from Track 1</button>
+<button onClick="addBeat()">Add beat from Track 1</button>
+<br />
 <button onClick="player.stop()">Stop!</button>
 </body>
 
