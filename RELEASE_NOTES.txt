@@ -1,3 +1,10 @@
+2.0.0 - December 5 2012
+- Changed namespace:  now 'import echonest.remix.audio as audio'.
+- Removed .that, .ordered_by, and .beget.
+- Added functions for getting segments and segment data from rhythmic AudioQuanta.
+- Added examples for sorting and filtering AudioQuanta.
+- Added alpha version of new JavaScript code.
+
 1.6.1 - November 8 2012
 - Patched around pyechonest not always returning metadata
 
