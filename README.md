@@ -10,7 +10,7 @@ Want to make new music videos out of old ones? [Remix can do it.](http://www.you
 
 ## Getting Started
 We've made a shiny new page for getting Remix installed: <http://echonest.github.com/remix/>  
-We've just updated the source and the packages for current versions of Python.  If you have any problems, let us know!
+We've just pushed Remix 2.0.0 - if you have any problems, let us know!
 
 ![""](https://a248.e.akamai.net/camo.github.com/c7a3810cd59b15375246e5468b46cdecd18edbb9/687474703a2f2f692e696d6775722e636f6d2f57574c596f2e676966 "Head-nodding cat can't believe that he hasn't been remixed yet")
 
