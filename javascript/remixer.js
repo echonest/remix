@@ -1,5 +1,5 @@
 // Remixer.js
-// Thor Kell & Paul Lamere,12/2012
+// Thor Kell & Paul Lamere, 12/2012
 // Based on Paul Lamere's Infinite Jukebox and assorted other javascript projects
 
 
@@ -336,7 +336,7 @@ function createJRemixer(context, jquery, apiKey) {
     return remixer;
 }
 
-// Non-essential but very useful functions
+
 function euclidean_distance(v1, v2) {
     var sum = 0;
     for (var i = 0; i < 3; i++) {
