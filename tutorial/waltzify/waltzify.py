@@ -15,7 +15,7 @@ import dirac, math
 from optparse import OptionParser
 
 # These line import specific things from Remix! 
-from echonest.audio import LocalAudioFile, AudioData
+from echonest.remix.audio import LocalAudioFile, AudioData
 from echonest.action import render, Playback, display_actions
 
 # Waltzify is much more complex than the prior examples!  

@@ -10,7 +10,7 @@ Demonstrates the content-based selection filtering in AudioQuantumLists.that()
 Originally by Adam Lindsay, 2008-09-15.
 """
 # This line imports remix! 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 # This line imports descriptions from remix.
 from echonest.selection import have_pitch_max, overlap_ends_of, overlap_starts_of
 

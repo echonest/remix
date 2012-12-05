@@ -15,7 +15,7 @@ import sys
 import time
 
 # This line imports remix! 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 usage="""
 Usage:

@@ -11,7 +11,7 @@ Originally by Adam Lindsay, 2009-01-19.
 """
 
 # This line imports remix! 
-import echonest.audio as audio
+import echonest.remix.audio as audio
 import sys
 
 usage = """
