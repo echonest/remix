@@ -71,13 +71,13 @@
             <div class="row">
                 <div class="span4 columns">
                     <h6>Mac</h6>
-                    <p><a href="https://github.com/downloads/echonest/remix/remix-1.6.1-py2.7-macosx10.8.mpkg.zip" rel="nofollow"><img src="assets/img/mac_installer.png" /></a>                
+                    <p><a href="https://github.com/downloads/echonest/remix/remix-2.0.0-py2.7-macosx10.8.mpkg.zip" rel="nofollow"><img src="assets/img/mac_installer.png" /></a>                
                     </p>
                     <a href="installmac.html">Mac install notes</a>
                 </div>
                 <div class="span4 columns">
                     <h6>Windows</h6>
-                    <p><a href="https://github.com/downloads/echonest/remix/remix-1.6.1.win32-py2.7.exe" rel="nofollow"><img src="assets/img/windows_installer.png" /></a>
+                    <p><a href="https://github.com/downloads/echonest/remix/remix-2.0.0.win32-py2.7.exe" rel="nofollow"><img src="assets/img/windows_installer.png" /></a>
                     </p>
                     <a href="installwindows.html">Windows install notes</a>
                 </div>
@@ -117,7 +117,7 @@
 
             <p>Finally, here's a bit of code to whet your appetite.  Happy remixing!
             <pre>"""Reverse a song by playing its beats forward starting from the end of the song"""
-import echonest.audio as audio
+import echonest.remix.audio as audio
 
 # Easy around wrapper mp3 decoding and Echo Nest analysis
 audio_file = audio.LocalAudioFile("NeverGonnaTellIt.mp3")
@@ -137,7 +137,7 @@ audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")
 
         <section id="web">
             <h3>Web:</h3>
-            We have an ultra-alpha version of Remix that works with Flash and JavaScript.  <a href="installflash.html">Check it out here.</a>  
+            We have an ultra-alpha version of Remix that works with JavaScript and the WebAudio API.  <a href="https://github.com/echonest/remix/tree/master/javascript" target="_blanks">Check it out here.</a>  
         </section>
 
         <section id="examples">
