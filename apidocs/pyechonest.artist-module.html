@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -114,6 +114,9 @@ Refer to the official api documentation if you are unsure about something.</p>
         <tr>
           <td><span class="summary-sig"><a href="pyechonest.artist-module.html#search" class="summary-sig-name">search</a>(<span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">style</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mood</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
         <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
@@ -122,7 +125,13 @@ Refer to the official api documentation if you are unsure about something.</p>
         <span class="summary-sig-arg">max_familiarity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_familiarity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">test_new_things</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rank_type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_before</span>=<span class="summary-sig-default">None</span>)</span><br />
       Search for artists by name, description, or constraint.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.artist-pysrc.html#search">source&nbsp;code</a></span>
@@ -176,6 +185,23 @@ Refer to the official api documentation if you are unsure about something.</p>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist-module.html#list_terms" class="summary-sig-name">list_terms</a>(<span class="summary-sig-arg">type</span>)</span><br />
+      Get a list of best terms to use with search</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#list_terms">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="pyechonest.artist-module.html#similar" class="summary-sig-name">similar</a>(<span class="summary-sig-arg">names</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">ids</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
@@ -185,10 +211,64 @@ Refer to the official api documentation if you are unsure about something.</p>
         <span class="summary-sig-arg">max_familiarity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_familiarity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">seed_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_after</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return similar artists to this one</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.artist-pysrc.html#similar">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist-module.html#extract" class="summary-sig-name">extract</a>(<span class="summary-sig-arg">text</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">max_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Extract artist names from a block of text.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#extract">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.artist-module.html#suggest" class="summary-sig-name">suggest</a>(<span class="summary-sig-arg">q</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">max_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_hotttnesss</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Suggest artists based upon partial names.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.artist-pysrc.html#suggest">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -249,6 +329,9 @@ Refer to the official api documentation if you are unsure about something.</p>
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">search</span>(<span class="sig-arg">name</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">description</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">style</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mood</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
         <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
         <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
@@ -257,7 +340,13 @@ Refer to the official api documentation if you are unsure about something.</p>
         <span class="sig-arg">max_familiarity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">min_familiarity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">max_hotttnesss</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">test_new_things</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">rank_type</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_before</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyechonest.artist-pysrc.html#search">source&nbsp;code</a></span>&nbsp;
@@ -265,21 +354,37 @@ Refer to the official api documentation if you are unsure about something.</p>
   </tr></table>
   
   <p>Search for artists by name, description, or constraint.</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>name: the name of an artist
-description: A string describing the artist
-results: An integer number of results to return
-buckets: A list of strings specifying which buckets to retrieve
-limit: A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets
-fuzzy_match: A boolean indicating whether or not to search for similar sounding matches (only works with name)
-max_familiarity: A float specifying the max familiarity of artists to search for
-min_familiarity: A float specifying the min familiarity of artists to search for
-max_hotttnesss: A float specifying the max hotttnesss of artists to search for
-min_hotttnesss: A float specifying the max hotttnesss of artists to search for</dd>
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">name (str): the name of an artist</p>
+<p>description (str): A string describing the artist</p>
+<p>style (str): A string describing the style/genre of the artist</p>
+<p>mood (str): A string describing the mood of the artist</p>
+<p>start (int): An integer starting value for the result set</p>
+<p>results (int): An integer number of results to return</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+<p>fuzzy_match (bool): A boolean indicating whether or not to search for similar sounding matches (only works with name)</p>
+<p>max_familiarity (float): A float specifying the max familiarity of artists to search for</p>
+<p>min_familiarity (float): A float specifying the min familiarity of artists to search for</p>
+<p>max_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>min_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>artist_start_year_before (int): Returned artists will have started recording music before this year.</p>
+<p>artist_start_year_after (int): Returned artists will have started recording music after this year.</p>
+<p>artist_end_year_before (int): Returned artists will have stopped recording music before this year.</p>
+<p>artist_end_year_after (int): Returned artists will have stopped recording music after this year.</p>
+<p class="rst-last">rank_type (str): A string denoting the desired ranking for description searches, either 'relevance' or 'familiarity'</p>
+</dd>
 <dt>Returns:</dt>
 <dd>A list of Artist objects</dd>
 </dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>results = artist.search(name=<span class="py-string">'t-pain'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>results
+<span class="py-output">[&lt;artist - T-Pain&gt;, &lt;artist - T-Pain &amp; Lil Wayne&gt;, &lt;artist - T Pain &amp; 2 Pistols&gt;, &lt;artist - Roscoe Dash &amp; T-Pain&gt;, &lt;artist - Tony Moxberg &amp; T-Pain&gt;, &lt;artist - Flo-Rida (feat. T-Pain)&gt;, &lt;artist - Shortyo/Too Short/T-Pain&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -302,15 +407,23 @@ min_hotttnesss: A float specifying the max hotttnesss of artists to search for</
   </tr></table>
   
   <p>Get the top hotttest artists, according to The Echo Nest</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>results: An integer number of results to return
-start: An integer starting value for the result set
-buckets: A list of strings specifying which buckets to retrieve
-limit: A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</dd>
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">results (int): An integer number of results to return</p>
+<p>start (int): An integer starting value for the result set</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p class="rst-last">limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+</dd>
 <dt>Returns:</dt>
 <dd>A list of hottt Artist objects</dd>
 </dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>hot_stuff = artist.top_hottt()
+<span class="py-prompt">&gt;&gt;&gt; </span>hot_stuff
+<span class="py-output">[&lt;artist - Deerhunter&gt;, &lt;artist - Sufjan Stevens&gt;, &lt;artist - Belle and Sebastian&gt;, &lt;artist - Glee Cast&gt;, &lt;artist - Linkin Park&gt;, &lt;artist - Neil Young&gt;, &lt;artist - Jimmy Eat World&gt;, &lt;artist - Kanye West&gt;, &lt;artist - Katy Perry&gt;, &lt;artist - Bruno Mars&gt;, &lt;artist - Lady Gaga&gt;, &lt;artist - Rihanna&gt;, &lt;artist - Lil Wayne&gt;, &lt;artist - Jason Mraz&gt;, &lt;artist - Green Day&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -330,12 +443,58 @@ limit: A boolean indicating whether or not to limit the results to one of the id
   </tr></table>
   
   <p>Get a list of the top overall terms</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>results: An integer number of results to return</dd>
+<dt>Kwargs:</dt>
+<dd>results (int): An integer number of results to return</dd>
 <dt>Returns:</dt>
-<dd>A list of term document Result objects</dd>
+<dd>A list of term document dicts</dd>
 </dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>terms = artist.top_terms(results=5)
+<span class="py-prompt">&gt;&gt;&gt; </span>terms
+<span class="py-output">[{u'frequency': 1.0, u'name': u'rock'},</span>
+<span class="py-output"> {u'frequency': 0.99054710039307992, u'name': u'electronic'},</span>
+<span class="py-output"> {u'frequency': 0.96131624654034398, u'name': u'hip hop'},</span>
+<span class="py-output"> {u'frequency': 0.94358477322411127, u'name': u'jazz'},</span>
+<span class="py-output"> {u'frequency': 0.94023302416455468, u'name': u'pop rock'}]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_terms"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_terms</span>(<span class="sig-arg">type</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#list_terms">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get a list of best terms to use with search</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd>type (str): the type of term to return, either 'mood' or 'style'</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>best_terms = artist.list_terms(<span class="py-string">'mood'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>best_terms
+<span class="py-output">[{u'name': u'aggressive'},</span>
+<span class="py-output"> {u'name': u'ambient'},</span>
+<span class="py-output"> {u'name': u'angry'},</span>
+<span class="py-output"> {u'name': u'angst-ridden'},</span>
+<span class="py-output"> {u'name': u'bouncy'},</span>
+<span class="py-output"> {u'name': u'calming'},</span>
+<span class="py-output"> {u'name': u'carefree'}, etc.]</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -356,7 +515,12 @@ limit: A boolean indicating whether or not to limit the results to one of the id
         <span class="sig-arg">max_familiarity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">min_familiarity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">max_hotttnesss</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">seed_catalog</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_after</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="pyechonest.artist-pysrc.html#similar">source&nbsp;code</a></span>&nbsp;
@@ -364,23 +528,129 @@ limit: A boolean indicating whether or not to limit the results to one of the id
   </tr></table>
   
   <p>Return similar artists to this one</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>id: An artist id or list of ids
-name: An artist name or list of names
-results: An integer number of results to return
-buckets: A list of strings specifying which buckets to retrieve
-limit: A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets
-start: An integer starting value for the result set
-buckets: A list of strings specifying which buckets to retrieve
-limit: A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets
-max_familiarity: A float specifying the max familiarity of artists to search for
-min_familiarity: A float specifying the min familiarity of artists to search for
-max_hotttnesss: A float specifying the max hotttnesss of artists to search for
-min_hotttnesss: A float specifying the max hotttnesss of artists to search for</dd>
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">ids (str/list): An artist id or list of ids</p>
+<p>names (str/list): An artist name or list of names</p>
+<p>results (int): An integer number of results to return</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+<p>start (int): An integer starting value for the result set</p>
+<p>max_familiarity (float): A float specifying the max familiarity of artists to search for</p>
+<p>min_familiarity (float): A float specifying the min familiarity of artists to search for</p>
+<p>max_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>min_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p class="rst-last">seed_catalog (str): A string specifying the catalog similar artists are restricted to</p>
+</dd>
 <dt>Returns:</dt>
 <dd>A list of similar Artist objects</dd>
 </dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>some_dudes = [artist.Artist(<span class="py-string">'weezer'</span>), artist.Artist(<span class="py-string">'radiohead'</span>)]
+<span class="py-prompt">&gt;&gt;&gt; </span>some_dudes
+<span class="py-output">[&lt;artist - Weezer&gt;, &lt;artist - Radiohead&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>sims = artist.similar(ids=[art.id <span class="py-keyword">for</span> art <span class="py-keyword">in</span> some_dudes], results=5)
+<span class="py-prompt">&gt;&gt;&gt; </span>sims
+<span class="py-output">[&lt;artist - The Smashing Pumpkins&gt;, &lt;artist - Biffy Clyro&gt;, &lt;artist - Death Cab for Cutie&gt;, &lt;artist - Jimmy Eat World&gt;, &lt;artist - Nerf Herder&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="extract"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">extract</span>(<span class="sig-arg">text</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">max_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#extract">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Extract artist names from a block of text.</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">text (str): The text to extract artists from</p>
+<p>start (int): An integer starting value for the result set</p>
+<p>results (int): An integer number of results to return</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+<p>max_familiarity (float): A float specifying the max familiarity of artists to search for</p>
+<p>min_familiarity (float): A float specifying the min familiarity of artists to search for</p>
+<p>max_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p class="rst-last">min_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of Artist objects</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>results = artist.extract(text=<span class="py-string">'i saw beyonce at burger king, she was eatin, she was eatin'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>results</pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="suggest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">suggest</span>(<span class="sig-arg">q</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">max_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_hotttnesss</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.artist-pysrc.html#suggest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Suggest artists based upon partial names.</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">q (str): The text to suggest artists from</p>
+<p>results (int): An integer number of results to return</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+<p>max_familiarity (float): A float specifying the max familiarity of artists to search for</p>
+<p>min_familiarity (float): A float specifying the min familiarity of artists to search for</p>
+<p>max_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p class="rst-last">min_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of Artist objects</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>results = artist.suggest(text=<span class="py-string">'rad'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>results</pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt;</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -407,14 +677,14 @@ min_hotttnesss: A float specifying the max hotttnesss of artists to search for</
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:28 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

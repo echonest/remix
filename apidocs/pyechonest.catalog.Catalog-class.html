@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pyechonest.catalog.Catalog</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pyechonest-module.html">Package&nbsp;pyechonest</a> ::
+        <a href="pyechonest.catalog-module.html">Module&nbsp;catalog</a> ::
+        Class&nbsp;Catalog
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pyechonest.catalog.Catalog-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Catalog</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_pyechone_2" name="uml_class_diagram_for_pyechone_2">
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#profile" title="Check the status of a catalog update" alt="" coords="17,209,445,228"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#read" title="Returns data from the catalog; also expanded for the requested buckets. This method is provided for backwards&#45;compatibility" alt="" coords="17,228,445,247"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#item_dicts" title="Returns data from the catalog; also expanded for the requested buckets" alt="" coords="17,247,445,265"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#feed" title="Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets" alt="" coords="17,265,445,284"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#__init__" title="Create a catalog object (get a catalog by ID or get or create one given by name and type)" alt="" coords="17,287,445,305"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#__repr__" title="repr(x)" alt="" coords="17,305,445,324"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#__str__" title="str(x)" alt="" coords="17,324,445,343"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#update" title="Update a catalog object" alt="" coords="17,343,445,361"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#status" title="Check the status of a catalog update" alt="" coords="17,361,445,380"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#get_profile" title="Check the status of a catalog update" alt="" coords="17,380,445,399"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#read_items" title="Returns data from the catalog; also expanded for the requested buckets. This method is provided for backwards&#45;compatibility" alt="" coords="17,399,445,417"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#get_item_dicts" title="Returns data from the catalog; also expanded for the requested buckets" alt="" coords="17,417,445,436"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#get_feed" title="Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets" alt="" coords="17,436,445,455"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#delete" title="Deletes the entire catalog" alt="" coords="17,455,445,473"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#play" title="pyechonest.catalog.Catalog.play" alt="" coords="17,473,445,492"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#skip" title="pyechonest.catalog.Catalog.skip" alt="" coords="17,492,445,511"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#favorite" title="pyechonest.catalog.Catalog.favorite" alt="" coords="17,511,445,529"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#ban" title="pyechonest.catalog.Catalog.ban" alt="" coords="17,529,445,548"/>
+<area shape="rect" id="node169" href="pyechonest.catalog.Catalog-class.html#rate" title="pyechonest.catalog.Catalog.rate" alt="" coords="17,548,445,567"/>
+<area shape="rect" id="node1" href="pyechonest.catalog.Catalog-class.html" title="A Catalog object" alt="" coords="5,185,456,573"/>
+<area shape="rect" id="node170" href="pyechonest.proxies.CatalogProxy-class.html#get_attribute_simple" title="pyechonest.proxies.CatalogProxy.get_attribute_simple" alt="" coords="105,103,357,121"/>
+<area shape="rect" id="node170" href="pyechonest.proxies.CatalogProxy-class.html#get_attribute" title="pyechonest.proxies.CatalogProxy.get_attribute" alt="" coords="105,121,357,140"/>
+<area shape="rect" id="node170" href="pyechonest.proxies.CatalogProxy-class.html#post_attribute" title="pyechonest.proxies.CatalogProxy.post_attribute" alt="" coords="105,140,357,159"/>
+<area shape="rect" id="node2" href="pyechonest.proxies.CatalogProxy-class.html" title="pyechonest.proxies.CatalogProxy" alt="" coords="93,70,368,165"/>
+<area shape="rect" id="node3" href="pyechonest.proxies.GenericProxy-class.html" title="pyechonest.proxies.GenericProxy" alt="" coords="156,6,305,50"/>
+</map>
+  <img src="uml_class_diagram_for_pyechone_2.gif" alt='' usemap="#uml_class_diagram_for_pyechone_2" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>A Catalog object</p>
+<dl class="rst-docutils">
+<dt>Attributes:</dt>
+<dd><p class="rst-first">id (str): Catalog ID</p>
+<p>name (str): Catalog Name</p>
+<p>read (list): A list of catalog items (objects if they are resolved, else dictionaries)</p>
+<p class="rst-last">feed (list): A list of dictionaries for news, blogs, reviews, audio, video for a catalog's artists</p>
+</dd>
+</dl>
+<p>Create an catalog object like so:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c = catalog.Catalog(<span class="py-string">'CAGPXKK12BB06F9DE9'</span>) <span class="py-comment"># get existing catalog</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>c = catalog.Catalog(<span class="py-string">'test_song_catalog'</span>, <span class="py-string">'song'</span>) <span class="py-comment"># get existing or create new catalog</span></pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">id</span>,
+        <span class="summary-sig-arg">type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Create a catalog object (get a catalog by ID or get or create one given by name and type)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      str(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.__str__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#update" class="summary-sig-name">update</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>)</span><br />
+      Update a catalog object</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.update">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#status" class="summary-sig-name">status</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ticket</span>)</span><br />
+      Check the status of a catalog update</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.status">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#get_profile" class="summary-sig-name">get_profile</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Check the status of a catalog update</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.get_profile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#read_items" class="summary-sig-name">read_items</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">item_ids</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns data from the catalog; also expanded for the requested buckets.
+This method is provided for backwards-compatibility</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.read_items">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#get_item_dicts" class="summary-sig-name">get_item_dicts</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">item_ids</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns data from the catalog; also expanded for the requested buckets</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.get_item_dicts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#get_feed" class="summary-sig-name">get_feed</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">since</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.get_feed">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#delete" class="summary-sig-name">delete</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Deletes the entire catalog</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.delete">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="play"></a><span class="summary-sig-name">play</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>,
+        <span class="summary-sig-arg">plays</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.play">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="skip"></a><span class="summary-sig-name">skip</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>,
+        <span class="summary-sig-arg">skips</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.skip">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="favorite"></a><span class="summary-sig-name">favorite</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>,
+        <span class="summary-sig-arg">favorite</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.favorite">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="ban"></a><span class="summary-sig-name">ban</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>,
+        <span class="summary-sig-arg">ban</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.ban">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="rate"></a><span class="summary-sig-name">rate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>,
+        <span class="summary-sig-arg">rating</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.rate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.CatalogProxy-class.html">proxies.CatalogProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.CatalogProxy-class.html#get_attribute">get_attribute</a></code>,
+      <code><a href="pyechonest.proxies.CatalogProxy-class.html#get_attribute_simple">get_attribute_simple</a></code>,
+      <code><a href="pyechonest.proxies.CatalogProxy-class.html#post_attribute">post_attribute</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.catalog.Catalog-class.html#profile" class="summary-name">profile</a><br />
+      Check the status of a catalog update
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.catalog.Catalog-class.html#read" class="summary-name">read</a><br />
+      Returns data from the catalog; also expanded for the requested buckets.
+This method is provided for backwards-compatibility
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.catalog.Catalog-class.html#item_dicts" class="summary-name">item_dicts</a><br />
+      Returns data from the catalog; also expanded for the requested buckets
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.catalog.Catalog-class.html#feed" class="summary-name">feed</a><br />
+      Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">id</span>,
+        <span class="sig-arg">type</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a catalog object (get a catalog by ID or get or create one given by name and type)</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>id (str): A catalog id or name</dd>
+<dt>Kwargs:</dt>
+<dd>type (str): 'song' or 'artist', specifying the catalog type</dd>
+<dt>Returns:</dt>
+<dd>A catalog object</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c = catalog.Catalog(<span class="py-string">'my_songs'</span>, type=<span class="py-string">'song'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>c.id
+<span class="py-output">u'CAVKUPC12BCA792120'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.name
+<span class="py-output">u'my_songs'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  repr(x)
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__str__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Informal representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.__str__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  str(x)
+  <dl class="fields">
+    <dt>Overrides:
+        object.__str__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="update"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">update</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">items</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.update">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Update a catalog object</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>items (list): A list of dicts describing update data and action codes (see api docs)</dd>
+</dl>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A ticket id</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c = catalog.Catalog(<span class="py-string">'my_songs'</span>, type=<span class="py-string">'song'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-builtin">items</span>
+<span class="py-output">[{'action': 'update',</span>
+<span class="py-output">  'item': {'artist_name': 'dAn ThE aUtOmAtOr',</span>
+<span class="py-output">           'disc_number': 1,</span>
+<span class="py-output">           'genre': 'Instrumental',</span>
+<span class="py-output">           'item_id': '38937DDF04BC7FC4',</span>
+<span class="py-output">           'play_count': 5,</span>
+<span class="py-output">           'release': 'Bombay the Hard Way: Guns, Cars &amp; Sitars',</span>
+<span class="py-output">           'song_name': 'Inspector Jay From Dehli',</span>
+<span class="py-output">           'track_number': 9,</span>
+<span class="py-output">           'url': 'file://localhost/Users/tylerw/Music/iTunes/iTunes%20Media/Music/Dan%20the%20Automator/Bombay%20the%20Hard%20Way_%20Guns,%20Cars%20&amp;%20Sitars/09%20Inspector%20Jay%20From%20Dehli.m4a'}}]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>ticket = c.update(<span class="py-builtin">items</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>ticket
+<span class="py-output">u'7dcad583f2a38e6689d48a792b2e4c96'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.status(ticket)
+<span class="py-output">{u'ticket_status': u'complete', u'update_info': []}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="status"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">status</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ticket</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.status">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Check the status of a catalog update</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>ticket (str): A string representing a ticket ID</dd>
+</dl>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A dictionary representing ticket status</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>ticket
+<span class="py-output">u'7dcad583f2a38e6689d48a792b2e4c96'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.status(ticket)
+<span class="py-output">{u'ticket_status': u'complete', u'update_info': []}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_profile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_profile</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.get_profile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Check the status of a catalog update</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A dictionary representing ticket status</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - test_song_catalog&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.profile()
+<span class="py-output">{u'id': u'CAGPXKK12BB06F9DE9',</span>
+<span class="py-output"> u'name': u'test_song_catalog',</span>
+<span class="py-output"> u'pending_tickets': [],</span>
+<span class="py-output"> u'resolved': 2,</span>
+<span class="py-output"> u'total': 4,</span>
+<span class="py-output"> u'type': u'song'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="read_items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">read_items</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">item_ids</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.read_items">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns data from the catalog; also expanded for the requested buckets.
+This method is provided for backwards-compatibility</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>results (int): An integer number of results to return</p>
+<p class="rst-last">start (int): An integer starting value for the result set</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of objects in the catalog; list contains additional attributes 'start' and 'total'</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - my_songs&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.read_items(results=1)
+<span class="py-output">[&lt;song - Harmonice Mundi II&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_item_dicts"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_item_dicts</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">item_ids</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.get_item_dicts">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns data from the catalog; also expanded for the requested buckets</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>results (int): An integer number of results to return</p>
+<p class="rst-last">start (int): An integer starting value for the result set</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of dicts representing objects in the catalog; list has additional attributes 'start' and 'total'</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - my_songs&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.read_items(results=1)
+<span class="py-output">[</span>
+<span class="py-output">        {</span>
+<span class="py-output">            &quot;artist_id&quot;: &quot;AR78KRI1187B98E6F2&quot;,</span>
+<span class="py-output">            &quot;artist_name&quot;: &quot;Art of Noise&quot;,</span>
+<span class="py-output">            &quot;date_added&quot;: &quot;2012-04-02T16:50:02&quot;,</span>
+<span class="py-output">            &quot;foreign_id&quot;: &quot;CAHLYLR13674D1CF83:song:1000&quot;,</span>
+<span class="py-output">            &quot;request&quot;: {</span>
+<span class="py-output">                &quot;artist_name&quot;: &quot;The Art Of Noise&quot;,</span>
+<span class="py-output">                &quot;item_id&quot;: &quot;1000&quot;,</span>
+<span class="py-output">                &quot;song_name&quot;: &quot;Love&quot;</span>
+<span class="py-output">            },</span>
+<span class="py-output">            &quot;song_id&quot;: &quot;SOSBCTO1311AFE7AE0&quot;,</span>
+<span class="py-output">            &quot;song_name&quot;: &quot;Love&quot;</span>
+<span class="py-output">        }</span>
+<span class="py-output">]</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_feed"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_feed</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">since</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">15</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.get_feed">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which feed items to retrieve</p>
+<p>results (int): An integer number of results to return</p>
+<p class="rst-last">start (int): An integer starting value for the result set</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of news, blogs, reviews, audio or video document dicts;</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - my_artists&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.get_feed(results=15)
+<span class="py-output">{u'date_found': u'2011-02-06T07:50:25',</span>
+<span class="py-output"> u'date_posted': u'2011-02-06T07:50:23',</span>
+<span class="py-output"> u'id': u'caec686c0dff361e4c53dceb58fb9d2f',</span>
+<span class="py-output"> u'name': u'Linkin Park \u2013 \u201cWaiting For The End\u201d + \u201cWhen They Come For Me\u201d 2/5 SNL',</span>
+<span class="py-output"> u'references': [{u'artist_id': u'ARQUMH41187B9AF699',</span>
+<span class="py-output">                  u'artist_name': u'Linkin Park'}],</span>
+<span class="py-output"> u'summary': u'&lt;span&gt;Linkin&lt;/span&gt; &lt;span&gt;Park&lt;/span&gt; performed &quot;Waiting For The End&quot; and &quot;When They Come For Me&quot; on Saturday Night Live. Watch the videos below and pick up their album A Thousand Suns on iTunes, Amazon MP3, CD    Social Bookmarking ... ',</span>
+<span class="py-output"> u'type': u'blogs',</span>
+<span class="py-output"> u'url': u'http://theaudioperv.com/2011/02/06/linkin-park-waiting-for-the-end-when-they-come-for-me-25-snl/'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="delete"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">delete</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.catalog-pysrc.html#Catalog.delete">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Deletes the entire catalog</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>The deleted catalog's id.</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - test_song_catalog&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.delete()
+<span class="py-output">{u'id': u'CAXGUPY12BB087A21D'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="profile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">profile</h3>
+  <p>Check the status of a catalog update</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A dictionary representing ticket status</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - test_song_catalog&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.profile()
+<span class="py-output">{u'id': u'CAGPXKK12BB06F9DE9',</span>
+<span class="py-output"> u'name': u'test_song_catalog',</span>
+<span class="py-output"> u'pending_tickets': [],</span>
+<span class="py-output"> u'resolved': 2,</span>
+<span class="py-output"> u'total': 4,</span>
+<span class="py-output"> u'type': u'song'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#get_profile" class="summary-sig-name">get_profile</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Check the status of a catalog update
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="read"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">read</h3>
+  <p>Returns data from the catalog; also expanded for the requested buckets.
+This method is provided for backwards-compatibility</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>results (int): An integer number of results to return</p>
+<p class="rst-last">start (int): An integer starting value for the result set</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of objects in the catalog; list contains additional attributes 'start' and 'total'</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - my_songs&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.read_items(results=1)
+<span class="py-output">[&lt;song - Harmonice Mundi II&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#read_items" class="summary-sig-name">read_items</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">item_ids</span>=<span class="summary-sig-default">None</span>)</span>
+        - Returns data from the catalog; also expanded for the requested buckets.
+This method is provided for backwards-compatibility
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="item_dicts"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">item_dicts</h3>
+  <p>Returns data from the catalog; also expanded for the requested buckets</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>results (int): An integer number of results to return</p>
+<p class="rst-last">start (int): An integer starting value for the result set</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of dicts representing objects in the catalog; list has additional attributes 'start' and 'total'</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - my_songs&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.read_items(results=1)
+<span class="py-output">[</span>
+<span class="py-output">        {</span>
+<span class="py-output">            &quot;artist_id&quot;: &quot;AR78KRI1187B98E6F2&quot;,</span>
+<span class="py-output">            &quot;artist_name&quot;: &quot;Art of Noise&quot;,</span>
+<span class="py-output">            &quot;date_added&quot;: &quot;2012-04-02T16:50:02&quot;,</span>
+<span class="py-output">            &quot;foreign_id&quot;: &quot;CAHLYLR13674D1CF83:song:1000&quot;,</span>
+<span class="py-output">            &quot;request&quot;: {</span>
+<span class="py-output">                &quot;artist_name&quot;: &quot;The Art Of Noise&quot;,</span>
+<span class="py-output">                &quot;item_id&quot;: &quot;1000&quot;,</span>
+<span class="py-output">                &quot;song_name&quot;: &quot;Love&quot;</span>
+<span class="py-output">            },</span>
+<span class="py-output">            &quot;song_id&quot;: &quot;SOSBCTO1311AFE7AE0&quot;,</span>
+<span class="py-output">            &quot;song_name&quot;: &quot;Love&quot;</span>
+<span class="py-output">        }</span>
+<span class="py-output">]</span></pre>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#get_item_dicts" class="summary-sig-name">get_item_dicts</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">item_ids</span>=<span class="summary-sig-default">None</span>)</span>
+        - Returns data from the catalog; also expanded for the requested buckets
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="feed"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">feed</h3>
+  <p>Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which feed items to retrieve</p>
+<p>results (int): An integer number of results to return</p>
+<p class="rst-last">start (int): An integer starting value for the result set</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of news, blogs, reviews, audio or video document dicts;</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>c
+<span class="py-output">&lt;catalog - my_artists&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>c.get_feed(results=15)
+<span class="py-output">{u'date_found': u'2011-02-06T07:50:25',</span>
+<span class="py-output"> u'date_posted': u'2011-02-06T07:50:23',</span>
+<span class="py-output"> u'id': u'caec686c0dff361e4c53dceb58fb9d2f',</span>
+<span class="py-output"> u'name': u'Linkin Park \u2013 \u201cWaiting For The End\u201d + \u201cWhen They Come For Me\u201d 2/5 SNL',</span>
+<span class="py-output"> u'references': [{u'artist_id': u'ARQUMH41187B9AF699',</span>
+<span class="py-output">                  u'artist_name': u'Linkin Park'}],</span>
+<span class="py-output"> u'summary': u'&lt;span&gt;Linkin&lt;/span&gt; &lt;span&gt;Park&lt;/span&gt; performed &quot;Waiting For The End&quot; and &quot;When They Come For Me&quot; on Saturday Night Live. Watch the videos below and pick up their album A Thousand Suns on iTunes, Amazon MP3, CD    Social Bookmarking ... ',</span>
+<span class="py-output"> u'type': u'blogs',</span>
+<span class="py-output"> u'url': u'http://theaudioperv.com/2011/02/06/linkin-park-waiting-for-the-end-when-they-come-for-me-25-snl/'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.catalog.Catalog-class.html#get_feed" class="summary-sig-name">get_feed</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">since</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">15</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0</span>)</span>
+        - Returns feed (news, blogs, reviews, audio, video) for the catalog artists; response depends on requested buckets
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:34 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

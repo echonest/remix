@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,16 +60,42 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class Playlist</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_pyechone_4" name="uml_class_diagram_for_pyechone_4">
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#song" title="Get the current song in the playlist" alt="" coords="17,185,6081,204"/>
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#info" title="Get information about the playlist" alt="" coords="17,204,6081,223"/>
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#__init__" title="Args:" alt="" coords="17,225,6081,244"/>
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#__repr__" title="repr(x)" alt="" coords="17,244,6081,263"/>
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#get_next_song" title="Get the next song in the playlist" alt="" coords="17,263,6081,281"/>
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#get_current_song" title="Get the current song in the playlist" alt="" coords="17,281,6081,300"/>
+<area shape="rect" id="node175" href="pyechonest.playlist.Playlist-class.html#session_info" title="Get information about the playlist" alt="" coords="17,300,6081,319"/>
+<area shape="rect" id="node1" href="pyechonest.playlist.Playlist-class.html" title="A Dynamic Playlist object" alt="" coords="5,161,6093,325"/>
+<area shape="rect" id="node176" href="pyechonest.proxies.PlaylistProxy-class.html#get_attribute" title="pyechonest.proxies.PlaylistProxy.get_attribute" alt="" coords="2945,116,3152,135"/>
+<area shape="rect" id="node2" href="pyechonest.proxies.PlaylistProxy-class.html" title="pyechonest.proxies.PlaylistProxy" alt="" coords="2933,83,3163,141"/>
+<area shape="rect" id="node177" href="pyechonest.proxies.GenericProxy-class.html#post_attribute" title="pyechonest.proxies.GenericProxy.post_attribute" alt="" coords="2916,39,3181,57"/>
+<area shape="rect" id="node3" href="pyechonest.proxies.GenericProxy-class.html" title="pyechonest.proxies.GenericProxy" alt="" coords="2904,6,3192,63"/>
+</map>
+  <img src="uml_class_diagram_for_pyechone_4.gif" alt='' usemap="#uml_class_diagram_for_pyechone_4" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 <p>A Dynamic Playlist object</p>
 <dl class="rst-docutils">
-<dt>Create a dynamic playlist object like so:</dt>
-<dd>p = Playlist(type='artist-radio', artist=['ida maria', 'florence + the machine'])</dd>
-<dt>Attributes: (<strong>attributes</strong> are guaranteed to exist as soon as an artist object exists)</dt>
-<dd><strong>session_id</strong>: Playlist Session ID
-<strong>song</strong>: The current song</dd>
+<dt>Attributes:</dt>
+<dd><p class="rst-first">session_id (str): Playlist Session ID</p>
+<p>song (song object): The current song</p>
+<p class="rst-last">info (dictionary): Information about this playlist</p>
+</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p = Playlist(type=<span class="py-string">'artist-radio'</span>, artist=[<span class="py-string">'ida maria'</span>, <span class="py-string">'florence + the machine'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>p
+<span class="py-output">&lt;Dynamic Playlist - 9c210205d4784144b4fa90770fa55d0b&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>p.song
+<span class="py-output">&lt;song - Later On&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>p.get_next_song()
+<span class="py-output">&lt;song - Overall&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
@@ -103,7 +129,10 @@
         <span class="summary-sig-arg">artist_id</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">song_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">track_id</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">style</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mood</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_tempo</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_tempo</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_duration</span>=<span class="summary-sig-default">None</span>,
@@ -112,8 +141,8 @@
         <span class="summary-sig-arg">min_loudness</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_danceability</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_danceability</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">max_complexity</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">min_complexity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_energy</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist_max_familiarity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist_min_familiarity</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist_max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
@@ -124,15 +153,25 @@
         <span class="summary-sig-arg">max_longitude</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_latitude</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_latitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">adventurousness</span>=<span class="summary-sig-default">0.2</span>,
         <span class="summary-sig-arg">mode</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">key</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
         <span class="summary-sig-arg">sort</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">dmca</span>=<span class="summary-sig-default">False</span>,
-        <span class="summary-sig-arg">audio</span>=<span class="summary-sig-default">False</span>,
-        <span class="summary-sig-arg">chain_xspf</span>=<span class="summary-sig-default">False</span>)</span><br />
-      x.__init__(...) initializes x; see x.__class__.__doc__ for signature</td>
+        <span class="summary-sig-arg">chain_xspf</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">seed_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">steer</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">source_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">steer_description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">test_new_things</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rank_type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_before</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Args:</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.__init__">source&nbsp;code</a></span>
             
@@ -165,8 +204,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_next_song"></a><span class="summary-sig-name">get_next_song</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyechonest.playlist.Playlist-class.html#get_next_song" class="summary-sig-name">get_next_song</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Get the next song in the playlist</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.get_next_song">source&nbsp;code</a></span>
             
@@ -182,9 +222,27 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_current_song"></a><span class="summary-sig-name">get_current_song</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyechonest.playlist.Playlist-class.html#get_current_song" class="summary-sig-name">get_current_song</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the current song in the playlist</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.get_current_song">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.playlist.Playlist-class.html#session_info" class="summary-sig-name">session_info</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get information about the playlist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.session_info">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -237,7 +295,16 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.playlist.Playlist-class.html#song" class="summary-name">song</a>
+        <a href="pyechonest.playlist.Playlist-class.html#song" class="summary-name">song</a><br />
+      Get the current song in the playlist
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.playlist.Playlist-class.html#info" class="summary-name">info</a><br />
+      Get information about the playlist
     </td>
   </tr>
   <tr>
@@ -281,7 +348,10 @@
         <span class="sig-arg">artist_id</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">artist</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">song_id</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">track_id</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">description</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">style</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mood</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">max_tempo</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">min_tempo</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">max_duration</span>=<span class="sig-default">None</span>,
@@ -290,8 +360,8 @@
         <span class="sig-arg">min_loudness</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">max_danceability</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">min_danceability</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">max_complexity</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">min_complexity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_energy</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_energy</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">artist_max_familiarity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">artist_min_familiarity</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">artist_max_hotttnesss</span>=<span class="sig-default">None</span>,
@@ -302,14 +372,24 @@
         <span class="sig-arg">max_longitude</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">min_latitude</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">max_latitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">adventurousness</span>=<span class="sig-default">0.2</span>,
         <span class="sig-arg">mode</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">key</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">buckets</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
         <span class="sig-arg">sort</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
         <span class="sig-arg">dmca</span>=<span class="sig-default">False</span>,
-        <span class="sig-arg">audio</span>=<span class="sig-default">False</span>,
-        <span class="sig-arg">chain_xspf</span>=<span class="sig-default">False</span>)</span>
+        <span class="sig-arg">chain_xspf</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">seed_catalog</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">steer</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">source_catalog</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">steer_description</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">test_new_things</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">rank_type</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_before</span>=<span class="sig-default">None</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -317,11 +397,62 @@
     </td>
   </tr></table>
   
-  x.__init__(...) initializes x; see x.__class__.__doc__ for signature
+  <p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">type (str): a string representing the playlist type ('artist', 'artist-radio', ...)</p>
+<p>artist_pick (str): How songs should be chosen for each artist</p>
+<p>variety (float): A number between 0 and 1 specifying the variety of the playlist</p>
+<p>artist_id (str): the artist_id</p>
+<p>artist (str): the name of an artist</p>
+<p>song_id (str): the song_id</p>
+<p>track_id (str): the track_id</p>
+<p>description (str): A string describing the artist and song</p>
+<p>style (str): A string describing the style/genre of the artist and song</p>
+<p>mood (str): A string describing the mood of the artist and song</p>
+<p>results (int): An integer number of results to return</p>
+<p>max_tempo (float): The max tempo of song results</p>
+<p>min_tempo (float): The min tempo of song results</p>
+<p>max_duration (float): The max duration of song results</p>
+<p>min_duration (float): The min duration of song results</p>
+<p>max_loudness (float): The max loudness of song results</p>
+<p>min_loudness (float): The min loudness of song results</p>
+<p>artist_max_familiarity (float): A float specifying the max familiarity of artists to search for</p>
+<p>artist_min_familiarity (float): A float specifying the min familiarity of artists to search for</p>
+<p>artist_max_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>artist_min_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>song_max_hotttnesss (float): A float specifying the max hotttnesss of songs to search for</p>
+<p>song_min_hotttnesss (float): A float specifying the max hotttnesss of songs to search for</p>
+<p>max_energy (float): The max energy of song results</p>
+<p>min_energy (float): The min energy of song results</p>
+<p>max_dancibility (float): The max dancibility of song results</p>
+<p>min_dancibility (float): The min dancibility of song results</p>
+<p>mode (int): 0 or 1 (minor or major)</p>
+<p>key (int): 0-11 (c, c-sharp, d, e-flat, e, f, f-sharp, g, a-flat, a, b-flat, b)</p>
+<p>max_latitude (float): A float specifying the max latitude of artists to search for</p>
+<p>min_latitude (float): A float specifying the min latitude of artists to search for</p>
+<p>max_longitude (float): A float specifying the max longitude of artists to search for</p>
+<p>min_longitude (float): A float specifying the min longitude of artists to search for</p>
+<p>adventurousness (float): A float ranging from 0 for old favorites to 1.0 for unheard music according to a seed_catalog</p>
+<p>sort (str): A string indicating an attribute and order for sorting the results</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+<p>seed_catalog (str or Catalog): A Catalog object or catalog id to use as a seed</p>
+<p>source_catalog (str or Catalog): A Catalog object or catalog id</p>
+<p>steer (str): A steering value to determine the target song attributes</p>
+<p>steer_description (str): A steering value to determine the target song description term attributes</p>
+<p>rank_type (str): A string denoting the desired ranking for description searches, either 'relevance' or 'familiarity'</p>
+<p>artist_start_year_before (int): Returned songs's artists will have started recording music before this year.</p>
+<p>artist_start_year_after (int): Returned songs's artists will have started recording music after this year.</p>
+<p>artist_end_year_before (int): Returned songs's artists will have stopped recording music before this year.</p>
+<p class="rst-last">artist_end_year_after (int): Returned songs's artists will have stopped recording music after this year.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A dynamic playlist object</dd>
+</dl>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
-        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -350,6 +481,154 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="get_next_song"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_next_song</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.get_next_song">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the next song in the playlist</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A song object</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p = playlist.Playlist(type=<span class="py-string">'artist-radio'</span>, artist=[<span class="py-string">'ida maria'</span>, <span class="py-string">'florence + the machine'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>p.get_next_song()
+<span class="py-output">&lt;song - She Said&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_current_song"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_current_song</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.get_current_song">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the current song in the playlist</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A song object</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p = playlist.Playlist(type=<span class="py-string">'artist-radio'</span>, artist=[<span class="py-string">'ida maria'</span>, <span class="py-string">'florence + the machine'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>p.song
+<span class="py-output">&lt;song - Later On&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>p.get_current_song()
+<span class="py-output">&lt;song - Later On&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="session_info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">session_info</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.playlist-pysrc.html#Playlist.session_info">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get information about the playlist</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A dict with diagnostic information about the currently running playlist</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p = playlist.Playlist(type=<span class="py-string">'artist-radio'</span>, artist=[<span class="py-string">'ida maria'</span>, <span class="py-string">'florence + the machine'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>p.info
+<span class="py-output">{</span>
+<span class="py-output">    u 'terms': [{</span>
+<span class="py-output">        u 'frequency': 1.0,</span>
+<span class="py-output">        u 'name': u 'rock'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.99646542152360207,</span>
+<span class="py-output">        u 'name': u 'pop'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.90801905502131963,</span>
+<span class="py-output">        u 'name': u 'indie'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.90586455490260576,</span>
+<span class="py-output">        u 'name': u 'indie rock'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.8968907243373172,</span>
+<span class="py-output">        u 'name': u 'alternative'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    [...]</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.052197425644931635,</span>
+<span class="py-output">        u 'name': u 'easy listening'</span>
+<span class="py-output">    }],</span>
+<span class="py-output">    u 'description': [],</span>
+<span class="py-output">    u 'seed_songs': [],</span>
+<span class="py-output">    u 'banned_artists': [],</span>
+<span class="py-output">    u 'rules': [{</span>
+<span class="py-output">        u 'rule': u &quot;Don't put two copies of the same song in a playlist.&quot;</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'rule': u 'Give preference to artists that are not already in the playlist'</span>
+<span class="py-output">    }],</span>
+<span class="py-output">    u 'session_id': u '9c1893e6ace04c8f9ce745f38b35ff95',</span>
+<span class="py-output">    u 'seeds': [u 'ARI4XHX1187B9A1216', u 'ARNCHOP121318C56B8'],</span>
+<span class="py-output">    u 'skipped_songs': [],</span>
+<span class="py-output">    u 'banned_songs': [],</span>
+<span class="py-output">    u 'playlist_type': u 'artist-radio',</span>
+<span class="py-output">    u 'seed_catalogs': [],</span>
+<span class="py-output">    u 'rated_songs': [],</span>
+<span class="py-output">    u 'history': [{</span>
+<span class="py-output">        u 'artist_id': u 'ARN6QMG1187FB56C8D',</span>
+<span class="py-output">        u 'artist_name': u 'Laura Marling',</span>
+<span class="py-output">        u 'id': u 'SOMSHNP12AB018513F',</span>
+<span class="py-output">        u 'served_time': 1291412277.204201,</span>
+<span class="py-output">        u 'title': u 'Hope In The Air'</span>
+<span class="py-output">    }]</span>
+<span class="py-output">}</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p.session_info()
+<span class="py-output">(same result as above)</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <br />
 <!-- ==================== PROPERTY DETAILS ==================== -->
 <a name="section-PropertyDetails"></a>
@@ -375,10 +654,104 @@
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">song</h3>
-  
+  <p>Get the current song in the playlist</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A song object</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p = playlist.Playlist(type=<span class="py-string">'artist-radio'</span>, artist=[<span class="py-string">'ida maria'</span>, <span class="py-string">'florence + the machine'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>p.song
+<span class="py-output">&lt;song - Later On&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>p.get_current_song()
+<span class="py-output">&lt;song - Later On&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="pyechonest.playlist.Playlist-class.html#get_current_song" class="summary-sig-name">get_current_song</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get the current song in the playlist
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">info</h3>
+  <p>Get information about the playlist</p>
+<p>Args:</p>
+<p>Kwargs:</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>A dict with diagnostic information about the currently running playlist</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p = playlist.Playlist(type=<span class="py-string">'artist-radio'</span>, artist=[<span class="py-string">'ida maria'</span>, <span class="py-string">'florence + the machine'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>p.info
+<span class="py-output">{</span>
+<span class="py-output">    u 'terms': [{</span>
+<span class="py-output">        u 'frequency': 1.0,</span>
+<span class="py-output">        u 'name': u 'rock'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.99646542152360207,</span>
+<span class="py-output">        u 'name': u 'pop'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.90801905502131963,</span>
+<span class="py-output">        u 'name': u 'indie'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.90586455490260576,</span>
+<span class="py-output">        u 'name': u 'indie rock'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.8968907243373172,</span>
+<span class="py-output">        u 'name': u 'alternative'</span>
+<span class="py-output">    },</span>
+<span class="py-output">    [...]</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'frequency': 0.052197425644931635,</span>
+<span class="py-output">        u 'name': u 'easy listening'</span>
+<span class="py-output">    }],</span>
+<span class="py-output">    u 'description': [],</span>
+<span class="py-output">    u 'seed_songs': [],</span>
+<span class="py-output">    u 'banned_artists': [],</span>
+<span class="py-output">    u 'rules': [{</span>
+<span class="py-output">        u 'rule': u &quot;Don't put two copies of the same song in a playlist.&quot;</span>
+<span class="py-output">    },</span>
+<span class="py-output">    {</span>
+<span class="py-output">        u 'rule': u 'Give preference to artists that are not already in the playlist'</span>
+<span class="py-output">    }],</span>
+<span class="py-output">    u 'session_id': u '9c1893e6ace04c8f9ce745f38b35ff95',</span>
+<span class="py-output">    u 'seeds': [u 'ARI4XHX1187B9A1216', u 'ARNCHOP121318C56B8'],</span>
+<span class="py-output">    u 'skipped_songs': [],</span>
+<span class="py-output">    u 'banned_songs': [],</span>
+<span class="py-output">    u 'playlist_type': u 'artist-radio',</span>
+<span class="py-output">    u 'seed_catalogs': [],</span>
+<span class="py-output">    u 'rated_songs': [],</span>
+<span class="py-output">    u 'history': [{</span>
+<span class="py-output">        u 'artist_id': u 'ARN6QMG1187FB56C8D',</span>
+<span class="py-output">        u 'artist_name': u 'Laura Marling',</span>
+<span class="py-output">        u 'id': u 'SOMSHNP12AB018513F',</span>
+<span class="py-output">        u 'served_time': 1291412277.204201,</span>
+<span class="py-output">        u 'title': u 'Hope In The Air'</span>
+<span class="py-output">    }]</span>
+<span class="py-output">}</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>p.session_info()
+<span class="py-output">(same result as above)</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.playlist.Playlist-class.html#session_info" class="summary-sig-name">session_info</a>(<span class="summary-sig-arg">self</span>)</span>
+        - Get information about the playlist
     </dd>
   </dl>
 </td></tr></table>
@@ -405,14 +778,14 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:34 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

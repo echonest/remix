@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -57,7 +57,7 @@
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module action</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.action-pysrc.html">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Module action</h1><p class="nomargin-top"></p>
 <p>action.py</p>
 <p>Created by Tristan Jehan and Jason Sundram.</p>
 
@@ -82,24 +82,25 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.action.Playback-class.html" class="summary-name">Playback</a><br />
-      A snippet of the given track with start and duration.
+        <a href="echonest.action.Blend-class.html" class="summary-name">Blend</a><br />
+      Mix together two lists of beats
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.action.Fadeout-class.html" class="summary-name">Fadeout</a><br />
-      Fadeout
+        <a href="echonest.action.Crossfade-class.html" class="summary-name">Crossfade</a><br />
+      Crossfades between two tracks, at the start points specified,
+for the given duration
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.action.Fadein-class.html" class="summary-name">Fadein</a><br />
-      Fadein
+        <a href="echonest.action.Crossmatch-class.html" class="summary-name">Crossmatch</a><br />
+      Makes a beat-matched crossfade between the two input tracks.
     </td>
   </tr>
 <tr>
@@ -114,8 +115,16 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.action.Crossfade-class.html" class="summary-name">Crossfade</a><br />
-      Crossfades between two tracks, at the start points specified, for the given duration
+        <a href="echonest.action.Fadein-class.html" class="summary-name">Fadein</a><br />
+      Fadein
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.action.Fadeout-class.html" class="summary-name">Fadeout</a><br />
+      Fadeout
     </td>
   </tr>
 <tr>
@@ -130,16 +139,9 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.action.Blend-class.html" class="summary-name">Blend</a><br />
-      Mix together two lists of beats
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="echonest.action.Crossmatch-class.html" class="summary-name">Crossmatch</a><br />
-      Makes a beat-matched crossfade between the two input tracks.
+        <a href="echonest.action.Playback-class.html" class="summary-name">Playback</a><br />
+      A snippet of the given track with start and duration. Volume leveling
+may be applied.
     </td>
   </tr>
 </table>
@@ -166,10 +168,27 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="rows"></a><span class="summary-sig-name">rows</span>(<span class="summary-sig-arg">m</span>)</span><br />
-      returns the # of rows in a numpy matrix</td>
+          <td><span class="summary-sig"><a name="display_actions"></a><span class="summary-sig-name">display_actions</span>(<span class="summary-sig-arg">actions</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.action-pysrc.html#rows">source&nbsp;code</a></span>
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="humanize_time"></a><span class="summary-sig-name">humanize_time</span>(<span class="summary-sig-arg">secs</span>)</span><br />
+      Turns seconds into a string of the form HH:MM:SS,
+or MM:SS if less than one hour.</td>
+          <td align="right" valign="top">
+            
             
           </td>
         </tr>
@@ -186,7 +205,7 @@
           <td><span class="summary-sig"><a name="make_mono"></a><span class="summary-sig-name">make_mono</span>(<span class="summary-sig-arg">track</span>)</span><br />
       Converts stereo tracks to mono; leaves mono tracks alone.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.action-pysrc.html#make_mono">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -200,10 +219,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.action-module.html#make_stereo" class="summary-sig-name">make_stereo</a>(<span class="summary-sig-arg">track</span>)</span><br />
-      If the track is mono, doubles it.</td>
+          <td><span class="summary-sig"><a name="make_stereo"></a><span class="summary-sig-name">make_stereo</span>(<span class="summary-sig-arg">track</span>)</span><br />
+      If the track is mono, doubles it. otherwise, does nothing.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.action-pysrc.html#make_stereo">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -218,10 +237,12 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="render"></a><span class="summary-sig-name">render</span>(<span class="summary-sig-arg">actions</span>,
-        <span class="summary-sig-arg">filename</span>)</span><br />
-      Calls render on each action in actions, concatenates the results, renders an audio file, and returns a path to the file</td>
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Calls render on each action in actions, concatenates the results,
+renders an audio file, and returns a path to the file</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.action-pysrc.html#render">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -235,26 +256,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="humanize_time"></a><span class="summary-sig-name">humanize_time</span>(<span class="summary-sig-arg">secs</span>)</span><br />
-      Turns seconds into a string of the form HH:MM:SS, or MM:SS if less than one hour.</td>
+          <td><span class="summary-sig"><a name="rows"></a><span class="summary-sig-name">rows</span>(<span class="summary-sig-arg">m</span>)</span><br />
+      returns the # of rows in a numpy matrix</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.action-pysrc.html#humanize_time">source&nbsp;code</a></span>
             
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="display_actions"></a><span class="summary-sig-name">display_actions</span>(<span class="summary-sig-arg">actions</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.action-pysrc.html#display_actions">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -287,45 +292,21 @@
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'echonest'"><code class="variable-quote">'</code><code class="variable-string">echonest</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
-</table>
-<!-- ==================== FUNCTION DETAILS ==================== -->
-<a name="section-FunctionDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Function Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-FunctionDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="make_stereo"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">make_stereo</span>(<span class="sig-arg">track</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.action-pysrc.html#make_stereo">source&nbsp;code</a></span>&nbsp;
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="multiply"></a><span class="summary-name">multiply</span> = <code title="&lt;ufunc 'multiply'&gt;">&lt;ufunc 'multiply'&gt;</code>
     </td>
-  </tr></table>
-  
-  If the track is mono, doubles it. otherwise, does nothing.
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<br />
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="pi"></a><span class="summary-name">pi</span> = <code title="3.14159265359">3.14159265359</code>
+    </td>
+  </tr>
+</table>
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -347,14 +328,14 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:27 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

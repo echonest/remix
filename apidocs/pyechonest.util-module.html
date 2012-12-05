@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -83,15 +83,38 @@ Created by Tyler Williams on 2010-04-25.</p>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.util.EchoNestAPIError-class.html" class="summary-name">EchoNestAPIError</a><br />
-      Generic API errors.
+        <a href="pyechonest.util.MyBaseHandler-class.html" class="summary-name">MyBaseHandler</a>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.util.attrdict-class.html" class="summary-name">attrdict</a>
+        <a href="pyechonest.util.MyErrorProcessor-class.html" class="summary-name">MyErrorProcessor</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.util.EchoNestException-class.html" class="summary-name">EchoNestException</a><br />
+      Parent exception class.  Catches API and URL/HTTP errors.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.util.EchoNestAPIError-class.html" class="summary-name">EchoNestAPIError</a><br />
+      API Specific Errors.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.util.EchoNestIOError-class.html" class="summary-name">EchoNestIOError</a><br />
+      URL and HTTP errors.
     </td>
   </tr>
 </table>
@@ -208,13 +231,52 @@ put them in a list.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="oauthgetm"></a><span class="summary-sig-name">oauthgetm</span>(<span class="summary-sig-arg">method</span>,
+        <span class="summary-sig-arg">param_dict</span>,
+        <span class="summary-sig-arg">socket_timeout</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.util-pysrc.html#oauthgetm">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="pyechonest.util-module.html#postChunked" class="summary-sig-name">postChunked</a>(<span class="summary-sig-arg">host</span>,
         <span class="summary-sig-arg">selector</span>,
         <span class="summary-sig-arg">fields</span>,
         <span class="summary-sig-arg">files</span>)</span><br />
-      Attempt to replace postMultipart() with nearly-identical interface.</td>
+      Attempt to replace postMultipart() with nearly-identical interface.
+(The files tuple no longer requires the filename, and we only return
+the response body.)
+Uses the urllib2_file.py originally from
+<a class="rst-reference external" href="http://fabien.seisen.org" target="_top">http://fabien.seisen.org</a> which was also drawn heavily from
+<a class="rst-reference external" href="http://code.activestate.com/recipes/146306/" target="_top">http://code.activestate.com/recipes/146306/</a> .</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.util-pysrc.html#postChunked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="fix"></a><span class="summary-sig-name">fix</span>(<span class="summary-sig-arg">x</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.util-pysrc.html#fix">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -267,37 +329,37 @@ put them in a list.</td>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="pyechonest.util-module.html#foreign_regex" class="summary-name">foreign_regex</a> = <code title="re.compile(r'^.+?:(artist|song|release|track|person|device|listener|ed\
-itor|tweditor):([^\^]+)\^?([0-9\.]+)?')">re.compile(r'^.<code class="re-op">+?</code>:<code class="re-group">(</code>artist<code class="re-op">|</code>song<code class="re-op">|</code>release<code class="re-op">|</code>track<code class="re-op">|</code>p<code class="variable-ellipsis">...</code></code>
+itor|tweditor|catalog):([^\^]+)\^?([0-9\.]+)?')">re.compile(r'^.<code class="re-op">+?</code>:<code class="re-group">(</code>artist<code class="re-op">|</code>song<code class="re-op">|</code>release<code class="re-op">|</code>track<code class="re-op">|</code>p<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.util-module.html#short_regex" class="summary-name">short_regex</a> = <code title="re.compile(r'^((AR|SO|RE|TR|PE|DE|LI|ED|TW)[0-9A-Z]{16})\^?([0-9\.]+)?\
-')">re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="variable-ellipsis">...</code></code>
+        <a href="pyechonest.util-module.html#short_regex" class="summary-name">short_regex</a> = <code title="re.compile(r'^((AR|SO|RE|TR|PE|DE|LI|ED|TW|CA)[0-9A-Z]{16})\^?([0-9\.]\
++)?')">re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-op">|</code>CA<code class="re-group">)</code><code class="re-group">[</code>0<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.util-module.html#long_regex" class="summary-name">long_regex</a> = <code title="re.compile(r'music://id.echonest.com/.+?/(AR|SO|RE|TR|PE|DE|LI|ED|TW)/\
-(AR|SO|RE|TR|PE|DE|LI|ED|TW)[0-9A-Z]{16}\^?([0-9\.]+)?')">re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>R<code class="variable-ellipsis">...</code></code>
+        <a href="pyechonest.util-module.html#long_regex" class="summary-name">long_regex</a> = <code title="re.compile(r'music://id.echonest.com/.+?/(AR|SO|RE|TR|PE|DE|LI|ED|TW|C\
+A)/(AR|SO|RE|TR|PE|DE|LI|ED|TW|CA)[0-9A-Z]{16}\^?([0-9\.]+)?')">re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>R<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="headers"></a><span class="summary-name">headers</span> = <code title="[('User-Agent', 'Pyechonest 4.2.5')]"><code class="variable-group">[</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">User-Agent</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Pyechonest 4.2.5</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-group">]</code></code>
+        <a name="headers"></a><span class="summary-name">headers</span> = <code title="[('User-Agent', 'Pyechonest 0.0.0')]"><code class="variable-group">[</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">User-Agent</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Pyechonest 0.0.0</code><code class="variable-quote">'</code><code class="variable-group">)</code><code class="variable-group">]</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="opener"></a><span class="summary-name">opener</span> = <code title="urllib2.build_opener()">urllib2.build_opener()</code>
+        <a href="pyechonest.util-module.html#opener" class="summary-name">opener</a> = <code title="urllib2.build_opener(MyBaseHandler(), MyErrorProcessor())">urllib2.build_opener(MyBaseHandler(), MyErrorProcesso<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -373,8 +435,8 @@ put them in a list.</p>
 (The files tuple no longer requires the filename, and we only return
 the response body.)
 Uses the urllib2_file.py originally from
-<a class="rst-reference external" href="http://fabien.seisen.org" target="_top">http://fabien.seisen.org</a> which was also drawn heavily from
-<a class="rst-reference external" href="http://code.activestate.com/recipes/146306/" target="_top">http://code.activestate.com/recipes/146306/</a> .</p>
+<a class="rst-rst-reference external rst-reference external" href="http://fabien.seisen.org" target="_top">http://fabien.seisen.org</a> which was also drawn heavily from
+<a class="rst-rst-reference external rst-reference external" href="http://code.activestate.com/recipes/146306/" target="_top">http://code.activestate.com/recipes/146306/</a> .</p>
 <p>This urllib2_file.py is more desirable because of the chunked
 uploading from a file pointer (no need to read entire file into
 memory) and the ability to work from behind a proxy (due to its
@@ -441,7 +503,7 @@ basis on urllib2).</p>
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
 re.compile(r'^.<code class="re-op">+?</code>:<code class="re-group">(</code>artist<code class="re-op">|</code>song<code class="re-op">|</code>release<code class="re-op">|</code>track<code class="re-op">|</code>person<code class="re-op">|</code>device<code class="re-op">|</code>listener<code class="re-op">|</code>ed<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-itor<code class="re-op">|</code>tweditor<code class="re-group">)</code>:<code class="re-group">(</code><code class="re-group">[^</code>\^<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
+itor<code class="re-op">|</code>tweditor<code class="re-op">|</code>catalog<code class="re-group">)</code>:<code class="re-group">(</code><code class="re-group">[^</code>\^<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -459,8 +521,8 @@ itor<code class="re-op">|</code>tweditor<code class="re-group">)</code>:<code cl
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="re-op">-</code>Z<code class="re-group">]</code><code class="re-op">{16}</code><code class="re-group">)</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-')
+re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-op">|</code>CA<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="re-op">-</code>Z<code class="re-group">]</code><code class="re-op">{16}</code><code class="re-group">)</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -478,8 +540,26 @@ re.compile(r'^<code class="re-group">(</code><code class="re-group">(</code>AR<c
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code>/<code class="re-group"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="re-op">-</code>Z<code class="re-group">]</code><code class="re-op">{16}</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
+re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-op">|</code>C<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+A<code class="re-group">)</code>/<code class="re-group">(</code>AR<code class="re-op">|</code>SO<code class="re-op">|</code>RE<code class="re-op">|</code>TR<code class="re-op">|</code>PE<code class="re-op">|</code>DE<code class="re-op">|</code>LI<code class="re-op">|</code>ED<code class="re-op">|</code>TW<code class="re-op">|</code>CA<code class="re-group">)</code><code class="re-group">[</code>0<code class="re-op">-</code>9A<code class="re-op">-</code>Z<code class="re-group">]</code><code class="re-op">{16}</code>\^<code class="re-op">?</code><code class="re-group">(</code><code class="re-group">[</code>0<code class="re-op">-</code>9\.<code class="re-group">]</code><code class="re-op">+</code><code class="re-group">)</code><code class="re-op">?</code>')
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="opener"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">opener</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+urllib2.build_opener(MyBaseHandler(), MyErrorProcessor())
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -507,14 +587,14 @@ re.compile(r'music://id.echonest.com/.<code class="re-op">+?</code>/<code class=
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:28 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

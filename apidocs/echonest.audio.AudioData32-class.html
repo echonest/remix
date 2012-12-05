@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -58,9 +58,35 @@
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class AudioData32</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class AudioData32</h1><p class="nomargin-top"></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_echonest_12" name="uml_class_diagram_for_echonest_12">
+<area shape="rect" id="node23" href="echonest.audio.AudioData32-class.html#__init__" title="Special form of AudioData to allow for headroom when collecting samples." alt="" coords="17,431,776,449"/>
+<area shape="rect" id="node23" href="echonest.audio.AudioData32-class.html#encode" title="Outputs an MP3 or WAVE file to filename. Format is determined by mp3 parameter." alt="" coords="17,449,776,468"/>
+<area shape="rect" id="node23" href="echonest.audio.AudioData32-class.html#load" title="echonest.audio.AudioData32.load" alt="" coords="17,468,776,487"/>
+<area shape="rect" id="node23" href="echonest.audio.AudioData32-class.html#normalize" title="Return to 16&#45;bit for encoding." alt="" coords="17,487,776,505"/>
+<area shape="rect" id="node23" href="echonest.audio.AudioData32-class.html#pad_with_zeros" title="echonest.audio.AudioData32.pad_with_zeros" alt="" coords="17,505,776,524"/>
+<area shape="rect" id="node1" href="echonest.audio.AudioData32-class.html" title="A 32&#45;bit variant of AudioData, intended for data collection on audio rendering with headroom." alt="" coords="5,398,787,530"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#duration" title="echonest.audio.AudioData.duration" alt="" coords="224,145,569,164"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#source" title="echonest.audio.AudioData.source" alt="" coords="224,164,569,183"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#__add__" title="Supports stuff like this: sound3 = sound1 + sound2" alt="" coords="224,185,569,204"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#__getitem__" title="Fetches a frame or slice. Returns an individual frame (if the index is a time offset float or an integer sample number) or a slice if the index is an AudioQuantum (or quacks like one)." alt="" coords="224,204,569,223"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#__len__" title="echonest.audio.AudioData.__len__" alt="" coords="224,223,569,241"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#add_at" title="Adds the input another_audio_data to this AudioData at the time specified in seconds." alt="" coords="224,241,569,260"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#append" title="Appends the input to the end of this AudioData." alt="" coords="224,260,569,279"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#getsample" title="Help __getitem__ return a frame (all channels for a given sample index)" alt="" coords="224,279,569,297"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#getslice" title="Help __getitem__ return a new AudioData for a given slice" alt="" coords="224,297,569,316"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#render" title="echonest.audio.AudioData.render" alt="" coords="224,316,569,335"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#sum" title="echonest.audio.AudioData.sum" alt="" coords="224,335,569,353"/>
+<area shape="rect" id="node24" href="echonest.audio.AudioData-class.html#unload" title="echonest.audio.AudioData.unload" alt="" coords="224,353,569,372"/>
+<area shape="rect" id="node2" href="echonest.audio.AudioData-class.html" title="Handles audio data transparently. A smart audio container with accessors that include:" alt="" coords="212,121,580,378"/>
+<area shape="rect" id="node25" href="echonest.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="281,39,512,57"/>
+<area shape="rect" id="node25" href="echonest.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative. Throw an informative error if no source is found." alt="" coords="281,57,512,76"/>
+<area shape="rect" id="node25" href="echonest.audio.AudioRenderable-class.html#sources" title="echonest.audio.AudioRenderable.sources" alt="" coords="281,76,512,95"/>
+<area shape="rect" id="node3" href="echonest.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render() method. Intended to be an abstract class that helps enforce the AudioRenderable protocol. Picked up a couple of convenience methods common to many descendants." alt="" coords="269,6,523,101"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_12.gif" alt='' usemap="#uml_class_diagram_for_echonest_12" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 A 32-bit variant of AudioData, intended for data collection on
@@ -99,23 +125,7 @@ audio rendering with headroom.
         <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
       Special form of AudioData to allow for headroom when collecting samples.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.__init__">source&nbsp;code</a></span>
             
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="echonest.audio.AudioData32-class.html#load" class="summary-sig-name">load</a>(<span class="summary-sig-arg">self</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.load">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -132,9 +142,26 @@ audio rendering with headroom.
           <td><span class="summary-sig"><a href="echonest.audio.AudioData32-class.html#encode" class="summary-sig-name">encode</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">mp3</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Outputs an MP3 or WAVE file to <code class="link">filename</code>.</td>
+      Outputs an MP3 or WAVE file to <code class="link">filename</code>.
+Format is determined by <code class="link">mp3</code> parameter.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.encode">source&nbsp;code</a></span>
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.audio.AudioData32-class.html#load" class="summary-sig-name">load</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            
             
           </td>
         </tr>
@@ -151,7 +178,7 @@ audio rendering with headroom.
           <td><span class="summary-sig"><a name="normalize"></a><span class="summary-sig-name">normalize</span>(<span class="summary-sig-arg">self</span>)</span><br />
       Return to 16-bit for encoding.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.normalize">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -168,7 +195,7 @@ audio rendering with headroom.
           <td><span class="summary-sig"><a href="echonest.audio.AudioData32-class.html#pad_with_zeros" class="summary-sig-name">pad_with_zeros</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">num_samples</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.pad_with_zeros">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -301,7 +328,7 @@ audio rendering with headroom.
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.__init__">source&nbsp;code</a></span>&nbsp;
+    >&nbsp;
     </td>
   </tr></table>
   
@@ -322,28 +349,6 @@ data into the AudioData.data</li>
   </dl>
 </td></tr></table>
 </div>
-<a name="load"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">load</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.load">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Overrides:
-        <a href="echonest.audio.AudioData-class.html#load">AudioData.load</a>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
 <a name="encode"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -356,7 +361,7 @@ data into the AudioData.data</li>
         <span class="sig-arg">mp3</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.encode">source&nbsp;code</a></span>&nbsp;
+    >&nbsp;
     </td>
   </tr></table>
   
@@ -365,6 +370,28 @@ Format is determined by <code class="link">mp3</code> parameter.
   <dl class="fields">
     <dt>Overrides:
         <a href="echonest.audio.AudioRenderable-class.html#encode">AudioRenderable.encode</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="load"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">load</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="echonest.audio.AudioData-class.html#load">AudioData.load</a>
     </dt>
   </dl>
 </td></tr></table>
@@ -380,7 +407,7 @@ Format is determined by <code class="link">mp3</code> parameter.
         <span class="sig-arg">num_samples</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#AudioData32.pad_with_zeros">source&nbsp;code</a></span>&nbsp;
+    >&nbsp;
     </td>
   </tr></table>
   
@@ -414,14 +441,14 @@ Format is determined by <code class="link">mp3</code> parameter.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:58 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:29 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

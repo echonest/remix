@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.remix.audio.LocalAudioFile</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="echonest-module.html">Package&nbsp;echonest</a> ::
+        <a href="echonest.remix-module.html">Package&nbsp;remix</a> ::
+        <a href="echonest.remix.audio-module.html">Module&nbsp;audio</a> ::
+        Class&nbsp;LocalAudioFile
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.remix.audio.LocalAudioFile-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class LocalAudioFile</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_echonest_48" name="uml_class_diagram_for_echonest_48">
+<area shape="rect" id="node131" href="echonest.remix.audio.LocalAudioFile-class.html#duration" title="Since we consider AudioFile to be an evolved version of AudioData, we return the measured duration from the analysis." alt="" coords="37,460,344,479"/>
+<area shape="rect" id="node131" href="echonest.remix.audio.LocalAudioFile-class.html#__new__" title="echonest.remix.audio.LocalAudioFile.__new__" alt="" coords="37,481,344,500"/>
+<area shape="rect" id="node131" href="echonest.remix.audio.LocalAudioFile-class.html#__init__" title="Given an input ndarray, import the sample values and shape (if none is specified) of the input numpy.array." alt="" coords="37,500,344,519"/>
+<area shape="rect" id="node131" href="echonest.remix.audio.LocalAudioFile-class.html#save" title="echonest.remix.audio.LocalAudioFile.save" alt="" coords="37,519,344,537"/>
+<area shape="rect" id="node131" href="echonest.remix.audio.LocalAudioFile-class.html#toxml" title="echonest.remix.audio.LocalAudioFile.toxml" alt="" coords="37,537,344,556"/>
+<area shape="rect" id="node131" href="echonest.remix.audio.LocalAudioFile-class.html#__setstate__" title="Recreates circular reference after unpickling." alt="" coords="37,556,344,575"/>
+<area shape="rect" id="node1" href="echonest.remix.audio.LocalAudioFile-class.html" title="The basic do&#45;everything class for remixing. Acts as an AudioData object, but with an added analysis selector which is an AudioAnalysis object. It conditianally uploads the file it was initialized with. If the file is already known to the Analyze API, then it does not bother uploading the file." alt="" coords="25,435,356,581"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#source" title="echonest.remix.audio.AudioData.source" alt="" coords="17,145,363,164"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#load" title="echonest.remix.audio.AudioData.load" alt="" coords="17,167,363,185"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#__getitem__" title="Fetches a frame or slice. Returns an individual frame (if the index is a time offset float or an integer sample number) or a slice if the index is an AudioQuantum (or quacks like one)." alt="" coords="17,185,363,204"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#getslice" title="Help __getitem__ return a new AudioData for a given slice" alt="" coords="17,204,363,223"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#getsample" title="Help __getitem__ return a frame (all channels for a given sample index)" alt="" coords="17,223,363,241"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#pad_with_zeros" title="echonest.remix.audio.AudioData.pad_with_zeros" alt="" coords="17,241,363,260"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#append" title="Appends the input to the end of this AudioData." alt="" coords="17,260,363,279"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#sum" title="echonest.remix.audio.AudioData.sum" alt="" coords="17,279,363,297"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#add_at" title="Adds the input another_audio_data to this AudioData at the time specified in seconds." alt="" coords="17,297,363,316"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#__len__" title="echonest.remix.audio.AudioData.__len__" alt="" coords="17,316,363,335"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#__add__" title="Supports stuff like this: sound3 = sound1 + sound2" alt="" coords="17,335,363,353"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#encode" title="Outputs an MP3 or WAVE file to filename. Format is determined by mp3 parameter." alt="" coords="17,353,363,372"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#unload" title="echonest.remix.audio.AudioData.unload" alt="" coords="17,372,363,391"/>
+<area shape="rect" id="node132" href="echonest.remix.audio.AudioData-class.html#render" title="echonest.remix.audio.AudioData.render" alt="" coords="17,391,363,409"/>
+<area shape="rect" id="node2" href="echonest.remix.audio.AudioData-class.html" title="Handles audio data transparently. A smart audio container with accessors that include:" alt="" coords="5,121,373,415"/>
+<area shape="rect" id="node133" href="echonest.remix.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative. Throw an informative error if no source is found." alt="" coords="75,39,305,57"/>
+<area shape="rect" id="node133" href="echonest.remix.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="75,57,305,76"/>
+<area shape="rect" id="node133" href="echonest.remix.audio.AudioRenderable-class.html#sources" title="echonest.remix.audio.AudioRenderable.sources" alt="" coords="75,76,305,95"/>
+<area shape="rect" id="node3" href="echonest.remix.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render() method. Intended to be an abstract class that helps enforce the AudioRenderable protocol. Picked up a couple of convenience methods common to many descendants." alt="" coords="63,6,316,101"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_48.gif" alt='' usemap="#uml_class_diagram_for_echonest_48" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+The basic do-everything class for remixing. Acts as an <a href="echonest.remix.audio.AudioData-class.html" class="link">AudioData</a>
+object, but with an added <code class="link">analysis</code> selector which is an
+<a href="echonest.remix.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> object. It conditianally uploads the file
+it was initialized with. If the file is already known to the
+Analyze API, then it does not bother uploading the file.
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.remix.audio.LocalAudioFile-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">defer</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="save"></a><span class="summary-sig-name">save</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.save">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="toxml"></a><span class="summary-sig-name">toxml</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.toxml">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setstate__"></a><span class="summary-sig-name">__setstate__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">state</span>)</span><br />
+      Recreates circular reference after unpickling.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.__setstate__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioData-class.html">AudioData</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioData-class.html#__add__">__add__</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#__getitem__">__getitem__</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#__len__">__len__</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#add_at">add_at</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#append">append</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#encode">encode</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#getsample">getsample</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#getslice">getslice</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#load">load</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#pad_with_zeros">pad_with_zeros</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#render">render</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#sum">sum</a></code>,
+      <code><a href="echonest.remix.audio.AudioData-class.html#unload">unload</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioRenderable-class.html">AudioRenderable</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#resolve_source">resolve_source</a></code>,
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#sources">sources</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Static Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-StaticMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">a new object with type S, a subtype of T</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.remix.audio.LocalAudioFile-class.html#__new__" class="summary-sig-name">__new__</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">defer</span>=<span class="summary-sig-default">False</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.__new__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioRenderable-class.html">AudioRenderable</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#init_audio_data">init_audio_data</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.remix.audio.LocalAudioFile-class.html#duration" class="summary-name">duration</a><br />
+      Since we consider <code class="link">AudioFile</code> to be an evolved version of
+<a href="echonest.remix.audio.AudioData-class.html" class="link">AudioData</a>, we return the measured duration from the analysis.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioData-class.html">AudioData</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioData-class.html#source">source</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__new__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__new__</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">verbose</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">defer</span>=<span class="sig-default">False</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.__new__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: a new object with type S, a subtype of T</dt>
+    <dt>Overrides:
+        object.__new__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">verbose</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">defer</span>=<span class="sig-default">False</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.remix.audio-pysrc.html#LocalAudioFile.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given an input <code class="link">ndarray</code>, import the sample values and shape
+(if none is specified) of the input <code class="link">numpy.array</code>.</p>
+<p>Given a <code class="link">filename</code> (and an input ndarray), use ffmpeg to convert
+the file to wave, then load the file into the data,
+auto-detecting the sample rate, and number of channels.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong> - path to a local MP3 file</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="duration"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">duration</h3>
+  Since we consider <code class="link">AudioFile</code> to be an evolved version of
+<a href="echonest.remix.audio.AudioData-class.html" class="link">AudioData</a>, we return the measured duration from the analysis.
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.duration(<span class="summary-sig-arg">self</span>)</span>
+        - Since we consider <code class="link">AudioFile</code> to be an evolved version of
+<code class="link">AudioData</code>, we return the measured duration from the analysis.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:32 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

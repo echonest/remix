@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -57,7 +57,7 @@
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module audio</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.audio-pysrc.html">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Module audio</h1><p class="nomargin-top"></p>
 <p>The main <a class="rst-rst-rst-reference external rst-rst-reference external rst-reference external" href="http://the.echonest.com/" target="_top">Echo Nest</a> <a class="rst-rst-rst-reference external rst-rst-reference external rst-reference external" href="http://code.google.com/p/echo-nest-remix/" target="_top">Remix API</a> module for manipulating audio files and
 their associated <a class="rst-rst-rst-reference external rst-rst-reference external rst-reference external" href="http://the.echonest.com/" target="_top">Echo Nest</a> <a class="rst-rst-rst-reference external rst-rst-reference external rst-reference external" href="http://developer.echonest.com/pages/overview?version=2" target="_top">Analyze API</a> analyses.</p>
 <p>AudioData, and getpieces by Robert Ochshorn
@@ -94,17 +94,8 @@ by Adam Lindsay.</p>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.AudioAnalysis-class.html" class="summary-name">AudioAnalysis</a><br />
-      This class wraps <code class="link">echonest.web</code> to allow transparent caching of the
-audio analysis of an audio file.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="echonest.audio.AudioRenderable-class.html" class="summary-name">AudioRenderable</a><br />
-      An object that gives an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> in response to a call to its <code class="link">render</code>()
-method.
+      This class uses (but does not wrap) <a href="pyechonest.track-module.html" class="link">pyechonest.track</a> to allow
+transparent caching of the audio analysis of an audio file.
     </td>
   </tr>
 <tr>
@@ -112,7 +103,8 @@ method.
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="echonest.audio.AudioData-class.html" class="summary-name">AudioData</a><br />
-      Handles audio data transparently.
+      Handles audio data transparently. A smart audio container
+with accessors that include:
     </td>
   </tr>
 <tr>
@@ -124,6 +116,17 @@ method.
 audio rendering with headroom.
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.audio.AudioRenderable-class.html" class="summary-name">AudioRenderable</a><br />
+      An object that gives an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> in response to a call to its <code class="link">render</code>()
+method.
+Intended to be an abstract class that helps enforce the <a href="echonest.audio.AudioRenderable-class.html" class="link">AudioRenderable</a>
+protocol. Picked up a couple of convenience methods common to many descendants.
+    </td>
+  </tr>
 <tr bgcolor="#e8f0f8" >
   <th colspan="2" class="group-header"
     >&nbsp;&nbsp;&nbsp;&nbsp;Audio-plus-Analysis Classes</th></tr>
@@ -131,17 +134,22 @@ audio rendering with headroom.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.LocalAudioFile-class.html" class="summary-name">LocalAudioFile</a><br />
-      The basic do-everything class for remixing.
+        <a href="echonest.audio.LocalAnalysis-class.html" class="summary-name">LocalAnalysis</a><br />
+      Like <a href="echonest.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it conditionally uploads the file with which
+it was initialized. Unlike <a href="echonest.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it is not a subclass of
+<a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>, so contains no sample data.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.LocalAnalysis-class.html" class="summary-name">LocalAnalysis</a><br />
-      Like <a href="echonest.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it conditionally uploads the file with which
-it was initialized.
+        <a href="echonest.audio.LocalAudioFile-class.html" class="summary-name">LocalAudioFile</a><br />
+      The basic do-everything class for remixing. Acts as an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>
+object, but with an added <code class="link">analysis</code> selector which is an
+<a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> object. It conditianally uploads the file
+it was initialized with. If the file is already known to the
+Analyze API, then it does not bother uploading the file.
     </td>
   </tr>
 <tr bgcolor="#e8f0f8" >
@@ -153,7 +161,19 @@ it was initialized.
     </td><td class="summary">
         <a href="echonest.audio.AudioQuantum-class.html" class="summary-name">AudioQuantum</a><br />
       A unit of musical time, identified at minimum with a start time and
-a duration, both in seconds.
+a duration, both in seconds. It most often corresponds with a <code class="link">section</code>,
+<code class="link">bar</code>, <code class="link">beat</code>, <code class="link">tatum</code>, or (by inheritance) <code class="link">segment</code> obtained from an Analyze
+API call.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.audio.AudioQuantumList-class.html" class="summary-name">AudioQuantumList</a><br />
+      A container that enables content-based selection and filtering.
+A <code class="link">List</code> that contains <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects, with additional methods
+for manipulating them.
     </td>
   </tr>
 <tr>
@@ -175,17 +195,16 @@ render() method with nested effects, called sequentially on the
 result of the preceeding effect.
     </td>
   </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Effects</th></tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AudioQuantumList-class.html" class="summary-name">AudioQuantumList</a><br />
-      A container that enables content-based selection and filtering.
+        <a href="echonest.audio.AmplitudeFactor-class.html" class="summary-name">AmplitudeFactor</a>
     </td>
   </tr>
-<tr bgcolor="#e8f0f8" >
-  <th colspan="2" class="group-header"
-    >&nbsp;&nbsp;&nbsp;&nbsp;Effects</th></tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -204,7 +223,11 @@ result of the preceeding effect.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.AmplitudeFactor-class.html" class="summary-name">AmplitudeFactor</a>
+        <a href="echonest.audio.Simultaneous-class.html" class="summary-name">Simultaneous</a><br />
+      Stacks all contained AudioQuanta atop one another, adding their respective
+samples. The rhythmic length of the segment is the duration of the first
+<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>, but there can be significant overlap caused by the longest
+segment.
     </td>
   </tr>
 <tr>
@@ -221,15 +244,6 @@ result of the preceeding effect.
         <a href="echonest.audio.TimeTruncateLength-class.html" class="summary-name">TimeTruncateLength</a>
     </td>
   </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="echonest.audio.Simultaneous-class.html" class="summary-name">Simultaneous</a><br />
-      Stacks all contained AudioQuanta atop one another, adding their respective
-samples.
-    </td>
-  </tr>
 <tr bgcolor="#e8f0f8" >
   <th colspan="2" class="group-header"
     >&nbsp;&nbsp;&nbsp;&nbsp;Exception Classes</th></tr>
@@ -237,15 +251,15 @@ samples.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.FileTypeError-class.html" class="summary-name">FileTypeError</a>
+        <a href="echonest.audio.EchoNestRemixError-class.html" class="summary-name">EchoNestRemixError</a><br />
+      Error raised by the Remix API.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio.EchoNestRemixError-class.html" class="summary-name">EchoNestRemixError</a><br />
-      Error raised by the Remix API.
+        <a href="echonest.audio.FileTypeError-class.html" class="summary-name">FileTypeError</a>
     </td>
   </tr>
 </table>
@@ -266,6 +280,23 @@ samples.
     </table>
   </td>
 </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_os"></a><span class="summary-sig-name">get_os</span>()</span><br />
+      returns is_linux, is_mac, is_windows</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 <tr bgcolor="#e8f0f8" >
   <th colspan="2" class="group-header"
     >&nbsp;&nbsp;&nbsp;&nbsp;Audio helper functions</th></tr>
@@ -275,11 +306,15 @@ samples.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.audio-module.html#getpieces" class="summary-sig-name">getpieces</a>(<span class="summary-sig-arg">audioData</span>,
-        <span class="summary-sig-arg">segs</span>)</span><br />
-      Collects audio samples for output.</td>
+          <td><span class="summary-sig"><a href="echonest.audio-module.html#assemble" class="summary-sig-name">assemble</a>(<span class="summary-sig-arg">audioDataList</span>,
+        <span class="summary-sig-arg">numChannels</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">sampleRate</span>=<span class="summary-sig-default">44100</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Collects audio samples for output.
+Returns a new <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> object assembled
+by concatenating all the elements of audioDataList.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#getpieces">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -293,12 +328,33 @@ samples.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="echonest.audio-module.html#assemble" class="summary-sig-name">assemble</a>(<span class="summary-sig-arg">audioDataList</span>,
-        <span class="summary-sig-arg">numChannels</span>=<span class="summary-sig-default">1</span>,
-        <span class="summary-sig-arg">sampleRate</span>=<span class="summary-sig-default">44100</span>)</span><br />
-      Collects audio samples for output.</td>
+          <td><span class="summary-sig"><a href="echonest.audio-module.html#getpieces" class="summary-sig-name">getpieces</a>(<span class="summary-sig-arg">audioData</span>,
+        <span class="summary-sig-arg">segs</span>)</span><br />
+      Collects audio samples for output.
+Returns a new <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> where the new sample data is assembled
+from the input audioData according to the time offsets in each
+of the elements of the input segs (commonly an <a href="echonest.audio.AudioQuantumList-class.html" class="link">AudioQuantumList</a>).</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#assemble">source&nbsp;code</a></span>
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="megamix"></a><span class="summary-sig-name">megamix</span>(<span class="summary-sig-arg">dataList</span>)</span><br />
+      Mix together any number of <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects. Keep the shape of
+the first one in the list. Assume they all have the same sample rate
+and number of channels.</td>
+          <td align="right" valign="top">
+            
             
           </td>
         </tr>
@@ -315,26 +371,10 @@ samples.
           <td><span class="summary-sig"><a href="echonest.audio-module.html#mix" class="summary-sig-name">mix</a>(<span class="summary-sig-arg">dataA</span>,
         <span class="summary-sig-arg">dataB</span>,
         <span class="summary-sig-arg">mix</span>=<span class="summary-sig-default">0.5</span>)</span><br />
-      Mixes two <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects.</td>
+      Mixes two <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects. Assumes they have the same sample rate
+and number of channels.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#mix">source&nbsp;code</a></span>
             
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="echonest.audio-module.html#megamix" class="summary-sig-name">megamix</a>(<span class="summary-sig-arg">dataList</span>)</span><br />
-      Mix together any number of <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#megamix">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -360,7 +400,24 @@ samples.
         <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">True</span>)</span><br />
       Executes ffmpeg through the shell to convert or read media files.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#ffmpeg">source&nbsp;code</a></span>
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="ffmpeg_error_check"></a><span class="summary-sig-name">ffmpeg_error_check</span>(<span class="summary-sig-arg">parsestring</span>)</span><br />
+      Looks for known errors in the ffmpeg output</td>
+          <td align="right" valign="top">
+            
             
           </td>
         </tr>
@@ -378,7 +435,7 @@ samples.
       Parses the output of ffmpeg to determine sample rate and frequency of
 an audio file.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#settings_from_ffmpeg">source&nbsp;code</a></span>
+            
             
           </td>
         </tr>
@@ -386,43 +443,9 @@ an audio file.</td>
       
     </td>
   </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="ffmpeg_error_check"></a><span class="summary-sig-name">ffmpeg_error_check</span>(<span class="summary-sig-arg">parsestring</span>)</span><br />
-      Looks for known errors in the ffmpeg output</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#ffmpeg_error_check">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr bgcolor="#e8f0f8" >
+<tr bgcolor="#e8f0f8"  class="private">
   <th colspan="2" class="group-header"
     >&nbsp;&nbsp;&nbsp;&nbsp;Utility functions</th></tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="_dataParser"></a><span class="summary-sig-name">_dataParser</span>(<span class="summary-sig-arg">tag</span>,
-        <span class="summary-sig-arg">nodes</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#_dataParser">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -432,7 +455,24 @@ an audio file.</td>
           <td><span class="summary-sig"><a name="_attributeParser"></a><span class="summary-sig-name">_attributeParser</span>(<span class="summary-sig-arg">tag</span>,
         <span class="summary-sig-arg">nodes</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#_attributeParser">source&nbsp;code</a></span>
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_dataParser"></a><span class="summary-sig-name">_dataParser</span>(<span class="summary-sig-arg">tag</span>,
+        <span class="summary-sig-arg">nodes</span>)</span></td>
+          <td align="right" valign="top">
+            
             
           </td>
         </tr>
@@ -448,25 +488,7 @@ an audio file.</td>
         <tr>
           <td><span class="summary-sig"><a name="_segmentsParser"></a><span class="summary-sig-name">_segmentsParser</span>(<span class="summary-sig-arg">nodes</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#_segmentsParser">source&nbsp;code</a></span>
             
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="chain_from_mixed"></a><span class="summary-sig-name">chain_from_mixed</span>(<span class="summary-sig-arg">iterables</span>)</span><br />
-      Helper function to flatten a list of elements and lists
-into a list of elements.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="echonest.audio-pysrc.html#chain_from_mixed">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -496,11 +518,7 @@ into a list of elements.</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="echonest.audio-module.html#ffmpeg_install_instructions" class="summary-name">ffmpeg_install_instructions</a> = <code title="'''
-en-ffmpeg not found! Please make sure ffmpeg is installed and create a\
- link as follows:
-    sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
-'''"><code class="variable-quote">'</code><code class="variable-string">\nen-ffmpeg not found! Please m</code><code class="variable-ellipsis">...</code></code>
+        <a name="MP3_BITRATE"></a><span class="summary-name">MP3_BITRATE</span> = <code title="128">128</code>
     </td>
   </tr>
 <tr>
@@ -508,6 +526,27 @@ en-ffmpeg not found! Please make sure ffmpeg is installed and create a\
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'echonest'"><code class="variable-quote">'</code><code class="variable-string">echonest</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.audio-module.html#__warningregistry__" class="summary-name">__warningregistry__</a> = <code title="{('Not importing directory \'/home/thor/Code/remix/pyechonest\': missi\
+ng __init__.py',
+  &lt;type 'exceptions.ImportWarning'&gt;,
+  40): True}"><code class="variable-group">{</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">Not importing directory \'/home/thor/</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.audio-module.html#ffmpeg_install_instructions" class="summary-name">ffmpeg_install_instructions</a> = <code title="'''
+en-ffmpeg not found! Please make sure ffmpeg is installed and create a\
+ link as follows:
+    sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
+'''"><code class="variable-quote">'</code><code class="variable-string">\nen-ffmpeg not found! Please m</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -529,6 +568,34 @@ en-ffmpeg not found! Please make sure ffmpeg is installed and create a\
   </td>
 </tr>
 </table>
+<a name="assemble"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assemble</span>(<span class="sig-arg">audioDataList</span>,
+        <span class="sig-arg">numChannels</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">sampleRate</span>=<span class="sig-default">44100</span>,
+        <span class="sig-arg">verbose</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  Collects audio samples for output.
+Returns a new <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> object assembled
+by concatenating all the elements of audioDataList.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>audioDatas</code></strong> - a list of <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="getpieces"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -540,7 +607,7 @@ en-ffmpeg not found! Please make sure ffmpeg is installed and create a\
         <span class="sig-arg">segs</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#getpieces">source&nbsp;code</a></span>&nbsp;
+    >&nbsp;
     </td>
   </tr></table>
   
@@ -558,33 +625,6 @@ as slices or indices for an <a href="echonest.audio.AudioData-class.html" class=
   </dl>
 </td></tr></table>
 </div>
-<a name="assemble"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">assemble</span>(<span class="sig-arg">audioDataList</span>,
-        <span class="sig-arg">numChannels</span>=<span class="sig-default">1</span>,
-        <span class="sig-arg">sampleRate</span>=<span class="sig-default">44100</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#assemble">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  Collects audio samples for output.
-Returns a new <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> object assembled
-by concatenating all the elements of audioDataList.
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>audioDatas</code></strong> - a list of <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
 <a name="mix"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -597,7 +637,7 @@ by concatenating all the elements of audioDataList.
         <span class="sig-arg">mix</span>=<span class="sig-default">0.5</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#mix">source&nbsp;code</a></span>&nbsp;
+    >&nbsp;
     </td>
   </tr></table>
   
@@ -605,27 +645,6 @@ by concatenating all the elements of audioDataList.
 and number of channels.</p>
 <p>Mix takes a float 0-1 and determines the relative mix of two audios.
 i.e., mix=0.9 yields greater presence of dataA in the final mix.</p>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<a name="megamix"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">megamix</span>(<span class="sig-arg">dataList</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="echonest.audio-pysrc.html#megamix">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  Mix together any number of <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> objects. Keep the shape of
-the first one in the list. Assume they all have the same sample rate
-and number of channels.
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -649,6 +668,27 @@ and number of channels.
   </td>
 </tr>
 </table>
+<a name="__warningregistry__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">__warningregistry__</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">Not importing directory \'/home/thor/Code/remix/pyechonest\': missi</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">ng __init__.py</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+  &lt;type 'exceptions.ImportWarning'&gt;<code class="variable-op">,</code>
+  40<code class="variable-group">)</code><code class="variable-op">: </code>True<code class="variable-group">}</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="ffmpeg_install_instructions"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -693,14 +733,14 @@ and number of channels.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:27 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

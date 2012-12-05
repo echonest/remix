@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,40 +60,68 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class Track</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.track-pysrc.html#Track">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_pyechone_15" name="uml_class_diagram_for_pyechone_15">
+<area shape="rect" id="node215" href="pyechonest.track.Track-class.html#__repr__" title="repr(x)" alt="" coords="107,212,193,231"/>
+<area shape="rect" id="node215" href="pyechonest.track.Track-class.html#__str__" title="str(x)" alt="" coords="107,231,193,249"/>
+<area shape="rect" id="node1" href="pyechonest.track.Track-class.html" title="Represents an audio analysis from The Echo Nest." alt="" coords="95,179,204,255"/>
+<area shape="rect" id="node216" href="pyechonest.proxies.TrackProxy-class.html#__init__" title="You should not call this constructor directly, rather use the convenience functions that are in track.py. For example, call track.track_from_filename Let&#39;s always get the bucket audio_summary" alt="" coords="32,135,268,153"/>
+<area shape="rect" id="node2" href="pyechonest.proxies.TrackProxy-class.html" title="pyechonest.proxies.TrackProxy" alt="" coords="20,102,279,159"/>
+<area shape="rect" id="node217" href="pyechonest.proxies.GenericProxy-class.html#get_attribute" title="pyechonest.proxies.GenericProxy.get_attribute" alt="" coords="17,39,283,57"/>
+<area shape="rect" id="node217" href="pyechonest.proxies.GenericProxy-class.html#post_attribute" title="pyechonest.proxies.GenericProxy.post_attribute" alt="" coords="17,57,283,76"/>
+<area shape="rect" id="node3" href="pyechonest.proxies.GenericProxy-class.html" title="pyechonest.proxies.GenericProxy" alt="" coords="5,6,293,82"/>
+</map>
+  <img src="uml_class_diagram_for_pyechone_15.gif" alt='' usemap="#uml_class_diagram_for_pyechone_15" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 <p>Represents an audio analysis from The Echo Nest.</p>
-<p>The track object will have the following properties:
-analysis_channels       an int
-analysis_sample_rate    a float
-analyzer_version        ex. '3.01a'
-artist                  ex. 'The Sea and Cake' or None
-bars                    a list of dicts
-beats                   a list of dicts
-bitrate                 an int
-duration                a float
-end_of_fade_in          a float
-id                      ex. 'TRTOBXJ1296BCDA33B'
-key                     an int
-key_confidence          a float
-loudness                a float
-md5                     ex. '17162ff555969cfed222e127837acd1a'
-meta                    a dict of analyzer data
-mode                    an int (0 or 1)
-mode_confidence         a float
-num_samples             an int
-release                 the album name, or None
-sample_md5              '4bf222fb6af22ba0226734bb978bac14'
-samplerate              an int
-sections                a list of dicts
-segments                a list of dicts
-start_of_fade_out       a float
-status                  ex. 'complete'
-tatums                  a list of dicts
-tempo                   a flat
-tempo_confidence        a float
-title                   ex. 'Interiors' or None</p>
+<p>All methods in this module return Track objects.</p>
+<p>Attributes:</p>
+<blockquote>
+<p>analysis_channels       int: the number of audio channels used during analysis</p>
+<p>analysis_sample_rate    float: the sample rate used during analysis</p>
+<p>analyzer_version        str: e.g. '3.01a'</p>
+<p>artist                  str or None: artist name</p>
+<p>bars                    list of dicts: timing of each measure</p>
+<p>beats                   list of dicts: timing of each beat</p>
+<p>bitrate                 int: the bitrate of the input mp3 (or other file)</p>
+<p>danceability            float: relative danceability (0 to 1)</p>
+<p>duration                float: length of track in seconds</p>
+<p>energy                  float: relative energy (0 to 1)</p>
+<p>end_of_fade_in          float: time in seconds track where fade-in ends</p>
+<p>id                      str: Echo Nest Track ID, e.g. 'TRTOBXJ1296BCDA33B'</p>
+<p>key                     int: between 0 (key of C) and 11 (key of B flat) inclusive</p>
+<p>key_confidence          float: confidence that key detection was accurate</p>
+<p>loudness                float: overall loudness in decibels (dB)</p>
+<p>md5                     str: 32-character checksum of the input mp3</p>
+<p>meta                    dict: other track metainfo</p>
+<p>mode                    int: 0 (major) or 1 (minor)</p>
+<p>mode_confidence         float: confidence that mode detection was accurate</p>
+<p>num_samples             int: total samples in the decoded track</p>
+<p>release                 str or None: the album name</p>
+<p>sample_md5              str: 32-character checksum of the decoded audio file</p>
+<p>samplerate              int: sample rate of input mp3</p>
+<p>sections                list of dicts: larger sections of song (chorus, bridge, solo, etc.)</p>
+<p>segments                list of dicts: timing, pitch, loudness and timbre for each segment</p>
+<p>speechiness             float: relative speechiness (0 to 1)</p>
+<p>start_of_fade_out       float: time in seconds where fade out begins</p>
+<p>status                  str: analysis status, e.g. 'complete', 'pending', 'error'</p>
+<p>tatums                  list of dicts: the smallest metrical unit (subdivision of a beat)</p>
+<p>tempo                   float: overall BPM (beats per minute)</p>
+<p>tempo_confidence        float: confidence that tempo detection was accurate</p>
+<p>title                   str or None: song title</p>
+</blockquote>
+<p>Each bar, beat, section, segment and tatum has a start time, a duration, and a confidence,
+in addition to whatever other data is given.</p>
+<p>Examples:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_id(<span class="py-string">'TRXXHTJ1294CD8F3B3'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt;track - Neverwas Restored (from Neverwas Soundtrack)&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_md5(<span class="py-string">'b8abf85746ab3416adabca63141d8c2d'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt;track - Neverwas Restored (from Neverwas Soundtrack)&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -283,14 +311,14 @@ title                   ex. 'Interiors' or None</p>
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:35 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

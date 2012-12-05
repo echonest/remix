@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -107,7 +107,25 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_track_from_response"></a><span class="summary-sig-name">_track_from_response</span>(<span class="summary-sig-arg">response</span>)</span><br />
+          <td><span class="summary-sig"><a name="_wait_for_pending_track"></a><span class="summary-sig-name">_wait_for_pending_track</span>(<span class="summary-sig-arg">trid</span>,
+        <span class="summary-sig-arg">timeout</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_wait_for_pending_track">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_track_from_response"></a><span class="summary-sig-name">_track_from_response</span>(<span class="summary-sig-arg">result</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">300</span>)</span><br />
       This is the function that actually creates the track object</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#_track_from_response">source&nbsp;code</a></span>
@@ -124,10 +142,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="pyechonest.track-module.html#_upload" class="summary-sig-name" onclick="show_private();">_upload</a>(<span class="summary-sig-arg">param_dict</span>,
+          <td><span class="summary-sig"><a name="_upload"></a><span class="summary-sig-name">_upload</span>(<span class="summary-sig-arg">param_dict</span>,
+        <span class="summary-sig-arg">timeout</span>,
         <span class="summary-sig-arg">data</span>=<span class="summary-sig-default">None</span>)</span><br />
       Calls upload either with a local audio file,
-or a url.</td>
+or a url. Returns a track object.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#_upload">source&nbsp;code</a></span>
             
@@ -159,7 +178,8 @@ or a url.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_analyze"></a><span class="summary-sig-name">_analyze</span>(<span class="summary-sig-arg">param_dict</span>)</span></td>
+          <td><span class="summary-sig"><a name="_analyze"></a><span class="summary-sig-name">_analyze</span>(<span class="summary-sig-arg">param_dict</span>,
+        <span class="summary-sig-arg">timeout</span>)</span></td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#_analyze">source&nbsp;code</a></span>
             
@@ -175,10 +195,11 @@ or a url.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_track_from_string"></a><span class="summary-sig-name">_track_from_string</span>(<span class="summary-sig-arg">audio_data</span>,
-        <span class="summary-sig-arg">filetype</span>)</span></td>
+          <td><span class="summary-sig"><a name="_track_from_data"></a><span class="summary-sig-name">_track_from_data</span>(<span class="summary-sig-arg">audio_data</span>,
+        <span class="summary-sig-arg">filetype</span>,
+        <span class="summary-sig-arg">timeout</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.track-pysrc.html#_track_from_string">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyechonest.track-pysrc.html#_track_from_data">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -192,9 +213,10 @@ or a url.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_file"></a><span class="summary-sig-name">track_from_file</span>(<span class="summary-sig-arg">file_object</span>,
-        <span class="summary-sig-arg">filetype</span>)</span><br />
-      Convenience function for creating a track object from a file-like object</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_file" class="summary-sig-name">track_from_file</a>(<span class="summary-sig-arg">file_object</span>,
+        <span class="summary-sig-arg">filetype</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">300</span>)</span><br />
+      Create a track object from a file-like object.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_file">source&nbsp;code</a></span>
             
@@ -210,10 +232,10 @@ or a url.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_filename"></a><span class="summary-sig-name">track_from_filename</span>(<span class="summary-sig-arg">filename</span>,
-        <span class="summary-sig-arg">filetype</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Convenience function for creating a track object from a file path
-if the filetype is none, we will get it from the extension</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_filename" class="summary-sig-name">track_from_filename</a>(<span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">filetype</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">300</span>)</span><br />
+      Create a track object from a filename.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_filename">source&nbsp;code</a></span>
             
@@ -229,8 +251,9 @@ if the filetype is none, we will get it from the extension</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_url"></a><span class="summary-sig-name">track_from_url</span>(<span class="summary-sig-arg">url</span>)</span><br />
-      Convenience function for creating a track object from a public http url</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_url" class="summary-sig-name">track_from_url</a>(<span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">300</span>)</span><br />
+      Create a track object from a public http URL.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_url">source&nbsp;code</a></span>
             
@@ -246,8 +269,8 @@ if the filetype is none, we will get it from the extension</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_id"></a><span class="summary-sig-name">track_from_id</span>(<span class="summary-sig-arg">identifier</span>)</span><br />
-      Convenience function for creating a track object from an id, like TRXXHTJ1294CD8F3B3</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_id" class="summary-sig-name">track_from_id</a>(<span class="summary-sig-arg">identifier</span>)</span><br />
+      Create a track object from an Echo Nest track ID.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_id">source&nbsp;code</a></span>
             
@@ -263,8 +286,8 @@ if the filetype is none, we will get it from the extension</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_md5"></a><span class="summary-sig-name">track_from_md5</span>(<span class="summary-sig-arg">md5</span>)</span><br />
-      Convenience function for creating a track object from an md5</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_md5" class="summary-sig-name">track_from_md5</a>(<span class="summary-sig-arg">md5</span>)</span><br />
+      Create a track object from an md5 hash.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_md5">source&nbsp;code</a></span>
             
@@ -280,8 +303,9 @@ if the filetype is none, we will get it from the extension</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_reanalyzing_id"></a><span class="summary-sig-name">track_from_reanalyzing_id</span>(<span class="summary-sig-arg">identifier</span>)</span><br />
-      Convenience function for reanalzying an already uploaded track</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_reanalyzing_id" class="summary-sig-name">track_from_reanalyzing_id</a>(<span class="summary-sig-arg">identifier</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">300</span>)</span><br />
+      Create a track object from an Echo Nest track ID, reanalyzing the track first.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_reanalyzing_id">source&nbsp;code</a></span>
             
@@ -297,8 +321,9 @@ if the filetype is none, we will get it from the extension</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="track_from_reanalyzing_md5"></a><span class="summary-sig-name">track_from_reanalyzing_md5</span>(<span class="summary-sig-arg">md5</span>)</span><br />
-      Convenience function for reanalzying an already uploaded track</td>
+          <td><span class="summary-sig"><a href="pyechonest.track-module.html#track_from_reanalyzing_md5" class="summary-sig-name">track_from_reanalyzing_md5</a>(<span class="summary-sig-arg">md5</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">300</span>)</span><br />
+      Create a track object from an md5 hash, reanalyzing the track first.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_reanalyzing_md5">source&nbsp;code</a></span>
             
@@ -330,6 +355,13 @@ if the filetype is none, we will get it from the extension</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a name="DEFAULT_ASYNC_TIMEOUT"></a><span class="summary-name">DEFAULT_ASYNC_TIMEOUT</span> = <code title="300">300</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'pyechonest'"><code class="variable-quote">'</code><code class="variable-string">pyechonest</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
@@ -352,23 +384,222 @@ if the filetype is none, we will get it from the extension</td>
   </td>
 </tr>
 </table>
-<a name="_upload"></a>
-<div class="private">
+<a name="track_from_file"></a>
+<div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">_upload</span>(<span class="sig-arg">param_dict</span>,
-        <span class="sig-arg">data</span>=<span class="sig-default">None</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_file</span>(<span class="sig-arg">file_object</span>,
+        <span class="sig-arg">filetype</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">300</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyechonest.track-pysrc.html#_upload">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_file">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  Calls upload either with a local audio file,
-or a url. Returns a track object.
+  <p>Create a track object from a file-like object.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>file_object: a file-like Python object
+filetype: the file type (ex. mp3, ogg, wav)</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>f = open(<span class="py-string">&quot;Miaow-01-Tempered-song.mp3&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_file(f, <span class="py-string">'mp3'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt; Track &gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="track_from_filename"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_filename</span>(<span class="sig-arg">filename</span>,
+        <span class="sig-arg">filetype</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">300</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_filename">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a track object from a filename.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>filename: A string containing the path to the input file.
+filetype: A string indicating the filetype; Defaults to None (type determined by file extension).</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_filename(<span class="py-string">&quot;Miaow-01-Tempered-song.mp3&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt; Track &gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="track_from_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_url</span>(<span class="sig-arg">url</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">300</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a track object from a public http URL.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>url: A string giving the URL to read from. This must be on a public machine accessible by HTTP.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_url(<span class="py-string">&quot;http://www.miaowmusic.com/mp3/Miaow-01-Tempered-song.mp3&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt; Track &gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="track_from_id"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_id</span>(<span class="sig-arg">identifier</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_id">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a track object from an Echo Nest track ID.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>identifier: A string containing the ID of a previously analyzed track.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_id(<span class="py-string">&quot;TRWFIDS128F92CC4CA&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt;track - Let The Spirit&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="track_from_md5"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_md5</span>(<span class="sig-arg">md5</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_md5">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a track object from an md5 hash.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>md5: A string 32 characters long giving the md5 checksum of a track already analyzed.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_md5(<span class="py-string">'b8abf85746ab3416adabca63141d8c2d'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt;track - Neverwas Restored (from Neverwas Soundtrack)&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="track_from_reanalyzing_id"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_reanalyzing_id</span>(<span class="sig-arg">identifier</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">300</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_reanalyzing_id">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a track object from an Echo Nest track ID, reanalyzing the track first.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>identifier (str): A string containing the ID of a previously analyzed track</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_reanalyzing_id(<span class="py-string">'TRXXHTJ1294CD8F3B3'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt;track - Neverwas Restored&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="track_from_reanalyzing_md5"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">track_from_reanalyzing_md5</span>(<span class="sig-arg">md5</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">300</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.track-pysrc.html#track_from_reanalyzing_md5">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a track object from an md5 hash, reanalyzing the track first.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>md5 (str): A string containing the md5 of a previously analyzed track</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>t = track.track_from_reanalyzing_md5(<span class="py-string">'b8abf85746ab3416adabca63141d8c2d'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>t
+<span class="py-output">&lt;track - Neverwas Restored&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -395,14 +626,14 @@ or a url. Returns a track object.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:28 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

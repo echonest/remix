@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,25 +60,51 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class Song</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.song-pysrc.html#Song">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_pyechone_14" name="uml_class_diagram_for_pyechone_14">
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#audio_summary" title="Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url." alt="" coords="20,185,281,204"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#song_hotttnesss" title="Get our numerical description of how hottt a song currently is" alt="" coords="20,204,281,223"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#artist_hotttnesss" title="Get our numerical description of how hottt a song&#39;s artist currently is" alt="" coords="20,223,281,241"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#artist_familiarity" title="Get our numerical estimation of how familiar a song&#39;s artist currently is to the world" alt="" coords="20,241,281,260"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#artist_location" title="Get the location of a song&#39;s artist." alt="" coords="20,260,281,279"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#song_type" title="Get the types of a song." alt="" coords="20,279,281,297"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#__init__" title="Song class" alt="" coords="20,300,281,319"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#__repr__" title="repr(x)" alt="" coords="20,319,281,337"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#__str__" title="str(x)" alt="" coords="20,337,281,356"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_audio_summary" title="Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url." alt="" coords="20,356,281,375"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_song_hotttnesss" title="Get our numerical description of how hottt a song currently is" alt="" coords="20,375,281,393"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_artist_hotttnesss" title="Get our numerical description of how hottt a song&#39;s artist currently is" alt="" coords="20,393,281,412"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_artist_familiarity" title="Get our numerical estimation of how familiar a song&#39;s artist currently is to the world" alt="" coords="20,412,281,431"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_artist_location" title="Get the location of a song&#39;s artist." alt="" coords="20,431,281,449"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_foreign_id" title="Get the foreign id for this song for a specific id space" alt="" coords="20,449,281,468"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_tracks" title="Get the tracks for a song given a catalog." alt="" coords="20,468,281,487"/>
+<area shape="rect" id="node212" href="pyechonest.song.Song-class.html#get_song_type" title="Get the types of a song." alt="" coords="20,487,281,505"/>
+<area shape="rect" id="node1" href="pyechonest.song.Song-class.html" title="A Song object" alt="" coords="8,161,293,511"/>
+<area shape="rect" id="node213" href="pyechonest.proxies.SongProxy-class.html#get_attribute" title="pyechonest.proxies.SongProxy.get_attribute" alt="" coords="47,116,253,135"/>
+<area shape="rect" id="node2" href="pyechonest.proxies.SongProxy-class.html" title="pyechonest.proxies.SongProxy" alt="" coords="35,83,264,141"/>
+<area shape="rect" id="node214" href="pyechonest.proxies.GenericProxy-class.html#post_attribute" title="pyechonest.proxies.GenericProxy.post_attribute" alt="" coords="17,39,283,57"/>
+<area shape="rect" id="node3" href="pyechonest.proxies.GenericProxy-class.html" title="pyechonest.proxies.GenericProxy" alt="" coords="5,6,293,63"/>
+</map>
+  <img src="uml_class_diagram_for_pyechone_14.gif" alt='' usemap="#uml_class_diagram_for_pyechone_14" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
 <p>A Song object</p>
 <dl class="rst-docutils">
-<dt>Create a song object like so:</dt>
-<dd>s = song.Song('SOXZYYG127F3E1B7A2')</dd>
-<dt>Attributes: (<strong>attributes</strong> are guaranteed to exist as soon as an artist object exists)</dt>
-<dd><strong>id</strong>: Echo Nest Song ID
-<strong>title</strong>: Song Title
-<strong>artist_name</strong>: Artist Name
-<strong>artist_id</strong>: Artist ID
-audio_summary: An Audio Summary Result object
-song_hotttnesss: A float representing a song's hotttnesss
-artist_hotttnesss: A float representing a song's parent artist's hotttnesss
-artist_familiarity: A float representing a song's parent artist's familiarity
-artist_location: A string specifying a song's parent artist's location
-tracks: A list of track result objects</dd>
+<dt>Attributes:</dt>
+<dd><p class="rst-first">id (str): Echo Nest Song ID</p>
+<p>title (str): Song Title</p>
+<p>artist_name (str): Artist Name</p>
+<p>artist_id (str): Artist ID</p>
+<p>audio_summary (dict): An Audio Summary dict</p>
+<p>song_hotttnesss (float): A float representing a song's hotttnesss</p>
+<p>artist_hotttnesss (float): A float representing a song's parent artist's hotttnesss</p>
+<p>artist_familiarity (float): A float representing a song's parent artist's familiarity</p>
+<p class="rst-last">artist_location (dict): A dictionary of strings specifying a song's parent artist's location, lattitude and longitude</p>
+</dd>
 </dl>
+<p>Create a song object like so:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOPEXHZ12873FD2AC7'</span>)</pre>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -107,7 +133,7 @@ tracks: A list of track result objects</dd>
         <span class="summary-sig-arg">id</span>,
         <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**kwargs</span>)</span><br />
-      x.__init__(...) initializes x; see x.__class__.__doc__ for signature</td>
+      Song class</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.song-pysrc.html#Song.__init__">source&nbsp;code</a></span>
             
@@ -159,7 +185,7 @@ tracks: A list of track result objects</dd>
         <tr>
           <td><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_audio_summary" class="summary-sig-name">get_audio_summary</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
-      Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, and analysis_url.</td>
+      Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.song-pysrc.html#Song.get_audio_summary">source&nbsp;code</a></span>
             
@@ -247,13 +273,49 @@ tracks: A list of track result objects</dd>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_foreign_id" class="summary-sig-name">get_foreign_id</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">idspace</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get the foreign id for this song for a specific id space</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.song-pysrc.html#Song.get_foreign_id">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_tracks" class="summary-sig-name">get_tracks</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">catalog</span>,
-        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
       Get the tracks for a song given a catalog.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.song-pysrc.html#Song.get_tracks">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_song_type" class="summary-sig-name">get_song_type</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Get the types of a song.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.song-pysrc.html#Song.get_song_type">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -306,7 +368,7 @@ tracks: A list of track result objects</dd>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="pyechonest.song.Song-class.html#audio_summary" class="summary-name">audio_summary</a><br />
-      Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, and analysis_url.
+      Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url.
     </td>
   </tr>
 <tr>
@@ -339,6 +401,14 @@ tracks: A list of track result objects</dd>
     </td><td class="summary">
         <a href="pyechonest.song.Song-class.html#artist_location" class="summary-name">artist_location</a><br />
       Get the location of a song's artist.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.song.Song-class.html#song_type" class="summary-name">song_type</a><br />
+      Get the types of a song.
     </td>
   </tr>
   <tr>
@@ -385,11 +455,26 @@ tracks: A list of track result objects</dd>
     </td>
   </tr></table>
   
-  x.__init__(...) initializes x; see x.__class__.__doc__ for signature
+  <p>Song class</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>id (str): a song ID</dd>
+<dt>Kwargs:</dt>
+<dd>buckets (list): A list of strings specifying which buckets to retrieve</dd>
+<dt>Returns:</dt>
+<dd>A Song object</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOPEXHZ12873FD2AC7'</span>, buckets=[<span class="py-string">'song_hotttnesss'</span>, <span class="py-string">'artist_hotttnesss'</span>])
+<span class="py-prompt">&gt;&gt;&gt; </span>s.song_hotttnesss
+<span class="py-output">0.58602500000000002</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.artist_hotttnesss
+<span class="py-output">0.80329715999999995</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
   <dl class="fields">
     <dt>Overrides:
         object.__init__
-        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -457,12 +542,28 @@ tracks: A list of track result objects</dd>
     </td>
   </tr></table>
   
-  <p>Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, and analysis_url.</p>
+  <p>Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url.</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Kwargs:</dt>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
-<dd>A dictionary containing mode, tempo, key, duration, time signature, loudness, and analysis_url keys.</dd>
+<dd>A dictionary containing mode, tempo, key, duration, time signature, loudness, danceability, energy and analysis_url keys.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOGNMKX12B0B806320'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.audio_summary
+<span class="py-output">{u'analysis_url': u'https://echonest-analysis.s3.amazonaws.com:443/TR/TRCPUOG123E85891F2/3/full.json?Signature=wcML1ZKsl%2F2FU4k68euHJcF7Jbc%3D&amp;Expires=1287518562&amp;AWSAccessKeyId=AKIAIAFEHLM3KJ2XMHRA',</span>
+<span class="py-output"> u'danceability': 0.20964757782725996,</span>
+<span class="py-output"> u'duration': 472.63301999999999,</span>
+<span class="py-output"> u'energy': 0.64265230549809549,</span>
+<span class="py-output"> u'key': 0,</span>
+<span class="py-output"> u'loudness': -9.6820000000000004,</span>
+<span class="py-output"> u'mode': 1,</span>
+<span class="py-output"> u'tempo': 126.99299999999999,</span>
+<span class="py-output"> u'time_signature': 4}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
   </dl>
@@ -484,11 +585,21 @@ tracks: A list of track result objects</dd>
   </tr></table>
   
   <p>Get our numerical description of how hottt a song currently is</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Kwargs:</dt>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>A float representing hotttnesss.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOLUHKP129F0698D49'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.get_song_hotttnesss()
+<span class="py-output">0.57344379999999995</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.song_hotttnesss
+<span class="py-output">0.57344379999999995</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
   </dl>
@@ -510,11 +621,21 @@ tracks: A list of track result objects</dd>
   </tr></table>
   
   <p>Get our numerical description of how hottt a song's artist currently is</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Kwargs:</dt>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>A float representing hotttnesss.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOOLGAZ127F3E1B87C'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.artist_hotttnesss
+<span class="py-output">0.45645633000000002</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.get_artist_hotttnesss()
+<span class="py-output">0.45645633000000002</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
   </dl>
@@ -538,9 +659,18 @@ tracks: A list of track result objects</dd>
   <p>Get our numerical estimation of how familiar a song's artist currently is to the world</p>
 <dl class="rst-docutils">
 <dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>A float representing familiarity.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOQKVPH12A58A7AF4D'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.get_artist_familiarity()
+<span class="py-output">0.639626025843539</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.artist_familiarity
+<span class="py-output">0.639626025843539</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
   </dl>
@@ -564,10 +694,51 @@ tracks: A list of track result objects</dd>
   <p>Get the location of a song's artist.</p>
 <dl class="rst-docutils">
 <dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>An artist location object.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOQKVPH12A58A7AF4D'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.artist_location
+<span class="py-output">{u'latitude': 34.053489999999996, u'location': u'Los Angeles, CA', u'longitude': -118.24532000000001}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_foreign_id"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_foreign_id</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">idspace</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.song-pysrc.html#Song.get_foreign_id">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the foreign id for this song for a specific id space</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd>idspace (str): A string indicating the idspace to fetch a foreign id for.</dd>
+<dt>Returns:</dt>
+<dd>A foreign ID string</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOYRVMR12AF729F8DC'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.get_foreign_id(<span class="py-string">'CAGPXKK12BB06F9DE9'</span>)</pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt;</span></pre>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -581,7 +752,6 @@ tracks: A list of track result objects</dd>
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">get_tracks</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">catalog</span>,
-        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
         <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -592,9 +762,53 @@ tracks: A list of track result objects</dd>
   <p>Get the tracks for a song given a catalog.</p>
 <dl class="rst-docutils">
 <dt>Args:</dt>
-<dd>catalog: a string representing the catalog whose track you want to retrieve.</dd>
+<dd>catalog (str): a string representing the catalog whose track you want to retrieve.</dd>
 <dt>Returns:</dt>
 <dd>A list of Track dicts.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOWDASQ12A6310F24F'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.get_tracks(<span class="py-string">'7digital'</span>)[0]
+<span class="py-output">{u'catalog': u'7digital',</span>
+<span class="py-output"> u'foreign_id': u'7digital:track:8445818',</span>
+<span class="py-output"> u'id': u'TRJGNNY12903CC625C',</span>
+<span class="py-output"> u'preview_url': u'http://previews.7digital.com/clips/34/8445818.clip.mp3',</span>
+<span class="py-output"> u'release_image': u'http://cdn.7static.com/static/img/sleeveart/00/007/628/0000762838_200.jpg'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_song_type"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_song_type</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cache</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.song-pysrc.html#Song.get_song_type">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the types of a song.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache (boolean): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Returns:</dt>
+<dd>A list of strings, each representing a song type:  'christmas', for example.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOQKVPH12A58A7AF4D'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.song_type
+<span class="py-output">[u'christmas']</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
   </dl>
@@ -625,18 +839,34 @@ tracks: A list of track result objects</dd>
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">audio_summary</h3>
-  <p>Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, and analysis_url.</p>
+  <p>Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url.</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Kwargs:</dt>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
-<dd>A dictionary containing mode, tempo, key, duration, time signature, loudness, and analysis_url keys.</dd>
+<dd>A dictionary containing mode, tempo, key, duration, time signature, loudness, danceability, energy and analysis_url keys.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOGNMKX12B0B806320'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.audio_summary
+<span class="py-output">{u'analysis_url': u'https://echonest-analysis.s3.amazonaws.com:443/TR/TRCPUOG123E85891F2/3/full.json?Signature=wcML1ZKsl%2F2FU4k68euHJcF7Jbc%3D&amp;Expires=1287518562&amp;AWSAccessKeyId=AKIAIAFEHLM3KJ2XMHRA',</span>
+<span class="py-output"> u'danceability': 0.20964757782725996,</span>
+<span class="py-output"> u'duration': 472.63301999999999,</span>
+<span class="py-output"> u'energy': 0.64265230549809549,</span>
+<span class="py-output"> u'key': 0,</span>
+<span class="py-output"> u'loudness': -9.6820000000000004,</span>
+<span class="py-output"> u'mode': 1,</span>
+<span class="py-output"> u'tempo': 126.99299999999999,</span>
+<span class="py-output"> u'time_signature': 4}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_audio_summary" class="summary-sig-name">get_audio_summary</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
-        - Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, and analysis_url.
+        - Get an audio summary of a song containing mode, tempo, key, duration, time signature, loudness, danceability, energy, and analysis_url.
     </dd>
   </dl>
 </td></tr></table>
@@ -648,11 +878,21 @@ tracks: A list of track result objects</dd>
 <tr><td>
   <h3 class="epydoc">song_hotttnesss</h3>
   <p>Get our numerical description of how hottt a song currently is</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Kwargs:</dt>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>A float representing hotttnesss.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOLUHKP129F0698D49'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.get_song_hotttnesss()
+<span class="py-output">0.57344379999999995</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.song_hotttnesss
+<span class="py-output">0.57344379999999995</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
     <dt>Get Method:</dt>
@@ -670,11 +910,21 @@ tracks: A list of track result objects</dd>
 <tr><td>
   <h3 class="epydoc">artist_hotttnesss</h3>
   <p>Get our numerical description of how hottt a song's artist currently is</p>
+<p>Args:</p>
 <dl class="rst-docutils">
-<dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Kwargs:</dt>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>A float representing hotttnesss.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOOLGAZ127F3E1B87C'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.artist_hotttnesss
+<span class="py-output">0.45645633000000002</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.get_artist_hotttnesss()
+<span class="py-output">0.45645633000000002</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
     <dt>Get Method:</dt>
@@ -694,9 +944,18 @@ tracks: A list of track result objects</dd>
   <p>Get our numerical estimation of how familiar a song's artist currently is to the world</p>
 <dl class="rst-docutils">
 <dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>A float representing familiarity.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOQKVPH12A58A7AF4D'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.get_artist_familiarity()
+<span class="py-output">0.639626025843539</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>s.artist_familiarity
+<span class="py-output">0.639626025843539</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
     <dt>Get Method:</dt>
@@ -716,15 +975,51 @@ tracks: A list of track result objects</dd>
   <p>Get the location of a song's artist.</p>
 <dl class="rst-docutils">
 <dt>Args:</dt>
-<dd>cache: A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dd>cache (bool): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
 <dt>Returns:</dt>
 <dd>An artist location object.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOQKVPH12A58A7AF4D'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.artist_location
+<span class="py-output">{u'latitude': 34.053489999999996, u'location': u'Los Angeles, CA', u'longitude': -118.24532000000001}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
 </dl>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_artist_location" class="summary-sig-name">get_artist_location</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
         - Get the location of a song's artist.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="song_type"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">song_type</h3>
+  <p>Get the types of a song.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>cache (boolean): A boolean indicating whether or not the cached value should be used (if available). Defaults to True.</dd>
+<dt>Returns:</dt>
+<dd>A list of strings, each representing a song type:  'christmas', for example.</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>s = song.Song(<span class="py-string">'SOQKVPH12A58A7AF4D'</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>s.song_type
+<span class="py-output">[u'christmas']</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.song.Song-class.html#get_song_type" class="summary-sig-name">get_song_type</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cache</span>=<span class="summary-sig-default">True</span>)</span>
+        - Get the types of a song.
     </dd>
   </dl>
 </td></tr></table>
@@ -751,14 +1046,14 @@ tracks: A list of track result objects</dd>
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:35 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

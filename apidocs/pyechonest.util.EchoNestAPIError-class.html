@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -60,10 +60,31 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class EchoNestAPIError</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.util-pysrc.html#EchoNestAPIError">source&nbsp;code</a></span></p>
 <center>
-
+<center>  <map id="uml_class_diagram_for_pyechone_16" name="uml_class_diagram_for_pyechone_16">
+<area shape="rect" id="node218" href="pyechonest.util.EchoNestAPIError-class.html#__init__" title="x.__init__(...) initializes x; see help(type(x)) for signature" alt="" coords="17,457,249,476"/>
+<area shape="rect" id="node1" href="pyechonest.util.EchoNestAPIError-class.html" title="API Specific Errors." alt="" coords="5,425,261,482"/>
+<area shape="rect" id="node2" href="pyechonest.util.EchoNestException-class.html" title="Parent exception class. Catches API and URL/HTTP errors." alt="" coords="61,361,203,405"/>
+<area shape="rect" id="node220" href="javascript:void(0);" title="exceptions.Exception.__new__" alt="" coords="69,316,196,335"/>
+<area shape="rect" id="node3" href="javascript:void(0);" title="Common base class for all non&#45;exit exceptions." alt="" coords="57,283,207,341"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="exceptions.BaseException.args" alt="" coords="55,31,212,49"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="exceptions.BaseException.message" alt="" coords="55,49,212,68"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="x.__delattr__(&#39;name&#39;) &lt;==&gt; del x.name" alt="" coords="55,71,212,89"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="x.__getattribute__(&#39;name&#39;) &lt;==&gt; x.name" alt="" coords="55,89,212,108"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="x[y]" alt="" coords="55,108,212,127"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="x[i:j]" alt="" coords="55,127,212,145"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="helper for pickle" alt="" coords="55,145,212,164"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="repr(x)" alt="" coords="55,164,212,183"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="x.__setattr__(&#39;name&#39;, value) &lt;==&gt; x.name = value" alt="" coords="55,183,212,201"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="exceptions.BaseException.__setstate__" alt="" coords="55,201,212,220"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="str(x)" alt="" coords="55,220,212,239"/>
+<area shape="rect" id="node221" href="javascript:void(0);" title="exceptions.BaseException.__unicode__" alt="" coords="55,239,212,257"/>
+<area shape="rect" id="node4" href="javascript:void(0);" title="Common base class for all exceptions" alt="" coords="43,6,224,263"/>
+</map>
+  <img src="uml_class_diagram_for_pyechone_16.gif" alt='' usemap="#uml_class_diagram_for_pyechone_16" ismap="ismap" class="graph-without-title" />
+</center>
 </center>
 <hr />
-Generic API errors.
+API Specific Errors.
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -90,44 +111,11 @@ Generic API errors.
         <tr>
           <td><span class="summary-sig"><a href="pyechonest.util.EchoNestAPIError-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">code</span>,
-        <span class="summary-sig-arg">message</span>)</span><br />
-      x.__init__(...) initializes x; see x.__class__.__doc__ for signature</td>
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">headers</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.util-pysrc.html#EchoNestAPIError.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="pyechonest.util.EchoNestAPIError-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      str(x)</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.util-pysrc.html#EchoNestAPIError.__str__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="pyechonest.util.EchoNestAPIError-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      repr(x)</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="pyechonest.util-pysrc.html#EchoNestAPIError.__repr__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -146,8 +134,10 @@ Generic API errors.
       <code>__getitem__</code>,
       <code>__getslice__</code>,
       <code>__reduce__</code>,
+      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__setstate__</code>,
+      <code>__str__</code>,
       <code>__unicode__</code>
       </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
@@ -216,7 +206,8 @@ Generic API errors.
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">code</span>,
-        <span class="sig-arg">message</span>)</span>
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">headers</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -224,58 +215,10 @@ Generic API errors.
     </td>
   </tr></table>
   
-  x.__init__(...) initializes x; see x.__class__.__doc__ for signature
+  x.__init__(...) initializes x; see help(type(x)) for signature
   <dl class="fields">
     <dt>Overrides:
         object.__init__
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="__str__"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
-    <br /><em class="fname">(Informal representation operator)</em>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyechonest.util-pysrc.html#EchoNestAPIError.__str__">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  str(x)
-  <dl class="fields">
-    <dt>Overrides:
-        object.__str__
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="__repr__"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
-    <br /><em class="fname">(Representation operator)</em>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="pyechonest.util-pysrc.html#EchoNestAPIError.__repr__">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  repr(x)
-  <dl class="fields">
-    <dt>Overrides:
-        object.__repr__
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
@@ -303,14 +246,14 @@ Generic API errors.
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:59 2010
+    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:35 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
