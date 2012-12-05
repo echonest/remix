@@ -15,7 +15,7 @@ by Adam Lindsay.
 
 :group Audio helper functions: getpieces, mix, assemble, megamix
 :group ffmpeg helper functions: ffmpeg, settings_from_ffmpeg, ffmpeg_error_check
-:group Utility functions: chain_from_mixed, _dataParser, _attributeParser, _segmentsParser
+:group Utility functions: _dataParser, _attributeParser, _segmentsParser
 
 .. _Analyze API: http://developer.echonest.com/pages/overview?version=2
 .. _Remix API: http://code.google.com/p/echo-nest-remix/
@@ -1038,13 +1038,17 @@ class AudioQuantum(AudioRenderable) :
         Returns the containing `AudioQuantum` in the rhythm hierarchy:
         a `tatum` returns a `beat`, a `beat` returns a `bar`, and a `bar` returns a
         `section`.
+        Note that some AudioQuantums have no parent.  None will be returned in this case.
         """
-        pars = {'tatum': 'beats',
-                'beat':  'bars',
-                'bar':   'sections'}
+        parent_dict = {'tatum': 'beats',
+                       'beat':  'bars',
+                       'bar':   'sections'}
         try:
-            uppers = getattr(self.container.container, pars[self.kind])
-            return uppers.that(selection.overlap(self))[0]
+            all_chunks = getattr(self.container.container, parent_dict[self.kind])
+            for chunk in all_chunks:
+                if self.start < chunk.end and self.end > chunk.start:
+                    return chunk
+            return None
         except LookupError:
             # Might not be in pars, might not have anything in parent.
             return None
@@ -1055,15 +1059,82 @@ class AudioQuantum(AudioRenderable) :
         one step down the hierarchy. A `beat` returns `tatums`, a `bar` returns
         `beats`, and a `section` returns `bars`.
         """
-        chils = {'beat':    'tatums',
-                 'bar':     'beats',
-                 'section': 'bars'}
+        children_dict = {'beat':    'tatums',
+                         'bar':     'beats',
+                         'section': 'bars'}
         try:
-            downers = getattr(self.container.container, chils[self.kind])
-            return downers.that(selection.are_contained_by(self))
+            all_chunks = getattr(self.container.container, children_dict[self.kind])
+            child_chunks = AudioQuantumList(kind=children_dict[self.kind])
+            for chunk in all_chunks:
+                if chunk.start >= self.start and chunk.end <= self.end: 
+                    child_chunks.append(chunk)
+                    continue
+            return child_chunks
         except LookupError:
             return None
+    @property
+    def segments(self):
+        """
+        Returns any segments that overlap or are in the same timespan as the AudioQuantum.
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        This function, thus, is NOT suited to rhythmic modifications.
+        """
+        # If this is a segment, return it in a list so we can iterate over it
+        if self.kind == 'segment':
+            return [self]
+
+        all_segments = self.source.analysis.segments
+        filtered_segments = AudioQuantumList(kind="segment")
+        
+        # Filter and then break once we've got the needed segments
+        for segment in all_segments:
+            if segment.start < self.end and segment.end > self.start:
+                filtered_segments.append(segment)
+            elif len(filtered_segments) != 0:
+                break
+        return filtered_segments
+
+    def mean_pitches(self):
+        """
+        Returns a pitch vector that is the mean of the pitch vectors of any segments 
+        that overlap this AudioQuantum.
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        """
+        temp_pitches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        segments = self.segments
+        for segment in segments:
+            for index, pitch in enumerate(segment.pitches):
+                temp_pitches[index] = temp_pitches[index] + pitch
+            mean_pitches = [pitch / len(segments) for pitch in temp_pitches]
+            return mean_pitches
     
+    def mean_timbre(self):
+        """
+        Returns a timbre vector that is the mean of the pitch vectors of any segments 
+        that overlap this AudioQuantum.
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        """
+        temp_timbre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        segments = self.segments
+        for segment in segments:
+            for index, timbre in enumerate(segment.timbre):
+                temp_timbre[index] = temp_timbre[index] + timbre
+            mean_timbre = [timbre / len(segments) for timbre in temp_timbre]
+            return mean_timbre
+
+
+    def mean_loudness(self):
+        """
+        Returns the mean of the maximum loudness of any segments that overlap this AudioQuantum. 
+        Note that this means that some segments will appear in more than one AudioQuantum.
+        """
+        loudness_average = 0
+        segments = self.segments
+        for segment in self.segments:
+            loudness_average = loudness_average + segment.loudness_max
+        return loudness_average / len(segments)
+
+
     def group(self):
         """
         Returns the `children`\() of the `AudioQuantum`\'s `parent`\(). 
@@ -1234,6 +1305,45 @@ class AudioSegment(AudioQuantum):
         self.kind = kind
         self.confidence = None
         self._source = source
+        
+
+    @property
+    def tatum(self):
+        """
+        Returns the tatum that overlaps most with the segment
+        Note that some segments have NO overlapping tatums.
+        If this is the case, None will be returned.
+        """
+        all_tatums = self.source.analysis.tatums
+        filtered_tatums = []
+        for tatum in all_tatums:
+            # If the segment contains the tatum
+            if self.start < tatum.start and self.end > tatum.end:
+                filtered_tatums.append((tatum, tatum.duration))
+            # If the tatum contains the segment
+            elif tatum.start < self.start and tatum.end > self.end:
+                filtered_tatums.append((tatum, self.duration))
+            # If the tatum overlaps and starts before the segment
+            elif tatum.start < self.start and tatum.end > self.start:
+                filtered_tatums.append((tatum, tatum.end - self.start))
+            # If the tatum overlaps and starts after the segment
+            elif tatum.start < self.end and tatum.end > self.end:
+                filtered_tatums.append((tatum, self.end - tatum.start))
+            # If we're past the segment, stop
+            elif tatum.start > self.end:
+                break
+
+        # Sort and get the tatum with the maximum overlap
+        sorted_tatums = sorted(filtered_tatums, key=lambda tatum: tatum[1], reverse=True)
+        if not sorted_tatums:
+            return None
+        else:
+            return sorted_tatums[0][0]
+
+    @property
+    def beat(self):
+        return self.tatum.parent
+
 
 class ModifiedRenderable(AudioRenderable):
     """Class that contains any AudioRenderable, but overrides the
@@ -1470,93 +1580,6 @@ class AudioQuantumList(list, AudioRenderable):
             ss.update(aq.sources())
         return ss
     
-    def that(self, filt):
-        """
-        DEPRECATION NOTICE:  This function will be removed soon.
-
-        Method for applying a function to each of the contained
-        `AudioQuantum` objects. Returns a new `AudioQuantumList` 
-        of the same `kind` containing the `AudioQuantum` objects 
-        for which the input function is true.
-        
-        See `echonest.selection` for example selection filters.
-        
-        :param filt: a function that takes one `AudioQuantum` and returns
-            a `True` value `None`
-            
-        :change: experimenting with a filter-only form
-        """
-        out = AudioQuantumList(kind=self.kind)
-        out.extend(filter(filt, self))
-        return out
-    
-    def ordered_by(self, function, descending=False):
-        """
-        DEPRECATION NOTICE:  This function will be removed soon.
-
-        Returns a new `AudioQuantumList` of the same `kind` with the 
-        original elements, but ordered from low to high according to 
-        the input function acting as a key. 
-        
-        See `echonest.sorting` for example ordering functions.
-        
-        :param function: a function that takes one `AudioQuantum` and returns
-            a comparison key
-        :param descending: when `True`, reverses the sort order, from 
-            high to low
-        """
-        out = AudioQuantumList(kind=self.kind)
-        out.extend(sorted(self, key=function, reverse=descending))
-        return out
-    
-    def beget(self, source, which=None):
-        """
-        DEPRECATION NOTICE:  This function will be removed soon.
-    
-        There are two basic forms: a map-and-flatten and an converse-that.
-        
-        The basic form, with one `function` argument, returns a new 
-        `AudioQuantumList` so that the source function returns
-        `None`, one, or many AudioQuanta for each `AudioQuantum` contained within
-        `self`, and flattens them, in order. ::
-        
-            beats.beget(the_next_ones)
-        
-        A second form has the first argument `source` as an `AudioQuantumList`, and
-        a second argument, `which`, is used as a filter for the first argument, for
-        *each* of `self`. The results are collapsed and accordianned into a flat
-        list. 
-        
-        For example, calling::
-        
-            beats.beget(segments, which=overlap)
-        
-        Gets evaluated as::
-        
-            for beat in beats:
-                return segments.that(overlap(beat))
-        
-        And all of the `AudioQuantumList`\s that return are flattened into 
-        a single `AudioQuantumList`.
-        
-        :param source: A function of one argument that is applied to each
-            `AudioQuantum` of `self`, or an `AudioQuantumList`, in which case
-            the second argument is required.
-        :param which: A function of one argument that acts as a `that`\() filter 
-            on the first argument if it is an `AudioQuantumList`, or as a filter
-            on the output, in the case of `source` being a function.
-        """
-        out = AudioQuantumList()
-        if isinstance(source, AudioQuantumList):
-            if not which:
-                raise TypeError("'beget' requires a second argument, 'which'")
-            out.extend(chain_from_mixed([source.that(which(x)) for x in self]))
-        else:
-            out.extend(chain_from_mixed(map(source, self)))
-            if which:
-                out = out.that(which)
-        return out
-    
     def attach(self, container):
         """
         Create circular references to the containing `AudioAnalysis` and for the 
@@ -1709,22 +1732,6 @@ def _segmentsParser(nodes):
                                 time_loudness_max=n['loudness_max_time'], 
                                 loudness_end=n.get('loudness_end')))
     return out
-
-
-def chain_from_mixed(iterables):
-    """
-    DEPRECATION NOTICE:  This function will be removed soon.
-    Helper function to flatten a list of elements and lists
-    into a list of elements.
-    """
-    for y in iterables: 
-        try:
-            iter(y)
-            for element in y:
-                yield element
-        except Exception:
-            yield y
-
 
 class FileTypeError(Exception):
     def __init__(self, filename, message):
