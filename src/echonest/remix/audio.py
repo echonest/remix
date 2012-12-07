@@ -864,7 +864,7 @@ class LocalAudioFile(AudioData):
     Analyze API, then it does not bother uploading the file.
     """
 
-    def __new__(cls, filename, verbose=True, defer=False):
+    def __new__(cls, filename, verbose=True, defer=False, sampleRate=None, numChannels=None):
         # There must be a better way to avoid collisions between analysis files and .wav files
         if '.analysis.en' in filename:
             print >> sys.stderr, "Reading analysis from local file " + filename
@@ -874,9 +874,9 @@ class LocalAudioFile(AudioData):
             return audiofile
         else:
             # This just creates the object and goes straight on to initializing it
-            return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer)
+            return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer, sampleRate=sampleRate)
 
-    def __init__(self, filename, verbose=True, defer=False):
+    def __init__(self, filename, verbose=True, defer=False, sampleRate=None, numChannels=None):
         """
         :param filename: path to a local MP3 file
         """
@@ -884,8 +884,10 @@ class LocalAudioFile(AudioData):
         if '.analysis.en' in filename:
             self.is_local = True
         else:
-            AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer)
-            track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
+            AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer,
+                                sampleRate=sampleRate, numChannels=numChannels)
+            track_md5 = hashlib.md5(file(self.filename, 'rb').read()).hexdigest()
+
             if verbose:
                 print >> sys.stderr, "Computed MD5 of file is " + track_md5 
             try:

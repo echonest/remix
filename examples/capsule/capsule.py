@@ -35,7 +35,7 @@ def do_work(audio_files, options):
     verbose = bool(options.verbose)
     
     # Get pyechonest/remix objects
-    analyze = lambda x : LocalAudioFile(x, verbose=verbose)
+    analyze = lambda x : LocalAudioFile(x, verbose=verbose, sampleRate = 44100, numChannels = 2)
     tracks = map(analyze, audio_files)
     
     # decide on an initial order for those tracks
