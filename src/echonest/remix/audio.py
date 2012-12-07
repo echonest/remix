@@ -39,7 +39,6 @@ import wave
 
 from pyechonest import track
 import pyechonest.util
-import echonest.remix.selection as selection
 import pyechonest.config as config
 #from echonest.support import stupidxml
 import xml.etree.ElementTree as etree
