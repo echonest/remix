@@ -683,11 +683,13 @@ def get_os():
         return True, False, False
     return False, False, True
     
+ffmpeg_command = "en-ffmpeg"
+
 def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None, numChannels=None, sampleRate=None, verbose=True):
     """
     Executes ffmpeg through the shell to convert or read media files.
     """
-    command = "en-ffmpeg"
+    command = ffmpeg_command
     if overwrite:
         command += " -y"
     command += " -i \"" + infile + "\""
@@ -736,21 +738,30 @@ ffmpeg_install_instructions = """
 en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
     sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
 """
+
 def ffmpeg_error_check(parsestring):
     "Looks for known errors in the ffmpeg output"
-    parse = parsestring.split('\n')
-    error_cases = [ "Unknown format", # ffmpeg can't figure out format of input file
-                    "error occur", # an error occurred
-                    "Could not open", # user doesn't have permission to access file
-                    "not found" # could not find encoder for output file
-                    ]
-    for num, line in enumerate(parse):
-        if "command not found" in line:
-            raise RuntimeError(ffmpeg_install_instructions)
-        for error in error_cases:
-            if error in line:
-                report = "\n\t".join(parse[num:])
-                raise RuntimeError("ffmpeg conversion error:\n\t" + report)
+    if parsestring:
+        # Check first if the command actually exists
+        try:
+            subprocess.call(ffmpeg_command)
+        except OSError as exc:
+            import errno
+            if exc.errno is errno.ENOENT:
+                raise RuntimeError(ffmpeg_install_instructions)
+            else: raise
+
+        parse = parsestring.split('\n')
+        error_cases = [ "Unknown format", # ffmpeg can't figure out format of input file
+                        "error occur", # an error occurred
+                        "Could not open", # user doesn't have permission to access file
+                        "not found" # could not find encoder for output file
+                        ]
+        for num, line in enumerate(parse):
+            for error in error_cases:
+                if error in line:
+                    report = "\n\t".join(parse[num:])
+                    raise RuntimeError("ffmpeg conversion error:\n\t" + report)
 
 def getpieces(audioData, segs):
     """
