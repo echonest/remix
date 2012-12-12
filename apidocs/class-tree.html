@@ -72,13 +72,6 @@
     </li>
     <li> <strong class="uidlink"><a href="echonest.remix.support.midi.EventDispatcher.EventDispatcher-class.html">echonest.remix.support.midi.EventDispatcher.EventDispatcher</a></strong>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.video.ImageSequence-class.html">echonest.video.ImageSequence</a></strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.video.EditableFrames-class.html">echonest.video.EditableFrames</a></strong>:
-      <em class="summary">Collection of frames that can be easily edited</em>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.video.ImageSequence-class.html">echonest.remix.video.ImageSequence</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="echonest.remix.video.EditableFrames-class.html">echonest.remix.video.EditableFrames</a></strong>:
@@ -119,16 +112,10 @@ only reads from this object. Never directly from the file.</em>
     <li> <strong class="uidlink"><a href="echonest.remix.support.midi.RawOutstreamFile.RawOutstreamFile-class.html">echonest.remix.support.midi.RawOutstreamFile.RawOutstreamFile</a></strong>:
       <em class="summary">Writes a midi file to disk.</em>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.video.SynchronizedAV-class.html">echonest.video.SynchronizedAV</a></strong>:
-      <em class="summary">SynchronizedAV has audio and video; cuts return new SynchronizedAV objects</em>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.video.SynchronizedAV-class.html">echonest.remix.video.SynchronizedAV</a></strong>:
       <em class="summary">SynchronizedAV has audio and video; cuts return new SynchronizedAV objects</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.remix.video.VideoSettings-class.html">echonest.remix.video.VideoSettings</a></strong>:
-      <em class="summary">simple container for video settings</em>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.video.VideoSettings-class.html">echonest.video.VideoSettings</a></strong>:
       <em class="summary">simple container for video settings</em>
     </li>
     <li> <strong class="uidlink">pyechonest.util.attrdict</strong>
@@ -136,10 +123,6 @@ only reads from this object. Never directly from the file.</em>
     <li> <strong class="uidlink">object</strong>:
       <em class="summary">The most base type</em>
     <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioAnalysis-class.html">echonest.audio.AudioAnalysis</a></strong>:
-      <em class="summary">This class uses (but does not wrap) <a href="pyechonest.track-module.html" class="link">pyechonest.track</a> to allow
-transparent caching of the audio analysis of an audio file.</em>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.AudioAnalysis-class.html">echonest.remix.audio.AudioAnalysis</a></strong>:
       <em class="summary">This class uses (but does not wrap) <a href="pyechonest.track-module.html" class="link">pyechonest.track</a> to allow
 transparent caching of the audio analysis of an audio file.</em>
@@ -153,18 +136,6 @@ transparent caching of the audio analysis of an audio file.</em>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.TimeTruncateFactor-class.html">echonest.remix.audio.TimeTruncateFactor</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.TimeTruncateLength-class.html">echonest.remix.audio.TimeTruncateLength</a></strong>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioEffect-class.html">echonest.audio.AudioEffect</a></strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AmplitudeFactor-class.html">echonest.audio.AmplitudeFactor</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.LevelDB-class.html">echonest.audio.LevelDB</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.TimeTruncateFactor-class.html">echonest.audio.TimeTruncateFactor</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.TimeTruncateLength-class.html">echonest.audio.TimeTruncateLength</a></strong>
     </li>
     </ul>
     </li>
@@ -223,61 +194,6 @@ result of the preceeding effect.</em>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioRenderable-class.html">echonest.audio.AudioRenderable</a></strong>:
-      <em class="summary">An object that gives an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a> in response to a call to its <code class="link">render</code>()
-method.
-Intended to be an abstract class that helps enforce the <a href="echonest.audio.AudioRenderable-class.html" class="link">AudioRenderable</a>
-protocol. Picked up a couple of convenience methods common to many descendants.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioData-class.html">echonest.audio.AudioData</a></strong>:
-      <em class="summary">Handles audio data transparently. A smart audio container
-with accessors that include:</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioData32-class.html">echonest.audio.AudioData32</a></strong>:
-      <em class="summary">A 32-bit variant of AudioData, intended for data collection on
-audio rendering with headroom.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.LocalAudioFile-class.html">echonest.audio.LocalAudioFile</a></strong>:
-      <em class="summary">The basic do-everything class for remixing. Acts as an <a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>
-object, but with an added <code class="link">analysis</code> selector which is an
-<a href="echonest.audio.AudioAnalysis-class.html" class="link">AudioAnalysis</a> object. It conditianally uploads the file
-it was initialized with. If the file is already known to the
-Analyze API, then it does not bother uploading the file.</em>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioQuantum-class.html">echonest.audio.AudioQuantum</a></strong>:
-      <em class="summary">A unit of musical time, identified at minimum with a start time and
-a duration, both in seconds. It most often corresponds with a <code class="link">section</code>,
-<code class="link">bar</code>, <code class="link">beat</code>, <code class="link">tatum</code>, or (by inheritance) <code class="link">segment</code> obtained from an Analyze
-API call.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioSegment-class.html">echonest.audio.AudioSegment</a></strong>:
-      <em class="summary">Subclass of <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> for the data-rich segments returned by
-the Analyze API.</em>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioQuantumList-class.html">echonest.audio.AudioQuantumList</a></strong>:
-      <em class="summary">A container that enables content-based selection and filtering.
-A <code class="link">List</code> that contains <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects, with additional methods
-for manipulating them.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.Simultaneous-class.html">echonest.audio.Simultaneous</a></strong>:
-      <em class="summary">Stacks all contained AudioQuanta atop one another, adding their respective
-samples. The rhythmic length of the segment is the duration of the first
-<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>, but there can be significant overlap caused by the longest
-segment.</em>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.ModifiedRenderable-class.html">echonest.audio.ModifiedRenderable</a></strong>:
-      <em class="summary">Class that contains any AudioRenderable, but overrides the
-render() method with nested effects, called sequentially on the
-result of the preceeding effect.</em>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink">exceptions.BaseException</strong>:
       <em class="summary">Common base class for all exceptions</em>
     <ul>
@@ -295,13 +211,8 @@ result of the preceeding effect.</em>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.EchoNestRemixError-class.html">echonest.audio.EchoNestRemixError</a></strong>:
-      <em class="summary">Error raised by the Remix API.</em>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.EchoNestRemixError-class.html">echonest.remix.audio.EchoNestRemixError</a></strong>:
       <em class="summary">Error raised by the Remix API.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.FileTypeError-class.html">echonest.audio.FileTypeError</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.FileTypeError-class.html">echonest.remix.audio.FileTypeError</a></strong>
     </li>
@@ -317,14 +228,6 @@ result of the preceeding effect.</em>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.action.Blend-class.html">echonest.action.Blend</a></strong>:
-      <em class="summary">Mix together two lists of beats</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.action.Crossmatch-class.html">echonest.action.Crossmatch</a></strong>:
-      <em class="summary">Makes a beat-matched crossfade between the two input tracks.</em>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.action.Crossfade-class.html">echonest.remix.action.Crossfade</a></strong>:
       <em class="summary">Crossfades between two tracks, at the start points specified,
 for the given duration</em>
@@ -333,18 +236,6 @@ for the given duration</em>
       <em class="summary">Move from one point</em>
     </li>
     </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.action.Crossfade-class.html">echonest.action.Crossfade</a></strong>:
-      <em class="summary">Crossfades between two tracks, at the start points specified,
-for the given duration</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.action.Jump-class.html">echonest.action.Jump</a></strong>:
-      <em class="summary">Move from one point</em>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.action.Edit-class.html">echonest.action.Edit</a></strong>:
-      <em class="summary">Refer to a snippet of audio</em>
     </li>
     <li> <strong class="uidlink"><a href="echonest.remix.action.Edit-class.html">echonest.remix.action.Edit</a></strong>:
       <em class="summary">Refer to a snippet of audio</em>
@@ -395,27 +286,10 @@ for the given duration</em>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="echonest.audio.LocalAnalysis-class.html">echonest.audio.LocalAnalysis</a></strong>:
-      <em class="summary">Like <a href="echonest.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it conditionally uploads the file with which
-it was initialized. Unlike <a href="echonest.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it is not a subclass of
-<a href="echonest.audio.AudioData-class.html" class="link">AudioData</a>, so contains no sample data.</em>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.LocalAnalysis-class.html">echonest.remix.audio.LocalAnalysis</a></strong>:
       <em class="summary">Like <a href="echonest.remix.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it conditionally uploads the file with which
 it was initialized. Unlike <a href="echonest.remix.audio.LocalAudioFile-class.html" class="link">LocalAudioFile</a>, it is not a subclass of
 <a href="echonest.remix.audio.AudioData-class.html" class="link">AudioData</a>, so contains no sample data.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.action.Playback-class.html">echonest.action.Playback</a></strong>:
-      <em class="summary">A snippet of the given track with start and duration. Volume leveling
-may be applied.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.action.Fadein-class.html">echonest.action.Fadein</a></strong>:
-      <em class="summary">Fadein</em>
-    </li>
-    <li> <strong class="uidlink"><a href="echonest.action.Fadeout-class.html">echonest.action.Fadeout</a></strong>:
-      <em class="summary">Fadeout</em>
-    </li>
-    </ul>
     </li>
     <li> <strong class="uidlink"><a href="echonest.remix.action.Playback-class.html">echonest.remix.action.Playback</a></strong>:
       <em class="summary">A snippet of the given track with start and duration. Volume leveling
@@ -440,19 +314,6 @@ may be applied.</em>
       <em class="summary">list() -&gt; new empty list
 list(iterable) -&gt; new list initialized from iterable's items</em>
     <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.AudioQuantumList-class.html">echonest.audio.AudioQuantumList</a></strong>:
-      <em class="summary">A container that enables content-based selection and filtering.
-A <code class="link">List</code> that contains <a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects, with additional methods
-for manipulating them.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="echonest.audio.Simultaneous-class.html">echonest.audio.Simultaneous</a></strong>:
-      <em class="summary">Stacks all contained AudioQuanta atop one another, adding their respective
-samples. The rhythmic length of the segment is the duration of the first
-<a href="echonest.audio.AudioQuantum-class.html" class="link">AudioQuantum</a>, but there can be significant overlap caused by the longest
-segment.</em>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink"><a href="echonest.remix.audio.AudioQuantumList-class.html">echonest.remix.audio.AudioQuantumList</a></strong>:
       <em class="summary">A container that enables content-based selection and filtering.
 A <code class="link">List</code> that contains <a href="echonest.remix.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> objects, with additional methods
@@ -501,7 +362,7 @@ segment.</em>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:27 2012
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:19 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -8,7 +8,7 @@ on 2008-06-06.  Some refactoring and everything else by Joshua Lifton
 by Adam Lindsay.
 
 :group Base Classes: AudioAnalysis, AudioRenderable, AudioData, AudioData32
-:group Audio-plus-Analysis Classes: AudioFile, LocalAudioFile, LocalAnalysis
+:group Audio-plus-Analysis Classes: LocalAudioFile, LocalAnalysis
 :group Building Blocks: AudioQuantum, AudioSegment, AudioQuantumList, ModifiedRenderable
 :group Effects: AudioEffect, LevelDB, AmplitudeFactor, TimeTruncateFactor, TimeTruncateLength, Simultaneous
 :group Exception Classes: FileTypeError, EchoNestRemixError
@@ -17,8 +17,8 @@ by Adam Lindsay.
 :group ffmpeg helper functions: ffmpeg, settings_from_ffmpeg, ffmpeg_error_check
 :group Utility functions: _dataParser, _attributeParser, _segmentsParser
 
-.. _Analyze API: http://developer.echonest.com/pages/overview?version=2
-.. _Remix API: http://code.google.com/p/echo-nest-remix/
+.. _Analyze API: http://developer.echonest.com/
+.. _Remix API: https://github.com/echonest/remix
 .. _Echo Nest: http://the.echonest.com/
 """
 

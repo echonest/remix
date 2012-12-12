@@ -39,7 +39,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="echonest-module.html">Package&nbsp;echonest</a> ::
+        Package&nbsp;echonest ::
         <a href="echonest.remix-module.html">Package&nbsp;remix</a> ::
         <a href="echonest.remix.audio-module.html">Module&nbsp;audio</a> ::
         Class&nbsp;AudioRenderable
@@ -61,22 +61,22 @@
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class AudioRenderable</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.remix.audio-pysrc.html#AudioRenderable">source&nbsp;code</a></span></p>
 <center>
-<center>  <map id="uml_class_diagram_for_echonest_42" name="uml_class_diagram_for_echonest_42">
-<area shape="rect" id="node1" href="echonest.remix.audio.LocalAudioFile-class.html" title="The basic do&#45;everything class for remixing. Acts as an AudioData object, but with an added analysis selector which is an AudioAnalysis object. It conditianally uploads the file it was initialized with. If the file is already known to the Analyze API, then it does not bother uploading the file." alt="" coords="5,198,125,237"/>
-<area shape="rect" id="node2" href="echonest.remix.audio.AudioData-class.html" title="Handles audio data transparently. A smart audio container with accessors that include:" alt="" coords="163,139,259,178"/>
-<area shape="rect" id="node8" href="echonest.remix.audio.AudioData32-class.html" title="A 32&#45;bit variant of AudioData, intended for data collection on audio rendering with headroom." alt="" coords="155,198,267,237"/>
-<area shape="rect" id="node3" href="echonest.remix.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds. It most often corresponds with a section, bar, beat, tatum, or (by inheritance) segment obtained from an Analyze API call." alt="" coords="291,139,413,178"/>
-<area shape="rect" id="node9" href="echonest.remix.audio.AudioSegment-class.html" title="Subclass of AudioQuantum for the data&#45;rich segments returned by the Analyze API." alt="" coords="296,198,416,237"/>
-<area shape="rect" id="node4" href="echonest.remix.audio.Simultaneous-class.html" title="Stacks all contained AudioQuanta atop one another, adding their respective samples. The rhythmic length of the segment is the duration of the first AudioQuantum, but there can be significant overlap caused by the longest segment." alt="" coords="457,198,572,237"/>
-<area shape="rect" id="node110" href="echonest.remix.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative. Throw an informative error if no source is found." alt="" coords="317,39,548,57"/>
-<area shape="rect" id="node110" href="echonest.remix.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="317,57,548,76"/>
-<area shape="rect" id="node110" href="echonest.remix.audio.AudioRenderable-class.html#sources" title="echonest.remix.audio.AudioRenderable.sources" alt="" coords="317,76,548,95"/>
-<area shape="rect" id="node110" href="echonest.remix.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an AudioData object first, through render." alt="" coords="317,95,548,113"/>
-<area shape="rect" id="node5" href="echonest.remix.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render() method. Intended to be an abstract class that helps enforce the AudioRenderable protocol. Picked up a couple of convenience methods common to many descendants." alt="" coords="305,6,559,119"/>
-<area shape="rect" id="node6" href="echonest.remix.audio.AudioQuantumList-class.html" title="A container that enables content&#45;based selection and filtering. A List that contains AudioQuantum objects, with additional methods for manipulating them." alt="" coords="443,139,587,178"/>
-<area shape="rect" id="node7" href="echonest.remix.audio.ModifiedRenderable-class.html" title="Class that contains any AudioRenderable, but overrides the render() method with nested effects, called sequentially on the result of the preceeding effect." alt="" coords="616,139,768,178"/>
+<center>  <map id="uml_class_diagram_for_echonest_16" name="uml_class_diagram_for_echonest_16">
+<area shape="rect" id="node1" href="echonest.remix.audio.ModifiedRenderable-class.html" title="Class that contains any AudioRenderable, but overrides the render() method with nested effects, called sequentially on the result of the preceeding effect." alt="" coords="5,139,157,178"/>
+<area shape="rect" id="node2" href="echonest.remix.audio.AudioData-class.html" title="Handles audio data transparently. A smart audio container with accessors that include:" alt="" coords="187,139,283,178"/>
+<area shape="rect" id="node4" href="echonest.remix.audio.LocalAudioFile-class.html" title="The basic do&#45;everything class for remixing. Acts as an AudioData object, but with an added analysis selector which is an AudioAnalysis object. It conditianally uploads the file it was initialized with. If the file is already known to the Analyze API, then it does not bother uploading the file." alt="" coords="29,198,149,237"/>
+<area shape="rect" id="node7" href="echonest.remix.audio.AudioData32-class.html" title="A 32&#45;bit variant of AudioData, intended for data collection on audio rendering with headroom." alt="" coords="179,198,291,237"/>
+<area shape="rect" id="node3" href="echonest.remix.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds. It most often corresponds with a section, bar, beat, tatum, or (by inheritance) segment obtained from an Analyze API call." alt="" coords="312,139,435,178"/>
+<area shape="rect" id="node8" href="echonest.remix.audio.AudioSegment-class.html" title="Subclass of AudioQuantum for the data&#45;rich segments returned by the Analyze API." alt="" coords="320,198,440,237"/>
+<area shape="rect" id="node38" href="echonest.remix.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative. Throw an informative error if no source is found." alt="" coords="188,39,419,57"/>
+<area shape="rect" id="node38" href="echonest.remix.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="188,57,419,76"/>
+<area shape="rect" id="node38" href="echonest.remix.audio.AudioRenderable-class.html#sources" title="echonest.remix.audio.AudioRenderable.sources" alt="" coords="188,76,419,95"/>
+<area shape="rect" id="node38" href="echonest.remix.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an AudioData object first, through render." alt="" coords="188,95,419,113"/>
+<area shape="rect" id="node5" href="echonest.remix.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render() method. Intended to be an abstract class that helps enforce the AudioRenderable protocol. Picked up a couple of convenience methods common to many descendants." alt="" coords="176,6,429,119"/>
+<area shape="rect" id="node9" href="echonest.remix.audio.AudioQuantumList-class.html" title="A container that enables content&#45;based selection and filtering. A List that contains AudioQuantum objects, with additional methods for manipulating them." alt="" coords="464,139,608,178"/>
+<area shape="rect" id="node6" href="echonest.remix.audio.Simultaneous-class.html" title="Stacks all contained AudioQuanta atop one another, adding their respective samples. The rhythmic length of the segment is the duration of the first AudioQuantum, but there can be significant overlap caused by the longest segment." alt="" coords="479,198,593,237"/>
 </map>
-  <img src="uml_class_diagram_for_echonest_42.gif" alt='' usemap="#uml_class_diagram_for_echonest_42" ismap="ismap" class="graph-without-title" />
+  <img src="uml_class_diagram_for_echonest_16.gif" alt='' usemap="#uml_class_diagram_for_echonest_16" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
@@ -323,7 +323,7 @@ protocol.</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Dec  5 15:49:32 2012
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:21 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
