@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pyechonest.playlist.BetaPlaylist</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pyechonest-module.html">Package&nbsp;pyechonest</a> ::
+        <a href="pyechonest.playlist-module.html">Module&nbsp;playlist</a> ::
+        Class&nbsp;BetaPlaylist
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pyechonest.playlist.BetaPlaylist-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class BetaPlaylist</h1><p class="nomargin-top"><span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_pyechone_3" name="uml_class_diagram_for_pyechone_3">
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#songs" title="pyechonest.playlist.BetaPlaylist.songs" alt="" coords="17,185,5885,204"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#__init__" title="x.__init__(...) initializes x; see help(type(x)) for signature" alt="" coords="17,207,5885,225"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#__repr__" title="repr(x)" alt="" coords="17,225,5885,244"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#get_next_songs" title="pyechonest.playlist.BetaPlaylist.get_next_songs" alt="" coords="17,244,5885,263"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#get_current_songs" title="pyechonest.playlist.BetaPlaylist.get_current_songs" alt="" coords="17,263,5885,281"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#get_lookahead_songs" title="pyechonest.playlist.BetaPlaylist.get_lookahead_songs" alt="" coords="17,281,5885,300"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#info" title="pyechonest.playlist.BetaPlaylist.info" alt="" coords="17,300,5885,319"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#delete" title="pyechonest.playlist.BetaPlaylist.delete" alt="" coords="17,319,5885,337"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#restart" title="pyechonest.playlist.BetaPlaylist.restart" alt="" coords="17,337,5885,356"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#steer" title="pyechonest.playlist.BetaPlaylist.steer" alt="" coords="17,356,5885,375"/>
+<area shape="rect" id="node96" href="pyechonest.playlist.BetaPlaylist-class.html#feedback" title="pyechonest.playlist.BetaPlaylist.feedback" alt="" coords="17,375,5885,393"/>
+<area shape="rect" id="node1" href="pyechonest.playlist.BetaPlaylist-class.html" title="A Beta Dynamic Playlist object." alt="" coords="5,161,5896,399"/>
+<area shape="rect" id="node97" href="pyechonest.proxies.BetaPlaylistProxy-class.html#get_attribute" title="pyechonest.proxies.BetaPlaylistProxy.get_attribute" alt="" coords="2841,116,3061,135"/>
+<area shape="rect" id="node2" href="pyechonest.proxies.BetaPlaylistProxy-class.html" title="pyechonest.proxies.BetaPlaylistProxy" alt="" coords="2829,83,3072,141"/>
+<area shape="rect" id="node98" href="pyechonest.proxies.GenericProxy-class.html#post_attribute" title="pyechonest.proxies.GenericProxy.post_attribute" alt="" coords="2819,39,3084,57"/>
+<area shape="rect" id="node3" href="pyechonest.proxies.GenericProxy-class.html" title="pyechonest.proxies.GenericProxy" alt="" coords="2807,6,3095,63"/>
+</map>
+  <img src="uml_class_diagram_for_pyechone_3.gif" alt='' usemap="#uml_class_diagram_for_pyechone_3" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>A Beta Dynamic Playlist object.</p>
+<p>Attributes:</p>
+<p>Example:</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.playlist.BetaPlaylist-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">session_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_pick</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">variety</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">track_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">style</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mood</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_max_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_min_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_longitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_longitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_latitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_latitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">adventurousness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mode</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">key</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">sort</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">seed_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">source_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rank_type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">test_new_things</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dmca</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">distribution</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_type</span>=<span class="summary-sig-default">None</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyechonest.playlist.BetaPlaylist-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_next_songs"></a><span class="summary-sig-name">get_next_songs</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">lookahead</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.get_next_songs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_current_songs"></a><span class="summary-sig-name">get_current_songs</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.get_current_songs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_lookahead_songs"></a><span class="summary-sig-name">get_lookahead_songs</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.get_lookahead_songs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="info"></a><span class="summary-sig-name">info</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.info">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="delete"></a><span class="summary-sig-name">delete</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.delete">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="restart"></a><span class="summary-sig-name">restart</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_pick</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">variety</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">track_id</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">style</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mood</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_max_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_min_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_longitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_longitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_latitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_latitude</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">adventurousness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mode</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">key</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">sort</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">seed_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">source_catalog</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rank_type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">test_new_things</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dmca</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">distribution</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_type</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.restart">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="steer"></a><span class="summary-sig-name">steer</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">max_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_tempo</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_duration</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_loudness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_artist_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_artist_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_artist_familiarity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_artist_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_artist_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_artist_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_song_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_song_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target_song_hotttnesss</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">more_like_this</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">less_like_this</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">adventurousness</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">variety</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">style</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mood</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_type</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.steer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="feedback"></a><span class="summary-sig-name">feedback</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ban_artist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ban_song</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">skip_song</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">favorite_artist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">favorite_song</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">play_song</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">unplay_song</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rate_song</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.feedback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.BetaPlaylistProxy-class.html">proxies.BetaPlaylistProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.BetaPlaylistProxy-class.html#get_attribute">get_attribute</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pyechonest.proxies.GenericProxy-class.html">proxies.GenericProxy</a></code></b>:
+      <code><a href="pyechonest.proxies.GenericProxy-class.html#post_attribute">post_attribute</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="pyechonest.playlist.BetaPlaylist-class.html#songs" class="summary-name">songs</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">session_id</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">type</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_pick</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">variety</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_id</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_id</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">track_id</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">description</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">style</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mood</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_tempo</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_tempo</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_duration</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_duration</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_loudness</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_loudness</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_danceability</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_danceability</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_energy</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_energy</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_max_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_min_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_longitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_longitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_latitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_latitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">adventurousness</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mode</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">key</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">sort</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">seed_catalog</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">source_catalog</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">rank_type</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">test_new_things</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dmca</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">distribution</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_type</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  x.__init__(...) initializes x; see help(type(x)) for signature
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.playlist-pysrc.html#BetaPlaylist.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  repr(x)
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="songs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">songs</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="pyechonest.playlist.BetaPlaylist-class.html#get_current_songs" class="summary-sig-name">get_current_songs</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:23 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

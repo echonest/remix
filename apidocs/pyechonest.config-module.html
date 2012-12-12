@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -64,7 +64,7 @@ Created by Tyler Williams on 2010-04-25.</p>
 
 <hr />
 <div class="fields">      <p><strong>Version:</strong>
-        4.2.5
+        0.0.0
       </p>
 </div><!-- ==================== VARIABLES ==================== -->
 <a name="section-Variables"></a>
@@ -87,14 +87,17 @@ Created by Tyler Williams on 2010-04-25.</p>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="ECHO_NEST_API_KEY"></a><span class="summary-name">ECHO_NEST_API_KEY</span> = <code title="'5EYHYOVNFLJTJ1KOH'"><code class="variable-quote">'</code><code class="variable-string">5EYHYOVNFLJTJ1KOH</code><code class="variable-quote">'</code></code>
+        <a href="pyechonest.config-module.html#envkeys" class="summary-name">envkeys</a> = <code title="['ECHO_NEST_API_KEY',
+ 'ECHO_NEST_CONSUMER_KEY',
+ 'ECHO_NEST_SHARED_SECRET']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">ECHO_NEST_API_KEY</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">ECHO_NEST_CONSUMER_KEY</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">ECH</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="API_HOST"></a><span class="summary-name">API_HOST</span> = <code title="'developer.echonest.com'"><code class="variable-quote">'</code><code class="variable-string">developer.echonest.com</code><code class="variable-quote">'</code></code>
+        <a name="API_HOST"></a><span class="summary-name">API_HOST</span> = <code title="'developer.echonest.com'"><code class="variable-quote">'</code><code class="variable-string">developer.echonest.com</code><code class="variable-quote">'</code></code><br />
+      The API endpoint you're talking to
     </td>
   </tr>
 <tr>
@@ -102,15 +105,15 @@ Created by Tyler Williams on 2010-04-25.</p>
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="API_SELECTOR"></a><span class="summary-name">API_SELECTOR</span> = <code title="'api'"><code class="variable-quote">'</code><code class="variable-string">api</code><code class="variable-quote">'</code></code><br />
-      Locations for the Analyze API calls.
+      API selector... just 'api' for now
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.config-module.html#API_VERSION" class="summary-name">API_VERSION</a> = <code title="'v4'"><code class="variable-quote">'</code><code class="variable-string">v4</code><code class="variable-quote">'</code></code><br />
-      Version of api to use...
+        <a name="API_VERSION"></a><span class="summary-name">API_VERSION</span> = <code title="'v4'"><code class="variable-quote">'</code><code class="variable-string">v4</code><code class="variable-quote">'</code></code><br />
+      Version of api to use... only 4 for now
     </td>
   </tr>
 <tr>
@@ -119,24 +122,7 @@ Created by Tyler Williams on 2010-04-25.</p>
     </td><td class="summary">
         <a name="HTTP_USER_AGENT"></a><span class="summary-name">HTTP_USER_AGENT</span> = <code title="'PyEchonest'"><code class="variable-quote">'</code><code class="variable-string">PyEchonest</code><code class="variable-quote">'</code></code><br />
       You may change this to be a user agent string of your
-own choosing.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="pyechonest.config-module.html#MP3_BITRATE" class="summary-name">MP3_BITRATE</a> = <code title="128">128</code><br />
-      Default bitrate for MP3 output.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="CACHE"></a><span class="summary-name">CACHE</span> = <code title="True">True</code><br />
-      You may change this to False to prevent local caching
-of API results.
+own choosing
     </td>
   </tr>
 <tr>
@@ -151,24 +137,39 @@ of API results.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="ANALYSIS_VERSION"></a><span class="summary-name">ANALYSIS_VERSION</span> = <code title="3">3</code><br />
-      Analysis version
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
         <a name="CALL_TIMEOUT"></a><span class="summary-name">CALL_TIMEOUT</span> = <code title="10">10</code><br />
-      The API call timeout in seconds.
+      The API call timeout (seconds)
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="pyechonest.config-module.html#CODEGEN_BINARY_OVERRIDE" class="summary-name">CODEGEN_BINARY_OVERRIDE</a> = <code title="None">None</code><br />
-      Location of your codegen binary.
+        <a name="CODEGEN_BINARY_OVERRIDE"></a><span class="summary-name">CODEGEN_BINARY_OVERRIDE</span> = <code title="None">None</code><br />
+      Location of your codegen binary. If not given, we will guess codegen.platform-architecture on your system path, e.g. codegen.Darwin, codegen.Linux-i386
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ECHO_NEST_API_KEY"></a><span class="summary-name">ECHO_NEST_API_KEY</span> = <code title="'WOUHTN44BMS5SMPF2'"><code class="variable-quote">'</code><code class="variable-string">WOUHTN44BMS5SMPF2</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ECHO_NEST_CONSUMER_KEY"></a><span class="summary-name">ECHO_NEST_CONSUMER_KEY</span> = <code title="None">None</code><br />
+      hash(x)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ECHO_NEST_SHARED_SECRET"></a><span class="summary-name">ECHO_NEST_SHARED_SECRET</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr>
@@ -176,6 +177,13 @@ of API results.
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'pyechonest'"><code class="variable-quote">'</code><code class="variable-string">pyechonest</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="key"></a><span class="summary-name">key</span> = <code title="'ECHO_NEST_SHARED_SECRET'"><code class="variable-quote">'</code><code class="variable-string">ECHO_NEST_SHARED_SECRET</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
@@ -197,56 +205,21 @@ of API results.
   </td>
 </tr>
 </table>
-<a name="API_VERSION"></a>
+<a name="envkeys"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">API_VERSION</h3>
-  Version of api to use... only 4 for now
+  <h3 class="epydoc">envkeys</h3>
+  
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">v4</code><code class="variable-quote">'</code>
-</pre></td></tr></table>
-</dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="MP3_BITRATE"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">MP3_BITRATE</h3>
-  Default bitrate for MP3 output. Conventionally an
-integer divisible by 32kbits/sec.
-  <dl class="fields">
-  </dl>
-  <dl class="fields">
-    <dt>Value:</dt>
-      <dd><table><tr><td><pre class="variable">
-128
-</pre></td></tr></table>
-</dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="CODEGEN_BINARY_OVERRIDE"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">CODEGEN_BINARY_OVERRIDE</h3>
-  Location of your codegen binary. If not given, we will guess codegen.platform-architecture on your system path, e.g. codegen.Darwin, codegen.Linux-i386
-  <dl class="fields">
-  </dl>
-  <dl class="fields">
-    <dt>Value:</dt>
-      <dd><table><tr><td><pre class="variable">
-None
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">ECHO_NEST_API_KEY</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">ECHO_NEST_CONSUMER_KEY</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">ECHO_NEST_SHARED_SECRET</code><code class="variable-quote">'</code><code class="variable-group">]</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -274,14 +247,14 @@ None
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:19 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

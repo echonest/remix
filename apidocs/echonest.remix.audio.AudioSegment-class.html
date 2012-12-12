@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.remix.audio.AudioSegment</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;echonest ::
+        <a href="echonest.remix-module.html">Package&nbsp;remix</a> ::
+        <a href="echonest.remix.audio-module.html">Module&nbsp;audio</a> ::
+        Class&nbsp;AudioSegment
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.remix.audio.AudioSegment-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AudioSegment</h1><p class="nomargin-top"><span class="codelink"><a href="echonest.remix.audio-pysrc.html#AudioSegment">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_echonest_17" name="uml_class_diagram_for_echonest_17">
+<area shape="rect" id="node47" href="echonest.remix.audio.AudioSegment-class.html#tatum" title="Returns the tatum that overlaps most with the segment Note that some segments have NO overlapping tatums. If this is the case, None will be returned." alt="" coords="17,553,1112,572"/>
+<area shape="rect" id="node47" href="echonest.remix.audio.AudioSegment-class.html#beat" title="echonest.remix.audio.AudioSegment.beat" alt="" coords="17,572,1112,591"/>
+<area shape="rect" id="node47" href="echonest.remix.audio.AudioSegment-class.html#__init__" title="Initializes an AudioSegment." alt="" coords="17,593,1112,612"/>
+<area shape="rect" id="node1" href="echonest.remix.audio.AudioSegment-class.html" title="Subclass of AudioQuantum for the data&#45;rich segments returned by the Analyze API." alt="" coords="5,529,1123,618"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#end" title="A computed property: the sum of start and duration." alt="" coords="392,164,737,183"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#source" title="The AudioData source for the AudioQuantum." alt="" coords="392,183,737,201"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#segments" title="Returns any segments that overlap or are in the same timespan as the AudioQuantum. Note that this means that some segments will appear in more than one AudioQuantum. This function, thus, is NOT suited to rhythmic modifications." alt="" coords="392,201,737,220"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#get_end" title="echonest.remix.audio.AudioQuantum.get_end" alt="" coords="392,223,737,241"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#get_source" title="Returns itself or its parent." alt="" coords="392,241,737,260"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#set_source" title="echonest.remix.audio.AudioQuantum.set_source" alt="" coords="392,260,737,279"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#parent" title="Returns the containing AudioQuantum in the rhythm hierarchy: a tatum returns a beat, a beat returns a bar, and a bar returns a section. Note that some AudioQuantums have no parent. &#160;None will be returned in this case." alt="" coords="392,279,737,297"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#children" title="Returns an AudioQuantumList of the AudioQuanta that it contains, one step down the hierarchy. A beat returns tatums, a bar returns beats, and a section returns bars." alt="" coords="392,297,737,316"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#mean_pitches" title="Returns a pitch vector that is the mean of the pitch vectors of any segments that overlap this AudioQuantum. Note that this means that some segments will appear in more than one AudioQuantum." alt="" coords="392,316,737,335"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#mean_timbre" title="Returns a timbre vector that is the mean of the pitch vectors of any segments that overlap this AudioQuantum. Note that this means that some segments will appear in more than one AudioQuantum." alt="" coords="392,335,737,353"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#mean_loudness" title="Returns the mean of the maximum loudness of any segments that overlap this AudioQuantum. Note that this means that some segments will appear in more than one AudioQuantum." alt="" coords="392,353,737,372"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#group" title="Returns the children() of the AudioQuantum&#39;s parent(). In other words: &#39;siblings&#39;. If no parent is found, then return the AudioQuantumList for the whole track." alt="" coords="392,372,737,391"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#prev" title="Step backwards in the containing AudioQuantumList. Returns self if a boundary is reached." alt="" coords="392,391,737,409"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#next" title="Step forward in the containing AudioQuantumList. Returns self if a boundary is reached." alt="" coords="392,409,737,428"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#__str__" title="Lists the AudioQuantum.kind with start and end times, in seconds, e.g.:" alt="" coords="392,428,737,447"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#__repr__" title="A string representing a constructor, including kind, start time, duration, and (if it exists) confidence, e.g.:" alt="" coords="392,447,737,465"/>
+<area shape="rect" id="node48" href="echonest.remix.audio.AudioQuantum-class.html#render" title="echonest.remix.audio.AudioQuantum.render" alt="" coords="392,484,737,503"/>
+<area shape="rect" id="node2" href="echonest.remix.audio.AudioQuantum-class.html" title="A unit of musical time, identified at minimum with a start time and a duration, both in seconds. It most often corresponds with a section, bar, beat, tatum, or (by inheritance) segment obtained from an Analyze API call." alt="" coords="380,139,748,509"/>
+<area shape="rect" id="node49" href="echonest.remix.audio.AudioRenderable-class.html#resolve_source" title="Given an alternative, fallback alt source, return either self&#39;s source or the alternative. Throw an informative error if no source is found." alt="" coords="449,39,680,57"/>
+<area shape="rect" id="node49" href="echonest.remix.audio.AudioRenderable-class.html#init_audio_data" title="Convenience function for rendering: return a pre&#45;allocated, zeroed AudioData." alt="" coords="449,57,680,76"/>
+<area shape="rect" id="node49" href="echonest.remix.audio.AudioRenderable-class.html#sources" title="echonest.remix.audio.AudioRenderable.sources" alt="" coords="449,76,680,95"/>
+<area shape="rect" id="node49" href="echonest.remix.audio.AudioRenderable-class.html#encode" title="Shortcut function that takes care of the need to obtain an AudioData object first, through render." alt="" coords="449,95,680,113"/>
+<area shape="rect" id="node3" href="echonest.remix.audio.AudioRenderable-class.html" title="An object that gives an AudioData in response to a call to its render() method. Intended to be an abstract class that helps enforce the AudioRenderable protocol. Picked up a couple of convenience methods common to many descendants." alt="" coords="437,6,691,119"/>
+</map>
+  <img src="uml_class_diagram_for_echonest_17.gif" alt='' usemap="#uml_class_diagram_for_echonest_17" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+Subclass of <a href="echonest.remix.audio.AudioQuantum-class.html" class="link">AudioQuantum</a> for the data-rich segments returned by
+the Analyze API.
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="echonest.remix.audio.AudioSegment-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">duration</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">pitches</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">timbre</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">loudness_begin</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">loudness_max</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">time_loudness_max</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">loudness_end</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">kind</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">segment</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initializes an <a href="echonest.remix.audio.AudioSegment-class.html" class="link">AudioSegment</a>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="echonest.remix.audio-pysrc.html#AudioSegment.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioQuantum-class.html">AudioQuantum</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#__getstate__">__getstate__</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#__repr__">__repr__</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#__str__">__str__</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#absolute_context">absolute_context</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#children">children</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#context_string">context_string</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#get_end">get_end</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#get_source">get_source</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#group">group</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#local_context">local_context</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#mean_loudness">mean_loudness</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#mean_pitches">mean_pitches</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#mean_timbre">mean_timbre</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#next">next</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#parent">parent</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#prev">prev</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#render">render</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#set_source">set_source</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#toxml">toxml</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioRenderable-class.html">AudioRenderable</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#encode">encode</a></code>,
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#resolve_source">resolve_source</a></code>,
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#sources">sources</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Static Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-StaticMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioRenderable-class.html">AudioRenderable</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioRenderable-class.html#init_audio_data">init_audio_data</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.remix.audio.AudioSegment-class.html#tatum" class="summary-name">tatum</a><br />
+      Returns the tatum that overlaps most with the segment
+Note that some segments have NO overlapping tatums.
+If this is the case, None will be returned.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="echonest.remix.audio.AudioSegment-class.html#beat" class="summary-name">beat</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="echonest.remix.audio.AudioQuantum-class.html">AudioQuantum</a></code></b>:
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#end">end</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#segments">segments</a></code>,
+      <code><a href="echonest.remix.audio.AudioQuantum-class.html#source">source</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">duration</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">pitches</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">timbre</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">loudness_begin</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">loudness_max</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">time_loudness_max</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">loudness_end</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">kind</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">segment</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">source</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="echonest.remix.audio-pysrc.html#AudioSegment.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Initializes an <a href="echonest.remix.audio.AudioSegment-class.html" class="link">AudioSegment</a>.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>start</code></strong> - offset from start of the track, in seconds</li>
+        <li><strong class="pname"><code>duration</code></strong> - duration of the <a href="echonest.remix.audio.AudioSegment-class.html" class="link">AudioSegment</a>, in seconds</li>
+        <li><strong class="pname"><code>pitches</code></strong> - a twelve-element list with relative loudnesses of each
+pitch class, from C (pitches[0]) to B (pitches[11])</li>
+        <li><strong class="pname"><code>timbre</code></strong> - a twelve-element list with the loudness of each of a
+principal component of time and/or frequency profile</li>
+        <li><strong class="pname"><code>kind</code></strong> - string identifying the kind of AudioQuantum: &quot;segment&quot;</li>
+        <li><strong class="pname"><code>loudness_begin</code></strong> - loudness in dB at the start of the segment</li>
+        <li><strong class="pname"><code>loudness_max</code></strong> - loudness in dB at the loudest moment of the
+segment</li>
+        <li><strong class="pname"><code>time_loudness_max</code></strong> - time (in sec from start of segment) of
+loudest moment</li>
+        <li><strong class="pname"><code>loudness_end</code></strong> - loudness at end of segment (if it is given)</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="tatum"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">tatum</h3>
+  Returns the tatum that overlaps most with the segment
+Note that some segments have NO overlapping tatums.
+If this is the case, None will be returned.
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.tatum(<span class="summary-sig-arg">self</span>)</span>
+        - Returns the tatum that overlaps most with the segment
+Note that some segments have NO overlapping tatums.
+If this is the case, None will be returned.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="beat"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">beat</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.beat(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:21 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

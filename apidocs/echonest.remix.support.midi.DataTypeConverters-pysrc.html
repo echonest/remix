@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>echonest.remix.support.midi.DataTypeConverters</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;echonest ::
+        <a href="echonest.remix-module.html">Package&nbsp;remix</a> ::
+        <a href="echonest.remix.support-module.html">Package&nbsp;support</a> ::
+        <a href="echonest.remix.support.midi-module.html">Package&nbsp;midi</a> ::
+        Module&nbsp;DataTypeConverters
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="echonest.remix.support.midi.DataTypeConverters-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="echonest.remix.support.midi.DataTypeConverters-module.html">Module echonest.remix.support.midi.DataTypeConverters</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: ISO-8859-1 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">struct</tt> <tt class="py-keyword">import</tt> <tt class="py-name">pack</tt><tt class="py-op">,</tt> <tt class="py-name">unpack</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-string">This module contains functions for reading and writing the special data types</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-string">that a midi file contains.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-string">nibbles are four bits. A byte consists of two nibles.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-string">hiBits==0xF0, loBits==0x0F Especially used for setting</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-string">channel and event in 1. byte of musical midi events</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="getNibbles"></a><div id="getNibbles-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="getNibbles-toggle" onclick="return toggle('getNibbles');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#getNibbles">getNibbles</a><tt class="py-op">(</tt><tt class="py-param">byte</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getNibbles-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getNibbles-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    Returns hi and lo bits in a byte as a tuple</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; getNibbles(142)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">    (8, 14)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">    Asserts byte value in byte range</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; getNibbles(256)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">    Traceback (most recent call last):</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">        ...</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    ValueError: Byte value out of range 0-255: 256</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-number">0</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">byte</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">255</tt><tt class="py-op">:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'Byte value out of range 0-255: %s'</tt> <tt class="py-op">%</tt> <tt class="py-name">byte</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">byte</tt> <tt class="py-op">&gt;&gt;</tt> <tt class="py-number">4</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0xF</tt><tt class="py-op">,</tt> <tt class="py-name">byte</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0xF</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="setNibbles"></a><div id="setNibbles-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="setNibbles-toggle" onclick="return toggle('setNibbles');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#setNibbles">setNibbles</a><tt class="py-op">(</tt><tt class="py-param">hiNibble</tt><tt class="py-op">,</tt> <tt class="py-param">loNibble</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="setNibbles-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="setNibbles-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">    Returns byte with value set according to hi and lo bits</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">    Asserts hiNibble and loNibble in range(16)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; setNibbles(8, 14)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">    142</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; setNibbles(8, 16)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">    Traceback (most recent call last):</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">        ...</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">    ValueError: Nible value out of range 0-15: (8, 16)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">hiNibble</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">15</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">loNibble</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">15</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'Nible value out of range 0-15: (%s, %s)'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">hiNibble</tt><tt class="py-op">,</tt> <tt class="py-name">loNibble</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">hiNibble</tt> <tt class="py-op">&lt;&lt;</tt> <tt class="py-number">4</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-name">loNibble</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="readBew"></a><div id="readBew-def"><a name="L53"></a><tt class="py-lineno"> 53</tt> <a class="py-toggle" href="#" id="readBew-toggle" onclick="return toggle('readBew');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#readBew">readBew</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="readBew-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="readBew-expanded"><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">    Reads string as big endian word, (asserts len(value) in [1,2,4])</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; readBew('a&#225;&#226;&#227;')</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    1642193635L</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; readBew('a&#225;')</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">    25057</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">unpack</tt><tt class="py-op">(</tt><tt class="py-string">'&gt;%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">{</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-string">'B'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-string">'H'</tt><tt class="py-op">,</tt> <tt class="py-number">4</tt><tt class="py-op">:</tt><tt class="py-string">'L'</tt><tt class="py-op">}</tt><tt class="py-op">[</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="writeBew"></a><div id="writeBew-def"><a name="L64"></a><tt class="py-lineno"> 64</tt> <a class="py-toggle" href="#" id="writeBew-toggle" onclick="return toggle('writeBew');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#writeBew">writeBew</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">,</tt> <tt class="py-param">length</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="writeBew-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="writeBew-expanded"><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">    Write int as big endian formatted string, (asserts length in [1,2,4])</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">    Difficult to print the result in doctest, so I do a simple roundabout test.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; readBew(writeBew(25057, 2))</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">    25057</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; readBew(writeBew(1642193635L, 4))</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">    1642193635L</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">pack</tt><tt class="py-op">(</tt><tt class="py-string">'&gt;%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">{</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-string">'B'</tt><tt class="py-op">,</tt> <tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-string">'H'</tt><tt class="py-op">,</tt> <tt class="py-number">4</tt><tt class="py-op">:</tt><tt class="py-string">'L'</tt><tt class="py-op">}</tt><tt class="py-op">[</tt><tt class="py-name">length</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-string">Variable Length Data (varlen) is a data format sprayed liberally throughout</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-string">a midi file. It can be anywhere from 1 to 4 bytes long.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-string">If the 8'th bit is set in a byte another byte follows. The value is stored</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-string">in the lowest 7 bits of each byte. So max value is 4x7 bits = 28 bits.</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="readVar"></a><div id="readVar-def"><a name="L85"></a><tt class="py-lineno"> 85</tt> <a class="py-toggle" href="#" id="readVar-toggle" onclick="return toggle('readVar');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#readVar">readVar</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="readVar-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="readVar-expanded"><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">    Converts varlength format to integer. Just pass it 0 or more chars that</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">    might be a varlen and it will only use the relevant chars.</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">    use varLen(readVar(value)) to see how many bytes the integer value takes.</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">    asserts len(value) &gt;= 0</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; readVar('&#128;@')</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">    64</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; readVar('&#225;&#226;&#227;a')</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">    205042145</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Method echonest.remix.audio.AudioData.sum()=echonest.remix.audio.AudioData-class.html#sum"><a title="echonest.remix.audio.AudioData.sum" class="py-name" href="#" onclick="return doclink('link-0', 'sum', 'link-0');">sum</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">byte</tt> <tt class="py-keyword">in</tt> <tt class="py-name">unpack</tt><tt class="py-op">(</tt><tt class="py-string">'%sB'</tt> <tt class="py-op">%</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt id="link-1" class="py-name"><a title="echonest.remix.audio.AudioData.sum" class="py-name" href="#" onclick="return doclink('link-1', 'sum', 'link-0');">sum</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt id="link-2" class="py-name"><a title="echonest.remix.audio.AudioData.sum" class="py-name" href="#" onclick="return doclink('link-2', 'sum', 'link-0');">sum</a></tt> <tt class="py-op">&lt;&lt;</tt> <tt class="py-number">7</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-op">(</tt><tt class="py-name">byte</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0x7F</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-number">0x80</tt> <tt class="py-op">&amp;</tt> <tt class="py-name">byte</tt><tt class="py-op">:</tt> <tt class="py-keyword">break</tt> <tt class="py-comment"># stop after last byte</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-3" class="py-name"><a title="echonest.remix.audio.AudioData.sum" class="py-name" href="#" onclick="return doclink('link-3', 'sum', 'link-0');">sum</a></tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="varLen"></a><div id="varLen-def"><a name="L104"></a><tt class="py-lineno">104</tt> <a class="py-toggle" href="#" id="varLen-toggle" onclick="return toggle('varLen');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#varLen">varLen</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="varLen-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="varLen-expanded"><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">    Returns the the number of bytes an integer will be when</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">    converted to varlength</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">value</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">127</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">1</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">value</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">16383</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">2</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">value</tt> <tt class="py-op">&lt;=</tt> <tt class="py-number">2097151</tt><tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">3</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">4</tt> </tt>
+</div><a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="writeVar"></a><div id="writeVar-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="writeVar-toggle" onclick="return toggle('writeVar');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#writeVar">writeVar</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="writeVar-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="writeVar-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">    <tt class="py-docstring">"Converts an integer to varlength format"</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">    <tt class="py-name">sevens</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name" targets="Function echonest.remix.support.midi.DataTypeConverters.to_n_bits()=echonest.remix.support.midi.DataTypeConverters-module.html#to_n_bits"><a title="echonest.remix.support.midi.DataTypeConverters.to_n_bits" class="py-name" href="#" onclick="return doclink('link-4', 'to_n_bits', 'link-4');">to_n_bits</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Function echonest.remix.support.midi.DataTypeConverters.varLen()=echonest.remix.support.midi.DataTypeConverters-module.html#varLen"><a title="echonest.remix.support.midi.DataTypeConverters.varLen" class="py-name" href="#" onclick="return doclink('link-5', 'varLen', 'link-5');">varLen</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">sevens</tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-name">sevens</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">sevens</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">|</tt> <tt class="py-number">0x80</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-6" class="py-name" targets="Function echonest.remix.support.midi.DataTypeConverters.fromBytes()=echonest.remix.support.midi.DataTypeConverters-module.html#fromBytes"><a title="echonest.remix.support.midi.DataTypeConverters.fromBytes" class="py-name" href="#" onclick="return doclink('link-6', 'fromBytes', 'link-6');">fromBytes</a></tt><tt class="py-op">(</tt><tt class="py-name">sevens</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="to_n_bits"></a><div id="to_n_bits-def"><a name="L127"></a><tt class="py-lineno">127</tt> <a class="py-toggle" href="#" id="to_n_bits-toggle" onclick="return toggle('to_n_bits');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#to_n_bits">to_n_bits</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">,</tt> <tt class="py-param">length</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-param">nbits</tt><tt class="py-op">=</tt><tt class="py-number">7</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="to_n_bits-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="to_n_bits-expanded"><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt class="py-docstring">"returns the integer value as a sequence of nbits bytes"</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt class="py-name">bytes</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">value</tt> <tt class="py-op">&gt;&gt;</tt> <tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">*</tt><tt class="py-name">nbits</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">&amp;</tt> <tt class="py-number">0x7F</tt> <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">length</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-name">bytes</tt><tt class="py-op">.</tt><tt class="py-name">reverse</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">bytes</tt> </tt>
+</div><a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"> </tt>
+<a name="toBytes"></a><div id="toBytes-def"><a name="L134"></a><tt class="py-lineno">134</tt> <a class="py-toggle" href="#" id="toBytes-toggle" onclick="return toggle('toBytes');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#toBytes">toBytes</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="toBytes-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="toBytes-expanded"><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">    <tt class="py-docstring">"Turns a string into a list of byte values"</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">unpack</tt><tt class="py-op">(</tt><tt class="py-string">'%sB'</tt> <tt class="py-op">%</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="fromBytes"></a><div id="fromBytes-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="fromBytes-toggle" onclick="return toggle('fromBytes');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="echonest.remix.support.midi.DataTypeConverters-module.html#fromBytes">fromBytes</a><tt class="py-op">(</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="fromBytes-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="fromBytes-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-docstring">"Turns a list of bytes into a string"</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">value</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">''</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">pack</tt><tt class="py-op">(</tt><tt class="py-string">'%sB'</tt> <tt class="py-op">%</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-comment">#    print to7bits(0, 3)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-comment">#    print to7bits(127, 3)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-comment">#    print to7bits(255, 3)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-comment">#    print to7bits(65536, 3)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-comment"># simple test cases</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">     </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-comment">#    print 'getHiLoHex', getNibbles(16)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-comment">#    print 'setHiLoHex', setNibbles(1,0)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-comment">#    </tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-comment">#    print 'readBew', readBew('a&#225;&#226;&#227;')</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-comment">#    print 'writeBew', writeBew(1642193635, 4)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-comment">#    print 'varLen', varLen(1)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'readVar'</tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name" targets="Function echonest.remix.support.midi.DataTypeConverters.readVar()=echonest.remix.support.midi.DataTypeConverters-module.html#readVar"><a title="echonest.remix.support.midi.DataTypeConverters.readVar" class="py-name" href="#" onclick="return doclink('link-7', 'readVar', 'link-7');">readVar</a></tt><tt class="py-op">(</tt><tt class="py-string">'&#128;@'</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'writeVar'</tt><tt class="py-op">,</tt> <tt id="link-8" class="py-name" targets="Function echonest.remix.support.midi.DataTypeConverters.writeVar()=echonest.remix.support.midi.DataTypeConverters-module.html#writeVar"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-8', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-number">8192</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">     </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'readVar'</tt><tt class="py-op">,</tt> <tt id="link-9" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.readVar" class="py-name" href="#" onclick="return doclink('link-9', 'readVar', 'link-7');">readVar</a></tt><tt class="py-op">(</tt><tt class="py-string">'&#225;&#226;&#227;a'</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'writeVar'</tt><tt class="py-op">,</tt> <tt id="link-10" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-10', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-number">205058401</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-comment">#    </tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-comment">#    vartest = '\x82\xF7\x80\x00'</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-comment">#    print 'toBytes', toBytes(vartest)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-comment">#    print 'fromBytes', fromBytes([48, 49, 50,])</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">     </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">     </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-comment">#    instr = '\xFF\xFF\xFF\x00'</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-comment">#    print 'readVar', readVar(instr)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-comment">#    inst2 = 268435455</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-comment">#    print inst2</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-comment">#    print writeVar(inst2)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-comment">#    print writeVar(readVar(instr))</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">    <tt class="py-name">s1</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00000000</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s1</tt><tt class="py-op">,</tt> <tt class="py-string">'00'</tt><tt class="py-op">,</tt>  <tt id="link-11" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-11', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s1</tt><tt class="py-op">)</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">    <tt class="py-name">s2</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00000040</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s2</tt><tt class="py-op">,</tt> <tt class="py-string">'40'</tt><tt class="py-op">,</tt>  <tt id="link-12" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-12', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s2</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">    <tt class="py-name">s3</tt> <tt class="py-op">=</tt> <tt class="py-number">0x0000007F</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s3</tt><tt class="py-op">,</tt> <tt class="py-string">'7F'</tt><tt class="py-op">,</tt>  <tt id="link-13" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-13', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s3</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">    <tt class="py-name">s4</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00000080</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s4</tt><tt class="py-op">,</tt> <tt class="py-string">'81 00'</tt><tt class="py-op">,</tt>  <tt id="link-14" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-14', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s4</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">    <tt class="py-name">s5</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00002000</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s5</tt><tt class="py-op">,</tt> <tt class="py-string">'C0 00'</tt><tt class="py-op">,</tt>  <tt id="link-15" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-15', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s5</tt><tt class="py-op">)</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">    <tt class="py-name">s6</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00003FFF</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s6</tt><tt class="py-op">,</tt> <tt class="py-string">'FF 7F'</tt><tt class="py-op">,</tt>  <tt id="link-16" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-16', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s6</tt><tt class="py-op">)</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">    <tt class="py-name">s7</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00004000</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s7</tt><tt class="py-op">,</tt> <tt class="py-string">'81 80 00'</tt><tt class="py-op">,</tt>  <tt id="link-17" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-17', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s7</tt><tt class="py-op">)</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">    <tt class="py-name">s8</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00100000</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s8</tt><tt class="py-op">,</tt> <tt class="py-string">'C0 80 00'</tt><tt class="py-op">,</tt>  <tt id="link-18" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-18', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s8</tt><tt class="py-op">)</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">    <tt class="py-name">s9</tt> <tt class="py-op">=</tt> <tt class="py-number">0x001FFFFF</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s9</tt><tt class="py-op">,</tt> <tt class="py-string">'FF FF 7F'</tt><tt class="py-op">,</tt>  <tt id="link-19" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-19', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s9</tt><tt class="py-op">)</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">    <tt class="py-name">s10</tt> <tt class="py-op">=</tt> <tt class="py-number">0x00200000</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s10</tt><tt class="py-op">,</tt> <tt class="py-string">'81 80 80 00'</tt><tt class="py-op">,</tt> <tt id="link-20" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-20', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s10</tt><tt class="py-op">)</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">    <tt class="py-name">s11</tt> <tt class="py-op">=</tt> <tt class="py-number">0x08000000</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s11</tt><tt class="py-op">,</tt> <tt class="py-string">'C0 80 80 00'</tt><tt class="py-op">,</tt> <tt id="link-21" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-21', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s11</tt><tt class="py-op">)</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">    <tt class="py-name">s12</tt> <tt class="py-op">=</tt> <tt class="py-number">0x0FFFFFFF</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'%08X -'</tt> <tt class="py-op">%</tt> <tt class="py-name">s12</tt><tt class="py-op">,</tt> <tt class="py-string">'FF FF FF 7F'</tt><tt class="py-op">,</tt> <tt id="link-22" class="py-name"><a title="echonest.remix.support.midi.DataTypeConverters.writeVar" class="py-name" href="#" onclick="return doclink('link-22', 'writeVar', 'link-8');">writeVar</a></tt><tt class="py-op">(</tt><tt class="py-name">s12</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:26 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

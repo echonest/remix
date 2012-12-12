@@ -31,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
@@ -112,7 +112,7 @@ Refer to the official api documentation if you are unsure about something.</p>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="identify"></a><span class="summary-sig-name">identify</span>(<span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
+          <td><span class="summary-sig"><a href="pyechonest.song-module.html#identify" class="summary-sig-name">identify</a>(<span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">query_obj</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">code</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
@@ -121,9 +121,10 @@ Refer to the official api documentation if you are unsure about something.</p>
         <span class="summary-sig-arg">duration</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">genre</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">alt</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">version</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">codegen_start</span>=<span class="summary-sig-default">0</span>,
-        <span class="summary-sig-arg">codegen_duration</span>=<span class="summary-sig-default">30</span>)</span></td>
+        <span class="summary-sig-arg">codegen_duration</span>=<span class="summary-sig-default">30</span>)</span><br />
+      Identify a song.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.song-pysrc.html#identify">source&nbsp;code</a></span>
             
@@ -139,12 +140,15 @@ Refer to the official api documentation if you are unsure about something.</p>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="search"></a><span class="summary-sig-name">search</span>(<span class="summary-sig-arg">title</span>=<span class="summary-sig-default">None</span>,
+          <td><span class="summary-sig"><a href="pyechonest.song-module.html#search" class="summary-sig-name">search</a>(<span class="summary-sig-arg">title</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">artist_id</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">combined</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">style</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mood</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">results</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">start</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_tempo</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_tempo</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_duration</span>=<span class="summary-sig-default">None</span>,
@@ -158,6 +162,10 @@ Refer to the official api documentation if you are unsure about something.</p>
         <span class="summary-sig-arg">song_max_hotttnesss</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">song_min_hotttnesss</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">mode</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_energy</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">min_danceability</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max_danceability</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">key</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">max_latitude</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">min_latitude</span>=<span class="summary-sig-default">None</span>,
@@ -165,8 +173,15 @@ Refer to the official api documentation if you are unsure about something.</p>
         <span class="summary-sig-arg">min_longitude</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">sort</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>)</span><br />
-      search for songs</td>
+        <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">test_new_things</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">rank_type</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_start_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_after</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">artist_end_year_before</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">song_type</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Search for songs by name, description, or constraint.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyechonest.song-pysrc.html#search">source&nbsp;code</a></span>
             
@@ -182,7 +197,8 @@ Refer to the official api documentation if you are unsure about something.</p>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="profile"></a><span class="summary-sig-name">profile</span>(<span class="summary-sig-arg">ids</span>,
+          <td><span class="summary-sig"><a href="pyechonest.song-module.html#profile" class="summary-sig-name">profile</a>(<span class="summary-sig-arg">ids</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">track_ids</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">buckets</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">False</span>)</span><br />
       get the profiles for multiple songs at once</td>
@@ -221,6 +237,266 @@ Refer to the official api documentation if you are unsure about something.</p>
     </td>
   </tr>
 </table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="identify"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">identify</span>(<span class="sig-arg">filename</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">query_obj</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">code</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">title</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">release</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">duration</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">genre</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">version</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">codegen_start</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">codegen_duration</span>=<span class="sig-default">30</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.song-pysrc.html#identify">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Identify a song.</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">filename (str): The path of the file you want to analyze (requires codegen binary!)</p>
+<p>query_obj (dict or list): A dict or list of dicts containing a 'code' element with an fp code</p>
+<p>code (str): A fingerprinter code</p>
+<p>artist (str): An artist name</p>
+<p>title (str): A song title</p>
+<p>release (str): A release name</p>
+<p>duration (int): A song duration</p>
+<p>genre (str): A string representing the genre</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>version (str): The version of the code generator used to generate the code</p>
+<p>codegen_start (int): The point (in seconds) where the codegen should start</p>
+<p class="rst-last">codegen_duration (int): The duration (in seconds) the codegen should analyze</p>
+</dd>
+<dt>Example:</dt>
+<dd><pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>qo
+<span class="py-output">{'code': 'eJxlldehHSEMRFsChAjlAIL-S_CZvfaXXxAglEaBTen300Qu__lAyoJYhVQdXTvXrmvXdTsKZOqoU1q63QNydBGfOd1cGX3scpb1jEiWRLaPcJureC6RVkXE69jL8pGHjpP48pLI1m7r9oiEyBXvoVv45Q-5IhylYLkIRxGO4rp18ZpEOmpFPopwfJjL0u3WceO3HB1DIvJRnkQeO1PCLIsIjBWEzYaShq4pV9Z0KzDiQ8SbSNuSyBZPOOxIJKR7dauEmXwotxDCqllEAVZlrX6F8Y-IJ0e169i_HQaqslaVtTq1W-1vKeupImzrxWWVI5cPlw-XDxckN-3kyeXDm3jKmqv6PtB1gfH1Eey5qu8qvAuMC4zLfPv1l3aqviylJhytFhF0mzqs6aYpYU04mlqgKWtNjppwNKWubR2FowlHUws0gWmPi668dSHq6rOuPuhqgRcVKKM8s-fZS937nBe23iz3Uctx9607z-kLph1i8YZ8f_TfzLXseBh7nXy9nn1YBAg4Nwjp4AzTL23M_U3Rh0-sdDFtyspNOb1bYeZZqz2Y6TaHmXeuNmfFdTueLuvdsbOU9luvtIkl4vI5F_92PVprM1-sdJ_o9_Guc0b_WimpD_Rt1DFg0sY3wyw08e6jlqhjH3o76naYvzWqhX9rOv15Y7Ww_MIF8dXzw30s_uHO5PPDfUonnzq_NJ8J93mngAkIz5jA29SqxGwwvxQsih-sozX0zVk__RFaf_qyG9hb8dktZZXd4a8-1ljB-c5bllXOe1HqHplzeiN4E7q9ZRdmJuI73gBEJ_HcAxUm74PAVDNL47D6OAfzTHI0mHpXAmY60QNmlqjDfIPzwUDYhVnoXqtvZGrBdMi3ClQUQ8D8rX_1JE_In94CBXER4lrrw0H867ei8x-OVz8c-Osh5plzTOySpKIROmFkbn5xVuK784vTyPpS3OlcSjHpL16saZnm4Bk66hte9sd80Dcj02f7xDVrExjk32cssKXjmflU_SxXmn4Y9Ttued10YM552h5Wtt_WeVR4U6LPWfbIdW31J4JOXnpn4qhH7yE_pdBH9E_sMwbNFr0z0IW5NA8aOZhLmOh3zSVNRZwxiZc5pb8fikGzIf-ampJnCSb3r-ZPfjPuvLm7CY_Vfa_k7SCzdwHNg5mICTSHDxyBWmaOSyLQpPmCSXyF-eL7MHo7zNd668JMb_N-AJJRuMwrX0jNx7a8-Rj5oN6nyWoL-jRv4pu7Ue821TzU3MhvpD9Fo-XI',</span>
+<span class="py-output"> 'code_count': 151,</span>
+<span class="py-output"> 'low_rank': 0,</span>
+<span class="py-output"> 'metadata': {'artist': 'Harmonic 313',</span>
+<span class="py-output">              'bitrate': 198,</span>
+<span class="py-output">              'codegen_time': 0.57198400000000005,</span>
+<span class="py-output">              'decode_time': 0.37954599999999999,</span>
+<span class="py-output">              'duration': 226,</span>
+<span class="py-output">              'filename': 'koln.mp3',</span>
+<span class="py-output">              'genre': 'Electronic',</span>
+<span class="py-output">              'given_duration': 30,</span>
+<span class="py-output">              'release': 'When Machines Exceed Human Intelligence',</span>
+<span class="py-output">              'sample_rate': 44100,</span>
+<span class="py-output">              'samples_decoded': 661816,</span>
+<span class="py-output">              'start_offset': 0,</span>
+<span class="py-output">              'title': 'kln',</span>
+<span class="py-output">              'version': 3.1499999999999999},</span>
+<span class="py-output"> 'tag': 0}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>song.identify(query_obj=qo)
+<span class="py-output">[&lt;song - K&#246;ln&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="search"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">search</span>(<span class="sig-arg">title</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_id</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">combined</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">description</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">style</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mood</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">results</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">start</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_tempo</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_tempo</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_duration</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_duration</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_loudness</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_loudness</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_max_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_min_familiarity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_max_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_min_hotttnesss</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mode</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_energy</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_energy</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_danceability</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_danceability</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">key</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_latitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_latitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">max_longitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">min_longitude</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">sort</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">test_new_things</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">rank_type</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_start_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_after</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">artist_end_year_before</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">song_type</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.song-pysrc.html#search">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Search for songs by name, description, or constraint.</p>
+<p>Args:</p>
+<dl class="rst-docutils">
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">title (str): the name of a song</p>
+<p>artist (str): the name of an artist</p>
+<p>artist_id (str): the artist_id</p>
+<p>combined (str): the artist name and song title</p>
+<p>description (str): A string describing the artist and song</p>
+<p>style (str): A string describing the style/genre of the artist and song</p>
+<p>mood (str): A string describing the mood of the artist and song</p>
+<p>results (int): An integer number of results to return</p>
+<p>max_tempo (float): The max tempo of song results</p>
+<p>min_tempo (float): The min tempo of song results</p>
+<p>max_duration (float): The max duration of song results</p>
+<p>min_duration (float): The min duration of song results</p>
+<p>max_loudness (float): The max loudness of song results</p>
+<p>min_loudness (float): The min loudness of song results</p>
+<p>artist_max_familiarity (float): A float specifying the max familiarity of artists to search for</p>
+<p>artist_min_familiarity (float): A float specifying the min familiarity of artists to search for</p>
+<p>artist_max_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>artist_min_hotttnesss (float): A float specifying the max hotttnesss of artists to search for</p>
+<p>song_max_hotttnesss (float): A float specifying the max hotttnesss of songs to search for</p>
+<p>song_min_hotttnesss (float): A float specifying the max hotttnesss of songs to search for</p>
+<p>max_energy (float): The max energy of song results</p>
+<p>min_energy (float): The min energy of song results</p>
+<p>max_dancibility (float): The max dancibility of song results</p>
+<p>min_dancibility (float): The min dancibility of song results</p>
+<p>mode (int): 0 or 1 (minor or major)</p>
+<p>key (int): 0-11 (c, c-sharp, d, e-flat, e, f, f-sharp, g, a-flat, a, b-flat, b)</p>
+<p>max_latitude (float): A float specifying the max latitude of artists to search for</p>
+<p>min_latitude (float): A float specifying the min latitude of artists to search for</p>
+<p>max_longitude (float): A float specifying the max longitude of artists to search for</p>
+<p>min_longitude (float): A float specifying the min longitude of artists to search for</p>
+<p>sort (str): A string indicating an attribute and order for sorting the results</p>
+<p>buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p>limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+<p>rank_type (str): A string denoting the desired ranking for description searches, either 'relevance' or 'familiarity</p>
+<p>artist_start_year_before (int): Returned songs's artists will have started recording music before this year.</p>
+<p>artist_start_year_after (int): Returned songs's artists will have started recording music after this year.</p>
+<p>artist_end_year_before (int): Returned songs's artists will have stopped recording music before this year.</p>
+<p>artist_end_year_after (int): Returned songs's artists will have stopped recording music after this year.</p>
+<p class="rst-last">song_type (string): A string or list of strings specifiying the type of song to search for.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of Song objects</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>results = song.search(artist=<span class="py-string">'shakira'</span>, title=<span class="py-string">'she wolf'</span>, buckets=[<span class="py-string">'id:7digital'</span>, <span class="py-string">'tracks'</span>], limit=True, results=1)
+<span class="py-prompt">&gt;&gt;&gt; </span>results
+<span class="py-output">[&lt;song - She Wolf&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>results[0].get_tracks(<span class="py-string">'7digital'</span>)[0]
+<span class="py-output">{u'catalog': u'7digital',</span>
+<span class="py-output"> u'foreign_id': u'7digital:track:7854109',</span>
+<span class="py-output"> u'id': u'TRTOBSE12903CACEC4',</span>
+<span class="py-output"> u'preview_url': u'http://previews.7digital.com/clips/34/7854109.clip.mp3',</span>
+<span class="py-output"> u'release_image': u'http://cdn.7static.com/static/img/sleeveart/00/007/081/0000708184_200.jpg'}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="profile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">profile</span>(<span class="sig-arg">ids</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">track_ids</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">buckets</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">limit</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyechonest.song-pysrc.html#profile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>get the profiles for multiple songs at once</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>ids (str or list): a song ID or list of song IDs</dd>
+<dt>Kwargs:</dt>
+<dd><p class="rst-first">buckets (list): A list of strings specifying which buckets to retrieve</p>
+<p class="rst-last">limit (bool): A boolean indicating whether or not to limit the results to one of the id spaces specified in buckets</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A list of term document dicts</dd>
+</dl>
+<p>Example:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>song_ids = [u<span class="py-string">'SOGNMKX12B0B806320'</span>, u<span class="py-string">'SOLUHKP129F0698D49'</span>, u<span class="py-string">'SOOLGAZ127F3E1B87C'</span>, u<span class="py-string">'SOQKVPH12A58A7AF4D'</span>, u<span class="py-string">'SOHKEEM1288D3ED9F5'</span>]
+<span class="py-prompt">&gt;&gt;&gt; </span>songs = song.profile(song_ids, buckets=[<span class="py-string">'audio_summary'</span>])
+<span class="py-output">[&lt;song - chickfactor&gt;,</span>
+<span class="py-output"> &lt;song - One Step Closer&gt;,</span>
+<span class="py-output"> &lt;song - And I Am Telling You I'm Not Going (Glee Cast Version)&gt;,</span>
+<span class="py-output"> &lt;song - In This Temple As In The Hearts Of Man For Whom He Saved The Earth&gt;,</span>
+<span class="py-output"> &lt;song - Octet&gt;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>songs[0].audio_summary
+<span class="py-output">{u'analysis_url': u'https://echonest-analysis.s3.amazonaws.com:443/TR/TRKHTDL123E858AC4B/3/full.json?Signature=sE6OwAzg6UvrtiX6nJJW1t7E6YI%3D&amp;Expires=1287585351&amp;AWSAccessKeyId=AKIAIAFEHLM3KJ2XMHRA',</span>
+<span class="py-output"> u'danceability': None,</span>
+<span class="py-output"> u'duration': 211.90485000000001,</span>
+<span class="py-output"> u'energy': None,</span>
+<span class="py-output"> u'key': 7,</span>
+<span class="py-output"> u'loudness': -16.736999999999998,</span>
+<span class="py-output"> u'mode': 1,</span>
+<span class="py-output"> u'tempo': 94.957999999999998,</span>
+<span class="py-output"> u'time_signature': 4}</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -242,14 +518,14 @@ Refer to the official api documentation if you are unsure about something.</p>
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            ><a class="navbar" target="_top" href="http://code.google.com/p/echo-nest-remix/">Project Homepage</a></th>
+            ><a class="navbar" target="_top" href="https://github.com/echonest/remix/">Project Homepage</a></th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Sep  1 16:08:57 2010
+    Generated by Epydoc 3.0.1 on Wed Dec 12 11:24:19 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
