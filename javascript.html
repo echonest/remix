@@ -43,18 +43,32 @@
                     Echo Nest Remix is the <strong>Internet Synthesizer.</strong> Make amazing things from music, automatically.<br />
                     Turn any music or video into <a href="python.html">Python</a> or <a href="javascript.html">JavaScript</a> code.<br/>
                 </p>
-
-             
-            
         </div>
 
-        <section id="index">
-            <p>Echo Nest Remix lets you remix, re-edit, and reimagine any piece of music and video, automatically and algorithmically.</p>
-            <p>Remix has done the following: <a href="http://infinitejuke.com/" target="_blank">played a song forever</a>, <a href="http://morecowbell.dj/" target="_blank">walkenized and cowbellized hundreds of thousands of songs in a week</a>, <a href="http://www.youtube.com/watch?v=_bW7AkhgQpc" target="_blank">reversed</a> basically <a href="http://vimeo.com/10256583" target="_blank">everything</a>, beat matched two songs, split apart DJ mixes by their individual tracks, <a href="http://musicmachinery.com/2009/06/21/wheres-the-pow/" target="_blank">made new kinds of video mashups</a>, <a href="http://musicmachinery.com/2009/07/05/you-make-me-quantized-miss-lizzy/" target="_blank">corrected sloppy drumming</a>, <a href="http://www.youtube.com/watch?v=X63XPLVOSeA" target="_blank">synced video to a song</a>, <a href="http://musicmachinery.com/2009/05/01/79-versions-of-popcorn-remixed/" target="_blank">transitioned between multiple covers of the same song</a>, <a href="http://www.youtube.com/watch?v=hYZ-qWEx6aA" target="_blank">made a cat play piano</a>, and <a href="http://swingify.cloudapp.net/" target="_blank">made it swing</a>.</p>
-            <p>Remix is available as an open source SDK for you to use, for Mac, Linux, and Windows:</p>
+        <section id="javascript">
+            <h2>JavaScript:</h2>
 
-            <p>Install for Python:  <code>sudo pip install remix</code>.  Other Python installers, installation notes and full Python documentation are <a href="python.html">here</a>.
-            <p>Download JavaScript:  <a href="https://raw.github.com/echonest/remix.js/master/remix.js">remix.js</a>. Full JavaScript install notes and documentation are <a href="javascript.html">here</a>.</p>
+            <h4>Step 1: Install remix.js</h4>
+            <p>We have a beta version of Remix that works with JavaScript and the Web Audio API.  
+            <a href="https://github.com/echonest/remix.js" target="_blank">It is called remix.js, and you can get it here.</a>  
+            You'll need a browser that supports the Web Audio API, like Chrome or Safari.
+            </p>
+
+            <h4>Step 2: Set up your Echo Nest API Key</h4>
+            <p>To use remix.js, you need to get API key from the <a href="https://developer.echonest.com" target="_blank">Echo Nest Developer Center</a>, by <a href="https://developer.echonest.com/account/register" target="_blank">registering an account</a>.</p>
+            <p>Once you've got your key, you'll need to reference it when making calls to the Echo Nest's servers in your scripts.
+            That will look something like this:
+            <pre>var apiKey = 'YOUR_API_KEY';</pre>
+
+            <h4>Step 3: Try an example</h4>
+            <p>Running the remix.js examples should be as simple as putting the examples files on a server and inserting your new API key.
+            Then, go to one of the example webpages, wait for the remixing process to finish, and press play!
+            </p>
+            <p>(We're in the process of writing lots more documentation and tutorials for remix.js.  It will go here once we've got it ready for you.)
+            </p>
+
+            <h4>Step 4: Make something beautiful</h4>
+            <p>For inspiration on what to do with remix.js, you can check the <a href="examples.html">examples</a>. Happy remixing!
         </section>
 
     <img src="http://the.echonest.com/media/images/logos/250x80_lt.gif" />

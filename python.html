@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="index.html">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="python.html">Python</a></li>
+              <li><a href="javascript.html">JavaScript</a></li>
+              <li><a href="examples.html">Examples</a></li>
+              <li><a href="who.html">Who</a></li>
+            </ul>
+          </div> <!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>  <!--/.navbar -->
+    
+    <a href="http://github.com/echonest/remix">
+    <img style="position: absolute; top: 40px; right: 0px; border: 0px; z-index: 15;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+
+    <div class="container">
+        <div class="hero-unit">
+                <h1><img style="vertical-align:middle"  src="http://the.echonest.com/media/images/logos/250x80_dk.gif"> Remix</h1>
+                <p class="lead">
+                    Echo Nest Remix is the <strong>Internet Synthesizer.</strong> Make amazing things from music, automatically.<br />
+                    Turn any music or video into <a href="python.html">Python</a> or <a href="javascript.html">JavaScript</a> code.<br/>
+                </p>
+        </div>
+
+        <section id="python">
+            <h2>Python:</h2>
+            <h4>Step 1: Install Remix</h4>
+            <p>The easiest way to install the Python version of Remix to use pip or easy_install:  
+            <pre>sudo pip install remix</pre> 
+            or:<pre>sudo easy_install remix</pre>  
+            You'll need a C compiler like gcc or clang too.</p>
+            
+            <p>If those commands are meaningless to you, if you want to build from source, or if those commands don't work, don't worry!  
+            We have simple installers and install notes for every platform:
+            </p>
+
+            <div class="row">
+                <div class="span4 columns">
+                    <h6>Mac</h6>
+                    <p><a href="https://github.com/downloads/echonest/remix/remix-2.0.1-py2.7-macosx10.8.mpkg.zip" rel="nofollow"><img src="assets/img/mac_installer.png" /></a>                
+                    </p>
+                    <a href="installmac.html">Mac install notes</a>
+                </div>
+                <div class="span4 columns">
+                    <h6>Windows</h6>
+                    <p><a href="https://github.com/downloads/echonest/remix/remix-2.0.1.win32-py2.7.exe" rel="nofollow"><img src="assets/img/windows_installer.png" /></a>
+                    </p>
+                    <a href="installwindows.html">Windows install notes</a>
+                </div>
+                <div class="span4 columns">
+                    <h6>Linux / Source</h6>
+                    <p><a href="https://github.com/echonest/remix" rel="nofollow"><img src="assets/img//source_installer.png" /></a>
+                    </p>
+                    <a href="installsource.html">Source install notes</a>
+                </div>
+            </div> <!-- /row -->
+
+            <h4>Step 2: Set up your Echo Nest API Key</h4>
+            <p>To use Remix, you need to get API key from the <a href="https://developer.echonest.com" target="_blank">Echo Nest Developer Center</a>, by <a href="https://developer.echonest.com/account/register" target="_blank">registering an account</a>.</p>
+            <p>Once you've got your key, read <a href="keysetup.html" target="_blank">this key install tutorial</a> for Windows, Mac or Linux.</p>
+            <p>For the experts in the room, just set the environment variable you need:
+            <pre>export ECHO_NEST_API_KEY="your api key"</pre></p>
+
+            <h4>Step 3: Try an example</h4>
+            <p>Once you've got your API key set up, try one of the examples.</p>
+
+            <ul>
+                <li>On Windows they're installed to your Python folder (probably C:\Python27\echo-nest-remix-examples\.)</li>
+                <li>On Mac they are in /usr/local/share/echo-nest-remix-examples.</li>
+                <li>On Linux, they are also in/usr/local/share/echo-nest-remix-examples!</li>
+            </ul>
+
+            <p>A good place to start is with one.py.  Turn on your terminal, go to the examples folder, and 
+            <pre>python one/one.py music/Karl_Blau-Gnos_Levohs.mp3 AllOnTheOne.mp3</pre>
+            Congratulations!  You've made your first remix with Remix!
+            </p>
+
+            <h4>Step 4: Make something beautiful</h4>
+
+            <p>For inspiration on what to do with Remix, you can check the <a href="examples.html">examples</a>.  
+            We have a <a href="tutorial.html" target="_blank">Python tutorial that you might want to look at</a>, 
+            or you can check out the full <a href="http://echonest.github.com/remix/apidocs/" target="_blank">API documentation</a>.</p>
+
+            <p>Finally, here's a bit of code to whet your appetite.  Happy remixing!
+            <pre>
+"""Reverse a song by playing its beats forward starting from the end of the song"""
+import echonest.remix.audio as audio
+
+# Easy around wrapper mp3 decoding and Echo Nest analysis
+audio_file = audio.LocalAudioFile("NeverGonnaTellIt.mp3")
+
+# You can manipulate the beats in a song as a native python list
+beats = audio_file.analysis.beats
+beats.reverse()
+
+# And render the list as a new audio file!
+audio.getpieces(audio_file, beats).encode("NeverGonnaTellItBackwardsByBeat.mp3")
+            </pre>
+            </p>
+        </section>
+
+
+    <img src="http://the.echonest.com/media/images/logos/250x80_lt.gif" />
+    </div> <!-- /container -->
+</body>
+</html>
+
