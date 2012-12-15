@@ -2,7 +2,7 @@
 # encoding: utf=8
 
 """
-step-by-section.py
+step.py
 
 For each bar, take one of the nearest (in timbre) beats 
 to the last beat, chosen from all of the beats that fall
@@ -15,79 +15,63 @@ one in _v_ chance that the actual next beat is chosen. A
 musical M-x dissociated-press.
 
 Originally by Adam Lindsay, 2009-03-10.
-Note:  ".that" and associated functions have been deprecated as of Remix 1.6 (November 2012)
-This example may be removed or be dramatically refactored in the near future.
+Refactored by Thor Kell, 2012-12-12
 """
-import random
 
+import random
+import numpy
 import echonest.remix.audio as audio
-from echonest.remix.sorting import *
-from echonest.remix.selection import *
 
 usage = """
 Usage:
-    python step-by-section.py inputFilename outputFilename [variation]
+    python step.py inputFilename outputFilename [variation]
 
 variation is the number of near candidates chosen from. [default=4]
 
 Example:
-    python step-by-section.py Discipline.mp3 Displicine.mp3 6
+    python step.py Discipline.mp3 Undisciplined.mp3 4 
 """
+
 def main(infile, outfile, choices=4):
     audiofile = audio.LocalAudioFile(infile)
     meter = audiofile.analysis.time_signature['value']
-    fade_in = audiofile.analysis.end_of_fade_in
-    fade_out = audiofile.analysis.start_of_fade_out
-    sections = audiofile.analysis.sections.that(overlap_range(fade_in, fade_out))
-    outchunks = audio.AudioQuantumList()
+    sections = audiofile.analysis.sections
+    output = audio.AudioQuantumList()
 
     for section in sections:
-        print str(section) + ":"
-        beats = audiofile.analysis.beats.that(are_contained_by(section))
-        segments = audiofile.analysis.segments.that(overlap(section))
-        num_bars = len(section.children())
-        
-        print "\t", len(beats), "beats,", len(segments), "segments"
-        if len(beats) < meter:
-            continue
-        
-        b = []
-        segstarts = []
-        for m in range(meter):
-            b.append(beats.that(are_beat_number(m)))
-            segstarts.append(segments.that(overlap_starts_of(b[m])))
-        
-        if not b:
-            continue
-        elif not b[0]:
-            continue
-        
-        now = b[0][0]
-        
-        for x in range(0, num_bars * meter):
-            beat = x % meter
-            next_beat = (x + 1) % meter
-            now_end_segment = segments.that(contain_point(now.end))[0]
-            next_candidates = segstarts[next_beat].ordered_by(timbre_distance_from(now_end_segment))
-            if not next_candidates:
-                continue
-            next_choice = next_candidates[random.randrange(min(choices, len(next_candidates)))]
-            next = b[next_beat].that(start_during(next_choice))[0]
-            outchunks.append(now)
-            print "\t" + now.context_string()
-            now = next
+        beats = []
+        bars = section.children()
+        for bar in bars:
+            beats.extend(bar.children())
     
-    out = audio.getpieces(audiofile, outchunks)
+        beat_array = []
+        for m in range(meter):
+            metered_beats = []
+            for b in beats:
+                if beats.index(b) % meter == m:
+                    metered_beats.append(b)
+            beat_array.append(metered_beats)
+
+        # Always start with the first beat
+        output.append(beat_array[0][0]);
+        for x in range(1, len(bars) * meter):
+            meter_index = x % meter
+            next_candidates = beat_array[meter_index]
+
+            def sorting_function(chunk, target_chunk=output[-1]):
+                timbre = chunk.mean_timbre()
+                target_timbre = target_chunk.mean_timbre()
+                timbre_distance = numpy.linalg.norm(numpy.array(timbre) - numpy.array(target_timbre))
+                return timbre_distance
+
+            next_candidates = sorted(next_candidates, key=sorting_function)
+            next_index = random.randint(0, min(choices, len(next_candidates) - 1))
+            output.append(next_candidates[next_index])
+
+    out = audio.getpieces(audiofile, output)
     out.encode(outfile)
     
-    
-def are_beat_number(beat):
-    def fun(x):        
-        if x.local_context()[0] == beat:
-            return x
-    return fun
 
-#
 if __name__ == '__main__':
     import sys
     try:

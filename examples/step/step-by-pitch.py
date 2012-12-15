@@ -2,9 +2,9 @@
 # encoding: utf=8
 
 """
-step-by-pitch.py
+step.py
 
-For each bar, take one of the nearest (in pitch) beats 
+For each bar, take one of the nearest (in timbre) beats 
 to the last beat, chosen from all of the beats that fall
 on the one. Repeat for all the twos, etc.
 
@@ -13,66 +13,64 @@ one in _v_ chance that the actual next beat is chosen. The
 length is the length in bars you want it to go on.
 
 Originally by Adam Lindsay, 2009-03-10.
-Note:  ".that" and associated functions have been deprecated as of Remix 1.6 (November 2012)
-This example may be removed or be dramatically refactored in the near future.
+Refactored by Thor Kell, 2012-12-12
 """
 
 import random
-
+import numpy
 import echonest.remix.audio as audio
-from echonest.remix.sorting import *
-from echonest.remix.selection import *
 
 usage = """
 Usage:
-    python step-by-pitch.py inputFilename outputFilename [variation [length]]
+    python step.py inputFilename outputFilename [variation [length]]
 
 variation is the number of near candidates chosen from. [default=4]
 length is the number of bars in the final product. [default=40]
 
 Example:
-    python step-by-pitch.py Discipline.mp3 SpicDinLie.mp3 3 60
+    python step.py Discipline.mp3 Undisciplined.mp3 4 100
 """
+
 def main(infile, outfile, choices=4, bars=40):
     audiofile = audio.LocalAudioFile(infile)
     meter = audiofile.analysis.time_signature['value']
     fade_in = audiofile.analysis.end_of_fade_in
     fade_out = audiofile.analysis.start_of_fade_out
-    segments = audiofile.analysis.segments.that(are_contained_by_range(fade_in, fade_out))
-    beats = audiofile.analysis.beats.that(are_contained_by_range(segments[0].start, segments[-1].end))
+
+    beats = []
+    for b in audiofile.analysis.beats:
+        if b.start > fade_in or b.end < fade_out:
+            beats.append(b)
+    output = audio.AudioQuantumList()
     
-    outchunks = audio.AudioQuantumList()
-    
-    b = []
-    segstarts = []
+    beat_array = []
     for m in range(meter):
-        b.append(beats.that(are_beat_number(m)))
-        segstarts.append(segments.that(overlap_starts_of(b[m])))
-        
-    now = b[0][0]
+        metered_beats = []
+        for b in beats:
+            if beats.index(b) % meter == m:
+                metered_beats.append(b)
+        beat_array.append(metered_beats)
     
-    for x in range(0, bars * meter):
-        beat = x % meter
-        next_beat = (x + 1) % meter
-        now_end_segment = segments.that(contain_point(now.end))[0]
-        next_candidates = segstarts[next_beat].ordered_by(pitch_distance_from(now_end_segment))
-        next_choice = next_candidates[random.randrange(min(choices, len(next_candidates)))]
-        next = b[next_beat].that(start_during(next_choice))[0]
-        outchunks.append(now)
-        print now.context_string()
-        now = next
+    # Always start with the first beat
+    output.append(beat_array[0][0]);
+    for x in range(1, bars * meter):
+        meter_index = x % meter
+        next_candidates = beat_array[meter_index]
+
+        def sorting_function(chunk, target_chunk=output[-1]):
+            timbre = chunk.mean_pitches()
+            target_timbre = target_chunk.mean_pitches()
+            timbre_distance = numpy.linalg.norm(numpy.array(timbre) - numpy.array(target_timbre))
+            return timbre_distance
+
+        next_candidates = sorted(next_candidates, key=sorting_function)
+        next_index = random.randint(0, min(choices, len(next_candidates) -1 ))
+        output.append(next_candidates[next_index])
     
-    out = audio.getpieces(audiofile, outchunks)
+    out = audio.getpieces(audiofile, output)
     out.encode(outfile)
     
-    
-def are_beat_number(beat):
-    def fun(x):        
-        if x.local_context()[0] == beat:
-            return x
-    return fun
 
-#
 if __name__ == '__main__':
     import sys
     try:

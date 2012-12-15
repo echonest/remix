@@ -17,14 +17,11 @@ one in _v_ chance that the actual next beat is chosen. A
 musical M-x dissociated-press.
 
 Originally by Adam Lindsay, 2009-06-27.
-Note:  ".that" and associated functions have been deprecated as of Remix 1.6 (November 2012)
-This example may be removed or be dramatically refactored in the near future.
+Refactored by Thor Kell, 2012-15-12
 """
 import random
-
+import numpy
 from echonest.remix import video, audio
-from echonest.remix.sorting import *
-from echonest.remix.selection import *
 
 usage = """
 Usage:
@@ -40,60 +37,47 @@ def main(infile, outfile, choices=4):
         av = video.loadavfromyoutube(infile)
     else:
         av = video.loadav(infile)
-    
+
     meter = av.audio.analysis.time_signature['value']
-    fade_in = av.audio.analysis.end_of_fade_in
-    fade_out = av.audio.analysis.start_of_fade_out
-    sections = av.audio.analysis.sections.that(overlap_range(fade_in, fade_out))
-    outchunks = audio.AudioQuantumList()
+    sections = av.audio.analysis.sections
+    output = audio.AudioQuantumList()
 
     for section in sections:
-        print str(section) + ":"
-        beats = av.audio.analysis.beats.that(are_contained_by(section))
-        segments = av.audio.analysis.segments.that(overlap(section))
-        num_bars = len(section.children())
-        
-        print "\t", len(beats), "beats,", len(segments), "segments"
-        if len(beats) < meter:
-            continue
-        
-        b = []
-        segstarts = []
-        for m in range(meter):
-            b.append(beats.that(are_beat_number(m)))
-            segstarts.append(segments.that(overlap_starts_of(b[m])))
-        
-        if not b:
-            continue
-        elif not b[0]:
-            continue
-        
-        now = b[0][0]
-        
-        for x in range(0, num_bars * meter):
-            beat = x % meter
-            next_beat = (x + 1) % meter
-            now_end_segment = segments.that(contain_point(now.end))[0]
-            next_candidates = segstarts[next_beat].ordered_by(timbre_distance_from(now_end_segment))
-            if not next_candidates:
-                continue
-            next_choice = next_candidates[random.randrange(min(choices, len(next_candidates)))]
-            next = b[next_beat].that(start_during(next_choice))[0]
-            outchunks.append(now)
-            print "\t" + now.context_string()
-            now = next
+        beats = []
+        bars = section.children()
+        for bar in bars:
+            beats.extend(bar.children())
     
-    out = video.getpieces(av, outchunks)
-    out.save(outfile)
-    
-    
-def are_beat_number(beat):
-    def fun(x):        
-        if x.local_context()[0] == beat:
-            return x
-    return fun
+        if not bars or not beats:
+            continue
 
-#
+        beat_array = []
+        for m in range(meter):
+            metered_beats = []
+            for b in beats:
+                if beats.index(b) % meter == m:
+                    metered_beats.append(b)
+            beat_array.append(metered_beats)
+
+        # Always start with the first beat
+        output.append(beat_array[0][0]);
+        for x in range(1, len(bars) * meter):
+            meter_index = x % meter
+            next_candidates = beat_array[meter_index]
+
+            def sorting_function(chunk, target_chunk=output[-1]):
+                timbre = chunk.mean_timbre()
+                target_timbre = target_chunk.mean_timbre()
+                timbre_distance = numpy.linalg.norm(numpy.array(timbre) - numpy.array(target_timbre))
+                return timbre_distance
+
+            next_candidates = sorted(next_candidates, key=sorting_function)
+            next_index = random.randint(0, min(choices, len(next_candidates) - 1))
+            output.append(next_candidates[next_index])
+    
+    out = video.getpieces(av, output)
+    out.save(outfile)
+
 if __name__ == '__main__':
     import sys
     try:
