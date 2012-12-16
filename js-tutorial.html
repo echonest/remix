@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Echo Nest Remix - Tutorial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
+    <meta name="author" content="Brian Whitman / Thor Kell">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="index.html">Echo Nest Remix</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Tutorial</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    <h2>Welcome to remix.js</h2>
+    This is a tutorial for how to use the JavaScript version of <a href="javascript.html">Echo Nest Remix</a>.
+    It assumes that you're comfortable with JavaScript, know a bit about Web Audio, 
+    and that you installed remix.js successfully.  To learn about JavaScript, go <a href="http://code.google.com/edu/ajax/tutorials/intro-to-js.html" target="_blank">here</a>. 
+    To learn about Web Audio, <a href="http://www.html5rocks.com/en/tutorials/webaudio/intro/" target="_blank">check this tutorial out</a>.
+
+    <h2>What is remix.js, anyways? </h2>
+    Remix.js is a JavaScript library that uses data from the Echo Nest's online analysis tools and the HTML 5 Web Audio API
+    to allow you to perform algorithmic modifications of audio files.  So you can play back only the first beat of a track, 
+    play the beats of a song like an MPC with your keyboard, and so on. 
+
+    <h2>So how do you code this?</h2>
+    For example, let's look at <a href="https://github.com/echonest/remix.js/blob/master/examples/one.html" target="_blank">one.html.</a>
+    This will make you a track that's only the first beat of every bar.  Here's how:
+    <pre><code>&lt;body&gt;
+&lt;script&gt;
+    // These are the things you need:  an API key, the track ID, and the path to the track
+    var apiKey = 'YOUR_API_KEY';
+    var trackID = 'THE_TRACK_ID';
+    var trackURL = 'audio/THE_AUDIO_FILE.mp3'
+
+    // Set up the key variables
+    var remixer;
+    var player;
+    var track;
+    var remixed;
+
+// The main function.
+function init() {
+
+    // Make sure the browser supports Web Audio.
+    if (window.webkitAudioContext === undefined) {
+        error(&quot;Sorry, this app needs advanced web audio. Your browser doesn't&quot;
+            + &quot; support it. Try the latest version of Chrome&quot;);
+    } else {
+        
+        // These set up the WebAudio playback environment, and create the remixer and player.
+        var context = new webkitAudioContext();
+        remixer = createJRemixer(context, $, apiKey);
+        player = remixer.getPlayer();
+        $(&quot;#info&quot;).text(&quot;Loading analysis data...&quot;);
+
+        // The key line.  This prepares the track for remixing:  it gets
+        // data from the Echo Nest analyze API and connects it with the audio file.
+        // All the remixing takes place in the callback function.
+        remixer.remixTrackById(trackID, trackURL, function(t, percent) {
+            track = t;
+
+            // Keep the user update with load times
+            $(&quot;#info&quot;).text(percent + &quot;% of the track loaded&quot;);
+            if (percent == 100) {
+                $(&quot;#info&quot;).text(percent + &quot;% of the track loaded, remixing...&quot;);
+            }
+
+            // Do the remixing!
+            if (track.status == 'ok') {
+                // This array holds the chunks of audio that we're going to play back
+                remixed = new Array();
+
+                // This loops over each beat in the track.
+                // If the index of the beat is a multiple of four, we append the beat to the playback array.
+                for (var i=0; i \&lt; track.analysis.beats.length; i++) {
+                    if (i % 4 == 0) {
+                        remixed.push(track.analysis.beats[i])
+                    }
+                }
+                $(&quot;#info&quot;).text(&quot;Remix complete!&quot;);
+            }
+        });
+    }
+}
+
+// Run the main function once the page is loaded.
+window.onload = init;
+&lt;/script&gt;
+
+Welcome to One.html
+&lt;div id='info'&gt; &lt;/div&gt;
+&lt;!-- These buttons will play and stop your remix.  --&gt;
+&lt;button onClick=&quot;player.play(0, remixed);&quot;&gt;Play!&lt;/button&gt;
+&lt;button onClick=&quot;player.stop()&quot;&gt;Stop!&lt;/button&gt;
+&lt;/body&gt;</pre></code>
+
+    <h2>What else can remix.js do?</h2>
+    <p>We're glad you asked - the examples have code that let you add beats and bars to a dynamic queue, 
+    or drive though a song using the arrow keys.
+    You can also check <a href="examples.html">the examples</a> for inspriation - happy remixing!
+    </div> <!-- /container -->
+    
+
+</body>
+</html>
+
