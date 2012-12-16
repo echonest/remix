@@ -47,7 +47,7 @@ class FFMPEGStreamHandler(ExceptionThread):
             shell=True,
             stdin=(subprocess.PIPE if not self.filename else None),
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
+            stderr=open(os.devnull, 'w'),
             close_fds=(not win)
         )
 
