@@ -422,13 +422,17 @@ class AudioData(AudioRenderable):
     def add_at(self, time, another_audio_data):
         """
         Adds the input `another_audio_data` to this `AudioData` 
-        at the `time` specified in seconds.
+        at the `time` specified in seconds. If `another_audio_data` has fewer channels than
+        this `AudioData`, the `another_audio_data` will be resampled to match.
+        In this case, this method will modify `another_audio_data`.
         """
         offset = int(time * self.sampleRate)
         extra = offset + len(another_audio_data.data) - len(self.data)
         self.pad_with_zeros(extra)
         if another_audio_data.numChannels < self.numChannels:
+            # Resample another_audio_data
             another_audio_data.data = numpy.repeat(another_audio_data.data, self.numChannels).reshape(len(another_audio_data), self.numChannels)
+            another_audio_data.numChannels = self.numChannels
         self.data[offset : offset + len(another_audio_data.data)] += another_audio_data.data 
     
     def __len__(self):
