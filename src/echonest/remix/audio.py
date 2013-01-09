@@ -745,7 +745,7 @@ def ffmpeg_error_check(parsestring):
                     "not found" # could not find encoder for output file
                     ]
     for num, line in enumerate(parse):
-        if "command not found" in line:
+        if "command not found" in line or "en-ffmpeg: not found" in line:
             raise RuntimeError(ffmpeg_install_instructions)
         for error in error_cases:
             if error in line:
