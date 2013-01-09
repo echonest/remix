@@ -90,7 +90,7 @@ class AudioAnalysis(object):
         .. _Echo Nest: http://the.echonest.com/
         """
         
-        if type(path_or_identifier) is not str:
+        if type(path_or_identifier) not in [str, unicode]:
             # Argument is invalid.
             raise TypeError("Argument 'path_or_identifier' must be a string \
                             representing either a filename, track ID, or MD5.")
