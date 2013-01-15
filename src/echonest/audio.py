@@ -46,7 +46,7 @@ import echonest.selection as selection
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 import weakref
-from support.ffmpeg import ffmpeg, ffmpeg_downconvert, FFMPEGStreamHandler
+from support.ffmpeg import ffmpeg, ffmpeg_downconvert, FFMPEGStreamHandler, get_os
 
 
 MP3_BITRATE = 128
@@ -890,9 +890,9 @@ class LocalAudioFile(AudioData):
     Analyze API, then it does not bother uploading the file.
     """
 
-    def __new__(cls, filename, verbose=True, defer=False):
+    def __new__(cls, filename=None, verbose=True, defer=False, **kwargs):
         # There must be a better way to avoid collisions between analysis files and .wav files
-        if '.analysis.en' in filename:
+        if filename is not None and '.analysis.en' in filename:
             print >> sys.stderr, "Reading analysis from local file " + filename
             f = open(filename, 'rb')
             audiofile = cPickle.load(f)
@@ -900,7 +900,7 @@ class LocalAudioFile(AudioData):
             return audiofile
         else:
             # This just creates the object and goes straight on to initializing it
-            return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer)
+            return AudioData.__new__(cls, filename=filename, verbose=verbose, defer=defer, **kwargs)
 
     def __init__(self, filename, verbose=True, defer=False):
         """
