@@ -12,6 +12,7 @@ from exceptionthread import ExceptionThread
 log = logging.getLogger(__name__)
 
 
+
 def get_os():
     """returns is_linux, is_mac, is_windows"""
     if hasattr(os, 'uname'):
@@ -130,6 +131,7 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
     number of channels in the output file. Otherwise, it will return an
     ndarray object filled with the raw PCM data.
     """
+    print "in ffmpeg call"
     start = time.time()
     filename = None
     if type(infile) is str or type(infile) is unicode:
@@ -148,11 +150,17 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
         command += " -ab " + str(bitRate) + "k"
     else:
         #   We're forcing the output to 16-bit PCM
-        command += " -f s16le -acodec pcm_s16le"
+        # command += " -f s16le -acodec pcm_s16le"
+        pass
     if numChannels is not None:
         command += " -ac " + str(numChannels)
+    else:
+        command += " -ac 2"
+
     if sampleRate is not None:
         command += " -ar " + str(sampleRate)
+    else:
+        command += " -ar 44100" 
 
     if outfile is not None:
         command += " \"%s\"" % outfile
@@ -160,6 +168,14 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
         command += " pipe:1"
     if verbose:
         print >> sys.stderr, command
+    
+
+# This is what the old version did
+# en-ffmpeg -i "/home/thor/Music/test2.mp3"
+# en-ffmpeg -y -i "/home/thor/Music/test2.mp3" -ac 2 -ar 44100 "/tmp/tmpPFjDUB.wav"
+# New version does this, and even cvlc can't read from its output.  :
+# en-ffmpeg -i "/home/thor/Music/test2.mp3" -y -f s16le -acodec pcm_s16le "/tmp/tmpBhTkZp.wav"
+
 
     (lin, mac, win) = get_os()
     p = subprocess.Popen(
@@ -292,7 +308,6 @@ ffmpeg_install_instructions = """
 en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
     sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
 """
-
 
 def ffmpeg_error_check(parsestring):
     "Looks for known errors in the ffmpeg output"
