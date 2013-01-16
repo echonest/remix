@@ -1,1 +1,1 @@
-__all__ = [ 'midi' ]
+__all__ = [ 'midi', 'ffmpeg' ]
