@@ -66,11 +66,11 @@ class Playback(object):
         return output
     
     def __repr__(self):
-        return "<Playback '%s'>" % self.track.analysis.pyechonest_track.title
+        return "<Playback '%s'>" % self.track.filename
     
     def __str__(self):
         args = (self.start, self.start + self.duration, 
-                self.duration, self.track.analysis.pyechonest_track.title)
+                self.duration, self.track.filename)
         return "Playback\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
@@ -84,11 +84,11 @@ class Fadeout(Playback):
         return output
     
     def __repr__(self):
-        return "<Fadeout '%s'>" % self.track.analysis.pyechonest_track.title
+        return "<Fadeout '%s'>" % self.track.filename
     
     def __str__(self):
         args = (self.start, self.start + self.duration, 
-                self.duration, self.track.analysis.pyechonest_track.title)
+                self.duration, self.track.filename)
         return "Fade out\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
@@ -102,11 +102,11 @@ class Fadein(Playback):
         return output
     
     def __repr__(self):
-        return "<Fadein '%s'>" % self.track.analysis.pyechonest_track.title
+        return "<Fadein '%s'>" % self.track.filename
     
     def __str__(self):
         args = (self.start, self.start + self.duration, 
-                self.duration, self.track.analysis.pyechonest_track.title)
+                self.duration, self.track.filename)
         return "Fade in\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
@@ -119,7 +119,7 @@ class Edit(object):
     
     def __str__(self):
         args = (self.start, self.start + self.duration, 
-                self.duration, self.track.analysis.pyechonest_track.title)
+                self.duration, self.track.filename)
         return "Edit\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
     
     def get(self):
@@ -147,12 +147,12 @@ class Crossfade(object):
         return audio_out
     
     def __repr__(self):
-        args = (self.t1.track.analysis.pyechonest_track.title, self.t2.track.analysis.pyechonest_track.title)
+        args = (self.t1.track.filename, self.t2.track.filename)
         return "<Crossfade '%s' and '%s'>" % args
     
     def __str__(self):
         args = (self.t1.start, self.t2.start + self.duration, self.duration, 
-                self.t1.track.analysis.pyechonest_track.title, self.t2.track.analysis.pyechonest_track.title)
+                self.t1.track.filename, self.t2.track.filename)
         return "Crossfade\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % args
 
 
@@ -175,11 +175,11 @@ class Jump(Crossfade):
         return self.t2.end 
     
     def __repr__(self):
-        return "<Jump '%s'>" % (self.t1.track.analysis.pyechonest_track.title)
+        return "<Jump '%s'>" % (self.t1.track.filename)
     
     def __str__(self):
         args = (self.t1.start, self.t2.end, self.duration, 
-                self.t1.track.analysis.pyechonest_track.title)
+                self.t1.track.filename)
         return "Jump\t\t%.3f\t-> %.3f\t (%.3f)\t%s" % args
 
 
@@ -204,14 +204,14 @@ class Blend(object):
         pass
     
     def __repr__(self):
-        args = (self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title)
+        args = (self.t1.filename, self.t2.filename)
         return "<Blend '%s' and '%s'>" % args
     
     def __str__(self):
         # start and end for each of these lists.
         s1, e1 = self.l1[0][0], sum(self.l1[-1])
         s2, e2 = self.l2[0][0], sum(self.l2[-1])
-        n1, n2 = self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title # names
+        n1, n2 = self.t1.filename, self.t2.filename # names
         args = (s1, s2, e1, e2, self.duration, n1, n2)
         return "Blend [%.3f, %.3f] -> [%.3f, %.3f] (%.3f)\t%s + %s" % args
 
@@ -262,14 +262,14 @@ class Crossmatch(Blend):
         return c.render()
     
     def __repr__(self):
-        args = (self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title)
+        args = (self.t1.filename, self.t2.filename)
         return "<Crossmatch '%s' and '%s'>" % args
     
     def __str__(self):
         # start and end for each of these lists.
         s1, e1 = self.l1[0][0], sum(self.l1[-1])
         s2, e2 = self.l2[0][0], sum(self.l2[-1])
-        n1, n2 = self.t1.analysis.pyechonest_track.title, self.t2.analysis.pyechonest_track.title # names
+        n1, n2 = self.t1.filename, self.t2.filename # names
         args = (s1, e2, self.duration, n1, n2)
         return "Crossmatch\t%.3f\t-> %.3f\t (%.3f)\t%s -> %s" % args
 

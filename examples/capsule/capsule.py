@@ -48,13 +48,13 @@ def do_work(audio_files, options):
         if verbose:
             print
             for track in tracks:
-                print "Vol = %.0f%%\t%s" % (track.gain*100.0, track.analysis.pyechonest_track.title)
+                print "Vol = %.0f%%\t%s" % (track.gain*100.0, track.filename)
             print
     
     valid = []
     # compute resampled and normalized matrices
-    for track in tracks:
-        if verbose: print "Resampling features for", track.analysis.pyechonest_track.title
+    for track in tracks: 
+        if verbose: print "Resampling features for", track.filename
         track.resampled = resample_features(track, rate='beats')
         track.resampled['matrix'] = timbre_whiten(track.resampled['matrix'])
         # remove tracks that are too small
