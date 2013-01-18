@@ -6,7 +6,7 @@ AudioData, and getpieces by Robert Ochshorn on 2008-06-06.
 Some refactoring and everything else by Joshua Lifton 2008-09-07.  
 Refactoring by Ben Lacker 2009-02-11. 
 Other contributions by Adam Lindsay. 
-Additional classes by Peter Sobot on 2012-11-01.
+Additional functions and cleanup by Peter Sobot on 2012-11-01.
 
 :group Base Classes: AudioAnalysis, AudioRenderable, AudioData, AudioData32
 :group Audio-plus-Analysis Classes: AudioFile, AudioStream, LocalAudioFile, LocalAudioStream, LocalAnalysis
@@ -1006,134 +1006,6 @@ class LocalAnalysis(object):
 
         self.analysis = tempanalysis
         self.analysis.source = self
-
-
-class AudioStream(object):
-    """
-    Very much like an AudioData, but vastly more memory efficient.
-    However, AudioStream only supports sequential access - i.e.: one, un-seekable
-    stream of PCM data directly being streamed from FFMPEG.
-    """
-
-    def __init__(self, fobj):
-        self.sampleRate = 44100
-        self.numChannels = 2
-        self.fobj = fobj
-        self.stream = FFMPEGStreamHandler(self.fobj, self.numChannels, self.sampleRate)
-        self.index = 0
-
-    def __getitem__(self, index):
-        """
-        Fetches a frame or slice. Returns an individual frame (if the index
-        is a time offset float or an integer sample number) or a slice if
-        the index is an `AudioQuantum` (or quacks like one). If the slice is
-        "in the past" (i.e.: has been read already, or the current cursor is
-        past the requested slice) then this will throw an exception.
-        """
-        if isinstance(index, float):
-            index = int(index * self.sampleRate)
-        elif hasattr(index, "start") and hasattr(index, "duration"):
-            index =  slice(float(index.start), index.start + index.duration)
-
-        if isinstance(index, slice):
-            if (hasattr(index.start, "start") and
-                 hasattr(index.stop, "duration") and
-                 hasattr(index.stop, "start")):
-                index = slice(index.start.start, index.stop.start + index.stop.duration)
-
-        if isinstance(index, slice):
-            return self.getslice(index)
-        else:
-            return self.getsample(index)
-
-    def getslice(self, index):
-        "Help `__getitem__` return a new AudioData for a given slice"
-        if isinstance(index.start, float):
-            index = slice(int(index.start * self.sampleRate),
-                            int(index.stop * self.sampleRate), index.step)
-        if index.start < self.index:
-            self.stream.finish()
-            self.stream = FFMPEGStreamHandler(self.fobj, self.numChannels, self.sampleRate)
-            self.index = 0
-        if index.start > self.index:
-            self.stream.feed(index.start - self.index)
-        self.index = index.stop
-        
-        return AudioData(None, self.stream.read(index.stop - index.start),
-                            sampleRate=self.sampleRate,
-                            numChannels=self.numChannels, defer=False)
-
-    def getsample(self, index):
-        #   TODO: Finish this properly
-        raise NotImplementedError()
-        if isinstance(index, float):
-            index = int(index * self.sampleRate)
-        if index >= self.index:
-            self.stream.feed(index.start - self.index)
-            self.index += index
-        else:
-            raise ValueError("Cannot seek backwards in AudioStream")
-
-    def render(self):
-        return self.stream.read()
-
-    def finish(self):
-        self.stream.finish()
-
-    def __del__(self):
-        if hasattr(self, "stream"):
-            self.stream.finish()
-
-
-class LocalAudioStream(AudioStream):
-    """
-    Like a non-seekable LocalAudioFile with vastly better memory usage
-    and performance. Takes a file-like object (and its kind, assumed
-    to be MP3) and supports slicing and rendering. Attempting to read
-    from a part of the input file that has already been read will throw
-    an exception.
-    """
-    def __init__(self, initializer, kind="mp3"):
-        AudioStream.__init__(self, initializer)
-
-        start = time.time()
-        if hasattr(initializer, 'seek'):
-            fobj = initializer
-            fobj.seek(0)
-        else:
-            fobj = open(initializer, 'r')
-        #   This looks like a lot of work, but is much lighter
-        #   on memory than reading the entire file in.
-        md5 = hashlib.md5()
-        while True:
-            data = fobj.read(2 ^ 16)
-            if not data:
-                break
-            md5.update(data)
-        if not hasattr(initializer, 'seek'):
-            fobj.close()
-        track_md5 = md5.hexdigest()
-
-        logging.getLogger(__name__).info("Fetching analysis...")
-        try:
-            tempanalysis = AudioAnalysis(str(track_md5))
-        except EchoNestAPIError:
-            tempanalysis = AudioAnalysis(initializer, kind)
-
-        logging.getLogger(__name__).info("Fetched analysis in %ss",
-                                         (time.time() - start))
-        self.analysis = tempanalysis
-        self.analysis.source = weakref.ref(self)
-
-        class data(object):
-            """
-            Massive hack - certain operations are intrusive and check
-            `.data.ndim`, so in this case, we fake it.
-            """
-            ndim = self.numChannels
-
-        self.data = data
-
 
 class AudioQuantum(AudioRenderable):
     """

@@ -18,89 +18,6 @@ def get_os():
         return True, False, False
     return False, False, True
 
-
-class FFMPEGStreamHandler(ExceptionThread):
-    def __init__(self, infile, numChannels=2, sampleRate=44100):
-        command = "en-ffmpeg"
-
-        self.filename = None
-        if isinstance(infile, basestring):
-            self.filename = infile
-
-        if self.filename:
-            ensure_valid(self.filename)
-            command += " -i %s" % self.filename
-        else:
-            command += " -i pipe:0"
-        if numChannels is not None:
-            command += " -ac " + str(numChannels)
-        if sampleRate is not None:
-            command += " -ar " + str(sampleRate)
-        # This doesn't work without the -f and -acodec stuff
-        command += " -f s16le -acodec pcm_s16le pipe:1"
-        log.info("Calling ffmpeg: %s", command)
-
-        (lin, mac, win) = get_os()
-        self.p = subprocess.Popen(
-            command,
-            shell=True,
-            stdin=(subprocess.PIPE if not self.filename else None),
-            stdout=subprocess.PIPE,
-            stderr=open(os.devnull, 'w'),
-            close_fds=(not win)
-        )
-
-        self.infile = infile if not self.filename else None
-        if not self.filename:
-            self.infile.seek(0)
-            ExceptionThread.__init__(self)
-            self.daemon = True
-            self.start()
-
-    def __del__(self):
-        if hasattr(self, 'p'):
-            self.finish()
-
-    def run(self):
-        try:
-            self.p.stdin.write(self.infile.read())
-        except IOError:
-            pass
-        self.p.stdin.close()
-
-    def finish(self):
-        if self.filename:
-            try:
-                if self.p.stdin:
-                    self.p.stdin.close()
-            except (OSError, IOError):
-                pass
-        try:
-            self.p.stdout.close()
-        except (OSError, IOError):
-            pass
-        try:
-            self.p.kill()
-        except (OSError, IOError):
-            pass
-        self.p.wait()
-
-    #   TODO: Abstract me away from 44100Hz, 2ch 16 bit
-    def read(self, samples=-1):
-        if samples > 0:
-            samples *= 2
-        arr = numpy.fromfile(self.p.stdout,
-                               dtype=numpy.int16,
-                               count=samples)
-        if samples < 0 or len(arr) < samples:
-            self.finish()
-        arr = numpy.reshape(arr, (-1, 2))
-        return arr
-
-    def feed(self, samples):
-        self.p.stdout.read(samples * 4)
-
-
 def ensure_valid(filename):
     command = "en-ffmpeg -i %s -acodec copy -f null -" % filename
 
@@ -145,12 +62,7 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
 
     if bitRate is not None:
         command += " -ab " + str(bitRate) + "k"
-    else:
-        #   We're forcing the output to 16-bit PCM
-        # This code was breaking me;  psobot thinks it is an ffmpeg version issue
-        # how come this works above then?
-        # command += " -f s16le -acodec pcm_s16le"
-        pass
+
     if numChannels is not None:
         command += " -ac " + str(numChannels)
     else:
@@ -167,14 +79,6 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
         command += " pipe:1"
     if verbose:
         print >> sys.stderr, command
-    
-
-# This is what the old version did
-# en-ffmpeg -i "/home/thor/Music/test2.mp3"
-# en-ffmpeg -y -i "/home/thor/Music/test2.mp3" -ac 2 -ar 44100 "/tmp/tmpPFjDUB.wav"
-# New version does this, and even cvlc can't read from its output.  :
-# en-ffmpeg -i "/home/thor/Music/test2.mp3" -y -f s16le -acodec pcm_s16le "/tmp/tmpBhTkZp.wav"
-
 
     (lin, mac, win) = get_os()
     p = subprocess.Popen(
