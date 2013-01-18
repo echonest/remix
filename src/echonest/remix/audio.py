@@ -47,7 +47,7 @@ from pyechonest import track
 from pyechonest.util import EchoNestAPIError
 import pyechonest.util
 import pyechonest.config as config
-from support.ffmpeg import ffmpeg, ffmpeg_downconvert, FFMPEGStreamHandler, get_os
+from support.ffmpeg import ffmpeg, ffmpeg_downconvert, get_os
 
 
 MP3_BITRATE = 128
