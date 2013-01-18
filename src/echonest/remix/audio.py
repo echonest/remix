@@ -9,7 +9,7 @@ Other contributions by Adam Lindsay.
 Additional functions and cleanup by Peter Sobot on 2012-11-01.
 
 :group Base Classes: AudioAnalysis, AudioRenderable, AudioData, AudioData32
-:group Audio-plus-Analysis Classes: AudioFile, AudioStream, LocalAudioFile, LocalAudioStream, LocalAnalysis
+:group Audio-plus-Analysis Classes: AudioFile, LocalAudioFile, LocalAnalysis
 :group Building Blocks: AudioQuantum, AudioSegment, AudioQuantumList, ModifiedRenderable
 :group Effects: AudioEffect, LevelDB, AmplitudeFactor, TimeTruncateFactor, TimeTruncateLength, Simultaneous
 :group Exception Classes: FileTypeError, EchoNestRemixError
