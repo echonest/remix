@@ -8,10 +8,7 @@ import subprocess
 import cStringIO
 from exceptionthread import ExceptionThread
 
-
 log = logging.getLogger(__name__)
-
-
 
 def get_os():
     """returns is_linux, is_mac, is_windows"""
@@ -39,6 +36,7 @@ class FFMPEGStreamHandler(ExceptionThread):
             command += " -ac " + str(numChannels)
         if sampleRate is not None:
             command += " -ar " + str(sampleRate)
+        # This doesn't work without the -f and -acodec stuff
         command += " -f s16le -acodec pcm_s16le pipe:1"
         log.info("Calling ffmpeg: %s", command)
 
@@ -131,7 +129,6 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
     number of channels in the output file. Otherwise, it will return an
     ndarray object filled with the raw PCM data.
     """
-    print "in ffmpeg call"
     start = time.time()
     filename = None
     if type(infile) is str or type(infile) is unicode:
@@ -150,6 +147,8 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
         command += " -ab " + str(bitRate) + "k"
     else:
         #   We're forcing the output to 16-bit PCM
+        # This code was breaking me;  psobot thinks it is an ffmpeg version issue
+        # how come this works above then?
         # command += " -f s16le -acodec pcm_s16le"
         pass
     if numChannels is not None:

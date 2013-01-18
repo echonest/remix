@@ -31,7 +31,6 @@ import os
 import sys
 import errno
 import cPickle
-# we may need to add pickle back 
 import shutil
 import struct
 import tempfile
@@ -781,7 +780,7 @@ def assemble(audioDataList, numChannels=1, sampleRate=44100, verbose=True):
     Returns a new `AudioData` object assembled
     by concatenating all the elements of audioDataList.
 
-    :param audioDatas: a list of `AudioData` objects
+    :param audioDataList: a list of `AudioData` objects
     """
     return AudioData(ndarray=numpy.concatenate([a.data for a in audioDataList]),
                         numChannels=numChannels,
@@ -843,13 +842,14 @@ def fadeEdges(input_, fadeLength=50):
 
 def truncatemix(dataA, dataB, mix=0.5):
     """
-    Mixes two "AudioData" objects. Assumes they have the same sample rate
+    Mixes two `AudioData` objects. Assumes they have the same sample rate
     and number of channels.
 
     Mix takes a float 0-1 and determines the relative mix of two audios.
     i.e., mix=0.9 yields greater presence of dataA in the final mix.
 
     If dataB is longer than dataA, dataB is truncated to dataA's length.
+    Note that if dataA is longer than dataB, dataA will not be truncated.
     """
     newdata = AudioData(ndarray=dataA.data, sampleRate=dataA.sampleRate,
                         numChannels=dataA.numChannels, verbose=False)
@@ -1058,7 +1058,7 @@ class AudioStream(object):
         if index.start > self.index:
             self.stream.feed(index.start - self.index)
         self.index = index.stop
-
+        
         return AudioData(None, self.stream.read(index.stop - index.start),
                             sampleRate=self.sampleRate,
                             numChannels=self.numChannels, defer=False)
