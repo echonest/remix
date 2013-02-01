@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+</head>
+
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src='../remix.js'></script>
+<script type="text/javascript">
+
+// Hop through the beats of a track using the arrow keys
+// You will need to supply your Echo Nest API key, the trackID, and a URL to the track.
+// The supplied track can be found in the audio subdirectory.
+var apiKey = 'YOUR_API_KEY';
+var trackID = 'TRJTLOZ12F09775D41';
+var trackURL = 'audio/Karl_Blau-Gnos_Levohs.mp3'
+
+var remixer;
+var player;
+var track;
+var remixed;
+var playbackIndex = -1;
+
+function init() {
+    if (window.webkitAudioContext === undefined) {
+        error("Sorry, this app needs advanced web audio. Your browser doesn't"
+            + " support it. Try the latest version of Chrome");
+    } else {
+        var context = new webkitAudioContext();
+        remixer = createJRemixer(context, $, apiKey);
+        player = remixer.getPlayer();
+        $("#info").text("Loading analysis data...");
+
+        remixer.remixTrackById(trackID, trackURL, function(t, percent) {
+            track = t;
+
+            $("#info").text(percent + "% of the track loaded");
+            if (percent == 100) {
+                $("#info").text(percent + "% of the track loaded, remixing...");
+            }
+
+            if (track.status == 'ok') {
+                remixed = new Array();
+                for (var i=0; i < track.analysis.beats.length; i++) {
+                    remixed.push(track.analysis.beats[i])
+                }
+                $("#info").text("Remix complete!");
+            }
+        });
+    
+    // Set up the keyboard controls
+    document.addEventListener('keydown', function(event) {
+        if (event.which == 39) {  // right arrow
+            playbackIndex = playbackIndex + 1;
+            if (playbackIndex > remixed.length - 1) {
+                playbackIndex = 0;
+            }
+            player.play(0, remixed[playbackIndex]);
+        }
+
+        if (event.which == 37) {  // left arrow
+            playbackIndex = playbackIndex - 1;
+            if (playbackIndex < 0) {
+                playbackIndex = remixed.length - 1;
+            }
+            player.play(0, remixed[playbackIndex]);
+        }
+
+        if (event.which == 40) {  // down arrow
+            playbackIndex = playbackIndex - 4;
+            if (playbackIndex < 0) {
+                playbackIndex = remixed.length - 1;
+            }
+            player.play(0, remixed[playbackIndex]);
+        }
+
+        if (event.which == 38) {  // up arrow
+            playbackIndex = playbackIndex + 4;
+            if (playbackIndex > remixed.length - 1) {
+                playbackIndex = 0;
+            }
+
+            player.play(0, remixed[playbackIndex]);
+        }
+    });
+    }
+}
+
+window.onload = init;
+</script>
+
+Welcome to Driver.html
+<div id='info'> </div>
+Press the right and left arrow keys to move through the track by beat.
+Press the up and and down arrow keys to move through the track by bar.
+</body>
+
+
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+</head>
+
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src='../remix.js'></script>
+<script type="text/javascript">
+
+// Add beats or bars of a track to a live queue.
+// You will need to supply your Echo Nest API key, the trackID, and a URL to the track.
+// The supplied track can be found in the audio subdirectory.
+var apiKey = 'YOUR_API_KEY';
+var trackID = 'TRJTLOZ12F09775D41';
+var trackURL = 'audio/Karl_Blau-Gnos_Levohs.mp3'
+
+var remixer;
+var player;
+var track;
+var remixed;
+
+function addBar() {
+    var index = $("#indexBox").val();
+    player.queue(track.analysis.bars[index])
+}
+
+function addBeat() {
+    var index = $("#indexBox").val();
+    player.queue(track.analysis.beats[index])
+}
+
+function init() {
+    if (window.webkitAudioContext === undefined) {
+        error("Sorry, this app needs advanced web audio. Your browser doesn't"
+            + " support it. Try the latest version of Chrome");
+    } else {
+        var context = new webkitAudioContext();
+        remixer = createJRemixer(context, $, apiKey);
+        player = remixer.getPlayer();
+        $("#info").text("Loading analysis data...");
+
+        remixer.remixTrackById(trackID, trackURL, function(t, percent) {
+            track = t;
+
+            $("#info").text(percent + "% of the track loaded");
+            if (percent == 100) {
+                $("#info").text(percent + "% of the track loaded, remixing...");
+            }
+
+            if (track.status == 'ok') {
+                $("#bars").text("The track has " + track.analysis.bars.length + " bars");
+                $("#beats").text("The track has " + track.analysis.beats.length + " beats");
+                $("#info").text("Remix complete!");
+            }
+        });
+    }
+}
+
+window.onload = init;
+</script>
+
+Welcome to Assemble.html
+<div id='info'> </div>
+
+<div id='bars'> </div>
+<div id='beats'> </div>
+<input type="text" id="indexBox">
+<button onClick="addBar()">Add bar from Track 1</button>
+<button onClick="addBeat()">Add beat from Track 1</button>
+<br />
+<button onClick="player.stop()">Stop!</button>
+</body>
+
+
+
+</html>
