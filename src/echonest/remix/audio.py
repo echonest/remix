@@ -884,7 +884,7 @@ def megamix(dataList):
                                 numChannels=newdata.numChannels,
                                 sampleRate=newdata.sampleRate, defer=False)
             newseg.endindex = adata.endindex
-        newdata.data[:newseg.endindex] += newseg.data / float(len(dataList))
+        newdata.data[:newseg.endindex] += (newseg.data / float(len(dataList))).astype(newdata.data.dtype)
     newdata.endindex = len(newdata)
     return newdata
 
