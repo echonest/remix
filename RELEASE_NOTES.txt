@@ -1,3 +1,10 @@
+2.1.0 - January 18 2013
+- Split ffmpeg to own module, via @psobot.
+- Removed old flash code.
+- Added truncatemix and fadeEdges functions, via @psobot
+- Merged pull requests for unicode filenames, better en-ffmpeg checks, and resampling during mixes
+- Refactored step and vdissoc examples.
+
 2.0.1 - December 7 2012
 - Fix namespace bug.
 - Removed JavaScript to separate repository.

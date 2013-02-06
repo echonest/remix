@@ -14,7 +14,7 @@ By Thor Kell, 10-2012
 
 usage = """
 Usage: 
-    python save.py <input_filename> <output_filename>
+    python save.py <input_filename>
 
 Example:
     python save.py SaveMe.mp3 

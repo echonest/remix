@@ -1,1 +1,0 @@
-asdoc.exe -source-path ./src -doc-classes org.audiofx.mp3.MP3FileReferenceLoader -strict=false
