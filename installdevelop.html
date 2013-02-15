@@ -35,27 +35,10 @@
         <h2>Introduction</h2>
         <p><a href="python.html">Remix</a>, it turns out, is a surprisingly complex package:  it has C extensions, addtional binaries, and so on.
         This makes it a little inconvenient to install it for development with the typical Python install tools.
-        Specifically, if you want to install Remix in a virtualenv, or use setup.py develop,  there are a few extra things you'll need to do.
+        Specifically, if you want to use setup.py develop, there are a few extra things you'll need to do.
         </p>
         <p>Warning:  this page is only for people who want to hack on or contribute to remix, and assumes that you know some things about python, installing things, and command lines.  
         If that's not you, you probably want one of our <a href="python.html">easier Python installation packages</a>.
-        </p>
-
-        <h2>Using virtualenv</h2>
-        <p>Virtualenvs work *almost* the way they should.  
-        Because Remix comes with executables (ffmpeg and youtube-dl) that need to go to absolute paths like /usr/local/bin, 
-        you need to run pip or easy_install with sudo.  And using sudo immediately throws you out of the virtualenv that you just set up!
-        </p>
-
-        <p>
-        So to fix this, you need to append the virtual environment's path to your path when you run the install commands.  
-        That is to say, once you've activated your virtualenv, do this to install Remix:
-        <pre>sudo env PATH="/path/to/your/virtualenv/bin:"$PATH pip install remix</pre>
-        This also works for easy_install.  Note that to uninstall Remix with pip, you will need to do:  
-        <pre>sudo env PATH="/path/to/your/virtualenv/bin:"$PATH pip uninstall remix</pre>
-        </p>
-
-        <p>Test with import echonest and import pyechonest - you should be ready to go!
         </p>
         
         <h2>Using setup.py develop</h2>
@@ -75,7 +58,7 @@
         <li>The second is your_install_path/pyechonest</li>
         </ul>
 
-        <p>We understand that these things are not ideal:  we'll update with better fixes as we get them.
+        <p>We understand that this is not ideal:  we'll update with better fixes as we get them.
         </p>
 
     </div> <!-- /container -->
