@@ -13,8 +13,10 @@ try:
 except ImportError:
     pass
 
+import sys
+import os
+import glob
 from distutils.core import setup, Extension
-import os, glob
 import numpy
 
 
@@ -89,10 +91,18 @@ def get_soundtouch():
 
 
 all_data_files = []
+
+if is_mac or is_linux:
+    # If we're in a virtualenv:
+    if 'real_prefix' in dir(sys):
+        data_path = os.path.join(sys.prefix, "local/bin")
+    else:
+        data_path = '/usr/local/bin'
 if is_mac:
-    all_data_files  = [('/usr/local/bin', ['external/en-ffmpeg/mac/en-ffmpeg', 'external/youtube-dl/youtube-dl'])]
+    all_data_files  = [(data_path, ['external/en-ffmpeg/mac/en-ffmpeg', 'external/youtube-dl/youtube-dl'])]
 if is_linux:
-    all_data_files  = [('/usr/local/bin', ['external/youtube-dl/youtube-dl'])]
+    all_data_files  = [(data_path, ['external/youtube-dl/youtube-dl'])]
+
 if is_windows:
     all_data_files  = [('.', ['external\\en-ffmpeg\\win\\en-ffmpeg.exe',
                              'external\\youtube-dl\\youtube-dl',
@@ -103,7 +113,13 @@ if is_windows:
 if is_windows:
     dest_prefix = 'echo-nest-remix-'
 else:
-    dest_prefix = '/usr/local/share/echo-nest-remix-'
+    # If we're in a virtualenv:
+    if 'real_prefix' in dir(sys):
+        dest_prefix = os.path.join(sys.prefix, "local/share/echo-nest-remix-")
+    else:
+        dest_prefix = '/usr/local/share/echo-nest-remix-'
+
+
 for example_dir in glob.glob(os.path.join('examples', '*')):
     example_files = glob.glob(os.path.join(example_dir, '*'))
     actual_files = []
@@ -149,9 +165,9 @@ setup(name='remix',
 # Hack for pip install, to get correct permissions for en-ffmpeg and youtube-dl
 try:
     if is_mac:
-        os.chmod('/usr/local/bin/en-ffmpeg', 0755)
-        os.chmod('/usr/local/bin/youtube-dl', 0755)
+        os.chmod(os.path.join(data_path, 'en-ffmpeg'), 0755)
+        os.chmod(os.path.join(data_path, 'youtube-dl'), 0755)
     if is_linux:
-        os.chmod('/usr/local/bin/youtube-dl', 0755)
+        os.chmod(os.path.join(data_path, 'youtube-dl'), 0755)
 except OSError:
     pass
