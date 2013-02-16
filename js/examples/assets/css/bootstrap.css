@@ -956,10 +956,12 @@ input[type="color"],
           border-radius: 3px;
 }
 
+/* Tweaked by Thor to allow wider text areas for code input */
 input,
 textarea {
-  width: 210px;
+  width: 80%;
 }
+
 
 textarea {
   height: auto;

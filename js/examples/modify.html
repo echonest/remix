@@ -7,8 +7,8 @@
     <meta name="description" content="Echo Nest Remix:  The Internet Synthesizer">
     <meta name="author" content="Brian Whitman / Thor Kell">
 
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" type="text/css" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,10 +21,13 @@
 <script type="text/javascript" src='../remix.js'></script>
 <script src="../wavesurfer/wavesurfer.js"></script>
 <script src="../wavesurfer/drawer.js"></script>
+<script src="../codemirror/codemirror.js"></script>
+<link rel="stylesheet" href="../codemirror/codemirror.css">
+<script src="../codemirror/javascript.js"></script>
 
 <script type="text/javascript">
 
-// First-beat extraction and assembly
+// Console-like exploration environment.  
 var apiKey = 'FILDTEOIK2HBORODV';
 var trackID = 'TRCYWPQ139279B3308';
 var trackURL = 'audio/1451_-_D.mp3'
@@ -34,9 +37,39 @@ var player;
 var track;
 var remixed;
 
+var wavesurfer = Object.create(WaveSurfer);
+var remixedWavesurfer = Object.create(WaveSurfer);
+var fs;
+var theCodeMirror;
+
+function beginRemix() {
+    $("#info").text("Remixing...");
+    var theCode = theCodeMirror.getValue();
+
+    try {
+        eval(theCode);
+    } catch(e) {
+      var err = new Error();
+      err.message = 'Error in remix code: ' + e.message;
+      $("#info").text(err.message );
+      throw err;
+    }
+    
+    remixedWavesurfer.loadBuffer(track.buffer, remixed);
+    // Only use the filesystem if we have access to it..
+    if (fs) {
+        remixer.saveRemixLocally(fs, remixed, function(saveURL) {
+            $('#downloadButton').html('<a href="' + saveURL + '" target="_blank">Download Remix</a>')
+        });
+    }
+
+    $('.btn-remixed').removeAttr('disabled');
+    $("#info").text("Remix complete!");
+}
+
 function init() {
     $('.btn').attr('disabled','disabled');
-    var wavesurfer = Object.create(WaveSurfer);
+
     wavesurfer.init({
         canvas: document.querySelector('#waveCanvas'),
         waveColor: '#888888',
@@ -44,8 +77,7 @@ function init() {
         loadingColor: '#000000',
         cursorColor: '#888888'
     });
-    
-    var remixedWavesurfer = Object.create(WaveSurfer);
+
     remixedWavesurfer.init({
         canvas: document.querySelector('#RemixedWaveCanvas'),
         waveColor: '#00ACEB',
@@ -59,52 +91,51 @@ function init() {
             + " support it. Try the latest version of Chrome");
     } else {
         var context = new webkitAudioContext();
-        var fs;
+
         // Only use the filesystem if we have access to it.
         if (window.File && window.FileReader && window.FileList && window.Blob && window.webkitRequestFileSystem) {
-            window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+            window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
             window.requestFileSystem(window.TEMPORARY, 1024*1024, function(filesystem) {
                 fs = filesystem;
             }, fileErrorHandler);
         }
 
-
         remixer = createJRemixer(context, $, apiKey);
         player = remixer.getPlayer();
-        $("#info").text("Loading analysis data...");
 
+        // Update the placeholder input string
+        var defaultText = 
+           ['remixed = new Array();',
+            'var meter = parseInt(track.analysis.track.time_signature);',
+            'for (var i=0; i < track.analysis.beats.length; i++) {',
+            '  if (i % meter == 0) {',
+            '    remixed.push(track.analysis.beats[i]);', 
+            '  }', 
+            '}', 
+           ].join('\n');
+        $("#userInput").text(defaultText);
+
+        // Initialize the code mirror
+        theCodeMirror = CodeMirror.fromTextArea(document.getElementById('userInput'), {
+            mode: "javascript",
+            lineNumbers: true,
+            tabSize: 2,
+          });
+    
+        $("#info").text("Loading analysis data...");
         remixer.remixTrackById(trackID, trackURL, function(t, percent) {
             track = t;
 
             $("#info").text(percent + "% of the track loaded...");
             if (percent == 100) {
-                $("#info").text(percent + "% of the track loaded, remixing...");
+                $("#info").text(percent + "% of the track loaded, checking status and loading visuals...");
             }
-
             if (track.status == 'ok') {
+                $("#info").text("Ready to remix!");
+                $('#beginRemix').removeAttr('disabled');
+
                 wavesurfer.loadBuffer(track.buffer, track.analysis.beats);
-
                 $('.btn-original').removeAttr('disabled');
-                remixed = new Array();
-                // Extract the first beat of every bar.
-                var meter = parseInt(track.analysis.track.time_signature);
-                for (var i=0; i < track.analysis.beats.length; i++) {
-                    if (i % meter == 0) {
-                        remixed.push(track.analysis.beats[i])
-                    }
-                }
-                $("#info").text("Remix complete!");
-
-                remixedWavesurfer.loadBuffer(track.buffer, remixed);
-
-                // Only use the filesystem if we have access to it.
-                if (fs) {
-                    remixer.saveRemixLocally(fs, remixed, function(saveURL) {
-                        $('#downloadButton').html('<a href="' + saveURL + '" target="_blank">Download Remix</a>')
-                    });
-                }
-                $('.btn-remixed').removeAttr('disabled');
-
             }
         });
     }
@@ -131,20 +162,16 @@ window.onload = init;
     
     <div class="container">
         <div class="hero-unit">
-            <h1>remix.js:  one.html<h1>
-            <div id="theCode">
-                <pre><code>// Extract the first beat of every bar.
-var meter = parseInt(track.analysis.track.time_signature);
-for (var i=0; i < track.analysis.beats.length; i++) {
-    if (i % meter == 0) {
-        remixed.push(track.analysis.beats[i])
-    }
-}
-</code></pre>
-            </div>
+            <h1>remix.js:  modify.html</h1>
+            <p>Modify the below code to create your own remix.</p>
         </div>
 
         <div id="info"></div>
+
+        <div id="userCode">
+            <p><textarea id="userInput"></textarea></p>
+            <button class='btn btn-original' id='beginRemix' onClick="beginRemix()">Remix!</button>
+        </div>
 
         <section>
             <div id='waveform'>
@@ -169,5 +196,4 @@ for (var i=0; i < track.analysis.beats.length; i++) {
     </div> <!-- /container -->
 </body>
 </html>
-
 
