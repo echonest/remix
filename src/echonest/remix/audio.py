@@ -410,6 +410,14 @@ class AudioData(AudioRenderable):
         numFrames = w.getnframes()
         raw = w.readframes(numFrames)
         sampleSize = numFrames * self.numChannels
+
+        # debugz.  Why does this happen twice?
+        print numFrames
+        print len(raw)
+        print sampleSize # debugz
+
+        # ah.  This error is saying that raw is smaller than sampleSize.  
+
         data = numpy.frombuffer(raw, dtype="<h", count=sampleSize)
         ndarray = numpy.array(data, dtype=numpy.int16)
         if self.numChannels > 1:

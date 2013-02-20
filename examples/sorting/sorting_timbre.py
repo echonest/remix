@@ -24,6 +24,9 @@ def main(units, timbre_bin, input_filename, output_filename):
 
     sorted_chunks = sorted(chunks, key=sorting_function, reverse=reverse)
 
+    import pdb
+    #pdb.set_trace()
+
     out = audio.getpieces(audiofile, sorted_chunks)
     out.encode(output_filename)
 
