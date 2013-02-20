@@ -329,7 +329,7 @@ function createJRemixer(context, jquery, apiKey) {
                     console.log('Write failed: ' + e.toString());
                     };
 
-                    var blob = new Blob([Wav.createWaveFileData(track.buffer, remixed)], {type: 'binary'});
+                    var blob = new Blob([Wav.createWaveFileData(remixed)], {type: 'binary'});
 
                     fileWriter.write(blob);
                 }, fileErrorHandler);
@@ -522,16 +522,18 @@ Wav.createWaveFileData = (function() {
     a[offset + 3] = (n >> 24) & 255;
   };
 
-  var writeAudioBuffer = function(audioBuffer, a, offset, quanta) {
-    var n = audioBuffer.length,
-        bufferL = audioBuffer.getChannelData(0),
-        sampleL,
-        bufferR = audioBuffer.getChannelData(1),
-        sampleR;
+  var writeAudioBuffer = function(a, offset, quanta) {
+    var bufferL, sampleL, bufferR, sampleR;
+    var currentBuffer;
 
     for (var q = 0; q < quanta.length; q++) {
-        var start = Math.floor(parseFloat(quanta[q].start) * audioBuffer.sampleRate);
-        var end = Math.floor((parseFloat(quanta[q].start) + parseFloat(quanta[q].duration)) * audioBuffer.sampleRate);
+
+        currentBuffer = quanta[q].track.buffer;
+        bufferL = currentBuffer.getChannelData(0);
+        bufferR = currentBuffer.getChannelData(1);
+
+        var start = Math.floor(parseFloat(quanta[q].start) * currentBuffer.sampleRate);
+        var end = Math.floor((parseFloat(quanta[q].start) + parseFloat(quanta[q].duration)) * currentBuffer.sampleRate);
 
         for (var i = start; i < end; ++i) {
             sampleL = bufferL[i] * 32768.0;
@@ -551,14 +553,15 @@ Wav.createWaveFileData = (function() {
     }
   };
 
-  return function(audioBuffer, quanta) {
+  return function(quanta) {
     var remixDuration = 0;
     for (var q = 0; q < quanta.length; q++) {
         remixDuration = remixDuration + parseFloat(quanta[q].duration);
     }
-    var frameLength = remixDuration * audioBuffer.sampleRate,
-        numberOfChannels = audioBuffer.numberOfChannels,
-        sampleRate = audioBuffer.sampleRate,
+    var currentBuffer = quanta[0].track.buffer;
+    var frameLength = remixDuration * currentBuffer.sampleRate,
+        numberOfChannels = currentBuffer.numberOfChannels,
+        sampleRate = currentBuffer.sampleRate,
         bitsPerSample = 16,
         byteRate = sampleRate * numberOfChannels * bitsPerSample / 8,
         blockAlign = numberOfChannels * bitsPerSample / 8,
@@ -587,7 +590,7 @@ Wav.createWaveFileData = (function() {
     writeInt32(subChunk2Size, waveFileData, 40);      // SubChunk2Size (4)
 
     // Write actual audio data starting at offset 44.
-    writeAudioBuffer(audioBuffer, waveFileData, 44, quanta);
+    writeAudioBuffer(waveFileData, 44, quanta);
 
     return waveFileData;
   }
