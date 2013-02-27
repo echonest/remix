@@ -16,8 +16,8 @@
 </head>
 
 <body>
-<script src="assets/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src='../remix.js'></script>
 <script src="../wavesurfer/wavesurfer.js"></script>
 <script src="../wavesurfer/drawer.js"></script>
@@ -27,7 +27,7 @@
 // First-beat extraction and assembly
 var apiKey = 'FILDTEOIK2HBORODV';
 var trackID = 'TRCYWPQ139279B3308';
-var trackURL = 'audio/1451_-_D.mp3'
+var trackURL = 'audio/1451_-_D.mp3';
 
 var remixer;
 var player;
@@ -82,7 +82,7 @@ function init() {
             }
 
             if (track.status == 'ok') {
-                wavesurfer.loadBuffer(track.buffer, track.analysis.beats);
+                wavesurfer.loadBuffer(track.analysis.beats);
 
                 $('.btn-original').removeAttr('disabled');
                 remixed = new Array();
@@ -95,7 +95,7 @@ function init() {
                 }
                 $("#info").text("Remix complete!");
 
-                remixedWavesurfer.loadBuffer(track.buffer, remixed);
+                remixedWavesurfer.loadBuffer(remixed);
 
                 // Only use the filesystem if we have access to it.
                 if (fs) {
