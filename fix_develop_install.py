@@ -47,5 +47,5 @@ if 'real_prefix' in dir(sys):
 else:
     data_path = '/usr/local/bin/youtube-dl'
 shutil.copyfile('external/youtube-dl/youtube-dl', data_path)
-os.chmod(data_path, 755)
+os.chmod(data_path, 0755)
 
