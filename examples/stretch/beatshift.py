@@ -8,6 +8,7 @@ Beat one is unchanged, beat two is shifted down one half step,
 beat three is shifted down two half steps, etc.
 
 Created by Ben Lacker on 2009-06-24.
+Refactored by Thor Kell on 2013-03-06.
 """
 import numpy
 import os
@@ -15,36 +16,36 @@ import random
 import sys
 import time
 
-import soundtouch
 from echonest.remix import audio, modify
 
-USAGE = """
+usage = """
 Usage:
     python beatshift.py <input_filename> <output_filename>
 Exampel:
     python beatshift.py CryMeARiver.mp3 CryMeAShifty.mp3
 """
 
-def main():
-    try:
-        in_filename = sys.argv[1]
-        out_filename = sys.argv[2]
-    except Exception:
-        print USAGE
-        sys.exit(-1)
-    st = modify.Modify()
-    afile = audio.LocalAudioFile(in_filename)
-    beats = afile.analysis.beats
-    out_shape = (len(afile.data),)
+def main(input_filename, output_filename):
+    soundtouch = modify.Modify()
+    audiofile = audio.LocalAudioFile(input_filename)
+    beats = audiofile.analysis.beats
+    out_shape = (len(audiofile.data),)
     out_data = audio.AudioData(shape=out_shape, numChannels=1, sampleRate=44100)
+    
     for i, beat in enumerate(beats):
-        data = afile[beat].data
+        data = audiofile[beat].data
         number = beat.local_context()[0] % 12
-        new_ad = st.shiftPitchSemiTones(afile[beat], number*-1)
-        out_data.append(new_ad)
-    out_data.encode(out_filename)
-
+        new_beat = soundtouch.shiftPitchSemiTones(audiofile[beat], number*-1)
+        out_data.append(new_beat)
+    
+    out_data.encode(output_filename)
 
 if __name__ == '__main__':
-    main()
-
+    import sys
+    try:
+        input_filename = sys.argv[1]
+        output_filename = sys.argv[2]
+    except:
+        print usage
+        sys.exit(-1)
+    main(input_filename, output_filename)
