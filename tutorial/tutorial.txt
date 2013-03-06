@@ -58,5 +58,9 @@ Once you can take any beat from a track, how do you choose which beats to take? 
 Mixing Audio:  Drums, Cowbell
 Once you can select certain beats from a track, you can start adding other sounds to them.  Drums and Cowbell add new sounds to the track.  Drums simply adds the same break all the way through.  Cowbell is the more complex cowbell / Walkenizer made famous at morecowbell.dj
 
+Modifying Audio:  Beatshift, Cycle
+These examples show how to change the pitch or duration of chunks of audio:  moving an entire song up a fifth, say, or slowing a song down to half its tempo.
+
+
 Happy remixing!
 

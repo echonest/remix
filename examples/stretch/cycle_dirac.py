@@ -30,8 +30,8 @@ def main(input_filename, output_filename):
         bar_ratio = (bars.index(bar) % 4) / 2.0
         beats = bar.children()
         for beat in beats:
-            meter = beat.local_context()[0]
-            ratio = meter / 2.0 + 0.5
+            beat_index = beat.local_context()[0]
+            ratio = beat_index / 2.0 + 0.5
             ratio = ratio + bar_ratio # dirac can't compress by less than 0.5!
             beat_audio = beat.render()
             scaled_beat = dirac.timeScale(beat_audio.data, ratio)
