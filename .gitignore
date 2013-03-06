@@ -1,0 +1,6 @@
+*.so
+pyechonest/
+build/
+dist/
+src/
+remix.egg-info/
