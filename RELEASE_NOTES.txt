@@ -1,3 +1,7 @@
+2.1.2:
+- Added more tutorials
+- Fixed develop installation script
+
 2.1.1:
 - Updated setup.py for better virtualenv installations
 - Fixed issue in megamix, via @drepetto
@@ -15,7 +19,6 @@
 - Removed JavaScript to separate repository.
 - Add sample rate and channels to capsule and audio.py
 - Update tutorials to new namespace
-
 
 2.0.0 - December 5 2012
 - Changed namespace:  now 'import echonest.remix.audio as audio'.
