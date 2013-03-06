@@ -22,6 +22,11 @@ Reference:
 
 # Cowbell is pretty complex!
 # Hold on, and we'll try to make everything make sense
+# Cowbell adds a cowbell sample to each beat of the track,
+# and add Christopher Walken samples at the end of each section.
+# It does this by splitting the track into its component beats.
+# Then, for each beat in the track, it mixes in one or more cowbell samples.
+# To add the Walken samples, it does the same process for each section of the track.  
 
 # These are constants for how the cowbell is added
 COWBELL_THRESHOLD = 0.85

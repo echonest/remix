@@ -23,6 +23,12 @@ Example:
     python lopside.py beat aha.mp3 ahawaltz.mp3
 """
 
+# Lopside changes the meter of a track!
+# It does this by removing the last beat of every bar.
+# So a song that is in 4 will be in 3.
+# It does this by looping over the component bars of the track.
+# Then, it adds all but the last beat of each bar to a list.
+# That list is then used to create the output audio file.
 
 def main(units, inputFile, outputFile):
     # This takes your input track, sends it to the analyzer, and returns the results. 

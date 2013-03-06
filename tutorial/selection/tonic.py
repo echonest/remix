@@ -20,6 +20,12 @@ Example:
     python tonic.py beats HereComesTheSun.mp3 HereComesTheTonic.mp3
 """
 
+# Tonic plays only the beats of a song that are playing the tonic note!
+# It does this by getting a list of every segment in a track
+# Then, it checks to see which segments are playing the tonic.
+# Then, any beats that include those segments are added to a list.
+# This list is used to create the output track.
+
 ACCEPTED_UNITS = ["tatums", "beats", "bars"]
 
 def main(units, inputFile, outputFile):

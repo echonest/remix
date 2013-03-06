@@ -34,7 +34,12 @@ is mostly the resynthesized version.
 
 # AfromB is much more complex than the prior examples!  
 # Hold on, and we'll try to make everything make sense
-
+# AfromB uses chunks of track B to make a version of track A.
+# It does this by splitting both tracks into their component segments.
+# Then, for each segment in track A, it tries to find the closest segment in track B.
+# It does this by comparing pitch, timbre, and loudness.
+# The closest segment is added to a list.
+# This list is then used to create the output file.
     
 # This is the class that does the work of resynthesizing the audio
 class AfromB(object):

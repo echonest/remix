@@ -21,6 +21,11 @@ from echonest.action import render, Playback, display_actions
 
 # Swinger is much more complex than the prior examples!  
 # Hold on, and we'll try to make everything make sense
+# Swinger returns a swung version of the track.
+# That is to say, that every second eighth note in the track is swung:  
+# they occur later later than they otherwise would.
+# It does this by timestretching the first eighth note to make it longer,
+# and by timestretching the second eighth note to make it shorter.
 
     # This is the function that does the swingin'
 def do_work(track, options):

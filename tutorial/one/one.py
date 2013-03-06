@@ -18,6 +18,11 @@ Example:
     python one.py EverythingIsOnTheOne.mp3 EverythingIsReallyOnTheOne.mp3
 """
 
+# One outputs only the first beat of each bar!
+# It does this by looping over the component bars of the track.
+# Then, it adds the first beat of each bar to a list.
+# That list is then used to create the output audio file.
+
 def main(input_filename, output_filename):
     # This takes your input track, sends it to the analyzer, and returns the results.  
     audiofile = audio.LocalAudioFile(input_filename)

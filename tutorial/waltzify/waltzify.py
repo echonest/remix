@@ -20,6 +20,9 @@ from echonest.action import render, Playback, display_actions
 
 # Waltzify is much more complex than the prior examples!  
 # Hold on, and we'll try to make everything make sense
+# Waltzify changes the meter of a track from 4 to 3.
+# It makes it a waltz, basically.  
+# It does this by stretching every second beat into two beats!
 
 # This picks a tempo to set each beat to.
 def select_tempo(index, num_beats, min_tempo, max_tempo, rate):

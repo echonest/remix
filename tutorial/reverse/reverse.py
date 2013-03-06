@@ -20,6 +20,11 @@ Example:
     python reverse.py beats YouCanCallMeAl.mp3 AlMeCallCanYou.mp3
 """
 
+# Reverse plays the beats or segments of a sound backwards!
+# It does this by getting a list of every beat or segment in a track.
+# Then, it reverses the list.
+# This reversed list is used to create the output file.
+
 def main(toReverse, inputFilename, outputFilename):
     # This takes your input track, sends it to the analyzer, and returns the results.  
     audioFile = audio.LocalAudioFile(inputFilename)

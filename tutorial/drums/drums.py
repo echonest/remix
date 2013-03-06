@@ -24,11 +24,16 @@ Usage:
 Example:
     python drums.py HereComesTheSun.mp3 breaks/AmenBrother.mp3 HereComeTheDrums.mp3 64 4 0.6
 
-Drum instenity defaults to 0.5
+Drum intensity defaults to 0.5
 """
 
 # Drums is pretty complex!
-# Hold on, and we'll try to make everything make sense
+# Hold on, and we'll try to make everything make sense.
+# Drums adds a new drum break to the track.  
+# It does this by splitting the drum break into its component beats and tatums.
+# Then, for every tatum in the input track, it mixes in the appropriate tatum of the break.
+# That is to say, it is mapping every beat of the break to the beat of the input track.
+
 
     # This converts a mono file to stereo. It is used in main() to make sure that the input break stereo
 def mono_to_stereo(audio_data):
