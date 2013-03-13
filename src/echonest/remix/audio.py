@@ -614,7 +614,6 @@ class AudioData32(AudioData):
         self.sampleRate = sampleRate
         self.numChannels = numChannels
         self.convertedfile = None
-        self.normalized = None
         if shape is None and isinstance(ndarray, numpy.ndarray) and not self.defer:
             self.data = numpy.zeros(ndarray.shape, dtype=numpy.int32)
         elif shape is not None and not self.defer:
