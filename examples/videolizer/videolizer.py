@@ -116,7 +116,6 @@ def crop_audio(audio_file, beats):
 def combine_audio_and_images(audio_file, images_folder, output):
     print "Making final video out of image sequences..."
     tmp_video = VIDEO_FOLDER+'/tmp'+EXTENSION
-    #command = 'ffmpeg -loglevel panic -f image2 -r %d -i \"%s/%%05d.png\" -vcodec libxvid -b 1000000 \"%s\"' % (FPS, images_folder, tmp_video)
     command = 'en-ffmpeg -loglevel panic -f image2 -r %d -i \"%s/%%05d.png\" -b %d \"%s\"' % (FPS, images_folder, BITRATE, tmp_video)
     cmd = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     cmd.wait()
