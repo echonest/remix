@@ -7,7 +7,7 @@ videolizer.py
 Sync up some video sequences to a song.
 Created by Tristan Jehan.
 """
-import echonest.remix.audio as audio
+import echonest.remix.audio as aud
 from sys import stdout
 import subprocess
 import random
@@ -83,7 +83,7 @@ def convert_video_to_audio(video):
 
 def analyze_video_beats(video, csv_file):
     audio = video_to_audio(video)
-    track = LocalAudioFile(audio, verbose=True)
+    track = aud.LocalAudioFile(audio, verbose=True)
     beats = track.analysis.beats
     mini = 0
     maxi = sys.maxint
@@ -189,7 +189,7 @@ def videolize(file_in, file_ou):
     if not os.path.exists(VIDEO_CSV):
         process_videos(VIDEO_FOLDER, VIDEO_CSV)
     data = process_csv(VIDEO_CSV)
-    track = audio.LocalAudioFile(file_in, verbose=True)
+    track = aud.LocalAudioFile(file_in, verbose=True)
     beats = track.analysis.beats
     if os.path.exists(TMP_FOLDER):
         shutil.rmtree(TMP_FOLDER)
