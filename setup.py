@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-__version__ = "$Revision: 0 $"
+__version__ = "2.0.0"
 # $Source$
 
 # Monkeypatch so that easy_install can install en-ffmpeg and youtube-dl

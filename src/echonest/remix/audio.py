@@ -123,21 +123,25 @@ class AudioAnalysis(object):
                 if os.path.isfile(initializer):
                     # it's a filename
                     self.pyechonest_track = track.track_from_filename(initializer)
+                    self.pyechonest_track.get_analysis()
                 else:
                     if initializer.startswith('music://') or \
                        (initializer.startswith('TR') and
                         len(initializer) == 18):
                         # it's an id
                         self.pyechonest_track = track.track_from_id(initializer)
+                        self.pyechonest_track.get_analysis()
                     elif len(initializer) == 32:
                         # it's an md5
                         self.pyechonest_track = track.track_from_md5(initializer)
+                        self.pyechonest_track.get_analysis()
                         __save_to_cache = True
             else:
                 assert(filetype is not None)
                 initializer.seek(0)
                 try:
                     self.pyechonest_track = track.track_from_file(initializer, filetype)
+                    self.pyechonest_track.get_analysis()
                 except (IOError, pyechonest.util.EchoNestAPIError) as e:
                     if lastTry:
                         raise
