@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-__version__ = "2.0.0"
-# $Source$
+__version__ = "2.2.0"
 
 # Monkeypatch so that easy_install can install en-ffmpeg and youtube-dl
 try:
@@ -137,7 +136,7 @@ for example_dir in glob.glob(os.path.join('examples', '*')):
 
 setup(name='remix',
       ext_modules = [get_soundtouch(), get_dirac(), get_action()],
-      version='2.1.3',
+      version=__version__,
       description='The internet synthesizer. Make things with music.',
       author='The Echo Nest',
       author_email='brian@echonest.com',
