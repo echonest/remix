@@ -108,7 +108,7 @@ def crop_audio(audio_file, beats):
     if not os.path.exists(output):
         print "Cropping audio to available beats..."
         duration = float(beats[-1].start) - float(beats[0].start)
-        command = 'en-ffmpeg -loglevel panic -y -ss %f -t %f -i %s %s' % (float(beats[0].start), duration, audio_file, output)
+        command = 'en-ffmpeg -loglevel panic -y -ss %f -t %f -i \"%s\" \"%s\"' % (float(beats[0].start), duration, audio_file, output)
         cmd = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         cmd.wait()
     return output
