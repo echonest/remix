@@ -140,7 +140,7 @@ class AudioAnalysis(object):
                 assert(filetype is not None)
                 initializer.seek(0)
                 try:
-                    self.pyechonest_track = track.track_from_file(initializer, filetype, force_upload=True)
+                    self.pyechonest_track = track.track_from_file(initializer, filetype)
                     self.pyechonest_track.get_analysis()
                 except (IOError, pyechonest.util.EchoNestAPIError) as e:
                     if lastTry:
