@@ -13,6 +13,7 @@
  */
 
 #include "Dirac_LE.h"
+#include <stdlib.h>
 #include <math.h>
 #include <algorithm>
 #include <string.h>
