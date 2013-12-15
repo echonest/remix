@@ -1,3 +1,7 @@
+2.2.1:
+- Update dirac C extension.
+- Add better timestretch example.
+
 2.2.0:
 - Pull latest 8.0.0 Pyechonest submodule for Track.get_analysis() method.
 - Updated setup.py to source tarball from S3
