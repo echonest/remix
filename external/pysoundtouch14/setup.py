@@ -29,7 +29,7 @@ extra_compile_args = []
 # Is this is posix platform, or is it windows?
 if hasattr(os, 'uname'):
     sources += sources_gcc
-    extra_compile_args=['-fcheck-new', '-O3', 
+    extra_compile_args=['-O3', 
                         '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/core/include',    # mac
                         '-I', '/System/Library/Frameworks/Python.framework/Versions/2.5/Extras/lib/python/numpy/numarray',        # mac
 			            '-I', '/usr/lib/python2.5/site-packages/numpy/numarray/numpy']                                            # lin
