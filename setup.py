@@ -76,7 +76,7 @@ def get_soundtouch():
 
     if is_linux or is_mac:
         sources += ['cpu_detect_x86_gcc.cpp']
-        extra_compile_args = ['-fcheck-new', '-O3', '-Wno-unused']
+        extra_compile_args = ['-O3', '-Wno-unused']
     else:
         sources += ['cpu_detect_x86_win.cpp', '3dnow_win.cpp']
     pysoundtouch = os.path.join('external', 'pysoundtouch14', 'libsoundtouch')
