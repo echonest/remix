@@ -36,7 +36,7 @@ def get_action():
     return Extension("cAction",
                         sources = [os.path.join(cAction, 'actionmodule.cpp')],
                         extra_compile_args = compile_args,
-                        include_dirs = [numpy.get_include(), numpy.get_numarray_include()],
+                        include_dirs = [numpy.get_include()],
                      )
 
 
@@ -52,7 +52,7 @@ def get_dirac():
     return Extension('dirac',
                     sources = lib_sources,
                     extra_compile_args = compile_args,
-                    include_dirs = ['source', numpy.get_include(), numpy.get_numarray_include()],
+                    include_dirs = ['source', numpy.get_include()],
                     libraries = [libname],
                     library_dirs = [os.path.join(pydirac, 'libs', platform)],
                     extra_link_args = link_args,
@@ -74,9 +74,12 @@ def get_soundtouch():
 
     extra_compile_args = []
 
-    if is_linux or is_mac:
+    if is_linux:
         sources += ['cpu_detect_x86_gcc.cpp']
         extra_compile_args = ['-fcheck-new', '-O3', '-Wno-unused']
+    if is_mac:
+        sources += ['cpu_detect_x86_gcc.cpp']
+        extra_compile_args = ['-O3', '-Wno-unused']
     else:
         sources += ['cpu_detect_x86_win.cpp', '3dnow_win.cpp']
     pysoundtouch = os.path.join('external', 'pysoundtouch14', 'libsoundtouch')
@@ -85,7 +88,7 @@ def get_soundtouch():
     return Extension('soundtouch',
                      sources = lib_sources,
                      extra_compile_args = extra_compile_args,
-                     include_dirs = [numpy.get_include(), numpy.get_numarray_include()]
+                     include_dirs = [numpy.get_include()]
     )
 
 
@@ -143,7 +146,7 @@ setup(name='remix',
       maintainer='Brian Whitman, Thor Kell',
       maintainer_email='thor.kell@mail.mcgill.ca',
       url='http://developer.echonest.com/',
-      download_url='http://static.echonest.com/remix/packages/remix-%s.tar.gz' % __version__, 
+      download_url='http://static.echonest.com/remix/packages/remix-%s.tar.gz' % __version__,
       license='New BSD',
       data_files= all_data_files,
       package_dir={'echonest':'src/echonest', 'pyechonest':'pyechonest/pyechonest'},
