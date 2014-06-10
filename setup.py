@@ -36,7 +36,7 @@ def get_action():
     return Extension("cAction",
                         sources = [os.path.join(cAction, 'actionmodule.cpp')],
                         extra_compile_args = compile_args,
-                        include_dirs = [numpy.get_include()],
+                        include_dirs = [numpy.get_include(), numpy.get_numarray_include()],
                      )
 
 
@@ -52,7 +52,7 @@ def get_dirac():
     return Extension('dirac',
                     sources = lib_sources,
                     extra_compile_args = compile_args,
-                    include_dirs = ['source', numpy.get_include()],
+                     include_dirs = ['source', numpy.get_include()],
                     libraries = [libname],
                     library_dirs = [os.path.join(pydirac, 'libs', platform)],
                     extra_link_args = link_args,
@@ -88,7 +88,7 @@ def get_soundtouch():
     return Extension('soundtouch',
                      sources = lib_sources,
                      extra_compile_args = extra_compile_args,
-                     include_dirs = [numpy.get_include()]
+                     include_dirs = [numpy.get_include(), numpy.get_numarray_include()]
     )
 
 

@@ -10,6 +10,11 @@
 #define Py_RETURN_NONE Py_INCREF(Py_None); return Py_None;
 #endif
 
+#include <iostream>
+using namespace std;
+
+
+
 static PyObject *DiracError;
 
 static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
@@ -28,17 +33,16 @@ static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "OO|ii", &objInSound, &objRate, &sampleRate, &quality))
         return NULL;
 
-    // Convert to actual PyArray with proper type
-    // PyArrayObject *inSound = (PyArrayObject *) NA_InputArray(objInSound, tFloat32, NUM_C_ARRAY);
+    PyArrayObject *inSound = (PyArrayObject*) PyArray_FromAny(objInSound, PyArray_DescrFromType(PyArray_FLOAT), 2, 2, NPY_C_CONTIGUOUS, NULL);
 
-    // TODO FIX
+
     // Check that everything looks good
-    // if (!inSound)
-    // {
-    //     Py_XDECREF(inSound);
-    //     PyErr_Format(DiracError, "couldn't convert array to PyArrayObject.");
-    //     return NULL;
-    // }
+    if (!inSound)
+    {
+        Py_XDECREF(inSound);
+        PyErr_Format(DiracError, "couldn't convert array to PyArrayObject.");
+        return NULL;
+    }
     // if (inSound->nd != 1 && inSound->nd != 2)
     // {
     //     Py_XDECREF(inSound);
@@ -56,9 +60,7 @@ static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
     bool isList = PyList_Check(objRate);
 
     uint numOutSamples = 0;
-    // uint numInSamples = inSound->dimensions[0];
     uint numInSamples = PyArray_DIM(objInSound, 0);
-    // uint numInChannels = inSound->dimensions[1];
     uint numInChannels = PyArray_DIM(objInSound, 1);
     uint numOutChannels = numInChannels;
 
@@ -128,7 +130,8 @@ static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
     // For now, Dirac uses non-interlaced buffers. Make a copy.
     // 54:#define NA_OFFSETDATA(num) ((void *) PyArray_DATA(num))
     // was: float *interlacedInSamples = (Float32 *) NA_OFFSETDATA(inSound);
-    float *interlacedInSamples = (float*) PyArray_DATA(objInSound);
+    // float *interlacedInSamples = (float*) PyArray_DATA(objInSound);
+    float *interlacedInSamples = (float*) PyArray_DATA(inSound);
     deinterlace(inSamples, interlacedInSamples, numInSamples, numInChannels);
 
     // Convert to real floats between -1 and 1 before processing...
@@ -191,7 +194,7 @@ static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
     deallocateAudioBuffer(outSamples, numOutChannels);
 
     // Dealloc the temporary array we used to avoid leaking it!
-    // Py_DECREF(inSound);
+    Py_DECREF(inSound);
 
     return PyArray_Return(outSound);
 }
