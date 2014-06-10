@@ -33,7 +33,7 @@ static PyObject *Dirac_timeScale(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "OO|ii", &objInSound, &objRate, &sampleRate, &quality))
         return NULL;
 
-    PyArrayObject *inSound = (PyArrayObject*) PyArray_FromAny(objInSound, PyArray_DescrFromType(PyArray_FLOAT), 2, 2, NPY_C_CONTIGUOUS, NULL);
+    PyArrayObject *inSound = (PyArrayObject*) PyArray_FromAny(objInSound, PyArray_DescrFromType(PyArray_FLOAT), 1, 2, NPY_C_CONTIGUOUS, NULL);
 
 
     // Check that everything looks good
