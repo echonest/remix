@@ -54,39 +54,34 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
     if type(infile) is str or type(infile) is unicode:
         filename = str(infile)
 
-    command = FFMPEG
-    if filename:
-        command += " -i \"%s\"" % infile
-    else:
-        command += " -i pipe:0"
+    command = [FFMPEG, "-i", filename or "pipe:0"]
 
     if overwrite:
-        command += " -y"
+        command.append("-y")
 
     if bitRate is not None:
-        command += " -ab " + str(bitRate) + "k"
+        command.extend(("-ab", str(bitRate) + "k"))
 
+    command.append("-ac")
     if numChannels is not None:
-        command += " -ac " + str(numChannels)
+        command.append(str(numChannels))
     else:
-        command += " -ac 2"
+        command.append("2")
 
+    command.append("-ar")
     if sampleRate is not None:
-        command += " -ar " + str(sampleRate)
+        command.append(str(sampleRate))
     else:
-        command += " -ar 44100" 
+        command.append("44100")
 
-    if outfile is not None:
-        command += " \"%s\"" % outfile
-    else:
-        command += " pipe:1"
+    command.append(outfile or "pipe:1")
     if verbose:
         print >> sys.stderr, command
 
     (lin, mac, win) = get_os()
     p = subprocess.Popen(
             command,
-            shell=True,
+            shell=False,
             stdin=(None if filename else subprocess.PIPE),
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
