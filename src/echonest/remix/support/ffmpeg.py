@@ -10,6 +10,9 @@ from exceptionthread import ExceptionThread
 
 log = logging.getLogger(__name__)
 
+# Base name of the ffmpeg binary. Can be monkey-patched if desired.
+FFMPEG = 'en-ffmpeg'
+
 def get_os():
     """returns is_linux, is_mac, is_windows"""
     if hasattr(os, 'uname'):
@@ -19,7 +22,7 @@ def get_os():
     return False, False, True
 
 def ensure_valid(filename):
-    command = "en-ffmpeg -i %s -acodec copy -f null -" % filename
+    command = "%s -i %s -acodec copy -f null -" % (FFMPEG, filename)
 
     if os.path.getsize(filename) == 0:
         raise ValueError("Input file contains 0 bytes")
@@ -51,7 +54,7 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
     if type(infile) is str or type(infile) is unicode:
         filename = str(infile)
 
-    command = "en-ffmpeg"
+    command = FFMPEG
     if filename:
         command += " -i \"%s\"" % infile
     else:
@@ -141,7 +144,7 @@ def ffmpeg_downconvert(infile, lastTry=False):
     if type(infile) is str or type(infile) is unicode:
         filename = str(infile)
 
-    command = "en-ffmpeg" \
+    command = FFMPEG \
             + (" -i \"%s\"" % infile if filename else " -i pipe:0") \
             + " -b 32k -f mp3 pipe:1"
     log.info("Calling ffmpeg: %s", command)
@@ -210,6 +213,8 @@ def settings_from_ffmpeg(parsestring):
 ffmpeg_install_instructions = """
 en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
     sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
+Alternatively, import echonest.remix.support.ffmpeg and modify ffmpeg.FFMPEG to name
+the appropriate binary.
 """
 
 def ffmpeg_error_check(parsestring):
@@ -223,7 +228,7 @@ def ffmpeg_error_check(parsestring):
                    "Could not find codec",  # corrupted, incomplete, or otherwise bad file
                     ]
     for num, line in enumerate(parse):
-        if "command not found" in line or "en-ffmpeg: not found" in line:
+        if "command not found" in line or FFMPEG+": not found" in line:
             raise RuntimeError(ffmpeg_install_instructions)
         for error in error_cases:
             if error in line:
