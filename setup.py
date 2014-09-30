@@ -76,7 +76,7 @@ def get_soundtouch():
 
     if is_linux:
         sources += ['cpu_detect_x86_gcc.cpp']
-        extra_compile_args = ['-fcheck-new', '-O3', '-Wno-unused']
+        extra_compile_args = ['-O3', '-Wno-unused']
     if is_mac:
         sources += ['cpu_detect_x86_gcc.cpp']
         extra_compile_args = ['-O3', '-Wno-unused']
