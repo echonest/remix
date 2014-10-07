@@ -573,7 +573,12 @@ class AudioData(AudioRenderable):
             bitRate = MP3_BITRATE
         except NameError:
             bitRate = 128
-        ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
+
+        try:
+            ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
+        except:
+            print >> sys.stderr, "Error converting from %s to %s" % (tempfilename, filename)
+
         if tempfilename != filename:
             if self.verbose:
                 print >> sys.stderr, "Deleting: %s" % tempfilename
