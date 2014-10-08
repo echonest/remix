@@ -14,6 +14,8 @@ except ImportError:
 
 import sys
 import os
+import pwd
+import subprocess
 import glob
 from distutils.core import setup, Extension
 import numpy
@@ -173,3 +175,11 @@ try:
         os.chmod(os.path.join(data_path, 'youtube-dl'), 0755)
 except OSError:
     pass
+
+# Hack to fix ownership of example files, when installing with sudo
+if is_mac or is_linux:
+    res = subprocess.check_output(['logname'])
+    user_name = res.strip()
+    group_id = os.getpgrp()
+    path = dest_prefix + 'examples/'
+    res = subprocess.call(['chown', '-R', '%s:%s' % (user_name, group_id), path])
