@@ -202,13 +202,24 @@ class AudioAnalysis(object):
         self._segments = None
 
         self.identifier = self.pyechonest_track.id
-        # Patching around the fact that sometimes pyechonest doesn't give back metadata
-        # As of 11/2012, metadata is not used by remix
+
+        # Patching around the fact that sometimes pyechonest 
+        # doesn't give back metadata or synchstring data
+        # This data is not typically used by remix.
         try:
             self.metadata = self.pyechonest_track.meta
         except AttributeError:
             self.metadata = None
             print >> sys.stderr, "Warning:  no metadata returned for track."
+        try:
+            self.synchstring = self.pyechonest_track.synchstring
+            self.codestring = self.pyechonest_track.codestring
+            self.rhythmstring = self.pyechonest_track.rhythmstring
+        except AttributeError:
+            self.synchstring = None
+            self.codestring = None
+            self.rhythmstring = None
+            print >> sys.stderr, "Warning:  no _string data returned for track"
 
         for attribute in ('time_signature', 'mode', 'tempo', 'key'):
             d = {'value': getattr(self.pyechonest_track, attribute),
@@ -1034,7 +1045,10 @@ class AudioQuantum(AudioRenderable):
         created upon creation of the `AudioQuantumList` that covers
         the whole track
     """
-    def __init__(self, start=0, duration=0, kind=None, confidence=None, source=None) :
+    def __init__(self, start=0, duration=0, kind=None, confidence=None, source=None,
+                key=None, key_confidence=None, mode=None, mode_confidence=None,
+                tempo=None, tempo_confidence=None, loudness=None,
+                time_signature=None, time_signature_confidence=None):
         """
         Initializes an `AudioQuantum`.
 
@@ -1048,6 +1062,17 @@ class AudioQuantum(AudioRenderable):
         self.kind = kind
         self.confidence = confidence
         self._source = source
+
+        # These params are only for sections, for now.
+        self.key = key
+        self.key_confidence = key_confidence
+        self.mode = mode
+        self.mode_confidence = mode_confidence
+        self.tempo = tempo
+        self.tempo_confidence = tempo_confidence
+        self.loudness = loudness
+        self.time_signature = time_signature
+        self.time_signature_confidence = time_signature_confidence
 
     def get_end(self):
         return self.start + self.duration
@@ -1751,7 +1776,7 @@ class Simultaneous(AudioQuantumList):
                 for aq in list.__iter__(self):
                     aq.render(start=start, to_audio=to_audio, with_source=with_source)
 
-
+# Used for creating bars, beats, and tatums
 def _dataParser(tag, nodes):
     out = AudioQuantumList(kind=tag)
     for n in nodes:
@@ -1762,14 +1787,24 @@ def _dataParser(tag, nodes):
         out[-1].duration = out[-2].duration
     return out
 
-
+# Used for creating sections
 def _attributeParser(tag, nodes):
     out = AudioQuantumList(kind=tag)
-    for n in nodes :
-        out.append(AudioQuantum(n['start'], n['duration'], tag))
+    for n in nodes:
+        # Make sure that we do not break due to an old analysis file
+        try:
+            out.append(AudioQuantum(start=n['start'], duration=n['duration'], kind=tag, 
+                                    key=n['key'], key_confidence=n['key_confidence'], 
+                                    mode=n['mode'], mode_confidence=n['mode_confidence'], 
+                                    tempo=n['tempo'], tempo_confidence=n['tempo_confidence'], 
+                                    time_signature=n['time_signature'], 
+                                    time_signature_confidence=n['time_signature_confidence'],
+                                    loudness=n['loudness']))
+        except KeyError:
+              out.append(AudioQuantum(start=n['start'], duration=n['duration'], kind=tag)) 
     return out
 
-
+# Used for creating segments
 def _segmentsParser(nodes):
     out = AudioQuantumList(kind='segment')
     for n in nodes:
