@@ -6,6 +6,9 @@ cycle.py
 Periodically time-compress and time-stretch the beats in each measure.
 Each measure starts fast and ends slow.
 
+Currently there is a bug with soundtouch.
+Please see cycle_dirac, and use dirac for time stretching.
+
 Created by Ben Lacker on 2009-06-16.
 Refactored by Thor Kell on 2013-03-06.
 """
