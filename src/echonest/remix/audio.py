@@ -768,7 +768,7 @@ def getpieces(audioData, segs):
     """
 
     # Ensure that we have data
-    if audioData.data == None or audioData.defer:
+    if not audioData.data.all() or audioData.defer:
         audioData.data = None
         audioData.load()
 
