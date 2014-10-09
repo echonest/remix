@@ -177,9 +177,12 @@ except OSError:
     pass
 
 # Hack to fix ownership of example files, when installing with sudo
-if is_mac or is_linux:
-    res = subprocess.check_output(['logname'])
-    user_name = res.strip()
-    group_id = os.getpgrp()
-    path = dest_prefix + 'examples/'
-    res = subprocess.call(['chown', '-R', '%s:%s' % (user_name, group_id), path])
+# This does not need to be done on a virtualenv install
+# And, if we do setup.py develop, the files might not be there
+if is_mac or is_linux and 'real_prefix' not in dir(sys):
+    example_path = dest_prefix + 'examples/'
+    if os.path.exists(example_path):
+        res = subprocess.check_output(['logname'])
+        user_name = res.strip()
+        group_id = os.getpgrp()
+        res = subprocess.call(['chown', '-R', '%s:%s' % (user_name, group_id), example_path])
