@@ -14,7 +14,6 @@ except ImportError:
 
 import sys
 import os
-import pwd
 import subprocess
 import glob
 from distutils.core import setup, Extension
