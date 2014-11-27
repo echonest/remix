@@ -88,19 +88,6 @@ class AudioAnalysis(object):
     .. _Echo Nest: http://the.echonest.com/
     """
 
-    @classmethod
-    def __get_cache_path(cls, identifier):
-        return "cache/%s.pickle" % identifier
-
-    def __new__(cls, *args, **kwargs):
-        if len(args):
-            initializer = args[0]
-            if type(initializer) is str and len(initializer) == 32:
-                path = cls.__get_cache_path(initializer)
-                if os.path.exists(path):
-                    return cPickle.load(open(path, 'r'))
-        return object.__new__(cls, *args, **kwargs)
-
     def __init__(self, initializer, filetype=None, lastTry=False, fromLocal=False):
         """
         Constructor.  If the argument is a valid local path or a URL,
@@ -122,7 +109,6 @@ class AudioAnalysis(object):
                             representing either a filename, track ID, or MD5, or \
                             instead, a file-like object.")
 
-        __save_to_cache = False
         try:
             if isinstance(initializer, basestring):
                 # see if path_or_identifier is a path or an ID
@@ -147,7 +133,6 @@ class AudioAnalysis(object):
                         # it's an md5
                         
                         self.pyechonest_track.get_analysis()
-                        __save_to_cache = True
             else:
                 assert(filetype is not None)
                 initializer.seek(0)
@@ -240,11 +225,6 @@ class AudioAnalysis(object):
         for attribute in ('end_of_fade_in', 'start_of_fade_out', 'duration', 'loudness'):
             setattr(self, attribute, getattr(self.pyechonest_track, attribute))
 
-        if __save_to_cache:
-            path = self.__get_cache_path(initializer)
-            if not os.path.isfile(path) and os.path.isdir(os.path.dirname(path)):
-                cPickle.dump(self, open(path, 'w'), 2)
-
     @property
     def bars(self):
         if self._bars is None:
@@ -279,24 +259,6 @@ class AudioAnalysis(object):
             self._segments = _segmentsParser(self.pyechonest_track.segments)
             self._segments.attach(self)
         return self._segments
-
-    def __getstate__(self):
-        """
-        Eliminates the circular reference for pickling.
-        """
-        dictclone = self.__dict__.copy()
-        del dictclone['source']
-        return dictclone
-
-    def __setstate__(self, state):
-        """
-        Recreates circular references after unpickling.
-        """
-        self.__dict__.update(state)
-        if hasattr(AudioAnalysis, 'CACHED_VARIABLES'):
-            for cached_var in AudioAnalysis.CACHED_VARIABLES:
-                if type(object.__getattribute__(self, cached_var)) == AudioQuantumList:
-                    object.__getattribute__(self, cached_var).attach(self)
 
 
 class AudioRenderable(object):
