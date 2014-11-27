@@ -12,19 +12,6 @@ import json
 import shutil
 
 
-'''
-~/.remix-db
-    database.db
-    audio/
-        md5_1.wav
-        md5_2.wav
-    analysis/
-        md5_1.json
-        md5_2.json
-
-database.db is a set of lines, one md5 per line.
-'''
-
 HOME = os.path.expanduser("~")
 REMIX_PATH = '.remix-db'
 REMIX_FOLDER = HOME + os.path.sep + REMIX_PATH
@@ -49,7 +36,7 @@ def check_and_create_local_db():
         f.close()
         print >> sys.stderr, "Local database created."
 
-def check_db_status(track_md5):
+def check_db(track_md5):
     # read the db, and see if the md5 is in it
     with open(DATABASE, 'r') as f:
         for line in f:

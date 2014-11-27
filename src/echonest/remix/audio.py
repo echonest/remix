@@ -48,10 +48,13 @@ from pyechonest import track
 from pyechonest.util import EchoNestAPIError
 import pyechonest.util
 import pyechonest.config as config
+
 from support.ffmpeg import ffmpeg, ffmpeg_downconvert
-from local_db import check_and_create_local_db, check_db_status, save_to_local, get_audio_file, get_analysis_file
-
-
+from local_db import check_and_create_local_db
+from local_db import check_db
+from local_db import save_to_local
+from local_db import get_audio_file
+from local_db import get_analysis_file
 
 MP3_BITRATE = 128
 
@@ -126,7 +129,6 @@ class AudioAnalysis(object):
                 if os.path.isfile(initializer): 
                     # read from the local analysis file
                     if fromLocal:
-                        print >> sys.stderr, "loading analysis from local db!"
                         with open(initializer, 'rb') as f:
                             track_dict = json.loads(f.read())
                         self.pyechonest_track = track.Track(track_dict['id'], track_dict['md5'], track_dict)
@@ -934,23 +936,20 @@ class LocalAudioFile(AudioData):
         :param filename: path to a local MP3 file
         """
 
+        # Make sure we have a local database
+        check_and_create_local_db()
         track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
-
-        ## check the db for that MD5.
-        ## if it is there, then we can can send in the audio filename to audioData.init
-        ## and then we can make a tempanalysis using the local json path
-        if check_db_status(track_md5):
-            # load from db!
-            print >> sys.stderr, "loading audio from local db!"
+        if check_db(track_md5):
+            print >> sys.stderr, "Loading audio from local db"
             filename = get_audio_file(track_md5)
-
         AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer,
                             sampleRate=sampleRate, numChannels=numChannels)
 
         if verbose:
             print >> sys.stderr, "Computed MD5 of file is " + track_md5
 
-        if check_db_status(track_md5):
+        if check_db(track_md5):
+            print >> sys.stderr, "Loading analysis from local db"
             track_file = get_analysis_file(track_md5)
             tempanalysis = AudioAnalysis(track_file, fromLocal=True)
         else:
@@ -966,9 +965,8 @@ class LocalAudioFile(AudioData):
         self.analysis = tempanalysis
         self.analysis.source = self
 
-        ## Copy to local db directory here
-        check_and_create_local_db()
-        if not check_db_status(track_md5):
+        if not check_db(track_md5):
+            print >> sys.stderr, "Saving track to local db"
             save_to_local(track_md5, self.convertedfile, self.analysis.pyechonest_track)
 
 
