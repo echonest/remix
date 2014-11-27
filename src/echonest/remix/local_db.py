@@ -10,8 +10,9 @@ import sys
 import os
 import json
 import shutil
+import logging
 
-
+log = logging.getLogger(__name__)
 HOME = os.path.expanduser("~")
 REMIX_PATH = '.remix-db'
 REMIX_FOLDER = HOME + os.path.sep + REMIX_PATH
@@ -23,10 +24,10 @@ def check_and_create_local_db():
     '''If the local db does not exist, create it.'''
     home_dir = os.listdir(HOME)
     if REMIX_PATH in home_dir:
-        print >> sys.stderr, "Found local database."
+        log.info("Found local database.")
         return
     else:
-        print >> sys.stderr, "Local database not found, creating..."
+        log.info("Local database not found, creating...")
 
         os.mkdir(REMIX_FOLDER)
         os.mkdir(AUDIO_FOLDER)
@@ -34,7 +35,7 @@ def check_and_create_local_db():
 
         f = open(DATABASE, 'wb')
         f.close()
-        print >> sys.stderr, "Local database created."
+        log.info("Local database created.")
 
 def check_db(track_md5):
     # read the db, and see if the md5 is in it

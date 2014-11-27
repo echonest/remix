@@ -16,9 +16,11 @@ import shutil
 import subprocess
 import sys
 import tempfile
-
+import logging
 from echonest.remix import audio
 from pyechonest import config
+
+log = logging.getLogger(__name__)
 
 
 class ImageSequence():
@@ -171,7 +173,7 @@ class SynchronizedAV():
         if isinstance(index, slice):
             return self.getslice(index)
         else:
-            print >> sys.stderr, "WARNING: frame-based sampling not supported for synchronized AV"
+            log.warning("Frame-based sampling not supported for synchronized AV")
             return None
     
     def getslice(self, index):
@@ -202,7 +204,7 @@ def loadav(videofile, verbose=True):
     foo, audio_file = tempfile.mkstemp(".mp3")        
     cmd = "en-ffmpeg -y -i \"" + videofile + "\" " + audio_file
     if verbose:
-        print >> sys.stderr, cmd
+        log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     ffmpeg_error_check(res[1])
@@ -232,11 +234,10 @@ def loadavfromyoutube(url, verbose=True):
     # https://github.com/rg3/youtube-dl/
     cmd = "youtube-dl -o " + "temp.video" + " " + url
     if verbose:
-        print >> sys.stderr, cmd
-    print "Downloading video..."
+        log.info(cmd)
+    log.info("Downloading video...")
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     (res, err) = out.communicate()
-    print res, err
 
     # hack around the /tmp/ issue
     cmd = "mv -f temp.video yt_file"
@@ -251,7 +252,7 @@ def youtubedl(url, verbose=True):
     # https://github.com/rg3/youtube-dl/
     cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
-        print >> sys.stderr, cmd
+        log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     return yt_file
@@ -272,7 +273,7 @@ def sequencefromyoutube(url, settings=None, dir=None, pre="frame-", verbose=True
     # http://bitbucket.org/rg3/youtube-dl
     cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
-        print >> sys.stderr, cmd
+        log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     out.communicate()
     return sequencefrommov(yt_file, settings, dir, pre)
@@ -302,14 +303,12 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-", verbose=True):
         format = settings.imageformat()
     cmd = "en-ffmpeg -i " + mov + " -an -sameq " + os.path.join(direc, pre + "%06d." + format)
     if verbose:
-        print >> sys.stderr, cmd
+        log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     ffmpeg_error_check(res[1])
     settings = settingsfromffmpeg(res[1])
     seq =  sequencefromdir(direc, format, settings)
-    #parse ffmpeg output for to find framerate and image size
-    #todo: did this actually happen? errorcheck ffmpeg...
     return seq
 
 
@@ -322,7 +321,7 @@ def sequencetomovie(outfile, seq, audio=None, verbose=True):
         cmd += " -i " + audio
     cmd += " -sameq " + outfile
     if verbose:
-        print >> sys.stderr, cmd
+        log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     ffmpeg_error_check(res[1])
@@ -343,7 +342,7 @@ def convertmov(infile, outfile=None, settings=None, verbose=True):
         foo, outfile = tempfile.mkstemp(".flv")
     cmd = "en-ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile
     if verbose:
-        print >> sys.stderr, cmd
+        log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     res = out.communicate()
     ffmpeg_error_check(res[1])

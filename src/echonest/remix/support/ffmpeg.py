@@ -23,12 +23,10 @@ def get_os():
 
 def ensure_valid(filename):
     command = "%s -i %s -acodec copy -f null -" % (FFMPEG, filename)
-
     if os.path.getsize(filename) == 0:
         raise ValueError("Input file contains 0 bytes")
 
     log.info("Calling ffmpeg: %s", command)
-
     o = subprocess.call(command.split(),
                         stdout=open(os.devnull, 'wb'),
                         stderr=open(os.devnull, 'wb'))
@@ -76,7 +74,7 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
 
     command.append(outfile or "pipe:1")
     if verbose:
-        print >> sys.stderr, command
+        log.info(command)
 
     (lin, mac, win) = get_os()
     p = subprocess.Popen(
@@ -100,8 +98,8 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
             infile.seek(0)
         except:  # if the file is not seekable
             pass
-    #   If FFMPEG couldn't read that, let's write to a temp file
-    #   For some reason, this always seems to work from file (but not pipe)
+    # If FFMPEG couldn't read that, let's write to a temp file
+    # For some reason, this always seems to work from file (but not pipe)
     if 'Could not find codec parameters' in e and not lastTry:
         log.warning("FFMPEG couldn't find codec parameters - writing to temp file.")
         fd, name = tempfile.mkstemp('.audio')
@@ -178,8 +176,7 @@ def ffmpeg_downconvert(infile, lastTry=False):
     io.seek(0, os.SEEK_END)
     bytesize = io.tell()
     io.seek(0)
-    log.info("Transcoded to 32kbps mp3 in %ss. Final size: %s bytes.",
-             (end - start), bytesize)
+    log.info("Transcoded to 32kbps mp3 in %ss. Final size: %s bytes.", (end - start), bytesize)
     return io
 
 
@@ -195,13 +192,10 @@ def settings_from_ffmpeg(parsestring):
             segs = line.split(", ")
             for s in segs:
                 if "Hz" in s:
-                    #print "Found: "+str(s.split(" ")[0])+"Hz"
                     freq = int(s.split(" ")[0])
                 elif "stereo" in s:
-                    #print "stereo"
                     chans = 2
                 elif "mono" in s:
-                    #print "mono"
                     chans = 1
     return freq, chans
 

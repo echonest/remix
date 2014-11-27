@@ -59,6 +59,7 @@ from local_db import get_analysis_file
 MP3_BITRATE = 128
 
 log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 class AudioAnalysis(object):
@@ -131,7 +132,6 @@ class AudioAnalysis(object):
                         self.pyechonest_track.get_analysis()
                     elif len(initializer) == 32:
                         # it's an md5
-                        
                         self.pyechonest_track.get_analysis()
             else:
                 assert(filetype is not None)
@@ -147,26 +147,23 @@ class AudioAnalysis(object):
                         and (e.errno in [errno.EPIPE, errno.ECONNRESET]))\
                     or (isinstance(e, pyechonest.util.EchoNestAPIError)
                         and any([("Error %s" % x) in str(e) for x in [-1, 5, 6]])):
-                        logging.getLogger(__name__).warning("Upload to EN failed - transcoding and reattempting.")
+                        log.warning("Upload to EN failed - transcoding and reattempting.")
                         self.__init__(ffmpeg_downconvert(initializer, filetype), 'mp3', lastTry=True)
                         return
                     elif (isinstance(e, pyechonest.util.EchoNestAPIError)
                             and any([("Error %s" % x) in str(e) for x in [3]])):
-                        logging.getLogger(__name__).warning("EN API limit hit. Waiting 10 seconds.")
+                        log.warning("EN API limit hit. Waiting 10 seconds.")
                         time.sleep(10)
                         self.__init__(initializer, filetype, lastTry=True)
                         return
                     else:
-                        logging.getLogger(__name__).warning("Got unhandlable EN exception. Raising:\n%s",
-                                                            traceback.format_exc())
+                        log.warning("Got unhandlable EN exception. Raising:\n%s", traceback.format_exc())
                         raise
         except Exception as e:
             if lastTry or type(initializer) is str:
                 raise
-
-            if "the track is still being analyzed" in str(e)\
-            or "there was an error analyzing the track" in str(e):
-                logging.getLogger(__name__).warning("Could not analyze track - truncating last byte and trying again.")
+            if "the track is still being analyzed" in str(e) or "there was an error analyzing the track" in str(e):
+                log.warning("Could not analyze track - truncating last byte and trying again.")
                 try:
                     initializer.seek(-1, os.SEEK_END)
                     initializer.truncate()
@@ -179,8 +176,7 @@ class AudioAnalysis(object):
                 self.__init__(initializer, filetype, lastTry=True)
                 return
             else:
-                logging.getLogger(__name__).warning("Got a further unhandlable EN exception. Raising:\n%s",
-                                                    traceback.format_exc())
+                log.warning("Got a further unhandlable EN exception. Raising:\n%s", traceback.format_exc())
                 raise
 
         if self.pyechonest_track is None:
@@ -196,7 +192,6 @@ class AudioAnalysis(object):
         self._tatums = None
         self._sections = None
         self._segments = None
-
         self.identifier = self.pyechonest_track.id
 
         # Patching around the fact that sometimes pyechonest 
@@ -206,7 +201,7 @@ class AudioAnalysis(object):
             self.metadata = self.pyechonest_track.meta
         except AttributeError:
             self.metadata = None
-            print >> sys.stderr, "Warning:  no metadata returned for track."
+            log.info("No metadata returned for track.")
         try:
             self.synchstring = self.pyechonest_track.synchstring
             self.codestring = self.pyechonest_track.codestring
@@ -215,7 +210,7 @@ class AudioAnalysis(object):
             self.synchstring = None
             self.codestring = None
             self.rhythmstring = None
-            print >> sys.stderr, "Warning:  no _string data returned for track"
+            log.info("No _string data returned for track")
 
         for attribute in ('time_signature', 'mode', 'tempo', 'key'):
             d = {'value': getattr(self.pyechonest_track, attribute),
@@ -296,7 +291,6 @@ class AudioRenderable(object):
             if isinstance(alt, AudioData):
                 source = alt
             else:
-                print >> sys.stderr, self.__repr__()
                 raise EchoNestRemixError("%s has no implicit or explicit source \
                                                 during rendering." %
                                                 (self.__class__.__name__, ))
@@ -561,11 +555,11 @@ class AudioData(AudioRenderable):
         try:
             ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
         except:
-            print >> sys.stderr, "Error converting from %s to %s" % (tempfilename, filename)
+            log.warning("Error converting from %s to %s", tempfilename, filename)
 
         if tempfilename != filename:
             if self.verbose:
-                print >> sys.stderr, "Deleting: %s" % tempfilename
+                log.warning(sys.stderr, "Deleting: %s", tempfilename)
             os.remove(tempfilename)
         return filename
 
@@ -573,7 +567,7 @@ class AudioData(AudioRenderable):
         self.data = None
         if self.convertedfile:
             if self.verbose:
-                print >> sys.stderr, "Deleting: %s" % self.convertedfile
+                log.warning("Deleting: %s", self.convertedfile)
             os.remove(self.convertedfile)
             self.convertedfile = None
 
@@ -704,7 +698,7 @@ class AudioData32(AudioData):
         ffmpeg(tempfilename, filename, bitRate=bitRate, verbose=self.verbose)
         if tempfilename != filename:
             if self.verbose:
-                print >> sys.stderr, "Deleting: %s" % tempfilename
+                log.info("Deleting: %s", tempfilename)
             os.remove(tempfilename)
         if temp_file_handle is not None:
             os.close(temp_file_handle)
@@ -902,33 +896,33 @@ class LocalAudioFile(AudioData):
         check_and_create_local_db()
         track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
         if check_db(track_md5):
-            print >> sys.stderr, "Loading audio from local db"
+            log.info("Loading audio from local db")
             filename = get_audio_file(track_md5)
         AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer,
                             sampleRate=sampleRate, numChannels=numChannels)
 
         if verbose:
-            print >> sys.stderr, "Computed MD5 of file is " + track_md5
+            log.info("Computed MD5 of file is %s", track_md5)
 
         if check_db(track_md5):
-            print >> sys.stderr, "Loading analysis from local db"
+            log.info("Loading analysis from local db")
             track_file = get_analysis_file(track_md5)
             tempanalysis = AudioAnalysis(track_file, fromLocal=True)
         else:
             try:
                 if verbose:
-                    print >> sys.stderr, "Probing for existing analysis"
+                    log.info("Probing for existing analysis")
                 tempanalysis = AudioAnalysis(track_md5)
             except Exception:
                 if verbose:
-                    print >> sys.stderr, "Analysis not found. Uploading..."
+                    log.info("Analysis not found. Uploading...")
                 tempanalysis = AudioAnalysis(filename)
 
         self.analysis = tempanalysis
         self.analysis.source = self
 
         if not check_db(track_md5):
-            print >> sys.stderr, "Saving track to local db"
+            log.info("Saving track to local db")
             save_to_local(track_md5, self.convertedfile, self.analysis.pyechonest_track)
 
 
@@ -964,16 +958,15 @@ class LocalAnalysis(object):
 
         track_md5 = hashlib.md5(file(filename, 'rb').read()).hexdigest()
         if verbose:
-            print >> sys.stderr, "Computed MD5 of file is " + track_md5
+            log.info("Computed MD5 of file is %s", track_md5)
         try:
             if verbose:
-                print >> sys.stderr, "Probing for existing analysis"
+                log.info("Probing for existing analysis")
             tempanalysis = AudioAnalysis(track_md5)
         except Exception:
             if verbose:
-                print >> sys.stderr, "Analysis not found. Uploading..."
+                log.info("Analysis not found. Uploading...")
             tempanalysis = AudioAnalysis(filename)
-
         self.analysis = tempanalysis
         self.analysis.source = self
 
@@ -1552,7 +1545,6 @@ class AudioQuantumList(list, AudioRenderable):
 
     def get_duration(self):
         return sum(self.durations)
-        #return sum([x.duration for x in self])
 
     def get_source(self):
         "Returns its own or its parent's source."

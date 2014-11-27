@@ -9,7 +9,6 @@ Copyright (c) 2009 __MyCompanyName__. All rights reserved.
 
 import sys
 import os
-
 from echonest.remix import audio, video
 
 usage = """
@@ -22,7 +21,7 @@ Example:
 
 
 def main(input_filename, output_filename):
-    if input_filename.startswith("http://"):
+    if input_filename.startswith("http://") or input_filename.startswith("https://"):
         av = video.loadavfromyoutube(input_filename)
     else:
         av = video.loadav(input_filename)
@@ -34,7 +33,6 @@ def main(input_filename, output_filename):
 
 
 if __name__ == '__main__':
-    import sys
     try:
         input_filename = sys.argv[1]
         output_filename = sys.argv[2]

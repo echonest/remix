@@ -95,7 +95,6 @@ class Modify(soundtouch.SoundTouch):
             raise TypeError('First argument must be an AudioData object.')
         if not isinstance(semitones, int):
             raise TypeError('Second argument must be an integer.')
-        # I think this is right, but maybe it has to be between -12 and 12?
         if abs(semitones) > 60:
             raise ValueError('Semitones argument must be an int between -60 and 60.')
         return self.doInBlocks(self.setPitchSemiTones, audio_data.data, semitones)
@@ -107,7 +106,6 @@ class Modify(soundtouch.SoundTouch):
             raise ValueError('Octaves must be an int or float.')
         if abs(octaves) > 5:
             raise ValueError('Octaves argument must be between -5 and 5.')
-        # what are the limits? Nothing in soundtouch documentation...
         return self.doInBlocks(self.setPitchOctaves, audio_data.data, octaves)
     
     def shiftPitch(self, audio_data, ratio=1):

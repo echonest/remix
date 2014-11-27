@@ -6,14 +6,14 @@ action.py
 Created by Tristan Jehan and Jason Sundram.
 """
 import os
+import dirac
+import sys
 from numpy import zeros, multiply, float32, mean, copy
 from math import atan, pi
-import sys
-
 from echonest.remix.audio import assemble, AudioData
 from cAction import limit, crossfade, fadein, fadeout
 
-import dirac
+log = logging.getLogger(__name__)
 
 def rows(m):
     """returns the # of rows in a numpy matrix"""
@@ -287,8 +287,6 @@ def humanize_time(secs):
 
 def display_actions(actions):
     total = 0
-    print
     for a in actions:
-        print "%s\t  %s" % (humanize_time(total), unicode(a))
+        log.info("%s\t %s", humanize_time(total), unicode(a))
         total += a.duration
-    print
