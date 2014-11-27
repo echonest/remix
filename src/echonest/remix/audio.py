@@ -898,6 +898,8 @@ class LocalAudioFile(AudioData):
         if check_db(track_md5):
             log.info("Loading audio from local db")
             filename = get_audio_file(track_md5)
+            numChannels = 2
+            sampleRate = 44100
         AudioData.__init__(self, filename=filename, verbose=verbose, defer=defer,
                             sampleRate=sampleRate, numChannels=numChannels)
 
