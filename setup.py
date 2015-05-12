@@ -43,7 +43,7 @@ def get_action():
 
 def get_dirac():
     link_args = ['-framework', 'Carbon'] if is_mac else []
-    compile_args = [] if is_windows else ['-Wno-unused']
+    compile_args = [] if is_windows else ['-Wno-unused', '-Wno-error=format-security']
 
     pydirac = os.path.join('external', 'pydirac225')
     lib_sources = [os.path.join(pydirac, 'diracmodule.cpp'), os.path.join(pydirac, 'source', 'Dirac_LE.cpp')]
