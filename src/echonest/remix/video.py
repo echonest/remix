@@ -316,10 +316,10 @@ def sequencetomovie(outfile, seq, audio=None, verbose=True):
     "renders sequence to a movie file, perhaps with an audio track"
     direc = tempfile.mkdtemp()
     seq.render(direc, "image-", False)
-    cmd = "en-ffmpeg -y \"" + str(seq.settings) + "\" -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
+    cmd = "en-ffmpeg -y " + str(seq.settings) + " -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
     if audio:
-        cmd += " -i " + audio
-    cmd += " -sameq " + outfile
+        cmd += " -i \"" + audio + "\""
+    cmd += " -sameq \"" + outfile + "\""
     if verbose:
         log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
