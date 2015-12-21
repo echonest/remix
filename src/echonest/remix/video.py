@@ -38,7 +38,7 @@ class ImageSequence():
     def _init(self):
         "extra init settings/options (can override...)"
         return
-        
+
     def __len__(self):
         "how many frames are in this sequence?"
         return len(self.files)
@@ -100,10 +100,10 @@ class ImageSequence():
         #os.symlink(self.files[index], dest)
         if replacefileinseq:
             self.files[index] = dest
-        
+
     def render(self, direc=None, pre="image", replacefiles=True):
         "renders sequence to stills. can update sequence with rendered images (default)"
-        if direc is None: 
+        if direc is None:
             #nothing to render...
             return
         dest = None
@@ -175,10 +175,10 @@ class SynchronizedAV():
         else:
             log.warning("Frame-based sampling not supported for synchronized AV")
             return None
-    
+
     def getslice(self, index):
         return SynchronizedAV(audio=self.audio[index], video=self.video[index])
-    
+
     def save(self, filename):
         audio_filename = filename + '.wav'
         audioout = self.audio.encode(audio_filename, mp3=False)
@@ -186,7 +186,7 @@ class SynchronizedAV():
         res = sequencetomovie(filename, self.video, audioout)
         os.remove(audio_filename)
         return res
-    
+
     def saveAsBundle(self, outdir):
         videodir = os.path.join(outdir, "video")
         videofile = os.path.join(outdir, "source.flv")
@@ -201,7 +201,7 @@ class SynchronizedAV():
 
 
 def loadav(videofile, verbose=True):
-    foo, audio_file = tempfile.mkstemp(".mp3")        
+    foo, audio_file = tempfile.mkstemp(".mp3")
     cmd = "en-ffmpeg -y -i \"" + videofile + "\" " + audio_file
     if verbose:
         log.info(cmd)
@@ -230,7 +230,7 @@ def loadavfrombundle(dir):
 def loadavfromyoutube(url, verbose=True):
     """returns an editable sequence from a youtube video"""
     #todo: cache youtube videos?
-    foo, yt_file = tempfile.mkstemp()        
+    foo, yt_file = tempfile.mkstemp()
     # https://github.com/rg3/youtube-dl/
     cmd = "youtube-dl -o " + "temp.video" + " " + url
     if verbose:
@@ -248,7 +248,7 @@ def loadavfromyoutube(url, verbose=True):
 
 def youtubedl(url, verbose=True):
     """downloads a video from youtube and returns the file object"""
-    foo, yt_file = tempfile.mkstemp()        
+    foo, yt_file = tempfile.mkstemp()
     # https://github.com/rg3/youtube-dl/
     cmd = "youtube-dl -o " + yt_file + " " + url
     if verbose:
@@ -301,7 +301,7 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-", verbose=True):
     format = "jpeg"
     if settings is not None:
         format = settings.imageformat()
-    cmd = "en-ffmpeg -i " + mov + " -an -sameq " + os.path.join(direc, pre + "%06d." + format)
+    cmd = "en-ffmpeg -i \"" + mov + "\" -an -sameq " + os.path.join(direc, pre + "%06d." + format)
     if verbose:
         log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -315,8 +315,8 @@ def sequencefrommov(mov, settings=None, direc=None, pre="frame-", verbose=True):
 def sequencetomovie(outfile, seq, audio=None, verbose=True):
     "renders sequence to a movie file, perhaps with an audio track"
     direc = tempfile.mkdtemp()
-    seq.render(direc, "image-", False)
-    cmd = "en-ffmpeg -y " + str(seq.settings) + " -i " + os.path.join(direc, "image-%06d." + seq.settings.imageformat())
+    seq.render(direc, "frame-", False)
+    cmd = "en-ffmpeg -y" + str(seq.settings) + " -i " + os.path.join(direc, "frame-%06d." + seq.settings.imageformat())
     if audio:
         cmd += " -i " + audio
     cmd += " -sameq " + outfile
@@ -339,8 +339,8 @@ def convertmov(infile, outfile=None, settings=None, verbose=True):
     if not isinstance(settings, VideoSettings):
         raise TypeError("settings arg must be a VideoSettings object")
     if outfile is None:
-        foo, outfile = tempfile.mkstemp(".flv")
-    cmd = "en-ffmpeg -y -i " + infile + " " + str(settings) + " -sameq " + outfile
+        foo, outfile = tempfile.mkstemp(".mp4")
+    cmd = "en-ffmpeg -y -i \"" + infile + "\"" + str(settings) + " -sameq \"" + outfile + "\""
     if verbose:
         log.info(cmd)
     out = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -355,24 +355,32 @@ def settingsfromffmpeg(parsestring):
     settings = VideoSettings()
     parse = parsestring.split('\n')
     for line in parse:
-        if "Stream #0.0" in line and "Video" in line:
+        if "Stream #" in line and "Video" in line:
             segs = line.split(", ")
             for seg in segs:
                 if re.match("\d*x\d*", seg):
                     #dimensions found
                     settings.size = map(int, seg.split(" ")[0].split('x'))
-                    if "DAR " in seg:
-                        #display aspect ratio
-                        start = seg.index("DAR ")+4
+                if "DAR " in seg:
+                    #display aspect ratio
+                    start = seg.index("DAR ")+4
+                    if "]" in seg:
                         end = seg.index("]", start)
                         settings.aspect = map(int, seg[start:end].split(":"))
+                    else:
+                        settings.aspect = map(int, seg[start:].split(":"))
                 elif re.match("(\d*\.)?\d+[\s]((fps)|(tbr)|(tbc)).*", seg):
                     #fps found
                     #todo: what's the difference between tb(r) and tb(c)?
                     settings.fps = float(seg.split(' ')[0])
-                elif re.match("\d*.*kb.*s", seg):
+        if "bitrate: " in line:
+            segs = line.split(", ")
+            for seg in segs:
+                if re.match("\d*.*kb.*s", seg):
                     #bitrate found. assume we want the same bitrate
-                    settings.bitrate = int(seg[:seg.index(" ")])
+                    start = seg.index("bitrate: ")+9
+                    end = seg.index(" ", start)
+                    settings.bitrate = int(seg[start:end])
     return settings
 
 def ffmpeg_error_check(parsestring):
