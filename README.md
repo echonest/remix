@@ -1,5 +1,9 @@
 # Welcome to Echo Nest Remix
 
+## Please check out [our approved local replacement for Remix, Amen](https://github.com/algorithmic-music-exploration/amen)
+
+## The track/upload endpoint is no longer in service so many Remix based scripts will no longer work.
+
 Echo Nest Remix is **the Internet Synthesizer.** 
 Make amazing things from music, automatically.  Turn any music or video into Python, Flash, or Javascript code.  
 
