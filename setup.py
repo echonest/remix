@@ -43,7 +43,7 @@ def get_action():
 
 def get_dirac():
     link_args = ['-framework', 'Carbon'] if is_mac else []
-    compile_args = [] if is_windows else ['-Wno-unused']
+    compile_args = [] if is_windows else ['-Wno-unused', '-Wno-error=format-security']
 
     pydirac = os.path.join('external', 'pydirac225')
     lib_sources = [os.path.join(pydirac, 'diracmodule.cpp'), os.path.join(pydirac, 'source', 'Dirac_LE.cpp')]
@@ -77,10 +77,10 @@ def get_soundtouch():
 
     if is_linux:
         sources += ['cpu_detect_x86_gcc.cpp']
-        extra_compile_args = ['-O3', '-Wno-unused']
+        extra_compile_args = ['-O3', '-Wno-unused', '-Wno-error=format-security']
     elif is_mac:
         sources += ['cpu_detect_x86_gcc.cpp']
-        extra_compile_args = ['-O3', '-Wno-unused']
+        extra_compile_args = ['-O3', '-Wno-unused', '-Wno-error=format-security']
     elif is_windows:
         sources += ['cpu_detect_x86_win.cpp', '3dnow_win.cpp']
     pysoundtouch = os.path.join('external', 'pysoundtouch14', 'libsoundtouch')

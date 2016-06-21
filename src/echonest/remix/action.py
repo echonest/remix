@@ -8,6 +8,7 @@ Created by Tristan Jehan and Jason Sundram.
 import os
 import dirac
 import sys
+import logging
 from numpy import zeros, multiply, float32, mean, copy
 from math import atan, pi
 from echonest.remix.audio import assemble, AudioData
