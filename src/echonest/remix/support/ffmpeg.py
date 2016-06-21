@@ -77,14 +77,18 @@ def ffmpeg(infile, outfile=None, overwrite=True, bitRate=None,
         log.info(command)
 
     (lin, mac, win) = get_os()
-    p = subprocess.Popen(
-            command,
-            shell=False,
-            stdin=(None if filename else subprocess.PIPE),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            close_fds=(not win)
-    )
+    try:
+        p = subprocess.Popen(
+                command,
+                shell=False,
+                stdin=(None if filename else subprocess.PIPE),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                close_fds=(not win)
+        )
+    except OSError as err:
+        if err.errno == 2:
+            raise_not_found_error()
 
     if filename:
         f, e = p.communicate()
@@ -199,12 +203,16 @@ def settings_from_ffmpeg(parsestring):
                     chans = 1
     return freq, chans
 
-ffmpeg_install_instructions = """
-en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
-    sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
-Alternatively, import echonest.remix.support.ffmpeg and modify ffmpeg.FFMPEG to name
-the appropriate binary.
-"""
+def raise_not_found_error():
+    ffmpeg_install_instructions = """
+    en-ffmpeg not found! Please make sure ffmpeg is installed and create a link as follows:
+        sudo ln -s `which ffmpeg` /usr/local/bin/en-ffmpeg
+    Alternatively, import echonest.remix.support.ffmpeg and modify ffmpeg.FFMPEG to name
+    the appropriate binary.
+    """
+
+    raise RuntimeError(ffmpeg_install_instructions)
+
 
 def ffmpeg_error_check(parsestring):
     "Looks for known errors in the ffmpeg output"
@@ -217,8 +225,6 @@ def ffmpeg_error_check(parsestring):
                    "Could not find codec",  # corrupted, incomplete, or otherwise bad file
                     ]
     for num, line in enumerate(parse):
-        if "command not found" in line or FFMPEG+": not found" in line:
-            raise RuntimeError(ffmpeg_install_instructions)
         for error in error_cases:
             if error in line:
                 report = "\n\t".join(parse[num:])
